@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.2.4 Métrique de délai</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1> Fonctionnement du protocole EIGRP</h1>
+        <h2>Métriques</h2>
+      </div>
+      <div id="content">
+<p>Le délai correspond à la mesure de temps nécessaire à un paquet pour traverser une route. La métrique de délai (DLY) est une valeur statique déterminée à partir du type de liaison à laquelle l’interface est connectée et s’exprime en microsecondes. Le délai n’est pas mesuré de façon dynamique. Autrement dit, le routeur ne suit pas réellement la durée nécessaire aux paquets pour atteindre la destination. La valeur de délai, comme la valeur de bande passante, est une valeur par défaut que l’administrateur peut modifier.</p>
+<p></p>
+<p>Lorsqu'il sert à déterminer la métrique EIGRP, le délai correspond à la somme de tous les délais d'interface le long du chemin (mesuré en dizaines de microsecondes). </p>
+<p></p>
+<p>Le tableau de la Figure 1 présente les valeurs de délai par défaut des différentes interfaces. Notez que la valeur par défaut est de 20 000 microsecondes pour les interfaces série et de 10 microsecondes pour les interfaces GigabitEthernet.</p>
+<p></p>
+<p>Utilisez la commande<span class="cmd"><b> show interfaces </b></span>pour vérifier la valeur de délai sur une interface, comme indiqué à la Figure 2. Bien qu'une interface dotée de différentes bandes passantes puisse comporter la même valeur de délai, par défaut, Cisco recommande de ne pas modifier le paramètre de délai, sauf si l'administrateur réseau a une raison particulière de le faire.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

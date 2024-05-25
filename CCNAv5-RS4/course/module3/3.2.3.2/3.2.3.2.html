@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.3.2 Fonctionnement du protocole LCP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement de PPP</h1>
+        <h2>Sessions PPP</h2>
+      </div>
+      <div id="content">
+<p>Le fonctionnement du protocole LCP comprend l'établissement de la liaison, sa maintenance et sa fermeture. Il utilise trois classes de trames LCP pour effectuer le travail de chaque phase LCP :</p>
+<p></p>
+<p>
+<ul>
+<li>Les trames d'établissement de liaison établissent et configurent la liaison (Configure-Request, Configure-Ack, Configure-Nak et Configure-Reject).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les trames de maintenance de liaison gèrent et déboguent la liaison (Code-Reject, Protocol-Reject, Echo-Request, Echo-Reply et Discard-Request).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les trames de terminaison de liaison mettent fin à la liaison (Terminate-Request et Terminate-Ack).</li>
+</ul>
+</p>
+<p></p>
+<p></p>
+<p>
+<b>Établissement de la liaison</b>
+</p>
+<p>L'établissement de la liaison est la première phase du fonctionnement du protocole LCP, comme illustré à la Figure 1. Cette phase doit s'effectuer correctement avant tout échange de paquets de couche réseau. Au cours de l'établissement de la liaison, le protocole LCP ouvre la connexion et négocie les paramètres de configuration. Le point de départ du processus d'établissement de la liaison est l'envoi d'une trame Configure-Request au destinataire par le périphérique qui prend l'initiative de la liaison. Cette trame inclut un nombre variable d'options de configuration requises pour configurer la liaison. </p>
+<p></p>
+<p>L'initiateur précise les options de création de la liaison, y compris les paramètres du protocole et de l'authentification. Le destinataire traite la demande : </p>
+<p>
+<ul>
+<li>Si les options ne sont pas acceptables ou ne sont pas reconnues, le destinataire envoie un message Configure-Nak ou Configure-Reject. Si ceci se produit et que la négociation échoue, l'initiateur doit redémarrer le processus, avec de nouvelles options. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Si les options sont acceptables, le destinataire répond par un message Configure-Ack et le processus passe à l'authentification. La gestion du fonctionnement de la liaison est transférée au protocole NCP.</li>
+</ul>
+</p>
+<p></p>
+<p>Lorsque le protocole NCP a terminé la configuration nécessaire, y compris la validation de l'authentification si elle est configurée, la ligne peut être utilisée pour transférer des données. Pendant l'échange des données, le protocole LCP passe en mode de maintenance de la liaison.</p>
+<p></p>
+<p>
+<b>Maintenance de la liaison</b>
+</p>
+<p>Pendant la maintenance de la liaison, LCP peut utiliser des messages pour fournir des commentaires et tester la liaison, comme illustré à la Figure 2.</p>
+<p>
+<ul>
+<li>
+<b>Echo-Request, Echo-Reply, and Discard-Request </b>: ces trames peuvent servir à tester la liaison.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Code-Reject and Protocol-Reject </b>: ces types de trames peuvent fournir des commentaires lorsqu'un des périphériques reçoit une trame non valide, à cause d'un code LCP non reconnu (type de trame LCP) ou d'un identificateur de protocole incorrect. Par exemple, si un paquet interprétable est reçu d'un homologue, un paquet Code-Reject est envoyé en réponse. Le périphérique émetteur renverra le paquet.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Fin de la liaison</b>
+</p>
+<p>Une fois le transfert de données effectué au niveau de la couche réseau, le LCP met fin à la liaison, comme illustré à la Figure 3. Le protocole NCP ne met fin qu'à la couche réseau et à la liaison NCP. La liaison reste ouverte jusqu'à ce que le protocole LCP la ferme. Si le protocole LCP met fin à la liaison avant le protocole NCP, la session NCP est aussi fermée. </p>
+<p></p>
+<p>PPP peut mettre fin à la liaison à tout moment. Cela peut se produire en raison de la perte de l'opérateur, d'un échec d'authentification, d'une défaillance de la qualité de la liaison, de l'expiration d'un compteur de période d'inactivité ou de la fermeture administrative de la liaison. Le protocole LCP ferme la liaison en échangeant des paquets Terminate. Le périphérique demandant la fermeture envoie un message Terminate-Request. L'autre périphérique répond en envoyant un message Terminate-Ack. Une demande de fermeture indique que le périphérique l'envoyant doit fermer la liaison. Lors de la fermeture de la liaison, PPP en informe les protocoles de couche réseau afin qu'ils puissent appliquer l'action appropriée.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

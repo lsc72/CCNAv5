@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.4.1.2 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.4.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Les réseaux de données sont des systèmes composés de périphériques finaux, de périphériques intermédiaires et de supports reliant les périphériques. Pour que la communication soit possible, les périphériques doivent savoir comment communiquer.</p>
+<p></p>
+<p>Ces périphériques doivent être conformes aux règles et aux protocoles de communication. TCP/IP est un exemple de suite de protocoles. La plupart des protocoles sont créés par un organisme de normalisation tel que l'IETF ou l'IEEE. L'Institute of Electrical and Electronics Engineers est un organisme professionnel œuvrant pour les secteurs de l'électronique et du génie électrique. L'ISO, l'organisation internationale de normalisation, est le plus grand concepteur de normes internationales pour une large gamme de produits et services.</p>
+<p></p>
+<p>Les modèles de réseau les plus utilisés sont les modèles OSI et TCP/IP. L'association des protocoles qui définissent les règles de communication de données aux différentes couches de ces modèles se révèle utile pour déterminer quels équipements et services s'appliquent à des points spécifiques, lorsque les données traversent des réseaux locaux et étendus.</p>
+<p></p>
+<p>Les données qui passent du haut vers le bas dans la pile du modèle OSI sont segmentées en différentes parties et des adresses et d'autres étiquettes viennent s'y encapsuler. Ce processus est inversé lorsque les parties sont désencapsulées et transférées vers la partie supérieure de la pile de protocoles de destination. Le modèle OSI décrit des processus de codage, de mise en forme, de segmentation et d'encapsulation de données pour la transmission sur le réseau.</p>
+<p></p>
+<p>La suite de protocoles TCP/IP est un protocole standard ouvert qui a été approuvé par le secteur des réseaux et ratifié, ou approuvé, par un organisme de normalisation. La pile de protocoles IP est une suite de protocoles requis pour transmettre et recevoir des informations via Internet. </p>
+<p></p>
+<p>Les unités de données de protocole (PDU) sont nommées selon les protocoles de la suite TCP/IP : données, segment, paquet, trame et bits.</p>
+<p></p>
+<p>L'application de modèles permet à différentes personnes, entreprises et associations professionnelles d'analyser les réseaux existants et de concevoir les réseaux futurs.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

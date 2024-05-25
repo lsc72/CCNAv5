@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.1.2 Attribution d&#x0027;adresses à des périphériques</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Schémas d&#x0027;adressage</h1>
+        <h2>Conception structurée</h2>
+      </div>
+      <div id="content">
+<p>Un plan d'adressage réseau peut impliquer l'utilisation d'une plage différente d'adresses dans chaque sous-réseau pour chaque type de périphérique.</p>
+<p></p>
+<p>
+<b>Adresses des clients</b>
+</p>
+<p>En raison des difficultés associées à la gestion des adresses statiques, les périphériques des utilisateurs se voient souvent attribuer leur adresse de manière dynamique, à l'aide du protocole DHCP (Dynamic Host Configuration Protocol). Le protocole DHCP est généralement la méthode d'attribution d'adresses IP privilégiée pour les réseaux de grande taille, car le service d'assistance technique est dégagé de cette tâche et le risque d'erreur de saisie est quasiment éliminé. </p>
+<p></p>
+<p>Un autre avantage du protocole DHCP réside dans le fait qu'une adresse n'est pas attribuée définitivement à un hôte ; elle est seulement louée pour une période donnée. Par conséquent, si nous devons modifier le schéma de segmentation de notre réseau, nous n'avons pas besoin d'attribuer à nouveau toutes les adresses d'hôte de manière statique. Avec le protocole DHCP, il suffit de configurer les informations du nouveau sous-réseau sur le serveur DHCP. Ensuite, les hôtes renouvellent automatiquement leurs adresses IP.</p>
+<p></p>
+<p>
+<b>Adresses pour des serveurs et des périphériques </b>
+</p>
+<p>Toutes les ressources réseau, telles que les serveurs ou les imprimantes, doivent avoir une adresse IP statique, comme indiqué sur la figure. Les hôtes client accèdent à ces ressources au moyen des adresses IP de ces périphériques. Par conséquent, des adresses prévisibles sont nécessaires pour chacun de ces serveurs et périphériques. </p>
+<p></p>
+<p>Les serveurs et les périphériques forment un point de concentration pour le trafic réseau. De nombreux paquets sont envoyés aux adresses IPv4 de ces périphériques, mais également renvoyés par ces mêmes adresses. Lorsqu'il surveille le trafic réseau à l'aide d'un outil tel que Wireshark, l'administrateur réseau doit pouvoir identifier rapidement ces périphériques. La mise en œuvre d'un système de numérotation cohérent facilite cette identification. </p>
+<p></p>
+<p>
+<b>Adresses pour les hôtes accessibles depuis Internet</b>
+</p>
+<p>Dans la plupart des interréseaux, seuls quelques périphériques sont accessibles par les hôtes depuis l'extérieur de l'entreprise. La majorité de ces périphériques sont de type serveur. À l'instar des périphériques d'un réseau qui fournissent des ressources réseau, les adresses IP de ces périphériques doivent être statiques.</p>
+<p></p>
+<p>Les serveurs accessibles depuis Internet doivent également être associés à une adresse publique. En outre, les changements d'adresse de l'un de ces périphériques le rendront inaccessible depuis Internet. Il arrive très souvent que ces périphériques appartiennent à un réseau numéroté à l'aide d'adresses privées. Cela implique que le routeur ou le pare-feu situé en périphérie du réseau doit être configuré de manière à traduire les adresses internes des serveurs en adresses publiques. En raison de cette configuration supplémentaire sur le périphérique intermédiaire, il est d'autant plus important que ces serveurs aient une adresse prévisible. </p>
+<p></p>
+<p>
+<b>Adresses pour les périphériques intermédiaires</b>
+</p>
+<p>Les périphériques intermédiaires forment également un point de concentration pour le trafic réseau. La quasi-totalité du trafic à l'intérieur d'un réseau et entre les réseaux passe par des périphériques intermédiaires. Aussi, ces périphériques réseau fournissent-ils un emplacement propice à la gestion, à la surveillance et à la sécurité du réseau. </p>
+<p></p>
+<p>La plupart des périphériques intermédiaires se voient attribuer des adresses de couche 3, pour la gestion et/ou le fonctionnement des périphériques. Les périphériques de type concentrateur, commutateur et point d'accès sans fil ne nécessitent pas d'adresses IPv4 pour fonctionner en tant que périphériques intermédiaires. Toutefois, si nous devons accéder à ces périphériques en tant qu'hôtes pour configurer, surveiller ou dépanner le réseau, ils doivent être associés à des adresses.</p>
+<p></p>
+<p>Puisque nous devons savoir comment communiquer avec les périphériques intermédiaires, ils doivent avoir des adresses prévisibles. C'est la raison pour laquelle elles sont généralement attribuées manuellement. Par ailleurs, les adresses de ces périphériques doivent se trouver dans une plage du bloc réseau différente de celle des adresses des périphériques des utilisateurs. </p>
+<p></p>
+<p>
+<b>Adresse de la passerelle (routeurs et pare-feu)</b>
+</p>
+<p>Contrairement aux périphériques intermédiaires, les routeurs et les pare-feu possèdent une adresse IP attribuée à chaque interface. Chacune des interfaces se situe dans un réseau différent et sert de passerelle pour les hôtes de ce réseau. En règle générale, l'interface d'un routeur utilise l'adresse la plus grande ou la plus petite de la plage d'adresses du réseau. Cette attribution doit être uniforme pour l'ensemble des réseaux de l'entreprise. Ainsi, le personnel chargé du support réseau peut toujours déterminer la passerelle du réseau, quel que soit le réseau sur lequel il intervient. </p>
+<p></p>
+<p>Les interfaces des routeurs et des pare-feu forment un point de concentration du trafic pour l'entrée et la sortie du réseau. Dans la mesure où les hôtes de chaque réseau utilisent une interface de routeur et de pare-feu comme passerelle de sortie du réseau, de nombreux paquets traversent ces interfaces. Par conséquent, ces périphériques jouent un rôle majeur dans la sécurité des réseaux en filtrant les paquets sur base des adresses IP source et de destination. L'organisation des différents types de périphérique en groupes d'adressage logique optimise l'attribution des adresses et le filtrage des paquets.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

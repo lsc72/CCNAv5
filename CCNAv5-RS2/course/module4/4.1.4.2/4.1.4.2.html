@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.4.2 Vérification des paramètres d&#x0027;interface IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration initiale d&#x0027;un routeur</h1>
+        <h2>Vérification de la connectivité des réseaux connectés directement</h2>
+      </div>
+      <div id="content">
+<p>Les commandes permettant de vérifier la configuration de l'interface IPv6 sont semblables aux commandes utilisées pour IPv4. </p>
+<p></p>
+<p>La commande <span class="cmd"><b>show ipv6 interface brief</b></span> de la Figure 1 affiche un récapitulatif de chaque interface. Les termes <span class="cmd">[up/up]</span> sur la même ligne que le nom de l'interface indiquent l'état de l'interface de couche 1/couche 2. Ces états correspondent aux colonnes Status et Protocol de la commande IPv4 équivalente. </p>
+<p></p>
+<p>Le résultat affiche deux adresses IPv6 configurées par interface. L'une des adresses est l'adresse de monodiffusion globale IPv6 qui a été saisie manuellement. L'autre adresse, qui commence par FE80, est l'adresse de monodiffusion link-local pour l'interface. Une adresse link-local est automatiquement ajoutée à une interface chaque fois qu'une adresse de monodiffusion globale est attribuée. Une interface réseau IPv6 est requise pour avoir une adresse link-local, mais elle n'est pas nécessaire pour une adresse de monodiffusion globale.</p>
+<p></p>
+<p>Le résultat de la commande <span class="cmd"><b>show ipv6 interface gigabitethernet 0/0</b></span> illustré en Figure 2 affiche l'état de l'interface et toutes les adresses IPv6 appartenant à l'interface. Avec l'adresse link-local et l'adresse de monodiffusion globale, le résultat comprend les adresses de multidiffusion attribuées à l'interface commençant par le préfixe FF02.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>show ipv6 route</b></span> illustrée en Figure 3 peut être utilisée pour vérifier que les adresses des interfaces IPv6 spécifiques et des réseaux IPv6 figurent désormais dans la table de routage IPv6. La commande<span class="cmd"><b> show ipv6 route</b></span> n'affiche que les réseaux IPv6 et non les réseaux IPv4.</p>
+<p></p>
+<p>Dans la table de routage, la lettre « <span class="cmd">C</span> » placée en regard d'une route indique qu'il s'agit d'un réseau connecté directement. Lorsque l'interface de routeur est configurée avec une adresse de monodiffusion globale et lorsque son état est « up/up », le préfixe IPv6 et la longueur de préfixe sont ajoutés à la table de routage IPv6 en tant que route connectée. </p>
+<p></p>
+<p>L'adresse de monodiffusion globale IPv6 configurée sur l'interface est également insérée dans la table de routage en tant que route locale. Le préfixe de la route locale est /128. Des routes locales sont utilisées par la table de routage pour traiter efficacement les paquets avec l'adresse d'interface du routeur en tant que destination.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>ping</b></span> pour IPv6 est identique à la commande utilisée avec IPv4, excepté qu'une adresse IPv6 est utilisée. Comme l'illustre la Figure 4, la commande <span class="cmd"><b>ping</b></span> permet de vérifier la connectivité de couche 3 entre le routeur R1 et le PC1.</p>
+<p></p>
+<p>Parmi les autres commandes utiles pour la vérification IPv6, citons :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show interface</b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ipv6 routers</b>
+</span>
+</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.3.10 Étape 8 : vérification du DNS</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.3.10_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Dépannage de la connectivité IP</h2>
+      </div>
+      <div id="content">
+<p>Le protocole DNS contrôle le DNS, à savoir une base de données distribuée avec laquelle vous pouvez mapper des noms d'hôtes vers des adresses IP. Lorsque vous configurez le protocole DNS sur le périphérique, vous pouvez remplacer le nom d'hôte de l'adresse IP par n'importe quelle commande IP, telle que <span class="cmd"><b>ping</b></span> ou <span class="cmd"><b>telnet</b></span>.</p>
+<p></p>
+<p>Pour afficher les informations de configuration DNS sur le commutateur ou le routeur, utilisez la commande <span class="cmd"><b>show running-config</b></span>. Lorsqu'aucun serveur DNS n'est installé, il est possible d'entrer des mappages de nom vers adresse IP directement dans la configuration du commutateur ou du routeur. Exécutez la commande <span class="cmd"><b>ip host</b></span> pour entrer le mappage de nom vers adresse IPv4 dans le commutateur ou le routeur. La commande <span class="cmd"><b>ipv6 host</b></span> est utilisée pour les mêmes mappages avec IPv6. Ces commandes sont illustrées à la Figure 1. Les numéros des réseaux IPv6 étant longs et difficiles à mémoriser, le protocole DNS est encore plus important pour IPv6 que pour IPv4. </p>
+<p></p>
+<p>Pour afficher les informations de mappage de nom vers adresse IP sur le PC exécutant Windows, utilisez la commande <span class="cmd"><b>nslookup</b></span>.</p>
+<p></p>
+<p>
+<b>Exemple de dépannage</b>
+</p>
+<p>Le résultat de la Figure 2 indique soit que le client n'a pas pu atteindre le serveur DNS soit que le service DNS à l'adresse 10.1.1.1 n'était pas en cours d'exécution. À ce stade, le dépannage doit se concentrer sur les communications avec le serveur DNS ou sur la vérification du bon fonctionnement du serveur DNS.</p>
+<p></p>
+<p>Exécutez la commande <span class="cmd"><b>nslookup</b></span> pour afficher les informations de configuration DNS sur un PC Microsoft Windows. Le service DNS doit être configuré pour IPv4, IPv6 ou les deux. Le service est capable de fournir des adresses IPv4 et IPv6 de manière simultanée, et ce, quel que soit le protocole utilisé pour accéder au serveur DNS.</p>
+<p></p>
+<p>Les noms de domaine et le service DNS étant des composants vitaux en matière d'accès aux serveurs du réseau, il arrive souvent qu'un utilisateur pense que « le réseau ne fonctionne plus » alors que le problème se situe en fait au niveau du serveur DNS.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

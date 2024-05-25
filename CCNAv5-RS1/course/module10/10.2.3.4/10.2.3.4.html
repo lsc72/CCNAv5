@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.3.4 Server Message Block</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Services et protocoles de couche application courants</h1>
+        <h2>Services de partage de fichiers</h2>
+      </div>
+      <div id="content">
+<p>Le protocole SMB (Server Message Block) est un protocole de partage de fichiers client/serveur développé par IBM à la fin des années 1980 pour décrire la structure des ressources réseau partagées telles que les répertoires, les fichiers, les imprimantes et les ports série. Il s'agit d'un protocole de requête-réponse.</p>
+<p></p>
+<p>Le protocole SMB décrit l'accès au système de fichiers et la manière dont les clients peuvent demander des fichiers. Il décrit également sa communication interprocessus. Tous les messages SMB partagent un format commun. Ce format utilise un en-tête de taille fixe, suivi d'un paramètre et d'un composant de données des tailles variables.</p>
+<p></p>
+<p>Les messages SMB peuvent :</p>
+<p>
+<ul>
+<li>démarrer et authentifier des sessions ou y mettre fin ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>contrôler l'accès aux fichiers et aux imprimantes ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>permettre à une application d'envoyer ou de recevoir des messages vers ou depuis un autre périphérique. </li>
+</ul>
+</p>
+<p></p>
+<p>Le partage de fichiers et les services d'impression SMB sont devenus la base des réseaux Microsoft. Avec l'introduction de la série de logiciels Windows 2000, Microsoft a modifié la structure sous-jacente pour l'utilisation du protocole SMB. Dans les versions précédentes des produits Microsoft, les services SMB utilisaient un protocole autre que TCP/IP pour implémenter la résolution de noms. Depuis Windows 2000, tous les produits Microsoft utilisent le nommage DNS qui permet aux protocoles TCP/IP de prendre en charge directement le partage des ressources SMB, comme le montre la Figure 1. Le processus d'échange de fichiers SMB entre les ordinateurs Windows est représenté à la Figure 2.</p>
+<p></p>
+<p>Contrairement au partage de fichiers pris en charge par le protocole FTP, les clients établissent une connexion à long terme aux serveurs. Une fois la connexion établie, l'utilisateur du client peut accéder aux ressources résidant sur le serveur comme si elles étaient situées localement sur l'hôte client. </p>
+<p></p>
+<p>Les systèmes d'exploitation LINUX et UNIX fournissent également une méthode de partage des ressources avec les réseaux Microsoft à l'aide d'une version de SMB nommée SAMBA. Les systèmes d'exploitation Apple Macintosh prennent en charge eux aussi le partage des ressources via le protocole SMB.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

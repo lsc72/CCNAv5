@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.3.4 Processus des clients UDP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>TCP et UDP</h1>
+        <h2>Communication UDP</h2>
+      </div>
+      <div id="content">
+<p>Comme c'est le cas avec le protocole TCP, la communication client-serveur est initiée par une application cliente qui demande des données à un processus serveur. Le processus client UDP sélectionne aléatoirement un numéro de port dans une plage de numéros de port dynamiques et l'utilise comme port source pour la conversation. Le port de destination est généralement le numéro de port réservé ou inscrit affecté au processus serveur. </p>
+<p></p>
+<p>Le choix aléatoire des numéros de port source présente également un avantage en matière de sécurité. Quand il existe un modèle prévisible de sélection du port de destination, il est plus facile pour un intrus de simuler un accès à un client en tentant de se connecter au numéro de port le plus susceptible d'être ouvert.</p>
+<p></p>
+<p>Étant donné que le protocole UDP ne crée pas de session, dès que les données sont prêtes à être envoyées et que les ports sont identifiés, le protocole UDP peut créer des datagrammes et les transmettre à la couche réseau, pour qu'ils soient adressés et envoyés sur le réseau.</p>
+<p></p>
+<p>Une fois qu'un client a choisi le port source et le port de destination, la même paire de ports est utilisée dans l'en-tête de tous les datagrammes employés dans la transaction. Quand des données sont renvoyées du serveur vers le client, les numéros de port source et de port de destination sont inversés dans l'en-tête du datagramme.</p>
+<p></p>
+<p>Parcourez les figures du côté droit de l'écran pour voir les détails des processus client UDP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

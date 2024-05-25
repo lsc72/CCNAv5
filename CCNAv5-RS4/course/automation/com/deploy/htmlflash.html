@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/swfobject.js"></script>
+<script type="text/javascript" src="media.js"></script>
+<script type="text/javascript" src="templates.js"></script>
+<script type="text/javascript" src="scripts/preview_engine.js"></script>
+
+
+<style type="text/css">
+body{
+	}
+#flashdiv {
+	position: absolute;
+	height: 450px;
+	width: 740px;
+	left: 0px;
+	top: 0px;
+}
+#flashpreview {
+	width: 490px;
+	height: 450px;
+	top: 6px;
+	left: 768px;
+	position: absolute;
+	float:left.
+	display:block;
+	float: lleft;
+	border:none;
+	clear: right;
+}
+	
+
+	#banner{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	overflow: hidden;
+}
+
+	#flashContent{
+	position: absolute;
+	top: 4px;
+	left: 6px;
+	overflow: hidden;
+}
+
+#flashlogo{
+	width: 82px;
+	height: 81px;
+	position: absolute;
+	left: 741px;
+	top: 395px;
+	}
+</style>
+<link href="media2.css" rel="stylesheet" type="text/css">
+</head>
+<body  style="background-color:#FFFFFF">
+
+
+
+
+
+
+<!-- js code for this page only -->
+<!-- js code for template -->
+<div id="flashdiv"><div id="flashContent" class="media">
+
+       	<canvas id="canvas" width="700" height="440" style=""></canvas></div>
+  <div id="banner"></div>
+
+<div id="flashpreview"><iframe width="540" height="440"  id="flash_frame"  frameborder="0"></iframe></div>
+
+</div>
+
+<script type="text/javascript">
+var localPath;
+var chpagenumber = getUrlVars()['pagenumber'];
+var module = "module" + String(chpagenumber).split(".", 1);
+setPath(module, chpagenumber);
+    function setPath(module, pagenumber){		
+loadScript("../../../"+module+"/"+pagenumber+"/media/media_"+pagenumber+"_page.js");
+var localPath = "../../../"+module+"/"+pagenumber+"/media/media_"+pagenumber;
+var imagepathh ="../../../"+module+"/"+pagenumber+"/media/";
+  var fileref=document.createElement("link")
+  fileref.setAttribute("rel", "stylesheet")
+  fileref.setAttribute("type", "text/css")
+  fileref.setAttribute("href", localPath+".css");
+  document.getElementsByTagName("head")[0].appendChild(fileref)
+var localurl = "../../../"+module+"/"+pagenumber+"/media/index.html";
+document.getElementById('flash_frame').src = localurl;
+      
+		
+  
+		  
+		  
+		  
+function loadIt(localPath, imagepathh){
+	
+init(localPath,imagepathh);
+}
+loadIt(localPath, imagepathh);	
+
+
+
+
+		
+		
+	}
+
+
+function getUrlVars() {
+	var vars = {};
+	var url = window.location.href;
+	var parts = url.split("#")[0].replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+		vars[key] = value;
+	});
+	return vars;
+}
+
+
+
+
+
+
+
+
+</script>
+<!--<div id="preview"></div>-->
+
+</body>
+</html>

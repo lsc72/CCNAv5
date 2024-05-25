@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.3.1 Notions de base sur les sous-réseaux</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmenter un réseau IPv4 en sous-réseaux</h1>
+        <h2>Segmenter un réseau IPv4 en sous-réseaux</h2>
+      </div>
+      <div id="content">
+<p>Chaque adresse réseau dispose d'une plage valide d'adresses d'hôte. Tous les équipements reliés au même réseau disposeront d'une adresse IPv4 d'hôte de ce réseau et d'un masque de sous-réseau ou d'un préfixe de réseau commun. </p>
+<p></p>
+<p>Le préfixe et le masque de sous-réseau constituent des moyens distincts de représenter la même chose : la partie réseau d'une adresse.</p>
+<p></p>
+<p>Pour créer des sous-réseaux IPv4, on utilise un ou plusieurs bits d'hôte en tant que bits réseau. Pour cela, il convient de développer le masque pour emprunter quelques bits de la partie hôte de l'adresse et créer d'autres bits réseau. Plus les bits d'hôte empruntés sont nombreux, plus le nombre de sous-réseaux qui peuvent être définis est important. Pour chaque bit emprunté, il faut doubler le nombre de sous-réseaux disponibles. Par exemple, si vous empruntez 1 bit, vous pouvez créer 2 sous-réseaux. Si vous empruntez 2 bits, 4 sous-réseaux sont créés, si vous empruntez 3 bits, 8 sous-réseaux sont créés et ainsi de suite. Toutefois, pour chaque bit emprunté, le nombre d'adresses disponibles par sous-réseau décroît.</p>
+<p></p>
+<p>Les bits peuvent être empruntés uniquement dans la partie hôte de l'adresse. La partie réseau de l'adresse est attribuée par le fournisseur d'accès et ne peut pas être modifiée.</p>
+<p></p>
+<p>
+<b>Remarque</b> : dans les exemples présentés sur les figures, seul le dernier octet est indiqué en binaire, car seuls les bits de la partie hôte peuvent être empruntés.</p>
+<p></p>
+<p>Comme l'illustre la Figure 1, le réseau 192.168.1.0/24 comporte 24 bits dans la partie réseau et 8 bits dans la partie hôte, ce qui est indiqué par le masque de sous-réseau 255.255.255.0 ou la notation /24. Sans segmentation, ce réseau prend en charge une seule interface de réseau local. Si un réseau local supplémentaire est nécessaire, le réseau doit être segmenté en sous-réseaux.</p>
+<p></p>
+<p>Sur la Figure 2, 1 bit est emprunté au bit le plus important (bit le plus à gauche) de la partie hôte, ce qui fait passer la partie réseau à 25 bits. Deux sous-réseaux sont ainsi créés. Ils sont identifiés à l'aide d'un 0 dans le bit emprunté pour le premier réseau et d'un 1 dans le bit emprunté pour le second réseau. Le masque de sous-réseau des deux réseaux utilise un 1 à la position du bit emprunté pour indiquer que ce bit se trouve désormais dans la partie réseau.</p>
+<p></p>
+<p>Comme l'illustre la Figure 3, lorsque l'on convertit l'octet binaire en décimal, on constate que la première adresse de sous-réseau est 192.168.1.0 et la deuxième adresse de sous-réseau est 192.168.1.128. Étant donné qu'un bit a été emprunté, le masque de sous-réseau de chaque sous-réseau est 255.255.255.128 ou /25.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

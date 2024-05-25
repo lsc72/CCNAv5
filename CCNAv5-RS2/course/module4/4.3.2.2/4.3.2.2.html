@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.2.2 Entrées de table de routage d&#x0027;un réseau connecté directement</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement d&#x0027;un routeur</h1>
+        <h2>Routes connectées directement</h2>
+      </div>
+      <div id="content">
+<p>Une interface active, correctement configurée et connectée directement crée en réalité deux entrées de table de routage. La figure affiche les entrées de la table de routage IPv4 sur R1 pour le réseau connecté directement 192.168.10.0. </p>
+<p></p>
+<p>L'entrée de la table de routage correspondant aux interfaces connectées directement est plus simple que les entrées des réseaux distants. Les rapports contiennent les informations suivantes :</p>
+<p>
+<ul>
+<li>
+<b>Origine de la route</b> : indique comment la route a été apprise. Les interfaces connectées directement ont deux codes d'origine de la route. « <span class="cmd">C</span> » identifie un réseau connecté directement. « <span class="cmd">L</span> » identifie l'adresse IPv4 attribuée à l'interface du routeur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Réseau de destination</b> : adresse du réseau distant.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Interface de sortie</b> : identifie l'interface de sortie à utiliser lors du transfert de paquets au réseau de destination.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque</b> : avant IOS 15, les entrées de la table de routage de la route locale (<span class="cmd">L</span>) n'étaient pas affichées dans la table de routage IPv4. Les entrées (<span class="cmd">L</span>) de la route locale ont toujours fait partie de la table de routage IPv6.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.2.2 Campus d&#x0027;entreprise Cisco </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Architecture d&#x0027;entreprise Cisco</h1>
+        <h2>Modèle d&#x0027;architecture d&#x0027;entreprise Cisco</h2>
+      </div>
+      <div id="content">
+<p>Un réseau de campus est un bâtiment ou un groupe de bâtiments connectés à un réseau d'entreprise constitué de plusieurs LAN. Il est généralement limité à une zone géographique spécifique, mais peut s'étendre sur plusieurs bâtiments voisins, par exemple un complexe industriel ou un parc commercial. Les bureaux régionaux, les petits bureaux, les bureaux à domicile et les travailleurs mobiles peuvent avoir besoin de se connecter au campus central pour obtenir des données ou des informations. </p>
+<p></p>
+<p>Le module de campus d'entreprise décrit les méthodes recommandées pour la création d'un réseau évolutif, tout en répondant aux besoins d'un fonctionnement d'entreprise de style campus. Cette architecture est modulaire et peut être facilement étendue pour inclure des bâtiments ou des étages de campus supplémentaires, à mesure que l'entreprise se développe. </p>
+<p></p>
+<p>Le module de campus d'entreprise se compose des quatre sous-modules suivants :</p>
+<p>
+<ul>
+<li>Accès au bâtiment</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Distribution du bâtiment</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Cœur de réseau du campus</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Data center</li>
+</ul>
+</p>
+<p></p>
+<p>Ensemble, ces sous-modules : </p>
+<p>
+<ul>
+<li>Assurent la haute disponibilité grâce à la résilience de la conception réseau hiérarchique.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Intègrent les communications IP, la mobilité et la sécurité avancée. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Utilisent le trafic en multidiffusion et la qualité de service pour optimiser le trafic réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Offrent plus de sécurité et de souplesse grâce au gestionnaire d'accès, aux VLAN et aux VPN IPSec.</li>
+</ul>
+</p>
+<p></p>
+<p>L'architecture de module du campus d'entreprise assure la haute disponibilité de l'entreprise via la conception multicouche résiliente, les fonctions matérielles et logicielles redondantes et les procédures automatiques de reconfiguration des chemins réseau en cas de panne. La sécurité intégrée protège des vers, des virus et des autres attaques du réseau et en réduit l'impact, même au niveau des ports des commutateurs. </p>
+<p></p>
+<p>Le module centralisé de data center à haute capacité peut fournir les ressources du serveur interne aux utilisateurs. Le module de data center prend aussi en charge les services de gestion du réseau pour l'entreprise, ce qui comprend la surveillance, la journalisation, la résolution des problèmes et d'autres fonctions courantes de gestion de bout en bout. Le sous-module de data center contient en général les serveurs de messagerie interne et les serveurs généraux qui fournissent les applications, l'impression, le courrier électronique et les services DNS aux utilisateurs internes.</p>
+<p></p>
+<p>Cliquez sur le module de campus d'entreprise dans la figure pour plus d'informations.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

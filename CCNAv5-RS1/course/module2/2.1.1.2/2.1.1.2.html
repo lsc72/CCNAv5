@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.1.2 Utilité du système d&#x0027;exploitation</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>IOS Bootcamp</h1>
+        <h2>Cisco IOS</h2>
+      </div>
+      <div id="content">
+<p>Les systèmes d'exploitation réseau comportent de nombreux points communs avec les systèmes d'exploitation des PC. Un système d'exploitation exécute plusieurs fonctionnalités techniques en arrière-plan qui permettent aux utilisateurs :</p>
+<p></p>
+<p>
+<ul>
+<li>d'utiliser une souris ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>d'afficher des images sur un écran ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>d'entrer des commandes ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>de sélectionner des options dans une boîte de dialogue.</li>
+</ul>
+</p>
+<p></p>
+<p>Les fonctions en arrière-plan des commutateurs et des routeurs sont très similaires. L'IOS d'un commutateur ou d'un routeur offre au technicien réseau une interface. Le technicien peut entrer des commandes pour configurer ou programmer le périphérique, afin qu'il exécute diverses fonctions réseau. Les détails du fonctionnement d'IOS dépendent des périphériques interréseau, de l'objectif des périphériques et des fonctions prises en charge.</p>
+<p></p>
+<p>Cisco IOS est un terme faisant référence aux différents systèmes d'exploitation qui s'exécutent sur divers périphériques réseau. Il existe de nombreuses versions différentes de Cisco IOS : </p>
+<p>
+<ul>
+<li>IOS pour les commutateurs, les routeurs et les autres périphériques réseau Cisco</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Versions numérotées d'IOS pour un périphérique réseau Cisco précis</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Ensembles de fonctionnalités IOS offrant différentes fonctions et différents services</li>
+</ul>
+</p>
+<p></p>
+<p>De la même façon qu'un PC peut exécuter Microsoft Windows 8 et qu'un MacBook peut exécuter OS X, un périphérique réseau Cisco exécute une version spécifique de Cisco IOS. La version de l'IOS dépend du type de périphérique utilisé et des fonctions nécessaires. Alors que tous les périphériques possèdent un IOS et un ensemble de fonctionnalités par défaut, il est possible de mettre à niveau l'IOS ou l'ensemble de fonctionnalités, afin d'obtenir des fonctions supplémentaires. </p>
+<p></p>
+<p>Dans ce cours, vous vous concentrerez principalement sur Cisco IOS version 15.x. La Figure 1 répertorie les versions logicielles d'IOS disponibles pour un commutateur Cisco Catalyst 2960. La Figure 2 répertorie les versions logicielles d'IOS disponibles pour un routeur à services intégrés Cisco 2911. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

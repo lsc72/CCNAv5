@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.1.1 Exercice en classe : proposition de budget Frame Relay</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Proposition de budget Frame Relay</b>
+</p>
+<p></p>
+<p>Il a été décidé que votre entreprise utilisera la technologie Frame Relay pour fournir la connectivité vidéo entre le siège social et deux filiales. L'entreprise utilisera également le nouveau réseau pour la redondance en cas d'interruption de la connectivité réseau actuelle avec le FAI pour une raison quelconque.</p>
+<p>Comme d'habitude, avec n'importe quel type de mise à niveau du réseau, vous devez développer une proposition de coût pour votre administrateur.</p>
+<p>Après avoir effectué certaines recherches, vous décidez d'utiliser ce site Web <a href="http://www.andrew.cmu.edu/user/rk2x/telclass.dir/oldstudentprojects.dir/proj3.dir/frame_relay.html" target="_blank">Frame Relay</a> pour votre analyse de coût. Les coûts répertoriés sur le site sont représentatifs de véritables coûts FAI et ils sont référencés uniquement pour vous aider à créer votre conception d'analyse de coût.</p>
+<p></p>
+<p>
+<a href="../../files/4.4.1.1%20Frame-Relay%20Budget%20Proposal%20Instructions.pdf" target="_blank">Exercice en classe : proposition de budget Frame Relay</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

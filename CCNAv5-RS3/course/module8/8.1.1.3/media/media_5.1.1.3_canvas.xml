@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+  <slide type="MBAR"> 
+    
+<slide>    
+<element type="TEXT" subType="TITLE" compId="ID_s1_title"/> 
+<element type="ROUTER" textId="ID_s1_staticTxt1" x="5.65" y="37.65" width="428" height="356" size="10"/> 
+<element type="TEXT" compId="ID_s1_txt01" x="18" y="209.45" width="104" size="10" align="left" expand="right"/> 
+<element type="TEXT" compId="ID_s1_txt02" x="27.2" y="329.45" width="104" size="10" align="left" expand="right"/> 
+ </slide> 
+
+ <slide>    
+<element type="TEXT" subType="TITLE" compId="ID_s2_title"/> 
+<element type="ROUTER" textId="ID_s2_staticTxt1" x="3.45" y="47" width="433" height="300" size="10"/> 
+<element type="TEXT" compId="ID_s2_txt01" x="14.85" y="70" width="104" size="10" align="left" expand="right"/>
+ </slide> 
+
+ <slide>    
+<element type="TEXT" subType="TITLE" compId="ID_s3_title"/> 
+<element type="ROUTER" textId="ID_s3_staticTxt1" x="5.65" y="37.65" width="428" height="174" size="10"/>
+<element type="ROUTER" textId="ID_s3_staticTxt2" x="5.65" y="218.65" width="428" height="85" size="10"/> 
+ </slide> 
+
+  <slide>    
+<element type="TEXT" subType="TITLE" compId="ID_s4_title"/>  
+  <element type="ACTIVITY" subType="SYNTAX" compId="ID_s4_SC5" x="5.5" y="30" width="432" height="359.65" size="10" resetId="ID_sc1_reset" showMeId="ID_sc1_showme" showAllId="ID_sc1_showall" />  
+ </slide> 
+ 
+
+</slide>
+ 
+
+<text id="ID_s1_staticTxt1"><![CDATA[<code>R1# <b>show ip protocols</b>
+*** IP Routing is NSF aware ***
+
+Routing Protocol is "eigrp 1"
+  Outgoing update filter list for all interfaces is not set
+  Incoming update filter list for all interfaces is not set
+  Default networks flagged in outgoing updates
+  Default networks accepted from incoming updates
+  EIGRP-IPv4 Protocol for AS(1)
+    Metric weight K1=1, K2=0, K3=1, K4=0, K5=0
+
+
+<span class="orange_block">  Automatic Summarization: disabled</span>
+  Maximum path: 4
+  Routing for Networks:
+    172.16.0.0
+    192.168.10.0</code>]]>
+  </text>
+  
+  
+<text id="ID_s2_staticTxt1"><![CDATA[<code>R3# <b>show ip route eigrp</b>
+
+
+ 172.16.0.0/16 is variably subnetted, 3 subnets, 2 masks
+D <span class="orange">172.16.1.0/24</span> [90/2170112] via 192.168.10.5, 02:21:10, Serial0/0/0
+D <span class="orange">172.16.2.0/24</span> [90/3012096] via 192.168.10.9, 02:21:10, Serial0/0/1
+D <span class="orange">172.16.3.0/30</span> [90/41024000] via 192.168.10.9, 02:21:10, Serial0/0/1
+                [90/41024000] via 192.168.10.5, 02:21:10, Serial0/0/0
+R3# 
+</code>
+]]>
+  </text>
+
+  <text id="ID_s3_staticTxt1"><![CDATA[<pre>R1(config)# <b>router eigrp 1</b>
+R1(config-router)# <b>auto-summary</b>
+R1(config-router)# 
+*Mar  9 19:40:19.342: %DUAL-5-NBRCHANGE: EIGRP-IPv4 1: Neighbor 
+192.168.10.6 (Serial0/0/1) is resync: <span class="orange">summary configured</span>
+*Mar  9 19:40:19.342: %DUAL-5-NBRCHANGE: EIGRP-IPv4 1: Neighbor 
+192.168.10.6 (Serial0/0/1) is resync: <span class="orange">summary up,</span> remove components
+*Mar  9 19:41:03.630: %DUAL-5-NBRCHANGE: EIGRP-IPv4 1: Neighbor 
+192.168.10.6 (Serial0/0/1) is resync: peer <span class="orange">graceful-restart</span></pre>
+]]>
+  </text>
+    <text id="ID_s3_staticTxt2"><![CDATA[<pre>R2(config)# <b>router eigrp 1</b><br>
+R2(config-router)# <b>auto-summary</b><br>
+R2(config-router)#</pre>
+]]>
+  </text>
+     
+   
+</data>

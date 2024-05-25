@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.1.1 Redondance au niveau des couches 1 et 2 du modèle OSI (Open System Interconnection)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts du mode Spanning Tree</h1>
+        <h2>Objectif du mode Spanning Tree</h2>
+      </div>
+      <div id="content">
+<p>Cette conception de réseau hiérarchique à trois niveaux, composée des couches cœur de réseau, distribution et accès avec redondance, a pour objectif d'éliminer un point de défaillance unique sur le réseau. Utiliser plusieurs chemins câblés entre les commutateurs permet d'obtenir une redondance physique sur un réseau commuté. Cela améliore la fiabilité et la disponibilité du réseau. Disposer de chemins physiques alternatifs pour que les données traversent le réseau permet aux utilisateurs de toujours accéder aux ressources de ce réseau, même en cas de perturbations au niveau du chemin.</p>
+<p></p>
+<p>Cliquez sur le bouton Lecture de la Figure 1 pour visionner une animation sur la redondance. </p>
+<p></p>
+<p>1. PC1 communique avec PC4 sur une topologie de réseau redondante.</p>
+<p></p>
+<p>2. Lorsque le lien réseau entre S1 et S2 est coupé, le chemin entre PC1 et PC4 est automatiquement modifié pour compenser cette perturbation. </p>
+<p></p>
+<p>3. Lorsque la connexion réseau entre S1 et S2 est restaurée, le chemin est à nouveau modifié pour acheminer directement le trafic entre S2 et S1, afin d'accéder à PC4.</p>
+<p></p>
+<p>Pour de nombreuses organisations et entreprises, la disponibilité du réseau est un élément essentiel de la prise en charge des besoins métier ; par conséquent, la conception de l'infrastructure de réseau est elle aussi un élément commercial critique. La redondance des chemins est une solution intéressante pour offrir la disponibilité requise par les multiples services réseau, car elle élimine la possibilité d'un point de défaillance unique.</p>
+<p></p>
+<p>
+<b>Remarque </b>: la redondance de la couche 1 du modèle OSI est illustrée à l'aide de plusieurs liens et périphériques, mais il faut bien plus qu'une simple planification physique pour réaliser la configuration du réseau. Pour que la redondance fonctionne de manière systématique, l'utilisation de protocoles de couche 2 du modèle OSI, tels que STP, est également nécessaire.</p>
+<p></p>
+<p>La redondance est un élément important de la conception hiérarchique, car elle permet d'éviter l'interruption des services réseau offerts aux utilisateurs. Les réseaux redondants nécessitent l'ajout de chemins physiques, mais la redondance logique doit également faire partie de la conception. Toutefois, les chemins d'accès redondants dans un réseau Ethernet commuté peuvent entraîner à la fois des boucles physiques et logiques de couche 2. </p>
+<p></p>
+<p>Les boucles logiques de couche 2 peuvent apparaître en conséquence du fonctionnement naturel des commutateurs, plus particulièrement des processus d'apprentissage et de redirection. Lorsqu'il existe plusieurs chemins entre deux périphériques d'un réseau et que le protocole STP n'a pas été implémenté sur les commutateurs, une boucle de couche 2 se produit. Une boucle de couche 2 peut avoir pour conséquence trois problèmes majeurs, tels qu'illustrés dans la Figure 2. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

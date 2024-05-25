@@ -1,0 +1,68 @@
+﻿<textcomponents>
+
+<!--Slide 2-->
+<component id='ID_s2_txt01'>
+	<text><![CDATA[&lt;output omitted&gt;]]></text>
+</component>
+<!--End Slide 2-->
+
+
+
+
+<!--Slide 4-->
+
+<component id="ID_SC_title">
+<text><![CDATA[<b>Vérifier la configuration des adresses IPv6</b>]]></text>
+</component>
+
+
+<!--Syntax Checker Button Text-->
+<component id="ID_sc_reset">
+<text><![CDATA[Réinitialiser]]></text>
+</component>
+
+<component id="ID_sc_showme">
+<text><![CDATA[Démonstration]]></text>
+</component>
+
+<component id="ID_sc_showall">
+<text><![CDATA[Afficher tout]]></text>
+</component>
+<!--End Syntax Checker Button Text-->
+
+<!--Syntax Checker Body Text-->
+<component id="ID_SC" fontFace='Courier New' fontSize="10">
+
+<text></text>		
+
+<feedback id="fb"><![CDATA[<b><font size = '10' face="Arial" color="#0000FF">***Vous devez saisir la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe tiennent compte des majuscules.***</font></b> 
+]]></feedback>		
+
+<existingcommands id="ec"><![CDATA[<font size = '10' face="Arial"><b>Entrez la commande show pour afficher le résumé de l'état de l'interface IPv6.</b></font>]]></existingcommands>
+
+<command prompt="Router#" id="cmd1" node="start">
+<correctresponse id="cr1" ignoreCase = 'true'><![CDATA[show ipv6 interface brief]]></correctresponse>
+<deviceresponse id="dr1"><![CDATA[<font size='10'>GigabitEthernet0/0     [up/up]<br>    <span class="space_10">FE80::FE99:47FF:FE75:C3E0</span><br><span class="space_10">    2001:DB8:ACAD:1::1</span><br>GigabitEthernet0/1     [up/up]<br>    <span class="space_10">FE80::FE99:47FF:FE75:C3E1</span><br><span class="space_10">    2001:DB8:ACAD:2::1</span><br>Serial0/0/0            [up/up]<br>    <span class="space_10">FE80::FE99:47FF:FE75:C3E0</span><br><span class="space_10">    2001:DB8:ACAD:3::1</span><br>Serial0/0/1            [administratively down/down]<br>    <span class="space_10">unassigned</span><br><br></font>]]></deviceresponse>			
+<instruction id="ins1"><![CDATA[<font size = '10' face="Arial"><b>Entrez la commande show pour afficher la table de routage IPv6.</b></font>]]></instruction>	
+</command>
+
+<command prompt="Router#"  id="cmd2">
+<correctresponse id="cr2" ignoreCase = 'true'><![CDATA[show ipv6 route]]></correctresponse>
+<deviceresponse id="dr2"><![CDATA[<font size='10'>IPv6 Routing Table - default - 7 entries<br>Codes: C - Connected, L - Local, S - Static, U - Per-user Static<br><br><font face="Arial">&lt;résultat omis&gt;</font><br><br>C   <span class="space_10">2001:DB8:ACAD:1::/64 [0/0]</span><br><span class="space_15">     via GigabitEthernet0/0, directly connected</span><br>L   <span class="space_10">2001:DB8:ACAD:1::1/128 [0/0]</span><br><span class="space_15">     via GigabitEthernet0/0, receive</span><br>C<span class="space_10">   2001:DB8:ACAD:2::/64 [0/0]</span><br>     <span class="space_15">via GigabitEthernet0/1, directly connected</span><br>L   <span class="space_10">2001:DB8:ACAD:2::1/128 [0/0]</span><br>     <span class="space_15">via GigabitEthernet0/1, receive</span><br>C<span class="space_10">   2001:DB8:ACAD:3::/64 [0/0]</span><br><span class="space_15">     via Serial0/0/0, directly connected</span><br>L<span class="space_10">   2001:DB8:ACAD:3::1/128 [0/0]</span><br>     <span class="space_15">via Serial0/0/0, receive</span><br>L   <span class="space_10">FF00::/8 [0/0]</span><br><span class="space_15">     via Null0, receive</span><br><br></font>]]></deviceresponse>			
+<instruction id="ins2"><![CDATA[<font size = '10' face="Arial"><b>Vérifiez la connectivité à partir de PC2 à l'adresse 2001:db8:acad:1::10.</b></font>]]></instruction>	
+</command>
+
+<command prompt="Router#" id="cmd3" node="end">
+<correctresponse id="cr3" ignoreCase = 'true'><![CDATA[ping 2001:db8:acad:1::10]]></correctresponse>
+<deviceresponse id="dr3"><![CDATA[<font size='10'>Type escape sequence to abort.<br>Sending 5, 100-byte ICMP Echos to 2001:DB8:ACAD:1::10, timeout is 2 seconds:<br>!!!!!<br>Success rate is 100 percent (5/5)<br>R1#<br><br></font>]]></deviceresponse>			
+<instruction id="last"><![CDATA[<font size = '10' face="Arial"><b>Vous avez correctement vérifié la configuration des adresses IPv6.</b></font>]]></instruction>	
+</command>
+
+<command prompt=""/>
+
+</component>
+<!--End Syntax Checker Body Text-->
+
+<!--End Slide 4-->
+
+</textcomponents>

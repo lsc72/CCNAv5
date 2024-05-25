@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.4.2 Protocoles de routage IGP et EGP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de routage dynamique</h1>
+        <h2>Types de protocoles de routage</h2>
+      </div>
+      <div id="content">
+<p>Un système autonome (SA) est un ensemble de routeurs au sein d'une administration commune telle qu'une société ou une organisation. Un SA est également appelé « domaine de routage ». Des exemples typiques de SA sont le réseau interne d'une entreprise et le réseau d'un fournisseur d'accès Internet. </p>
+<p></p>
+<p>Internet repose sur le concept du SA ; par conséquent, deux types de protocoles de routage sont nécessaires : </p>
+<p>
+<ul>
+<li>
+<b>Protocole IGP (Interior Gateway Protocol)</b> - Utilisé pour le routage au sein d'un SA. Il est également appelé « routage intra-SA ». Les entreprises, les organisations et même les fournisseurs de services utilisent un protocole IGP sur leurs réseaux internes. Les protocoles IGP incluent les protocoles RIP, EIGRP, OSPF et IS-IS. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Protocole EGP (Exterior Gateway Protocol)</b> - Utilisé pour le routage entre des systèmes autonomes. Il est également appelé « routage inter-SA ». Les fournisseurs de services et les grandes entreprises peuvent être interconnectés au moyen d'un protocole EGP. Le protocole BGP (Border Gateway Protocol) est le seul protocole EGP actuellement viable et c'est le protocole de routage officiel utilisé par Internet. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque :</b> puisque le protocole BGP est le seul protocole EGP disponible, le terme EGP est rarement utilisé ; au lieu de cela, la plupart des ingénieurs font simplement référence à BGP. </p>
+<p></p>
+<p>L'exemple de la figure fournit des scénarios simples illustrant le déploiement des protocoles IGP et BGP, ainsi que du routage statique : </p>
+<p>
+<ul>
+<li>
+<b>ISP-1 </b>- Il s'agit d'un SA et le protocole IS-IS est utilisé comme protocole IGP. Il s'interconnecte avec d'autres systèmes autonomes et fournisseurs de services en utilisant le protocole BGP pour contrôler explicitement la manière dont le trafic est routé. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>ISP-2 </b>- Il s'agit d'un SA et le protocole OSPF est utilisé comme protocole IGP. Il s'interconnecte avec d'autres systèmes autonomes et fournisseurs de services en utilisant le protocole BGP pour contrôler explicitement la manière dont le trafic est routé. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>AS-1</b> - il s'agit d'une grande entreprise et le protocole EIGRP est utilisé comme protocole IGP. Comme il est multiconnecté (c'est-à-dire qu'il est connecté à deux fournisseurs de services différents), il utilise le protocole BGP pour contrôler explicitement la façon dont le trafic entre dans le SA et en sort. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>AS-2</b> - Il s'agit d'une entreprise de taille moyenne et le protocole OSPF est utilisé comme protocole IGP. Il est également multiconnecté ; par conséquent, il utilise le protocole BGP pour contrôler explicitement la façon dont le trafic entre dans le SA et en sort. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>AS-3</b> - Il s'agit d'une petite entreprise avec les routeurs plus anciens au sein du système autonome ; il utilise le protocole RIP comme protocole IGP. Le protocole BGP n'est pas nécessaire car il est à connexion unique (c'est-à-dire qu'il se connecte à un seul fournisseur de services). Au lieu de cela, le routage statique est mis en œuvre entre le SA et le fournisseur de services. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque :</b> le protocole BGP sort du cadre de ce cours et n'est pas traité en détail. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

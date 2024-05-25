@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.4.4 Comparaison des modèles OSI et TCP/IP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.4.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Normes et protocoles réseau</h1>
+        <h2>Modèles de référence</h2>
+      </div>
+      <div id="content">
+<p>Les protocoles qui constituent la suite de protocoles TCP/IP peuvent être décrits selon les termes du modèle de référence OSI. Dans le modèle OSI, la couche d'accès au réseau et la couche application du modèle TCP/IP sont subdivisées pour décrire les fonctions distinctes qui doivent intervenir sur ces couches. </p>
+<p></p>
+<p>Au niveau de la couche d'accès au réseau, la suite de protocoles TCP/IP ne spécifie pas quels protocoles utiliser lors de la transmission à travers un support physique ; elle décrit uniquement la remise depuis la couche Internet aux protocoles réseau physiques. Les couches OSI 1 et 2 traitent des procédures nécessaires à l'accès aux supports et des moyens physiques permettant d'envoyer des données à travers un réseau.</p>
+<p></p>
+<p>Comme l'illustre la figure, les principaux points communs entre les deux modèles de réseau se situent aux couches OSI 3 et 4. La couche 3 du modèle OSI, c'est-à-dire la couche réseau, est utilisée de manière presque universelle pour décrire l'éventail de processus qui interviennent dans tous les réseaux de données afin d'adresser et d'acheminer les messages à travers un interréseau. Le protocole IP est le protocole de la suite TCP/IP qui contient la fonctionnalité décrite à la couche 3 du modèle OSI.</p>
+<p></p>
+<p>La couche 4, c'est-à-dire la couche transport du modèle OSI décrit les services et les fonctionnalités de base qui assurent l'ordre et la fiabilité des données acheminées entre les hôtes source et de destination. Ces fonctions incluent l'accusé de réception, la reprise après erreur et le séquencement. Au niveau de cette couche, les protocoles TCP et UDP de la suite TCP/IP fournissent les fonctionnalités nécessaires.</p>
+<p></p>
+<p>La couche application TCP/IP inclut plusieurs protocoles qui fournissent des fonctionnalités spécifiques à plusieurs applications d'utilisateur final. Les couches 5, 6 et 7 du modèle OSI servent de références aux développeurs et aux éditeurs de logiciels d'application pour créer des produits qui fonctionnent sur les réseaux.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

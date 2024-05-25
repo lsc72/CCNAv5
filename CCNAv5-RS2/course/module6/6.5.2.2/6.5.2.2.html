@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.5.2.2 Résolution d&#x0027;un problème de connectivité</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.5.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage des problèmes de routes statiques et par défaut</h1>
+        <h2>Dépannage de la configuration des routes statiques et par défaut IPv4</h2>
+      </div>
+      <div id="content">
+<p>La recherche d'une route manquante (ou mal configurée) est un processus relativement simple, si les outils adaptés sont utilisés de manière méthodique. </p>
+<p></p>
+<p>Par exemple, dans cet exemple, l'utilisateur sur PC1 signale qu'il ne peut pas accéder aux ressources sur le réseau local de R3. Vous pouvez le confirmer en envoyant une requête ping à l'interface de réseau local de R3 en utilisant l'interface de réseau local de R1 comme source (voir la Figure 1). Les résultats montrent qu'il n'y a aucune connectivité entre ces réseaux locaux.</p>
+<p></p>
+<p>Une commande traceroute dans la Figure 2 indique que R2 ne répond pas correctement. Pour une raison quelconque, R2 renvoie l'opération traceroute sur R1. R1 le renvoie à R2. Cette boucle continuerait jusqu'à ce que la valeur de durée de vie diminue jusqu'à zéro. Dans ce cas, le routeur enverrait alors un message de destination inaccessible du protocole ICMP (Internet Control Message Protocol) à R1.</p>
+<p></p>
+<p>L'étape suivante consiste à examiner la table de routage de R2, car c'est le routeur qui affiche un modèle étrange de transfert. La table de routage dans la Figure 3 indique que le réseau 192.168.2.0/24 est configuré de façon incorrecte. Une route statique vers le réseau 192.168.2.0/24 a été configurée avec l'adresse de tronçon suivant 172.16.2.1. En utilisant l'adresse de tronçon suivant configurée, les paquets destinés au réseau 192.168.2.0/24 sont renvoyés à R1. Dans la topologie, il apparaît clairement que le réseau 192.168.2.0/24 est connecté à R3, et non à R1. Par conséquent, la route statique vers le réseau 192.168.2.0/24 sur R2 doit utiliser le tronçon suivant 192.168.1.1, et non 172.16.2.1.</p>
+<p></p>
+<p>La Figure 4 présente le résultat de la configuration en cours indiquant l'instruction<span class="cmd"><b> ip route</b></span> incorrecte. La route incorrecte est supprimée et la route appropriée est ensuite entrée.</p>
+<p></p>
+<p>La Figure 5 vérifie que R1 peut désormais accéder à l'interface du réseau local de R3. Lors de la dernière étape de la confirmation, l'utilisateur sur PC1 doit également tester la connectivité au réseau local 192.168.2.0/24.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

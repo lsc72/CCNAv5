@@ -1,0 +1,144 @@
+﻿<textcomponents> <!--screen1-->
+<component id="ID_s1_title">
+<text><![CDATA[<b>PAT avec une seule adresse</b>]]></text>
+</component>
+<component id="ID_s1_txt01">
+<text><![CDATA[<b>Réseau interne</b>]]></text>
+</component>
+<component id="ID_s1_txt02">
+  <text><![CDATA[<b>Réseau externe</b>]]></text> 
+  </component>
+<component id="ID_s1_txt04">
+  <text><![CDATA[Internet]]></text> 
+  </component>
+<component id="ID_s1_txt05">
+  <text><![CDATA[Svr1]]></text> 
+  </component>
+<component id="ID_s1_txt06">
+  <text><![CDATA[Svr2]]></text> 
+  </component> <!--screen 1 table -->
+
+<component id="ID_s1_table01">
+<text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4'>
+
+<tr>
+<td colspan='4' bgcolor='#98D3D1'class="mtitle"><font size='11' color='#1C3635'><b>Table NAT</b></font></td>
+</tr>
+
+<tr class="mtable_top">
+<td colspan='4' bgcolor='#0E6360'><font size='1' color='#0E6360' class="mtable_top"><span style="color:#98D3D1">.</span></font></td>
+</tr>
+
+<tr>
+<td width="115" bgcolor='#077A77' valign="top"><font bgcolor='#097A76' color='#EFF8F7'><b>Adresse globale interne</b></font></td>
+<td width="110" bgcolor='#077A77' valign="top"><font bgcolor='#097A76' color='#EFF8F7'><b>Adresse locale interne</b></font></td>
+<td width="102" bgcolor='#077A77' valign="top"><font bgcolor='#097A76' color='#EFF8F7'><b>Adresse locale externe</b></font></td>
+<td width="102" bgcolor='#077A77' valign="top"><font bgcolor='#097A76' color='#EFF8F7'><b>Adresse globale externe</b></font></td>
+</tr>
+
+<tr>
+<td bgcolor='#EFF8F7' valign="top">209.165.200.225:1444</td>
+<td bgcolor='#EFF8F7' valign="top">192.168.10.10:1444</td>
+<td bgcolor='#EFF8F7' valign="top">209.165.201.1:80</td>
+<td bgcolor='#EFF8F7' valign="top">209.165.201.1:80</td>
+</tr>
+<tr>
+<td bgcolor='#ffffff' valign="top">209.165.200.225:1445</td>
+<td bgcolor='#ffffff' valign="top">192.168.10.11:1444</td>
+<td bgcolor='#ffffff' valign="top">209.165.202.129:80</td>
+<td bgcolor='#ffffff' valign="top">209.165.202.129:80</td>
+</tr>
+
+</table>]]></text>
+</component> <!--screen2-->  
+<component id="ID_s2_title">
+<text><![CDATA[<b>Procédure de configuration de la PAT</b>]]></text>
+</component> <!--screen 2 table -->
+<component id="ID_s2_table">
+<text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4'  cellspacing="2">
+	<tr class="mtable_top">
+		<td colspan='2' bgcolor='#0E6360'><font size='1' color='#434321' class="mtable_top"><span style="color:#DAE17A">.</span></font></td>
+	</tr>
+	 <tr>
+    <td bgcolor='#EFF8F7' width='80'><b>Étape&nbsp;1</b></td>
+    <td bgcolor='#EFF8F7'>Définissez une liste d'accès standard autorisant les adresses qui doivent être traduites.<br/><br/><font face="_typewriter"><b>access-list  </b><i>access-list-number  </i><b>permit  </b> <i>source  </i>[<i>source-wildcard</i>]</font></td>
+  </tr>
+  <tr>
+    <td bgcolor='#FFFFFF'><b>Étape&nbsp;2</b></td>
+    <td bgcolor='#FFFFFF'>Établissez une traduction dynamique de la source, en spécifiant l'ACL, l'interface de sortie et les options de surcharge.<br/><br/><font face="_typewriter"><b>ip nat inside source list  </b> <i>access-list-number  </i><b>interface  </b><i>type number  </i><b>overload</b></font></td>
+  </tr>
+  <tr>
+    <td bgcolor='#EFF8F7'><b>Étape&nbsp;3</b></td>
+    <td bgcolor='#EFF8F7'>Identifiez l'interface interne.<br/><br/><font face="_typewriter"><b>interface  </b><i>type number</i><br/><b>ip nat inside</b></font></td>
+  </tr>
+  
+    <tr>
+    <td bgcolor='#FFFFFF'><b>Étape&nbsp;4</b></td>
+    <td bgcolor='#FFFFFF'>Identifiez l'interface interne.<br/><br/><font face="_typewriter"><b>interface  </b><i>type number</i><br/><b>ip nat outside</b></font></td>
+  </tr>
+</table>]]></text>
+</component> <!--screen 3-->
+
+<component id="ID_s3_title">
+<text><![CDATA[<b>Exemple de PAT avec une seule adresse</b>]]></text>
+</component>
+<component id="ID_s3_txt01">
+<text><![CDATA[<b>Réseau interne</b>]]></text>
+</component>
+<component id="ID_s3_txt02">
+  <text><![CDATA[<b>Réseau externe</b>]]></text> 
+  </component>
+<component id="ID_s3_txt04">
+  <text><![CDATA[Internet]]></text> 
+  </component>
+  
+<component id="ID_s3_txt05">
+  <text><![CDATA[Svr1]]></text> 
+  </component>
+<component id="ID_s3_txt06">
+  <text><![CDATA[Svr2]]></text> 
+  </component>
+  
+  
+  <component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component> <!-- syntax checker -->
+<component id="ID_s3_title"> <!--text><![CDATA[<b>Configuring PAT using a Single Address</b>]]></text-->
+	</component>
+	<component id="ID_s3_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font face="Arial" color="#0000FF">***Vous devez entrer la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font></b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font face="Arial"><b>Identifiez l'interface série 0/1/0 externe comme étant l'adresse globale interne à surcharger via l'ACL&nbsp;1.</b></font>]]></existingcommands>
+		<command prompt="R2(config)#">
+			<correctresponse ignoreCase='false'><![CDATA[ip nat source list 1 interface serial 0/1/0 overload]]></correctresponse>
+			<instruction><![CDATA[<font face="Arial"><b>Configurez l'ACL&nbsp;1 de sorte qu'elle permette la traduction NAT des périphériques du réseau 192.168.0.0/16.</font>]]></instruction>
+		</command>
+		<command prompt="R2(config)#">
+			<correctresponse><![CDATA[access-list 1 permit 192.168.0.0 0.0.255.255]]></correctresponse>
+			<instruction><![CDATA[<font face="Arial"><b>Configurez l'interface NAT interne appropriée.</font>]]></instruction>
+		</command>
+		<command prompt="R2(config)#">
+			<correctresponse><![CDATA[interface serial0/0/0]]></correctresponse>
+		</command>	
+		<command prompt="R2(config-if)#">
+			<correctresponse><![CDATA[ip nat inside]]></correctresponse>
+			<instruction><![CDATA[<font face="Arial"><b>Configurez l'interface NAT externe appropriée.</b></font>]]></instruction>
+		</command>
+		<command prompt="R2(config)#">
+			<correctresponse><![CDATA[interface serial0/1/0]]></correctresponse>
+		</command>	
+		<command prompt="R2(config-if)#">
+			<correctresponse><![CDATA[ip nat outside]]></correctresponse>
+			<instruction><![CDATA[<font face="Arial"><b>Vous avez correctement configuré la fonction PAT à l'aide d'une seule adresse.</font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+
+</textcomponents>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.2.4 Extension de la couche d&#x0027;accès</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentation d&#x0027;une conception réseau</h1>
+        <h2>Évolution du réseau</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Implémentation de la connectivité sans fil</b>
+</p>
+<p></p>
+<p>La conception du réseau doit permettre d'étendre l'accès à celui-ci aux nouvelles personnes et aux nouveaux périphériques, à mesure des besoins. La connectivité sans fil constitue l'un des aspects toujours plus importants de l'extension de la connectivité de la couche d'accès. La fourniture d'une connectivité sans fil apporte de nombreux avantages, tels qu'une flexibilité accrue, des coûts réduits et des possibilités de développement et d'adaptation à l'évolution des besoins réseau et métier. </p>
+<p></p>
+<p>Pour la communication sans fil, les périphériques finaux doivent posséder une carte réseau sans fil intégrant un émetteur/récepteur radio ainsi que le pilote logiciel requis pour la rendre opérationnelle. En outre, un routeur sans fil ou un point d'accès sans fil (AP) est requis pour que les utilisateurs puissent se connecter, comme illustré par la figure. </p>
+<p></p>
+<p>Il convient de tenir compte de nombreux aspects lors de l'implémentation d'un réseau sans fil, tels que les types de périphériques sans fil à utiliser, la couverture sans fil requise, les interférences et la sécurité. </p>
+<p></p>
+<p>Le fonctionnement et l'implémentation de la connectivité sans fil sont couverts plus en détail dans le chapitre intitulé Réseaux locaux sans fil.</p>
+<p></p>
+<p></p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

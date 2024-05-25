@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.1.2 Services de sécurité IPsec</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation d’IPsec</h1>
+        <h2>Sécurité de protocole Internet</h2>
+      </div>
+      <div id="content">
+<p>Les services de sécurité IPsec offrent quatre fonctions critiques, comme le montre la figure :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Confidentialité (chiffrement)</b> : dans une implémentation VPN, les données privées circulent sur un réseau public. Pour cette raison, la confidentialité des données est un élément primordial. Cette confidentialité peut être obtenue en chiffrant les données avant leur transmission sur le réseau. La confidentialité est le processus consistant à prendre toutes les données envoyées par un ordinateur à un autre et à les coder sous une forme que seul cet autre ordinateur est capable de décoder. Si la communication est interceptée, elle ne peut pas être lue par un pirate informatique. IPsec offre des fonctionnalités de sécurité améliorées, comme des algorithmes de chiffrement forts.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Intégrité des données</b> : le destinataire peut vérifier que les données ont été transmises via Internet sans modification ni altération d'aucune sorte. S'il est important que les données soient chiffrées sur un réseau public, il l'est tout autant de vérifier que ces données n'ont pas été modifiées durant leur transfert. Le protocole IPsec possède un mécanisme permettant de s'assurer que la partie chiffrée du paquet, ou l'en-tête complet et la partie de données du paquet, n'ont pas été modifiés. Le protocole IPsec garantit l'intégrité des données grâce à l'utilisation de sommes de contrôle, ce qui constitue un simple contrôle par redondance. Si une quelconque altération est détectée, le paquet est supprimé. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Authentification</b> : l'authentification vérifie l'identité de la source des données envoyées. Cette opération est nécessaire afin de se prémunir contre un certain nombre d'attaques d'usurpation d'identité de l'expéditeur. L'authentification garantit que la connexion est réalisée avec le partenaire de communication souhaité. Le destinataire peut authentifier la source du paquet en certifiant la source de l'information. Le protocole IPsec utilise le mécanisme IKE (Internet Key Exchange) pour authentifier les utilisateurs et les périphériques qui peuvent effectuer des communications indépendantes. La technologie IKE utilise divers types d'authentification, notamment à l'aide d'un nom d'utilisateur et d'un mot de passe, d'un mot de passe à utilisation unique, de données biométriques, d'une clé prépartagée (PSK) et de certificats numériques.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Protection anti-reprise</b> : la protection anti-reprise est la capacité à détecter et à rejeter des paquets rediffusés, ce qui contribue à empêcher l'usurpation. La protection anti-reprise vérifie que chaque paquet est unique et qu'il n'a pas été dupliqué. Les paquets IPsec sont protégés en comparant le numéro de séquence des paquets reçus avec une fenêtre glissante sur l’hôte de destination sur la passerelle de sécurité. Un paquet dont le numéro de séquence est situé avant la fenêtre glissante est considéré comme étant un paquet en retard ou dupliqué. Les paquets en retard et dupliqués sont abandonnés.</li>
+</ul>
+</p>
+<p></p>
+<p>L'acronyme CIA est souvent utilisé pour aider à se rappeler les trois premières de ces fonctions, à savoir : Confidentialité, Intégrité et Authentification. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

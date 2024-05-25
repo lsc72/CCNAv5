@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.4.2 Connectivité de bout en bout, MAC et IP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole Ethernet</h1>
+        <h2>Adresses MAC et IP</h2>
+      </div>
+      <div id="content">
+<p>Un périphérique source envoie un paquet en fonction d'une adresse IP. Les périphériques source se servent souvent du système de noms de domaine (DNS) pour déterminer l'adresse IP du périphérique de destination. Celui-ci associe l'adresse IP à un nom de domaine. Par exemple, www.cisco.com correspond à 209.165.200.225. Cette adresse IP permet d'envoyer le paquet vers l'emplacement réseau du périphérique de destination. C'est cette adresse IP que les routeurs utilisent pour déterminer le meilleur chemin vers la destination. Donc, pour résumer, l'adressage IP détermine le comportement de bout en bout d'un paquet IP. </p>
+<p></p>
+<p>Cependant, le long de chaque liaison d'un chemin, le paquet IP est encapsulé dans une trame propre à la technologie de liaison de données associée à cette liaison, par exemple Ethernet. Les périphériques finaux d'un réseau Ethernet ne se basent pas sur les adresses IP, mais sur les adresses MAC pour accepter et traiter les trames. </p>
+<p></p>
+<p>Sur les réseaux Ethernet, les adresses MAC servent à identifier, à un niveau inférieur, les hôtes source et de destination. Lorsqu'un hôte d'un réseau Ethernet communique, il envoie des trames contenant sa propre adresse MAC comme source, et l'adresse MAC du destinataire comme destination. Tous les hôtes qui reçoivent la trame lisent l'adresse MAC de destination. Si et seulement si celle-ci correspond à l'adresse MAC configurée sur la carte réseau de l'hôte, celui-ci traite le message. </p>
+<p></p>
+<p>La Figure 1 montre comment un paquet de données contenant des informations d'adresse IP est encapsulé selon le tramage de couche liaison de données intégrant les adresses MAC.</p>
+<p></p>
+<p>La Figure 2 montre comment les trames sont encapsulées en fonction de la technologie de la liaison.</p>
+<p></p>
+<p>Comment les adresses IP des paquets IP d'un flux de données sont-elles associées aux adresses MAC de chaque liaison le long du chemin vers la destination ? Cette opération est effectuée selon un processus appelé protocole ARP. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

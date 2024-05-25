@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.6 Accès à la console</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration initiale d&#x0027;un routeur</h1>
+        <h2>Brancher les périphériques</h2>
+      </div>
+      <div id="content">
+<p>Dans un environnement de production, des périphériques d'infrastructure sont couramment utilisés à distance à l'aide de Secure Shell (SSH) ou du protocole de transfert hypertexte sécurisé (HTTPS). L'accès à la console n'est vraiment nécessaire que lors de la configuration initiale d'un périphérique, ou si l'accès distant échoue.</p>
+<p></p>
+<p>L'accès à la console nécessite :</p>
+<p>
+<ul>
+<li>
+<b>Câble de console</b> : câble de console RJ-45 vers DB-9 </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Logiciel d'émulation de terminal</b> : Tera Term, PuTTY, HyperTerminal </li>
+</ul>
+</p>
+<p></p>
+<p>Le câble est connecté entre le port série de l'hôte et le port de console du périphérique. La plupart des ordinateurs de bureau et portables ne comportent plus de ports série intégrés. Si l'hôte n'est pas équipé d'un port série, le port USB permet d'établir une connexion console. Un adaptateur spécial USB vers RS-232 compatible port série est requis pour utiliser le port USB. </p>
+<p></p>
+<p>Le routeur à services intégrés Cisco ISR G2 prend en charge une connexion de console série USB. Pour établir la connectivité, USB Type-A vers USB Type-B (USB Mini-B) est requis, ainsi qu'un pilote de périphérique du système d'exploitation. Ce pilote de périphérique est disponible sur <a href="http://www.cisco.com/" target="_blank">www.cisco.com</a>. Bien que ces routeurs possèdent deux ports de console, un seul peut être actif à la fois. Lorsque vous branchez un câble au port de console USB, le port RJ-45 devient inactif. Lorsque vous retirez le câble USB du port USB, le port RJ-45 devient actif.</p>
+<p></p>
+<p>Le tableau de la Figure 1 récapitule les conditions requises pour la connexion console. La Figure 2 présente les différents ports et câbles requis.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

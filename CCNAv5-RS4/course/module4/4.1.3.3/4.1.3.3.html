@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.3.3 Rafales</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation du protocole Frame Relay</h1>
+        <h2>Concepts avancés du protocole Frame Relay</h2>
+      </div>
+      <div id="content">
+<p>Un grand avantage de Frame Relay est que la capacité réseau inutilisée est mise à disposition de tous les clients, en général sans frais supplémentaires. Ceci permet aux clients d'aller au-delà de leur débit garanti. </p>
+<p></p>
+<p>À l'aide de l'exemple précédent, la Figure 1 présente un débit d'accès de 64 kbit/s sur le port série S0/0/1 du routeur R1. Il est plus élevé que les deux débits de données garantis combinés des deux circuits virtuels permanents. Dans des conditions normales, les deux circuits virtuels ne peuvent pas transmettre respectivement plus de 32 kbit/s et 16 kbit/s. Tant que la quantité de données que les deux circuits virtuels permanents envoient ne dépasse pas le débit de données garanti, ces données sont transportées par le réseau. </p>
+<p></p>
+<p>Comme les circuits physiques du réseau Frame Relay sont partagés entre abonnés, il reste souvent de la bande passante disponible. Frame Relay permet aux clients d'accéder de façon dynamique à cette bande passante et d'augmenter leur débit de données garanti gratuitement par rafales. </p>
+<p></p>
+<p>Ces rafales permettent aux périphériques qui ont par moment besoin de plus de bande passante d'en emprunter gratuitement auprès d'autres périphériques qui ne l'utilisent pas. Par exemple, si le PVC 102 transfère un fichier volumineux, il peut utiliser tout ou partie des 16 kbit/s qui ne sont pas utilisés par le PVC 103. Un périphérique peut transmettre en rafale jusqu'au débit d'accès et être certain que les données seront transmises. La durée d'une transmission en rafale doit être de trois ou quatre secondes au maximum. </p>
+<p></p>
+<p>Il existe plusieurs termes pour décrire les débits de rafales, dont Bc (Committed Burst Size) et Be (Excess Burst Size). </p>
+<p></p>
+<p>Bc est un débit négocié au-delà du débit garanti, que le client peut utiliser pour transmettre des rafales de données. Il s'agit du volume de trafic maximal autorisé dans des conditions de fonctionnement normales. Il permet d'augmenter le débit du trafic lorsque la bande passante du réseau le permet. Il ne peut cependant pas dépasser le débit d'accès de la liaison. Un périphérique peut transmettre en rafale jusqu'au débit Bc et être certain que les données seront transmises. En cas de rafales prolongées, un débit de données garanti plus élevé doit être acheté.</p>
+<p></p>
+<p>Par exemple, le DLCI 102 a un débit de données garanti de 32 kbit/s, avec un Bc supplémentaire de 16 kbit/s, pour un total de 48 kbit/s. Le DLCI 103 a un débit de données garanti de 16 kbit/s. Mais le DLCI 103 n'a pas de Bc défini. La valeur de Bc est donc de 0 kbit/s. Les trames dans les limites du débit de données garanti négocié ne sont pas sujettes à l'abandon (DE = 0). Les trames dont le débit est supérieur au débit de données garanti ont leur bit DE fixé à 1, ce qui fait qu'elles sont susceptibles d'être supprimées en cas d'encombrement du réseau. Les trames envoyées au niveau Bc sont marquées comme DE dans l'en-tête de la trame et sont donc considérées susceptibles d'être rejetées, mais la probabilité qu'elles soient transmises est élevée.</p>
+<p></p>
+<p>Be décrit la bande passante disponible au-delà du débit de données garanti, dans la limite du débit d'accès de la liaison. À l'inverse du Bc, il n'est pas négocié. Il se peut que les trames soient transmises, mais il est plus probable qu'elles soient abandonnées. </p>
+<p></p>
+<p>La Figure 2 illustre la relation entre les différents termes des rafales.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

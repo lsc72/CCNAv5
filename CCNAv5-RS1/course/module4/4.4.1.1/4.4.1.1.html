@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.1.1 Contrôle d&#x0027;accès au support</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Contrôle d&#x0027;accès au support</h1>
+        <h2>Topologies</h2>
+      </div>
+      <div id="content">
+<p>C'est la sous-couche de contrôle d'accès au support qui régit le placement des trames de données sur les supports. </p>
+<p></p>
+<p>Le contrôle d'accès au support est l'équivalent des règles de trafic régulant l'accès des véhicules à une autoroute. L'absence d'un contrôle d'accès au support serait comparable à des véhicules ignorant le trafic et accédant à la route sans se préoccuper des autres véhicules. Cependant, toutes les routes et tous les accès ne sont pas identiques. Un véhicule peut accéder à la route en se fondant dans la circulation, en attendant son tour à un stop ou en obéissant à des feux de circulation. Le conducteur suit des règles différentes selon chaque type d'accès à la circulation. </p>
+<p></p>
+<p>De même, il existe différentes manières de réguler le placement des trames sur les supports. Les protocoles opérant au niveau de la couche liaison de données définissent les règles d'accès aux différents supports. Certaines méthodes de contrôle d'accès au support utilisent des processus hautement contrôlés pour s'assurer que les trames sont placées sur le support en toute sécurité. Ces méthodes sont définies par des protocoles sophistiqués, qui nécessitent des mécanismes à l'origine d'une surcharge sur le réseau.</p>
+<p></p>
+<p>Parmi les différentes mises en œuvre des protocoles de couche liaison de données, il existe différentes méthodes de contrôle d'accès au support. Ces techniques de contrôle d'accès au support indiquent si et comment les noeuds partagent les supports.</p>
+<p></p>
+<p>La méthode de contrôle d'accès au support utilisée dépend des critères suivants :</p>
+<p>
+<ul>
+<li>
+<b>Topologie</b> : comment la connexion établie entre les nœuds apparaît à la couche liaison de données. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Partage de support</b> : comment les nœuds partagent les supports. Le partage de supports peut être de type point à point comme dans les réseaux étendus, ou partagé comme dans les réseaux locaux.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

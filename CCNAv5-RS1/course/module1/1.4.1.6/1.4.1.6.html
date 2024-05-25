@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.4.1.6 Data centers</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.4.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Évolution de l&#x0027;environnement réseau</h1>
+        <h2>Tendances relatives au réseau</h2>
+      </div>
+      <div id="content">
+<p>Le cloud computing fonctionne grâce aux data centers. Un data center héberge des systèmes informatiques et les composants associés :</p>
+<p>
+<ul>
+<li>Connexions de communication de données redondantes</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Serveurs virtuels haut débit (parfois appelés batteries de serveurs ou clusters de serveurs)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Systèmes de stockage redondants (généralement, technologie SAN)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Alimentations redondantes ou de secours</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Systèmes de contrôle de l'environnement (par exemple, climatisation, système d'extinction des incendies)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Dispositifs de sécurité</li>
+</ul>
+</p>
+<p></p>
+<p>Un data center peut occuper une pièce, un ou plusieurs étages, voire un bâtiment entier. Les data centers modernes utilisent le cloud computing et la virtualisation pour gérer efficacement les transactions de données importantes. La virtualisation consiste à créer une version virtuelle d'une plate-forme matérielle, d'un système d'exploitation, d'un périphérique de stockage ou de ressources réseau. Alors qu'un ordinateur physique est un périphérique matériel autonome, un ordinateur virtuel est composé d'un ensemble de fichiers et de programmes s'exécutant sur un système physique réel. À la différence du multitâche, qui implique d'exécuter plusieurs programmes sur le même système d'exploitation, la virtualisation exécute plusieurs systèmes d'exploitation en parallèle sur un seul processeur. Cela réduit considérablement les frais généraux et d'administration.</p>
+<p></p>
+<p>Les data centers sont en général très coûteux à construire et à prendre en charge. C'est pour cela que les grandes entreprises utilisent des data centers privés pour stocker leurs données et fournir des services aux utilisateurs. Par exemple, un grand hôpital peut posséder un data center distinct où les informations sur les patients sont gérées de manière électronique. Les entreprises de plus petite taille, qui ne peuvent pas se permettre de posséder leur propre data center privé, peuvent réduire le coût total de possession en louant des services de stockage et de serveur cloud à une entreprise proposant des data centers. </p>
+<p></p>
+<p>La figure est une vidéo sur l'utilisation accrue des services de cloud computing et de data center.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.4.3.2 Vérification GLBP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.4.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de redondance au premier saut</h1>
+        <h2>Vérification FHRP</h2>
+      </div>
+      <div id="content">
+<p>Bien que les protocoles HSRP et VRRP offrent une résilience de passerelle aux routeurs en veille du groupe redondant, la bande passante amont n’est pas consommée lorsque les routeurs sont en mode veille. </p>
+<p></p>
+<p>Seul le routeur actif des groupes HSRP et VRRP transmet le trafic pour l’adresse MAC virtuelle. Les ressources associées au routeur en veille ne sont pas entièrement utilisées. Vous pouvez réaliser un certain niveau d’équilibrage de la charge avec ces protocoles en créant plusieurs groupes et en leur attribuant plusieurs passerelles par défaut. Toutefois, cette configuration représente une charge administrative.</p>
+<p></p>
+<p>Le protocole GLBP est une solution Cisco propriétaire permettant la sélection automatique et l’utilisation simultanée de plusieurs passerelles disponibles. Il assure également le basculement automatique entre ces passerelles. Plusieurs routeurs partagent la charge des trames qui, du point de vue du client, sont envoyées à une adresse de passerelle par défaut unique, comme illustré dans la Figure 1.</p>
+<p></p>
+<p>Avec le protocole GLBP, vous exploitez les ressources de façon optimale sans la charge administrative liée à la configuration de plusieurs groupes et à la gestion de plusieurs configurations de passerelle par défaut. Les principales caractéristiques du protocole GLBP sont les suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>Il permet une utilisation complète des ressources sur l'ensemble des périphériques, sans la lourde tâche administrative de création de groupes multiples.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Il offre une adresse IP virtuelle unique et plusieurs adresses MAC virtuelles.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Il achemine le trafic vers une passerelle unique répartie entre plusieurs routeurs.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Il effectue un nouveau routage automatique en cas de défaillance.</li>
+</ul>
+</p>
+<p></p>
+<p>Utilisez la commande <span class="cmd"><b>show glbp</b></span> pour vérifier l'état GLBP. La Figure 2 indique que le groupe GLBP 1 est actif et que son adresse IP virtuelle est 192.168.2.100.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

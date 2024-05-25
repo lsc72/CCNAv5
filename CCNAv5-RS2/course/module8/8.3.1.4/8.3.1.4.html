@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.1.4 Adresses link-local</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv3 à zone unique</h1>
+        <h2>Comparaison des protocoles OSPFv2 et OSPFv3</h2>
+      </div>
+      <div id="content">
+<p>Les routeurs exécutant un protocole de routage dynamique, tel qu'OSPF, échangent des messages entre voisins sur le même sous-réseau ou lien. Les routeurs doivent uniquement envoyer et recevoir des messages de protocole de routage avec leurs voisins connectés directement. Ces messages sont toujours envoyés depuis l'adresse IPv4 source du routeur effectuant le transfert. </p>
+<p></p>
+<p>Les adresses link-local IPv6 sont idéales à cet égard. Une adresse link-local IPv6 permet à un périphérique de communiquer avec d'autres périphériques IPv6 sur la même liaison et uniquement sur cette liaison (sous-réseau). Les paquets associés à une adresse source ou de destination link-local ne peuvent pas être acheminés au-delà de leur liaison d'origine.</p>
+<p></p>
+<p>Comme illustré dans la figure, les messages OSPFv3 sont envoyés au moyen de :</p>
+<p>
+<ul>
+<li>
+<b>Adresse IPv6 source</b> - Il s'agit de l'adresse link-local IPv6 de l'interface de sortie.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse IPv6 de destination</b> - Les paquets OSPFv3 peuvent être envoyés à une adresse de monodiffusion en utilisant l'adresse link-local IPv6 du voisin. Ils peuvent également être envoyés au moyen d'une adresse de multidiffusion. L'adresse FF02::5 est l'adresse pour tous les routeurs OSPF, tandis que FF02::6 est l'adresse de multidiffusion du DR/BDR.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

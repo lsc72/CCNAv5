@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.2.3 Questions aux utilisateurs finaux</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage avec une approche systématique</h1>
+        <h2>Procédure de dépannage</h2>
+      </div>
+      <div id="content">
+<p>La plupart du temps, le problème est signalé par un utilisateur final. L'information est toutefois parfois vague ou pouvant prêter à confusion, comme « Le réseau ne fonctionne plus. » ou « Je n'ai plus accès à ma messagerie. ». Dans de tels cas, le problème doit être mieux défini. Il peut alors être nécessaire de poser des questions aux utilisateurs finaux.</p>
+<p></p>
+<p>Utilisez des techniques d'interrogation efficaces lorsque vous demandez aux utilisateurs finaux de vous donner des informations sur les problèmes réseau qu'ils rencontrent. Cela vous aidera à obtenir les informations nécessaires à la documentation des symptômes du problème. Le tableau de la figure fournit quelques directives en la matière ainsi que des exemples de questions à poser aux utilisateurs finaux.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.2.4 Périphérie du fournisseur de services </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Architecture d&#x0027;entreprise Cisco</h1>
+        <h2>Modèle d&#x0027;architecture d&#x0027;entreprise Cisco</h2>
+      </div>
+      <div id="content">
+<p>Les entreprises utilisent des fournisseurs de services pour assurer le lien avec les autres sites. Comme illustré à la Figure 1, le module périphérie des fournisseurs de service peut comprendre :</p>
+<p>
+<ul>
+<li>Fournisseurs de services Internet</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Des services WAN tels que Frame Relay, ATM, réseau métropolitain</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Services Internet de réseau téléphonique public commuté (RTPC)</li>
+</ul>
+</p>
+<p></p>
+<p>La Périphérie du fournisseur de services fournit la connectivité entre le module de campus d'entreprise et les modules de data center d'entreprise distant, de filiale et de télétravail.</p>
+<p></p>
+<p>Le module Périphérie du fournisseur de services :</p>
+<p>
+<ul>
+<li>Couvre de larges zones géographiques sans être onéreux.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Assure la convergence des services vocaux, vidéo et données sur un seul réseau de communication IP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Prend en charge la qualité de service et les accords de niveau de service.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Assure la sécurité à l'aide de VPN (IPsec / MPLS) sur les WAN de couche 2 et 3.</li>
+</ul>
+</p>
+<p></p>
+<p>Cliquez sur Périphérie du fournisseur de services dans la Figure 1 pour plus d'informations. </p>
+<p></p>
+<p>Lors de l'acquisition de services Internet auprès d'un FAI, la redondance et le basculement doivent être pris en compte. Comme illustré à la Figure 2, les connexions redondantes à seul FAI peuvent comprendre : </p>
+<p>
+<ul>
+<li>
+<b>À résidence unique </b>: une seule connexion à un FAI</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>À double résidence </b>: deux ou plusieurs connexions à un seul FAI</li>
+</ul>
+</p>
+<p></p>
+<p>Il est aussi possible de configurer la redondance avec plusieurs FAI, comme illustré à la Figure 3. Parmi les options de connexion à plusieurs FAI :</p>
+<p>
+<ul>
+<li>
+<b>À résidences multiples</b> : connexions à deux FAI ou plus</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>À doubles résidences multiples</b> : plusieurs connexions à deux FAI ou plus</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

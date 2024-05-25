@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.4.3.1 Passerelle par défaut sur un hôte</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.4.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration d&#x0027;un routeur Cisco</h1>
+        <h2>Configuration de la passerelle par défaut</h2>
+      </div>
+      <div id="content">
+<p>La plupart des routeurs comportent, au minimum, deux interfaces. Chaque interface comporte une adresse IP distincte dans un réseau distinct. </p>
+<p></p>
+<p>Pour qu'un périphérique final communique sur le réseau, il doit être configuré avec les informations correctes d'adresse IP, y compris l'adresse de la passerelle par défaut. La passerelle par défaut est utilisée uniquement lorsque l'hôte veut transmettre un paquet à un périphérique sur un autre réseau. L'adresse de la passerelle par défaut est généralement l'adresse d'interface de routeur reliée au réseau local auquel l'hôte est connecté. Alors que l'adresse configurée sur l'interface du routeur peut être n'importe quelle adresse, l'adresse IP du périphérique hôte et l'adresse de l'interface de routeur doivent se trouver sur le même réseau. </p>
+<p></p>
+<p>Les figures illustrent une topologie composée d'un routeur comportant deux interfaces distinctes. Chaque interface est connectée à un réseau distinct. G0/0 est connectée au réseau 192.168.10.0, alors que G0/1 est connectée au réseau 192.168.11.0. Chaque périphérique hôte est configuré avec l'adresse de la passerelle par défaut appropriée. </p>
+<p></p>
+<p>Dans la Figure 1, le PC1 envoie un paquet au PC2. Dans cet exemple, la passerelle par défaut n'est pas utilisée. En revanche, le PC1 envoie un paquet avec l'adresse IP du PC2 et transfère le paquet directement au PC2 par le biais du commutateur. </p>
+<p></p>
+<p>Dans la Figure 2, le PC1 envoie un paquet au PC3. Dans cet exemple, le PC1 envoie un paquet avec l'adresse IP du PC3, mais transfère le paquet au routeur. Le routeur accepte le paquet, accède à sa table de route pour déterminer l'interface de sortie appropriée en fonction de l'adresse de destination, puis transmet le paquet via l'interface appropriée pour atteindre le PC3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

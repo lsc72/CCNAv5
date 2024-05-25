@@ -1,0 +1,50 @@
+﻿<textcomponents>
+
+<component id="ID_title">
+<text><![CDATA[<b>Vérification de la connectivité de bout en bout</b>]]></text>
+</component>
+
+
+<!--Syntax Checker Button Text-->
+<component id="ID_sc_reset">
+<text><![CDATA[Réinitialiser]]></text>
+</component>
+
+<component id="ID_sc_showme">
+<text><![CDATA[Démonstration]]></text>
+</component>
+
+<component id="ID_sc_showall">
+<text><![CDATA[Afficher tout]]></text>
+</component>
+<!--End Syntax Checker Button Text-->
+
+
+<!--Syntax Checker Body Text-->
+<component id="ID_SC5" fontFace='Courier New' fontSize="10">
+		
+<text></text>		
+
+<feedback id="fb"><![CDATA[<span><font size = '10' face="Arial"><span><b>***</b></span>Vous devez saisir la commande précisément et en entier. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.<span><b>***</b></span></font></span>
+]]></feedback>	
+
+<existingcommands><![CDATA[<font size = '10' face="Arial"><b>Vous êtes sur la ligne de commande du PC1. Entrez la commande permettant de vérifier la connectivité à l'interface VLAN du périphérique S1, à l'adresse 192.168.10.2.]]></existingcommands>
+
+<command prompt="C:\>" id="cmd1" node="start">
+<correctresponse id="cr1" ignoreCase = 'true'><![CDATA[ping 192.168.10.2]]></correctresponse>
+<deviceresponse id="dr1"><![CDATA[<dnt><br>Pinging 192.168.10.2 with 32 bytes of data:<br>Reply from 192.168.10.2: bytes=32 time=838ms TTL=35<br>Reply from 192.168.10.2: bytes=32 time=820ms TTL=35<br>Reply from 192.168.10.2: bytes=32 time=883ms TTL=36<br>Reply from 192.168.10.2: bytes=32 time=828ms TTL=36<br><br>Ping statistics for 192.168.10.2:<br>    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),<br>Approximate round trip times in milli-seconds:<br>    Minimum = 820ms, Maximum = 883ms, Average = 842ms<br><br></dnt>]]></deviceresponse>
+<instruction id="ins1"><![CDATA[<font size = '10' face="Arial"><b>Entrez la commande permettant de vérifier la connectivité au PC2, à l'adresse 192.168.10.11.</b></font>]]></instruction> 	
+</command>
+
+<command prompt="C:\>"  id="cmd2" node="end">
+<correctresponse id="cr2" ignoreCase = 'true'><![CDATA[ping 192.168.10.11]]></correctresponse>
+<deviceresponse id="dr2"><![CDATA[<dnt><br>Pinging 192.168.10.11 with 32 bytes of data:<br>Reply from 192.168.10.11: bytes=32 time=838ms TTL=35<br>Reply from 192.168.10.11: bytes=32 time=820ms TTL=35<br>Reply from 192.168.10.11: bytes=32 time=883ms TTL=36<br>Reply from 192.168.10.11: bytes=32 time=828ms TTL=36<br><br>Ping statistics for 192.168.10.11:<br>    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),<br>Approximate round trip times in milli-seconds:<br>    Minimum = 820ms, Maximum = 883ms, Average = 842ms<br><br>C:\&gt;</dnt>]]></deviceresponse>
+<instruction id="ins2"><![CDATA[<font size = '10' face="Arial"><b>Vous avez correctement vérifié la connectivité au périphérique S1 et au PC2.</b></font>]]></instruction> 	
+</command>
+
+<command prompt=""/>
+
+</component>
+<!--End Syntax Checker Body Text-->
+
+</textcomponents> 

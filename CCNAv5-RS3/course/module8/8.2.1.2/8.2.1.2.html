@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.1.2 Composants </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du protocole EIGRP</h1>
+        <h2>Éléments de dépannage du protocole EIGRP</h2>
+      </div>
+      <div id="content">
+<p>La figure présente un diagramme de diagnostic des problèmes de connectivité EIGRP.</p>
+<p></p>
+<p>Une fois le protocole EIGRP configuré, la première étape consiste à tester la connectivité au réseau distant. Si la requête ping échoue, confirmez les contiguïtés de voisinage EIGRP. Il se peut que des contiguïtés de voisinage ne se forment pas pour plusieurs raisons, notamment les suivantes :</p>
+<p>
+<ul>
+<li>L'interface entre les périphériques est désactivée.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les deux routeurs comportent des numéros de système autonome (ID de processus) EIGRP discordants.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les interfaces appropriées ne sont pas activées pour le processus EIGRP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Une interface est configurée comme passive.</li>
+</ul>
+</p>
+<p></p>
+<p>Outre ces problèmes, plusieurs autres, plus avancés, peuvent empêcher la formation de contiguïtés de voisinage. Par exemple, une authentification EIGRP mal configurée ou des valeurs k discordantes, que le protocole EIGRP utilise pour calculer sa métrique.</p>
+<p></p>
+<p>Si la contiguïté de voisinage EIGRP est établie entre les deux routeurs, mais qu'il existe encore un problème de connexion, il peut y avoir un problème de routage. Certains problèmes peuvent entraîner une erreur de connectivité pour EIGRP, notamment :</p>
+<p>
+<ul>
+<li>Des réseaux corrects ne sont pas annoncés sur les routeurs distants.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Une interface passive mal configurée, ou une liste de contrôle d'accès, bloque les annonces des réseaux distants.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La récapitulation automatique entraîne un routage incohérent dans un réseau discontinu.</li>
+</ul>
+</p>
+<p></p>
+<p>Si toutes les routes requises figurent dans la table de routage, mais si le chemin emprunté par le trafic est incorrect, vérifiez les valeurs de bande passante de l'interface.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

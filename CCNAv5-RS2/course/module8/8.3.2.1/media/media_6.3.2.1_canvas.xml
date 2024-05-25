@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+  <slide type="MBAR"> 
+    <slide> 
+        <element type="TEXT" subType="TITLE" compId="ID_s1_title"/>  
+        <element type="IMAGE" src="6_3_2_1.jpg" x="-4" y="35"  width="440" height="364"/> 
+        <element type="TEXT" compId="ID_s1_txt01" x="30" y="45" width="383.95" align="center" expand="down" />
+		<element type="TEXT" compId="ID_s1_txt02" x="9" y="377" width="424.95" align="left" expand="up" />
+        <element type="TEXT" text="2001:DB8:CAFE:2::/64" x="165.3" y="84.95" width="120.15" align="left" bold="1"/>
+        <element type="TEXT" text="G0/0" x="191.2" y="123.4" width="28" align="left" bold="1"/>
+        <element type="TEXT" text="2001:DB8:CAFE:A001::/64" x="15.4" y="201.25" width="140.3" align="left" bold="1" />
+        <element type="TEXT" text="2001:DB8:CAFE:A002::/64" x="290" y="201.25" width="140.3" align="left" bold="1" />
+
+
+        <element type="TEXT" text="2001:DB8:CAFE:A003::/64" x="149.05" y="300.45" width="147.75" align="left" bold="1" />
+        <element type="TEXT" text="2001:DB8:CAFE:1::/64" x="49.45" y="345.5" width="120.15" align="left" bold="1" />
+        <element type="TEXT" text="2001:DB8:CAFE:3::/64" x="273.8" y="345.5" width="120.15" align="left" bold="1" />
+
+      <element type="TEXT" text="R1" x="108.05" y="288.1" width="18.25" align="left" bold="1" color="#fff"/>
+    <element type="TEXT" text="R2" x="210" y="161.35" width="18.25" align="left" bold="1" color="#fff"/>
+    <element type="TEXT" text="R3" x="322.6" y="288.1" width="18.25" align="left" bold="1" color="#fff"/>
+    
+
+
+        <element type="TEXT" text=":1" x="220.2" y="123.4" width="13.35" align="left"/>
+        <element type="TEXT" text="FE80::2" x="147.15" y="143.65" width="43.85" color="#F26200" align="left" bold="1"/>
+         <element type="TEXT" text="FE80::1" x="42.55" y="273.85" width="43.85" color="#F26200" align="left" bold="1"/>
+          <element type="TEXT" text="FE80::3" x="360.6" y="273.85" width="43.85" color="#F26200" align="left" bold="1"/>
+         <element type="TEXT" text=":2" x="165" y="175.9" width="13.35" align="left"/>
+         <element type="TEXT" text="S0/0/0" x="187.8" y="177.9" width="13.35" align="left"/>
+         <element type="TEXT" text=":1" x="236.8" y="177.9" width="13.35" align="left"/>
+         <element type="TEXT" text="S0/0/1" x="261.8" y="177.9" width="35.95" align="left"/>
+
+          <element type="TEXT" text="S0/0/0" x="143.4" y="246.25" width="35.95" align="left"/>
+          <element type="TEXT" text="S0/0/1" x="143.4" y="262.25" width="35.95" align="left"/>
+          <element type="TEXT" text=":1" x="119.1" y="249.4" width="13.35" align="left"/>
+          <element type="TEXT" text=":1" x="143.4" y="280.2" width="13.35" align="left"/>
+
+          <element type="TEXT" text="S0/0/1" x="315.05" y="249.4" width="35.95" align="left"/>
+          <element type="TEXT" text=":2" x="289.3" y="251.4" width="13.35" align="left"/>
+          <element type="TEXT" text="S0/0/0" x="263" y="275.4" width="35.95" align="left"/>
+          <element type="TEXT" text=":2" x="281.45" y="292.25" width="13.35" align="left"/>
+
+           <element type="TEXT" text="G0/0" x="85.45" y="306.65" width="28" align="left"/>
+          <element type="TEXT" text=":1" x="116.25" y="305.65" width="13.35" align="left"/>
+
+          <element type="TEXT" text="G0/0" x="302.95" y="306.65" width="28" align="left"/>
+          <element type="TEXT" text=":1" x="332.85" y="306.65" width="13.35" align="left"/>
+    </slide>
+    <slide>    
+    <element type="TEXT" subType="TITLE" compId="ID_s2_title"/> 
+    <element type="ROUTER" textId="ID_s2_txt01" x="7" y="50" width="426" height="294.4" size="11"/>
+
+    </slide>
+    <slide>    
+        <element type="TEXT" subType="TITLE" compId="ID_s3_title"/> 
+         <element type="TEXTBOX"   bodyId="ID_s3_tx01" x="13.05" y="50" width="413.9" height="162" visible="1"/>
+        
+    </slide>
+   </slide>
+
+ 
+   <text id="ID_s2_txt01"><![CDATA[         R1(config)#<b>ipv6 unicast-routing  </b><br /> R1(config)#<br /> R1(config)#<b>interface GigabitEthernet 0/0  </b><br /> R1(config-if)#<b>description R1 LAN  </b><br /> R1(config-if)#<b>ipv6 address 2001:DB8:CAFE:1::1/64  </b><br /> R1(config-if)#<b>no shut  </b><br /> R1(config-if)#<br /> R1(config-if)#<b>interface Serial0/0/0  </b><br /> R1(config-if)#<b>description Link to R2  </b><br /> R1(config-if)#<b>ipv6 address 2001:DB8:CAFE:A001::1/64  </b><br /> R1(config-if)#<b>clock rate 128000  </b><br /> R1(config-if)#<b>no shut  </b><br /> R1(config-if)#<br /> R1(config-if)#<b>interface Serial0/0/1  </b><br /> R1(config-if)#<b>description Link to R3           </b><br /> R1(config-if)#<b>ipv6 address 2001:DB8:CAFE:A003::1/64  </b><br /> R1(config-if)#<b>no shut  </b><br /> R1(config-if)#<b>end  </b><br /> R1#<br />
+]]>
+  </text>
+     
+   
+</data>

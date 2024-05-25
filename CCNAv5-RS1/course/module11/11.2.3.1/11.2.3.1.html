@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.2.3.1 Sauvegarde, mise à jour, mise à niveau et correctif</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.2.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Garantie de la sécurité du réseau</h1>
+        <h2>La limitation des attaques de réseau</h2>
+      </div>
+      <div id="content">
+<p>Les logiciels antivirus peuvent détecter la plupart des virus et des chevaux de Troie et les empêcher de se propager dans le réseau. Ils peuvent être déployés au niveau de l'utilisateur et au niveau du réseau.</p>
+<p></p>
+<p>La mise à jour de ces logiciels en fonction des nouveaux développements de virus et chevaux de Troie permet également de se prémunir plus efficacement contre les attaques. De nouvelles attaques de ce type apparaissent sans cesse, c'est pourquoi les entreprises doivent toujours disposer de la version la plus récente de leur logiciel antivirus.</p>
+<p></p>
+<p>La lutte contre les attaques de vers demande une certaine rigueur du personnel d'administration des systèmes et du réseau. Voici la procédure recommandée pour limiter les attaques de vers :</p>
+<p>
+<ul>
+<li>
+<b>Confinement</b> : contenir la propagation du ver au sein du réseau en cloisonnant les parties non infectées.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Inoculation</b> : appliquer les correctifs à tous les systèmes, si possible, en recherchant les systèmes vulnérables.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Quarantaine</b> : dépister toutes les machines infectées au sein du réseau. Déconnecter, retirer ou bloquer les machines infectées du réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Traitement</b> : nettoyer tous les systèmes infectés et y appliquer des correctifs. Certains vers peuvent nécessiter une réinstallation complète du système pour le nettoyer.</li>
+</ul>
+</p>
+<p></p>
+<p>La meilleure façon de limiter les risques d'attaque de ver est de télécharger les mises à jour de sécurité du fournisseur du système d'exploitation et d'appliquer des correctifs sur tous les systèmes vulnérables. Cette opération est difficile si des systèmes utilisateur non contrôlés se trouvent sur le réseau local. L'administration d'un grand nombre de systèmes implique la création d'une image logicielle standard (système d'exploitation et applications accréditées dont l'utilisation est autorisée sur les systèmes clients) déployée sur les systèmes nouveaux ou mis à niveau. Toutefois, les exigences de sécurité évoluent et il sera peut-être nécessaire d'installer des correctifs de sécurité mis à jour sur les systèmes déjà déployés.</p>
+<p></p>
+<p>Pour faciliter la gestion des correctifs critiques, il est possible de les centraliser sur un serveur de correctifs auquel tous les systèmes doivent se connecter périodiquement, comme le montre la figure. Tout correctif qui n'est pas encore appliqué à un hôte est alors automatiquement téléchargé depuis le serveur et installé sans intervention de l'utilisateur. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

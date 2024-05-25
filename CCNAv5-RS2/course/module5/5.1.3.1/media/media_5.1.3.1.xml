@@ -1,0 +1,97 @@
+﻿<textcomponents>
+
+<component id="ID_s1_title">
+	<text><![CDATA[<b>Sous-interfaces de routeur et routage inter-VLAN</b>]]></text>
+</component>
+<component id="ID_txt01">
+	<text><![CDATA[G0/0.10]]></text>
+</component>
+<component id="ID_txt02">
+	<text><![CDATA[G0/0.30]]></text> 
+</component>
+<component id="ID_txt03">
+	<text><![CDATA[<b>Sous-interfaces R1</b><br/>G0/0.10&nbsp;: 172.17.10.1<br/>G0/0.20&nbsp;: 172.17.20.1<br/>G0/0.30&nbsp;: 172.17.30.1]]></text> 
+</component>
+<component id="ID_txt04">
+	<text><![CDATA[Trunk]]></text> 
+</component>
+<component id="ID_txt05">
+	<text><![CDATA[Trunk]]></text>
+</component>
+<component id="ID_txt06">
+	<text><![CDATA[Trunk]]></text> 
+</component>
+<component id="ID_txt07">
+  <text><![CDATA[Trunk]]></text> 
+</component>
+
+<component id="ID_txt08">
+	<text><![CDATA[<b>Trame de monodiffusion</b>]]></text>
+</component>
+<component id="ID_txt09">
+	<text><![CDATA[<b>Trame de monodiffusion VLAN 10</b>]]></text>
+</component>
+<component id="ID_txt10">
+	<text><![CDATA[<b>Trame de monodiffusion VLAN 30</b>]]></text>
+</component>
+<component id="ID_txt11">
+	<text><![CDATA[<b>Trame de monodiffusion</b> ]]></text>
+</component>
+<component id="ID_txt12">
+	<text><![CDATA[Trame étiquetée VLAN]]></text>
+</component>
+<component id="ID_txt13">
+	<text><![CDATA[Trame étiquetée VLAN]]></text>
+</component> 
+<component id="ID_tbox01">
+  <text><![CDATA[PC1 envoie une trame de monodiffusion vers PC3.]]></text>
+</component>
+<component id="ID_tbox02">
+  <text><![CDATA[S2 reçoit la trame sur le VLAN 10 et l'étiquette avant de l'envoyer à S1. ]]></text>
+</component>
+<component id="ID_tbox03">
+  <text><![CDATA[S1 conserve l'étiquette VLAN et transmet la trame à R1.]]></text>
+</component>
+<component id="ID_tbox04">
+  <text><![CDATA[L'étiquette VLAN informe R1 que la trame a été reçue sur G0/0.10.]]></text>
+</component>
+<component id="ID_tbox05">
+  <text><![CDATA[R1 examine la table de route. Le réseau de destination est connecté directement à R1 G0/0.30.]]></text>
+</component>
+<component id="ID_tbox06">
+  <text><![CDATA[R1 transmet le paquet de G0/0.10 à G0/0.30.]]></text>
+</component>
+<component id="ID_tbox07">
+  <text><![CDATA[R1 transfère la trame depuis son interface physique, identifiée avec le VLAN&nbsp;30.]]></text>
+</component>
+<component id="ID_tbox08">
+  <text><![CDATA[S1 conserve l'étiquette VLAN et transmet la trame à S2.]]></text>
+</component>
+<component id="ID_tbox09">
+  <text><![CDATA[S2 supprime l'étiquette VLAN et transfère la trame à PC3.]]></text>
+</component> 
+	<component id="end">
+		<text><![CDATA[Fin]]></text>
+	</component>
+	
+	<component id="fforward">
+		<text><![CDATA[Avance rapide]]></text>
+	</component>
+	
+	<component id="pause">
+		<text><![CDATA[Pause]]></text>
+	</component>
+	
+	<component id="play">
+		<text><![CDATA[Lecture]]></text>
+	</component>
+	
+	<component id="rewind">
+		<text><![CDATA[Rembobiner]]></text>
+	</component>
+	
+	<component id="start">
+		<text><![CDATA[Début]]></text>
+	</component>
+	
+</textcomponents>

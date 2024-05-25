@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html class="module-index" dir="ltr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="UTF-8"/>
+    <title>Évolutivité des réseaux</title>
+    <link rel="stylesheet" type="text/css" href="../common-ext/styles/index.css"/>
+    <script type="text/javascript" src="../common-ext/scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../common-ext/scripts/index.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <div id="header-logo" title="Cisco Systems, Inc. - Cisco Networking Academy"></div>
+      <a id="home-btn" href="../../index.html" title="Accueil">Accueil</a>
+      <h1>Chapitre 7: EIGRP <span id="title"></span></h1>
+    </div>
+    <div id="nav">
+      <ul class="sections">
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">7.0 EIGRP</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">7.0.1 Introduction</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="7.0.1.1" class="page-title" href="7.0.1.1/7.0.1.1.html" target="frame">7.0.1.1 Introduction</a>
+                </li>
+                <li>
+                  <a data-ident="7.0.1.2" class="page-title" href="7.0.1.2/7.0.1.2.html" target="frame">7.0.1.2 Exercice en classe : protocole EIGRP sans classe</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">7.1 Caractéristiques du protocole EIGRP</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">7.1.1 Fonctionnalités de base du protocole EIGRP</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="7.1.1.1" class="page-title" href="7.1.1.1/7.1.1.1.html" target="frame">7.1.1.1 Fonctionnalités du protocole EIGRP </a>
+                </li>
+                <li>
+                  <a data-ident="7.1.1.2" class="page-title" href="7.1.1.2/7.1.1.2.html" target="frame">7.1.1.2 Modules dépendants d&#x0027;un protocole</a>
+                </li>
+                <li>
+                  <a data-ident="7.1.1.3" class="page-title" href="7.1.1.3/7.1.1.3.html" target="frame">7.1.1.3 Protocole de transport fiable</a>
+                </li>
+                <li>
+                  <a data-ident="7.1.1.4" class="page-title" href="7.1.1.4/7.1.1.4.html" target="frame">7.1.1.4 Authentification</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">7.1.2 Types de paquets EIGRP</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="7.1.2.1" class="page-title" href="7.1.2.1/7.1.2.1.html" target="frame">7.1.2.1 Types de paquets EIGRP</a>
+                </li>
+                <li>
+                  <a data-ident="7.1.2.2" class="page-title" href="7.1.2.2/7.1.2.2.html" target="frame">7.1.2.2 Paquets Hello EIGRP</a>
+                </li>
+                <li>
+                  <a data-ident="7.1.2.3" class="page-title" href="7.1.2.3/7.1.2.3.html" target="frame">7.1.2.3 Paquets de mise à jour et de reçu EIGRP</a>
+                </li>
+                <li>
+                  <a data-ident="7.1.2.4" class="page-title" href="7.1.2.4/7.1.2.4.html" target="frame">7.1.2.4 Paquets de demande et de réponse EIGRP</a>
+                </li>
+                <li>
+                  <a data-ident="7.1.2.5" class="page-title" href="7.1.2.5/7.1.2.5.html" target="frame">7.1.2.5 Exercice : identification du type de paquet EIGRP</a>
+                </li>
+                <li>
+                  <a data-ident="7.1.2.6" class="page-title" href="7.1.2.6/7.1.2.6.html" target="frame">7.1.2.6 Démonstration vidéo : observation des communications via le protocole EIGRP</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">7.1.3 Messages EIGRP</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="7.1.3.1" class="page-title" href="7.1.3.1/7.1.3.1.html" target="frame">7.1.3.1 Encapsulation des messages EIGRP</a>
+                </li>
+                <li>
+                  <a data-ident="7.1.3.2" class="page-title" href="7.1.3.2/7.1.3.2.html" target="frame">7.1.3.2 En-tête de paquet EIGRP et TLV</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">7.2 Configuration du protocole EIGRP pour IPv4</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">7.2.1 Configuration du protocole EIGRP avec IPv4</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="7.2.1.1" class="page-title" href="7.2.1.1/7.2.1.1.html" target="frame">7.2.1.1 Topologie de réseau EIGRP</a>
+                </li>
+                <li>
+                  <a data-ident="7.2.1.2" class="page-title" href="7.2.1.2/7.2.1.2.html" target="frame">7.2.1.2 Numéros de système autonome</a>
+                </li>
+                <li>
+                  <a data-ident="7.2.1.3" class="page-title" href="7.2.1.3/7.2.1.3.html" target="frame">7.2.1.3 La commande router EIGRP</a>
+                </li>
+                <li>
+                  <a data-ident="7.2.1.4" class="page-title" href="7.2.1.4/7.2.1.4.html" target="frame">7.2.1.4 ID de routeur EIGRP</a>
+                </li>
+                <li>
+                  <a data-ident="7.2.1.5" class="page-title" href="7.2.1.5/7.2.1.5.html" target="frame">7.2.1.5 Configuration de l&#x0027;ID de routeur EIGRP </a>
+                </li>
+                <li>
+                  <a data-ident="7.2.1.6" class="page-title" href="7.2.1.6/7.2.1.6.html" target="frame">7.2.1.6 La commande network</a>
+                </li>
+                <li>
+                  <a data-ident="7.2.1.7" class="page-title" href="7.2.1.7/7.2.1.7.html" target="frame">7.2.1.7 Commande network et masque générique</a>
+                </li>
+                <li>
+                  <a data-ident="7.2.1.8" class="page-title" href="7.2.1.8/7.2.1.8.html" target="frame">7.2.1.8 Commande passive interface</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">7.2.2 Vérification du protocole EIGRP avec IPv4</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="7.2.2.1" class="page-title" href="7.2.2.1/7.2.2.1.html" target="frame">7.2.2.1 Vérification du protocole EIGRP : examen des voisins</a>
+                </li>
+                <li>
+                  <a data-ident="7.2.2.2" class="page-title" href="7.2.2.2/7.2.2.2.html" target="frame">7.2.2.2 Vérification du protocole EIGRP : commande show ip protocols</a>
+                </li>
+                <li>
+                  <a data-ident="7.2.2.3" class="page-title" href="7.2.2.3/7.2.2.3.html" target="frame">7.2.2.3 Vérification du protocole EIGRP : examen de la table de routage IPv4</a>
+                </li>
+                <li>
+                  <a data-ident="7.2.2.4" class="page-title" href="7.2.2.4/7.2.2.4.html" target="frame">7.2.2.4 Packet Tracer : configuration de base du protocole EIGRP avec IPv4</a>
+                </li>
+                <li>
+                  <a data-ident="7.2.2.5" class="page-title" href="7.2.2.5/7.2.2.5.html" target="frame">7.2.2.5 Travaux pratiques : configuration de base du protocole EIGRP avec IPv4</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">7.3  Fonctionnement du protocole EIGRP</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">7.3.1 Détection de route initiale EIGRP</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="7.3.1.1" class="page-title" href="7.3.1.1/7.3.1.1.html" target="frame">7.3.1.1 Contiguïté de voisinage EIGRP</a>
+                </li>
+                <li>
+                  <a data-ident="7.3.1.2" class="page-title" href="7.3.1.2/7.3.1.2.html" target="frame">7.3.1.2 Table topologique EIGRP</a>
+                </li>
+                <li>
+                  <a data-ident="7.3.1.3" class="page-title" href="7.3.1.3/7.3.1.3.html" target="frame">7.3.1.3 Convergence EIGRP</a>
+                </li>
+                <li>
+                  <a data-ident="7.3.1.4" class="page-title" href="7.3.1.4/7.3.1.4.html" target="frame">7.3.1.4 Exercice : identification des étapes du processus d&#x0027;établissement des contiguïtés de voisinage EIGRP</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">7.3.2 Métriques</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="7.3.2.1" class="page-title" href="7.3.2.1/7.3.2.1.html" target="frame">7.3.2.1 Métrique composite EIGRP</a>
+                </li>
+                <li>
+                  <a data-ident="7.3.2.2" class="page-title" href="7.3.2.2/7.3.2.2.html" target="frame">7.3.2.2 Examen des valeurs de l&#x0027;interface</a>
+                </li>
+                <li>
+                  <a data-ident="7.3.2.3" class="page-title" href="7.3.2.3/7.3.2.3.html" target="frame">7.3.2.3 Métrique de bande passante </a>
+                </li>
+                <li>
+                  <a data-ident="7.3.2.4" class="page-title" href="7.3.2.4/7.3.2.4.html" target="frame">7.3.2.4 Métrique de délai</a>
+                </li>
+                <li>
+                  <a data-ident="7.3.2.5" class="page-title" href="7.3.2.5/7.3.2.5.html" target="frame">7.3.2.5 Mode de calcul de la métrique EIGRP</a>
+                </li>
+                <li>
+                  <a data-ident="7.3.2.6" class="page-title" href="7.3.2.6/7.3.2.6.html" target="frame">7.3.2.6 Calcul de la métrique EIGRP</a>
+                </li>
+                <li>
+                  <a data-ident="7.3.2.7" class="page-title" href="7.3.2.7/7.3.2.7.html" target="frame">7.3.2.7 Exercice : calcul de la métrique EIGRP</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">7.3.3 Algorithme DUAL et table topologique</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="7.3.3.1" class="page-title" href="7.3.3.1/7.3.3.1.html" target="frame">7.3.3.1 Concepts DUAL</a>
+                </li>
+                <li>
+                  <a data-ident="7.3.3.2" class="page-title" href="7.3.3.2/7.3.3.2.html" target="frame">7.3.3.2 Présentation de l&#x0027;algorithme DUAL</a>
+                </li>
+                <li>
+                  <a data-ident="7.3.3.3" class="page-title" href="7.3.3.3/7.3.3.3.html" target="frame">7.3.3.3 Successeur et distance de faisabilité</a>
+                </li>
+                <li>
+                  <a data-ident="7.3.3.4" class="page-title" href="7.3.3.4/7.3.3.4.html" target="frame">7.3.3.4 Successeurs potentiels, condition de faisabilité et distance annoncée</a>
+                </li>
+                <li>
+                  <a data-ident="7.3.3.5" class="page-title" href="7.3.3.5/7.3.3.5.html" target="frame">7.3.3.5 Table topologique : commande show ip eigrp topology</a>
+                </li>
+                <li>
+                  <a data-ident="7.3.3.6" class="page-title" href="7.3.3.6/7.3.3.6.html" target="frame">7.3.3.6 Table topologique : commande show ip eigrp topology (suite)</a>
+                </li>
+                <li>
+                  <a data-ident="7.3.3.7" class="page-title" href="7.3.3.7/7.3.3.7.html" target="frame">7.3.3.7 Table topologique : aucun successeur potentiel</a>
+                </li>
+                <li>
+                  <a data-ident="7.3.3.8" class="page-title" href="7.3.3.8/7.3.3.8.html" target="frame">7.3.3.8 Exercice : détermination du successeur de faisabilité</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">7.3.4 Algorithme DUAL et convergence</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="7.3.4.1" class="page-title" href="7.3.4.1/7.3.4.1.html" target="frame">7.3.4.1 Finite State Machine (FSM) DUAL</a>
+                </li>
+                <li>
+                  <a data-ident="7.3.4.2" class="page-title" href="7.3.4.2/7.3.4.2.html" target="frame">7.3.4.2 DUAL : successeur potentiel</a>
+                </li>
+                <li>
+                  <a data-ident="7.3.4.3" class="page-title" href="7.3.4.3/7.3.4.3.html" target="frame">7.3.4.3 DUAL : aucun successeur potentiel</a>
+                </li>
+                <li>
+                  <a data-ident="7.3.4.4" class="page-title" href="7.3.4.4/7.3.4.4.html" target="frame">7.3.4.4 Packet Tracer : étude de la machine FSM DUAL</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">7.4 Configuration du protocole EIGRP pour IPv6</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">7.4.1 Protocole EIGRP pour IPv4 versus IPv6</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="7.4.1.1" class="page-title" href="7.4.1.1/7.4.1.1.html" target="frame">7.4.1.1 Protocole EIGRP pour IPv6</a>
+                </li>
+                <li>
+                  <a data-ident="7.4.1.2" class="page-title" href="7.4.1.2/7.4.1.2.html" target="frame">7.4.1.2 Comparaison du protocole EIGRP pour IPv4 et IPv6</a>
+                </li>
+                <li>
+                  <a data-ident="7.4.1.3" class="page-title" href="7.4.1.3/7.4.1.3.html" target="frame">7.4.1.3 Adresses link-local IPv6</a>
+                </li>
+                <li>
+                  <a data-ident="7.4.1.4" class="page-title" href="7.4.1.4/7.4.1.4.html" target="frame">7.4.1.4 Exercice : comparer les protocoles EIGRPv4 et EIGRPv6</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">7.4.2 Configuration du protocole EIGRP pour IPv6</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="7.4.2.1" class="page-title" href="7.4.2.1/7.4.2.1.html" target="frame">7.4.2.1 Topologie réseau EIGRP pour IPv6</a>
+                </li>
+                <li>
+                  <a data-ident="7.4.2.2" class="page-title" href="7.4.2.2/7.4.2.2.html" target="frame">7.4.2.2 Configuration d&#x0027;adresses link-local IPv6</a>
+                </li>
+                <li>
+                  <a data-ident="7.4.2.3" class="page-title" href="7.4.2.3/7.4.2.3.html" target="frame">7.4.2.3 Configuration du protocole EIGRP pour le processus de routage IPv6</a>
+                </li>
+                <li>
+                  <a data-ident="7.4.2.4" class="page-title" href="7.4.2.4/7.4.2.4.html" target="frame">7.4.2.4 Commande d&#x0027;interface ipv6 eigrp</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">7.4.3 Vérification du protocole EIGRP pour IPv6</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="7.4.3.1" class="page-title" href="7.4.3.1/7.4.3.1.html" target="frame">7.4.3.1 Vérification du protocole EIGRP pour IPv6 : examen des voisins</a>
+                </li>
+                <li>
+                  <a data-ident="7.4.3.2" class="page-title" href="7.4.3.2/7.4.3.2.html" target="frame">7.4.3.2 Vérification du protocole EIGRP pour IPv6 : commande show ip protocols</a>
+                </li>
+                <li>
+                  <a data-ident="7.4.3.3" class="page-title" href="7.4.3.3/7.4.3.3.html" target="frame">7.4.3.3 Vérification du protocole EIGRP pour IPv6 : examen de la table de routage IPv6</a>
+                </li>
+                <li>
+                  <a data-ident="7.4.3.4" class="page-title" href="7.4.3.4/7.4.3.4.html" target="frame">7.4.3.4 Packet Tracer : configuration de base du protocole EIGRP avec IPv6</a>
+                </li>
+                <li>
+                  <a data-ident="7.4.3.5" class="page-title" href="7.4.3.5/7.4.3.5.html" target="frame">7.4.3.5 Travaux pratiques : configuration de base du protocole EIGRP pour IPv6</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">7.5 Résumé</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">7.5.1 Résumé</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="7.5.1.1" class="page-title" href="7.5.1.1/7.5.1.1.html" target="frame">7.5.1.1 Exercice en classe : gamme de protocoles RIP et EIGRP</a>
+                </li>
+                <li>
+                  <a data-ident="7.5.1.2" class="page-title" href="7.5.1.2/7.5.1.2.html" target="frame">7.5.1.2 Résumé</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <ul id="nav-menu" class="contextmenu">
+      <li id="nav-menu-expand">Tout développer</li>
+      <li id="nav-menu-collapse">Tout réduire</li>
+    </ul>
+    <div id="content">
+      <div id="container"></div>
+      <button id="prev-btn" type="button" title="Précédent" disabled><span class="icon">Précédent</span></button>
+      <input id="jump-box" type="text" value=""/>
+      <button id="next-btn" type="button" title="Suivant" disabled><span class="icon">Suivant</span></button>
+      <button id="mini-btn" type="button" title="Basculer"><span class="icon">Basculer</span></button>
+    </div>
+  </body>
+</html>
+

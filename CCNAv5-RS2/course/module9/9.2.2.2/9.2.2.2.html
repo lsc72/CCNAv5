@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.2.2 Modification des listes de contrôle d&#x0027;accès standard numérotées (suite)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Listes de contrôle d&#x0027;accès IPv4 standard </h1>
+        <h2>Modification des listes de contrôle d&#x0027;accès IPv4</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Méthode 2 : à l'aide du numéro d'ordre</b>
+</p>
+<p></p>
+<p>Comme l'illustre la figure, la configuration initiale de l'ACL 1 incluait une instruction d'hôte relative à l'hôte 192.168.10.99. Il s'agissait d'une erreur. L'hôte devrait avoir été configuré avec l'adresse 192.168.10.10. Pour modifier la liste de contrôle d'accès à l'aide des numéros d'ordre, procédez comme suit :</p>
+<p></p>
+<p>
+<b>Étape 1. </b>Affichez la liste de contrôle d'accès actuelle à l'aide de la commande <span class="cmd"><b>show access-lists 1</b></span>. Le résultat de cette commande sera traité plus en détail dans la suite de ce cours. Les numéros d'ordre sont indiqués au début de chaque instruction. Ils sont attribués automatiquement lors de la saisie des instructions de la liste d'accès. Notez que l'instruction mal configurée est associée au numéro d'ordre 10.</p>
+<p></p>
+<p>
+<b>Étape 2. </b>Saisissez la commande <span class="cmd"><b>ip access-list standard</b></span> utilisée pour configurer les listes de contrôle d'accès nommées. Le chiffre 1, qui correspond au numéro de liste de contrôle d'accès, est utilisé comme nom. L'instruction mal configurée doit d'abord être supprimée à l'aide de la commande <span class="cmd"><b>no 10</b></span>, 10 faisant référence au numéro d'ordre. Ensuite, il faut ajouter une nouvelle instruction portant le numéro d'ordre 10, à l'aide de la commande <span class="cmd"><b>10 deny host 192.168.10.10</b></span>. </p>
+<p></p>
+<p>
+<b>Remarque</b> : les instructions ne peuvent pas être remplacées par des instructions associées à un numéro d'ordre existant déjà. L'instruction actuelle doit être supprimée avant que vous puissiez ajouter la nouvelle.</p>
+<p></p>
+<p>
+<b>Étape 3. </b>Vérifiez les modifications à l'aide de la commande <span class="cmd"><b>show access-lists</b></span>.</p>
+<p></p>
+<p>Comme indiqué précédemment, Cisco IOS applique une logique interne aux listes de contrôle d'accès standard. L'ordre dans lequel les ACE standard sont saisies peut être différent de l'ordre dans lequel elles sont enregistrées, affichées ou traitées par le routeur. La commande <span class="cmd"><b>show access-lists</b></span> affiche les ACE et leurs numéros d'ordre.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

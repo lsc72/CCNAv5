@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		<slide>
+		<element type="IMAGE" src="media_3.2.4.6.png" width="470" height="400" />
+		<element type="TEXT" compId="ID_s1_txt03" x="334" y="130" width="110" expand="up" align="left" />
+<element type="TEXT" compId="ID_s1_txt02" x="240" y="76" width="129.6" expand="up" align="left" />
+<element type="TEXT" compId="ID_s1_txt01" x="1" y="76" width="134.6" expand="up" align="left" />
+<element type="TEXT" compId="ID_s1_txt04" x="315" y="248" width="128.6" expand="up" align="left" />
+<element type="TEXT" id="ID_static_1" text="F0/1" x="114.15" y="113.05" width="25" align="center" color="#0" />
+<element type="TEXT" id="ID_static_2" text="F0/3" x="188.85" y="113.05" width="25" align="center" color="#0" />
+<element type="TEXT" id="ID_static_3" text="F0/1" x="49.45" y="173.45" width="25" align="center" color="#0" />
+<element type="TEXT" id="ID_static_4" text="F0/3" x="207.95" y="181.2" width="25" align="center" color="#0" />
+<element type="TEXT" id="ID_static_5" text="F0/11" x="243.2" y="169.25" width="31" align="center" color="#0" />
+<element type="TEXT" id="ID_static_6" text="F0/2" x="194.65" y="92.35" width="25" align="left" color="#0" />
+<element type="TEXT" id="ID_static_7" text="F0/4" x="118.7" y="86.35" width="25" align="center" color="#0" />
+<element type="TEXT" id="ID_static_8" text="F0/18" x="275.05" y="200.3" width="31" align="center" color="#0" />
+<element type="TEXT" compId="ID_s1_txt06" x="102" y="277" width="128.6" expand="up+down" align="left" class="orangeCallOut" />
+<element type="BUBBLE" compId="ID_s1_txt05" x="247" y="293" width="182.3" height="82.9" align="center" tailPosition="12" tailFlip="1" />
+<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+		</slide>
+		<slide>
+		<element type="ROUTER" textId="ID_router_txt1" x="5" y="50" width="430" height="157" />
+		<element type="ROUTER" textId="ID_router_txt2" x="5" y="240" width="430" height="156" />
+		<element type="TEXT" compId="ID_s2_txt01" x="10" y="31" width="399.05" expand="right" align="left" />
+		<element type="TEXT" compId="ID_s2_txt02" x="10" y="221" width="399.05" expand="right" align="left" />
+		<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+		</slide>
+		<slide>
+		<element type="ROUTER" textId="ID_router_txt3" x="5" y="50" width="430" height="210" />
+		<element type="ROUTER" textId="ID_router_txt4" x="5" y="290" width="424.55" height="90" />
+		<element type="TEXT" compId="ID_s3_txt01" x="10" y="31" width="399.05" expand="down" align="left" />
+		<element type="TEXT" compId="ID_s3_txt02" x="10" y="271" width="399.05" expand="down" align="left" />
+		<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+		</slide>
+	</slide>
+	
+<text id="ID_router_txt1"><![CDATA[<pre>S3# <b>show interfaces trunk</b>
+Port  Mode  Encapsulation  Status    Native vlan
+Fa0/3 on    802.1q         trunking  99
+Port  Vlans allowed on trunk
+<span style="width:409px" class="orange_block">Fa0/3 10,20,99</span>Port  Vlans allowed and active in management domain
+Fa0/3 10,20,99
+Port  Vlans in spanning tree forwarding state and not 
+pruned
+Fa0/3 10,20,99</pre>]]></text>
+
+<text id="ID_router_txt2"><![CDATA[<pre>S1# <b>show interfaces trunk</b>
+Port        Mode    Encapsulation  Status    Native vlan
+Fa0/1       on        802.1q       trunking      99
+Fa0/3       on        802.1q       trunking      99
+Port     Vlans allowed on trunk
+Fa0/1    10,99
+<span style="width:409px" class="orange_block">Fa0/3    10,99</span>…
+S1#</pre>]]></text>
+
+<text id="ID_router_txt3"><![CDATA[<pre>S1# <b>config terminal</b> 
+S1(config)# <b>interface f0/1</b> 
+S1(config-if)# <b>switchport trunk allowed vlan 10,20,99</b> 
+S1(config-if)# <b>interface f0/3</b> 
+S1(config-if)# <b>switchport trunk allowed vlan 10,20,99</b> 
+S1# <b>show interfaces trunk</b>
+Port        Mode   Encapsulation  Status    Native vlan
+Fa0/1       on        802.1q      trunking      99
+Fa0/3       on        802.1q      trunking      99
+Port     Vlans allowed on trunk
+<span style="width:409px" class="orange_block">Fa0/1    10,20,99
+Fa0/3    10,20,99</span>…</pre>]]></text>
+<text id="ID_router_txt4"><![CDATA[<pre>PC5> <b>ping 172.17.20.10</b>
+Pinging 172.17.20.10 with 32 bytes of data:
+Reply from 172.17.20.10: bytes=32 time=147ms TTL=128
+…</pre>]]></text>
+</data>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.3.1.1 Exercice en classe : protocoles puissants</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Protocoles puissants</b>
+</p>
+<p></p>
+<p>À l'issue de ce cours, vous serez invité à réaliser deux projets Capstone à l'occasion desquels vous allez créer, configurer et vérifier deux topologies réseau en utilisant les deux principaux protocoles de routage étudiés dans ce cours, à savoir EIGRP et OSPF.</p>
+<p></p>
+<p>Afin de vous faciliter le travail, vous décidez de créer un diagramme des commandes de configuration et de vérification que vous pourrez utiliser lors de ces deux projets de conception. Demandez à un autre étudiant de la classe de vous aider à concevoir ces diagrammes de protocole.</p>
+<p></p>
+<p>Reportez-vous au fichier PDF de ce chapitre pour obtenir des instructions sur la manière de créer une conception pour ce projet de modélisation. Lorsque vous avez terminé, partagez votre travail avec un autre groupe ou la classe. Vous voudrez peut-être également enregistrer les fichiers créés pour ce projet dans un portefeuille de réseaux, et ce, pour référence ultérieure.</p>
+<p></p>
+<p>
+<a href="../../files/9.3.1.1%20Powerful%20Protocols%20Instructions.pdf" target="_blank">Exercice en classe : protocoles puissants</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

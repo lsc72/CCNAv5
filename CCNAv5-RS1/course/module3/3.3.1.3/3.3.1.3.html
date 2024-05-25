@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.1.3 Encapsulation</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Déplacement des données sur le réseau</h1>
+        <h2>Encapsulation de données</h2>
+      </div>
+      <div id="content">
+<p>L'encapsulation de données est le processus qui ajoute aux données des informations d'en-tête de protocole supplémentaires avant leur transmission. Dans la plupart des formes de communication de données, les données d'origine sont encapsulées ou enveloppées dans plusieurs protocoles avant d'être transmises. </p>
+<p></p>
+<p>Lors de l'envoi de messages sur un réseau, la pile de protocoles sur un hôte fonctionne de haut en bas. Dans l'exemple du serveur Web, nous pouvons utiliser le modèle TCP/IP pour illustrer le processus d'envoi d'une page Web HTML à un client. </p>
+<p></p>
+<p>Le protocole de la couche application, HTTP, démarre le processus en remettant à la couche transport les données de la page Web au format HTML. Dans la couche transport, les données de la couche application sont divisées en segments TCP. Chaque segment TCP reçoit une étiquette, appelée en-tête, qui contient des informations pour désigner le processus s'exécutant sur l'ordinateur de destination qui doit recevoir le message. Il contient également les informations qui permettent au processus de destination de réassembler les données selon leur format d'origine.</p>
+<p></p>
+<p>La couche transport encapsule les données HTML de la page Web au sein du segment et les envoie à la couche Internet, où est implémenté le protocole IP. Dans cette couche, la totalité du segment TCP est encapsulée dans ce paquet IP, qui ajoute une autre étiquette, appelée en-tête IP. L'en-tête IP contient des adresses IP d'hôtes source et de destination, ainsi que des informations nécessaires à la livraison du paquet à son processus de destination correspondant. </p>
+<p></p>
+<p>Ensuite, le paquet IP est envoyé à la couche d'accès au réseau, où il est encapsulé dans un en-tête de trame et une fin de trame (code de fin). Chaque en-tête de trame contient une adresse physique source et de destination. L'adresse physique identifie de manière unique les périphériques sur le réseau local. Le code de fin contient des informations de vérification d'erreur. Enfin, les bits sont codés sur le support par la carte réseau du serveur. Cliquez sur le bouton Lire de la figure pour visualiser le processus d'encapsulation.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

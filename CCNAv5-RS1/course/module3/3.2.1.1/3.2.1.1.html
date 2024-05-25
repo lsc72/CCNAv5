@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.1.1 Protocoles : règles qui régissent les communications</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Normes et protocoles réseau</h1>
+        <h2>protocoles</h2>
+      </div>
+      <div id="content">
+<p>Comme dans les communications humaines, les différents protocoles réseau et informatiques doivent pouvoir interagir et œuvrer ensemble à faire aboutir la communication réseau. Un groupe de protocoles interreliés et nécessaires pour remplir une fonction de communication est appelé suite de protocoles. Les suites de protocoles sont mises en œuvre par les hôtes et les périphériques réseau dans le logiciel, le matériel ou les deux.</p>
+<p></p>
+<p>Pour mieux visualiser l'interaction des protocoles d'une suite, imaginez que celle-ci est une pile. Une pile de protocoles indique comment chacun des protocoles de la suite est mis en œuvre. Les protocoles sont représentés par des couches et chaque service de niveau supérieur dépend de la fonctionnalité définie par les protocoles constituant les niveaux inférieurs. Les couches inférieures de la pile s'occupent du déplacement de données sur le réseau et de la fourniture de services aux couches supérieures, qui elles, se concentrent sur le contenu du message en cours d'envoi. Comme l'illustre la figure, nous pouvons utiliser des couches pour décomposer l'activité qui intervient dans notre exemple de communication en face à face. À la couche inférieure, la couche physique, se trouvent deux personnes, chacune douée de la parole et capables de prononcer des mots à haute voix. À la deuxième couche, celle des règles, nous disposons d'un accord pour parler dans une langue commune. À la couche supérieure, la couche du contenu, des mots sont effectivement prononcés. Il s'agit du contenu de la communication.</p>
+<p></p>
+<p>Si nous devions assister à cette conversation, nous ne pourrions pas réellement voir ces couches flotter dans l'air. L'utilisation de couches permet de décomposer une tâche complexe en différentes parties simples et de décrire leur fonctionnement.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

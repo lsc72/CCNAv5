@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.1.4 Configuration des noms d&#x0027;hôtes</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Bases</h1>
+        <h2>Noms d&#x0027;hôtes</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Configuration du nom d'hôte IOS</b>
+</p>
+<p></p>
+<p>En mode d'exécution privilégié, accédez au mode de configuration globale en entrant la commande <span class="cmd"><b>configure terminal</b></span> :</p>
+<p></p>
+<p>
+<span class="cmd">Switch#</span>
+<span class="cmd">
+<b>configure terminal</b>
+</span>
+</p>
+<p></p>
+<p>Après exécution de cette commande, l'invite devient :</p>
+<p></p>
+<p>
+<span class="cmd">Switch(config)#</span>
+</p>
+<p></p>
+<p>Comme l'illustre la figure, en mode de configuration globale, entrez le nom d'hôte :</p>
+<p></p>
+<p>
+<span class="cmd">Switch(config)#</span>
+<span class="cmd">
+<b>hostname Sw-Floor-1</b>
+</span>
+</p>
+<p></p>
+<p></p>
+<p>Après exécution de cette commande, l'invite devient :</p>
+<p></p>
+<p>
+<span class="cmd">Sw-Floor-1</span>
+<span class="cmd">(config)#</span>
+</p>
+<p></p>
+<p>Observez que le nom d'hôte apparaît dans l'invite. Pour quitter le mode de configuration globale, utilisez la commande <span class="cmd"><b>exit</b></span>. </p>
+<p></p>
+<p>N'oubliez pas de mettre à jour votre documentation chaque fois que vous ajoutez ou modifiez un périphérique. Dans la documentation, identifiez les périphériques par leur emplacement, leur rôle et leur adresse. </p>
+<p></p>
+<p>
+<b>Remarque</b> : pour annuler ou inverser les effets d'une commande, faites-la précéder du mot-clé <span class="cmd"><b>no</b></span>. </p>
+<p></p>
+<p>Par exemple, pour supprimer le nom attribué à un périphérique, utilisez :</p>
+<p></p>
+<p>
+<span class="cmd">Sw-Floor-1</span>
+<span class="cmd">(config)#</span>
+<span class="cmd">
+<b>no hostname</b>
+</span>
+</p>
+<p>
+<span class="cmd">Switch(config)#</span>
+</p>
+<p></p>
+<p>Notez que la commande <span class="cmd"><b>no hostname</b></span> rétablit sur le commutateur le nom d'hôte par défaut « Switch ». </p>
+<p></p>
+<p>À l'aide de la figure, essayez d'attribuer un nom d'hôte à un commutateur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

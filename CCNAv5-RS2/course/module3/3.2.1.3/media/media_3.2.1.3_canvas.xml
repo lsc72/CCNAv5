@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		
+		<slide>
+			<element type="TEXT" subType="TABLE" compId="ID_s1_table01" x="5.5" y="41.35" width="430" height="199" />
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title" />
+ 		</slide>
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title" />
+			<element type="IMAGE" src="3.2.1.3_B.jpg" x="0" y="0" width="470" height="400"/>
+			<element type="ROUTER" textId="ID_s1_txt01" x="8.45" y="102" width="309" height="91.4"/>
+			<element type="TEXT" compId="ID_s2_txt01" width="104" x="62.9" y="273.4" align="center" expand="up" />
+			<element type="TEXT" compId="ID_s2_txt02" width="130" x="235.25" y="323.85" align="left" expand="down" />
+			<element type="TEXT" text="F0/1" width="26.15" x="318.1" y="193.4" align="center" color="#393536"/>			
+			<element type="TEXT" text="F0/1" width="26.15" x="284.05" y="274.9" align="center" color="#393536"/>
+			<element type="TEXT" text="F0/18" width="32.25" x="203" y="298.4" align="center" color="#393536"/>
+		</slide>
+		<slide>
+			<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC5" x="2.1" y="30.95" width="437.1" height="367" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title" />
+ 		</slide>
+		
+		
+</slide>
+	<text id="ID_s1_txt01"><![CDATA[<table width="273" border="0" cellspacing="0" cellpadding="0"> <tr> <td width="261">s1# <strong>configure terminal</strong></td> </tr> <tr> <td>s1(config)# <strong>interface F0/18</strong></td> </tr> <tr> <td>s1(config-if)# <strong>switchport mode access</strong></td> </tr> <tr> <td>s1(config-if)# <strong>switchport access vlan 20</strong></td> </tr> <tr> <td>s1(config-if)# <strong>end</strong></td> </tr></table>]]></text>
+<text id="ID_s2_txt01"><![CDATA[
+	<table width="416" border="0" cellspacing="0" cellpadding="0"> <tr> <td width="325">Router(config-std-nacl)#<strong>[permit | deny | remark] {source [source- wildcard]} [log]</strong></td> </tr></table>
+]]></text>
+<text id="ID_s3_txt01"><![CDATA[
+	<table width="416" border="0" cellspacing="0" cellpadding="0"> <tr> <td width="325">Router(config-if)#<strong>ip access-group name [in | out]</strong></td> </tr></table>
+]]></text>
+<text id="ID_s4_txt01"><![CDATA[
+	<table width="325" border="0" cellspacing="0" cellpadding="0"> <tr> <td width="325">R1(config)#<strong>ip access-list standard NO_ACCESS</strong></td> </tr> <tr> <td>R1(config-std-nacl)#<strong>deny host 192.168.11.10</strong></td> </tr> <tr> <td>R1(config-std-nacl)#<strong>permit any</strong></td> </tr> <tr> <td>R1(config-std-nacl)#<strong>exit</strong></td> </tr> <tr> <td>R1(config)#<strong>interface g0/0</strong></td> </tr> <tr> <td>R1(config-if)#<strong>ip access-group NO_ACCESS out</strong></td> </tr></table>
+]]></text>
+
+
+</data>

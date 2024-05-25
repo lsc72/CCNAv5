@@ -1,0 +1,69 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Création de sauvegarde d'image Cisco&nbsp;IOS</b>]]></text>
+</component>
+<component id="ID_s1_txt01">
+<text><![CDATA[Flash]]></text>
+</component>
+<component id="ID_s1_txt02">
+<text><![CDATA[Serveur TFTP<br/>172.16.1.100]]></text>
+</component>
+<component id="ID_s1_txt03">
+<text><![CDATA[c1900-universalk9-mz.SPA.152-4.M3.bin]]></text>
+</component>
+
+<component id="ID_s2_title">
+<text><![CDATA[<b>Vérification de la connectivité et de la taille de l'image</b>]]></text>
+</component>
+<component id="ID_s2_txt01">
+<text><![CDATA[Vérifiez la connectivité au serveur Web.]]></text>
+</component>
+<component id="ID_s2_txt02">
+<text><![CDATA[Vérifiez la taille de l'image.]]></text>
+</component>
+<component id="ID_s2_txt03">
+<text><![CDATA[&lt;résultat omis&gt;]]></text>
+</component>
+
+
+<component id="ID_s3_title">
+<text><![CDATA[<b>Commande <font face="Courier New">copy </font></b>]]></text>
+</component> 
+<component id="ID_s3_txt01">
+<text><![CDATA[Copiez l'image sur le serveur TFTP.]]></text>
+</component>
+<component id="ID_s3_txt02">
+<text><![CDATA[&lt;résultat omis&gt;]]></text>
+</component>
+<component id="ID_s4_title">
+<text><![CDATA[<b>Sauvegarde d'une image Cisco IOS sur un serveur TFTP</b>]]></text>
+</component> 
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+
+<component id="ID_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b>***</b><font face="Arial" color="#0000FF">Vous devez entrer la commande exacte et complète. Les noms de fichiers et les mots de passe sont sensibles à la casse.</font><b>***</b> ]]></feedback>		
+		<existingcommands><![CDATA[<font face="Arial"><b>Copiez l'image IOS c1900-universalk9-mz.SPA.152-4.M3.bin de flash0 au serveur TFTP situé à l'adresse 172.16.1.100. Le nom du fichier est sensible à la casse.</b></font>]]></existingcommands>
+		<command  prompt="R2#">
+		    <correctresponse><![CDATA[copy flash0: tftp:]]></correctresponse>
+		</command>
+		<command prompt="Source filename []? ">
+		    <correctresponse ignorecase='false'><![CDATA[c1900-universalk9-mz.SPA.152-4.M3.bin]]></correctresponse>
+		</command>
+		<command prompt="Address or name of remote host []? ">
+		    <correctresponse><![CDATA[172.16.1.100]]></correctresponse>
+				<deviceresponse><![CDATA[<font Face='Courier New'>Destination filename [c1900-universalk9-mz.SPA.152-4.M3.bin]? <br>!!!!!!!!!!!!!!!!!!<br>&lt;résultat omis&gt;<br>68831808 bytes copied in 363.468 secs (269058 bytes/sec)<br>R2#</font>]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez correctement sauvegardé l'image Cisco IOS sur le serveur TFTP.</b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+</textcomponents>

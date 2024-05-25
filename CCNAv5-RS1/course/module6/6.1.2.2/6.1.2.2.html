@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.2.2 IP – Sans connexion</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche réseau</h1>
+        <h2>Caractéristiques du protocole IP</h2>
+      </div>
+      <div id="content">
+<p>Le rôle de la couche réseau est de transporter les paquets entre les hôtes, tout en imposant le moins de charge possible au réseau. La couche réseau n'est pas concernée par le type de communication présent dans un paquet et l'ignore. Le protocole IP est sans connexion, ce qui signifie que la connexion de bout en bout dédiée est créée avant que les données soient envoyées. L'envoi d'une lettre sans en avertir le destinataire illustre bien la communication sans connexion. </p>
+<p></p>
+<p>Comme l'illustre la Figure 1, le service postal utilise les informations inscrites sur les lettres pour acheminer les lettres à leur destinataire. L'adresse inscrite sur une enveloppe n'indique pas si le destinataire sera présent, si la lettre va arriver ou si le destinataire pourra lire la lettre. En fait, le service postal n'a aucune information sur le contenu du paquet qu'il achemine et ne peut donc fournir aucun mécanisme de correction des erreurs. </p>
+<p></p>
+<p>Les communications de données sans connexion fonctionnent sur le même principe. </p>
+<p></p>
+<p>Le protocole IP est sans connexion et ne requiert, par conséquent, aucun échange initial d'informations de contrôle pour établir une connexion de bout en bout avant que les paquets soient transférés. Le protocole IP ne nécessite pas non plus de champs supplémentaires dans l'en-tête de PDU pour maintenir une connexion établie. Ce processus réduit sensiblement la surcharge du protocole IP. Cependant, sans connexion de bout en bout préétablie, les expéditeurs ne savent pas si les périphériques de destination sont présents et fonctionnels lors de l'envoi des paquets. Ils ne savent pas non plus si le destinataire reçoit le paquet ou s'il peut accéder et lire le paquet. La Figure 2 présente un exemple de communication sans connexion.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

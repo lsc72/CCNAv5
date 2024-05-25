@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.2.2 Masque générique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv2 à zone unique</h1>
+        <h2>Configuration d&#x0027;OSPFv2 à zone unique</h2>
+      </div>
+      <div id="content">
+<p>Le protocole OSPFv2 utilise la combinaison d'arguments <span class="cmd"><i>network-address wildcard-mask </i></span>pour activer OSPF sur les interfaces. Le protocole OSPF est sans classe par conception ; par conséquent, le masque générique est toujours obligatoire. Lors de l'identification des interfaces qui participent à un processus de routage, le masque générique est généralement l'inverse du masque de sous-réseau configuré sur cette interface. </p>
+<p></p>
+<p>Un masque générique est une chaîne de 32 chiffres binaires utilisés par le routeur pour déterminer quels bits de l'adresse examiner afin d'établir une correspondance. Dans un masque de sous-réseau, le chiffre binaire 1 équivaut à une correspondance et le chiffre binaire 0 n'est pas une correspondance. Dans un masque générique, l'inverse est également vrai :</p>
+<p>
+<ul>
+<li>
+<b>Bit 0 de masque générique</b> : permet de vérifier la valeur du bit correspondant dans l'adresse. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Bit 1 de masque générique</b> : permet d'ignorer la valeur du bit correspondant dans l'adresse.</li>
+</ul>
+</p>
+<p></p>
+<p>La méthode la plus simple pour calculer un masque générique consiste à soustraire le masque de sous-réseau de 255.255.255.255.</p>
+<p></p>
+<p>L'exemple de la Figure 1 calcule le masque générique à partir de l'adresse réseau 192.168.10.0/24. Pour cela, le masque de sous-réseau 255.255.255.0 est soustrait de 255.255.255.255, ce qui donne le résultat 0.0.0.255. Par conséquent, 192.168.10.0/24 correspond à 192.168.10.0 avec le masque générique 0.0.0.255.</p>
+<p></p>
+<p>L'exemple de la Figure 2 calcule le masque générique à partir de l'adresse réseau 192.168.10.64/26. À nouveau, le masque de sous-réseau 255.255.255.192 est soustrait de 255.255.255.255, ce qui donne le résultat 0.0.0.63. Par conséquent, 192.168.10.0/26 correspond à 192.168.10.0 avec le masque générique 0.0.0.63.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

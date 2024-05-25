@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.3.1.8 Mise en mémoire tampon sur les commutateurs</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.3.1.8_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Commutateurs LAN</h1>
+        <h2>Commutation</h2>
+      </div>
+      <div id="content">
+<p>Comme expliqué ci-dessus, le commutateur analyse une partie ou l'intégralité de chaque paquet avant de le transmettre à l'hôte de destination. Un commutateur Ethernet peut utiliser une technique de mise en mémoire tampon pour stocker des trames avant de les transmettre. La mise en mémoire tampon peut également être une solution lorsque le port de destination est saturé suite à un encombrement et que le commutateur stocke la trame jusqu'à ce qu'il puisse la transmettre.</p>
+<p></p>
+<p>Comme l'illustre la figure, il existe deux méthodes de mise en mémoire tampon : la mise en mémoire tampon axée sur les ports et la mise en mémoire tampon partagée.</p>
+<p></p>
+<p>
+<b>Mise en mémoire tampon axée sur les ports</b>
+</p>
+<p>Dans le cas de la mise en mémoire tampon axée sur les ports, les trames sont stockées dans des files d'attente liées à des ports entrants et sortants spécifiques. Une trame est transmise au port sortant uniquement si toutes les trames qui la précèdent dans la file d'attente ont été correctement transmises. Une seule trame peut retarder la transmission de toutes les trames en mémoire si un port de destination est saturé. Ce retard se produit, même si les autres trames peuvent être transmises à des ports de destination libres.</p>
+<p></p>
+<p>
+<b>Mise en mémoire tampon partagée </b>
+</p>
+<p>La mise en mémoire tampon partagée stocke toutes les trames dans une mémoire tampon commune à tous les ports du commutateur. La capacité de mémoire tampon nécessaire à un port est allouée dynamiquement. Les trames de la mémoire tampon sont liées de manière dynamique au port de destination, ce qui permet de recevoir le paquet sur un port et de le transmettre sur un autre, sans avoir à le déplacer vers une autre file d'attente.</p>
+<p></p>
+<p>Le commutateur tient à jour une carte de liaisons entre une trame et un port, indiquant l'emplacement vers lequel un paquet doit être acheminé. Cette carte est effacée dès que la trame a été transmise correctement. Le nombre de trames stockées dans la mémoire tampon est limité par la taille totale de cette dernière, mais ne se limite pas à un seul tampon du port, ce qui permet de transmettre de plus grandes trames en en supprimant un minimum. Cela est particulièrement important pour la commutation asymétrique. La commutation asymétrique permet l'utilisation de différents débits de données sur différents ports. Il est ainsi possible d'attribuer davantage de bande passante à certains ports, tels qu'un port connecté à un serveur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

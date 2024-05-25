@@ -1,0 +1,49 @@
+﻿
+<textcomponents>
+<component id="ID_title">
+<text><![CDATA[<b>Configurer un nom d'hôte</b>]]></text>
+</component>
+
+
+<!--Syntax Checker Button Text-->
+<component id="ID_sc_reset">
+<text><![CDATA[Réinitialiser]]></text>
+</component>
+
+<component id="ID_sc_showme">
+<text><![CDATA[Démonstration]]></text>
+</component>
+
+<component id="ID_sc_showall">
+<text><![CDATA[Afficher tout]]></text>
+</component>
+<!--End Syntax Checker Button Text-->
+
+
+<!--Syntax Checker Body Text-->
+<component id="ID_SC5" fontFace='Courier New' fontSize="10">
+<text></text>
+
+<feedback id="fb"><![CDATA[<span><font size = '10' face="Arial"><span><b>***</b></span>Vous devez saisir la commande précisément et en entier. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.<span><b>***</b></span></font></span>]]></feedback>	
+
+<existingcommands><![CDATA[<font size = '10' face="Arial"><b>Configurez le nom d'hôte du commutateur en «&nbsp;Sw-Floor-1&nbsp;»</b>.</font>]]></existingcommands>
+
+<command prompt="Switch#" id="cmd1" node="start">
+<correctresponse id="cr1" ignoreCase = 'true'><![CDATA[configure terminal]]></correctresponse>
+<deviceresponse id="dr1"><![CDATA[<dnt><font size='10'>Enter configuration commands, one per line. End with CNTL/Z.</font></dnt>]]></deviceresponse>
+</command>
+
+<command prompt="Switch(config)#" id="cmd2" node="end">
+<correctresponse id="cr2" ignoreCase = 'false' rel="p4"><![CDATA[hostname Sw-Floor-1]]></correctresponse>
+<deviceresponse id="dr2"><![CDATA[<font size='10'>Sw-Floor-1(config)#</font>]]></deviceresponse>
+<instruction id="last"><![CDATA[<font size = '10' face="Arial"><b>Vous avez réussi à configurer le nom d'hôte du commutateur.</b></font>]]></instruction> 
+</command>
+
+<command prompt=""/>
+
+</component>
+<!--End Syntax Checker Body Text-->
+
+
+
+</textcomponents> 

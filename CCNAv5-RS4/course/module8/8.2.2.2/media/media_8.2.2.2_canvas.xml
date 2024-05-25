@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+<slide type="MBAR">
+<slide>
+			<element type="IMAGE" src="8.2.2.2.jpg" x="0" y="0" width="470" height="400"/>
+			
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title" />
+			<element type="TEXT" text="192.168.1.1" width="58.8" x="274.05" y="204.05" align="center"/>
+			<element type="TEXT" text="192.168.1.3" width="58.8" x="15.7" y="220.15" align="center" />	
+			<element type="TEXT" compId="ID_s1_txt02" width="82" x="124.35" y="153.85" align="center" expand="left+right" />
+ <element type="BUBBLE" compId="ID_s1_txt01"  x="20"  y="50"  width="196" height="61" align="left"  tailPosition="7" tailFlip="1" />
+ 			<element type="ROUTER" textId="ID_s1_txt01" x="1" y="257.85" width="439" height="137"/>
+</slide>
+<slide>
+			<element type="IMAGE" subType="STD" src="8_2_2_2A.jpg" x="4.95" y="50" width="430" height="310.35"/>
+			<element type="IMAGE" src="img_border.png" x="162.4" y="87.5" width="140" height="34"/>			
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title" />
+</slide>
+<slide>
+			<element type="IMAGE" subType="STD" src="8_2_2_2B.jpg" x="4.95" y="97" width="430" height="212.7"/>			
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title" />
+</slide>
+<slide>
+			<element type="ROUTER" textId="ID_s4a_txt01" x="1" y="43.85" width="437" height="352"/>
+			<element type="TEXT" subType="TITLE" compId="ID_s4_title" />
+</slide>
+<slide>
+			<element type="ROUTER" textId="ID_s5_txt01" x="1" y="73.85" width="437" height="260"/>
+			<element type="TEXT" subType="TITLE" compId="ID_s5_title" />
+</slide>
+<slide>
+			<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC2" x="10.65" y="36.9" width="420" height="367" resetId="ID_sc1_reset" showMeId="ID_sc1_showme" showAllId="ID_sc1_showall"/>
+			<element type="TEXT" subType="TITLE" compId="ID_s6_title" />
+</slide>
+</slide>
+
+<text id="ID_s1_txt01"><![CDATA[<table width="420" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>R1(config)# <strong>snmp-server community batonaug ro SNMP_ACL</strong></td>
+  </tr>
+  <tr>
+    <td>R1(config)# <strong>snmp-server location NOC_SNMP_MANAGER</strong></td>
+  </tr>
+  <tr>
+    <td>R1(config)# <strong>snmp-server contact Wayne World</strong></td>
+  </tr>
+  <tr>
+    <td>R1(config)# <strong>snmp-server host 192.168.1.3 version 2c batonaug</strong></td>
+  </tr>
+  <tr>
+    <td>R1(config)# <strong>snmp-server enable traps</strong></td>
+  </tr>
+  <tr>
+    <td>R1(config)# <strong>ip access-list standard SNMP_ACL</strong></td>
+  </tr>
+  <tr>
+    <td>R1(config-std-nacl)# <strong>permit 192.168.1.3</strong></td>
+  </tr>
+</table>]]></text>
+
+
+<text id="ID_s4a_txt01"><![CDATA[
+<pre>R1# <strong>show snmp</strong>
+Chassis: FTX1636848Z
+<span class="orange">Contact: Wayne World
+Location: NOC_SNMP_MANAGER</span>
+0 SNMP packets input
+    0 Bad SNMP version errors
+    0 Unknown community name
+    0 Illegal operation for community name supplied
+    0 Encoding errors
+    0 Number of requested variables
+    0 Number of altered variables
+    0 Get-request PDUs
+    0 Get-next PDUs
+    0 Set-request PDUs
+    0 Input queue packet drops (Maximum queue size 1000)
+19 SNMP packets output
+    0 Too big errors (Maximum packet size 1500)
+    0 No such name errors
+    0 Bad values errors
+    0 General errors
+    0 Response PDUs
+<span class="orange">    19 Trap PDUs</span>
+SNMP Dispatcher:
+   queue 0/75 (current/max), 0 dropped
+SNMP Engine:
+   queue 0/1000 (current/max), 0 dropped
+
+<span class="orange">SNMP logging: enabled</span>
+<span class="bg">    Logging to 192.168.1.3.162,</span> 0/10, 19 sent, 0 dropped.
+</pre>
+]]></text>
+
+
+<text id="ID_s5_txt01"><![CDATA[
+<pre>R1# <strong>show snmp community</strong>
+
+Community name: ILMI
+Community Index: cisco0
+Community SecurityName: ILMI
+storage-type: read-only              active
+
+
+<span class="orange">Community name: batonaug
+Community Index: cisco7
+Community SecurityName: batonaug
+storage-type: nonvolatile            active       access-list: SNMP_ACL</span>
+
+
+Community name: batonaug@1
+Community Index: cisco8
+Community SecurityName: batonaug@1
+storage-type: nonvolatile            active       access-list: SNMP_ACL</pre>
+]]></text>
+
+</data>

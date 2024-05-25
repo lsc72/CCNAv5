@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.3.2 Vérification du protocole EIGRP pour IPv6 : commande show ip protocols</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole EIGRP pour IPv6</h1>
+        <h2>Vérification du protocole EIGRP pour IPv6</h2>
+      </div>
+      <div id="content">
+<p>La commande<span class="cmd"><b> show ipv6 protocols </b></span>affiche les paramètres et d'autres informations sur l'état des processus de routage IPv6 actifs actuellement configurés sur le routeur. La commande <span class="cmd"><b>show ipv6 protocols</b></span> affiche les différents types de sorties spécifiques à chaque protocole de routage IPv6. </p>
+<p></p>
+<p>Le résultat de la figure présente plusieurs paramètres EIGRP pour IPv6 précédemment décrits, notamment :</p>
+<p></p>
+<p>1. Le protocole EIGRP pour IPv6 est un protocole de routage dynamique actif sur R1 configuré avec le numéro de système autonome 2.</p>
+<p>2. Voici les valeurs <i>k</i> utilisées pour calculer la métrique composite EIGRP. Les valeurs K1 et K3 sont réglées sur 1, par défaut, et les valeurs K2, K4 et K5 sur 0, par défaut.</p>
+<p>3. L'ID de routeur EIGRP pour IPv6 de R1 est 1.0.0.0.</p>
+<p>4. Comme pour le protocole EIGRP pour IPv4, les distances administratives du protocole EIGRP pour IPv6 présentent une valeur interne de 90 et une valeur externe de 170 (valeurs par défaut).</p>
+<p>5. Les interfaces activées pour le protocole EIGRP pour IPv6.</p>
+<p></p>
+<p>Le résultat de la commande<span class="cmd"><b> show ipv6 protocols </b></span>facilite le débogage des opérations de routage. La section Interfaces indique les interfaces du protocole EIGRP pour IPv6 activées. Elle se révèle utile lorsque vous vérifiez que le protocole EIGRP est activé sur toutes les interfaces appropriées avec le numéro de système autonome correct. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

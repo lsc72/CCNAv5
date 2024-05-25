@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.3.2 Câble</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Choix d&#x0027;une technologie WAN</h1>
+        <h2>Infrastructure WAN publique</h2>
+      </div>
+      <div id="content">
+<p>Le câble coaxial est très répandu dans les zones urbaines pour distribuer le signal de télévision. De nombreux fournisseurs de télévision par câble proposent un accès réseau. Il offre une bande passante plus importante que la boucle locale téléphonique conventionnelle. </p>
+<p></p>
+<p>Les modems câble offrent une connexion permanente et sont simples à installer. L'abonné connecte l'ordinateur ou le routeur de réseau local au modem câble, qui traduit les signaux numériques en fréquences haut débit utilisées pour la transmission sur le réseau de télévision câblée. Le bureau local de télévision câblée, appelé tête de réseau câblé, comprend le système informatique et les bases de données requis pour fournir l'accès Internet. Le composant le plus important du côté de la tête de réseau est le système CMTS (Cable Modem Termination System), qui envoie et reçoit les signaux numériques du modem câble sur le réseau câble. Il est indispensable pour fournir des services Internet aux abonnés du câble.</p>
+<p></p>
+<p>Les abonnés avec un modem câble doivent utiliser le FAI associé au fournisseur de services. Tous les abonnés locaux partagent la même bande passante. Si d'autres utilisateurs rejoignent le service, la bande passante disponible peut chuter en dessous du débit attendu.</p>
+<p></p>
+<p>La topologie présentée dans la figure est un exemple de connexion WAN par câble.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

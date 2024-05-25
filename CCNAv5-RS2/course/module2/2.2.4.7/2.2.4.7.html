@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.4.7 Ports en état Error Disabled</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.4.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité du commutateur : gestion et implémentation</h1>
+        <h2>Sécurité des ports de commutateur</h2>
+      </div>
+      <div id="content">
+<p>Lorsque la sécurité des ports est configurée sur un port, ce dernier peut passer en mode de désactivation des erreurs (Error Disabled) à la suite d'une violation. Lorsqu'un port passe en mode de désactivation des erreurs, il est désactivé et ne peut plus ni envoyer ni recevoir de trafic. Une série de messages relatifs à la sécurité des ports s'affiche sur la console (Figure 1). </p>
+<p></p>
+<p>
+<b>Remarque </b>: le protocole et l'état de la liaison du port passent à l'état down.</p>
+<p></p>
+<p>La LED du port devient orange. La commande<span class="cmd"><b> show interfaces </b></span>identifie l'état du port comme étant<span class="cmd"><b> err-disabled </b></span>(Figure 2). Le résultat de la commande<span class="cmd"><b> show port-security interface </b></span>indique désormais que l'état du port est passé à<span class="cmd"><b> secure-shutdown</b></span>. Étant donné que le mode de violation du port est défini sur shutdown, le port sujet à une violation de sécurité passe en mode de désactivation des erreurs. </p>
+<p></p>
+<p>L'administrateur doit déterminer la cause de la violation de sécurité avant de réactiver le port. Si un périphérique non autorisé est connecté à un port sécurisé, le port ne doit pas être réactivé tant que la menace de sécurité n'a pas été éliminée. Pour réactiver le port, exécutez la commande de mode de configuration d'interface<span class="cmd"><b> shutdown </b></span>(Figure 3). Exécutez ensuite la commande de mode de configuration de d'interface <span class="cmd"><b>no shutdown</b></span> pour que le port fonctionne.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

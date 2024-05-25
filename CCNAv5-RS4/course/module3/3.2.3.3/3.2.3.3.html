@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.3.3 Paquet LCP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement de PPP</h1>
+        <h2>Sessions PPP</h2>
+      </div>
+      <div id="content">
+<p>La Figure 1 présente les champs du paquet LCP : </p>
+<p>
+<ul>
+<li>
+<b>Code </b>: le champ de code, d'une longueur d'un octet, identifie le type de paquet LCP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Identificateur </b>: le champ d'identificateur, d'une longueur d'un octet, sert à mettre en relation les demandes de paquets et les réponses.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Longueur </b>: le champ de longueur, d'une longueur de deux octets, indique la longueur totale du paquet LCP (avec tous les champs).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Données </b>: le champ de données est de zéro à plusieurs octets, comme indiqué par le champ de longueur. Le format de ce champ est déterminé par le code.</li>
+</ul>
+</p>
+<p></p>
+<p>Chaque paquet LCP est un message LCP unique comprenant un champ de code LCP identifiant le type de paquet LCP, un champ d'identificateur permettant d'associer les demandes à des réponses, et un champ de longueur indiquant la taille du paquet LCP et des données spécifiques du type de paquet LCP.</p>
+<p></p>
+<p></p>
+<p>Chaque paquet LCP a une fonction particulière dans l'échange des informations de configuration, en fonction de son type de paquet. Le champ de code du paquet LCP identifie le type de paquet selon la Figure 2.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

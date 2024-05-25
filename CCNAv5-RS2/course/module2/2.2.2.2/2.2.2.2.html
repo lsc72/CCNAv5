@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.2.2 Attaques de sécurité courantes : usurpation de DHCP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité du commutateur : gestion et implémentation</h1>
+        <h2>Problèmes de sécurité dans les LAN</h2>
+      </div>
+      <div id="content">
+<p>DHCP est le protocole qui affecte automatiquement à un hôte d'une adresse IP valide depuis un pool DHCP. L'utilisation de DHCP pour l'allocation d'adresses IP client remonte à l'avènement du protocole TCP/IP. Deux types d'attaques DHCP peuvent être menées contre un réseau commuté : l'épuisement des ressources DHCP et l'usurpation de DHCP.</p>
+<p></p>
+<p>Dans les attaques d'épuisement des ressources DHCP, un pirate inonde le serveur DHCP de requêtes DHCP afin d'utiliser toutes les adresses IP disponibles sur le serveur DHCP. Une fois que toutes les adresses IP ont été émises, le serveur ne peut plus fournir d'autre adresse. Cette situation se traduit par une attaque de déni de service (DoS) car les clients ne peuvent obtenir un accès au réseau. Une attaque DoS est définie comme une attaque utilisée pour surcharger certains périphériques et services réseau ciblés avec un trafic illégitime, empêchant ainsi le trafic légitime d'atteindre les ressources ciblées par l'attaque.</p>
+<p></p>
+<p>Dans les attaques par usurpation de DHCP, un pirate configure un faux serveur DHCP sur le réseau pour affecter des adresses DHCP aux clients. Cette attaque a généralement pour but de forcer les clients à utiliser un faux système de noms de domaine (DNS) ou Windows Internet Naming Service (WINS) et d'utiliser le serveur du pirate, ou une machine contrôlée par ce dernier, comme passerelle par défaut. </p>
+<p></p>
+<p>Une attaque d'épuisement des ressources DHCP est généralement menée avant une attaque par usurpation de DHCP, facilitant ainsi l'introduction d'un faux serveur DHCP sur le réseau.</p>
+<p></p>
+<p>Pour atténuer toute attaque DHCP, faites appel aux fonctions de sécurité des ports et de surveillance DHCP disponibles sur les commutateurs Cisco Catalyst. Ces fonctions sont traitées dans une autre rubrique.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

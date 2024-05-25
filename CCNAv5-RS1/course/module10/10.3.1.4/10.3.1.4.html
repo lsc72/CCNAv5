@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.3.1.4 Acheminement des données à travers l&#x0027;interréseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.3.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Un même message dans le monde entier</h1>
+        <h2>Faites passer le message !</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Préparation au transport</b>
+</p>
+<p>Une fois que l'adressage IP est ajouté, le paquet est transmis à la couche d'accès au réseau pour la génération des données sur les supports, comme le montre la figure. Pour ce faire, la couche d'accès au réseau doit d'abord préparer le paquet à la transmission en le plaçant dans une trame comportant un en-tête et une fin. Cette trame contient l'adresse physique de l'hôte source, ainsi que l'adresse physique du tronçon suivant vers la destination finale. Cette opération correspond au rôle de la couche 2 (couche liaison de données) du modèle OSI. La couche 2 est chargée de la livraison des messages sur un réseau local unique. L'adresse de couche 2 est unique sur le réseau local et représente l'adresse du périphérique final sur le support physique. Dans un réseau local qui utilise Ethernet, cette adresse est appelée adresse MAC (Media Access Control). Une fois que la couche d'accès au réseau a préparé la trame à l'aide des adresses sources et de destination, elle convertit la trame en bits, puis en impulsions électriques ou signaux lumineux envoyés sur les supports du réseau. </p>
+<p></p>
+<p>
+<b>Transport des données</b>
+</p>
+<p>Les données sont acheminées via l'interréseau, qui se compose de supports et de périphériques intermédiaires. Lorsque le message encapsulé est transmis sur le réseau, il peut traverser plusieurs supports et des types de réseau différents. La couche d'accès au réseau spécifie les techniques permettant de placer la trame sur chaque support et de la récupérer. Ces techniques sont des méthodes de contrôle d'accès aux supports. </p>
+<p></p>
+<p>Si l'hôte de destination se trouve sur le même réseau que l'hôte source, le paquet est acheminé entre les deux hôtes sur le support local sans nécessiter de routeur. Cependant, si l'hôte de destination et l'hôte source ne se trouvent pas sur le même réseau, le paquet peut être transporté sur plusieurs réseaux, sur différents types de supports et à travers plusieurs routeurs. Lors de leur acheminement sur le réseau, les informations contenues dans la trame ne sont pas modifiées. </p>
+<p></p>
+<p>À la limite de chaque réseau local, un périphérique réseau intermédiaire, généralement un routeur, désencapsule la trame pour lire l'adresse hôte de destination contenue dans l'en-tête du paquet. Les routeurs utilisent la partie d'identificateur de réseau de cette adresse pour déterminer le chemin à utiliser afin d'atteindre l'hôte de destination. Une fois le chemin déterminé, le routeur encapsule le paquet dans une nouvelle trame et l'envoie au tronçon suivant vers le périphérique final de destination.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

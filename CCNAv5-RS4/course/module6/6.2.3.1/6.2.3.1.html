@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.3.1 Types de technologies sans fil haut débit</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Comparaison des solutions haut débit</h1>
+        <h2>Accès haut débit sans fil</h2>
+      </div>
+      <div id="content">
+<p>À la place de la connectivité par câble et de la technologie DSL, de nombreux utilisateurs optent dorénavant pour une connectivité sans fil. </p>
+<p></p>
+<p>La portée des connexions sans fil inclut maintenant les réseaux personnels, les LAN et les WAN. Le nombre de hotspots actuellement présents dans le monde facilite l'accès aux connexions sans fil. Un hotspot représente la zone couverte par un ou plusieurs points d'accès interconnectés. Les lieux publics, comme les cafés, les restaurants et les librairies possèdent des hotspots Wi-Fi. Grâce au chevauchement des points d'accès, les hotspots peuvent couvrir plusieurs kilomètres carrés. </p>
+<p></p>
+<p>Les nouveaux développements en matière de technologie sans fil haut débit ont permis d'accroître la disponibilité des connexions sans fil. Ces types de haut débit sont explicités à la Figure 1 et incluent :</p>
+<p>
+<ul>
+<li>Wi-Fi municipal (maillé)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>WiMAX (Worldwide Interoperability for Microwave Access)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Cellulaire/mobile</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Internet par satellite</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Wi-Fi municipal</b>
+</p>
+<p>De nombreuses administrations municipales, travaillant souvent avec des fournisseurs de services, déploient des réseaux sans fil. Certains réseaux offrent un accès Internet haut débit, gratuitement ou à un prix nettement inférieur à celui des autres services haut débit. D’autres villes réservent les réseaux Wi-Fi à des fins officielles, octroyant à la police, aux pompiers et aux salariés municipaux un accès distant à Internet et aux réseaux municipaux.</p>
+<p></p>
+<p>La plupart des réseaux sans fil municipaux utilisent une topologie maillée plutôt qu'un modèle de type « Hub and Spoke ». Un maillage est une série de points d'accès interconnectés, comme illustré à la Figure 2. Chaque point d’accès est sur le même canal et peut communiquer avec au moins deux autres points d’accès. Le maillage recouvre sa zone de signaux radio. Les signaux transitent d'un point d'accès à un autre au travers de ce cloud.</p>
+<p></p>
+<p>Un réseau maillé présente divers avantages par rapport à un seul point d'accès public du routeur sans fils. Son installation est plus facile et moins chère du fait du nombre inférieur de fils. Un déploiement réalisé sur une large zone urbaine est plus rapide et plus fiable. Si un nœud tombe en panne, les autres compensent dans le maillage. </p>
+<p></p>
+<p>
+<b>WiMAX</b>
+</p>
+<p>La technologie WiMAX, comme illustré à la Figure 3, est une technologie de télécommunication destinée à assurer de diverses manières la transmission de données sans fil sur de longues distances, des liaisons point à point à un accès cellulaire mobile complet. WiMAX fonctionne à des vitesses supérieures, sur des distances plus importantes et pour un nombre supérieur d’utilisateurs que le Wi-Fi. En raison de son débit plus élevé (bande passante) et de la diminution du prix de ses composants, on s'attend à ce que la technologie WiMAX remplace bientôt les réseaux maillés municipaux lors des déploiements sans fil.</p>
+<p></p>
+<p>Un réseau WiMAX est constitué de deux composants principaux :</p>
+<p>
+<ul>
+<li>Une tour, dont le concept ressemble à une tour de téléphonie mobile. Une seule tour WiMAX permet de couvrir une zone aussi importante que 7.500 kilomètres carrés.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Un récepteur WiMAX est connecté à un port USB ou est intégré à un ordinateur portable ou à un autre périphérique sans fil.</li>
+</ul>
+</p>
+<p></p>
+<p>Une station tour WiMAX se connecte directement à Internet par l'intermédiaire d'une connexion à bande passante élevée, comme une ligne T3. Une tour peut également se connecter à d’autres tours WiMAX grâce aux liaisons micro-ondes en visibilité directe. La technologie WiMAX permet par conséquent de couvrir des zones rurales, hors de portée de la technologie d'accès au « dernier kilomètre » et de la technologie DSL.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

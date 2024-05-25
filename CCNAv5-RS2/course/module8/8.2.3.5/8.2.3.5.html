@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.3.5 Modification de la bande passante des interfaces</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.3.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv2 à zone unique</h1>
+        <h2>Coût OSPF</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Réglage de la bande passante des interfaces</b>
+</p>
+<p></p>
+<p>Pour modifier la bande passante des interfaces, utilisez la commande de configuration d'interface <span class="cmd"><b>bandwidth </b></span><span class="cmd"><i>kilobits</i></span>. Utilisez la commande <span class="cmd"><b>no bandwidth</b></span> pour restaurer la valeur par défaut.</p>
+<p></p>
+<p>L'exemple de la Figure 1 modifie la bande passante de l'interface série 0/0/1 de R1 sur 64 Kbit/s. Une vérification rapide permet de confirmer que le paramètre de bande passante de l'interface correspond désormais à 64 Kbit/s. </p>
+<p></p>
+<p>La bande passante doit être modifiée à chaque extrémité des liens série, donc :</p>
+<p>
+<ul>
+<li>R2 requiert la modification de son interface S0/0/1 sur 1 024 Kbit/s. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>R3 requiert la modification de son interface série 0/0/0 sur 64 Kbit/s et de son interface série 0/0/1 sur 1 024 Kbit/s.</li>
+</ul>
+</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 2 pour modifier l'interface série de R2 et R3.</p>
+<p></p>
+<p></p>
+<p>
+<b>Remarque</b> : les participants qui commencent tout juste leur formation sur les réseaux et sur Cisco IOS font souvent l'erreur de penser que la commande <span class="cmd"><b>bandwidth</b></span> modifie la bande passante physique du lien. La commande ne change que la métrique de bande passante utilisée par EIGRP et OSPF. La commande ne modifie pas la bande passante réelle du lien.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

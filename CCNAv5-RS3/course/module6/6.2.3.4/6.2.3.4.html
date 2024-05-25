@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.3.4 Vérification de la LSDB OSPF à zones multiples</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du routage OSPF à zones multiples</h1>
+        <h2>Vérification du protocole OSPF à zones multiples</h2>
+      </div>
+      <div id="content">
+<p>Servez-vous de la commande <span class="cmd"><b>show ip ospf database</b></span> pour vérifier le contenu de la base de données LSDB.</p>
+<p></p>
+<p>Plusieurs options sont disponibles avec la commande <span class="cmd"><b>show ip ospf database</b></span>.</p>
+<p></p>
+<p>Par exemple, la commande illustrée à la Figure 1 affiche le contenu de la LSDB de R1. Notez que R1 dispose d'entrées pour la zone 0 et la zone 1, car les routeurs ABR doivent entretenir une LSDB distincte pour chaque zone à laquelle ils sont associés. Dans la sortie,<span class="cmd"> Router Link States </span>pour la zone 0 identifie trois routeurs. La section<span class="cmd"> Summary Net Link States </span>identifie les réseaux appris à partir d'autres zones et les voisins ayant annoncé le réseau.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 2 pour vérifier la base de données LSDB de R2 et R3, à l'aide de la commande <span class="cmd"><b>show ip ospf database</b></span>. R2 possède des interfaces dans la zone 0 uniquement ; par conséquent, une seule LSDB est requise. Tout comme R1, R3 contient deux LSDB.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

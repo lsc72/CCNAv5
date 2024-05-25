@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.2.5 Packet Tracer : vérifier l&#x0027;adressage IPv4 et IPv6</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Vérification de la connectivité</h1>
+        <h2>Test et vérification</h2>
+      </div>
+      <div id="content">
+<p>Les protocoles IPv4 et IPv6 peuvent coexister sur le même réseau. À l'invite de commandes d'un PC, il existe certaines différences dans la manière dont les commandes sont émises et dans la manière dont le résultat est affiché.</p>
+<p></p>
+<p>
+<a href="../../files/8.3.2.5%20Packet%20Tracer%20-%20Verifying%20IPv4%20and%20IPv6%20Addressing%20Instructions.pdf" target="_blank">Packet Tracer - Vérifier l'adressage IPv4 et IPv6 : instructions</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/8.3.2.5%20Packet%20Tracer%20-%20Verifying%20IPv4%20and%20IPv6%20Addressing.pka" target="_blank">Packet Tracer - Vérifier l'adressage IPv4 et IPv6 : PKA</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

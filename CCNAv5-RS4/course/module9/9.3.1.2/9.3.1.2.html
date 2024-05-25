@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.3.1.2 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Pour que les administrateurs réseau soient en mesure de surveiller et de dépanner un réseau, ils doivent posséder une documentation à la fois complète, précise et actuelle du réseau, y compris les fichiers de configuration, les schémas de topologie physique et logique ainsi que le niveau de performances de référence.</p>
+<p>Les trois étapes principales du dépannage des problèmes réseau sont la collecte de symptômes, l'isolation du problème et la résolution du problème. Il est parfois nécessaire d'implémenter une solution provisoire du problème. Si l'action corrective souhaitée ne permet pas de résoudre le problème, la modification doit être annulée. L'administrateur réseau doit documenter l'ensemble des étapes du processus. Une stratégie de dépannage, incluant notamment les procédures de contrôle des modifications, doit être établie pour chaque étape. Une fois le problème résolu, il est important de le faire savoir aux utilisateurs, à quiconque a été impliqué dans le processus de dépannage et aux autres membres de l'équipe informatique.</p>
+<p>Le modèle OSI ou le modèle TCP/IP peut être appliqué à un problème réseau. Un administrateur réseau peut utiliser la méthode ascendante, la méthode descendante ou la méthode « diviser et conquérir ». Il existe également des méthodes moins structurées, comme les méthodes de type « shoot-from-the-hip », « spot-the-differences » et « move-the-problem ».</p>
+<p>Parmi les outils logiciels courants susceptibles de faciliter le dépannage, on peut citer les outils de système de gestion du réseau (NMS), les bases de connaissances, les outils de planification initiale, les analyseurs de protocole hôte et la fonction EPC Cisco IOS. Les outils matériels de dépannage incluent un module d'analyseur réseau (NAM, Network Analyzer Module), des multimètres numériques, des testeurs et analyseurs de câbles ainsi que des analyseurs réseau portables. Les informations de journalisation de Cisco IOS peuvent également être utilisées pour identifier des problèmes potentiels.<b></b></p>
+<p>L'administrateur réseau doit être au courant des symptômes et des problèmes de la couche physique, de la couche liaison de données, de la couche réseau, de la couche transport et de la couche application. Il doit également accorder une attention particulière à la connectivité physique, aux passerelles par défaut, aux tables d'adresses MAC, à la fonction NAT et aux informations de routage.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

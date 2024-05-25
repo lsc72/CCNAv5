@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.1.3 Problèmes d&#x0027;interface</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout; 
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du routage inter-VLAN</h1>
+        <h2>Problèmes de configuration inter-VLAN</h2>
+      </div>
+      <div id="content">
+<p>Lors de l'activation du routage inter-VLAN sur un routeur, l'une des erreurs de configuration les plus courantes consiste à connecter l'interface de routeur physique au mauvais port de commutateur. L'interface du routeur se trouve alors dans le mauvais VLAN, ce qui l'empêche d'atteindre les autres périphériques du même sous-réseau. </p>
+<p></p>
+<p>Comme l'illustre la figure, l'interface G0/0 du routeur R1 est connectée au port F0/9 du commutateur S1. Le port de commutateur F0/9 est configuré pour le VLAN par défaut, et non le VLAN 10. Le PC1 est donc incapable de communiquer avec l'interface du routeur. Par conséquent, il ne peut pas assurer le routage vers le VLAN 30.</p>
+<p></p>
+<p>Pour corriger ce problème, connectez physiquement l'interface G0/0 du routeur R1 au port F0/4 du commutateur S1. L'interface de routeur se trouve alors dans le bon VLAN et autorise le routage inter-VLAN. Vous pouvez également modifier l'affectation VLAN du port de commutateur F0/9 au VLAN 10. Ceci permet également à PC1 de communiquer avec l'interface G0/0 du routeur R1.  </p></p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

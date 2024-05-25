@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.4.4 Sécurité des ports : modes de violation</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.4.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité du commutateur : gestion et implémentation</h1>
+        <h2>Sécurité des ports de commutateur</h2>
+      </div>
+      <div id="content">
+<p>Il y a violation de la sécurité lorsque l'une des situations suivantes se présente : </p>
+<p></p>
+<p>
+<ul>
+<li>Le nombre maximal d'adresses MAC sécurisées a été ajouté dans la table d'adresses de l'interface et une station dont l'adresse MAC ne figure pas dans la table d'adresses tente d'accéder à l'interface. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Une adresse assimilée ou configurée dans une interface sécurisée est visible sur une autre interface sécurisée dans le même VLAN.</li>
+</ul>
+</p>
+<p></p>
+<p>Une interface peut être configurée pour l'un des trois modes de violation, en spécifiant les actions à entreprendre en cas de violation. La figure illustre les types de trafic de données transmis lorsque l'un des modes de violation de sécurité suivants est configuré sur un port : </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Protect</b> : lorsque le nombre d'adresses MAC sécurisées atteint la limite autorisée sur le port, les paquets munis d'adresses sources inconnues sont ignorés jusqu'à ce qu'un nombre suffisant d'adresses MAC sécurisées soit supprimé ou que le nombre maximal d'adresses à autoriser soit augmenté. Aucune notification n'indique qu'une violation de sécurité s'est produite. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Restrict : </b>lorsque le nombre d'adresses MAC sécurisées atteint la limite autorisée sur le port, les paquets munis d'adresses sources inconnues sont ignorés jusqu'à ce qu'un nombre suffisant d'adresses MAC sécurisées soit supprimé ou que le nombre maximal d'adresses à autoriser soit augmenté. Dans ce mode, une notification indique qu'une violation de sécurité s'est produite.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Shutdown</b> : dans ce mode (le mode par défaut), toute violation de sécurité de port entraîne immédiatement la désactivation de l'enregistrement des erreurs dans l'interface et celle de la LED du port. Dans ce mode, le compteur de violation est incrémenté. Lorsqu'un port sécurisé fonctionne en mode de désactivation des erreurs, il est possible d'annuler cet état par simple saisie des commandes de mode de configuration d'interface <span class="cmd"><b>shutdown</b></span> et <span class="cmd"><b>no shutdown</b></span>. </li>
+</ul>
+</p>
+<p></p>
+<p>Pour modifier le mode de violation d'un port de commutateur, utilisez la commande de mode de configuration d'interface<span class="cmd"><b> switchport port-security violation </b></span><span class="cmd">{</span><span class="cmd"><b>protect </b></span><span class="cmd">|</span><span class="cmd"><b> restrict </b></span><span class="cmd">|</span><span class="cmd"><b> shutdown</b></span><span class="cmd">}</span>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

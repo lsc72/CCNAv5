@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.3.1.5 Travaux pratiques : dépannage des configurations de la NAT</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.3.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage de la fonctionnalité NAT</h1>
+        <h2>Dépannage de la fonctionnalité NAT</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Au cours de ce TP, vous aborderez les points suivants :</b>
+</p>
+<p>
+<ul>
+<li>Partie 1 : création du réseau et configuration des paramètres de périphérique de base</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Partie 2 : dépannage de la NAT statique</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Partie 3 : dépannage de la NAT dynamique</li>
+</ul>
+</p>
+<p></p>
+<p>
+<a href="../../files/11.3.1.5%20Lab%20-%20Troubleshooting%20NAT%20Configurations.pdf" target="_blank">Travaux pratiques : dépannage des configurations de la NAT</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

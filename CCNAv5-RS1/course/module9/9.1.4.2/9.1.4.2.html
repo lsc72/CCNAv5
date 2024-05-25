@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.4.2 Segmenter le réseau en fonction de ses besoins </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmenter un réseau IPv4 en sous-réseaux</h1>
+        <h2>Déterminer le masque de sous-réseau</h2>
+      </div>
+      <div id="content">
+<p>Parfois, c'est le nombre de sous-réseaux qui est plus important que le nombre d'adresses d'hôte par sous-réseau. Cela peut être le cas lorsqu'une entreprise décide de séparer le trafic réseau en fonction d'une structure interne ou de ses différents services. Par exemple, une entreprise peut choisir de placer tous les périphériques hôtes utilisés par les employés du service ingénierie sur un réseau et tous les périphériques hôtes utilisés par la direction sur un réseau distinct. Dans ce cas, c'est principalement le nombre de sous-réseaux requis qui détermine le nombre de bits à emprunter.</p>
+<p></p>
+<p>Souvenez-vous que le nombre de sous-réseaux créés lorsque des bits sont empruntés peut être calculé en utilisant la formule 2^n (où n est le nombre de bits empruntés). Il n'est pas nécessaire de soustraire des sous-réseaux créés puisqu'ils sont tous utilisables.</p>
+<p></p>
+<p>L'essentiel est d'équilibrer le nombre de sous-réseaux nécessaires et le nombre d'hôtes requis par le plus grand sous-réseau. Plus le nombre de bits empruntés pour créer des sous-réseaux est élevé, moins il y a d'hôtes disponibles par sous-réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

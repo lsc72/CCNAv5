@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.1.2 Schémas de topologie réseau</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage avec une approche systématique</h1>
+        <h2>Documentation du réseau</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Schémas de topologie réseau</b>
+</p>
+<p>Les schémas de topologie réseau indiquent l'emplacement, la fonction et l'état des périphériques présents sur le réseau. Il existe deux types de schémas de topologie réseau, à savoir les schémas de topologie physique et les schémas de topologie logique.</p>
+<p></p>
+<p>
+<b>Topologie physique</b>
+</p>
+<p>Un schéma physique du réseau indique la disposition physique des périphériques connectés au réseau. Il est nécessaire de savoir comment les périphériques sont physiquement connectés pour pouvoir résoudre les problèmes liés à la couche physique. Les informations figurant sur le schéma incluent généralement :</p>
+<p>
+<ul>
+<li>le type de périphérique </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>le modèle et le fabricant </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>la version du système d’exploitation </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>le type et l’identificateur de câble </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>les spécifications du câble  </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>le type de connecteur </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>les points d'extrémité du câblage</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 1 illustre un exemple de schéma de topologie réseau physique.</p>
+<p></p>
+<p>
+<b>Topologie logique</b>
+</p>
+<p>Une topologie réseau logique montre comment les périphériques sont connectés logiquement sur le réseau, indiquant ainsi comment ces périphériques transfèrent concrètement les données sur le réseau lorsqu'ils communiquent entre eux. Des symboles sont utilisés pour représenter les différents éléments du réseau, tels que les routeurs, les serveurs, les hôtes, les concentrateurs VPN et les périphériques de sécurité. De plus, les connexions entre divers sites peuvent être affichées, mais sans toutefois indiquer les emplacements physiques réels. Un schéma logique de réseau peut comprendre les informations suivantes : </p>
+<p>
+<ul>
+<li>Identificateurs de périphériques </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Adresse IP et longueurs de préfixe</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Identificateurs d’interfaces</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Type de connexion</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>DLCI pour circuits virtuels</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Réseaux privés virtuels de site à site</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Protocoles de routage</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Routes statiques</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Protocoles de liaison de données</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Technologies WAN utilisées</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 2 illustre un exemple de topologie réseau IPv4 logique. Bien que les adresses IPv6 puissent également s'afficher dans la même topologie, il peut s'avérer nécessaire de créer un schéma de topologie réseau IPv6 logique distinct.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

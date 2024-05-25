@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.3.4.3 Options de commande show cdp neighbors</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.3.4.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Performances réseau de base</h1>
+        <h2>Commandes hôtes et IOS</h2>
+      </div>
+      <div id="content">
+<p>Examinez le résultat des commandes <span class="cmd"><b>show cdp neighbors</b></span> sur la Figure 1 avec la topologie de la Figure 2. Notez que R3 a collecté certaines informations détaillées sur R2 et sur le commutateur connecté à l'interface FastEthernet sur R3.</p>
+<p></p>
+<p>CDP est un protocole propriétaire de Cisco qui s'exécute au niveau de la couche liaison de données. Puisque le protocole CDP fonctionne au niveau de la couche liaison de données, deux périphériques réseau Cisco ou plus, tels que des routeurs prenant en charge différents protocoles de couche réseau, peuvent échanger des informations même si la connectivité de couche 3 n'existe pas.</p>
+<p></p>
+<p>Lorsqu'un périphérique Cisco démarre, le protocole CDP démarre par défaut. Le protocole CDP détecte automatiquement les périphériques Cisco voisins qui l'exécutent, quels que soient le protocole ou les suites de couche 3 en cours d'exécution. Le protocole CDP échange des informations sur les périphériques matériels et logiciels avec ses voisins CDP connectés directement.</p>
+<p></p>
+<p>Le protocole CDP fournit les informations suivantes concernant chaque périphérique CDP voisin :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Identificateurs de périphériques</b> : par exemple, le nom d'hôte configuré d'un commutateur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Liste d'adresses</b> : une adresse de couche réseau maximum pour chaque protocole pris en charge.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Identificateur de port</b> : le nom du port local et distant (sous la forme d'une chaîne de caractères ASCII, comme ethernet0).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Liste de capacités</b> : par exemple, pour savoir si ce périphérique est un routeur ou un commutateur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Plateforme</b> : plateforme matérielle du périphérique, par exemple, un routeur Cisco série 1841.</li>
+</ul>
+</p>
+<p></p>
+<p>La commande <span class="cmd"><b>show cdp neighbors detail</b></span> indique l'adresse IP d'un périphérique voisin. Le protocole CDP révèle l'adresse IP du voisin, que vous puissiez lui envoyer ou non une requête ping. Cette commande est très utile lorsque deux routeurs Cisco ne peuvent pas router via leur liaison de données partagée. La commande <span class="cmd"><b>show cdp neighbors detail</b></span> permet de déterminer si l'un des voisins CDP présente une erreur de configuration IP.</p>
+<p></p>
+<p>Pour les situations de détection réseau, connaître l'adresse IP du voisin CDP suffit souvent pour établir une connexion Telnet avec ce périphérique.</p>
+<p></p>
+<p>Pour des raisons évidentes, le protocole CDP représente un risque pour la sécurité. Certaines versions d'IOS envoyant des annonces CDP par défaut, il est important de savoir comment désactiver le protocole CDP.</p>
+<p></p>
+<p>Pour désactiver le protocole CDP globalement, utilisez la commande de configuration globale <span class="cmd"><b>no cdp run</b></span>. Pour désactiver le protocole CDP sur une interface, utilisez la commande d'interface <span class="cmd"><b>no cdp enable.</b></span></p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.4.2 Surveillance DHCP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité du commutateur : gestion et implémentation</h1>
+        <h2>Sécurité des ports de commutateur</h2>
+      </div>
+      <div id="content">
+<p>La surveillance DHCP est une fonction de Cisco Catalyst qui détermine quels ports du commutateur sont en mesure de répondre aux requêtes DHCP. Les ports sont identifiés comme étant fiables et non fiables. Les ports fiables peuvent obtenir tous les messages DHCP, y compris les paquets des offres et des accusés de réception DHCP. Les ports non fiables peuvent uniquement obtenir les demandes. Les ports fiables hébergent un serveur DHCP ou peuvent offrir une liaison montante vers le serveur DHCP. Si un périphérique non autorisé sur un port non fiable tente d'envoyer un paquet d'offre DHCP sur le réseau, le port est arrêté. Vous pouvez associer cette fonction aux options DHCP dans lesquelles des informations concernant le commutateur, notamment l'ID de port de la requête DHCP, peuvent être incluses dans le paquet de requêtes DHCP.</p>
+<p></p>
+<p>Comme illustré aux Figures 1 et 2, les ports non fiables sont les ports autres que ceux configurés explicitement comme fiables. Une table de liaison DHCP est construite pour les ports non fiables. Chaque entrée contient une adresse MAC cliente, une adresse IP, une durée de bail, un type de liaison, un numéro de VLAN et un ID de port enregistrés à mesure que les clients soumettent des requêtes DHCP. La table sert ensuite à filtrer le trafic DHCP qui suit. Du point de vue de la surveillance DHCP, les ports d'accès non fiables ne doivent envoyer aucun message de serveur DHCP. </p>
+<p></p>
+<p>La procédure ci-après illustre la manière de configurer la surveillance DHCP sur un commutateur Cisco Catalyst 2960 :</p>
+<p></p>
+<p>
+<b>Étape 1.</b> Activez la surveillance DHCP à l'aide de la commande de mode de configuration globale <span class="cmd"><b>ip dhcp snooping</b></span>.</p>
+<p>
+<b>Étape 2.</b> Activez la surveillance DHCP pour des VLAN spécifiques au moyen de la commande<span class="cmd"><b> ip dhcp snooping vlan </b></span><span class="cmd"><i>nombre</i></span>.</p>
+<p>
+<b>Étape 3.</b> Au niveau de l'interface, définissez les ports comme étant fiables en définissant les ports fiables avec la commande <span class="cmd"><b>ip dhcp snooping trust</b></span>.</p>
+<p>
+<b>Étape 4.</b> (Facultatif) Pour limiter la fréquence à laquelle un pirate peut perpétuellement transmettre de fausses requêtes DHCP au serveur DHCP via des ports non fiables, utilisez la commande <span class="cmd"><b>ip dhcp snooping limit rate <span class="cmd"><i>fréquence</i></span></b></span>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

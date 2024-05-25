@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.1.7 Réseau distribué</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.1.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation des technologies WAN</h1>
+        <h2>Objectif des WAN</h2>
+      </div>
+      <div id="content">
+<p>SPAN Engineering existe maintenant depuis 20 ans, et compte maintenant des milliers d'employés partout dans le monde, comme illustré à la Figure 1. Le coût du réseau et des services liés représente une dépense significative. La société cherche à offrir les meilleurs services réseau à ses employés, au coût le plus bas possible. Avec des services réseau optimisés, les employés travailleraient de façon plus efficace. </p>
+<p></p>
+<p>Afin d'améliorer sa rentabilité, SPAN Engineering doit réduire ses coûts de fonctionnement. La société a décidé de déménager certaines de ces installations dans des régions moins chères. Elle encourage également le télétravail et les équipes virtuelles. Des applications Web, notamment les conférences Web, l'apprentissage en ligne, et les outils de collaboration en ligne sont utilisés pour augmenter la productivité et réduire les coûts. Les réseaux privés virtuels de site à site et d'accès à distance permettent à l'entreprise d'utiliser Internet pour se connecter facilement et en toute sécurité avec des employés et des installations partout dans le monde. Pour répondre à ces besoins, le réseau doit offrir les services convergents nécessaires, et assurer une connexion au réseau étendu Internet sécurisée aux bureaux et aux employés distants, comme illustré à la Figure 2. </p>
+<p></p>
+<p>Comme dans cet exemple, les besoins en matière de réseau peuvent changer radicalement avec la croissance de l'entreprise. La répartition des employés permet de réaliser des économies à de nombreux égards, mais a également pour effet d'augmenter la demande sur le réseau. Le réseau doit non seulement répondre aux besoins de fonctionnement quotidien de l'entreprise, mais il doit aussi être en mesure de s'adapter et de suivre l'évolution de l'entreprise. Les concepteurs et les administrateurs de réseau doivent donc choisir avec soin les technologies, les protocoles et les fournisseurs de services réseau. Ils optimisent les réseaux en appliquant de nombreuses architectures et techniques de conception présentées dans ce cours. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

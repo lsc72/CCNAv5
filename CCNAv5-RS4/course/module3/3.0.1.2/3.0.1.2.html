@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.0.1.2 Exercice en classe : persuasion PPP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Connexions point à point</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Persuasion PPP</b>
+</p>
+<p></p>
+<p>Votre superviseur d'ingénierie réseau a récemment participé à une conférence sur les réseaux au cours de laquelle les protocoles de couche 2 ont été présentés. Il sait que vous utilisez des équipements Cisco dans les locaux que vous gérez, mais il voudrait également offrir la sécurité, ainsi que des options et des contrôles TCP/IP avancés sur ce même équipement à l'aide du protocole point à point (PPP).</p>
+<p></p>
+<p>Après avoir effectué des recherches sur le protocole PPP, vous trouvez que celui-ci présente certains avantages par rapport au protocole HDLC qui est actuellement utilisé sur votre réseau.</p>
+<p></p>
+<p>Établissez un tableau répertoriant les avantages et les inconvénients de l'utilisation du protocole HDLC par rapport aux protocoles PPP. Lors de la comparaison des deux protocoles, tenez compte des éléments suivants :</p>
+<p>
+<ul>
+<li>Simplicité de configuration</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Adaptabilité à un équipement réseau non propriétaire</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Options de sécurité</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Utilisation de la bande passante et compression</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Consolidation de la bande passante</li>
+</ul>
+</p>
+<p>Partagez votre tableau avec un autre étudiant ou une autre classe. Indiquez si oui ou non vous proposeriez de partager le tableau avec le superviseur d'ingénierie réseau en vue de justifier le passage du protocole HDLC au protocole PPP pour la connectivité réseau de la couche 2.</p>
+<p></p>
+<p>
+<a href="../../files/3.0.1.2%20PPP%20Persuasion%20Instructions.pdf" target="_blank">Exercice en classe : persuasion PPP</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

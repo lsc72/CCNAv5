@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.5.4 Le VLSM dans la pratique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.5.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmenter un réseau IPv4 en sous-réseaux</h1>
+        <h2>Les avantages du masquage de sous-réseau de longueur variable</h2>
+      </div>
+      <div id="content">
+<p>Avec les sous-réseaux VLSM, les segments LAN et WAN peuvent être adressés sans perte inutile.</p>
+<p></p>
+<p>Les hôtes de chaque réseau local obtiennent une adresse d'hôte valide avec la plage de ce sous-réseau et le masque /27. L'interface de réseau local de chacun des quatre routeurs obtient un sous-réseau /27 et une ou plusieurs interfaces série obtiennent un sous-réseau /30.</p>
+<p></p>
+<p>Conformément au schéma d'adressage commun, la première adresse d'hôte IPv4 de chaque sous-réseau est attribuée à l'interface de réseau local du routeur. Les interfaces de réseau étendu des routeurs obtiennent les adresses IP et le masque des sous-réseaux /30.</p>
+<p></p>
+<p>Les Figures 1 à 4 présentent la configuration d'interface de chacun des routeurs.</p>
+<p></p>
+<p>Les hôtes de chaque sous-réseau obtiennent une adresse d'hôte IPv4 appartenant à la plage d'adresses d'hôte du sous-réseau et un masque approprié. Les hôtes utilisent l'adresse de l'interface de réseau local du routeur connecté comme adresse de passerelle par défaut. </p>
+<p>
+<ul>
+<li>Les hôtes du bâtiment A (192.168.20.0/27) utilisent l'adresse 192.168.20.1 du routeur comme adresse de passerelle par défaut.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les hôtes du bâtiment B (192.168.20.32/27) utilisent l'adresse 192.168.20.33 du routeur comme adresse de passerelle par défaut.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les hôtes du bâtiment C (192.168.20.64/27) utilisent l'adresse 192.168.20.65 du routeur comme adresse de passerelle par défaut.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les hôtes du bâtiment D (192.168.20.96/27) utilisent l'adresse 192.168.20.97 du routeur comme adresse de passerelle par défaut.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

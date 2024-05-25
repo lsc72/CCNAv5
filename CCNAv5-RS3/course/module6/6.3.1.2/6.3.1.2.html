@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.1.2 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>La topologie OSPF à zone unique est une méthode utile pour les réseaux de petite taille, mais on lui préférera le protocole OSPF à zones multiples pour les réseaux de plus grande envergure. Le protocole OSPF à zones multiples permet de résoudre les problèmes de taille excessive des tables de routage et des bases de données d'états de liens, et de réduire les calculs d'algorithme SPF, comme illustré aux Figures 1 et 2.</p>
+<p></p>
+<p>La zone principale est appelée zone fédératrice (zone 0) et toutes les autres zones doivent y être reliées. Le routage est toujours effectué entre les zones, tandis qu'une grande partie des opérations de routage, telles que le recalcul de la base de données, est conservée dans une zone.</p>
+<p></p>
+<p>Il existe quatre types de routeur OSPF différents : le routeur interne, le routeur fédérateur, le routeur ABR (Area Border Router) et le routeur ASBR (Autonomous System Boundary Router). Un routeur peut appartenir à plusieurs types de routeur.</p>
+<p></p>
+<p>Les annonces d'état de liens (LSA, Link State Advertisement) sont les éléments de base de la topologie OSPF. Ce chapitre traite principalement des LSA de type 1 à 5. Les LSA de type 1 sont également appelées entrées de liaisons du routeur. Les LSA de type 2 sont appelées annonces de réseau et sont diffusées par un routeur désigné (DR). Les LSA de type 3 sont appelées annonces récapitulatives ; elles sont créées et propagées par les routeurs ABR. Les LSA de type 4 récapitulatives sont générées par un ABR uniquement lorsqu’un ASBR est présent dans une zone. Les LSA externes de type 5 décrivent les routes menant à des réseaux externes au système autonome OSPF. Les LSA de type 5 sont émises par l’ASBR et diffusées au système autonome entier. </p>
+<p></p>
+<p>Les routes OSPF d'une table de routage IPv4 sont identifiées comme suit : O, O IA, O E1 ou O E2. Chaque routeur applique l’algorithme SPF à sa LSDB pour construire l’arborescence SPF. L’arborescence SPF est ensuite utilisée pour calculer les meilleures routes. </p>
+<p></p>
+<p>Aucune commande spéciale n'est requise pour implémenter un réseau OSPF à zones multiples. Un routeur devient un routeur ABR simplement lorsqu'il possède deux instructions <span class="cmd"><b>network</b></span> dans différentes zones.</p>
+<p></p>
+<p>Exemple de configuration OSPF à zones multiples :</p>
+<p></p>
+<p>
+<span class="cmd">R1(config)# </span>
+<span class="cmd">
+<b>router ospf 10</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config-router)# </span>
+<span class="cmd">
+<b>router-id 1.1.1.1</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config-router)# </span>
+<span class="cmd">
+<b>network 10.1.1.1 0.0.0.0 area 1</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config-router)# </span>
+<span class="cmd">
+<b>network 10.1.2.1 0.0.0.0 area 1</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config-router)# </span>
+<span class="cmd">
+<b>network 192.168.10.1 0.0.0.0 area 0</b>
+</span>
+</p>
+<p>Le protocole OSPF n'effectue pas d'autorécapitulation. Dans le protocole OSPF, la récapitulation ne peut être configurée que sur des routeurs ABR ou ASBR. La récapitulation de route interzone doit être configurée manuellement et a lieu sur des routeurs ABR. Elle s'applique aux routes issues de chaque zone. Pour configurer manuellement la récapitulation des routes interzone sur un routeur ABR, utilisez la commande de mode de configuration de routeur <span class="cmd"><b>area </b></span><span class="cmd"><i>area-id</i></span><span class="cmd"><b> range</b></span><span class="cmd"><i> address mask</i></span>. </p>
+<p></p>
+<p>La récapitulation de route externe est une opération spécifique aux routes externes injectées dans le protocole OSPF par redistribution. En règle générale, seuls des routeurs ASBR récapitulent des routes externes. La récapitulation de route externe est configurée sur les routeurs ASBR à l'aide de la commande de mode de configuration de routeur <span class="cmd"><b>summary-address </b></span><span class="cmd"><i>address mask</i></span>.</p>
+<p></p>
+<p>Les commandes permettant de vérifier la configuration du routage OSPF sont les suivantes :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip ospf neighbor </b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip ospf</b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip ospf interface </b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip protocols</b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip ospf interface brief</b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip route ospf</b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip ospf database </b>
+</span>
+</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

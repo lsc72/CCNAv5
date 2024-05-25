@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<data>		
+		<slide>		
+		<element type="TEXT" subType="TITLE" compId="ID_title" />	
+		<element type="IMAGE" src="5.1.3.3.jpg" x="0" y="0" width="470" height="400" />
+		<element type="TEXT" id="ID_static_1" text="G0/0" x="188.4" y="74.65" width="26.95" align="center" />
+		<element type="TEXT" id="ID_static_2" text="F0/5" x="189.35" y="104.35" width="25" align="center" />
+		<element type="TEXT" id="ID_static_3" text="F0/11" x="180.2" y="162.75" width="31" align="center" />
+		<element type="TEXT" id="ID_static_4" text="F0/6" x="216.55" y="162.75" width="25" align="center" />
+		<element type="TEXT" id="ID_static_5" text="172.17.10.21" x="94.15" y="243.05" width="67" align="center" />
+		<element type="TEXT" id="ID_static_6" text="172.17.30.23" x="257.05" y="243.05" width="67" align="center" />
+		<element type="TEXT" compId="ID_txt02" x="277" y="32" width="150.9" expand="down" align="center" />
+		<element type="TEXT" compId="ID_txt01" x="39" y="59" width="95.75" expand="up" align="center" />
+		<element type="TEXT" compId="ID_txt03" x="18" y="116" width="102.9" expand="down" align="center" />
+		<element type="TEXT" compId="ID_txt04" x="275" y="122" width="100.7" expand="right" align="center" />
+		<element type="ROUTER" textId="ID_s4_txt01" x="3.85" y="258.8" width="462" height="138.05"/>
+		</slide>	
+
+
+
+
+<text id="ID_s4_txt01"><![CDATA[<pre><span class="orange orange1">R1(config)# <b>interface g0/0.10 </b>
+R1(config-subif)# <b>encapsulation dot1q 10 </b>
+R1(config-subif)# <b>ip address 172.17.10.1 255.255.255.0 </b>
+R1(config-subif)# <b>interface g0/0.30 </b>
+R1(config-subif)# <b>encapsulation dot1q 30 </b>
+R1(config-subif)# <b>ip address 172.17.30.1 255.255.255.0 </b>
+R1(config)# <b>interface g0/0 </b>
+R1(config-if)# <b>no shutdown </b></span>
+*Mar 20 00:20:59.299: %LINK-3-UPDOWN: Interface GigabitEthernet0/0, 
+ changed state to down
+*Mar 20 00:21:02.919: %LINK-3-UPDOWN: Interface GigabitEthernet0/0,
+ changed state to up
+*Mar 20 00:21:03.919: %LINEPROTO-5-UPDOWN: Line protocol on 
+ Interface GigabitEthernet0/0, changed state to up
+</pre>
+]]></text>		
+</data>

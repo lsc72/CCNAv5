@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	  <slide type="MBAR">
+	  <!-- Slide 01 -->
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s1_header"/>
+			<element type="ROUTER"  textId="router_s1_text1"  x="3.1" y="53.45" width="434.25" height="270.35"/>		
+			<element type="TEXT" compId="ID_s1_txt01" x="10" y="90.5" width="417" expand="down" align="left"   />
+		</slide>
+		<!-- Slide 02 -->
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_header"/>
+			<element type="ROUTER"  textId="router_s2_text1"  x="3.1" y="53.45" width="434.25" height="310.35"/>
+			<element type="TEXT" compId="ID_s2_txt02" x="11.35" y="320.85" width="104" expand="right" align="left"   />
+
+		</slide>
+		
+	<!-- Slide 03 -->
+		<slide> 	
+			<element type="ACTIVITY" subType="SYNTAX" compId="ID_s3_SC1" x="1.5" y="35" width="437.1" height="360" resetId = "ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>	
+		</slide>
+		
+	  </slide>
+	  <text id="router_s1_text1"><![CDATA[<pre>R1(config)# <b>license accept end user agreement</b>
+
+
+
+ACCEPT? [yes/no]: <b>yes</b>
+R1(config)#
+*Apr 12 11:05:43.775: %LICENSE-6-EULA_ACCEPT_ALL: <span class = "orange">The Right to Use</span>
+<span class = "orange">End User License Agreement is accepted</span>
+R1(config)# <b>license boot module c1900 technology-package datak9</b>
+% use 'write' command to make license boot config take effect
+on next boot
+
+R1(config)#
+*Apr 12 11:06:19.851: %IOS_LICENSE_IMAGE_APPLICATION-6-LICENSE_LEVEL:
+Module name = c1900 Next reboot level = datak9 and License = datak9
+R1(config)#</pre>]]></text>
+
+
+	  <text id="router_s2_text1"><![CDATA[<pre>R1#<b> show license</b>
+Index 1 Feature: ipbasek9                       
+        Period left: Life time
+        License Type: Permanent
+        License State: Active, In Use
+        License Count: Non-Counted
+        License Priority: Medium
+Index 2 Feature: securityk9                     
+        Period left: Life time
+        License Type: Permanent
+        License State: Active, In Use
+        License Count: Non-Counted
+        License Priority: Medium
+Index 3 Feature: <span class = "orange">datak9</span>                        
+<span class = "orange_block">        Period left: 8  weeks 4  days</span>        Period Used: 0  minute  0  second
+<span class = "orange_block">        License Type: EvalRightToUse</span>        License State: Active, Not in Use, EULA accepted
+        License Count: Non-Counted
+        License Priority: Low</pre>]]></text>
+
+</data>
+

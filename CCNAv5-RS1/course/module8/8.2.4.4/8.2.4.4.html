@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.4.4 La configuration dynamique d&#x0027;une adresse de monodiffusion globale avec la méthode DHCPv6</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.4.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Les adresses réseau IPv6</h1>
+        <h2>Les adresses de monodiffusion globale IPv6</h2>
+      </div>
+      <div id="content">
+<p>
+<b>DHCPv6</b>
+</p>
+<p></p>
+<p>Le protocole DHCP (Dynamic Host Configuration Protocol) pour l'IPv6 (DHCPv6) est comparable au DHCP pour l'IPv4. Un périphérique peut recevoir automatiquement ses informations d'adressage, y compris une adresse de monodiffusion globale, la longueur du préfixe, l'adresse de la passerelle par défaut et les adresses des serveurs DNS à l'aide des services d'un serveur DHCPv6. </p>
+<p></p>
+<p>Un périphérique peut recevoir une partie ou la totalité de ses informations d'adressage IPv6 depuis un serveur DHCPv6, selon que l'option 2 (SLAAC et DHCPv6) ou l'option 3 (DHCPv6 uniquement) est spécifiée dans le message d'annonce de routeur ICMPv6. En outre, le système d'exploitation de l'hôte peut choisir d'ignorer le message d'annonce de routeur et d'obtenir son adresse IPv6 et les autres informations directement à partir d'un serveur DHCPv6.</p>
+<p></p>
+<p>Avant de déployer des périphériques IPv6 dans un réseau, il est judicieux de commencer par vérifier si l'hôte peut observer les options dans le message d'annonce de routeur ICMPv6.</p>
+<p></p>
+<p>Un périphérique peut obtenir son adresse de monodiffusion globale IPv6 de manière dynamique et peut également être configuré avec plusieurs adresses IPv6 statiques sur la même interface. L'IPv6 permet à plusieurs adresses IPv6 appartenant au même réseau IPv6 d'être configurées sur la même interface. </p>
+<p></p>
+<p>Un périphérique peut également être configuré avec plusieurs adresses IPv6 de passerelle par défaut. Pour plus d'informations sur la sélection de l'adresse à utiliser comme adresse source IPv6 ou de l'adresse de passerelle par défaut à utiliser, reportez-vous au RFC 6724, « Default Address Selection for IPv6 ».</p>
+<p></p>
+<p>
+<b>ID d'interface</b>
+</p>
+<p>Si le client n'utilise pas les informations contenues dans le message d'annonce de routeur et compte uniquement sur le DHCPv6, le serveur DHCPv6 fournit alors l'adresse de monodiffusion globale IPv6 complète, y compris le préfixe et l'ID d'interface.</p>
+<p></p>
+<p>Cependant, si l'option 1 (SLAAC uniquement) ou l'option 2 (SLAAC avec DHCPv6) est utilisée, le client n'obtient pas la partie ID d'interface réelle de l'adresse grâce à ces processus. Le périphérique client doit alors déterminer son propre ID d'interface de 64 bits, soit à l'aide de la méthode EUI-64 soit en générant un nombre aléatoire de 64 bits. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

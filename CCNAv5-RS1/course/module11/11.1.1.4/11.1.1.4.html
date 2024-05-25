@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.1.1.4 Redondance dans un petit réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Création et développement</h1>
+        <h2>Périphériques d&#x0027;un petit réseau</h2>
+      </div>
+      <div id="content">
+<p>Un autre aspect important de la conception d'un réseau est la fiabilité. Même dans les petites entreprises, le réseau joue un rôle déterminant. La moindre panne du réseau peut coûter très cher. Pour assurer un niveau de fiabilité élevé, la redondance doit être pensée dans la conception du réseau. La redondance permet d'éliminer les points de défaillance uniques. Il existe plusieurs moyens d'assurer la redondance d'un réseau. Elle peut passer par l'installation d'équipements en double, mais elle peut également être assurée par le doublement des liaisons réseau dans les zones critiques, comme le montre la figure. </p>
+<p></p>
+<p>Plus la taille du réseau est réduite, moins la redondance matérielle risque d'être abordable. Par conséquent, on utilise souvent la redondance des connexions de commutateur entre plusieurs commutateurs du réseau et entre les commutateurs et les routeurs. </p>
+<p>En outre, les serveurs disposent souvent de plusieurs ports de carte réseau qui permettent des connexions redondantes avec un ou plusieurs commutateurs. Dans un réseau de petite taille, les serveurs sont généralement déployés en tant que serveurs Web, serveurs de fichiers ou serveurs de messagerie.</p>
+<p></p>
+<p>Ils offrent en général un seul point de sortie vers Internet via une ou plusieurs passerelles par défaut. Lorsque la topologie comporte un seul routeur, la seule redondance des chemins de couche 3 est permise par l'utilisation de plusieurs interfaces Ethernet internes sur le routeur. Cependant, en cas de panne du routeur, c'est tout le réseau qui est déconnecté d'Internet. Par conséquent, il est conseillé aux petites entreprises de prendre une option à moindre coût chez un second fournisseur d'accès par mesure de sécurité.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

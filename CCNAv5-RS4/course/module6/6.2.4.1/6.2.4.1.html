@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.4.1 Comparaison des solutions haut débit</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Comparaison des solutions haut débit</h1>
+        <h2>Sélection des solutions haut débit</h2>
+      </div>
+      <div id="content">
+<p>Chaque solution haut débit présente des avantages et des inconvénients. La solution idéale consiste à utiliser un câble en fibre optique connecté directement au réseau SOHO. Pour certains emplacements, une seule option est possible, par exemple le câble ou la technologie DSL. Certains endroits ne permettent que des options haut débit sans fil en matière de connectivité Internet. </p>
+<p></p>
+<p>Si plusieurs solutions haut débit sont disponibles, une analyse coûts/avantages doit être effectuée en vue de déterminer la meilleure solution. </p>
+<p></p>
+<p>Voici quelques-uns des facteurs à prendre en considération pour la prise de décision :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Câble</b> : la bande passante est partagée par de nombreux utilisateurs et les débits de données en amont sont souvent faibles.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>DSL</b> : la bande passante est sensible à la distance et le débit en amont est proportionnellement relativement faible par rapport au débit en aval.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>FTTH (fibre optique jusqu'au domicile)</b> : nécessite l'installation de la fibre optique jusqu'au domicile de l'abonné (voir la figure).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Cellulaire/Mobile</b> : la zone de couverture constitue souvent un problème, même à l'intérieur d'un SOHO, avec une bande passante relativement limitée.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Maillage Wi-Fi</b> : la plupart des municipalités ne possèdent pas de réseau maillé ; toutefois, si c'est le cas et si le SOHO se situe dans la portée d'émission, il s'agit d'une option envisageable.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>WiMAX</b> : le débit binaire est limité à 2 Mbit/s par abonné, pour une taille de cellule de 1 à 2 km.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Satellite</b> : solution onéreuse, capacité limitée par abonné ; offre souvent un accès lorsqu'aucune autre solution n'est possible.</li>
+</ul>
+</p>
+<p></p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

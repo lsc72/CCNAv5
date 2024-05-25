@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.1.3 Périphérie PVLAN</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité et conception de VLAN</h1>
+        <h2>Attaques VLAN</h2>
+      </div>
+      <div id="content">
+<p>Certaines applications exigent qu'aucun trafic ne soit transféré à la couche 2 entre les ports du même commutateur de sorte qu'un voisin ne puisse pas voir le trafic généré par un autre voisin. Dans ce type d'environnement, l'utilisation de la fonction Périphérie PVLAN (Private VLAN), également appelée « ports protégés », garantit qu'il n'existe aucun échange de trafic monodiffusion, diffusion ou multidiffusion entre ces ports sur le commutateur (Figure 1). </p>
+<p></p>
+<p>La fonction Périphérie PVLAN présente les caractéristiques suivantes : </p>
+<p></p>
+<p>
+<ul>
+<li>Un port protégé ne transmet aucun trafic (monodiffusion, multidiffusion ou diffusion) à aucun autre port étant également un port protégé, sauf pour le trafic de contrôle. Le trafic de données ne peut pas être transféré entre les ports protégés à la couche 2. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le comportement du transfert entre un port protégé et un port non protégé est normal.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les ports protégés doivent être configurés manuellement.</li>
+</ul>
+</p>
+<p></p>
+<p>Pour configurer la fonction Périphérie PVLAN, entrez la commande en mode de configuration d'interface <span class="cmd"><b>switchport protected</b></span> (Figure 2). Pour désactiver un port protégé, utilisez la commande en mode de configuration d'interface <span class="cmd"><b>no switchport protected</b></span>. Pour vérifier la configuration de la fonction Périphérie PVLAN, utilisez la commande en mode de configuration globale <span class="cmd"><b>show interfaces </b></span><span class="cmd"><i>interface-id</i></span><span class="cmd"><b> switchport</b></span>.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 3 pour configurer la fonction Périphérie PVLAN sur l'interface G0/1 et vérifier la configuration.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.2.5 Packet Tracer – Mise en œuvre de la connectivité de base</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Schémas d&#x0027;adressage</h1>
+        <h2>Adressage des périphériques</h2>
+      </div>
+      <div id="content">
+<p>Au cours de cet exercice, vous allez effectuer des configurations de base sur les commutateurs. Vous mettrez ensuite en œuvre la connectivité de base en configurant l'adressage IP sur les commutateurs et les ordinateurs. Une fois la configuration d'adressage IP terminée, vous utiliserez les différentes commandes <span class="cmd"><b>show</b></span> pour vérifier les configurations et la commande <span class="cmd"><b>ping</b></span> pour vérifier la connectivité de base entre les périphériques.</p>
+<p></p>
+<p>
+<a href="../../files/2.3.2.5%20Packet%20Tracer%20-%20Implementing%20Basic%20Connectivity%20Instructions.pdf" target="_blank">Packet Tracer – Mise en œuvre de la connectivité de base : instructions</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/2.3.2.5%20Packet%20Tracer%20-%20Implementing%20Basic%20Connectivity.pka" target="_blank">Packet Tracer – Mise en œuvre de la connectivité de base : PKA</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

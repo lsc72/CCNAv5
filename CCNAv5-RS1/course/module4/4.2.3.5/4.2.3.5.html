@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.3.5 Test des fibres</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.3.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Supports réseau</h1>
+        <h2>Fibre optique</h2>
+      </div>
+      <div id="content">
+<p>Le raccordement et l'épissage des câbles en fibre optique exigent une formation et un matériel adapté. Le raccordement incorrect de supports en fibre optique diminue les distances de signalisation ou entraîne l'échec complet de la transmission. </p>
+<p></p>
+<p>Trois types courants d'erreurs de raccordement de fibre optique et d'épissage sont :</p>
+<p>
+<ul>
+<li>
+<b>Mauvais alignement</b> : les supports en fibre optique ne sont pas alignés précisément lors de la jonction.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Écart à l'extrémité</b> : les supports ne se touchent pas complètement à l'épissure ou à la connexion.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Finition de l'extrémité</b> : les extrémités des supports ne sont pas bien polies ou de la poussière est présente au niveau du raccordement.</li>
+</ul>
+</p>
+<p></p>
+<p>Un test sur site peut être effectué rapidement et facilement. Il suffit d'allumer une lampe de poche puissante à une extrémité de la fibre optique tout en observant l'autre extrémité. Si la lumière est visible, la fibre est capable de la transporter. Même si cela ne garantit pas les performances de la fibre, il s'agit d'un moyen rapide et économique de repérer une fibre cassée.</p>
+<p></p>
+<p>Il est conseillé d'utiliser un appareil de vérification tel que celui représenté dans la figure pour tester les câbles à fibre optique. Un réflectomètre optique (OTDR) permet de tester chaque segment de câble à fibre optique. Ce dispositif injecte une impulsion test de lumière dans le câble et mesure la rétrodiffusion et la réflexion de lumière détectées en fonction du temps. Le réflectomètre optique calcule la distance approximative à laquelle ces défauts sont détectés le long du câble.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

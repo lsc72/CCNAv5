@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.2.1 NAT statique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement de la NAT</h1>
+        <h2>Types de NAT</h2>
+      </div>
+      <div id="content">
+<p>Il existe trois types de traduction NAT : </p>
+<p>
+<ul>
+<li>
+<b>Traduction d'adresse statique (NAT statique)</b> : mappage « un à un » entre les adresses locale et globale.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Traduction d'adresse dynamique (NAT dynamique)</b> : mappage de plusieurs adresses locales et globales.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Traduction d'adresses de port (PAT)</b> : mappage de plusieurs adresses locales et globales vers une seule. Cette méthode est également appelée « surcharge » (surcharge NAT).</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>NAT statique</b>
+</p>
+<p></p>
+<p>La NAT statique utilise un mappage de type un à un des adresses locales et globales. Ces mappages sont configurés par l'administrateur réseau et restent constants.</p>
+<p></p>
+<p>Sur la figure, R2 est configuré avec des mappages statiques pour les adresses locales internes de Svr1, PC2 et PC3. Lorsque ces périphériques envoient du trafic vers Internet, leurs adresses locales internes sont traduites en adresses globales internes (celles configurées). Pour les réseaux externes, ces périphériques possèdent des adresses IPv4 publiques.</p>
+<p></p>
+<p>La NAT statique est particulièrement utile pour les serveurs Web ou les périphériques qui doivent posséder une adresse permanente accessible depuis Internet, notamment les serveurs Web d'entreprise. Elle sert également aux périphériques qui doivent être accessibles à distance par le personnel autorisé, mais pas par tous les utilisateurs d'Internet. Par exemple, un administrateur réseau utilisant PC4 peut établir une connexion SSH à l'adresse globale interne de Svr1 (209.165.200.226). R2 traduit cette adresse globale interne en adresse locale interne et connecte la session de l'administrateur à Svr1. </p>
+<p></p>
+<p>La NAT statique nécessite qu'il existe suffisamment d'adresses publiques disponibles pour satisfaire le nombre total de sessions utilisateur simultanées.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

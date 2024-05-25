@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.1.3.2 Configuration d&#x0027;un routeur SOHO en tant que client DHCPv4 </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.1.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 4</h1>
+        <h2>Configurez le client DHCPv4</h2>
+      </div>
+      <div id="content">
+<p>Généralement, les routeurs haut débit pour les particuliers, tels que les routeurs Linksys, peuvent être configurés pour se connecter à un FAI via un modem câble ou DSL. La plupart du temps, les routeurs SOHO sont configurés pour acquérir automatiquement une adresse IPv4 à partir du FAI. </p>
+<p></p>
+<p>Par exemple, la figure illustre la page de configuration par défaut d'un réseau étendu pour un routeur Linksys EA6500. Remarquez que le type de connexion Internet est défini sur Automatic Configuration - DHCP (Configuration automatique - DHCP). Ainsi, lorsque le routeur est connecté à un modem câble, par exemple, il est considéré comme un client DHCPv4 et demande une adresse IPv4 au FAI. </p>
+<p></p>
+<p>
+<b>Remarque</b> : la fonction de clonage d'adresse MAC utilise une adresse spécifiée comme adresse MAC source sur l'interface du routeur liée au FAI. De nombreux FAI attribuent les adresses IPv4 en fonction de l'adresse MAC du périphérique lors de l'installation initiale. Lorsqu'un autre périphérique, tel qu'un routeur SOHO est connecté au FAI, celui-ci peut exiger que l'adresse MAC du périphérique initial soit configurée sur l'interface WAN.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

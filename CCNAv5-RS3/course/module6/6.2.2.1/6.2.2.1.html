@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.2.1 Récapitulation des routes OSPF</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du routage OSPF à zones multiples</h1>
+        <h2>Récapitulation des routes OSPF</h2>
+      </div>
+      <div id="content">
+<p>La récapitulation permet de réduire la taille des tables de routage. Elle regroupe plusieurs routes dans une seule annonce, qui peut alors être diffusée à la zone fédératrice. </p>
+<p></p>
+<p>En principe, les LSA de type 1 et 2 sont émises à l’intérieur de chaque zone, converties en LSA de type 3 et transmises aux autres zones. Si la zone 1 doit annoncer 30 réseaux, alors 30 LSA de type 3 sont transférées à la zone fédératrice. Avec la récapitulation de route, le routeur ABR consolide les 30 réseaux en une annonce sur deux. </p>
+<p></p>
+<p>À la Figure 1, R1 consolide l'ensemble des annonces de réseau en une LSA récapitulative. Au lieu de transférer plusieurs LSA pour chaque route de la zone 1, R1 transmet une seule LSA récapitulative au routeur central C1. C1 transmet à son tour la LSA récapitulative à R2 et R3. R2 et R3 la transfèrent à leurs routeurs internes respectifs.</p>
+<p></p>
+<p>La récapitulation contribue également à améliorer la stabilité du réseau, car elle réduit l’inondation superflue de LSA. Cela a une incidence directe sur la quantité de bande passante, ainsi que sur les ressources de CPU et de mémoire consommées par le routage OSPF. Sans récapitulation des routes, chaque LSA propre à un lien est diffusée sur la zone fédératrice OSPF et au-delà, ce qui entraîne une surcharge inutile du trafic réseau et des routeurs. </p>
+<p></p>
+<p>À la Figure 2, l'un des liens réseau de R1a est défaillant. R1a envoie une LSA à R1. Toutefois, R1 ne propage pas la mise à jour, car une route récapitulative a été configurée pour lui. Aucune innondation LSA spécifique au lien ne sort de la zone.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

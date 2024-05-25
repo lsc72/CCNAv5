@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.3.2 Inconvénients des protocoles à état de liens</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage dynamique à état de liens</h1>
+        <h2>Pourquoi utiliser des protocoles de routage à état de liens ?</h2>
+      </div>
+      <div id="content">
+<p>Les protocoles de routage à état de liens modernes sont conçus pour minimiser les effets sur la mémoire, l'unité centrale et la bande passante. L'utilisation et la configuration de plusieurs zones permettent de réduire la taille des bases de données d'états de liens. Plusieurs zones permettent également de limiter la quantité de données à état de liens diffusées sur un domaine et l'envoi des paquets LSP uniquement aux routeurs qui en ont besoin. Lorsqu'une modification de la topologie se produit, seuls les routeurs de la zone concernée reçoivent le paquet LSP et exécutent l'algorithme SPF. Cela peut permettre d'isoler un lien instable dans une zone spécifique du domaine de routage. </p>
+<p></p>
+<p>Par exemple, dans la figure, il existe trois domaines de routage différents : zone 1, zone 0 et zone 51. Si un réseau de la zone 51 tombe en panne, le paquet LSP contenant les informations sur le lien interrompu est uniquement diffusé vers les autres routeurs de cette zone. Seuls les routeurs de la zone 51 doivent mettre à jour leurs bases de données d'états de liens, ré-exécuter l'algorithme SPF, créer une nouvelle arborescence SPF et mettre à jour leurs tables de routage. Les routeurs des autres zones découvrent que cette route est interrompue, mais par un type de paquet LSP ne nécessitant pas la ré-exécution de leur algorithme SPF. Les routeurs des autres zones peuvent mettre à jour leurs tables de routage directement. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

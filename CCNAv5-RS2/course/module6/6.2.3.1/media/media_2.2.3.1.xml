@@ -1,0 +1,92 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Syntaxe des commandes&nbsp;IPv6  </b>]]></text>
+</component>
+
+  <component id="ID_s1_table">
+  <text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4' class="mtable">
+	<tr>
+		<td colspan='2' bgcolor='#0E6360' class="mtable_top"><font size='1' color='#0E6360'><span style="color:#98D3D1">.</span></font></td>
+	</tr>
+	<tr>
+		<td bgcolor='#077A77'  valign="top" width="110" class="mtitle"><font color='#ffffff'><b>Paramètre  </b></font></td>
+		<td bgcolor='#077A77'  valign="top" class="mtitle"><font color='#ffffff'><b>Description  </b></font></td>
+	</tr>
+
+	<tr>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536' face="_typewriter">ipv6-prefix</font></td>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536'><textformat blockindent="-16">Adresse de destination du réseau distant, à ajouter à la table de routage.</textformat></font></td>
+	</tr>
+	<tr>
+		<td bgcolor='#ffffff' valign="top"><font color='#393536' face="_typewriter">prefix-length</font></td>
+		<td bgcolor='#ffffff' valign="top"><font color='#393536'>Longueur de préfixe du réseau distant à ajouter à la table de routage.</font></td>
+	</tr>
+	<tr>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536' face="_typewriter">ipv6-address</font></td>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536'><textformat blockindent="-16"><ul class="bulletIndent20"><li>Généralement appelé adresse IP du routeur de tronçon suivant.  </li><li>Généralement utilisé lors de la connexion à un support de diffusion (par exemple Ethernet).  </li><li>Crée généralement une recherche récursive.  </li></ul></textformat></font></td>
+	</tr>
+	<tr>
+		<td bgcolor='#ffffff' valign="top"><font color='#393536' face="_typewriter">exit-intf</font></td>
+		<td bgcolor='#ffffff' valign="top"><font color='#393536'><textformat blockindent="-16"><ul class="bulletIndent20"><li>Utilisez l'interface de sortie pour transférer les paquets vers le réseau de destination.  </li><li>On parle également d'une route statique reliée directement.  </li>
+<li>Ces routes sont généralement utilisées pour la connexion dans une configuration point à point.  </li></ul></textformat></font></td></tr></table>]]></text>
+  </component>
+
+
+<component id="ID_s2_title">
+<text><![CDATA[<b>Activation du routage de monodiffusion IPv6  </b>]]></text>
+</component>
+
+<component id="ID_s3_title">
+<text><![CDATA[<b>Activation du routage de monodiffusion IPv6 sur R2  </b>]]></text>
+</component>
+
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+
+<component id="ID_sc1_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc1_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc1_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+
+<component id="ID_s3_SC1" fontFace='_typewriter' fontSize="10">	
+		<feedback id="fb"><![CDATA[<b> *** </b><font  face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> ]]></feedback>		
+		<existingcommands><![CDATA[<font  face="Arial"><b>Activer le routage monodiffusion IPv6.  </b></font>]]></existingcommands>
+		<command prompt="R2(config)#">
+		    <correctresponse><![CDATA[ipv6 unicast-routing]]></correctresponse>
+			<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez activé correctement le routage de monodiffusion IPv6 sur R2.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+<component id="ID_s4_title">
+<text><![CDATA[<b>Activation du routage de monodiffusion IPv6 sur R3  </b>]]></text>
+</component>
+
+
+<component id="ID_s4_SC1" fontFace='_typewriter' fontSize="10">		
+		<feedback id="fb2"><![CDATA[<b> *** </b><font  face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> ]]></feedback>		
+		<existingcommands><![CDATA[<font  face="Arial"><b>Activer le routage monodiffusion IPv6.  </b></font>]]></existingcommands>
+		<command prompt="R3(config)#">
+		    <correctresponse><![CDATA[ipv6 unicast-routing]]></correctresponse>
+			<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez activé correctement le routage de monodiffusion IPv6 sur R3.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+  
+</textcomponents>

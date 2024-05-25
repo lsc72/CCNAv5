@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.5.2 Configuration du protocole EIGRP avec l&#x0027;authentification MD5</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.5.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations EIGRP avancées</h1>
+        <h2>EIGRP sécurisé</h2>
+      </div>
+      <div id="content">
+<p>L'authentification des messages EIGRP garantit que les routeurs acceptent uniquement les messages en provenance d'autres routeurs qui connaissent la même clé prépartagée. Sans authentification configurée, si une personne non autorisée introduit un autre routeur présentant des informations concernant la route différentes ou conflictuelles sur le réseau, les tables de routage sur les routeurs légitimes peuvent se corrompre et entraîner une attaque DoS. En conséquence, lorsque l'authentification est ajoutée aux messages EIGRP envoyés entre les routeurs, elle empêche tout ajout volontaire ou accidentel d'un autre routeur au réseau qui pourrait provoquer un problème.</p>
+<p></p>
+<p>Le protocole EIGRP prend en charge l'authentification des protocoles de routage à l'aide de MD5. La configuration de l'authentification des messages EIGRP comprend deux étapes : la création d'une chaîne de clés et d'une clé et la configuration de l'authentification EIGRP pour utiliser ces chaîne de clés et clé. </p>
+<p></p>
+<p>
+<b>Étape 1. Création d'une chaîne de clés et d'une clé</b>
+</p>
+<p></p>
+<p>L'authentification de routage nécessite une clé sur une chaîne de clés pour fonctionner. Pour activer l'authentification, créez une chaîne de clés et au moins une clé.</p>
+<p></p>
+<p>a. En mode de configuration globale, créez la chaîne de clés. Même si plusieurs clés peuvent être configurées, cette section se concentre sur l'utilisation d'une clé unique.</p>
+<p>
+<span class="cmd">Router(config)# </span>
+<span class="cmd">
+<b>key chain</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>name-of-chain</i>
+</span>
+</p>
+<p></p>
+<p>b. Indiquez l'ID de clé. L'ID de clé correspond au numéro servant à identifier une clé d'authentification dans une chaîne de clés. La plage de clés est comprise entre 0 et 2 147 483 647. Il est recommandé d'utiliser le même numéro de clé sur tous les routeurs de la configuration.</p>
+<p></p>
+<p>
+<span class="cmd">Router(config-keychain)# </span>
+<span class="cmd">
+<b>key</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>key-id</i>
+</span>
+</p>
+<p></p>
+<p>c. Indiquez la chaîne de clés de la clé. La chaîne de clés ressemble à un mot de passe. Les routeurs qui échangent des clés d'authentification doivent être configurés avec la même chaîne de clés.</p>
+<p></p>
+<p>
+<span class="cmd">Router(config-keychain-key</span>
+<span class="cmd"></span>
+<span class="cmd">)# </span>
+<span class="cmd">
+<b>key-string</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>key-string-text</i>
+</span>
+</p>
+<p></p>
+<p></p>
+<p>
+<b>Étape 2. Configuration de l'authentification EIGRP à l'aide de la chaîne de clés et de la clé</b>
+</p>
+<p></p>
+<p>Configurez le protocole EIGRP pour authentifier les messages à l'aide de la clé précédemment définie. Effectuez cette configuration sur toutes les interfaces activées pour EIGRP.</p>
+<p></p>
+<p>a. En mode de configuration globale, indiquez l'interface sur laquelle configurer l'authentification des messages EIGRP.</p>
+<p></p>
+<p>
+<span class="cmd">Router(config)# </span>
+<span class="cmd">
+<b>Interface</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>type number</i>
+</span>
+</p>
+<p></p>
+<p>b. Activez l'authentification des messages EIGRP. Le mot-clé<span class="cmd"><b> md5 </b></span>indique que le hachage MD5 doit être utilisé pour l'authentification.</p>
+<p></p>
+<p>
+<span class="cmd">Router(config-if)# </span>
+<span class="cmd">
+<b>ip authentication mode eigrp</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>as-number</i>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<b>md5</b>
+</span>
+</p>
+<p></p>
+<p>c. Indiquez la chaîne de clés à utiliser pour l'authentification. L'argument<span class="cmd"><i> name-of-chain </i></span>désigne la chaîne de clés créée à l'Étape 1.</p>
+<p></p>
+<p>
+<span class="cmd">Router(config-if)# </span>
+<span class="cmd">
+<b>ip authentication key-chain eigrp</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>as-number name-of-chain</i>
+</span>
+</p>
+<p></p>
+<p>Chaque clé comporte son propre ID de clé, stocké localement. La combinaison ID de clé-interface associée au message identifie de façon unique l'algorithme d'authentification et la clé d'authentification MD5 utilisée. La chaîne de clés et la mise à jour de routage sont traitées à l'aide de l'algorithme MD5 pour produire une signature unique. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

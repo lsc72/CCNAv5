@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.1.2 Cartes réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche physique</h1>
+        <h2>Mise en place de la connexion</h2>
+      </div>
+      <div id="content">
+<p>Les cartes réseau (NIC en anglais) connectent un périphérique au réseau. Les cartes réseau Ethernet sont utilisées dans les connexions filaires, tandis que les cartes réseau WLAN (réseau local sans fil) sont utilisées dans les connexions sans fil. Un périphérique utilisateur peut comporter l'un de ces deux types de carte réseau ou les deux. Une imprimante réseau, par exemple, peut ne comporter qu'une carte réseau Ethernet et doit, dans ce cas, être connectée au réseau à l'aide d'un câble Ethernet. D'autres périphériques, tels que les tablettes et les smartphones peuvent n'être équipés que d'une carte réseau WLAN et doivent donc utiliser une connexion sans fil. </p>
+<p></p>
+<p>Le niveau de performance n'est pas le même dans toutes les connexions physiques à un réseau.</p>
+<p></p>
+<p>Par exemple, un périphérique sans fil subit une dégradation des performances en fonction de sa distance au point d'accès sans fil. Plus le périphérique est éloigné du point d'accès, plus faible est le signal sans fil qu'il reçoit. Il peut donc bénéficier d'une bande passante inférieure ou encore perdre la connexion sans fil. La figure montre qu'un amplificateur de signal sans fil peut être utilisé pour régénérer le signal sans fil afin d'en faire bénéficier d'autres parties de la maison qui sont trop éloignées du point d'accès sans fil. Au contraire, les connexions filaires ne dégradent pas les performances, mais limitent grandement les mouvements au point de nécessiter généralement une position statique. </p>
+<p></p>
+<p>Tous les périphériques sans fil doivent partager un accès aux ondes assurant la connexion au point d'accès sans fil. Cela signifie que les performances du réseau peuvent être ralenties si plusieurs périphériques sans fil accèdent simultanément au réseau. Un périphérique filaire n'a pas besoin de partager son accès au réseau avec d'autres périphériques. Chaque périphérique filaire dispose d'un canal de communication distinct à travers son câble Ethernet. Cet aspect a son importance pour certaines applications telles que les jeux vidéo, la vidéo en streaming et la visioconférence qui nécessitent davantage de bande passante dédiée que d'autres applications. </p>
+<p></p>
+<p>Au fil des prochains thèmes abordés, vous en saurez davantage sur les connexions de la couche physique et sur les effets de ces connexions sur le transport des données.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

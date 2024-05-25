@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		<slide>
+			<element type="ROUTER" textId="ID_router_txt1" x="3.55" y="45.75" width="434.05" height="347.4" />
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+		</slide>
+		<slide>
+			<element type="ROUTER" textId="ID_router_txt2" x="3.55" y="45.75" width="434.05" height="347.4" />
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+		</slide>
+		<slide>
+			<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC3" x="0" y="30" width="439.1" height="367" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall" size="10"/>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+
+		</slide>
+	</slide>
+	<text id="ID_router_txt1"><![CDATA[<pre>R1(config)# <b>router ospf 10</b>
+R1(config-router)# <b>area 0 authentication message-digest</b> 
+R1(config-router)# <b>exit</b>
+R1(config)# 
+*Apr  8 09:58:09.899: %OSPF-5-ADJCHG: Process 10,  <br/>Nbr 2.2.2.2 on Serial0/0/0 from FULL to <br/>DOWN, Neighbor Down: Dead timer expired
+R1(config)# 
+*Apr  8 09:58:28.627: %OSPF-5-ADJCHG: Process 10, <br/>Nbr 3.3.3.3 on Serial0/0/1 from FULL to <br/>DOWN, Neighbor Down: Dead timer expired
+R1(config)# 
+R1(config)# <b>interface GigabitEthernet 0/0</b>
+R1(config-if)# <b>ip ospf message-digest-key 1 md5 CISCO-123</b>
+R1(config-if)# <b>exit</b>
+R1(config)# 
+R1(config)# <b>interface Serial 0/0/0</b>
+R1(config-if)# <b>ip ospf message-digest-key 1 md5 CISCO-123</b>
+R1(config-if)# <b>exit</b>
+R1(config)# 
+R1(config)# <b>interface Serial 0/0/1</b>                    
+R1(config-if)# <b>ip ospf message-digest-key 1 md5 CISCO-123</b>
+R1(config-if)# </pre>]]></text>
+
+<text id="ID_router_txt2"><![CDATA[<pre>R1(config)# <b>interface GigabitEthernet 0/0</b>
+R1(config-if)# <b>ip ospf message-digest-key 1 md5 CISCO-123</b>
+R1(config-if)# <b>ip ospf authentication message-digest</b> 
+R1(config-if)# <b>exit</b>
+R1(config)# 
+R1(config)# <b>interface Serial 0/0/0</b>
+R1(config-if)# <b>ip ospf message-digest-key 1 md5 CISCO-123</b>
+R1(config-if)# <b>ip ospf authentication message-digest</b> 
+R1(config-if)# <b>exit</b>
+R1(config)# 
+R1(config)# <b>interface Serial 0/0/1</b>
+R1(config-if)# <b>ip ospf message-digest-key 1 md5 CISCO-123</b>
+R1(config-if)# <b>ip ospf authentication message-digest</b> 
+R1(config-if)# <b>exit</b>
+R1(config)# 
+*Apr  8 10:20:10.647: %OSPF-5-ADJCHG: Process 10, <br/>Nbr 2.2.2.2 on Serial0/0/0 from FULL to <br/>DOWN, Neighbor Down: Dead timer expired
+R1(config)#                                       
+*Apr  8 10:20:50.007: %OSPF-5-ADJCHG: Process 10, <br/>Nbr 3.3.3.3 on Serial0/0/1 from FULL to <br/>DOWN, Neighbor Down: Dead timer expired
+R1(config)# </pre>]]></text>
+</data>

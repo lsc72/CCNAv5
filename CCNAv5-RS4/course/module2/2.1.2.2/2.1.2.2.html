@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.2 Terminologie WAN</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation des technologies WAN</h1>
+        <h2>Opérations WAN</h2>
+      </div>
+      <div id="content">
+<p>La principale différence entre un WAN et un LAN et que la société, où l'organisation, doit s'abonner auprès d'un fournisseur de services WAN extérieurs afin d'utiliser les services du réseau de l'opérateur WAN. Le WAN utilise les liaisons de données fournies par les services de l'opérateur afin d'accéder à Internet et de connecter les différents emplacements de l'entreprise entre eux, à d'autres emplacements d'autres organisations, à des services externes, et enfin aux utilisateurs distants. </p>
+<p></p>
+<p>La couche physique du WAN correspond aux connexions physiques entre le réseau de la société et le réseau du fournisseur de services. La figure illustre la terminologie utilisée pour décrire les connexions WAN, par exemple :</p>
+<p>
+<ul>
+<li>
+<b>Équipement d'abonné (CPE)</b> : périphériques et câblage interne qui se trouvent sur la périphérie d'entreprise et qui se connectent à une liaison d'opérateur. L'abonné est propriétaire de l'équipement ou le loue à son fournisseur de services. L'abonné, dans ce contexte, est une société qui utilise les services WAN d'un fournisseur de services. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Équipement de communication de données (DCE) </b>: aussi appelé équipement de fin de circuit de données, le DCE comprend des périphériques qui placent des données sur la boucle locale. Le DCE fournit principalement une interface pour connecter les abonnés à une liaison de communication sur le cloud du WAN. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Équipement terminal de traitement de données (ETTD) </b>: les périphériques du client qui transmettent les données d'un réseau client ou d'un ordinateur hôte pour transmission sur le réseau étendu. L'équipement terminal de traitement de données se connecte à la boucle locale grâce à l'équipement de communication de données.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Point de démarcation </b>: point établi dans un bâtiment ou complexe afin de séparer les équipements du client des équipements du fournisseur de services. Physiquement, le point de démarcation est le boîtier de raccordement de câblage, situé chez le client, qui connecte les câbles de l'équipement d'abonné à la boucle locale. Il est généralement placé de façon à faciliter son accès par un technicien. Le point de démarcation physique est l'endroit où la responsabilité de la connexion passe de l'utilisateur au fournisseur de services. En cas de problème, il faut déterminer qui de l'utilisateur ou du fournisseur de services est responsable de la résolution du problème ou de la réparation.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Boucle locale </b>: le câble cuivre ou fibre qui connecte l'équipement de l'abonné au central téléphonique (CO) du fournisseur de services. Cette boucle locale est parfois aussi appelée le « dernier kilomètre ». </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Central téléphonique (CO) </b>: installation ou bâtiment du fournisseur de services local qui relie l'équipement de l'abonné au réseau du fournisseur. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Réseau à péage </b>: comprend les lignes en fibre optique de communication longue distance tout numérique, les commutateurs, les routeurs et tous les autres équipements dans le réseau du fournisseur WAN. </li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

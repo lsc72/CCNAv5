@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.2.3 Configuration automatique des adresses IP des périphériques finaux</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Schémas d&#x0027;adressage</h1>
+        <h2>Adressage des périphériques</h2>
+      </div>
+      <div id="content">
+<p>Les informations d'adresse IP peuvent être entrées manuellement sur le PC, ou attribuées automatiquement à l'aide du protocole DHCP (Dynamic Host Configuration Protocol). Le protocole DHCP permet aux périphériques finaux de disposer d'informations IP configurées automatiquement.</p>
+<p></p>
+<p>Le protocole DHCP est une technologie utilisée sur presque tous les réseaux d'entreprise. Le meilleur moyen de comprendre pourquoi le DHCP est tellement répandu est de prendre en compte tout le travail supplémentaire qui doit être effectué sans celui-ci.</p>
+<p></p>
+<p>Le protocole DHCP permet la configuration automatique des adresses IPv4 pour chaque périphérique final sur un réseau utilisant DHCP. Imaginez que chaque fois que vous vous connectez au réseau, vous devez entrer manuellement l'adresse IP, le masque de sous-réseau, la passerelle par défaut, et le serveur DNS. Multipliez cette opération par le nombre d'utilisateurs et de périphériques sur le réseau : vous avez saisi le problème.</p>
+<p></p>
+<p>Le protocole DHCP est un exemple de technologie fonctionnant de manière optimale. L'un des principaux objectifs de toute technologie est de faciliter les opérations. Grâce au protocole DHCP, les utilisateurs entrent dans la zone couverte par un réseau donné, connectent un câble Ethernet ou activent une connexion sans fil, et les informations IPv4 nécessaires à la communication sur le réseau leur sont attribuées automatiquement.</p>
+<p></p>
+<p>Comme l'illustre la Figure 1, pour configurer le protocole DHCP sur un ordinateur Windows, vous devez sélectionner « Obtenir une adresse IP automatiquement » et « Obtenir les adresses des serveurs DNS automatiquement ». Votre ordinateur reçoit automatiquement les informations en provenance d'un pool d'adresses IP et les informations IP associées sont configurées sur le serveur DHCP.</p>
+<p></p>
+<p>Il est possible d'afficher les paramètres de configuration IP d'un PC Windows à l'aide de la commande <span class="cmd"><b>ipconfig</b></span> à l'invite de commande. Le résultat affiche l'adresse IP, le masque de sous-réseau et la passerelle que le PC a reçus du serveur DHCP.</p>
+<p></p>
+<p>Essayez de consulter l'adresse IP d'un ordinateur Windows en entrant les commandes de la Figure 2.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		<slide>
+			<element type="IMAGE" src="media_7.2.2.1.jpg" width="470" height="400" x="0" y="0"/>
+			<element type="TEXT" compId="ID_s1_txt01" x="146" y="74" width="160.8" expand="left+right" align="center" color="#ffffff" />
+			<element type="TEXT" compId="ID_s1_txt02" x="184" y="125" width="76.35" expand="up+down" align="center" />
+			<element type="TEXT" compId="ID_s1_txt04" x="331" y="78" width="76.35" expand="down" align="left" />
+			<element type="TEXT" compId="ID_s1_txt03" x="56" y="78" width="76.35" expand="left" align="right" />
+			<element type="TEXT" id="ID_static_1" text="S/0/0/0" x="82" y="120.8" align="center" width="42.2" />
+			<element type="TEXT" id="ID_static_2" text="S/0/0/0" x="322" y="120.8" align="center" width="42.2" />
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+		</slide>
+		<slide>
+			<element type="IMAGE" src="media_7.2.2.1_s1.jpg" width="470" height="400" x="0" y="0"/>
+			<element type="ROUTER" textId="ID_router_txt1" x="5" y="234.1" width="430.75" height="139.9" />
+			<element type="TEXT" compId="ID_s2_txt01" x="146" y="74" width="160.8" expand="left+right" align="center" color="#ffffff" />
+			<element type="TEXT" compId="ID_s2_txt02" x="184" y="125" width="76.35" expand="up+down" align="center" />
+			<element type="TEXT" compId="ID_s2_txt04" x="331" y="78" width="76.35" expand="down" align="left" />
+			<element type="TEXT" compId="ID_s2_txt03" x="56" y="78" width="76.35" expand="left" align="right" />
+			<element type="TEXT" compId="ID_s2_txt05" x="6" y="202" width="349.7" expand="right" align="left" />
+			<element type="TEXT" id="ID_static_3" text="S/0/0/0" x="82" y="120.8" align="center" width="42.2" />
+			<element type="TEXT" id="ID_static_4" text="S/0/0/0" x="322" y="120.8" align="center" width="42.2" />
+			<element type="TEXT" id="ID_static_5" text="192.168.2.1" x="75" y="40.95" align="center" width="64.65" />
+			<element type="TEXT" id="ID_static_6" text="192.168.2.2" x="315" y="40.95" align="center" width="64.65" />
+			<element type="TEXT" id="ID_static_7" text="198.133.219.87" x="322" y="164.8" align="center" width="77.7" />
+			<element type="TEXT" id="ID_static_8" text="209.165.201.1" x="51" y="164.8" align="center" width="77.7" />
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+		</slide>
+		<slide>
+		<element type="IMAGE" src="media_7.2.2.1_s1.jpg" width="470" height="400" x="0" y="0"/>
+		<element type="ROUTER" textId="ID_router_txt2" x="5" y="234.1" width="430.75" height="139.9" />
+		<element type="TEXT" compId="ID_s3_txt01" x="146" y="74" width="160.8" expand="left+right" align="center" color="#ffffff" />
+		<element type="TEXT" compId="ID_s3_txt02" x="184" y="125" width="76.35" expand="up+down" align="center" />
+		<element type="TEXT" compId="ID_s3_txt04" x="331" y="78" width="76.35" expand="down" align="left" />
+		<element type="TEXT" compId="ID_s3_txt03" x="56" y="78" width="76.35" expand="left" align="right" />
+		<element type="TEXT" compId="ID_s3_txt05" x="6" y="202" width="349.7" expand="right" align="left" />
+		<element type="TEXT" id="ID_static_9" text="S/0/0/0" x="82" y="120.8" align="center" width="42.2" />
+		<element type="TEXT" id="ID_static_10" text="S/0/0/0" x="322" y="120.8" align="center" width="42.2" />
+		<element type="TEXT" id="ID_static_11" text="192.168.2.1" x="75" y="40.95" align="center" width="64.65" />
+		<element type="TEXT" id="ID_static_12" text="192.168.2.2" x="315" y="40.95" align="center" width="64.65" />
+		<element type="TEXT" id="ID_static_13" text="198.133.219.87" x="322" y="164.8" align="center" width="77.7" />
+		<element type="TEXT" id="ID_static_14" text="209.165.201.1" x="51" y="164.8" align="center" width="77.7" />
+		<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+		</slide>
+		<slide>
+		<element type="TEXT" subType="TABLE" compId="ID_table04" x="7" y="44" width="427" height="326" />
+		<element type="TEXT" subType="TITLE" compId="ID_s4_title"/>
+		</slide>
+	</slide>
+<text id="ID_router_txt1"><![CDATA[<pre>R1(config)# <b>interface Tunnel0</b>
+R1(config-if)# <b>tunnel mode gre ip</b>
+R1(config-if)# <b>ip address 192.168.2.1 255.255.255.0</b>
+R1(config-if)# <b>tunnel source 209.165.201.1</b>
+R1(config-if)# <b>tunnel destination 198.133.219.87</b>
+R1(config-if)# <b>router ospf 1</b>
+R1(config-router)# <b>network 192.168.2.0 0.0.0.255 area 0</b></pre>]]></text>
+<text id="ID_router_txt2"><![CDATA[<pre>R2(config)# <b>interface Tunnel0</b>
+R2(config-if)# <b>tunnel mode gre ip</b>
+R2(config-if)# <b>ip address 192.168.2.2 255.255.255.0</b>
+R2(config-if)# <b>tunnel source 198.133.219.87</b>
+R2(config-if)# <b>tunnel destination 209.165.201.1</b>
+R2(config-if)# <b>router ospf 1</b>
+R2(config-router)# <b>network 192.168.2.0 0.0.0.255 area 0</b>
+</pre>]]></text>
+</data>

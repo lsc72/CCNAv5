@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.1.1 Topologie de réseau EIGRP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole EIGRP pour IPv4</h1>
+        <h2>Configuration du protocole EIGRP avec IPv4</h2>
+      </div>
+      <div id="content">
+<p>La Figure 1 présente la topologie utilisée dans ce cours pour configurer le protocole EIGRP pour IPv4. Les types d'interfaces série et leurs bandes passantes associées ne correspondent pas nécessairement aux types de connexions les plus courantes figurant sur les réseaux actuels. Les bandes passantes des liens série utilisés dans cette topologie ont été choisies pour expliquer le calcul des métriques du protocole de routage et le processus de sélection du meilleur chemin.</p>
+<p></p>
+<p>Les routeurs de la topologie disposent d'une configuration initiale, qui inclut les adresses des interfaces. Aucun routage statique ou dynamique n'est actuellement configuré sur l'un des routeurs.</p>
+<p></p>
+<p>Les Figures 2, 3 et 4 présentent les configurations d'interface pour les trois routeurs EIGRP de la topologie. Seuls les routeurs R1, R2 et R3 appartiennent au domaine de routage EIGRP. Le routeur du FAI est utilisé comme passerelle du domaine de routage pour accéder à Internet.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

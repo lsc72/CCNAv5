@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.2.5 Inondation de LSP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage dynamique à état de liens</h1>
+        <h2>Mises à jour d&#x0027;état de liens</h2>
+      </div>
+      <div id="content">
+<p>La quatrième étape du processus de routage à état de liens consiste à faire en sorte que chaque routeur diffuse le LSP à tous ses voisins, qui vont alors stocker l'ensemble des LSP reçus dans une base de données.</p>
+<p></p>
+<p>Chaque routeur diffuse ses informations d'états de liens à l'ensemble des routeurs à état de liens dans la zone de routage. Lorsqu'un routeur reçoit un paquet LSP d'un routeur du voisinage, il l'envoie immédiatement à toutes les autres interfaces, sauf à celle qui l'a reçu au départ. Ce processus crée un effet de diffusion de LSP à partir de tous les routeurs de la zone de routage.</p>
+<p></p>
+<p>Cliquez sur Lecture dans la figure pour voir une animation sur l'inondation de paquets LSP.</p>
+<p></p>
+<p>Dans l'animation, notez la façon dont les paquets LSP sont diffusés presque immédiatement après avoir été reçus sans calculs intermédiaires. Les protocoles de routage à état de liens calculent l'algorithme SPF au terme de l'inondation. Par conséquent, les protocoles de routage à état de liens parviennent à une convergence très rapidement.</p>
+<p></p>
+<p>Souvenez-vous que les paquets LSP n'ont pas besoin d'être envoyés de façon périodique. Un LSP doit être envoyé uniquement :</p>
+<p>
+<ul>
+<li>Lors du démarrage initial du processus de protocole de routage sur ce routeur (par exemple, le redémarrage du routeur)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Lorsque la topologie a été modifiée (par exemple, en cas d'activation ou de désactivation d'un lien ou d'établissement ou de rupture d'une contiguïté entre voisins)</li>
+</ul>
+</p>
+<p></p>
+<p>Outre les données d'état de liens, un paquet LSP contient également d'autres informations, par exemple des numéros d'ordre et des données chronologiques, afin d'aider à gérer le processus d'inondation. Ces informations sont utilisées par chaque routeur pour déterminer si celui-ci a déjà reçu le paquet LSP provenant d'un autre routeur ou si le paquet LSP contient de nouvelles informations, par rapport à la base de données d'états de liens. Ce processus permet à un routeur de conserver uniquement les informations à jour dans sa base de données d'états de liens.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

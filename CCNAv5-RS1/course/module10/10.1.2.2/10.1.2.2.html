@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.1.2.2 Applications peer to peer (P2P)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche Application</h1>
+        <h2>Interaction des protocoles d&#x0027;application avec les applications des utilisateurs finaux</h2>
+      </div>
+      <div id="content">
+<p>Une application peer-to-peer (P2P) permet à un périphérique d'agir à la fois en tant que client et serveur dans une même communication, comme le montre la figure. Dans ce modèle, chaque client est un serveur et chaque serveur un client. Les deux peuvent lancer une communication et sont considérés comme égaux dans le processus de communication. Cependant, les applications P2P nécessitent que chaque périphérique final fournisse une interface utilisateur et exécute un service en arrière-plan. Lorsque vous lancez une application P2P spécifique, le périphérique charge l'interface utilisateur et les services d'arrière-plan. Les périphériques peuvent ensuite communiquer directement.</p>
+<p></p>
+<p>Certaines applications P2P utilisent un système hybride dans lequel le partage des ressources est décentralisé, mais les index pointant vers l'emplacement des ressources sont stockés dans un répertoire centralisé. Dans un système hybride, chaque homologue accède à un serveur d'index pour obtenir l'emplacement d'une ressource stockée chez un autre homologue. Le serveur d'index permet également de connecter deux homologues, mais une fois ceux-ci connectés, la communication s'effectue entre les deux homologues sans autre communication vers le serveur d'index.</p>
+<p></p>
+<p>Les applications P2P peuvent être utilisées sur des réseaux P2P, des réseaux client/serveur et via Internet.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

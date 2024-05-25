@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.5.1 Routeurs en tant que cibles</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.5.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées du protocole OSPF à zone unique </h1>
+        <h2>OSPF sécurisé</h2>
+      </div>
+      <div id="content">
+<p>Dans un réseau, le rôle des routeurs est tellement essentiel que ceux-ci font souvent l'objet d'attaques. Les administrateurs réseau doivent savoir que les routeurs sont autant confrontés aux attaques que les systèmes des utilisateurs finaux. </p>
+<p></p>
+<p>En général, les attaques contre des systèmes de routage prennent la forme d'une perturbation des homologues de routage ou d'une falsification des informations transférées dans le protocole de routage. Des informations de routage falsifiées sont souvent utilisées pour que les systèmes ne s'informent pas correctement entre eux (qu'ils se mentent), pour causer une attaque par déni de service (DoS) ou pour dévier le trafic vers un chemin qu'il n'emprunterait pas normalement. Les conséquences de la falsification des informations de routage sont les suivantes :</p>
+<p>
+<ul>
+<li>redirection du trafic pour créer des boucles de routage ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>redirection du trafic pour qu'il puisse être consulté sur une liaison non fiable ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>redirection du trafic pour le mettre à l'écart.</li>
+</ul>
+</p>
+<p></p>
+<p>Cliquez sur le bouton Lecture de l'animation pour visualiser un exemple d'attaque créant une boucle de routage. Un pirate a pu se connecter directement au lien connectant les routeurs R1 et R2. Il injecte de fausses informations de routage destinées au routeur R1 uniquement, indiquant que R2 est la destination préférée vers la route d'hôte 192.168.10.10/32. Bien que R1 dispose d'une entrée dans sa table de routage vers le réseau 192.168.10.0/24 connecté directement, il ajoute la route injectée à sa table de routage, car le masque de sous-réseau est plus long. Une route correspondant à un masque de sous-réseau plus long est considérée comme supérieure à une route avec un masque de sous-réseau plus court. En conséquence, lorsqu'un routeur reçoit un paquet, il sélectionne le masque de sous-réseau le plus long, car il s'agit d'une route plus précise vers la destination.</p>
+<p></p>
+<p>Lorsque PC3 envoie un paquet à PC1 (192.168.10.10/24), R1 ne transfère pas le paquet à l'hôte PC1. Il l'achemine plutôt vers le routeur R2, car le meilleur chemin apparent vers l'adresse 192.168.10.10/32 passe par R2. Lorsque R2 reçoit le paquet, il consulte sa table de routage et renvoie le paquet vers R1, ce qui crée une boucle.</p>
+<p></p>
+<p>Pour limiter les attaques contre les protocoles de routage, configurez l'authentification OSPF.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

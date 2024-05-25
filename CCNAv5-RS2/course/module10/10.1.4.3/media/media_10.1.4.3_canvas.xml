@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide>
+	<element type="TEXT" subType="TITLE" compId="ID_title"/>
+	<element type="ROUTER" textId="ID_router_txt1" x="13.45" y="60.45" width="454" height="314" />	
+	<element type="TEXT" compId="ID_txt01" x="24" y="236" width="325.55" expand="right" align="left" />	
+	</slide>
+	<text id="ID_router_txt1"><![CDATA[<pre>R1(config)# <b>access-list 100 permit udp any any eq 67 </b>
+R1(config)# <b>access-list 100 permit udp any any eq 68 </b>
+R1(config)# <b>end </b>
+R1# <b>debug ip packet 100 </b>        
+IP packet debugging is on for access list 100
+*IP: s=0.0.0.0 (GigabitEthernet0/1), d=255.255.255.255,
+len 333, rcvd 2
+*IP: s=0.0.0.0 (GigabitEthernet0/1), d=255.255.255.255,
+len 333, stop process pak for forus packet
+*IP: s=192.168.11.1 (local), d=255.255.255.255
+(GigabitEthernet0/1), len 328, sending broad/multicast
+
+
+
+R1# <b>debug ip dhcp server events </b>
+DHCPD: returned 192.168.10.11 to address pool LAN-POOL-1
+DHCPD: assigned IP address 192.168.10.12 to client
+0100.0103.85e9.87. 
+DHCPD: checking for expired leases. 
+DHCPD: the lease for address 192.168.10.10 has expired. 
+DHCPD: returned 192.168.10.10 to address pool LAN-POOL-1
+</pre>]]></text>
+</data>

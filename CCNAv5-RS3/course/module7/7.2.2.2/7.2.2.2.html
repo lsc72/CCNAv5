@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.2.2 Vérification du protocole EIGRP : commande show ip protocols</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole EIGRP pour IPv4</h1>
+        <h2>Vérification du protocole EIGRP avec IPv4</h2>
+      </div>
+      <div id="content">
+<p>La commande<span class="cmd"><b> show ip protocols </b></span>affiche les paramètres et d'autres informations sur l'état actuel des processus de routage IPv4 actifs configurés sur le routeur. La commande <span class="cmd"><b>show ip protocols</b></span> affiche les différents types de sorties spécifiques à chaque protocole de routage. </p>
+<p></p>
+<p>Le résultat présenté à la Figure 1 fournit plusieurs paramètres EIGRP :</p>
+<p></p>
+<p>1. Le protocole EIGRP est un protocole de routage dynamique actif sur R1 configuré avec le numéro de système autonome 1.</p>
+<p>2. L'ID de routeur EIGRP de R1 est 1.1.1.1. </p>
+<p>3. Les distances administratives EIGRP sur R1 sont de 90 en interne et de 170 en externe (valeurs par défaut). </p>
+<p>4. Par défaut, le protocole EIGRP ne récapitule pas automatiquement les réseaux. Les sous-réseaux sont inclus dans les mises à jour de routage. </p>
+<p>5. Les contiguïtés de voisinage EIGRP de R1 avec d'autres routeurs servent à recevoir les mises à jour de routage EIGRP.</p>
+<p></p>
+<p>
+<b>Remarque </b>: avant IOS 15, la récapitulation automatique EIGRP était activée par défaut. </p>
+<p></p>
+<p>Le résultat de la commande<span class="cmd"><b> show ip protocols </b></span>facilite le débogage des opérations de routage. Les informations présentées dans le champ Routing Information Sources (Sources d'informations de routage) permettent d'identifier un routeur soupçonné de fournir de mauvaises informations de routage. Le champ Routing Information Sources (Sources d'informations de routage) répertorie toutes les sources de routage EIGRP utilisées par le logiciel Cisco IOS pour créer sa table de routage IPv4. Pour chaque source, notez les valeurs suivantes :</p>
+<p>
+<ul>
+<li>Adresse IPv4 </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Distance administrative </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Heure de réception de la dernière mise à jour depuis la source</li>
+</ul>
+</p>
+<p></p>
+<p>Comme indiqué à la Figure 2, le protocole EIGRP dispose d'une distance administrative de 90 pour les routes internes et de 170 pour les routes importées à partir d'une source externe, notamment les routes par défaut. Comparé à d'autres protocoles IGP, le protocole EIGRP est le protocole privilégié par Cisco IOS, car il présente la distance administrative la plus courte. Le protocole EIGRP dispose d'une troisième valeur de distance administrative de 5, pour les routes récapitulatives. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

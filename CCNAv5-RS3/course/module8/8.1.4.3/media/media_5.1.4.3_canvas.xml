@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	 
+ <slide type="MBAR">
+ 	<slide>
+<element type="IMAGE" src="5_1_4_3_A.jpg" width="470" height="400" x="0" y="0"/>
+<element type="TEXT" id="ID_static_1" text="172.16.2.0/24" bold="1" x="171.95" y="78.4" align="center" width="74.15" />
+<element type="TEXT" id="ID_static_2" text="192.168.10.8/30" bold="1" x="282.95" y="180.15" align="center" width="86.35" />
+<element type="TEXT" id="ID_static_3" text="172.16.1.0/24" bold="1" x="42.6" y="338.95" align="center" width="74.15" />
+<element type="TEXT" id="ID_static_4" text="S0/0/1 .10" x="262.95" y="248.9" align="right" width="39.15" />
+<element type="TEXT" id="ID_static_5" text="192.168.10.4/30" bold="1" x="176.95" y="293.35" align="center" width="86.35" />
+<element type="TEXT" id="ID_static_6" text="G0/0 .1" x="342.1" y="300.5" align="center" width="31.1" />
+<element type="TEXT" id="ID_static_7" text="192.168.1.0/24" bold="1" x="307.95" y="338.95" align="center" width="80.25" />
+<element type="TEXT" id="ID_static_8" text="S0/0/0" x="275.6" y="292.4" align="center" width="39.15" />
+<element type="TEXT" id="ID_static_9" text=".6" x="299.15" y="302.6" align="center" width="16.05" />
+<element type="TEXT" id="ID_static_10" text="172.16.3.0/30" bold="1" x="63.8" y="176.65" align="center" width="74.15" />
+<element type="TEXT" compId="ID_s1_txt03" x="146.1" y="251.4" width="104.5" expand="up" align="center" color="#f68026" />
+<element type="TEXT" compId="ID_s1_txt01" x="137.45" y="214.5" width="45.2" expand="up+down" align="center" color="#f68026" />
+<element type="TEXT" compId="ID_s1_txt02" x="206.05" y="214.5" width="60.7" expand="down" align="right" color="#f68026" />
+<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+	</slide>
+
+<slide>
+<element type="ROUTER" textId="ID_router_txt1" x="6.55" y="31.95" width="428.05" height="364.5" />
+<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+<element type="TEXT" compId="ID_s2_txt01" width="104" x="18" y="367" align="left" expand="right" size="10"/>
+</slide>
+
+
+<slide>
+<element type="ROUTER" textId="ID_router_txt2" x="16.5" y="80" width="415" height="258.3" />
+<!---->
+<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+<element type="TEXT" compId="ID_s3_txt01" width="104" x="26" y="104" align="left" expand="right" size="10"/>
+</slide>
+ 
+</slide>
+
+
+
+
+
+<text id="ID_router_txt1"><![CDATA[<pre>R3# <b>show ip protocols</b>
+*** IP Routing is NSF aware ***
+
+Routing Protocol is "eigrp 1"
+  Outgoing update filter list for all interfaces is not set
+  Incoming update filter list for all interfaces is not set
+  Default networks flagged in outgoing updates
+  Default networks accepted from incoming updates
+  EIGRP-IPv4 Protocol for AS(1)
+    Metric weight K1=1, K2=0, K3=1, K4=0, K5=0
+    NSF-aware route hold timer is 240
+    Router-ID: 3.3.3.3
+    Topology : 0 (base) 
+      Active Timer: 3 min
+      Distance: internal 90 external 170
+<span class="orange1">      Maximum path: 4</span>
+      Maximum hopcount 100
+      Maximum metric variance 1
+
+  Automatic Summarization: disabled
+  Address Summarization:
+    192.168.0.0/22 for Se0/0/0, Se0/0/1
+      Summarizing 3 components with metric 2816
+<span class="orange1">  Maximum path: 4</span>
+
+</pre>]]>
+</text>	 
+<text id="ID_router_txt2"><![CDATA[<pre>R3# <b>show ip route eigrp</b>
+
+
+Gateway of last resort is 192.168.10.9 to network 0.0.0.0
+
+D*EX  0.0.0.0/0 [170/3139840] via 192.168.10.9, 00:14:24, 
+Serial0/0/1
+      172.16.0.0/16 is variably subnetted, 3 subnets, 2 masks
+D        172.16.1.0/24 [90/2170112] via 192.168.10.5, 
+         00:14:28, Serial0/0/0
+D        172.16.2.0/24 [90/3012096] via 192.168.10.9, 
+         00:14:24, Serial0/0/1
+<span class="orange1">D        172.16.3.0/30 [90/41024000] via 192.168.10.9, 
+         00:14:24, Serial0/0/1
+              [90/41024000] via 192.168.10.5, 00:14:24, 
+               Serial0/0/0</span>
+D     192.168.0.0/22 is a summary, 00:14:40, Null0
+R3# 
+</pre>]]>
+</text>
+</data>

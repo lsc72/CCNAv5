@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.2.1 Qu&#x0027;est-ce que la technologie DSL ?</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Comparaison des solutions haut débit</h1>
+        <h2>DSL</h2>
+      </div>
+      <div id="content">
+<p>La technologie DSL est un moyen permettant de réaliser des connexions haut débit sur une infrastructure existante en fils de cuivre. La technologie DSL est l'une des principales solutions de télétravail disponibles.</p>
+<p></p>
+<p>Il y a plusieurs années, les laboratoires Bell ont montré qu'une conversation vocale typique effectuée sur une boucle locale ne nécessitait qu'une bande passante de 300 Hz à 3 kHz. Pendant de nombreuses années, les réseaux téléphoniques n’utilisaient pas de bande passante supérieure à 3 kHz. Depuis, les progrès technologiques ont permis à la ligne DSL d’utiliser une bande passante élargie de 3 kHz à 1 MHz pour fournir des services d’accès aux données en haut débit sur des lignes en cuivre ordinaires. </p>
+<p></p>
+<p>En guise d'exemple, l'ADSL (Asymmetric DSL) utilise une plage de fréquences s'étendant approximativement de 20 kHz à 1 MHz. Heureusement, des modifications relativement minimes doivent être apportées à l’infrastructure des compagnies de téléphone existantes pour fournir des vitesses de données haut débit aux abonnés. Cette figure représente une allocation de bande passante sur un fil en cuivre pour la ligne ADSL. La zone étiquetée POTS identifie la plage de fréquences utilisée par le service téléphonique vocal. La zone étiquetée ADSL représente l'espace de fréquences utilisé par les signaux DSL en amont et en aval. La zone englobant à la fois les zones POTS et ADSL représente la plage de fréquences entière prise en charge par la paire de fils de cuivre.</p>
+<p></p>
+<p>SDSL (Symmetric DSL) est une autre forme de technologie DSL. Toutes les formes de services DSL entrent dans les catégories ADSL ou SDSL et il existe plusieurs variétés de chaque type. Le service ADSL offre à l'utilisateur une bande passante pour le téléchargement vers l'utilisateur supérieure à celle du transfert d'informations dans la direction opposée. Le service SDSL fournit la même capacité dans les deux sens. </p>
+<p></p>
+<p>Les différentes variantes de la technologie DSL offrent des bandes passantes diverses, certaines pouvant dépasser la valeur de 40 Mbit/s. Les débits de transfert dépendent de la longueur réelle de la boucle locale (connexion de l'abonné au central téléphonique) ainsi que du type et de l'état du câblage. Pour un service ADSL satisfaisant, la longueur de la boucle doit être inférieure à 5,46 km.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.0.1.2  NAT conceptuelle</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Introduction</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>NAT conceptuelle</b>
+</p>
+<p></p>
+<p>
+<b>Scénario</b>
+</p>
+<p></p>
+<p>Vous travaillez pour un important système scolaire ou universitaire. </p>
+<p></p>
+<p>Étant donné que vous êtes l'administrateur réseau, un grand nombre de professeurs, d'employés administratifs, ainsi que d'autres administrateurs réseau ont quotidiennement besoin de votre aide concernant leurs réseaux. Ils vous appellent tout au long de la journée et, en raison du nombre d'appels, vous ne pouvez pas accomplir vos tâches courantes d'administration réseau.</p>
+<p></p>
+<p>Vous devez trouver un moyen de limiter vos réponses aux appels et de filtrer les appelants. Vous devez également masquer votre numéro de téléphone de sorte que lorsque vous appelez quelqu'un, un autre numéro soit affiché chez le destinataire.</p>
+<p></p>
+<p>Ce scénario décrit un problème très courant pour la plupart des PME. Visitez la page « How Network Address Translation Works » sur le site<a href="http://computer.howstuffworks.com/nat.htm/printable" target="_blank"> http://</a><a href="http://computer.howstuffworks.com/nat.htm/printable" target="_blank"> computer.howstuffworks.com</a><a href="http://computer.howstuffworks.com/nat.htm/printable" target="_blank">/</a><a href="http://computer.howstuffworks.com/nat.htm/printable" target="_blank">nat.htm</a><a href="http://computer.howstuffworks.com/nat.htm/printable" target="_blank"> /printable</a> pour obtenir plus d'informations sur la façon dont le monde numérique gère ce type d'interruptions du travail. </p>
+<p></p>
+<p>Utilisez le fichier PDF fourni avec cet exercice pour réfléchir davantage sur la façon dont un processus, appelé NAT, peut être la réponse aux problèmes de ce scénario.</p>
+<p></p>
+<p>
+<a href="../../files/11.0.1.2%20Conceptual%20NAT%20Instructions.pdf" target="_blank">Instructions de l'exercice en classe : Concept de la NAT</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

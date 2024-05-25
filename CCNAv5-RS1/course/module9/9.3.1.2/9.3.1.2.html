@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.3.1.2 Attribution de sous-réseaux IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Critères de conception à prendre en compte pour les réseaux IPv6</h1>
+        <h2>Segmentation en sous-réseaux d&#x0027;un réseau IPv6</h2>
+      </div>
+      <div id="content">
+<p>Avec plus de 65 000 sous-réseaux disponibles, la mission de l'administrateur réseau revient à concevoir un schéma logique pour répondre aux besoins du réseau.</p>
+<p></p>
+<p>Comme le montre la Figure 1, cet exemple de topologie exige des sous-réseaux pour chaque réseau local ainsi que pour la liaison de réseau étendu entre R1 et R2. À la différence de l'exemple d'adressage IPv4, avec IPv6, le sous-réseau de la liaison WAN n'est pas divisé une nouvelle fois en sous-réseaux. Bien que cela entraîne un « gaspillage » d'adresses, ce n'est pas un problème avec l'approche IPv6.</p>
+<p></p>
+<p>Comme indiqué à la Figure 2, nous allons attribuer 5 sous-réseaux IPv6 avec le champ d'ID de sous-réseau 0001 à 0005 dans cet exemple. Chaque sous-réseau /64 propose plus d'adresses qu'il ne sera jamais nécessaire.</p>
+<p></p>
+<p>Comme l'illustre la Figure 3, un sous-réseau /64 est attribué à chaque segment LAN et à la liaison WAN.</p>
+<p></p>
+<p>Comme pour la configuration IPv4, la Figure 4 montre que chacune des interfaces du routeur a été configurée pour utiliser un sous-réseau IPv6 différent. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

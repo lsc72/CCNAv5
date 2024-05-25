@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.4.1.1 Étapes de configuration d&#x0027;un routeur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.4.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration d&#x0027;un routeur Cisco</h1>
+        <h2>Configuration des paramètres initiaux</h2>
+      </div>
+      <div id="content">
+<p>Les routeurs Cisco et les commutateurs Cisco ont beaucoup de points communs. Ils prennent en charge le même système d'exploitation de modes, les mêmes structures de commandes et comptent de nombreuses commandes similaires. En outre, les étapes de configuration initiale sont identiques pour les deux périphériques lors de la mise en œuvre dans un réseau. </p>
+<p></p>
+<p>Les étapes suivantes, similaires à celles suivies pour la configuration d'un commutateur, doivent être réalisées lors de la configuration des paramètres initiaux d'un routeur :</p>
+<p>1. Attribuez un nom de périphérique à l'aide de la commande de configuration globale <span class="cmd"><b>hostname</b></span>. (Figure 1)</p>
+<p>2. Définissez les mots de passe. (Figure 2)</p>
+<p>
+<ul>
+<li>Sécurisez l'accès au mode d'exécution privilégié à l'aide de la commande <span class="cmd"><b>enable secret</b></span>.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Sécurisez l'accès au mode d'exécution à l'aide de la commande <span class="cmd"><b>login</b></span> sur le port de console et de la commande <span class="cmd"><b>password</b></span> pour définir le mot de passe. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Sécurisez l'accès virtuel des lignes VTY de la même manière que pour sécuriser l'accès au mode d'exécution.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Utilisez la commande de configuration globale <span class="cmd"><b>service password-encryption</b></span> pour empêcher les mots de passe d'apparaître en clair dans le fichier de configuration.</li>
+</ul>
+</p>
+<p>3. Rédigez les mentions légales à l'aide de la commande de configuration globale <span class="cmd"><b>banner motd</b></span> (message du jour, MOTD). (Figure 3)</p>
+<p>4. Enregistrez la configuration à l'aide de la commande <span class="cmd"><b>copy run start</b></span>. (Figure 4)</p>
+<p>5. Vérifiez la configuration à l'aide de la commande <span class="cmd"><b>show run</b></span>. </p>
+<p></p>
+<p>La Figure 5 est un contrôleur de syntaxe qui vous permet de mettre en pratique ces étapes de configuration.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

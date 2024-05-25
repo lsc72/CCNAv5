@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.2.1 Réseaux privés virtuels de site à site</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Réseaux privés virtuels (VPN)</h1>
+        <h2>Types de réseau privé virtuel</h2>
+      </div>
+      <div id="content">
+<p>Il existe deux types de réseaux privés virtuels :</p>
+<p></p>
+<p>
+<ul>
+<li>Site à site</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Accès à distance</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>VPN de site à site</b>
+</p>
+<p>Un VPN de site à site est créé lorsque les périphériques situés des deux côtés de la connexion VPN connaissent par avance la configuration VPN, comme le montre la figure. Le VPN reste statique et les hôtes internes ne savent pas qu'un VPN existe. Dans un VPN de site à site, les hôtes finaux envoient et reçoivent le trafic TCP/IP normal par l'intermédiaire d'une « passerelle » VPN. La passerelle VPN est responsable de l'encapsulation et du chiffrement de la totalité du trafic sortant issu d'un site spécifique. La passerelle VPN envoie ensuite ce trafic sur Internet par le biais d'un tunnel VPN jusqu'à une passerelle VPN homologue au niveau du site cible. Lors de la réception, la passerelle VPN homologue élimine les en-têtes, déchiffre le contenu et relaie le paquet vers l'hôte cible au sein de son réseau privé. </p>
+<p></p>
+<p>Un VPN site à site est une extension d’un réseau étendu classique. Les VPN site à site connectent entre eux des réseaux entiers. Ils peuvent par exemple connecter un réseau de filiale au réseau du siège d’une entreprise. Par le passé, une connexion par ligne louée ou Frame Relay était requise pour connecter des sites, mais comme la plupart des entreprises disposent aujourd'hui d’un accès Internet, ces connexions peuvent être remplacées par des VPN site à site.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide>
+	<!-- Title -->
+		<element type="TEXT" subType="TITLE" compId="ID_title"/>	
+			
+	<!-- Lazy text -->
+		<element type="TEXT" compId="ID_txt01" x="5.35" y="92.85" width="104" align="left" expand="right"/>
+		<element type="TEXT" compId="ID_txt02" x="5.35" y="192.85" width="104" align="left" expand="right"/>
+		<element type="TEXT" compId="ID_txt03" x="5" y="379" width="460" align="left" expand="up"/>
+		
+	<!-- Router text-->		
+		<element type="ROUTER" textId="ID_r1_txt01" x="5.95" y="112.95" width="458" height="57"/>	
+		<element type="ROUTER" textId="ID_r1_txt02" x="5.95" y="212.95" width="458" height="57"/>	
+		
+	</slide>
+	
+	<text id="ID_r1_txt01"><![CDATA[
+	R1(config)#<b>access-list 1 permit 0.0.0.0 255.255.255.255</b></br />
+	R1(config)#<b>access-list 1 permit any</b>
+		]]></text>
+		
+	<text id="ID_r1_txt02"><![CDATA[
+	R1(config)#<b>access-list 1 permit 192.168.10.10 0.0.0.0</b><br />
+	R1(config)#<b>access-list 1 permit host 192.168.10.10</b>
+		]]></text>
+		
+</data>

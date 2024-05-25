@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.3.5 Exemple VLSM</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.3.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Examen de CIDR et VLSM</h1>
+        <h2>VLSM</h2>
+      </div>
+      <div id="content">
+<p>La conception d'un schéma d'adressage réseau doit faire l'objet d'une étude attentive. Par exemple, l'exemple de topologie dans la Figure 1 nécessite sept sous-réseaux. </p>
+<p></p>
+<p>Avec le découpage classique en sous-réseaux, les sept premiers blocs d'adresses sont alloués aux réseaux locaux (LAN) et étendus (WAN), comme illustré dans la Figure 2. Ce schéma entraîne la création de 8 sous-réseaux proposant chacun 30 adresses utilisables (/27). Bien que ce schéma fonctionne pour les segments de réseau local, de nombreuses adresses sont gaspillées dans les segments de réseau étendu. </p>
+<p></p>
+<p>Si un schéma d'adressage est conçu pour un nouveau réseau, les blocs d'adresses peuvent être attribués d'une façon permettant de limiter les pertes et de maintenir la contiguïté des blocs d'adresses inutilisées. Il peut être plus difficile d'y parvenir en faisant des ajouts à un réseau existant.</p>
+<p></p>
+<p>Comme l'illustre la Figure 3, afin d'utiliser l'espace d'adressage de façon plus efficace, des sous-réseaux /30 sont créés pour les liaisons de réseau étendu. Pour conserver ensemble les blocs d'adresses inutilisées, le dernier sous-réseau /27 a été subdivisé à nouveau pour créer les sous-réseaux /30. Les 3 premiers sous-réseaux ont été affectés aux liaisons de réseau étendu, permettant la création des sous-réseaux 192.168.20.224/30, 192.168.20.228/30 et 192.168.20.232/30. Cette conception du schéma d'adressage laisse trois sous-réseaux /27 et cinq sous-réseaux /30 inutilisés.</p>
+<p></p>
+<p>Les figures 4 à 7 présentent des exemples de configuration de l'affichage sur l'ensemble des quatre routeurs pour mettre en œuvre le schéma d'adressage VLSM.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

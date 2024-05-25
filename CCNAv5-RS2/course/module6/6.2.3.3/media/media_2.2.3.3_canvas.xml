@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+  <slide type="MBAR">
+
+  <slide><element type="TEXT" subType="TITLE" compId="ID_s1_title"/>  
+  <element type="IMAGE" src="2_2_3_3_A.jpg" x="0" y="0"  width="470" height="400"/> 
+<element type="TEXT" text=":1" x="272.9" y="200.2" width="12.5" align="center" size="10" color="#0" /> 
+<element type="TEXT" text="2001:DB8:ACAD:2::/64" x="239.8" y="77.1" width="111.3" align="center" size="10" color="#363233" bold="1" />
+<element type="TEXT" text="2001:DB8:ACAD:4::/64" x="70" y="180.35" width="111.3" align="center" size="10" bold="1" />
+<element type="TEXT" text="2001:DB8:ACAD:5::/64" x="263.65" y="180.35" width="111.3" align="center" size="10" bold="1" />
+<element type="TEXT" text="2001:DB8:ACAD:1::/64" x="9.6" y="240.45" width="111.3" align="center" size="10" bold="1" />
+<element type="TEXT" text="2001:DB8:ACAD:3::/64" x="323.65" y="240.45" width="111.3" align="center" size="10" bold="1" />
+<element type="TEXT" text="G0/0" x="190.95" y="130.25" width="25.9" align="center" size="10" />
+<element type="TEXT" text="S0/0/1 DCE" x="243.4" y="154.35" width="33.1" align="left" size="10" />
+<element type="TEXT" text="S0/0/0" x="169.65" y="164.95" width="33.1" align="center" size="10" />
+<element type="TEXT" text="S0/0/1" x="233.05" y="208.85" width="33.1" align="center" size="10" />
+<element type="TEXT" text="G0/0" x="113.45" y="208.45" width="25.9" align="center" size="10" />
+<element type="TEXT" text="G0/0" x="304" y="208.45" width="25.9" align="center" size="10" />
+<element type="TEXT" text=":1" x="221.4" y="130.25" width="12.5" align="center" size="10" />
+<element type="TEXT" text=":2" x="205.95" y="169.5" width="12.5" align="center" size="10" />
+<element type="TEXT" text=":2" x="222" y="169.5" width="12.5" align="center" size="10" />
+<element type="TEXT" text=":1" x="163.55" y="196.2" width="12.5" align="center" size="10" />
+<element type="TEXT" text=":1" x="125.3" y="224.95" width="13.3" align="center" />
+<element type="TEXT" text=":1" x="304.65" y="224.95" width="12.5" align="center" size="10" />
+<element type="TEXT" text="S0/0/0 DCE" x="185.35" y="208.85" width="33.1" align="left" size="10" />
+<element type="SHAPE" subType="ARROW" thickness="3" length="120" x="162" y="245" color="#F68026"  rotation="90"/>
+<element type="ROUTER" textId="ID_s1_staticTxt1" x="19.65" y="286.55" width="398.1" height="108.45" size="11"/>
+</slide>  
+ 
+    <slide>    
+<element type="TEXT" subType="TITLE" compId="ID_s2_title"/> 
+<element type="ROUTER" textId="ID_s2_staticTxt1" x="36.65" y="37.65"  width="393.05" height="345.3" size="10"/> 
+<element type="TEXT" textId="ID_s2_staticTxt2" x="4" y="45.95" width="415.95" height="328" size="10"/>  
+    </slide>
+    <slide>
+       <element type="TEXT" subType="TITLE" compId="ID_s3_title" /> 
+      <element type="ACTIVITY" subType="SYNTAX" compId="ID_s3_SC01" x="2.5" y="30" width="428.35" height="367" size="10" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>     
+    </slide>
+     <slide>
+      <element type="TEXT" subType="TITLE" compId="ID_s4_title" /> 
+      <element type="ACTIVITY" subType="SYNTAX" compId="ID_s4_SC01" x="2.5" y="30" width="428.35" height="367" size="10" resetId="ID_sc1_reset" showMeId="ID_sc1_showme" showAllId="ID_sc1_showall"/> 
+
+     
+
+    </slide>
+   </slide>
+
+  <text id="ID_s1_staticTxt1"><![CDATA[
+    <div> R1(config)# <b>ipv6 route 2001:DB8:ACAD:2::/64 2001:DB8:ACAD:4::2  </b><br /> R1(config)# <b>ipv6 route 2001:DB8:ACAD:5::/64 2001:DB8:ACAD:4::2  </b><br /> R1(config)# <b>ipv6 route 2001:DB8:ACAD:3::/64 2001:DB8:ACAD:4::2  </b><br /> R1(config)# <br />
+ </div>
+]]></text>
+ 
+<text id="ID_s2_staticTxt2"><![CDATA[
+   <div id="innerDiv">
+   <table width="100%"   cellspacing="0" cellpadding="0">
+  <tr>
+    <tr> <td></td><td width="25"></td><td></td>
+    <td colspan="3">R1# <b>show ipv6 route  </b></td>
+  </tr>
+  <tr>
+    <td colspan="3"></td>
+    <td colspan="3">IPv6 Routing Table - default - 8 entries</td>
+  </tr>
+  <tr><td colspan="3"></td> <td>&nbsp;</td><td>Codes:</td>
+    <td colspan="2">C - Connected, L - Local, S - Static,</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>U - Per-user Static route</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>&nbsp;</td><td>&nbsp;</td>
+    <td>B - BGP, R - RIP, H - NHRP, I1 - ISIS L1</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>&nbsp;</td><td>&nbsp;</td>
+    <td>I2 - ISIS L2, IA - ISIS interarea, </td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>&nbsp;</td><td>&nbsp;</td>
+    <td>IS - ISIS summary, D - EIGRP</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>&nbsp;</td><td>&nbsp;</td>
+    <td> EX - EIGRP external, ND - ND Default, </td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>&nbsp;</td><td>&nbsp;</td>
+    <td>NDp - ND Prefix, DCE - Destination</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>&nbsp;</td><td>&nbsp;</td>
+    <td>NDr - Redirect, O - OSPF Intra, OI - OSPF Inter, </td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>&nbsp;</td><td>&nbsp;</td>
+    <td>OE1 - OSPF ext 1</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>&nbsp;</td><td>&nbsp;</td>
+    <td>OE2 - OSPF ext 2, ON1 - OSPF NSSA ext 1, </td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>&nbsp;</td><td>&nbsp;</td>
+    <td>ON2 - OSPF NSSA ext 2</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>C</td>
+    <td colspan="2">2001:DB8:ACAD:1::/64 [0/0]</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>&nbsp;</td>
+    <td colspan="2">via GigabitEthernet0/0, directly connected</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>L </td>
+    <td colspan="2">2001:DB8:ACAD:1::1/128 [0/0]</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>&nbsp;</td>
+    <td colspan="2">via GigabitEthernet0/0, receive</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>S</td>
+    <td colspan="2"> 2001:DB8:ACAD:2::/64 [1/0]</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>&nbsp;</td>
+    <td colspan="2">via 2001:DB8:ACAD:4::2</td>
+  </tr> 
+  <tr><td colspan="3" rowspan="2"><number value="1" id="img1"></number></td>
+    <td bgcolor="#FACCA8">S</td>
+    <td colspan="2" rowspan="2" bgcolor="#FACCA8" class="new">2001:DB8:ACAD:3::/64 [1/0] <br> via 2001:DB8:ACAD:4::2</td>
+  </tr>
+  <tr> 
+    <td bgcolor="#FACCA8">&nbsp;</td> 
+  </tr>
+  <tr><td colspan="3" rowspan="2"><number value="2" id="img2"></number></td>
+    <td bgcolor="#E0D5E6">C</td>
+    <td colspan="2" rowspan="2" bgcolor="#E0D5E6">2001:DB8:ACAD:4::/64 [0/0] <br> via Serial0/0/0, directly connected</td>
+  </tr>
+  <tr> 
+    <td bgcolor="#E0D5E6">&nbsp;</td> 
+  </tr>
+
+
+  <tr><td colspan="3"></td>
+    <td>L</td>
+    <td colspan="2">2001:DB8:ACAD:4::1/128 [0/0]</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>&nbsp;</td>
+    <td colspan="2"> via Serial0/0/0, receive</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>S</td>
+    <td colspan="2">2001:DB8:ACAD:5::/64 [1/0]</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>&nbsp;</td>
+    <td colspan="2"> via 2001:DB8:ACAD:4::2</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>C</td>
+    <td colspan="2">2001:DB8:ACAD:4::/64 [0/0]</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>&nbsp;</td>
+    <td colspan="2"> via Serial0/0/0, directly connected</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>L</td>
+    <td colspan="2"> 2001:DB8:ACAD:4::1/128 [0/0]</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>S</td>
+    <td colspan="2">2001:DB8:ACAD:5::/64 [1/0]</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>&nbsp;</td>
+    <td colspan="2">via 2001:DB8:ACAD:4::2</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>L</td>
+    <td colspan="2">FF00::/8 [0/0]</td>
+  </tr>
+  <tr><td colspan="3"></td>
+    <td>&nbsp;</td>
+    <td colspan="2"> via Null0, receive</td>
+  </tr>
+  <tr><td colspan="3"></td> 
+    <td colspan="3">R1#</td>
+  </tr>
+</table>
+
+ </div> 
+]]>
+  </text>
+     
+   
+</data>

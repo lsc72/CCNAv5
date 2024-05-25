@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.2.5 Encapsulation IP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche réseau</h1>
+        <h2>Caractéristiques du protocole IP</h2>
+      </div>
+      <div id="content">
+<p>Le protocole IP encapsule le segment de couche transport en ajoutant un en-tête IP. Cet en-tête est utilisé pour acheminer le paquet vers l'hôte de destination. L'en-tête IP reste en place du moment où le paquet quitte la couche réseau de l'hôte source jusqu'à son arrivée dans la couche réseau de l'hôte de destination.</p>
+<p></p>
+<p>La Figure 1 illustre le processus de création de la PDU de couche transport. La Figure 2 illustre le processus consécutif de création de la PDU de couche réseau.</p>
+<p></p>
+<p>Ce processus d'encapsulation des données couche par couche permet aux services des différentes couches de se développer et d'évoluer sans affecter les autres couches. Cela signifie que les segments de couche transport peuvent être facilement encapsulés par les protocoles IPv4 et IPv6, ou par tout nouveau protocole pouvant être mis au point dans le futur. </p>
+<p></p>
+<p>Les routeurs peuvent mettre en œuvre ces différents protocoles de couche réseau pour fonctionner simultanément sur un réseau vers et depuis les mêmes hôtes ou des hôtes différents. Le routage effectué par ces périphériques intermédiaires tient compte uniquement du contenu de l'en-tête de paquet qui encapsule le segment. Dans tous les cas, la partie données du paquet (à savoir l'unité de données de protocole de couche transport encapsulée) reste inchangée durant les processus de couche réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

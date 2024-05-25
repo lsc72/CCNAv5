@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.2.5 LSA OSPF de type 4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement du protocole OSPF à zones multiples</h1>
+        <h2>Fonctionnement d&#x0027;une LSA OSPF à zones multiples</h2>
+      </div>
+      <div id="content">
+<p>Les LSA de type 4 et 5 sont utilisées collectivement pour identifier un ASBR et pour annoncer les réseaux externes dans un domaine de routage OSPF. </p>
+<p></p>
+<p>Les LSA de type 4 récapitulatives sont générées par un ABR uniquement lorsqu’un ASBR est présent dans une zone. Les LSA de type 4 identifient l’ASBR et annoncent une route jusqu’à ce dernier. L’ensemble du trafic destiné à un système autonome externe nécessite la connaissance de la table de routage de l’ASBR qui a émis les routes externes.</p>
+<p></p>
+<p>Comme indiqué à la Figure, le routeur ASBR envoie une LSA de type 1, s'identifiant ainsi en tant que routeur ASBR. La LSA comporte un bit spécial appelé « bit externe » (ou bit e) qui sert à identifier le routeur comme un ASBR. Lorsque ABR1 reçoit la LSA de type 1, il remarque le bit e, crée une LSA de type 4, puis diffuse celle-ci dans la zone fédératrice (zone 0). Les ABR suivants diffusent la LSA de type 4 dans d’autres zones.</p>
+<p></p>
+<p>L'ID d'état de liens est défini sur l'ID du routeur ASBR.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

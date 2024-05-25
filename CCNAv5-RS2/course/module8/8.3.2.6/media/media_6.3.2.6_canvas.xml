@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		<slide>
+			<element type="IMAGE" src="6_3_2_6.jpg" x="0" y="0" width="470" height="400" />
+			<element type="TEXT" id="ID_static_1" text="S0/0/0" x="146.4" y="241.25" width="35.95" align="left" />
+			<element type="TEXT" id="ID_static_2" text=":2" x="165" y="166.9" width="13.35" align="left" />
+			<element type="TEXT" id="ID_static_3" text=":1" x="119.1" y="240.4" width="13.35" align="left" />
+			<element type="TEXT" id="ID_static_4" text="2001:DB8:CAFE:2::/64" x="165.3" y="76.95" width="120.15" align="left" bold="1" />
+			<element type="TEXT" id="ID_static_5" text="G0/0" x="192.9" y="115.4" width="28" align="left" />
+			<element type="TEXT" id="ID_static_6" text=":1" x="224.9" y="115.4" width="13.35" align="left" />
+			<element type="TEXT" id="ID_static_7" text="FE80::2" x="143.1" y="138.65" width="43.85" align="right" color="#f68026" bold="1" />
+			<element type="TEXT" id="ID_static_8" text="2001:DB8:CAFE:A002::/64" x="290" y="193.25" width="140.3" align="left" bold="1" />
+			<element type="TEXT" id="ID_static_9" text="2001:DB8:CAFE:A001::/64" x="15.4" y="193.25" width="140.3" align="left" bold="1" />
+			<element type="TEXT" id="ID_static_10" text="2001:DB8:CAFE:1::/64" x="64.45" y="337.5" width="120.15" align="left" bold="1" />
+			<element type="TEXT" id="ID_static_11" text="S0/0/1" x="146.4" y="257.55" width="35.95" align="left" />
+			<element type="TEXT" id="ID_static_12" text="S0/0/1" x="318.05" y="241.4" width="35.95" align="left" />
+			<element type="TEXT" id="ID_static_13" text="2001:DB8:CAFE:A003::/64" x="149.05" y="292.45" width="147.75" align="left" bold="1" />
+			<element type="TEXT" id="ID_static_14" text="G0/0" x="304.65" y="296.9" width="28" align="left" />
+			<element type="TEXT" id="ID_static_15" text="2001:DB8:CAFE:3::/64" x="281.8" y="337.5" width="120.15" align="left" bold="1" />
+			<element type="TEXT" id="ID_static_16" text="G0/0" x="87.75" y="296.9" width="28" align="left" />
+			<element type="TEXT" id="ID_static_17" text=":1" x="120.05" y="296.9" width="13.35" align="left" />
+			<element type="TEXT" id="ID_static_18" text="S0/0/0" x="268" y="267.4" width="35.95" align="left" />
+			<element type="TEXT" id="ID_static_19" text=":2" x="300" y="246.4" width="13.35" align="left" />
+			<element type="TEXT" id="ID_static_20" text=":2" x="290.6" y="283.95" width="13.35" align="left" />
+			<element type="TEXT" id="ID_static_21" text=":1" x="336.95" y="296.9" width="13.35" align="left" />
+			<element type="TEXT" id="ID_static_22" text="FE80::1" x="42.55" y="269.85" width="43.85" align="right" color="#f68026" bold="1" />
+			<element type="TEXT" id="ID_static_23" text="FE80::3" x="361.15" y="269.85" width="43.85" align="left" color="#f68026" bold="1" />
+			<element type="TEXT" id="ID_static_24" text="S0/0/1" x="249.2" y="152.4" width="35.95" align="left" />
+			<element type="TEXT" id="ID_static_25" text=":1" x="147.6" y="272.2" width="13.35" align="left" />
+			<element type="TEXT" id="ID_static_26" text="S0/0/0" x="190.8" y="170.9" width="35.95" align="left" />
+			<element type="TEXT" id="ID_static_27" text=":1" x="236.9" y="168.4" width="13.35" align="left" />
+			<element type="TEXT" compId="ID_s1_txt01" x="14" y="48.5" width="412.9" expand="down" align="left" />
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+		</slide>
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+			<element type="ROUTER" textId="ID_s2_txt01" x="7" y="73" width="426" height="265.6"/>
+		</slide>
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+			<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC3" x="2.5" y="30" width="437.1" height="367" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>	
+		</slide>
+		
+	</slide>
+	
+	<text id="ID_s2_txt01"><![CDATA[
+	<code>R1(config)# <b>interface GigabitEthernet 0/0</b>
+R1(config-if)# <b>ipv6 ospf 10 area 0</b>
+R1(config-if)#
+R1(config-if)# <b>interface Serial0/0/0</b>
+R1(config-if)# <b>ipv6 ospf 10 area 0</b>
+R1(config-if)#
+R1(config-if)# <b>interface Serial0/0/1</b>
+R1(config-if)# <b>ipv6 ospf 10 area 0</b>
+R1(config-if)#
+R1(config-if)# <b>end</b>
+R1#
+R1# <b>show ipv6 ospf interfaces brief</b>
+Interface  PID   Area     Intf ID  Cost   State  Nbrs F/C
+Se0/0/1    10     0         7      15625  P2P    0/0
+Se0/0/0    10     0         6      647    P2P    0/0
+Gi0/0      10     0         3       1     WAIT   0/0
+R1#</code>
+	]]></text>
+	
+</data>

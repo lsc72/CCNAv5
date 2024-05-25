@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.2.2 Examen des valeurs de l&#x0027;interface</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1> Fonctionnement du protocole EIGRP</h1>
+        <h2>Métriques</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Examen des valeurs de métrique</b>
+</p>
+<p></p>
+<p>La commande <span class="cmd"><b>show interfaces</b></span> affiche les informations sur l'interface, notamment les paramètres servant à calculer la métrique EIGRP. La figure montre la commande <span class="cmd"><b>show interfaces</b></span> pour l'interface Serial 0/0/0 sur R1.</p>
+<p>
+<ul>
+<li>
+<b>BW </b>: bande passante de l'interface (en kilobits par seconde).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>DLY </b>: délai de l'interface (en microsecondes).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Reliability </b>: fiabilité de l'interface sous la forme d'une fraction de 255 (255/255 indique une fiabilité de 100 %), calculée sous la forme d'une moyenne exponentielle sur cinq minutes. Par défaut, le protocole EIGRP ne contient pas sa valeur dans le calcul de la métrique.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Txload, Rxload </b>: charge de transmission et de réception sur l'interface sous la forme d'une fraction de 255 (255/255 indique une charge entièrement saturée), calculée sous la forme d'une moyenne exponentielle sur cinq minutes. Par défaut, le protocole EIGRP ne contient pas sa valeur dans le calcul de la métrique.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: tout au long du cours, la bande passante est exprimée en kb/s. Toutefois, le résultat du routeur affiche la bande passante à l'aide de l'abréviation Kbit/sec. Le résultat du routeur affiche également le délai sous la forme usec. Dans ce cours, le délai est exprimé en microsecondes.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

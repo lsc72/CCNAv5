@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.2.5 Dépannage de la couche transport - NAT pour IPv4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Symptômes et causes du dépannage réseau</h2>
+      </div>
+      <div id="content">
+<p>Il existe de nombreux problèmes potentiels liés à la fonction NAT, comme la non-interaction avec des services tels que le protocole DHCP et le tunneling. Il peut également s'agir d'une configuration incorrecte de la fonction NAT intérieure ou extérieure, ou de la liste de contrôle d'accès. Les autres problèmes concernent l'interopérabilité avec d'autres technologies réseau, en particulier celles qui contiennent ou qui créent des informations à partir de l'adressage du réseau hôte dans le paquet. Les technologies suivantes sont concernées : </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>BOOTP et DHCP</b> : ces deux protocoles gèrent l'attribution automatique des adresses IPv4 aux clients. Souvenez-vous que le premier paquet qu'un nouveau client envoie est un paquet IPv4 de diffusion de requête DHCP. L'adresse IPv4 source du paquet de requête DHCP est 0.0.0.0. Étant donné que la fonction NAT nécessite à la fois une adresse IPv4 source et de destination valides, les deux protocoles BOOTP et DHCP peuvent éprouver des difficultés à fonctionner sur un routeur qui exécute la fonction NAT statique ou dynamique. Pour résoudre ce problème, vous pouvez configurer la fonction de l’assistance IPv4.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>DNS et WINS</b> : étant donné qu'un routeur qui exécute la fonction NAT dynamique modifie régulièrement la relation existant entre les adresses internes et externes en fonction de l'expiration et de la recréation des entrées de la table, un serveur DNS ou WINS situé à l'extérieur du routeur NAT n'a pas une représentation précise du réseau à l'intérieur du routeur. Pour résoudre ce problème, vous pouvez configurer la fonction de l’assistance IPv4.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>SNMP</b> : comme pour les paquets DNS, la fonction NAT ne peut pas modifier les informations d'adressage stockées dans les données utiles du paquet. À cause de cela, il est possible qu’une station d’administration SNMP située d’un côté d’un routeur NAT ne puisse pas contacter les agents SNMP de l’autre côté du routeur NAT. Pour résoudre ce problème, vous pouvez configurer la fonction de l’assistance IPv4.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Protocoles de tunneling et de chiffrement</b> : les protocoles de tunneling et de chiffrement requièrent souvent que le trafic provienne d'un port UDP ou TCP spécifique, ou utilisent un protocole de couche transport qui ne peut pas être traité par la fonction NAT. Par exemple, les protocoles de tunneling IPsec et les protocoles d'encapsulation de routage génériques utilisés par les implémentations de VPN ne peuvent pas être traités par la fonction NAT.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque</b> : le protocole DHCPv6 issu d'un client IPv6 peut être transféré par le routeur à l'aide de la commande <span class="cmd"><b>ipv6 dhcp relay</b></span>. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

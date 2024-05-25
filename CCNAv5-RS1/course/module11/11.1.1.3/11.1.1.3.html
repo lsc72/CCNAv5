@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.1.1.3 Adressage IP d&#x0027;un réseau de petite taille</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.1.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Création et développement</h1>
+        <h2>Périphériques d&#x0027;un petit réseau</h2>
+      </div>
+      <div id="content">
+<p>Lors de la mise en œuvre d'un réseau de petite taille, il est nécessaire de planifier l'espace d'adressage IP. Tous les hôtes d'un interréseau doivent avoir une adresse unique. Même sur un réseau de petite taille, l'attribution des adresses ne doit pas être aléatoire. Le schéma d'adressage IP doit être planifié, documenté et mis à jour en fonction du type de périphérique recevant l'adresse.</p>
+<p></p>
+<p>Exemples de différents types de périphériques qui détermineront le modèle IP :</p>
+<p></p>
+<p>
+<ul>
+<li>Périphériques finaux pour les utilisateurs</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Serveurs et périphériques </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Hôtes accessibles depuis Internet</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Périphériques intermédiaires</li>
+</ul>
+</p>
+<p></p>
+<p>La planification et la documentation du schéma d'adressage IP aident l'administrateur à repérer les types de périphériques. Par exemple, si tous les serveurs obtiennent une adresse d'hôte de la plage 50 à 100, il est facile d'identifier le trafic des serveurs à l'aide de l'adresse IP. Cela peut s'avérer très utile lors de la résolution de problèmes de trafic réseau via un analyseur de protocole.</p>
+<p></p>
+<p>En outre, les administrateurs peuvent mieux contrôler l'accès aux ressources du réseau en fonction de l'adresse IP dans un schéma d'adressage IP déterministe. Cet aspect est particulièrement important pour les hôtes qui fournissent des ressources au réseau interne et au réseau externe. C'est notamment le cas des serveurs Web ou serveurs de commerce électronique. Si les adresses de ces ressources ne sont pas préparées et documentées, la sécurité et l'accessibilité des périphériques sont plus difficiles à contrôler. Si un serveur se voit attribuer une adresse aléatoire, le blocage de l'accès à cette adresse est quasiment impossible, et les clients risquent de ne pas être en mesure de localiser cette ressource.</p>
+<p></p>
+<p>Chacun de ces types de périphériques doit être alloué à un bloc d'adresses logique dans la plage d'adresses du réseau.</p>
+<p></p>
+<p>Cliquez sur les boutons de la figure pour afficher la méthode d'attribution.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

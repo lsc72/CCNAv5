@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.3.2 En-tête de paquet EIGRP et TLV</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Caractéristiques du protocole EIGRP</h1>
+        <h2>Messages EIGRP</h2>
+      </div>
+      <div id="content">
+<p>Chaque message EIGRP comporte l'en-tête, comme indiqué à la Figure 1. Les champs importants sont le champ Opcode (Code OP) et le champ Autonomous System Number (Numéro de système autonome). Code OP désigne le type de paquet EIGRP, comme suit : </p>
+<p>
+<ul>
+<li>Mise à jour</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Requête</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>ICMP</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Hello</li>
+</ul>
+</p>
+<p></p>
+<p>Le numéro de système autonome indique le processus de routage EIGRP. Contrairement au protocole RIP, plusieurs instances de protocole EIGRP peuvent fonctionner sur un réseau ; le numéro de système autonome sert à suivre chaque processus EIGRP en cours d'exécution.</p>
+<p></p>
+<p>La Figure 2 présente le TLV du paramètre EIGRP. Le message du paramètre EIGRP inclut les pondérations que le protocole EIGRP utilise pour sa métrique composite. Par défaut, seuls la bande passante et le délai sont pondérés. Les deux valeurs sont pondérées de façon égale ; en conséquence, le champ K1 de la bande passante et le champ K3 du délai sont tous deux définis sur un (1). Les autres valeurs K sont définies sur zéro (0). </p>
+<p></p>
+<p>Le temps d’attente correspond au délai pendant lequel le voisin EIGRP qui reçoit le message doit attendre avant de considérer que le routeur annonceur est hors service. </p>
+<p></p>
+<p>La Figure 3 présente le TLV des routes internes IP. Le message interne IP sert à annoncer les routes EIGRP au sein d'un système autonome. Les champs importants concernent les métriques (délai et bande passante), le masque de sous-réseau (longueur de préfiwe) et la destination. </p>
+<p></p>
+<p>Le délai est calculé comme étant la somme des délais de la source à la destination, en unités de 10 microsecondes. La bande passante correspond à la valeur minimale de bande passante configurée pour les différentes interfaces le long du chemin. </p>
+<p></p>
+<p>Le masque de sous-réseau est indiqué comme la longueur du préfixe ou le nombre de bits réseau du masque de sous-réseau. Par exemple, la longueur de préfixe du masque de sous-réseau 255.255.255.0 est 24, car 24 correspond au nombre de bits réseau. </p>
+<p></p>
+<p>Le champ Destination contient l’adresse du réseau de destination. Bien que seuls 24 bits soient indiqués dans cette figure, le champ varie en fonction de la valeur de la partie réseau de l’adresse réseau en 32 bits. Par exemple, la partie réseau de 10.1.0.0/16 est 10.1 ; en conséquence, le champ Destination stocke les 16 premiers bits. La longueur minimale de ce champ étant de 24 bits, le reste du champ est complété par des zéros. Si une adresse réseau est supérieure à 24 bits (192.168.1.32/27, par exemple), le champ Destination est étendu de 32 bits supplémentaires (pour un total de 56 bits) et les bits non utilisés sont complétés par des zéros.</p>
+<p></p>
+<p>La Figure 4 présente le TLV des routes externes IP. Le message externe IP sert lors de l'importation des routes externes dans le processus de routage EIGRP. Dans ce chapitre, nous importerons ou redistribuerons une route statique par défaut dans le protocole EIGRP. Notez que la moitié inférieure du TLV des routes externes IP comprend tous les champs utilisés par le TLV interne IP. </p>
+<p></p>
+<p>
+<b>Remarque </b>: l'unité de transmission maximale (MTU) n'est pas une métrique utilisée par le protocole EIGRP. L'unité de transmission maximale est incluse dans les mises à jour de routage, mais ne sert pas à déterminer la métrique de routage.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

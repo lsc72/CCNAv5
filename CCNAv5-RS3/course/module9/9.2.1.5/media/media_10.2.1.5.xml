@@ -1,0 +1,33 @@
+﻿<textcomponents> <!-- Slide 01-->
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Installation d'une licence permanente</b>]]></text> 
+	</component> <!-- Slide 02-->
+	<component id="ID_s2_title">
+		<text><![CDATA[<b>Installation de la licence de sécurité sur R2</b>]]></text>
+	</component>
+	<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+	<component id="ID_S2_SC5" fontFace='_typewriter' fontSize="10">
+		<feedback id="fb"><![CDATA[<b>***</b><font face="_sans" color="#0000FF">Vous devez saisir la commande exacte et complète.</font><b>***</b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font face="_sans"><b>Installez la licence de sécurité seck9-C1900-SPE150_K9-FAB12340099.xml à partir de flash0 et redémarrez le routeur.</b></font>]]></existingcommands>
+		<command  prompt="R2#">
+		    <correctresponse ignorecase='false'><![CDATA[license install flash0:seck9-C1900-SPE150_K9-FAB12340099.xml]]></correctresponse>
+				<deviceresponse><![CDATA[<font Face="_typewriter">Installing licenses from “seck9-C1900-SPE150_K9-FAB12340099.xml" <br>Installing...Feature:seck9...Successful:Supported <br>1/1 licenses were successfully installed <br>0/1 licenses were existing licenses <br>0/1 licenses were failed to install <br>R2# <br>*May 27 17:24:57.391: %LICENSE-6-INSTALL: Feature seck9 1.0 was installed in this <br>device.  <br>UDI=1900-SPE150/K9:FAB12340099; StoreIndex=15:Primary License Storage <br>*May 27 17:24:57.615: %IOS_LICENSE_IMAGE_APPLICATION-6-LICENSE_LEVEL: Module <br>name = c1900 <br>Next reboot level = seck9 and License = seck9</font>]]></deviceresponse> 
+		</command>
+		<command  prompt="R2#">
+		    <correctresponse><![CDATA[reload]]></correctresponse>
+			<instruction><![CDATA[<font face="_sans" class="syntaxBottomLine"><b>Vous avez correctement installé la licence de sécurité sur R2.</b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+</textcomponents>

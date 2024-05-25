@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		
+		<slide>
+			<element type="IMAGE" src="8_2_2_3.jpg" x="0" y="0" width="470" height="400"/>	
+			<element type="TEXT" subType="TITLE" compId="ID_s1_header" />		
+			<element type="TEXT" compId="ID_s1_txt01" width="107.25" x="145.4" y="54.85" align="center" expand="left+right"/>
+			<element type="TEXT" compId="ID_s1_txt04" width="100.35" x="26.2" y="180.15" align="center" expand="up" color="#F68026" />
+			<element type="TEXT" compId="ID_s1_txt02" width="160.5" x="4.8" y="345.35" align="center" expand="left+right" />
+			<element type="TEXT" compId="ID_s1_txt03" width="160.5" x="236.7" y="345.35" align="center" expand="left+right" />
+			
+			<element type="TEXT" text="10.2.1.0/24" width="59.1" x="170.9" y="73.5" align="center" bold="1" />
+			<element type="TEXT" text="192.168.10.0/30" width="83.5" x="154.45" y="210" align="center" bold="1"/>	
+			<element type="TEXT" text="192.168.10.4/30" width="83.5" x="260" y="186" align="center" bold="1" />
+			<element type="TEXT" text="10.1.1.0/24" width="59.1" x="1.25" y="327.65" align="center" bold="1" />
+			<element type="TEXT" text="10.1.2.0/24" width="59.1" x="109.95" y="327.65" align="center" bold="1" />
+			<element type="TEXT" text="192.168.1.0/24" width="77.4" x="234.35" y="327.65" align="center" bold="1" />
+			<element type="TEXT" text="192.168.2.0/24" width="77.4" x="326.35" y="327.65" align="center" bold="1" />
+			
+			<element type="TEXT" text="G0/0" width="28" x="168.1" y="111.85" align="center" />	
+			<element type="TEXT" text=".1" width="13.3" x="201.15" y="111.85" align="center" />
+			<element type="TEXT" text=".2" width="13.3" x="155.05" y="162.45" align="center" />
+			<element type="TEXT" text=".5" width="13.3" x="227.6" y="162.5" align="center"/>
+			<element type="TEXT" text="S0/0/0" width="35.9" x="163.2" y="178.2" align="center" />
+			<element type="TEXT" text="S0/0/1" width="38.8" x="199.5" y="182.2" align="center" />	
+			<element type="TEXT" text=".1" width="13.3" x="96.15" y="232.5" align="center" />
+			<element type="TEXT" text="S0/0/0" width="35.9" x="115.55" y="238.6" align="center" />
+			<element type="TEXT" text="S0/0/1" width="35.9" x="246.1" y="239.25" align="center"/>
+			<element type="TEXT" text=".6" width="13.3" x="288.05" y="233.1" align="center" />
+			<element type="TEXT" text=".1" width="13.3" x="37.9" y="283.45" align="center" />
+			<element type="TEXT" text="G0/0" width="28" x="54.55" y="291.45" align="center" />
+			<element type="TEXT" text="G0/1" width="28" x="87.5" y="291.45" align="center"/>
+			<element type="TEXT" text=".1" width="13.3" x="116.1" y="281.45" align="center" />
+			
+			<element type="TEXT" text=".1" width="13.3" x="273.65" y="283.85" align="center" />
+			<element type="TEXT" text="G0/0" width="28" x="291.4" y="291.45" align="center" />
+			<element type="TEXT" text="G0/1" width="28" x="320.8" y="291.45" align="center"/>
+			<element type="TEXT" text=".1" width="13.3" x="355.75" y="283.85" align="center" />
+			<element type="TEXT" textId="staticTxt1" x="355" y="120" width="76.6" size="10" align="center"/>
+		</slide>
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_header" />		
+			<element type="ROUTER" textId="ID_s2_txt01" x="2.95" y="100.95" width="434.4" height="220.55"/>
+		</slide>	
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_header" />		
+			<element type="ROUTER" textId="ID_s3_txt01" x="2.95" y="100.95" width="434.4" height="220.55"/>
+		</slide>		
+	</slide>
+	
+	<text id="staticTxt1"><![CDATA[EIGRP
+(172.16.0.0/24 – 
+ 172.16.31.0/24) ]]></text>
+ 
+ <text id="ID_s2_txt01"><![CDATA[
+	<table width="415" border="0" cellspacing="0" cellpadding="0"> <tr> <td colspan="3">R1# <strong>show ip route ospf | begin Gateway </strong></td> </tr> <tr> <td colspan="3">Gateway of last resort is not set</td> </tr> <tr> <td colspan="3">&nbsp;</td> </tr><tr> <td width="40">&nbsp;</td> <td colspan="2">10.0.0.0/8 is variably subnetted, 5 subnets, 2 masks</td> </tr> <tr> <td>O</td> <td width="21">&nbsp;</td> <td width="339">10.2.1.0/24 [110/648] via 192.168.10.2, 00:00:49,</td> </tr> <tr> <td>&nbsp;</td> <td>&nbsp;</td> <td>Serial0/0/0</td> </tr> <tr> <td>O IA</td> <td colspan="2">192.168.1.0/24 [110/1295] via 192.168.10.2, 00:00:49,</td> </tr> <tr> <td>&nbsp;</td> <td colspan="2">Serial0/0/0</td> </tr> <tr> <td>O IA</td> <td colspan="2">192.168.2.0/24 [110/1295] via 192.168.10.2, 00:00:49,</td> </tr> <tr> <td>&nbsp;</td> <td colspan="2">Serial0/0/0</td> </tr> <tr> <td>&nbsp;</td> <td colspan="2">192.168.10.0/24 is variably subnetted, 3 subnets, 2</td> </tr> <tr> <td>&nbsp;</td> <td colspan="2">masks</td> </tr> <tr> <td>O</td> <td>&nbsp;</td> <td>192.168.10.4/30 [110/1294] via 192.168.10.2,</td> </tr> <tr> <td>&nbsp;</td> <td>&nbsp;</td> <td>00:00:49, Serial0/0/0</td> </tr> <tr> <td>R1#</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr></table>]]></text>
+
+
+<text id="ID_s3_txt01"><![CDATA[
+	<table width="415" border="0" cellspacing="0" cellpadding="0"> <tr> <td colspan="3">R3# <strong>show ip route ospf | begin Gateway</strong></td> </tr> <tr> <td colspan="3">Gateway of last resort is not set</td> </tr> <tr> <td colspan="3">&nbsp;</td> </tr><tr> <td width="42">&nbsp;</td> <td colspan="2">10.0.0.0/24 is subnetted, 3 subnets</td> </tr> 
+  <tr>
+    <td colspan="3" bgcolor="#FACCA8"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="tbbg">
+      <tr>
+        <td width="11%">O IA</td>
+        <td width="6%">&nbsp;</td>
+        <td width="83%">10.1.1.0 [110/1295] via 192.168.10.5, 00:27:14, Serial0/0/1</td>
+      </tr>
+      <tr>
+        <td>O IA</td>
+        <td>&nbsp;</td>
+        <td>10.1.2.0 [110/1295] via 192.168.10.5, 00:27:14, Serial0/0/1</td>
+      </tr>
+    </table></td>
+</tr> <tr> <td>O</td> <td width="26">&nbsp;</td> <td width="330">10.2.1.0 [110/648] via 192.168.10.5, 00:27:57, Serial0/0/1</td> </tr> <tr> <td>&nbsp;</td> <td colspan="2">192.168.10.0/24 is variably subnetted, 3 subnets, 2 masks</td> </tr> <tr> <td>O</td> <td>&nbsp;</td> <td>192.168.10.0/30 [110/1294] via 192.168.10.5, 00:27:57,</td> </tr> <tr> <td>&nbsp;</td> <td>&nbsp;</td> <td>Serial0/0/1</td> </tr> <tr> <td colspan="3">R3#</td> </tr></table>]]></text>
+
+</data>

@@ -1,0 +1,51 @@
+﻿<textcomponents>
+
+<component id="ID_s1_title">
+<text><![CDATA[<b>Annonce des réseaux&nbsp;R1</b>]]></text>
+</component>
+<component id="ID_s2_title">
+  <text><![CDATA[<b>Annonce des réseaux&nbsp;R2 et R3</b>]]></text> 
+  </component>
+  
+  <component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+	
+
+ <component id="ID_SC2" fontFace='Courier New' fontSize="10"> <!--text><![CDATA[<b>Advertising R2 and R3 Networks</b>]]></text-->		
+		<feedback id="fb"><![CDATA[<b> *** </b><font face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font face="Arial"><b>Configurez le protocole&nbsp;RIP sur R2 pour annoncer les réseaux appropriés en fonction de la topologie. Commencez par le plus petit réseau IP.  </b></font>]]></existingcommands>
+		<command prompt="R2(config)#">
+		    <correctresponse><![CDATA[router rip]]></correctresponse>
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[network 192.168.2.0]]></correctresponse>
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[network 192.168.3.0]]></correctresponse>
+			</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[network 192.168.4.0]]></correctresponse>
+			<instruction><![CDATA[<font face="Arial"><b>Vous êtes maintenant connecté à R3. Annoncez les réseaux&nbsp;RIP pour R3. Commencez par le plus petit réseau IP.  </b>]]></instruction>			
+			</command>
+		<command prompt="R3(config)#">
+		    <correctresponse><![CDATA[router rip]]></correctresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[network 192.168.4.0]]></correctresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[network 192.168.5.0]]></correctresponse>
+			<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez correctement configuré les réseaux pour R2 et R3.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+  
+</textcomponents>

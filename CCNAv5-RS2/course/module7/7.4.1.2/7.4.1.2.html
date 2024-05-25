@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.1.2 Algorithme de Dijkstra</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage dynamique à état de liens</h1>
+        <h2>Fonctionnement du protocole de routage à état de liens</h2>
+      </div>
+      <div id="content">
+<p>Tous les protocoles de routage à état de liens appliquent l'algorithme de Dijkstra pour calculer le meilleur chemin pour la route. Cet algorithme est en général désigné sous le nom d'algorithme SPF. Cet algorithme utilise le coût total de chaque chemin, de la source à la destination, afin de déterminer le coût total de la route. </p>
+<p></p>
+<p>Dans le schéma, chaque chemin est étiqueté avec une valeur de coût arbitraire. Le coût du plus court chemin pour que R2 envoie des paquets vers le réseau local attaché à R3 correspond à 27. Chacun d'eux détermine son propre coût vers chaque destination de la topologie. En d'autres termes, chaque routeur exécute l'algorithme SPF et détermine le coût depuis sa propre perspective.</p>
+<p></p>
+<p>
+<b>Remarque :</b> la présente section traite du coût, qui est déterminé par l'arborescence SPF. Pour cette raison, les illustrations dans l'ensemble de cette section présentent les connexions de l'arborescence SPF, et non la topologie. Tous les liens sont représentés par une ligne noire continue. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

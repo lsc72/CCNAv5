@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.1.8 Packet Tracer - Confirmation de dépannage - Documentation du réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.1.8_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage avec une approche systématique</h1>
+        <h2>Documentation du réseau</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Contexte/scénario</b>
+</p>
+<p></p>
+<p>Cet exercice couvre les étapes relatives à la détection d'un réseau, principalement à l'aide des commandes <span class="cmd"><b>telnet</b></span>,<span class="cmd"><b> show cdp neighbors detail</b></span> et <span class="cmd"><b>show ip route</b></span>. Cet exercice constitue la première partie d’une activité de deux exercices. La Partie II est Packet Tracer - Confirmation de dépannage - Utilisation de la documentation pour résoudre des problèmes, que vous trouverez plus loin dans ce chapitre.</p>
+<p></p>
+<p>La topologie affichée lors de l’ouverture de l’exercice Packet Tracer n’indique pas la totalité des informations relatives au réseau. Des détails ont été masqués à l’aide de la fonction cluster de Packet Tracer. L’infrastructure réseau a été réduite et la topologie du fichier indique uniquement les périphériques finaux. Votre travail consiste à utiliser vos connaissances en matière de réseau et de commandes de détection pour découvrir la topologie complète du réseau et la décrire.</p>
+<p></p>
+<p>
+<a href="../../files/9.1.1.8%20Packet%20Tracer%20-%20Troubleshooting%20Challenge%20-%20Documenting%20The%20Network%20Instructions.pdf" target="_blank">Packet Tracer - Confirmation de dépannage - Documentation du réseau - instructions</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/9.1.1.8%20Packet%20Tracer%20-%20Troubleshooting%20Challenge%20-%20Documenting%20The%20Network.pka" target="_blank">Packet Tracer - Confirmation de dépannage - Documentation du réseau - PKA</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

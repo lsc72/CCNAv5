@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.1.2 Caractéristiques des protocoles STP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Types de protocoles STP</h1>
+        <h2>Présentation</h2>
+      </div>
+      <div id="content">
+<p>Ci-dessous sont répertoriées les caractéristiques des différents protocoles STP. Les termes en italique indiquent si un protocole STP donné est propriétaire de Cisco ou s'il s'agit d'une implémentation IEEE standard :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Protocole STP</b> : suppose une seule instance Spanning Tree <i>IEEE 802.1D</i> pour l'ensemble du réseau ponté, quel que soit le nombre de VLAN. Étant donné qu'il n'existe qu'une seule instance, les besoins en processeur et en mémoire pour cette version sont plus faibles que pour les autres protocoles. Cependant, puisqu'il n'existe qu'une seule instance, il n'existe qu'un pont racine et une arborescence. Le trafic pour l'ensemble des VLAN passe par le même chemin, ce qui peut entraîner des problèmes des flux de trafic peu performants. En raison des limitations du protocole 802.1D, cette version offre une convergence peu rapide.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Protocole PVST+</b> : version améliorée du protocole STP proposée par Cisco, qui offre une instance séparée de l'implémentation Cisco 802.1D pour chaque VLAN configuré dans le réseau. L'instance séparée prend en charge PortFast, UplinkFast, BackboneFast, la protection BPDU, le filtre BPDU, la protection de racine et la protection de boucle. Créer une instance pour chaque VLAN augmente les besoins en processeur et en mémoire, mais permet d'utiliser plusieurs ponts racine par VLAN. Cette conception optimise l'arborescence Spanning Tree pour le trafic de chaque VLAN. La convergence de cette version est similaire à celle du protocole 802.1D. Toutefois, elle s'effectue individuellement pour chaque VLAN.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Protocole RSTP </b>(ou <i>IEEE 802.1w</i>) : version évoluée du protocole STP offrant une convergence plus rapide que l'implémentation 802.1D d'origine. Cette version résout de nombreux problèmes de convergence, mais, puisqu'elle offre encore une instance Spanning Tree unique, elle ne règle pas les problèmes de performances du flux de trafic. Pour prendre en charge cette convergence accélérée, les besoins en utilisation du processeur et en mémoire de cette version sont légèrement supérieurs à ceux de CST, mais inférieurs à ceux du protocole RSTP+.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Rapid PVST+</b> : version améliorée du protocole RSTP proposée par Cisco et utilisant le protocole PVST+. Elle offre une instance 802.1w séparée pour chaque VLAN. L'instance séparée prend en charge PortFast, la protection BPDU, le filtre BPDU, la protection de racine et la protection de boucle. Cette version résout à la fois les problèmes de convergence et de performances de flux du trafic. Cependant, elle présente les besoins les plus importants en matière de processeur et de mémoire. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Protocole MSTP</b> : version <i>IEEE 802.1s</i> standard, inspirée par l'implémentation propriétaire de Cisco MISTP. Pour réduire le nombre d'instance STP requises, MSTP mappe dans une même instance Spanning Tree plusieurs VLAN présentant les mêmes besoins en termes de flux de trafic. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Protocole MST</b> : implémentation Cisco de MSTP ; elle fournit jusqu'à 16 instances du protocole RSTP (802.1w) et combine plusieurs VLAN avec la même topologie physique et logique au sein d'une instance commune du protocole RSTP. Chaque instance prend en charge PortFast, la protection BPDU, le filtre BPDU, la protection de racine et la protection de boucle. Les besoins en processeur et en mémoire de cette version sont inférieurs à ceux de Rapid PVST+, mais supérieurs à ceux du protocole RSTP.</li>
+</ul>
+</p>
+<p></p>
+<p>Le mode Spanning Tree par défaut pour les commutateurs Cisco Catalyst est PVST+, qui est activé sur tous les ports. Le protocole PVST+ présente une convergence bien plus lente que Rapid PVST+ après un changement de topologie.</p>
+<p></p>
+<p>
+<b>Remarque </b>: il est important de faire la distinction entre le protocole standard IEEE 802.1D-1998 hérité (antérieur) et le protocole IEEE 802.1D-2004 standard. Le protocole IEEE 802.1D-2004 comprend une fonctionnalité RSTP, tandis que le protocole IEEE 802.1D-1998 est associé à l'implémentation d'origine de l'algorithme Spanning Tree. Les nouveaux commutateurs Cisco exécutent des versions récentes de l'IOS, par exemple IOS 15.0 pour les commutateurs Catalyst 2960, exécutent PVST+ par défaut, mais intègrent de nombreuses spécifications de l'IEEE 802.1D-1998 dans ce mode (notamment les ports alternatifs au lieu des anciens ports non désignés). Toutefois, pour utiliser le protocole Rapid Spanning Tree sur un tel commutateur, il doit encore être explicitement configuré pour le mode Rapid Spanning Tree.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

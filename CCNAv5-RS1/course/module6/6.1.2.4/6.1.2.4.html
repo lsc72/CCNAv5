@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.2.4 Indépendance vis-à-vis des supports</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche réseau</h1>
+        <h2>Caractéristiques du protocole IP</h2>
+      </div>
+      <div id="content">
+<p>La couche réseau n'est pas non plus pénalisée par les caractéristiques du support transportant les paquets. Le protocole IP fonctionne indépendamment des supports acheminant les données dans les couches inférieures de la pile de protocoles. Comme l'illustre la figure, tout paquet IP peut être communiqué électriquement par voie filaire (en tant que signaux optiques sur de la fibre) ou sans fil (sous la forme de signaux radio).</p>
+<p></p>
+<p>Il incombe à la couche liaison de données OSI de prendre un paquet IP et de le préparer en vue de sa transmission sur le support de communication. Cela signifie que le transport des paquets IP ne se limite pas à un support particulier.</p>
+<p></p>
+<p>Il existe, toutefois, une caractéristique majeure du support que la couche réseau prend en compte : la taille maximale de la PDU que chaque support peut transporter. Cette caractéristique est appelée unité de transmission maximale (MTU). Une partie de la communication de contrôle entre la couche liaison de données et la couche réseau est l'établissement d'une taille maximale pour le paquet. La couche liaison de données transmet la MTU à la couche réseau. La couche réseau détermine ensuite la taille maximale des paquets. </p>
+<p></p>
+<p>Dans certains cas, un périphérique intermédiaire, généralement un routeur, doit scinder un paquet lors de la transmission dudit paquet d'un support à un autre support de MTU inférieure. Ce processus porte le nom de fragmentation du paquet ou simplement fragmentation. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

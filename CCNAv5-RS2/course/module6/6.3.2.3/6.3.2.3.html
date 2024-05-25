@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.2.3 Exemple de routage statique CIDR</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Examen de CIDR et VLSM</h1>
+        <h2>CIDR</h2>
+      </div>
+      <div id="content">
+<p>La création de tables de routage moins volumineuses permet d'optimiser le processus de recherche dans la table de routage parce qu'il y a moins de routes à rechercher. Si une seule route statique peut être utilisée au lieu de plusieurs routes statiques, la taille de la table de routage est réduite. Souvent, une seule route statique peut être utilisée pour représenter des dizaines, des centaines, voire des milliers de routes.</p>
+<p></p>
+<p>Des récapitulations de routes CIDR peuvent être configurées en utilisant des routes statiques. Cela permet de réduire la taille des tables de routage. </p>
+<p></p>
+<p>Dans la Figure 1, R1 a été configuré pour atteindre les réseaux identifiés dans la topologie. Bien que cette solution soit acceptable, il serait plus efficace de configurer une route statique récapitulative.</p>
+<p></p>
+<p>La Figure 2 offre une solution intégrant la récapitulation CIDR. Les six entrées de routes statiques pourraient être réduites à l'entrée 172.16.0.0/13. L'exemple supprime les six entrées de routes statiques et les remplace par une route statique récapitulative.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

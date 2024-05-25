@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.3.3 Vérifier les interfaces OSPFv3</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv3 à zone unique</h1>
+        <h2>Vérification d&#x0027;OSPFv3</h2>
+      </div>
+      <div id="content">
+<p>Le moyen le plus rapide de vérifier les paramètres d'interface OSPF consiste à utiliser la commande <span class="cmd"><b>show ipv6 opsf interface</b></span>. Cette commande fournit une liste détaillée de chaque interface utilisant OSPF. </p>
+<p></p>
+<p>Pour extraire et afficher un résumé des interfaces compatibles OSPFv3 sur R1, utilisez la commande <span class="cmd"><b>show ipv6 ospf interface brief</b></span>, comme illustré dans la Figure 1. </p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 2 pour afficher un résumé des interfaces compatibles OSPF sur R2 en utilisant la commande <span class="cmd"><b>show ipv6 ospf interface brief</b></span>. Remarquez que la spécification du nom d'interface comme dans la commande <span class="cmd"><b>show ipv6 ospf interface serial 0/0/1 </b></span>permet d'obtenir des informations OSPF détaillées. </p>
+<p></p>
+<p>Continuez à utiliser le contrôleur de syntaxe de la Figure 2 pour obtenir un résumé des interfaces compatibles OSPF sur R3 en utilisant la commande <span class="cmd"><b>show ipv6 ospf interface brief</b></span>. Récupérez et affichez des informations supplémentaires pour l'interface série 0/0/0 au moyen de la commande <span class="cmd"><b>show ipv6 ospf interface serial 0/0/0</b></span>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

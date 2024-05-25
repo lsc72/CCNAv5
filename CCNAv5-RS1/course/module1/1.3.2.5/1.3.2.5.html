@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.3.2.5 Qualité de service (QS)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.3.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Réseau en tant que plateforme</h1>
+        <h2>Réseau fiable</h2>
+      </div>
+      <div id="content">
+<p>
+<b>QS (qualité de service)</b>
+</p>
+<p></p>
+<p>La qualité de service (QS) est une exigence de plus en plus répandue qui repose sur les réseaux actuels. Les nouvelles applications disponibles via des interréseaux, telles que les applications de communication vocale et vidéo en direct (voir la Figure 1), entraînent des attentes plus poussées en termes de qualité des services fournis. Avez -vous déjà tenté de visionner une vidéo saccadée ?</p>
+<p></p>
+<p>Les réseaux doivent fournir des services prévisibles, mesurables et, parfois, garantis. L'architecture réseau à commutation de paquets ne garantit pas que tous les paquets composant un message particulier arriveront à temps, dans l'ordre voulu, ni même qu'ils arriveront. </p>
+<p></p>
+<p>Les réseaux ont également besoin de processus leur permettant de gérer l'encombrement du réseau. La bande passante d'un réseau est la mesure de sa capacité à transporter de données. En d'autres termes, quelle quantité de données peut être transmise en un temps donné ? La bande passante réseau est mesurée en bits pouvant être transmis en une seconde, soit en « bits par seconde » (bit/s). Lorsque plusieurs communications sont initiées simultanément sur le réseau, la demande de bande passante peut excéder la quantité disponible, créant ainsi un encombrement du réseau. Le réseau a simplement plus de bits à transmettre que ce que la bande passante du canal de communication peut prendre en charge. </p>
+<p></p>
+<p>Dans la plupart des cas, lorsque le volume de paquets est supérieur au volume pouvant être transporté sur le réseau, les périphériques placent les paquets en file d'attente dans la mémoire en attendant que des ressources se libèrent (voir la Figure 2). La mise en file d'attente des paquets entraîne des retards, car les nouveaux paquets ne peuvent pas être transmis avant que les paquets précédents ne soient traités. Si le nombre de paquets devant être placés en file d'attente continue à augmenter, les files d'attente dans la mémoire se remplissent et des paquets sont abandonnés. </p>
+<p></p>
+<p>Assurer le niveau de qualité de service (QS) requis en gérant les retards et les paramètres de perte de paquets sur un réseau devient la clé du succès d'une solution destinée à garantir la qualité d'une application de bout en bout. L'une des méthodes permettant d'y parvenir est la classification. Pour créer des classifications de qualité de service pour les données, il faut se baser sur les caractéristiques des communications et sur l'importance relative affectée à l'application (voir la Figure 3). Toutes les données appartenant à la même classe sont ensuite traitées selon les mêmes règles. Par exemple, une communication pour laquelle la vitesse d'acheminement est importante, telle qu'une communication vocale, est classée différemment d'une communication qui peut tolérer les retards, telle qu'un transfert de fichiers. </p>
+<p></p>
+<p>Dans une entreprise, il faut établir des priorités. Par exemple :</p>
+<p>
+<ul>
+<li>
+<b>les communications pour lesquelles la vitesse d'acheminement est importante</b> – augmenter la priorité des services tels que la téléphonie ou la distribution vidéo ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>les communications pour lesquelles la vitesse d'acheminement n'est pas importante</b> – réduire la priorité du téléchargement des pages Web ou des e-mails ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>les communications revêtant une grande importance pour l'entreprise</b> – accroître la priorité des données de contrôle de la production ou de transactions commerciales ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+les <b>communications indésirables</b> (réduire leur priorité ou bloquer les activités indésirables, comme le partage de fichiers en peer-to-peer ou la transmission multimédia en continu).</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

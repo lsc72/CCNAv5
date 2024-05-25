@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.1.2 Communication série</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation des connexions série point à point</h1>
+        <h2>Communications série</h2>
+      </div>
+      <div id="content">
+<p>La figure présente une représentation simple de la communication en série sur un WAN. Des données sont encapsulées par le protocole de communications utilisé par le routeur expéditeur. La trame encapsulée est envoyée au WAN sur un support physique. Il existe plusieurs façons de traverser le WAN, mais le routeur de destination utilise le même protocole de communication pour désencapsuler la trame lorsqu'elle arrive.</p>
+<p></p>
+<p>Il existe de nombreuses normes de communication série, chacune utilisant une méthode de signal différent. Les normes de communication série importantes affectant les connexions LAN vers WAN sont au nombre de trois :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>RS-232 </b>: la plupart des ports série sur les ordinateurs personnels sont conformes à la norme RS-232C, ou aux normes RS-422 et RS-423, plus récentes. Des connecteurs à 9 broches et à 25 broches sont utilisés. Un port série est une interface multifonction qui peut être utilisée pour la plupart des périphériques, y compris des modems, des souris et des imprimantes. Ces types de périphériques pour ordinateurs ont été remplacés par des normes plus rapides comme l'USB, mais de nombreux périphériques réseau utilisent les connecteurs RJ-45 qui suivent la norme RS-232. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>V.35 </b>: Normalement utilisée pour la communication entre le modem et le multiplexeur, cette norme UTI pour l'échange de données synchrone à haute vitesse combine la bande passante de plusieurs circuits de téléphone. Aux États-Unis, V.35 est la norme d'interface utilisée par la plupart des routeurs et des unités DSU connectés à des opérateurs T1. Les câbles V.35 sont des assemblages série à haut débit conçus pour prendre en charge des débits de données et une connectivité plus élevés entre des équipements terminal de traitement de données (ETTD) et des équipements de communication de données (DCE), sur des lignes numériques. Vous trouverez plus d'informations sur les ETTD et les DCE plus loin dans cette section.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>HSSI </b>: l'interface série haute vitesse (High-Speed Serial Interface, HSSI) prend en charge les taux de transmission allant jusqu'à 52 Mbit/s. Les ingénieurs utilisent le HSSI pour connecter des routeurs sur des LAN au WAN via des lignes haute vitesse, comme les lignes T3. Ils utilisent aussi HSSI pour offrir une connectivité haute vitesse entre LAN, via Token Ring ou Ethernet. HSSI est une interface ETTD/DCE développée par Cisco Systems et T3 plus Networking pour répondre au besoin de communication haute vitesse sur les liaisons WAN.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

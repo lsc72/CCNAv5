@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.1.10 Bande passante série</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.1.10_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation des connexions série point à point</h1>
+        <h2>Communications série</h2>
+      </div>
+      <div id="content">
+<p>La bande passante se rapporte au débit auquel les données sont transférées sur la liaison de communication. La technologie d'opérateur sous-jacente dépend de la bande passante disponible. Il existe une différence de points de bande passante entre les spécifications nord-américaines (porteur T) et le système européen (porteur E). Les réseaux optiques utilisent également une autre hiérarchie de bande passante, qui n'est pas la même en Amérique du Nord et en Europe. Aux États-Unis, Optical Carrier (OC) définit les points de bande passante. </p>
+<p></p>
+<p>En Amérique du Nord, la bande passante est exprimée par le numéro de niveau du signal numérique (DS0, DS1, etc.), qui correspond au débit et au format du signal. La vitesse de base est de 64 kbit/s, ou DS-0, qui est la bande passante nécessaire pour la transmission d'un appel téléphonique numérique non compressé. Les bandes passantes de connexion série peuvent augmenter de manière incrémentielle afin de satisfaire aux besoins de transmissions plus rapides. Par exemple, 24 DS0 peuvent être regroupées pour obtenir une ligne DS1 (ou ligne T1) avec une vitesse de 1,544 Mbit/s. De même, 28 DS1 peuvent être regroupées pour obtenir une ligne DS3 (ou ligne T3) avec une vitesse de 44,736 Mbit/s. Les lignes louées peuvent présenter des capacités variées et leur prix dépend généralement de la bande passante requise ainsi que de la distance entre les deux points de connexion.</p>
+<p></p>
+<p>Les débits OC sont des spécifications normalisées pour la transmission de signaux numériques sur les réseaux à fibre optique SONET. La désignation utilise OC, suivi d'un nombre entier qui représente le débit de transmission de base de 51,84 Mbit/s. Par exemple, OC-1 a une capacité de transmission de 51,84 Mbit/s, alors que la vitesse d'OC-3 est de trois fois 51,84 Mbit/s, soit 155,52 Mbit/s.</p>
+<p></p>
+<p>La figure présente les types les plus courants de lignes, ainsi que leur débit.</p>
+<p></p>
+<p>
+<b>Remarque </b>: E1 (2,048 Mbit/s) et E3 (34,368 Mbit/s) sont des normes européennes comme T1 et T3, mais avec des bandes passantes et des structures de trames différentes.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

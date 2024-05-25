@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.1.4 Avantages individuels du télétravail</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Télétravail</h1>
+        <h2>Avantages du télétravail</h2>
+      </div>
+      <div id="content">
+<p>La possibilité pour les individus de travailler à domicile présente des avantages significatifs, notamment :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Productivité</b> : plus de 70 % des télétravailleurs déclarent être significativement plus productifs, ce qui signifie qu'ils font plus en moins de temps, gagnant ainsi du temps et de l'argent.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Flexibilité</b> : les télétravailleurs peuvent mieux gérer leur travail. Ils peuvent en effet appréhender de manière plus flexible l'ensemble des tâches de la vie moderne, comme conduire leur véhicule à l'entretien, éviter le trafic lors des week-ends de vacances ou emmener leurs enfants chez le médecin. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Économies</b> : les employés devant se rendre au bureau dépensent relativement beaucoup d'argent à mettre du carburant dans leur véhicule, à assurer l'entretien de celui-ci, lors des repas de midi, pour les vêtements, les sorties au restaurant et tous les autres coûts liés au travail traditionnel et qu'il est possible de diminuer grâce au télétravail.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Domicile et famille</b> : pour de nombreuses personnes, le fait de passer plus de temps avec les membres de leur famille ou de s'occuper de personnes dépendantes est un motif important de télétravail. </li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.1.1 Caractéristiques d&#x0027;un réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration initiale d&#x0027;un routeur</h1>
+        <h2>Fonctions d&#x0027;un routeur</h2>
+      </div>
+      <div id="content">
+<p>Les réseaux ont radicalement changé nos vies. Ils ont modifié notre façon de vivre, de travailler et de nous divertir. </p>
+<p></p>
+<p>Les réseaux nous permettent de communiquer, de collaborer et d'interagir comme jamais nous ne l'avions fait. Nous utilisons les réseaux de diverses manières, notamment pour les applications Web, la téléphonie IP, la vidéoconférence, les jeux interactifs, le commerce électronique et le domaine éducatif. </p>
+<p></p>
+<p>Comme le montre la figure, de nombreux indicateurs en matière de structure et de performances sont utilisés pour étudier les réseaux :</p>
+<p>
+<ul>
+<li>
+<b>Topologie</b> : il existe des topologies physiques et logiques. La topologie physique correspond à la configuration des câbles, des périphériques réseau et des systèmes finaux. Elle indique comment les périphériques réseau sont effectivement interconnectés au moyen de fils et de câbles. La topologie logique est le chemin par lequel les données sont transmises dans un réseau. Elle décrit comment les périphériques réseau sont connectés aux utilisateurs du réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Vitesse</b> : la vitesse mesure le débit des données pour une liaison du réseau en bits par seconde (bits/s).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Coût</b> : le coût indique les dépenses générales consacrées à l'achat de composants réseau, ainsi qu'à l'installation et à la maintenance du réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Sécurité</b> : la sécurité correspond au niveau de protection du réseau, englobant les informations transmises sur le réseau. La sécurité est un thème important, sachant que les techniques et les pratiques concernées évoluent en permanence. Tenez compte de la sécurité chaque fois que des mesures affectant le réseau sont prises.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Disponibilité</b> : la disponibilité mesure la probabilité que le réseau soit disponible lorsqu'on en a besoin. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Évolutivité</b> : l'évolutivité indique la facilité avec laquelle le réseau peut accueillir plus d'utilisateurs et répondre à davantage de demandes de transmission de données. Si la conception d'un réseau est optimisée pour répondre uniquement aux besoins actuels, il peut être très difficile et coûteux de s'adapter aux nouveaux besoins lorsque le réseau évolue.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Fiabilité</b> : la fiabilité correspond à la capacité à fonctionner sans incidents des éléments constitutifs du réseau, notamment les routeurs, les commutateurs, les ordinateurs, et les serveurs. La fiabilité est souvent mesurée comme la probabilité de panne ou l'intervalle moyen entre les défaillances.</li>
+</ul>
+</p>
+<p></p>
+<p>Ces caractéristiques et attributs permettent de comparer différentes solutions réseau. </p>
+<p></p>
+<p>
+<b>Remarque :</b> le terme « vitesse » est couramment utilisé pour désigner la bande passante du réseau, mais techniquement ce n'est pas exact. La vitesse réelle à laquelle les bits sont transmis ne varie pas sur le même support. La différence de bande passante dépend du nombre de bits transmis par seconde, et non de leur rapidité de déplacement sur un support filaire ou sans fil.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

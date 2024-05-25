@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.1.2 Explication du protocole NetFlow</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>NetFlow</h1>
+        <h2>Fonctionnement de NetFlow</h2>
+      </div>
+      <div id="content">
+<p>Il existe de nombreuses utilisations potentielles des statistiques fournies par le protocole NetFlow ; toutefois, la plupart des entreprises utilisent NetFlow pour quelques-unes ou la totalité des applications importantes suivantes en matière de collecte des données :</p>
+<p>
+<ul>
+<li>Mesure de qui utilise quelles ressources réseau et pour quelle raison</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Comptabilité et facturation en fonction du niveau d'utilisation des ressources</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Utilisation des informations mesurées pour une planification plus efficace du réseau et un alignement correct de l'allocation et du déploiement des ressources avec les exigences du client</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Utilisation des informations pour une meilleure organisation et personnalisation de l'ensemble des applications et services disponibles, en fonction des besoins et des exigences du client en matière de services</li>
+</ul>
+</p>
+<p></p>
+<p>En comparant la fonctionnalité de SNMP et de NetFlow, une analogie pour SNMP pourrait être un logiciel contrôlé à distance pour un véhicule sans pilote, tandis qu'une analogie pour NetFlow serait une facture téléphonique à la fois simple et détaillée. Les enregistrements téléphoniques fournissent des statistiques appel par appel et agrégées, permettant à la personne qui paie la facture d'effectuer le suivi des appels longue distance, des appels fréquents ou des appels qui n'auraient pas dus être passés.</p>
+<p></p>
+<p>Contrairement au protocole SNMP, le protocole NetFlow utilise un modèle de type « push ». Le collecteur écoute simplement le trafic NetFlow, tandis que les périphériques réseau se chargent de l'envoi des données NetFlow au collecteur, sur la base des modifications apportées à leur cache de flux. Une autre différence entre les protocoles NetFlow et SNMP est que le protocole NetFlow ne collecte que les statistiques de trafic, comme le montre la figure, alors que le protocole SNMP peut également collecter de nombreux autres indicateurs de performances, tels que les erreurs d'interface, l'utilisation du processeur et l'utilisation de la mémoire. En revanche, les statistiques de trafic collectées à l'aide du protocole NetFlow présentent une granularité de loin supérieure à celle des statistiques de trafic collectées avec le protocole SNMP.</p>
+<p></p>
+<p>
+<b>Remarque</b> : ne confondez pas l'objectif et les résultats de NetFlow avec ceux du matériel et du logiciel de capture de paquets. Tandis que la capture de paquets enregistre toutes les informations possibles à la sortie ou à l'entrée d'un périphérique réseau en vue d'une analyse ultérieure, le protocole NetFlow cible des données statistiques spécifiques.</p>
+<p></p>
+<p>Deux critères principaux sont à la base de la création du protocole NetFlow par Cisco :</p>
+<p>
+<ul>
+<li>Le protocole NetFlow devait être complètement transparent pour les applications et les périphériques du réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le protocole NetFlow ne devait pas obligatoirement être pris en charge et en cours d'exécution sur l'ensemble des périphériques réseau pour fonctionner.</li>
+</ul>
+</p>
+<p></p>
+<p>Grâce à la satisfaction de ces critères de conception, le protocole NetFlow est très facile à implémenter, et ce, même dans les réseaux modernes les plus complexes.</p>
+<p></p>
+<p>
+<b>Remarque</b> : bien que le protocole NetFlow soit simple à implémenter et transparent pour le réseau, il consomme malgré tout de la mémoire supplémentaire sur le périphérique Cisco, car il stocke des informations d'enregistrement dans la mémoire cache du périphérique. La taille par défaut de ce cache varie en fonction de la plate-forme et l'administrateur a la possibilité de régler cette valeur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+﻿<textcomponents> 
+
+<!-- Slide 1-->
+<component id="ID_s1_title">
+<text><![CDATA[<b>Affectation d'adresses dynamiques</b>]]></text>
+</component>
+
+<component id="ID_txt01">
+<text><![CDATA[Affectation d'adresses dynamiques]]></text>
+</component> 
+
+<component id="ID_txt02">
+<text><![CDATA[Cette propriété configure le périphérique pour obtenir automatiquement une adresse&nbsp;IP.]]></text>
+</component> 
+
+
+
+<!-- Slide 2-->
+<component id="ID_title">
+<text><![CDATA[<b>Vérification de la configuration&nbsp;IP d'un PC Windows</b>]]></text>
+</component>
+
+<!--Syntax Checker Button Text-->
+<component id="ID_sc_reset">
+<text><![CDATA[Réinitialiser]]></text>
+</component>
+
+<component id="ID_sc_showme">
+<text><![CDATA[Démonstration]]></text>
+</component>
+
+<component id="ID_sc_showall">
+<text><![CDATA[Afficher tout]]></text>
+</component>
+<!--End Syntax Checker Button Text-->
+
+
+<!--Syntax Checker Body Text-->
+<component id="ID_SC5" fontFace='Courier New' fontSize="10">
+
+<text></text>		
+
+<feedback id="fb"><![CDATA[<span><font size = '10' face="Arial"><span><b>***</b></span>Vous devez saisir la commande précisément et en entier. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.<span><b>***</b></span></font></span>
+]]></feedback>	
+
+<existingcommands><![CDATA[<font size = '10' face="Arial"><b>Entrez la commande permettant d'afficher la configuration&nbsp;IP d'un ordinateur Windows.</b></font><br><span style="float:left;padding:10px 0 0 35px;width:98%;"><dnt>Microsoft Windows [Version 6.1.7601]</span><br>Copyright (c) 2009 Microsoft Corporation.  All rights reserved.</dnt><br>]]></existingcommands>
+
+<command prompt="C:\>" id="cmd1" node="start">
+<correctresponse id="cr1"><![CDATA[ipconfig]]></correctresponse>
+<deviceresponse id="dr1"><![CDATA[<dnt><br>Windows IP Configuration<br><br>Ethernet adapter Local Area Connection:<br><br>   Connection-specific DNS Suffix  . : cisco.com<br>   Link-local IPv6 Address . . . . . : fe80::b0ef:ca42:af2c:c6c7%16<br>   IPv4 Address. . . . . . . . . . . : 10.82.240.197<br>   Subnet Mask . . . . . . . . . . . : 255.255.255.0<br>   Default Gateway . . . . . . . . . : 10.82.240.198<br><br>-------------------------------------<br></dnt>]]></deviceresponse>
+<instruction id="last"><![CDATA[<font size = '10' face="Arial"><b>Vous avez réussi à afficher la configuration IP sur un PC Windows.</b></font>]]></instruction> 
+</command>
+
+<command prompt=""/>
+
+</component>
+<!--End Syntax Checker Body Text-->
+
+
+</textcomponents>

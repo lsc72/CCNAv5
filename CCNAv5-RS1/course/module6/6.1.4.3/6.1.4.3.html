@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.4.3 Encapsulation IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.4.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche réseau</h1>
+        <h2>Paquet IPv6</h2>
+      </div>
+      <div id="content">
+<p>L'une des principales améliorations de conception de l'IPv6 par rapport à l'IPv4 est l'en-tête simplifié. </p>
+<p></p>
+<p>L'en-tête IPv4 contient 20 octets (jusqu'à 60 octets si le champ des options est utilisé) et 12 champs d'en-tête de base, sans compter le champ des options et le champ de remplissage.</p>
+<p></p>
+<p>L'en-tête IPv6 est constitué de 40 octets (principalement en raison de la longueur des adresses IPv6 source et de destination) et de 8 champs d'en-tête (3 champs d'en-tête IPv4 de base et 5 champs d'en-tête supplémentaires).</p>
+<p></p>
+<p>La Figure 1 illustre la structure de l'en-tête IPv4. Comme l'illustre la figure, pour l'IPv6, certains champs ont été conservés, certains champs de l'en-tête IPv4 ne sont pas utilisés et les noms et positions de certains champs ont été modifiés. </p>
+<p></p>
+<p>En outre, un nouveau champ a été ajouté. L'en-tête IPv6 simplifié est présenté à la Figure 2.</p>
+<p></p>
+<p>L'en-tête IPv6 offre plusieurs avantages par rapport à l'en-tête IPv4 : </p>
+<p>
+<ul>
+<li>Une plus grande efficacité du routage pour des performances et évolutivité du débit de transmission.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Aucune exigence pour le traitement des sommes de contrôle.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Des mécanismes d'en-tête d'extension simplifiés (par rapport au champ d'options IPv4).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Un champ d'étiquetage de flux pour le traitement par flux sans avoir besoin d'ouvrir le paquet interne de transport pour identifier les différents flux de trafic.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

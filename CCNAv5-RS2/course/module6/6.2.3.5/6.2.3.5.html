@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.3.5 Configuration d&#x0027;une route IPv6 statique entièrement spécifiée</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.3.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration des routes statiques et par défaut</h1>
+        <h2>Configuration des routes statiques IPv6</h2>
+      </div>
+      <div id="content">
+<p>Dans une route statique entièrement spécifiée, l'interface de sortie et l'adresse IPv6 de tronçon suivant sont toutes deux spécifiées. De la même façon que pour les routes statiques entièrement spécifiées utilisées avec le protocole IPv4, cette procédure serait utilisée si le protocole CEF n'était pas activé sur le routeur et que l'interface de sortie se trouvait sur un réseau à accès multiples. Avec le protocole CEF, une route statique utilisant uniquement une adresse IPv6 de tronçon suivant serait la méthode préférée, même lorsque l'interface de sortie est un réseau à accès multiples.</p>
+<p></p>
+<p>Contrairement au protocole IPv4, il y a des circonstances avec le protocole IPv6 dans lesquelles une route statique entièrement spécifiée doit être utilisée. Si la route IPv6 statique utilise une adresse link-local IPv6 comme adresse de tronçon suivant, une route statique entièrement spécifiée incluant l'interface de sortie doit être utilisée. La Figure 1 présente un exemple d'une route statique IPv6 complète utilisant une adresse link-local IPv6 comme adresse de tronçon suivant.</p>
+<p></p>
+<p>Une route statique entièrement spécifiée doit être utilisée parce que les adresses link-local IPv6 ne figurent pas dans la table de routage IPv6. Les adresses link-local sont uniquement uniques sur une liaison ou un réseau donné. L'adresse link-local de tronçon suivant peut être une adresse valide sur plusieurs réseaux connectés au routeur. Par conséquent, il est nécessaire d'inclure l'interface de sortie.</p>
+<p></p>
+<p>Dans la Figure 1, une route statique entièrement spécifiée est configurée au moyen de l'adresse link-local R2 comme adresse du tronçon suivant. Notez que l'IOS requiert que l'interface de sortie soit spécifiée. </p>
+<p></p>
+<p>La Figure 2 illustre l'entrée de table de routage IPv6 pour cette route. Notez que l'adresse link-local du tronçon suivant et l'interface de sortie sont toutes deux incluses. </p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 3 pour configurer les routes statiques IPv6 entièrement spécifiées sur R2 pour atteindre le réseau local de R1 en utilisant une adresse link-local.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

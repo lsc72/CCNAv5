@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.2.1 Métrique composite EIGRP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1> Fonctionnement du protocole EIGRP</h1>
+        <h2>Métriques</h2>
+      </div>
+      <div id="content">
+<p>Par défaut, le protocole EIGRP utilise les valeurs suivantes pour calculer le chemin préféré vers un réseau :</p>
+<p>
+<ul>
+<li>
+<b>Bande passante </b>: la bande passante la plus lente parmi toutes les interfaces sortantes, ainsi que le chemin de la source à la destination. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Délai </b>: la somme des délais d'interface le long du chemin (en dizaines de microsecondes).</li>
+</ul>
+</p>
+<p></p>
+<p>Les valeurs suivantes peuvent être utilisées, mais sont déconseillées, car elles entraînent généralement un recalcul fréquent de la table topologique :</p>
+<p>
+<ul>
+<li>
+<b>Fiabilité </b>: représente la pire fiabilité entre la source et la destination, en fonction des tests d'activité.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Charge </b>: représente la pire charge sur un lien entre la source et la destination, calculée en fonction du débit du paquet et de la bande passante configurée sur l'interface.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: même si l'unité de transmission maximale (MTU) est incluse dans les mises à jour des tables de routage, il ne s'agit pas d'une métrique de routage utilisée par le protocole EIGRP. </p>
+<p></p>
+<p>
+<b>La métrique composite</b>
+</p>
+<p></p>
+<p>La Figure 1 présente la formule de la métrique composite utilisée par le protocole EIGRP. La formule comprend des valeurs allant de K1 à K5, appelées pondérations de métriques EIGRP. K1 et K3 représentent respectivement la bande passante et le délai. K2 représente la charge et K4 et K5 représentent la fiabilité. Par défaut, les valeurs K1 et K3 sont définies sur 1 et K2, K4 et K5 sur 0. Résultat : seules les valeurs de bande passante et de délai sont utilisées dans le calcul de la métrique composite par défaut. Les protocoles EIGRP pour IPv4 et EIGRP pour IPv6 utilisent la même formule de métrique composite.</p>
+<p></p>
+<p>La méthode de calcul de la métrique (valeurs <span class="cmd"><i>k</i></span>) et le numéro de système autonome EIGRP doivent concorder entre les voisins EIGRP. S'ils ne concordent pas, les routeurs ne forment pas de contiguïté.</p>
+<p></p>
+<p>Les valeurs <span class="cmd"><i>k</i></span> par défaut peuvent être modifiées à l'aide de la commande de mode de configuration du routeur<span class="cmd"><b> metric weights</b></span> :</p>
+<p></p>
+<p>
+<span class="cmd">Router(config-router)# </span>
+<span class="cmd">
+<b>metric weights</b>
+</span>
+<span class="cmd">
+<b></b>
+</span>
+<span class="cmd">
+<i>tos</i>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>k1 k2 k3 k4 k5</i>
+</span>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: la modification de la valeur<span class="cmd"><b> metric weights </b></span>est généralement déconseillée et n'entre pas dans le cadre de ce cours. Toutefois, sa pertinence est importante pour établir des contiguïtés de voisinage. Si un routeur a modifié les pondérations de métriques et pas l'autre, la contiguïté ne peut être établie.</p>
+<p></p>
+<p>
+<b>Vérification des </b>
+<span class="cmd">
+<b>
+<i>valeurs</i>
+</b>
+</span>
+<b> k </b>
+</p>
+<p></p>
+<p>La commande<span class="cmd"><b> show ip protocols </b></span>sert à vérifier les valeurs <span class="cmd"><i>k</i></span>. Le résultat de la commande pour R1 est présenté à la Figure 2. Notez que les valeurs <span class="cmd"><i>k</i></span> sur R1 correspondent aux valeurs par défaut. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

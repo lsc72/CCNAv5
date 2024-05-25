@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.2.5 Contrôle de flux TCP – Suppression d&#x0027;encombrement</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>TCP et UDP</h1>
+        <h2>Fiabilité et contrôle de flux</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Réduction de la taille de fenêtre</b>
+</p>
+<p>L'utilisation de tailles de fenêtres dynamiques permet également de contrôler le flux de données. Quand les ressources réseau sont soumises à de fortes contraintes, le protocole TCP peut réduire la taille de fenêtre afin d'imposer l'envoi plus fréquent d'accusés de réception pour les segments reçus. Ceci a pour effet de ralentir le taux de transmission car la source attend des accusés de réception des données plus fréquents.</p>
+<p></p>
+<p>L'hôte destinataire renvoie la valeur de taille de fenêtre à l'hôte expéditeur pour indiquer le nombre d'octets qu'il est prêt à recevoir. Si la destination doit ralentir le débit de communication parce que la mémoire tampon est limitée, elle peut envoyer une valeur de taille de fenêtre plus petite à la source en l'intégrant à un accusé de réception.</p>
+<p></p>
+<p>Comme l'illustre la figure ci-contre, si un hôte destinataire subit un encombrement, il peut répondre à l'hôte expéditeur en envoyant un segment dont la taille de fenêtre est réduite. Dans la figure ci-contre, on peut voir que l'un des segments a été perdu. Dans cette conversation, le destinataire a changé le champ de fenêtre dans l'en-tête TCP des segments renvoyés en le ramenant de 3 000 à 1 500. L'expéditeur a donc été obligé de réduire la taille de fenêtre à 1 500. </p>
+<p></p>
+<p>Après une période de transmission sans perte de données ni contrainte excessive sur les ressources, le destinataire commence à augmenter la taille de fenêtre, ce qui réduit la surcharge du réseau, car un nombre réduit d'accusés de réception doivent être envoyés. La taille de fenêtre continue à augmenter jusqu'à ce qu'une perte de données survienne, laquelle entraîne une réduction de la taille de fenêtre.</p>
+<p></p>
+<p>Ces augmentations et réductions dynamiques de la taille de fenêtre sont continues dans le cadre du protocole TCP. Dans les réseaux très efficaces, les tailles de fenêtre peuvent être très élevées car les données ne sont pas perdues. Dans les réseaux pour lesquels l'infrastructure sous-jacente est moins robuste, la taille de fenêtre demeure généralement assez faible.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

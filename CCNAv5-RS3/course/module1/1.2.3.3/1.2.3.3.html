@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.3.3 Commandes de base de l&#x0027;ILC du routeur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sélection des périphériques réseau</h1>
+        <h2>Gestion des périphériques</h2>
+      </div>
+      <div id="content">
+<p>Une configuration de routeur de base inclut le nom d'hôte pour identification, des mots de passe pour la sécurité, l'affectation d'adresses IP à des interfaces pour la connectivité et un routage de base. La Figure 1 illustre les commandes saisies pour activer un routeur avec le protocole OSPF. Vérifiez et enregistrez les modifications de configuration, au moyen de la commande<span class="cmd"><b> copy running-config startup-config</b></span>. La Figure 2 indique les résultats des commandes de configuration qui ont été entrées dans la Figure 1. Pour effacer la configuration du routeur, utilisez la commande<span class="cmd"><b> erase startup-config</b></span>, puis la commande<span class="cmd"><b> reload</b></span>.</p>
+<p></p>
+<p>Dans la Figure 3, utilisez le contrôleur de syntaxe pour vérifier les configurations de routeurs au moyen de ces commandes<span class="cmd"><b> show</b></span>. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

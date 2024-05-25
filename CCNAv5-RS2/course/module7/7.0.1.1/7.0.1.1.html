@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.0.1.1 Introduction</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage dynamique</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>Les réseaux de données que nous utilisons quotidiennement pour apprendre, jouer et travailler vont du petit réseau local au vaste interréseau mondial. À domicile, un utilisateur peut avoir un routeur et deux ordinateurs ou plus. Au travail, une entreprise disposera peut-être de plusieurs routeurs et commutateurs pour répondre aux besoins de communication de données de centaines, voire de milliers d'ordinateurs. </p>
+<p></p>
+<p>Les routeurs transfèrent les paquets à l'aide d'informations figurant dans la table de routage. Les routes vers les réseaux distants peuvent être apprises par le routeur de deux façons : les routes statiques et les routes dynamiques. </p>
+<p></p>
+<p>Sur un vaste réseau avec de nombreux réseaux et sous-réseaux, la configuration et la mise à jour des routes statiques entre ceux-ci requièrent une importante surcharge administrative et opérationnelle. Cette surcharge opérationnelle est particulièrement notable lorsque des modifications sont apportées au réseau, comme l'interruption d'un lien ou la mise en œuvre d'un nouveau sous-réseau. La mise en œuvre de protocoles de routage dynamique peut alléger la charge des tâches de configuration et de maintenance, et permettre l'évolutivité du réseau. </p>
+<p></p>
+<p>Ce chapitre présente les protocoles de routage dynamique. Il explore les avantages de l'utilisation de protocoles de routage dynamique, la façon dont les différents protocoles de routage sont classifiés et les métriques utilisées par les protocoles de routage afin de déterminer le meilleur chemin pour le trafic réseau. Ce chapitre aborde d'autres sujets, notamment les caractéristiques des protocoles de routage dynamique ainsi que les différences entre les différents protocoles de routage. Les professionnels des réseaux doivent comprendre les protocoles de routage à leur disposition pour prendre des décisions éclairées quant à l'utilisation du routage statique ou du routage dynamique. Ils doivent également savoir quel protocole de routage dynamique convient le mieux dans un environnement réseau spécifique. </p>
+<p>
+<br/>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

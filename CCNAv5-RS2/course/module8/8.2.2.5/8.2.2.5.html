@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.2.5 Configuration des interfaces passives</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv2 à zone unique</h1>
+        <h2>Configuration d&#x0027;OSPFv2 à zone unique</h2>
+      </div>
+      <div id="content">
+<p>Utilisez la commande du mode de configuration du routeur <span class="cmd"><b>passive-interface </b></span>pour empêcher la transmission de messages de routage via une interface de routeur, mais permettre que le réseau soit annoncé aux autres routeurs, comme illustré dans la Figure 1. En particulier, la commande interrompt l'envoi de messages de routage à partir de l'interface spécifiée. Toutefois, le réseau auquel appartient l'interface spécifiée continuera d'être annoncé dans les messages de routage envoyés via d'autres interfaces. </p>
+<p></p>
+<p>Par exemple, il est inutile que R1, R2 et R3 transfèrent des messages OSPF à partir de leurs interfaces de réseau local (LAN). La configuration identifie l'interface G0/0 de R1 comme étant passive. </p>
+<p></p>
+<p>Il est important de savoir qu'une contiguïté de voisinage ne peut pas être établie via une interface passive. La raison en est que les paquets LSP ne peuvent pas être envoyés ou reçus.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>show ip protocols</b></span> est ensuite utilisée pour vérifier que l'interface Gigabit Ethernet était passive, comme illustré dans la Figure 2. Notez que l'interface G0/0 figure désormais dans la section Passive Interface(s). Le réseau 172.16.1.0 est encore répertorié sous Routing for Networks, ce qui signifie que ce réseau est encore inclus en tant qu'entrée de route dans les mises à jour OSPF envoyées à R2 et R3.</p>
+<p></p>
+<p>
+<b>Remarque :</b> OSPFv2 et OSPFv3 prennent tous deux en charge la commande <span class="cmd"><b>passive-interface</b></span>. </p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe dans la Figure 3 pour configurer l'interface LAN comme interface passive sur R2.</p>
+<p></p>
+<p>Toutes les interfaces peuvent également être rendues passives à l'aide de la commande <span class="cmd"><b>passive-interface default</b></span>. Les interfaces qui ne doivent pas être passives peuvent être réactivées à l'aide de la commande <span class="cmd"><b>no passive-interface</b></span>.</p>
+<p></p>
+<p>Continuez à utiliser le contrôleur de syntaxe dans la Figure 3 et configurez l'interface LAN comme interface passive sur R3.</p>
+<p></p>
+<p>
+<b>Remarque :</b> pendant que vous complétez le contrôleur de syntaxe, remarquez les messages d'état d'informations OSPF lorsque les interfaces sont toutes rendues passives et que les deux interfaces série sont rendues non passives.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

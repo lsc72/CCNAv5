@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.3.1.5 Configuration de routes statiques sur un commutateur Cisco Catalyst 2960</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout; 
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.3.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Commutation de couche 3</h1>
+        <h2>Fonctionnement et configuration de la commutation de couche 3</h2>
+      </div>
+      <div id="content">
+<p>Un commutateur Catalyst 2960 peut fonctionner comme un périphérique de couche 3 et acheminer le trafic entre des VLAN et un nombre limité de routes statiques. </p>
+<p></p>
+<p>Le gestionnaire de base de données de commutation (SDM) Cisco fournit plusieurs modèles pour le commutateur 2960. Les modèles peuvent être activés pour prendre en charge les rôles spécifiques selon l'utilisation du commutateur sur le réseau. Par exemple, le modèle lanbase-routing SDM peut être activé pour autoriser le commutateur à assurer le routage inter-VLAN et à prendre en charge le routage statique. </p>
+<p></p>
+<p>Dans la Figure 1, la commande <span class="cmd"><b>show sdm prefer</b></span> est exécutée sur le commutateur S1 et le modèle par défaut est appliqué. Le modèle par défaut est le paramètre d'usine par défaut pour un commutateur Catalyst 2960. Le modèle par défaut ne prend pas en charge le routage statique. Si l'adressage IPv6 est activé, le modèle utilisé sera dual-ipv4-and-ipv6 default.</p>
+<p></p>
+<p>Pour changer le modèle SDM, passez en mode de configuration globale et utilisez la commande <span class="cmd"><b>sdm prefer</b></span>. </p>
+<p></p>
+<p>
+<b>Remarque</b> : dans les Figures 2, 4, 6 et 7, la commande <span class="cmd"><b>do</b></span> est utilisée pour exécuter des commandes en mode d'exécution utilisateur ou privilégié à partir d'autres modes de configuration du routeur.</p>
+<p></p>
+<p>Dans la Figure 2, les options du modèle SDM sont affichées à l'aide de la commande<span class="cmd"><b> sdm prefer ? </b></span>. Le modèle SDM devient lanbase-routing. Vous devez redémarrer le commutateur pour que le nouveau modèle prenne effet.</p>
+<p></p>
+<p>Dans la Figure 3, le modèle lanbase-routing est actif sur S1. Ce modèle prend en charge le routage statique pour un maximum de 750 routes statiques. </p>
+<p></p>
+<p>Dans la Figure 4, l'interface F0/6 sur S1 est attribuée au VLAN 2. Les interfaces SVI pour les VLAN 1 et 2 sont également configurées avec les adresses IP respectives 192.168.1.1/24 et 192.168.2.1/24. Le routage IP est activé avec la commande en mode de configuration globale <span class="cmd"><b>ip routing</b></span>.</p>
+<p></p>
+<p>
+<b>Remarque</b> : la commande <span class="cmd"><b>ip routing</b></span> est automatiquement activée sur les routeurs Cisco. Cependant, la commande correspondante pour IPv6, <span class="cmd"><b>ipv6 unicast-routing</b></span>, est désactivée, par défaut, sur les routeurs et commutateurs Cisco.</p>
+<p></p>
+<p>Dans la Figure 5, le routeur R1 présente deux réseaux IPv4 configurés : l'interface G0/1 a l'adresse IP 192.168.1.10/24 et l'interface de bouclage Lo0 a l'adresse IP 209.165.200.225/27. Le résultat de la commande <span class="cmd"><b>show ip route</b></span> s'affiche.</p>
+<p></p>
+<p>Une route par défaut est configurée sur S1 dans la Figure 6. Le résultat de la commande <span class="cmd"><b>show ip route</b></span> s'affiche.</p>
+<p></p>
+<p>Une route statique vers le réseau distant 192.168.2.0/24 (VLAN 2) est configurée sur R1 dans la Figure 7. Le résultat de la commande <span class="cmd"><b>show ip route</b></span> s'affiche.</p>
+<p></p>
+<p>Dans la Figure 8, le PC-A est configuré avec l'adresse IP 192.168.2.2/24 dans le VLAN 2 et le PC-B est configuré avec l'adresse IP 192.168.1.2/24 sur le VLAN 1. Le PC-B peut envoyer une requête ping à la fois au PC-B et à l'interface de bouclage sur R1.</p>
+<p></p>
+<p>Dans la Figure 9, utilisez le contrôleur de syntaxe pour configurer le routage statique sur S1.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

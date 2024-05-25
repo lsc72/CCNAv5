@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.1.1 Implémentation du protocole OSPF à zones multiples</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du routage OSPF à zones multiples</h1>
+        <h2>Configuration du routage OSPF à zones multiples</h2>
+      </div>
+      <div id="content">
+<p>Le protocole OSPF peut être implémenté en zone unique ou en zones multiples. Le type d'implémentation OSPF choisi dépend des besoins et de la topologie existante.</p>
+<p></p>
+<p>La procédure d'implémentation d'un protocole OSPF à zones multiples compte quatre étapes, comme illustré dans la figure ci-contre. </p>
+<p></p>
+<p>Les Étapes 1 et 2 font partie du processus de planification. </p>
+<p></p>
+<p>
+<b>Étape 1. Regroupez les exigences et paramètres du réseau</b> : ceci inclut la détermination du nombre d'hôtes et de périphériques réseau, le modèle d'adressage IP (si déjà implémenté), la taille du domaine de routage, la taille des tables de routage, les risques de modification de la topologie, ainsi que d'autres caractéristiques réseau.</p>
+<p></p>
+<p>
+<b>Étape 2. Définissez les paramètres OSPF</b> : en fonction des informations regroupées durant l'Étape 1, l'administrateur réseau doit déterminer s'il est préférable d'effectuer une implémentation OSPF à zone unique ou à zones multiples. Si l'implémentation OSPF à zones multiples est choisie, plusieurs éléments doivent être pris en compte par l'administrateur réseau lors de la définition des paramètres OSPF, notamment : </p>
+<p>
+<ul>
+<li>
+<b>Plan d'adressage IP</b> : celui-ci régit la manière dont le protocole OSPF peut être déployé et l'évolutivité de ce déploiement. Un plan d'adressage IP détaillé doit être établi, ainsi qu'un plan de segmentation en sous-réseaux IP. Un bon plan d'adressage IP doit permettre d'utiliser une récapitulation et une conception OSPF à zones multiples. Ce plan s'adapte plus facilement au réseau, et optimise le comportement OSPF et la propagation des LSA.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Zones OSPF</b> : diviser un réseau OSPF en zones permet de réduire la taille de la base de données LSDB et limite la propagation des mises à jour d'état de liens lors des changements de topologie. Les routeurs de type ABR et ASBR doivent être identifiés, car ce sont eux qui effectuent les tâches de récapitulation et de redistribution.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Topologie du réseau</b> : celle-ci se compose des liens entre les équipements du réseau et appartenant à différentes zones OSPF, dans une conception OSPF à zones multiples. La topologie du réseau est importante pour déterminer les liens principaux et de secours. Ceux-ci sont définis en modifiant le coût OSPF des interfaces. Un plan topologique détaillé du réseau doit être utilisé pour déterminer les différentes zones OSPF, ABR et ASBR, ainsi que les points de récapitulation et de redistribution, dans le cas d'une implémentation OSPF à zones multiples.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Étape 3.</b> Configurez l'implémentation OSPF à zones multiples sur la base des paramètres définis précédemment.</p>
+<p></p>
+<p>
+<b>Étape 4. </b>Vérifiez l'implémentation OSPF à zones multiples sur la base des paramètres définis précédemment.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

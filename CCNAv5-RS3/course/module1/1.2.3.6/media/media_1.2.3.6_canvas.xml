@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+<slide type="MBAR">
+
+<slide>
+<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+<element type="ROUTER" textId="ID_router_txt1" x="3" y="108" width="433" height="200" />
+<text id="ID_router_txt1"><![CDATA[<pre>S1# <b>show port-security interface fastethernet 0/19</b>
+Port Security               : Enabled
+Port Status                 : Secure-up
+<span class="orange">Violation Mode              : Shutdown</span>
+Aging Time                  : 0 mins
+Aging Type                  : Absolute
+SecureStatic Address Aging  : Disabled
+<span class="orange">Maximum MAC Addresses       : 50</span>
+Total MAC Addresses         : 1
+Configured MAC Addresses    : 0
+<span class="orange">Sticky MAC Addresses        : 1</span>
+Last Source Address:Vlan    : 0025.83e6.4b02:1
+Security Violation Count    : 0</pre>]]></text>
+
+</slide>
+
+
+<slide>
+<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+<element type="ROUTER" textId="ID_router_txt2" x="2.95" y="110" width="433" height="141" />
+<text id="ID_router_txt2"><![CDATA[<pre>S1# <b>show port-security address</b>
+Secure Mac Address Table
+--------------------------------------------------------------
+Vlan   Mac Address      Type             Ports   Remaining Age
+                                                   (mins)
+----   -----------      ----             -----   -------------
+<span class="orange">1      0025.83e6.4b01   SecureDynamic    Fa0/18      -
+1      0025.83e6.4b02   SecureSticky     Fa0/19      -</span>
+--------------------------------------------------------------</pre>]]></text>
+</slide>
+
+<slide>
+<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+<element type="ROUTER" textId="ID_router_txt3" x="2.95" y="42" width="433" height="353" />
+<text id="ID_router_txt3"><![CDATA[<pre>S1# <b>show interfaces fastEthernet 0/18</b>
+<span class="orange">FastEthernet0/18 is up, line protocol is up (connected)</span>
+  Hardware is Fast Ethernet, address is 0cd9.96e8.8a01
+(bia 0cd9.96e8.8a01)
+  MTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec,
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+<span class="orange">Full-duplex, 100Mb/s, media type is 10/100BaseTX</span>
+  input flow-control is off, output flow-control is
+  unsupported
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input 00:00:01, output 00:00:06, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes);
+  Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     25994 packets input, 2013962 bytes, 0 no buffer
+     Received 22213 broadcasts (21934 multicasts)
+     0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 21934 multicast, 0 pause input
+     0 input packets with dribble condition detected
+     7203 packets output, 771291 bytes, 0 underruns
+<span id="ID_s3_txt01"></span>
+
+</pre>]]></text>
+</slide>
+
+<slide>
+<element type="TEXT" subType="TITLE" compId="ID_s4_title"/>
+<element type="ROUTER" textId="ID_router_txt4" x="3" y="65.1" width="433" height="267" />
+<text id="ID_router_txt4"><![CDATA[<pre>S1# <b>show mac-address-table</b>
+          Mac Address Table
+-------------------------------------------
+
+Vlan      Mac Address      Type          Ports
+----      --------------   -------       -----
+ All      0014.6954.2480    STATIC         CPU
+ All      0100.0ccc.cccc    STATIC         CPU
+ All      0100.0ccc.cccd    STATIC         CPU
+ All      0100.0cdd.dddd    STATIC         CPU
+<span class="orange">   1      000b.be02.a841   DYNAMIC       Fa0/1
+   1      000c.2999.758e   DYNAMIC       Fa0/2
+   1      000c.29c4.9e26   DYNAMIC       Fa0/3
+   1      000c.29ff.0744   DYNAMIC       Fa0/1
+   1      0014.6a46.e1c8   DYNAMIC       Fa0/2
+   1      0014.6a46.e1c9   DYNAMIC       Fa0/3
+   1      0016.763f.935d   DYNAMIC       Fa0/3</span>
+Total Mac Addresses for this criterion: 11</pre>]]></text>
+</slide>
+
+</slide>
+</data>
+

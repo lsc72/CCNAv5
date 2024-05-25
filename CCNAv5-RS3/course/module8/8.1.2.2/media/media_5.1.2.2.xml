@@ -1,0 +1,68 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Protocole EIGRP pour la topologie IPv4</b>]]></text>
+</component>
+<component id="ID_s1_txt01">
+  <text><![CDATA[<b>Domaine de routage EIGRP</b>]]></text> 
+  </component>
+<component id="ID_s1_txt02">
+  <text><![CDATA[Internet]]></text> 
+  </component>
+
+
+<component id="ID_s2_title">
+  <text><![CDATA[<b>Calcul d'une route récapitulative</b>]]></text> 
+  </component>
+<component id="ID_s2_txt01">
+  <text><![CDATA[22 bits correspondants]]></text> 
+  </component>
+<component id="ID_s2_txt02">
+  <text><![CDATA[22 bits correspondants = un masque de sous-réseau /22 ou 255.255.252.0]]></text> 
+</component>
+
+<component id="ID_s2_txt03">
+<text><![CDATA[Configurez la route récapitulative sur toutes les interfaces qui envoient des paquets EIGRP.]]></text>
+</component>
+
+<component id="ID_s3_title">
+	<text><![CDATA[<b>Configuration d'une route récapitulative manuelle sur R3</b>]]></text>		
+	</component>
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+	<component id="ID_SC3" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<pre><b>***</b><font size = '10' face="Arial" color="#0000FF" >Vous devez entrer la commande exacte et complète.</font><b>***</b></pre> ]]></feedback>		
+		<existingcommands><![CDATA[<pre><font face="Arial" fontSize="10" ><b>Configurez une route récapitulative EIGRP pour récapituler les réseaux suivants sur l’interface Serial 0/0/1 pour EIGRP AS 1 :<ul><li> 192.168.1.0/24</li><li> 192.168.2.0/24</li><li> 192.168.3.0/24</li></ul>Repassez en mode d'exécution privilégié.</b></font></pre>]]></existingcommands>
+		<command  prompt="R3(config)#">
+		    <correctresponse><![CDATA[interface serial 0/0/1]]></correctresponse>
+		</command>
+		<command  prompt="R3(config-if)#">
+	<correctresponse><![CDATA[ip summary-address eigrp 1 192.168.0.0 255.255.252.0]]></correctresponse>
+		</command>
+		<command  prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+			<instruction><![CDATA[<pre><font  face="Arial" fontSize="10" ><b>Affichez la table de routage sur R1 pour voir la récapitulation manuelle de R3.</b></pre>]]></instruction>
+		</command>
+		<command  prompt="R1#">
+		    <correctresponse><![CDATA[show ip route]]></correctresponse>
+				<deviceresponse><![CDATA[<pre><font face="Courier New" fontSize="10" >&lt;résultat omis&gt;<br><br>D     192.168.0.0/22 [90/2170112] via 192.168.10.6, 01:53:19, <br>Serial0/0/1<br>R1#</font></pre>]]></deviceresponse> 
+			<instruction><![CDATA[<pre><font face="Arial"><b>Affichez la table de routage sur R2 pour voir la récapitulation manuelle de R3.</b></pre>]]></instruction>
+		</command>
+		<command  prompt="R2#">
+		    <correctresponse><![CDATA[show ip route]]></correctresponse>
+				<deviceresponse><![CDATA[<pre><font face="Courier New" fontSize="10" >&lt;résultat omis&gt;<br><br>D     192.168.0.0/22 [90/3012096] via 192.168.10.10, 01:53:33, <br>Serial0/0/1<br>R2#</font></pre>]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez correctement configuré une route récapitulative manuelle sur R3.</b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+
+</textcomponents>

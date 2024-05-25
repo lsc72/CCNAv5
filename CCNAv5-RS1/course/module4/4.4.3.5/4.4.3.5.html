@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.3.5 Accès contrôlé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.3.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Contrôle d&#x0027;accès au support</h1>
+        <h2>Topologies LAN</h2>
+      </div>
+      <div id="content">
+<p>Lorsque la méthode d'accès contrôlé est utilisée, les périphériques réseau accèdent tour à tour au support. Si un périphérique final n'a pas besoin d'accéder au support, le périphérique final suivant prend le relai. Ce processus est facilité par l'utilisation d'un jeton. Un périphérique final acquiert le jeton et place une trame sur le support. Aucun autre périphérique ne peut faire de même jusqu'à ce que la trame soit arrivée et ait été traitée par la destination, libérant ainsi le jeton. </p>
+<p></p>
+<p>
+<b>Remarque </b>: cette méthode est également appelée accès programmé ou déterministe.</p>
+<p></p>
+<p>Bien que la méthode d'accès contrôlé soit bien organisée et offre un débit prévisible, les méthodes déterministes peuvent être inefficaces car les périphériques doivent attendre leur tour pour pouvoir utiliser le support.</p>
+<p></p>
+<p>Voici quelques exemples d'accès contrôlé :</p>
+<p>
+<ul>
+<li>Token Ring (IEEE 802.5)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>FDDI (Fiber Distributed Data Interface), interface basée sur le protocole de bus à jeton IEEE 802.4.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque</b> : les deux méthodes de contrôle d'accès au support sont considérées comme obsolètes. </p>
+<p></p>
+<p>La figure illustre ce qui suit :</p>
+<p>
+<ul>
+<li>Principe de fonctionnement des méthodes d'accès contrôlé</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Caractéristiques des méthodes d'accès contrôlé</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Exemples de méthodes d'accès contrôlé</li>
+</ul>
+</p>
+<p></p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

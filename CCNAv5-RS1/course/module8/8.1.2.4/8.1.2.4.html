@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.2.4 Première et dernière adresses d&#x0027;hôte</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Masque de sous-réseau IPv4</h2>
+      </div>
+      <div id="content">
+<p>Pour s'assurer que tous les hôtes d'un réseau disposent d'une adresse IP unique provenant de cette plage réseau, il est important d'identifier la première adresse d'hôte et la dernière adresse d'hôte. Les hôtes d'un réseau se voient attribuer des adresses IP comprises dans cette plage. </p>
+<p></p>
+<p>
+<b>Première adresse d'hôte</b>
+</p>
+<p></p>
+<p>Comme le montre la Figure 1, la partie hôte de la première adresse d'hôte ne contient que des bits 0 à l'exception d'un bit 1 en tant que bit de poids faible ou bit le plus à droite. Cette adresse est toujours supérieure de 1 à l'adresse réseau. Dans cet exemple, la première adresse d'hôte du réseau 10.1.1.0/24 est 10.1.1.1. De nombreux schémas d'adressage utilisent la première adresse d'hôte pour le routeur ou la passerelle par défaut.</p>
+<p></p>
+<p>
+<b>Dernière adresse d'hôte</b>
+</p>
+<p></p>
+<p>La partie hôte de la dernière adresse d'hôte ne contient que des bits 1 à l'exception d'un bit 0 en tant que bit de poids faible ou bit le plus à droite. Cette adresse est toujours inférieure de un à l'adresse de diffusion. Comme le montre la Figure 2, la dernière adresse d'hôte du réseau 10.1.1.0/24 est 10.1.1.254.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

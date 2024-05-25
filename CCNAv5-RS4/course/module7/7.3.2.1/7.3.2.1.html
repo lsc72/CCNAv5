@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.2.1 Confidentialité avec chiffrement</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation d’IPsec</h1>
+        <h2>Cadre IPsec</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Confidentialité</b>
+</p>
+<p></p>
+<p>Le chiffrement permet de garantir la confidentialité du trafic VPN. Les données en texte clair qui sont transportées sur Internet peuvent être interceptées et lues. Chiffrez la date afin que celle-ci reste privée. Le chiffrement numérique des données rendent celles-ci illisibles avant leur déchiffrement par le destinataire autorisé. </p>
+<p></p>
+<p>Pour que la communication chiffrée fonctionne, l'expéditeur et le destinataire doivent connaître les règles utilisées pour le codage du message d'origine. Ces règles se basent sur des algorithmes et des clés associées. Dans le cadre du chiffrement, un algorithme est une séquence mathématique d'étapes combinant un message, du texte, des chiffres ou les trois, avec une chaîne de chiffres, le tout étant appelé une clé. En résulte une chaîne chiffrée illisible. L'algorithme de chiffrement spécifie également comment déchiffrer un message chiffré. Le déchiffrement est extrêmement difficile, voire impossible, sans la bonne clé.</p>
+<p></p>
+<p>Dans la figure, Gail souhaite envoyer à Jeremy un EFT (Electronic Funds Transfer) via Internet. À l’extrémité locale, le document est associé à une clé et soumis à un algorithme de chiffrement. Le résultat est du texte chiffré. Le texte chiffré est ensuite envoyé via Internet. À l’extrémité distante, le message est reconstitué avec une clé et renvoyé via l’algorithme de chiffrement. Le résultat est le document financier d’origine.</p>
+<p></p>
+<p>La confidentialité est obtenue par le biais du chiffrement du trafic traversant un VPN. Le degré de sécurité dépend de la longueur de clé de l'algorithme de chiffrement ainsi que de la complexité de cet algorithme. Si un pirate informatique tente de décoder la clé lors d'une attaque en force, le nombre de possibilités à essayer dépend de la longueur de clé. Le temps nécessaire au traitement de l'ensemble de ces possibilités dépend de la puissance de l'ordinateur utilisé par le pirate informatique. Plus la clé est courte, plus elle est facile à décoder. Par exemple, si un ordinateur relativement puissant prendrait environ un an pour décoder une clé de 64 bits, ce même ordinateur prendrait de 10 à 19 ans pour décoder une clé de 128 bits.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

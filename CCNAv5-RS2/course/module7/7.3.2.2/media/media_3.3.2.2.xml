@@ -1,0 +1,58 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Vérification des paramètres RIP sur R1</b>]]></text>
+</component>
+<component id="ID_s2_title">
+<text><![CDATA[<b>Vérification des routes sur R1</b>]]></text>
+</component>
+<component id="ID_s3_title">
+<text><![CDATA[<b>Vérification des routes RIPng sur R1</b>]]></text>
+</component>
+<component id="ID_s4_title">
+<text><![CDATA[<b>Vérification des paramètres et des routes RIP sur R2 et R3</b>]]></text>
+</component>
+
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+	<component id="ID_s4_SC5" fontFace='Courier New' fontSize="10">	
+		<feedback id="fb"><![CDATA[<b> *** </b><font  face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font face="Arial"><b>Vérifiez les paramètres du protocole IPv6 sur R2.  </b></font>]]></existingcommands>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ipv6 protocols]]></correctresponse>
+			<deviceresponse><![CDATA[<code>IPv6 Routing Protocol is "connected"<br>IPv6 Routing Protocol is "ND"<br>IPv6 Routing Protocol is "rip RIP-AS"<br>  Interfaces:<br>    Serial0/0/1<br>    Serial0/0/0<br>    GigabitEthernet0/0<br>  Redistribution:<br>    None</code>]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial"><b>Affichez la table de routage IPv6 sur R2.  </b>]]></instruction>			
+			</command>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ipv6 route]]></correctresponse>
+			<deviceresponse><![CDATA[<font ><code>IPv6 Routing Table - default - 9 entries <br>Codes: C - Connected, L - Local, S - Static, U - Per-user <br/>Static route <br>       B - BGP, R - RIP, I1 - ISIS L1, I2 - ISIS L2 <br>       IA - ISIS interarea, IS - ISIS summary, D - EIGRP, <br/>EX - EIGRP external <br>       ND - ND Default, NDp - ND Prefix, DCE - Destination, <br/>NDr - Redirect <br>       O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF ext 1, OE2 <br/>- OSPF ext 2 <br>       ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2 <br>R   2001:DB8:CAFE:1::/64 [120/2] <br>     via FE80::FE99:47FF:FE75:C3E0, Serial0/0/0 <br>C   2001:DB8:CAFE:2::/64 [0/0] <br>     via GigabitEthernet0/0, directly connected <br>L   2001:DB8:CAFE:2::1/128 [0/0] <br>     via GigabitEthernet0/0, receive <br>R   2001:DB8:CAFE:3::/64 [120/2] <br>     via FE80::FE99:47FF:FE71:7A20, Serial0/0/1 <br>C   2001:DB8:CAFE:A001::/64 [0/0] <br>     via Serial0/0/0, directly connected <br>L   2001:DB8:CAFE:A001::2/128 [0/0] <br>     via Serial0/0/0, receive <br>C   2001:DB8:CAFE:A002::/64 [0/0] <br>     via Serial0/0/1, directly connected <br>L   2001:DB8:CAFE:A002::1/128 [0/0] <br>     via Serial0/0/1, receive <br>L   FF00::/8 [0/0] <br>     via Null0, receive </code><br></font>R2#]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial"><b>Vous êtes maintenant connecté à R3. Vérifiez les paramètres du protocole IPv6 sur R3.  </b>]]></instruction>			
+			</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ipv6 protocols]]></correctresponse>
+			<deviceresponse><![CDATA[IPv6 Routing Protocol is "connected" <br><code>IPv6 Routing Protocol is "ND" <br>IPv6 Routing Protocol is "rip RIP-AS" <br>  Interfaces: <br>    Serial0/0/1 <br>    GigabitEthernet0/0 <br>  Redistribution: <br>    None</code>]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial"><b>Affichez la table de routage IPv6 sur R3.  </b>]]></instruction>			
+			</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ipv6 route]]></correctresponse>
+			<deviceresponse><![CDATA[<font ><code>IPv6 Routing Table - default - 8 entries <br>Codes: C - Connected, L - Local, S - Static, U - Per-user <br/>Static route <br>       B - BGP, R - RIP, I1 - ISIS L1, I2 - ISIS L2 <br>       IA - ISIS interarea, IS - ISIS summary, D - EIGRP, EX - <br/>EIGRP external <br>       ND - ND Default, NDp - ND Prefix, DCE - Destination, NDr <br/>- Redirect <br>       O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF ext 1, OE2 <br/>- OSPF ext 2 <br>       ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2 <br>R   2001:DB8:CAFE:1::/64 [120/3] <br>     via FE80::FE99:47FF:FE71:78A0, Serial0/0/1 <br>R   2001:DB8:CAFE:2::/64 [120/2] <br>     via FE80::FE99:47FF:FE71:78A0, Serial0/0/1 <br>C   2001:DB8:CAFE:3::/64 [0/0] <br>     via GigabitEthernet0/0, directly connected <br>L   2001:DB8:CAFE:3::1/128 [0/0] <br>     via GigabitEthernet0/0, receive <br>R   2001:DB8:CAFE:A001::/64 [120/2] <br>     via FE80::FE99:47FF:FE71:78A0, Serial0/0/1 <br>C   2001:DB8:CAFE:A002::/64 [0/0] <br>     via Serial0/0/1, directly connected <br>L   2001:DB8:CAFE:A002::2/128 [0/0] <br>     via Serial0/0/1, receive <br>L   FF00::/8 [0/0] <br>     via Null0, receive </code><br></font>R3#]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial"><b>Affichez uniquement les routes RIP de la table de routage IPV6 sur R3.  </b>]]></instruction>			
+			</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ipv6 route rip]]></correctresponse>
+			<deviceresponse><![CDATA[<font ><code>IPv6 Routing Table - default - 8 entries <br>Codes: C - Connected, L - Local, S - Static, U - Per-user <br/>Static route <br>       B - BGP, R - RIP, I1 - ISIS L1, I2 - ISIS L2 <br>       IA - ISIS interarea, IS - ISIS summary, D - EIGRP, EX - <br/>EIGRP external <br>       ND - ND Default, NDp - ND Prefix, DCE - Destination, NDr <br/>- Redirect <br>       O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF ext 1, OE2 <br/>- OSPF ext 2 <br>       ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2 <br>R   2001:DB8:CAFE:1::/64 [120/3] <br>     via FE80::FE99:47FF:FE71:78A0, Serial0/0/1 <br>R   2001:DB8:CAFE:2::/64 [120/2] <br>     via FE80::FE99:47FF:FE71:78A0, Serial0/0/1 <br>R   2001:DB8:CAFE:A001::/64 [120/2] <br>     via FE80::FE99:47FF:FE71:78A0, Serial0/0/1 </code><br></font>R3#]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez vérifié les paramètres et les routes de RIPng sur R2 et R3.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+</textcomponents>

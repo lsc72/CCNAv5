@@ -1,0 +1,75 @@
+﻿<textcomponents>
+
+
+
+<component id="ID_s1_title">
+<text><![CDATA[<b>Suppression d'une licence active et permanente</b>]]></text>
+</component>
+<component id="ID_s1_txt01">
+  <text><![CDATA[Désinstallation de la licence]]></text> 
+  </component>
+<component id="ID_s1_txt02">
+  <text><![CDATA[<b>Étape&nbsp;1. Désactivez le package technologique.</b>]]></text> 
+  </component>
+<component id="ID_s1_txt03">
+  <text><![CDATA[<b>Étape&nbsp;2. Effacez la licence.</b>]]></text> 
+  </component>
+  <component id="ID_s2_title">
+<text><![CDATA[<b></b>]]></text>
+</component>
+  
+  
+  
+
+
+<component id="ID_s2_title">
+<text><![CDATA[<b>Désinstallation d'une licence sur R2</b>]]></text>
+</component>
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+ <component id="ID_SC2" fontFace='Courier New' fontSize="9">
+		<feedback id="fb"><![CDATA[<b>***</b><font size='10' face="Arial" color="#0000FF">Vous devez saisir la commande exacte et complète.</font><b>***</b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>Procédez comme suit sur le routeur R2&nbsp;:<ul><li>Désactivez le package technologique «&nbsp;seck9&nbsp;».<li>Revenez au mode d'exécution privilégié à l'aide de la commande exit.<li>Redémarrez le routeur pour que les modifications prennent effet.</ul></b></font>]]></existingcommands>
+		<command  prompt="R2(config)#">
+		    <correctresponse><![CDATA[license boot module c1900 technology-package seck9 disable]]></correctresponse>
+		</command>
+		<command  prompt="R2(config)#">
+		    <correctresponse><![CDATA[exit]]></correctresponse>
+		</command>
+		<command  prompt="R2#">
+		    <correctresponse><![CDATA[reload]]></correctresponse>
+				<deviceresponse><![CDATA[&lt;Redémarrage simulé&gt;]]></deviceresponse> 
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Procédez à présent comme suit&nbsp;:<ul><li>Supprimez la licence «&nbsp;seck9&nbsp;».<li>Passez en mode de configuration et supprimez l'option boot (démarrage) pour la licence.<li>Revenez au mode d'exécution privilégié à l'aide de la commande exit.<li>Redémarrez le routeur pour que les modifications prennent effet.</ul></b>]]></instruction>
+		</command>
+		<command  prompt="R2#">
+		    <correctresponse><![CDATA[license clear seck9]]></correctresponse>
+		</command>
+		<command  prompt="R2#">
+		    <correctresponse><![CDATA[configure terminal]]></correctresponse>
+		</command>
+		<command  prompt="R2(config)#">
+		    <correctresponse><![CDATA[no license boot module c1900 technology-package seck9 disable]]></correctresponse>
+		</command>
+		<command  prompt="R2(config)#">
+		    <correctresponse><![CDATA[exit]]></correctresponse>
+		</command>
+		<command  prompt="R2#">
+		    <correctresponse><![CDATA[reload]]></correctresponse>
+				<deviceresponse><![CDATA[&lt;Redémarrage simulé&gt;]]></deviceresponse> 
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Vous avez correctement supprimé la licence de sécurité sur R2.</b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+
+</textcomponents>

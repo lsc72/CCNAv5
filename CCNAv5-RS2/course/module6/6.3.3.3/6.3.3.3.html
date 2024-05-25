@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.3.3 VLSM en action</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Examen de CIDR et VLSM</h1>
+        <h2>VLSM</h2>
+      </div>
+      <div id="content">
+<p>VLSM permet l'utilisation de masques différents pour chaque sous-réseau. Une fois un bloc d'adresses réseau découpé en sous-réseaux, ces sous-réseaux peuvent eux-mêmes être découpés en sous-réseaux. La technique VLSM découpe habituellement un réseau (ou sous-réseau) en d'autres sous-réseaux. Le VLSM peut être considéré comme découpage en sous-réseaux.</p>
+<p></p>
+<p>La figure illustre le réseau 10.0.0.0/8 qui a été subdivisé à l'aide du masque de sous-réseau /16, qui fait 256 sous-réseaux. C'est-à-dire : 10.0.0.0/16, 10.1.0.0/16, 10.2.0.0/16, …, 10.255.0.0/16. Quatre de ces sous-réseaux /16 sont indiqués dans la figure. Chacun des sous-réseaux /16 peut à son tour être subdivisé en sous-réseaux. </p>
+<p></p>
+<p>Cliquez sur le bouton Lecture dans la figure pour visualiser l'animation. Dans l'animation :</p>
+<p>
+<ul>
+<li>Le sous-réseau 10.1.0.0/16 est découpé à nouveau en sous-réseaux avec le masque /24.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le sous-réseau 10.2.0.0/16 est découpé à nouveau en sous-réseaux avec le masque /24. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le sous-réseau 10.3.0.0/16 est découpé à nouveau en sous-réseaux avec le masque /28.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le sous-réseau 10.4.0.0/16 est découpé à nouveau en sous-réseaux avec le masque /20. </li>
+</ul>
+</p>
+<p></p>
+<p>Les adresses IP des hôtes sont attribuées ici à partir des adresses des « sous-réseaux de sous-réseaux ». Par exemple, l'animation présente le sous-réseau 10.1.0.0/16 découpé en sous-réseaux à l'aide du masque /24. L'hôte qui possède l'adresse 10.1.4.10 est membre du sous-réseau 10.1.4.0/24 encore plus spécifique.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

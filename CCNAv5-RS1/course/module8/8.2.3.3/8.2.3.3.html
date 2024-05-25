@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.3.3 Les adresses de monodiffusion globale IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Les adresses réseau IPv6</h1>
+        <h2>Les types d&#x0027;adresses IPv6</h2>
+      </div>
+      <div id="content">
+<p>Une adresse de monodiffusion IPv6 identifie une interface sur un périphérique IPv6 de façon unique. Un paquet envoyé à une adresse de monodiffusion est reçu par l'interface correspondant à cette adresse. Comme c'est le cas avec l'IPv4, une adresse source IPv6 doit être une adresse de monodiffusion. L'adresse IPv6 de destination peut quant à elle être une adresse de monodiffusion ou de multidiffusion.</p>
+<p></p>
+<p>Il existe six types d'adresse de monodiffusion IPv6.</p>
+<p></p>
+<p>
+<b>Monodiffusion globale</b>
+</p>
+<p>Une adresse de monodiffusion globale est similaire à une adresse IPv4 publique. Ces adresses sont uniques au monde et routables sur Internet. Les adresses de monodiffusion globale peuvent être configurées de manière statique ou attribuées de manière dynamique. Il existe des différences importantes entre la réception d'une adresse IPv6 dynamique par un périphérique et le DHCP pour l'IPv4. </p>
+<p></p>
+<p>
+<b>Link-local</b>
+</p>
+<p>Les adresses link-local sont utilisées pour communiquer avec d'autres périphériques sur la même liaison locale. Dans le cadre de l'IPv6, le terme « link » (ou liaison) fait référence à un sous-réseau. Les adresses link-local sont confinées à une seule liaison. Leur caractère unique doit être confirmé uniquement sur cette liaison, car elles ne sont pas routable au-delà de la liaison. En d'autres termes, les routeurs ne transmettent aucun paquet avec une adresse source ou de destination link-local. </p>
+<p></p>
+<p>
+<b>Bouclage</b>
+</p>
+<p>Une adresse de bouclage est utilisée par un hôte pour envoyer un paquet à lui-même. Cette adresse ne peut pas être attribuée à une interface physique. Tout comme avec une adresse de bouclage IPv4, vous pouvez envoyer une requête ping à une adresse de bouclage IPv6 pour tester la configuration TCP/IP de l'hôte local. L'adresse de bouclage IPv6 contient uniquement des 0, excepté le dernier bit. Elle est donc notée ::1/128, ou simplement ::1 au format compressé.</p>
+<p></p>
+<p>
+<b>Adresse non spécifiée</b>
+</p>
+<p>Une adresse non spécifiée est une adresse contenant uniquement des 0 et notée ::/128 ou simplement :: au format compressé. Elle ne peut pas être attribuée à une interface et ne peut être utilisée que comme adresse source dans un paquet IPv6. Une adresse non spécifiée est utilisée comme adresse source lorsque le périphérique n'a pas encore d'adresse IPv6 permanente ou lorsque la source du paquet n'est pas pertinente pour la destination. </p>
+<p></p>
+<p>
+<b>Adresse locale unique</b>
+</p>
+<p>Les adresses IPv6 locales uniques ont certains points communs avec les adresses RFC 1918 privées pour l'IPv4, mais ces deux types d'adresse diffèrent également sur certains points. Des adresses locales uniques sont utilisées pour l'adressage local au sein d'un site ou entre un nombre limité de sites. Ces adresses ne doivent pas être routables sur le réseau IPv6 global. Les adresses locales uniques sont comprises entre FC00::/7 et FDFF::/7. </p>
+<p></p>
+<p>Avec l'IPv4, les adresses privées sont associées aux fonctions NAT/PAT pour fournir une traduction « plusieurs vers un » d'adresses privées en adresses publiques. Cette opération est effectuée en raison du caractère restreint de l'espace d'adressage IPv4. De nombreux sites utilisent également le caractère privé des adresses RFC 1918 pour sécuriser ou masquer leur réseau et limiter les risques. Cependant, ce n'est pas le but premier de ces technologies et l'IETF a toujours recommandé que les sites prennent les précautions de sécurité nécessaires au niveau de leur routeur connecté à Internet. Bien que l'IPv6 fournisse un adressage spécifique selon les sites, il n'est pas censé être utilisé pour masquer les périphériques IPv6 internes de l'Internet IPv6. L'IETF conseille de limiter l'accès aux périphériques en respectant les meilleures pratiques en matière de mesures de sécurité.</p>
+<p></p>
+<p>
+<b>Remarque</b> : la norme IPv6 initiale définissait des adresses site-local et utilisait la plage de préfixes FEC0::/10. Cette norme était ambiguë sur certains points et les adresses site-local ont été désapprouvées par l'IETF au profit des adresses locales uniques.</p>
+<p></p>
+<p>
+<b>IPv4 intégré</b>
+</p>
+<p>Le dernier type d'adresse de monodiffusion est l'adresse IPv4 intégrée. Ces adresses sont utilisées pour faciliter la transition de l'IPv4 vers l'IPv6. Les adresses IPv4 intégrées sortent du cadre de ce cours.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.4.4 Packet Tracer : configuration de la redirection sur un routeur Linksys</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.4.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de la traduction d&#x0027;adresses réseau (NAT)</h1>
+        <h2>Redirection</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Contexte/scénario</b>
+</p>
+<p></p>
+<p>Votre ami souhaite jouer à un jeu avec vous sur votre serveur. Vous êtes chacun chez vous, connectés à Internet. Vous devez configurer votre routeur SOHO (Small Office and Home Office, petits bureaux et bureaux à domicile) pour la redirection des requêtes HTTP vers votre serveur de sorte que votre ami puisse accéder à la page Web du jeu.</p>
+<p></p>
+<p>
+<a href="../../files/5.2.4.4%20Packet%20Tracer%20-%20Configuring%20Port%20Forwarding%20on%20a%20Linksys%20Router%20Instructions.pdf" target="_blank">Instructions de Packet Tracer : configuration de la redirection sur un routeur Linksys</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/5.2.4.4%20Packet%20Tracer%20-%20Configuring%20Port%20Forwarding%20on%20a%20Linksys%20Router.pka" target="_blank">PKA de Packet Tracer : configuration de la redirection sur un routeur Linksys</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

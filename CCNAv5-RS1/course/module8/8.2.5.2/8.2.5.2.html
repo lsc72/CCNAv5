@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.5.2 Les adresses de multidiffusion IPv6 de nœud sollicité</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.5.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Les adresses réseau IPv6</h1>
+        <h2>Les adresses de multidiffusion IPv6</h2>
+      </div>
+      <div id="content">
+<p>Une adresse de multidiffusion de nœud sollicité est semblable à une adresse de multidiffusion à tous les nœuds. Notez qu'une adresse de multidiffusion à tous les nœuds est en grande partie semblable à une adresse de diffusion IPv4. Tous les périphériques du réseau doivent traiter le trafic envoyé à l'adresse de multidiffusion à tous les nœuds. Pour réduire le nombre de périphériques qui doivent gérer le trafic, utilisez une adresse de multidiffusion de nœud sollicité.</p>
+<p></p>
+<p>Une adresse de multidiffusion de nœud sollicité est une adresse correspondant uniquement aux 24 derniers bits de l'adresse de monodiffusion globale IPv6 d'un périphérique. Les seuls périphériques qui n'ont pas besoin de traiter les paquets sont ceux dont l'ID d'interface dispose des 24 mêmes bits les moins significatifs (derniers bits de l'ID d'interface). </p>
+<p></p>
+<p>Une adresse de multidiffusion de nœud sollicité IPv6 est créée automatiquement lorsque l'adresse de monodiffusion globale ou l'adresse link-local est attribuée. L'adresse de multidiffusion de nœud sollicité IPv6 est créée grâce à la combinaison d'un préfixe spécifique, FF02:0:0:0:0:1:FF00::/104, et des 24 derniers bits de son adresse de monodiffusion.</p>
+<p></p>
+<p>L'adresse de multidiffusion de nœud sollicité comprend deux parties :</p>
+<p>
+<ul>
+<li>
+<b>Le préfixe de multidiffusion FF02:0:0:0:0:1:FF00::/104 :</b> les 104 premiers bits de l'adresse de multidiffusion de nœud sollicité.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Les 24 bits les moins significatifs :</b> il s'agit des 24 derniers bits de l'adresse de multidiffusion de nœud sollicité. Ces bits sont copiés à partir des 24 derniers bits de l'adresse de monodiffusion globale ou de l'adresse de monodiffusion link-local du périphérique.</li>
+</ul>
+</p>
+<p></p>
+<p>Il est possible que plusieurs périphériques aient la même adresse de multidiffusion de nœud sollicité. Bien que cela soit rare, cela peut se produire lorsque des périphériques ont les mêmes 24 derniers bits dans leur ID d'interface. Cela n'entraîne aucun problème, car le périphérique traite toujours le message encapsulé, qui inclut l'adresse IPv6 complète du périphérique en question. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

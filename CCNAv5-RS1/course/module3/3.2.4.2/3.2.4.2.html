@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.4.2 Modèle de référence OSI</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Normes et protocoles réseau</h1>
+        <h2>Modèles de référence</h2>
+      </div>
+      <div id="content">
+<p>À l'origine, le modèle OSI a été conçu par l'organisation ISO pour fournir un cadre dans lequel concevoir une suite de protocoles système ouverts. L'idée était que cet ensemble de protocoles serait utilisé pour développer un réseau international qui ne dépendrait pas de systèmes propriétaires. </p>
+<p></p>
+<p>Finalement, du fait de la rapidité avec laquelle Internet basé sur TCP/IP a été adopté et de sa vitesse de développement, l'élaboration et l'acceptation de la suite de protocoles OSI sont restées à la traîne. Même si peu de protocoles développés à l'aide des spécifications OSI font l'objet d'une utilisation répandue aujourd'hui, le modèle OSI à sept couches a apporté des contributions essentielles au développement d'autres protocoles et produits pour tous les types de nouveaux réseaux.</p>
+<p></p>
+<p>Il fournit une liste exhaustive de fonctions et de services qui peuvent intervenir à chaque couche. Il décrit également l'interaction de chaque couche avec les couches directement supérieures et inférieures. Bien que le contenu de ce cours soit structuré autour du modèle de référence OSI, la discussion traitera essentiellement des protocoles identifiés dans le modèle de protocole TCP/IP. Cliquez sur le nom de chaque couche pour afficher les détails.</p>
+<p></p>
+<p>
+<b>Remarque</b> : si les couches du modèle TCP/IP sont désignées par leur nom uniquement, les sept couches du modèle OSI sont plus fréquemment désignées par un numéro. Par exemple, la couche physique est appelée Couche 1 dans le modèle OSI.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

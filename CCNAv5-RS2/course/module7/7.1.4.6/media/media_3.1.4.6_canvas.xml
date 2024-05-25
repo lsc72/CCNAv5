@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide type="MBAR">
+		<element type="TEXT" id="ID_static_1" text=".1 G0/0" x="54.95" y="79.65" width="31" align="right" size="10" />
+		<element type="TEXT" id="ID_static_2" text=".1 S0/0/0" x="126.45" y="75.8" width="33.1" align="left" size="10" />
+		<element type="TEXT" id="ID_static_3" text="172.16.1.0/24" x="-0.85" y="54.95" width="70.7" align="center" size="10" bold="1" />
+		<element type="TEXT" id="ID_static_4" text="192.168.1.0/30" x="126.3" y="54.95" width="70.9" align="center" size="10" bold="1" />
+		<element type="TEXT" id="ID_static_5" text="192.168.2.0/30" x="234.75" y="54.95" width="81.2" align="center" size="10" bold="1" />
+		<element type="TEXT" id="ID_static_6" text="172.16.2.0/24" x="354.95" y="54.95" width="81.2" align="center" size="10" bold="1" />
+		<element type="TEXT" id="ID_static_7" text=".2 S0/0/0" x="166.9" y="79.85" width="33.1" align="right" size="10" />
+		<element type="TEXT" id="ID_static_8" text=".2 S0/0/1" x="247.1" y="75.8" width="33.1" align="left" size="10" />
+		<element type="TEXT" id="ID_static_9" text=".1 S0/0/1" x="277.55" y="79.85" width="33.1" align="right" size="10" />
+		<element type="TEXT" id="ID_static_10" text=".1 G0/0" x="353.25" y="78.25" width="31" align="left" size="10" />
+		
+		<slide>		
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title" />	
+			<element type="IMAGE" src="3_1_4_6.jpg" x="0" y="0" width="470" height="400"/>	
+			<element type="TEXT" compId="ID_s1_txt01" x="118.65" y="115.5" width="83.1" expand="down" align="center" size="10" color="#f68026" />
+<element type="BUBBLE" compId="ID_s1_txt02" x="2.35" y="110.35" width="113.1" height="105" align="left" tailPosition="1" tailFlip="1" />
+		</slide>	
+	
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title" />	
+			<element type="IMAGE" src="3_1_4_6_B.jpg" x="0" y="0" width="470" height="400"/>		
+			<element type="ROUTER" textId="ID_s5_txt01" x="1.55" y="160.7" width="428.05" height="232.55"/>
+		</slide>
+		
+		<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s3_title" />	
+		<element type="IMAGE" src="3_1_4_6_C.jpg" x="0" y="0" width="470" height="400"/>	
+		<element type="TEXT" compId="ID_s3_txt01" x="235.95" y="124.15" width="100.65" align="center" expand="up+down" color="#f68026" size="10"/>
+			<element type="BUBBLE" compId="ID_s3_txt02" x="331.95" y="117.35" width="100.95" height="105" align="left" tailPosition="11" tailFlip=""/>	
+
+		</slide>
+		
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s4_title" />	
+			<element type="IMAGE" src="3_1_4_6_B.jpg" x="0" y="0" width="470" height="400"/>		
+			<element type="ROUTER" textId="ID_s6_txt01" x="1.55" y="160.7" width="428.05" height="238.55"/>
+		</slide>
+		
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s5_title" />	
+			<element type="IMAGE" src="3_1_4_6_B.jpg" x="0" y="0" width="470" height="400" />		
+			<element type="ROUTER" textId="ID_s7_txt01" x="1.55" y="160.7" width="432.05" height="232.55"/>
+		</slide>
+		
+			
+		<text id="ID_s5_txt01"><![CDATA[ 			R2# <b>show ip route | begin Gateway  </b><br /> Gateway of last resort is not set<br /><br /> <span class="color"><span class="space">172.16.0.0/24 is subnetted, 1 subnets</span><br /> R <span class="space1"> 172.16.1.0 [120/1] via 192.168.1.1, 00:00:06,</span><br /> <span class="space2">Serial0/0/0</span></span><br /> <span class="space">192.168.1.0/24 is variably subnetted, 2 subnets,</span> <br /> <span class="space">2 masks</span><br /> C <span class="space1">192.168.1.0/30 is directly connected, Serial0/0/0</span><br /> L <span class="space1">192.168.1.2/32 is directly connected, Serial0/0/0</span><br /> R2#
+
+
+		]]></text>
+		
+		<text id="ID_s6_txt01"><![CDATA[ 			R2# <b>show ip route | begin Gateway  </b><br /> Gateway of last resort is not set<br /><br /> <span class="colorn"><span class="space">172.16.0.0/24 is subnetted, 2 subnets</span><br /> R <span class="space1">172.16.1.0 [120/1] via 192.168.1.1, 00:00:03,</span><br /> <span class="space2">Serial0/0/0</span></span><br /> <span class="color2">R <span class="space1">172.16.2.0 [120/1] via 192.168.2.1, 00:00:03,</span><br /> <span class="space2">Serial0/0/1</span></span><br /> <span class="space">192.168.1.0/24 is variably subnetted, 2 subnets,</span><br /> <span class="space3">2 masks</span><br /> C <span class="space1"> 192.168.1.0/30 is directly connected, Serial0/0/0</span><br /> L <span class="space1">192.168.1.2/32 is directly connected, Serial0/0/0</span><br /> <span class="space">192.168.2.0/24 is variably subnetted, 2 subnets,</span><br /> <span class="space3">2 masks</span><br /> C <span class="space1">192.168.2.0/30 is directly connected, Serial0/0/1</span><br /> L <span class="space1">192.168.2.2/32 is directly connected, Serial0/0/1</span><br /> R2#
+		]]></text>
+		
+		<text id="ID_s7_txt01"><![CDATA[ 			R2# <b>ping 172.16.1.1  </b><br /> Type escape sequence to abort.<br /> Sending 5, 100-byte ICMP Echos to 172.16.1.1, timeout is 2<br /> seconds:<br /> <span class="colorn">!!!!!</span><br /> Success rate is 100 percent (5/5), round-trip min/avg/max = 12/14/16 ms<br /> R2#<br /> R2# <b>traceroute 172.16.1.1  </b><br /> Type escape sequence to abort.<br /> Tracing the route to 172.16.1.1<br /> VRF info: (vrf in name/id, vrf out name/id)<br /> <span class="color2"><span class="one">1</span><span class="two"> 192.168.1.1 4 msec 4 msec *</span></span> <br /> R2#
+
+		]]></text>
+		
+		
+	</slide>
+</data>

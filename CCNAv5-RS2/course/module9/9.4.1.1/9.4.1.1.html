@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.4.1.1 Logique des listes de contrôle d&#x0027;accès entrantes et sortantes</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.4.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage des listes de contrôle d&#x0027;accès</h1>
+        <h2>Traitement des paquets avec les listes de contrôle d&#x0027;accès</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Logique des listes de contrôle d'accès entrantes</b>
+</p>
+<p></p>
+<p>La Figure 1 illustre la logique des listes de contrôle d'accès entrantes. En cas de concordance entre les informations d'un en-tête de paquet et d'une instruction de la liste de contrôle d'accès, les autres instructions de la liste sont ignorées et le paquet est autorisé ou refusé, comme le définit l'instruction correspondante. En cas de non-concordance entre un en-tête de paquet et une instruction de la liste de contrôle d'accès, le paquet est validé par rapport à l'instruction suivante de la liste. Ce processus de correspondance se poursuit jusqu'à la fin de la liste.</p>
+<p></p>
+<p>À la fin de chaque liste, il existe une instruction de refus global implicite. Cette instruction n'apparaît pas dans le résultat. Cette instruction implicite finale s'applique à tous les paquets qui n'ont pas répondu aux conditions. Elle correspond à tous les autres paquets et se solde par une action de refus. Au lieu de les faire entrer ou sortir d'une interface, le routeur abandonne tous les paquets restants. Cette instruction finale est souvent appelée instruction implicite « deny any » ou « deny all traffic ». Cette instruction implique qu'une liste de contrôle d'entrée doit comporter au moins une instruction permit, afin de ne pas bloquer tout le trafic.</p>
+<p>
+<b>Logique des listes de contrôle d'accès sortantes</b>
+</p>
+<p></p>
+<p>La Figure 2 illustre la logique des listes de contrôle d'accès sortantes. Avant l'acheminement d'un paquet vers une interface de sortie, le routeur vérifie la table de routage pour voir si le paquet est routable. Si le paquet ne peut être acheminé, il est abandonné et n'est pas examiné en fonction des ACE. Le routeur vérifie ensuite si l'interface de sortie est associée à une liste de contrôle d'accès. Si l'interface de sortie n'est pas associée à une liste de contrôle d'accès sortante, le paquet peut être envoyé à la mémoire tampon de sortie. Voici des exemples de listes de contrôle d'accès sortantes : </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Aucune liste de contrôle d'accès appliquée à l'interface :</b> si l'interface de sortie n'est associée à aucune liste de contrôle d'accès sortante, le paquet est envoyé directement à l'interface de sortie. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Liste de contrôle d'accès appliquée à l'interface :</b> si l'interface de sortie est associée à une liste de contrôle d'accès sortante, le paquet n'est pas envoyé à l'interface de sortie tant qu'il n'a pas été vérifié par les listes de contrôle d'accès appliquées à cette interface. En fonction des vérifications de la liste de contrôle d'accès, le paquet est autorisé ou refusé.</li>
+</ul>
+</p>
+<p></p>
+<p>Pour les listes sortantes, « autoriser » signifie envoyer le paquet à la mémoire tampon de sortie et « refuser » revient à rejeter le paquet.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

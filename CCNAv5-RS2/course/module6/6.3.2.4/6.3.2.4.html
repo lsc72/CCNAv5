@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.2.4 Exemple de protocole de routage sans classe</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Examen de CIDR et VLSM</h1>
+        <h2>CIDR</h2>
+      </div>
+      <div id="content">
+<p>Les protocoles de routage par classe ne peuvent pas envoyer de routes de super-réseau. La raison en est que le routeur destinataire applique automatiquement le masque de sous-réseau par classe par défaut à l'adresse réseau dans la mise à jour de routage. Si la topologie dans la figure contenait un protocole de routage par classe, R3 installerait 172.16.0.0/16 uniquement dans la table de routage. </p>
+<p></p>
+<p>La propagation de VLSM et des routes de super-réseau nécessite un protocole de routage sans classe tel que RIPv2, OSPF ou EIGRP. Les protocoles de routage sans classe annoncent les adresses réseau avec leurs masques de sous-réseau associés. Avec un protocole de routage sans classe, R2 peut récapituler les réseaux 172.16.0.0/16, 172.17.0.0/16, 172.18.0.0/16 et 172.19.0.0/16, et annoncer une route statique récapitulative de super-réseau 172.16.0.0/14 à R3. R3 installe ensuite la route de super-réseau 172.16.0.0/14 dans sa table de routage.</p>
+<p></p>
+<p>
+<b>Remarque</b> : si une route de super-réseau figure dans une table de routage (par exemple, en tant que route statique), alors le protocole de routage par classe n'inclut pas cette route dans ses mises à jour.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

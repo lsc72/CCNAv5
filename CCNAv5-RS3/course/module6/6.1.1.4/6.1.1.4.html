@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.1.4 Types de routeur OSPF</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement du protocole OSPF à zones multiples</h1>
+        <h2>Pourquoi choisir le routage OSPF à zones multiples ?</h2>
+      </div>
+      <div id="content">
+<p>Les différents types de routeur OSPF contrôlent le trafic entrant et sortant des zones. Les routeurs OSPF sont classifiés suivant la fonction qu'ils remplissent au sein du domaine de routage.</p>
+<p></p>
+<p>Il existe quatre types de routeur OSPF : </p>
+<p>
+<ul>
+<li>
+<b>Routeur interne</b> : routeur dont toutes les interfaces se situent dans la même zone. Les LSDB de tous les routeurs internes à une zone sont identiques. (Figure 1)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Routeur fédérateur</b> : routeur situé dans la zone fédératrice. Généralement, la zone fédératrice est définie sur la zone 0. (Figure 2)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Routeur ABR</b>
+<b>(Area Border Router)</b> : routeur possédant des interfaces dans différentes zones. Il doit gérer des LSDB distinctes pour chaque zone à laquelle il est connecté et être capable de router entre les zones. Les ABR sont des points de sortie pour la zone. Cela signifie que les informations de routage destinées à une autre zone ne peuvent y parvenir que par l’intermédiaire de l’ABR de la zone locale. Les ABR peuvent être configurés de manière à récapituler les informations de routage issues des LSDB de leurs zones associées. Les ABR distribuent des informations de routage à la zone fédératrice. Les routeurs fédérateurs transfèrent ensuite ces informations aux autres ABR. Dans un réseau à zones multiples, une zone peut comporter un ou plusieurs ABR. (Figure 3)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Routeur ASBR (Autonomous System Boundary Router)</b> : routeur possédant au moins une interface associée à un interréseau externe (autre système autonome), par exemple un réseau non OSPF. Un ASBR peut importer des informations relatives au réseau non-OSPF dans le réseau OSPF, et inversement, suivant un processus appelé « redistribution des routes ». (Figure 4)</li>
+</ul>
+</p>
+<p></p>
+<p>La redistribution dans le domaine OSPF à zones multiples se produit lorsqu’un ASBR connecte différents domaines de routage (par exemple, EIGRP et OSPF) et les configure pour qu’ils échangent et annoncent des informations de routage entre eux. </p>
+<p></p>
+<p>Un routeur peut appartenir à plusieurs types de routeur. Par exemple, si un routeur se connecte à la zone 0 et à la zone 1, et en plus de cela traite les informations de routage d'un autre réseau non OSPF, il appartient à trois catégories différentes : routeur fédérateur, routeur ABR et routeur ASBR.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.2.1 Vérification de la licence</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Licences IOS</h1>
+        <h2>Vérification et gestion de la licence</h2>
+      </div>
+      <div id="content">
+<p>Une fois la nouvelle licence installée, le routeur doit être redémarré à l'aide de la commande<span class="cmd"><b> reload</b></span>. Comme indiqué à la Figure 1, la commande<span class="cmd"><b> show version </b></span>est utilisée après le redémarrage du routeur pour vérifier que la licence a été installée.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>show license</b></span> à la Figure 2 est utilisée pour afficher des informations supplémentaires sur les licences du logiciel Cisco IOS. Cette commande affiche les informations de licence servant à résoudre les problèmes liés aux licences du logiciel Cisco IOS. Cette commande affiche toutes les licences installées dans le système. Dans cet exemple, les licences IP Base et Sécurité ont été installées. Cette commande affiche également les fonctionnalités disponibles, mais pas sous licence d'exécution, par exemple l'ensemble de fonctionnalités Données. Le résultat est présenté en fonction du mode de stockage des fonctionnalités dans l'espace de stockage des licences.</p>
+<p></p>
+<p>Voici une brève description du résultat :</p>
+<p>
+<ul>
+<li>
+<b>Feature</b> : nom de la fonctionnalité</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>License Type</b> : type de licence ; par exemple Permanent (permanente) ou Evaluation (évaluation)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>License State</b> : état de la licence, par exemple Active (active) ou In Use (En cours d'utilisation) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>License Count</b> : nombre de licences disponibles et en cours d'utilisation, le cas échéant. Si aucun nombre n'est indiqué, la licence n'est pas restrictive. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>License Priority</b> : priorité de la licence, par exemple, élevée ou faible </li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: consultez le guide de référence des commandes Cisco IOS 15 pour des détails complets sur les informations affichées dans la commande<span class="cmd"><b> show license</b></span>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

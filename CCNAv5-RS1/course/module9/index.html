@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="module-index" dir="ltr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="UTF-8"/>
+    <title>Initiation aux réseaux</title>
+    <link rel="stylesheet" type="text/css" href="../common-ext/styles/index.css"/>
+    <script type="text/javascript" src="../common-ext/scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../common-ext/scripts/index.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <div id="header-logo" title="Cisco Systems, Inc. - Cisco Networking Academy"></div>
+      <a id="home-btn" href="../../index.html" title="Accueil">Accueil</a>
+      <h1>Chapitre 9: Segmenter des réseaux IP en sous-réseaux <span id="title"></span></h1>
+    </div>
+    <div id="nav">
+      <ul class="sections">
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">9.0 Segmenter des réseaux IP en sous-réseaux</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">9.0.1 Introduction</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="9.0.1.1" class="page-title" href="9.0.1.1/9.0.1.1.html" target="frame">9.0.1.1 Introduction</a>
+                </li>
+                <li>
+                  <a data-ident="9.0.1.2" class="page-title" href="9.0.1.2/9.0.1.2.html" target="frame">9.0.1.2 Exercice - Appelle-moi !</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">9.1 Segmenter un réseau IPv4 en sous-réseaux</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">9.1.1 Segmentation du réseau</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="9.1.1.1" class="page-title" href="9.1.1.1/9.1.1.1.html" target="frame">9.1.1.1 Pourquoi créer des sous-réseaux ?</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.1.2" class="page-title" href="9.1.1.2/9.1.1.2.html" target="frame">9.1.1.2 Communication entre les sous-réseaux</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">9.1.2 La segmentation en sous-réseaux IP est fondamentale</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="9.1.2.1" class="page-title" href="9.1.2.1/9.1.2.1.html" target="frame">9.1.2.1 Le plan</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.2.2" class="page-title" href="9.1.2.2/9.1.2.2.html" target="frame">9.1.2.2 Le plan - L&#x0027;attribution des adresses</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">9.1.3 Segmenter un réseau IPv4 en sous-réseaux</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="9.1.3.1" class="page-title" href="9.1.3.1/9.1.3.1.html" target="frame">9.1.3.1 Notions de base sur les sous-réseaux</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.3.2" class="page-title" href="9.1.3.2/9.1.3.2.html" target="frame">9.1.3.2 Les sous-réseaux dans la pratique</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.3.3" class="page-title" href="9.1.3.3/9.1.3.3.html" target="frame">9.1.3.3 Les formules de calcul des sous-réseaux</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.3.4" class="page-title" href="9.1.3.4/9.1.3.4.html" target="frame">9.1.3.4 Créer 4 sous-réseaux</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.3.5" class="page-title" href="9.1.3.5/9.1.3.5.html" target="frame">9.1.3.5 Créer 8 sous-réseaux</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.3.6" class="page-title" href="9.1.3.6/9.1.3.6.html" target="frame">9.1.3.6 Exercice - Déterminer l&#x0027;adresse réseau (niveau élémentaire)</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.3.7" class="page-title" href="9.1.3.7/9.1.3.7.html" target="frame">9.1.3.7 Exercice - Calculer le nombre d&#x0027;hôtes (niveau élémentaire)</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.3.8" class="page-title" href="9.1.3.8/9.1.3.8.html" target="frame">9.1.3.8 Exercice - Déterminer les adresses valides pour les hôtes (niveau élémentaire)</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.3.9" class="page-title" href="9.1.3.9/9.1.3.9.html" target="frame">9.1.3.9 Exercice : convertir le masque de sous-réseau</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.3.10" class="page-title" href="9.1.3.10/9.1.3.10.html" target="frame">9.1.3.10 Créer 100 sous-réseaux avec le préfixe /16</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.3.11" class="page-title" href="9.1.3.11/9.1.3.11.html" target="frame">9.1.3.11 Calculer le nombre d&#x0027;hôtes </a>
+                </li>
+                <li>
+                  <a data-ident="9.1.3.12" class="page-title" href="9.1.3.12/9.1.3.12.html" target="frame">9.1.3.12 Calculer le nombre d&#x0027;hôtes </a>
+                </li>
+                <li>
+                  <a data-ident="9.1.3.13" class="page-title" href="9.1.3.13/9.1.3.13.html" target="frame">9.1.3.13 Exercice : déterminer l&#x0027;adresse réseau (niveau avancé)</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.3.14" class="page-title" href="9.1.3.14/9.1.3.14.html" target="frame">9.1.3.14 Exercice - Calculer le nombre d&#x0027;hôtes (niveau avancé)</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.3.15" class="page-title" href="9.1.3.15/9.1.3.15.html" target="frame">9.1.3.15 Exercice : déterminer les adresses valides pour les hôtes (niveau avancé)</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">9.1.4 Déterminer le masque de sous-réseau</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="9.1.4.1" class="page-title" href="9.1.4.1/9.1.4.1.html" target="frame">9.1.4.1 Segmenter le réseau en sous-réseaux en fonction des besoins des hôtes </a>
+                </li>
+                <li>
+                  <a data-ident="9.1.4.2" class="page-title" href="9.1.4.2/9.1.4.2.html" target="frame">9.1.4.2 Segmenter le réseau en fonction de ses besoins </a>
+                </li>
+                <li>
+                  <a data-ident="9.1.4.3" class="page-title" href="9.1.4.3/9.1.4.3.html" target="frame">9.1.4.3 Segmenter le réseau pour répondre à ses besoins</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.4.4" class="page-title" href="9.1.4.4/9.1.4.4.html" target="frame">9.1.4.4 Segmenter le réseau pour répondre à ses besoins (suite)</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.4.5" class="page-title" href="9.1.4.5/9.1.4.5.html" target="frame">9.1.4.5 Exercice - Déterminer le nombre de bits à emprunter</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.4.6" class="page-title" href="9.1.4.6/9.1.4.6.html" target="frame">9.1.4.6 Packet Tracer - Scénario 1 de segmentation en sous-réseaux</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.4.7" class="page-title" href="9.1.4.7/9.1.4.7.html" target="frame">9.1.4.7 Packet Tracer - Scénario 2 de segmentation en sous-réseaux</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.4.8" class="page-title" href="9.1.4.8/9.1.4.8.html" target="frame">9.1.4.8 Travaux pratiques : calcul des sous-réseaux IPv4</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.4.9" class="page-title" href="9.1.4.9/9.1.4.9.html" target="frame">9.1.4.9 Travaux pratiques : segmentation des topologies réseau en sous-réseaux</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.4.10" class="page-title" href="9.1.4.10/9.1.4.10.html" target="frame">9.1.4.10 Travaux pratiques - Rechercher des dispositifs de calcul de sous-réseaux</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">9.1.5 Les avantages du masquage de sous-réseau de longueur variable</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="9.1.5.1" class="page-title" href="9.1.5.1/9.1.5.1.html" target="frame">9.1.5.1 La segmentation traditionnelle en sous-réseaux n&#x0027;est pas efficace</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.5.2" class="page-title" href="9.1.5.2/9.1.5.2.html" target="frame">9.1.5.2 Masquage de sous-réseau de longueur variable (VLSM)</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.5.3" class="page-title" href="9.1.5.3/9.1.5.3.html" target="frame">9.1.5.3 VLSM de base</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.5.4" class="page-title" href="9.1.5.4/9.1.5.4.html" target="frame">9.1.5.4 Le VLSM dans la pratique</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.5.5" class="page-title" href="9.1.5.5/9.1.5.5.html" target="frame">9.1.5.5 Diagramme VLSM</a>
+                </li>
+                <li>
+                  <a data-ident="9.1.5.6" class="page-title" href="9.1.5.6/9.1.5.6.html" target="frame">9.1.5.6 Exercice - Entraînement à la technique des VLSM</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">9.2 Schémas d&#x0027;adressage</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">9.2.1 Conception structurée</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="9.2.1.1" class="page-title" href="9.2.1.1/9.2.1.1.html" target="frame">9.2.1.1 Planification de l&#x0027;adressage réseau</a>
+                </li>
+                <li>
+                  <a data-ident="9.2.1.2" class="page-title" href="9.2.1.2/9.2.1.2.html" target="frame">9.2.1.2 Attribution d&#x0027;adresses à des périphériques</a>
+                </li>
+                <li>
+                  <a data-ident="9.2.1.3" class="page-title" href="9.2.1.3/9.2.1.3.html" target="frame">9.2.1.3 Travaux pratiques : conception et mise en œuvre d&#x0027;un schéma d&#x0027;adressage IPv4 comportant des sous-réseaux</a>
+                </li>
+                <li>
+                  <a data-ident="9.2.1.4" class="page-title" href="9.2.1.4/9.2.1.4.html" target="frame">9.2.1.4 Travaux pratiques : conception et mise en œuvre d&#x0027;un schéma d&#x0027;adressage VLSM</a>
+                </li>
+                <li>
+                  <a data-ident="9.2.1.5" class="page-title" href="9.2.1.5/9.2.1.5.html" target="frame">9.2.1.5 Packet Tracer : conception et implémentation d&#x0027;un système d&#x0027;adressage VLSM</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">9.3 Critères de conception à prendre en compte pour les réseaux IPv6</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">9.3.1 Segmentation en sous-réseaux d&#x0027;un réseau IPv6</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="9.3.1.1" class="page-title" href="9.3.1.1/9.3.1.1.html" target="frame">9.3.1.1 Segmenter le réseau en sous-réseaux à l&#x0027;aide d&#x0027;ID de sous-réseau</a>
+                </li>
+                <li>
+                  <a data-ident="9.3.1.2" class="page-title" href="9.3.1.2/9.3.1.2.html" target="frame">9.3.1.2 Attribution de sous-réseaux IPv6</a>
+                </li>
+                <li>
+                  <a data-ident="9.3.1.3" class="page-title" href="9.3.1.3/9.3.1.3.html" target="frame">9.3.1.3 Segmentation en sous-réseaux à partir de l&#x0027;ID d&#x0027;interface</a>
+                </li>
+                <li>
+                  <a data-ident="9.3.1.4" class="page-title" href="9.3.1.4/9.3.1.4.html" target="frame">9.3.1.4 Packet Tracer : mettre en œuvre un schéma d&#x0027;adressage IPv6 divisé en sous-réseaux</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">9.4 Résumé</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">9.4.1 Résumé</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="9.4.1.1" class="page-title" href="9.4.1.1/9.4.1.1.html" target="frame">9.4.1.1 Exercice - Peux-tu m&#x0027;appeler maintenant ?</a>
+                </li>
+                <li>
+                  <a data-ident="9.4.1.2" class="page-title" href="9.4.1.2/9.4.1.2.html" target="frame">9.4.1.2 Packet Tracer : projet d&#x0027;intégration des compétences</a>
+                </li>
+                <li>
+                  <a data-ident="9.4.1.3" class="page-title" href="9.4.1.3/9.4.1.3.html" target="frame">9.4.1.3 Résumé</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <ul id="nav-menu" class="contextmenu">
+      <li id="nav-menu-expand">Tout développer</li>
+      <li id="nav-menu-collapse">Tout réduire</li>
+    </ul>
+    <div id="content">
+      <div id="container"></div>
+      <button id="prev-btn" type="button" title="Précédent" disabled><span class="icon">Précédent</span></button>
+      <input id="jump-box" type="text" value=""/>
+      <button id="next-btn" type="button" title="Suivant" disabled><span class="icon">Suivant</span></button>
+      <button id="mini-btn" type="button" title="Basculer"><span class="icon">Basculer</span></button>
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.4.1 Redirection</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de la traduction d&#x0027;adresses réseau (NAT)</h1>
+        <h2>Redirection</h2>
+      </div>
+      <div id="content">
+<p>La redirection (parfois appelée tunneling) consiste à transférer le trafic adressé à un port réseau spécifique d'un nœud réseau à un autre. Cette technique permet à un utilisateur externe d'atteindre un port sur une adresse IPv4 privée (dans un réseau local) à partir de l'extérieur, via un routeur configuré pour la NAT. </p>
+<p></p>
+<p>En règle générale, les programmes et opérations de partage de fichiers peer to peer, tels que les services Web et le FTP sortant, exigent que les ports du routeur soient redirigés ou ouverts pour que ces applications puissent fonctionner (voir Figure 1). La NAT masquant les adresses internes, l'opération peer to peer ne fonctionne que de l'intérieur vers l'extérieur, car la NAT peut mapper les requêtes sortantes avec les réponses entrantes. </p>
+<p></p>
+<p>Le problème est que la NAT n'autorise pas les requêtes provenant de l'extérieur. Ce problème peut être résolu par une intervention manuelle. La redirection de port peut être configurée pour identifier des ports spécifiques pouvant être redirigés vers des hôtes internes.</p>
+<p></p>
+<p>Rappelez-vous que les applications logicielles Internet interagissent avec des ports utilisateur qui doivent être ouverts ou à la disposition de ces applications. Les applications utilisent des ports différents. Cela permet aux applications et aux routeurs d'identifier les services réseau de manière prévisible. Par exemple, HTTP fonctionne sur le port réservé 80. Lorsque quelqu'un saisit l'adresse <b>http://cisco.com</b>, le navigateur affiche le site Web de Cisco Systems, Inc. Notez qu'il n'est pas nécessaire de préciser le numéro de port HTTP pour demander la page, car l'application suppose qu'il s'agit du port 80. </p>
+<p></p>
+<p>Si un autre numéro de port est requis, il peut être ajouté à la fin de l'URL après le signe deux-points (:). Par exemple, si le serveur Web écoute le port 8080, l'utilisateur saisit <b>http://www.example.com:8080</b>.</p>
+<p></p>
+<p>La redirection permet aux utilisateurs sur Internet d'accéder aux serveurs internes à l'aide de l'adresse du port WAN du routeur et du numéro de port externe correspondant. Les serveurs internes sont généralement configurés avec des adresses IPv4 privées de l'espace RFC 1918. Lorsqu'une requête est envoyée à l'adresse IPv4 du port WAN via Internet, le routeur transfère la demande au serveur approprié sur le réseau local. Pour des raisons de sécurité, les routeurs haut débit n'autorisent pas par défaut le transfert d'une requête réseau externe vers un hôte interne. </p>
+<p></p>
+<p>Sur la Figure 2, le gérant d'une petite entreprise utilise un serveur de point de vente (PoS) pour suivre les ventes et le stock dans le magasin. Le serveur est accessible dans le magasin, mais comme il ne possède pas d'adresse IPv4 privée, il n'est pas accessible publiquement sur Internet. L'activation de la redirection sur le routeur local permet au gérant d'accéder au serveur de point de vente en tout lieu à partir d'Internet. La redirection sur le routeur est configurée avec le numéro de port de destination et l'adresse IPv4 privée du serveur de point de vente. Pour accéder au serveur, le logiciel client utilise l'adresse IPv4 publique du routeur et le port de destination du serveur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

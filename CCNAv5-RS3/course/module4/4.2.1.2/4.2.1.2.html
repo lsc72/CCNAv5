@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.1.2 Champ de contrôle de trame </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement LAN sans fil</h1>
+        <h2>Structure de trame 802.11</h2>
+      </div>
+      <div id="content">
+<p>Le champ de contrôle de trame contient plusieurs sous-champs, comme illustré à la Figure 1. </p>
+<p></p>
+<p>Plus précisément, le champ de contrôle de trame contient les sous-champs suivants :</p>
+<p>
+<ul>
+<li>
+<b> Protocol Version (Version de protocole)</b> : indique la version du protocole 802.11 actuellement utilisée. Les périphériques de réception utilisent cette valeur pour déterminer si la version de protocole de la trame reçue est prise en charge.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Frame Type (Type de trame)</b> et<b> Frame Subtype (Sous-type de trame)</b> : détermine la fonction de la trame. Une trame sans fil peut être soit une trame de contrôle, soit une trame de données, soit une trame de gestion. Il existe plusieurs champs de sous-type pour chaque type de trame. Chaque sous-type détermine la fonction spécifique à exécuter pour le type de trame associé.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> ToDS (Vers DS)</b> et<b> FromDS (De DS)</b> : indique si la trame provient du système de distribution ou en repart ; ce champ est utilisé uniquement dans les trames de données de clients sans fil associés à un point d'accès.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> More Fragments (Plus de fragments)</b> : indique si d'autres fragments sont attendus pour la trame, que ce soit de type données ou gestion.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Retry (Réessayer)</b> : indique si la trame, de type données ou gestion, doit ou non être retransférée.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Power Management (Gestion d'alimentation)</b> : indique si le périphérique d'envoi est en mode actif ou en mode économie d'énergie.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> More Data (Données supplémentaires)</b> : indique à un périphérique en mode économie d'énergie que le point d'accès a d'autres trames à envoyer. Ce champ est également utilisé pour les points d'accès, afin d'indiquer que des trames de diffusion/multidiffusion supplémentaires sont attendues.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Security (Sécurité)</b> : indique si un chiffrement et une authentification sont utilisés dans la trame. Il concerne toutes les trames de données et de gestion ayant un sous-type défini pour l'authentification.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Reserved (Réservé)</b> : peut indiquer que toutes les trames de données reçues doivent être traitées dans l'ordre.</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 2 contient la capture Wireshark d'une trame de balise WLAN. Notez que le champ de type de trame et les champs de sous-type de trame indiquent si la trame est une trame de gestion, de contrôle ou de données. Dans cet exemple, le type de trame est « 0x0 », ce qui indique une trame de gestion. La valeur de sous-type « 8 » indique qu'il s'agit d'une trame de balise. La trame est donc spécifiquement identifiée par la valeur « 0x08 ».</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

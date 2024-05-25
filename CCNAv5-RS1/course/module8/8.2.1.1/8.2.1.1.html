@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.1.1 Ce qui rend IPv6 nécessaire</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Les adresses réseau IPv6</h1>
+        <h2>Les problèmes liés au protocole IPv4</h2>
+      </div>
+      <div id="content">
+<p>L'IPv6 est conçu pour être le successeur de l'IPv4. L'IPv6 possède un plus grand espace d'adressage (128 bits) pour un total de 340 undécillions d'adresses disponibles (ce qui correspond au nombre 340 suivi de 36 zéros). Toutefois, l'IPv6 apporte bien plus que des adresses plus longues. Lorsque l'IETF a commencé à développer un successeur à l'IPv4, l'organisme a utilisé cette opportunité pour corriger les limites de l'IPv4 et améliorer ce protocole. Par exemple, l'ICMPv6 (Internet Control Message Protocol version 6) inclut la configuration automatique et la résolution d'adresse, fonctions non présentes dans le protocole ICMP pour l'IPv4 (ICMPv4). L'ICMPv4 et l'ICMPv6 seront étudiés plus loin dans ce chapitre.</p>
+<p></p>
+<p>
+<b>La nécessité du protocole IPv6</b>
+</p>
+<p>Le manque d'espace d'adressage IPv4 a été le facteur le plus important pour passer à l'IPv6. Comme l'Afrique, l'Asie et d'autres parties du monde sont de plus en plus connectées à Internet, il n'y a pas suffisamment d'adresses IPv4 pour prendre en charge cette croissance. Le lundi 31 janvier 2011, l'IANA a attribué les deux derniers blocs d'adresses IPv4 /8 aux organismes d'enregistrement Internet locaux (RIR). Les différentes prévisions indiquent que les cinq RIR auront épuisé les adresses IPv4 entre 2015 et 2020. À ce stade, les adresses IPv4 restantes ont été attribuées aux FAI.</p>
+<p></p>
+<p>L'IPv4 fournit théoriquement 4,3 milliards d'adresses au maximum. Les adresses privées RFC 1918, en association avec la fonction NAT, ont été utilisées pour limiter le manque d'espace d'adressage IPv4. La fonction NAT comporte des restrictions gênant fortement les communications peer-to-peer.</p>
+<p></p>
+<p>
+<b>Internet des objets</b>
+</p>
+<p>L'Internet moderne est sensiblement différent de l'Internet des dernières décennies. Aujourd'hui, Internet est principalement utilisé pour le courrier électronique, les pages Web et le transfert de fichiers entre les ordinateurs. Internet évolue pour devenir un « Internet des objets ». Les périphériques pouvant accédant à Internet ne sont plus seulement des ordinateurs, des tablettes et des smartphones. Les périphériques connectés et équipés de capteurs de demain comprennent tous les objets du quotidien, y compris les automobiles, les périphériques biomédicaux, les appareils électroménagers et même les écosystèmes naturels. Imaginez qu'une conférence sur un site client est automatiquement planifiée sur votre application de calendrier et doit commencer une heure avant vos horaires de travail normaux. Cela peut vous poser problème, notamment si vous oubliez de vérifier le calendrier ou de régler votre réveil en conséquence. Imaginez maintenant que votre application de calendrier communique ces informations directement à votre réveil et à votre automobile. Votre voiture se met en marche automatiquement pour dégeler le pare-brise avant votre arrivée et vous indique la route pour vous rendre sur le site client.</p>
+<p></p>
+<p>Avec un nombre d'utilisateurs d'Internet augmentant sans cesse, un espace d'adressage IPv4 limité, des problèmes liés à la fonction NAT et l'Internet des objets, le temps est venu de lancer la transition vers l'IPv6.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

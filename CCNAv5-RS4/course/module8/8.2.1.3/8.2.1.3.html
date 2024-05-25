@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.1.3 Déroutements d&#x0027;agent SNMP</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>SNMP</h1>
+        <h2>Fonctionnement de SNMP</h2>
+      </div>
+      <div id="content">
+<p>Un système de gestion de réseau (NMS) interroge périodiquement les agents SNMP qui résident sur les périphériques gérés à l'aide d'une requête get en vue d'obtenir des données de ces périphériques. À l'aide de ce processus, une application de gestion du réseau peut collecter des informations permettant le contrôle des charges de trafic et la vérification des configurations des périphériques gérés. Ces informations peuvent être affichées par le biais de l'interface graphique utilisateur du système de gestion de réseau (NMS). Il est possible de calculer des valeurs moyennes, minimales ou maximales, de porter les données en graphique ou de définir des valeurs seuil destinées à déclencher un processus de notification lorsque ces valeurs sont dépassées. Par exemple, un système de gestion de réseau (NMS) peut contrôler l'utilisation du processeur d'un routeur Cisco. Le gestionnaire SNMP réalise périodiquement un échantillonnage de cette valeur et présente ces informations sous la forme d'un graphique que l'administrateur réseau peut utiliser pour créer une planification initiale. </p>
+<p></p>
+<p>Cette interrogation SNMP périodique présente toutefois des inconvénients. Tout d'abord, il existe un délai entre l'occurrence d'un événement et l'heure à laquelle cet événement est signalé (suite à l'interrogation) par le système de gestion de réseau (NMS). Ensuite, un compromis doit être établi entre la fréquence d'interrogation et l'utilisation de la bande passante. </p>
+<p></p>
+<p>Afin de limiter ces inconvénients, les agents SNMP peuvent générer et envoyer des déroutements visant à informer immédiatement le système de gestion de réseau (NMS) de l'occurrence de certains événements. Les déroutements sont des messages non sollicités alertant le gestionnaire SNMP d'une condition ou d'un événement sur le réseau. Exemples de conditions de déroutements (liste non exhaustive) : authentification d'utilisateur incorrecte, redémarrage, état de liaison (« up » ou « down »), suivi d'adresse MAC, fermeture d'une connexion TCP, perte de connexion avec un voisin ou tout autre événement significatif. Les notifications de déroutements diminuent les ressources réseau et d'agent, en permettant de se passer de certaines requêtes d'interrogation SNMP. </p>
+<p></p>
+<p>La Figure 1 illustre l'utilisation d'un déroutement SNMP destiné à alerter l'administrateur réseau de l'échec de l'interface G0/0. Le logiciel du système de gestion de réseau (NMS) peut envoyer à l'administrateur réseau un message textuel, faire apparaître une fenêtre contextuelle dans ce logiciel ou faire passer l'icône du routeur au rouge dans l'interface graphique utilisateur du système de gestion de réseau (NMS).</p>
+<p></p>
+<p>La Figure 2 illustre l'échange de tous les messages SNMP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

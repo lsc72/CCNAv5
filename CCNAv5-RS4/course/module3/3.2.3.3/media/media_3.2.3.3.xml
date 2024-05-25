@@ -1,0 +1,148 @@
+﻿<textcomponents>
+
+<component id="ID_s1_title">
+  <text><![CDATA[<b>Codes de paquet LCP</b>]]></text> 
+</component>
+
+<component id="ID_s1_txt01">
+<text><![CDATA[Longueur de champ en octets]]></text>
+</component>
+<component id="ID_s1_txt02">
+<text><![CDATA[Variable]]></text>
+</component>
+<component id="ID_s1_txt03">
+<text><![CDATA[2 ou 4]]></text>
+</component>
+<component id="ID_s1_txt04">
+<text><![CDATA[Indicateur]]></text>
+</component>
+<component id="ID_s1_txt05">
+<text><![CDATA[Adresse]]></text>
+</component>
+<component id="ID_s1_txt06">
+<text><![CDATA[Contrôle]]></text>
+</component>
+<component id="ID_s1_txt07">
+<text><![CDATA[Protocole]]></text>
+</component>
+<component id="ID_s1_txt08">
+<text><![CDATA[Données]]></text>
+</component>
+<component id="ID_s1_txt09">
+<text><![CDATA[FCS]]></text>
+</component>
+<component id="ID_s1_txt10">
+<text><![CDATA[<b>Paquet LCP</b>]]></text>
+</component>
+<component id="ID_s1_txt11">
+<text><![CDATA[Code]]></text>
+</component>
+<component id="ID_s1_txt12">
+<text><![CDATA[Identificateur]]></text>
+</component>
+<component id="ID_s1_txt13">
+<text><![CDATA[Longueur]]></text>
+</component>
+<component id="ID_s1_txt14">
+<text><![CDATA[Données<br/>(Longueurs diverses)]]></text>
+</component>
+
+
+<component id="ID_s1_txt15">
+<text><![CDATA[1]]></text>
+</component>
+
+
+<component id="ID_s1_txt16">
+<text><![CDATA[1]]></text>
+</component>
+
+
+<component id="ID_s1_txt17">
+<text><![CDATA[1]]></text>
+</component>
+
+
+<component id="ID_s1_txt18">
+<text><![CDATA[2]]></text>
+</component>
+
+
+
+
+
+
+
+<component id="ID_s2_title">
+<text><![CDATA[<b>Champs de paquet LCP</b>]]></text>
+</component>
+
+<component id="ID_s2_table">
+<text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4'>
+<tr class="mtable_top"><td colspan='3' bgcolor='#0E6360' class="mtable_top"><font size='1' color='#0E6360'><span style="color:#98D3D1">.</span></font></td>
+	</tr>
+	<tr>
+		<td bgcolor='#077A77'  valign="top" class="mtitle"><font color='#ffffff' size="11"><b>Code LCP</b></font></td>
+		<td bgcolor='#077A77'  valign="top" class="mtitle"><font color='#ffffff' size="11"><b>Type de paquet LCP</b></font></td>
+		<td bgcolor='#077A77'  valign="top" class="mtitle"><font color='#ffffff' size="11"><b>Description</b></font></td>
+	</tr>
+	<tr>
+    <td width='60' bgcolor='#EFF8F7'>1</td>
+    <td width='130' bgcolor='#EFF8F7'>Configure-Request</td>
+    <td bgcolor='#EFF8F7'>Envoyé pour ouvrir ou demander une connexion PPP. Configure-Request contient une liste des options LCP avec les changements des valeurs par défaut.</td>
+  </tr>
+  <tr>
+    <td bgcolor='#ffffff'>2</td>
+    <td bgcolor='#ffffff'>Configure-Ack</td>
+    <td bgcolor='#ffffff'>Envoyé lorsque toutes les valeurs des options LCP de la dernière demande Configure-Request reçue sont reconnues et acceptables. Lorsque les deux homologues PPP envoient et reçoivent des messages Configure-Acks, la négociation LCP est terminée.</td>
+  </tr>
+  <tr>
+    <td bgcolor='#EFF8F7'>3</td>
+    <td bgcolor='#EFF8F7'>Configure-Nak</td>
+    <td bgcolor='#EFF8F7'>Envoyé lorsque toutes les options LCP sont reconnues, mais que les valeurs de certaines options ne sont pas acceptables. Configure-Nak comprend les options qui diffèrent, ainsi que les valeurs acceptables.</td>
+  </tr>
+  <tr>
+    <td bgcolor='#ffffff'>4</td>
+    <td bgcolor='#ffffff'>Configure-Reject</td>
+    <td bgcolor='#ffffff'>Envoyé lorsque les options LCP ne sont pas reconnues ou ne sont pas acceptables pour la négociation. Configure-Reject comprend les options non reconnues ou non négociables.</td>
+  </tr>
+  <tr>
+    <td bgcolor='#EFF8F7'>5</td>
+    <td bgcolor='#EFF8F7'>Terminate-Request</td>
+    <td bgcolor='#EFF8F7'>Envoyé éventuellement pour fermer la connexion PPP.</td>
+  </tr>
+  <tr>
+    <td bgcolor='#ffffff'>6</td>
+    <td bgcolor='#ffffff'>Terminate-Ack</td>
+    <td bgcolor='#ffffff'>Envoyé en réponse au message Terminate-Request.</td>
+  </tr>
+  <tr>
+    <td bgcolor='#EFF8F7'>7</td>
+    <td bgcolor='#EFF8F7'>Code-Reject</td>
+    <td bgcolor='#EFF8F7'>Envoyé lorsque le code LCP est inconnu. Le message Code-Reject comprend le paquet LCP rejeté.</td>
+  </tr>
+  <tr>
+    <td bgcolor='#ffffff'>8</td>
+    <td bgcolor='#ffffff'>Protocol-Reject</td>
+    <td bgcolor='#ffffff'>Envoyé lorsque la trame PPP contient un ID de protocole inconnu. Le message Protocol-Reject comprend le paquet LCP rejeté. Protocol-Reject est normalement envoyé par un homologue PPP en réponse à un NCP PPP pour un protocole LAN qui n'est pas activé sur l'homologue PPP.</td>
+  </tr>
+  <tr>
+    <td bgcolor='#EFF8F7'>9</td>
+    <td bgcolor='#EFF8F7'>Echo-Request</td>
+    <td bgcolor='#EFF8F7'>Envoyé éventuellement pour tester la connexion PPP.</td>
+  </tr>
+  <tr>
+    <td bgcolor='#ffffff'>10</td>
+    <td bgcolor='#ffffff'>Echo-Reply</td>
+    <td bgcolor='#ffffff'>Envoyé en réponse au message Echo-Request. Les messages Echo-Request et Echo-Reply ne sont pas liés aux messages ICMP Echo Request and Echo Reply.</td>
+  </tr>
+  <tr>
+    <td bgcolor='#EFF8F7'>11</td>
+    <td bgcolor='#EFF8F7'>Discard-Request</td>
+    <td bgcolor='#EFF8F7'>Envoyé éventuellement pour tester la liaison en sortie.</td>
+  </tr>
+	</table>]]></text>
+</component>
+
+
+</textcomponents>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.2.1 Présentation de la sécurité d&#x0027;un réseau sans fil </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité LAN sans fil</h1>
+        <h2>Sécurisation de WLAN</h2>
+      </div>
+      <div id="content">
+<p>La sécurité a toujours été une préoccupation majeure concernant le Wi-Fi, car les frontières du réseau se sont déplacées. Les signaux sans fil peuvent traverser les matériaux solides, tels que les plafonds et les planchers, pour se retrouver à l'extérieur de la maison ou des locaux professionnels. Sans l'application de mesures strictes de sécurité, l'installation d'un WLAN peut revenir à placer des ports Ethernet dans des lieux publics.</p>
+<p></p>
+<p>Pour faire face aux menaces, tenir les intrus à distance et protéger les données, deux fonctions de sécurité préliminaires ont été appliquées :</p>
+<p>
+<ul>
+<li>
+<b>Masquage SSID</b> : les points d'accès et certains routeurs sans fil permettent de désactiver la trame de balise SSID. Les clients sans fil doivent alors identifier manuellement le SSID pour se connecter au réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Filtrage des adresses MAC</b> : un administrateur peut manuellement autoriser ou refuser l'accès à des clients sans fil, sur la base de l'adresse matérielle MAC physique. </li>
+</ul>
+</p>
+<p></p>
+<p>Bien que ces deux fonctions puissent arrêter la plupart des utilisateurs, en réalité, le masquage SSID et le filtrage des adresses MAC ne sont pas capables de dissuader un intrus astucieux. Les identifiants SSID sont faciles à trouver, même lorsque les points d'accès ne les diffusent pas ; et les adresses MAC peuvent être usurpées. Le meilleur moyen de sécuriser un réseau sans fil est d'utiliser des systèmes d'authentification et de chiffrement, comme illustré à la Figure 1.</p>
+<p></p>
+<p>La norme 802.11 d’origine avait établi deux types d’authentification : </p>
+<p>
+<ul>
+<li>
+<b>Authentification système ouverte</b> : tous les clients sans fil peuvent se connecter facilement. Cette option est à utiliser uniquement lorsque la sécurité n'est pas une préoccupation, par exemple dans les endroits offrant un accès Internet gratuit, tels que les cafés et les hôtels, et dans les régions reculées. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Authentification par clé partagée</b> : fournit des mécanismes, tels que WEP, WPA et WPA2, pour authentifier et chiffrer les données entre un client sans fil et un point d'accès. Cependant, le mot de passe doit être partagé au préalable entre les deux parties à connecter.</li>
+</ul>
+</p>
+<p></p>
+<p>Le diagramme présenté à la Figure 2 récapitule les différents types d'authentification.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

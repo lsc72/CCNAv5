@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.0.1.2 Exercice - Gestion du support</title>
+    <!-- Activity -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Accès réseau</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Gestion du support</b>
+</p>
+<p>Vous et votre collègue participez à un congrès sur les réseaux. De nombreuses conférences et présentations sont proposées pour l'occasion, mais comme elles se chevauchent, chacun d'entre vous doit choisir un nombre limité de sessions auxquelles assister. </p>
+<p></p>
+<p>Par conséquent, vous décidez de vous séparer et de participer chacun à des présentations différentes. Vous partagerez ensuite les documents reçus et les connaissances acquises à la fin de l'événement. </p>
+<p></p>
+<p>Essayez de répondre aux questions suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>Comment organiseriez-vous un congrès dans lequel plusieurs sessions se tiennent en parallèle ? Les placeriez-vous toutes dans une même salle de conférence ou utiliseriez-vous plusieurs salles ? Pourquoi ?</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>Supposons que la salle de conférence est équipée de matériel audiovisuel permettant d'afficher des vidéos grand format et d'amplifier la voix de l'orateur. Si une personne souhaite participer à une session spécifique, la place qu'elle choisit a-t-elle une importance ou suffit-il qu'elle se trouve dans la salle de conférence correspondante ?</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>Si le discours prononcé dans une salle était perceptible dans une autre salle, cela aurait-il des retombées positives ou négatives ?</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>Si des questions ou des demandes d'information apparaissent pendant une présentation, le participant doit-il simplement crier sa question ou est-il nécessaire de mettre en place des moyens de gestion des questions, par exemple les noter et les remettre à un animateur ? Que se passerait-il sans ce processus ?</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>Une session peut-elle arriver à échéance sans que tout le contenu prévu ait été communiqué si un sujet intéressant donne lieu à une discussion plus poussée qui soulève de nombreuses questions ? Pourquoi ?</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>Imaginez la session comme une table ronde, c'est-à-dire une discussion plus libre entre les participants et les intervenants, voire entre les participants eux-mêmes. Si une personne souhaite s'adresser à une autre personne dans la même salle, peut-elle le faire directement ? Quelles actions seraient nécessaires pour qu'un orateur puisse inviter une personne non présente dans la salle à le rejoindre ?</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>À quoi servirait la répartition des différentes sessions dans plusieurs salles de conférence si, à l'issue de la manifestation, les personnes peuvent se rencontrer et partager des informations ?</li>
+</ul>
+</p>
+<p></p>
+<p>
+<a href="../../files/4.0.1.2%20Let%20Me%20Tell%20You%20What%20I%20Heard%20at%20a%20Conference%20Instructions.pdf" target="_blank">Instructions de l'exercice en classe - Laisse-moi te raconter ce que j'ai appris à la conférence</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

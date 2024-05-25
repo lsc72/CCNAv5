@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.2.6 Cadre du protocole IPsec</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.2.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation d’IPsec</h1>
+        <h2>Cadre IPsec</h2>
+      </div>
+      <div id="content">
+<p>Comme indiqué précédemment, le cadre du protocole IPsec décrit les messages de sécurisation des communications, mais il se base sur des algorithmes existants.</p>
+<p></p>
+<p>Il y a deux protocoles IPsec principaux, comme le montre la Figure 1 :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>En-tête d'authentification (AH)</b> : AH est le protocole approprié à utiliser lorsque la confidentialité n'est pas requise ou autorisée. Il permet l'authentification et l'intégrité des données des paquets IP qui sont transmis entre deux systèmes. Toutefois, AH ne permet pas la confidentialité des données (chiffrement) des paquets. La totalité du texte est transmise en texte clair. Si le protocole AH est utilisé seul, sa protection est faible. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Technologie ESP (Encapsulating Security Payload)</b> : protocole de sécurité permettant la confidentialité et l'authentification grâce au chiffrement du paquet IP. Le chiffrement des paquets IP masque les données et l’identité de leur source et de leur destination. ESP authentifie le paquet IP interne et l’en-tête ESP. L’authentification permet d’identifier la source des données et de garantir leur intégrité. Bien que les fonctions de chiffrement et d’authentification soient facultatives dans ESP, vous devez en choisir au moins une.</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 2 illustre les composants de la configuration IPsec. Le cadre IPsec comporte quatre éléments constitutifs de base qui doivent être sélectionnés. </p>
+<p>
+<ul>
+<li>
+<b>Cadre du protocole IPsec</b> : lors de la configuration d'une passerelle IPsec en vue de fournir des services de sécurité, un protocole IPsec doit être sélectionné. Les choix possibles sont des combinaisons des technologies ESP et AH. De manière réaliste, les options ESP ou ESP+AH sont presque toujours sélectionnées, car la méthode AH elle-même ne permet pas le chiffrement, comme le montre la Figure 3.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Confidentialité (en cas d'implémentation du protocole IPsec avec la technologie ESP)</b> : l'algorithme de chiffrement sélectionné doit de préférence correspondre au niveau de sécurité souhaité : DES, 3DES ou AES. L'algorithme AES est fortement recommandé, avec AES-GCM pour une sécurité maximale.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Intégrité</b> : garantit que le contenu n'a pas été modifié lors du transit. Implémenté par le biais de l'utilisation d'algorithmes de hachage. Les choix possibles incluent les algorithmes MD5 et SHA. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Authentification</b> : représente la manière selon laquelle les périphériques sont authentifiés à chaque extrémité du tunnel VPN. Les deux méthodes sont PSK ou RSA. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Groupe d'algorithmes DH</b> : représente la manière selon laquelle une clé secrète partagée est établie entre des homologues. Diverses options sont possibles, mais l'algorithme DH24 est celui qui offre le plus de sécurité. </li>
+</ul>
+</p>
+<p></p>
+<p>La combinaison de ces éléments constitutifs offre les options de confidentialité, d'intégrité et d'authentification des VPN IPsec. </p>
+<p></p>
+<p>
+<b>Remarque</b> : cette section a présenté le protocole IPsec afin de permettre la compréhension du mode de sécurisation des tunnels VPN par ce protocole. La configuration des VPN IPsec sort du cadre de ce cours.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

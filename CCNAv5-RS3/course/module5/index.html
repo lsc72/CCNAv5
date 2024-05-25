@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="module-index" dir="ltr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="UTF-8"/>
+    <title>Évolutivité des réseaux</title>
+    <link rel="stylesheet" type="text/css" href="../common-ext/styles/index.css"/>
+    <script type="text/javascript" src="../common-ext/scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../common-ext/scripts/index.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <div id="header-logo" title="Cisco Systems, Inc. - Cisco Networking Academy"></div>
+      <a id="home-btn" href="../../index.html" title="Accueil">Accueil</a>
+      <h1>Chapitre 5: Ajuster le protocole OSPF à zone unique et résoudre les problèmes <span id="title"></span></h1>
+    </div>
+    <div id="nav">
+      <ul class="sections">
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">5.0 Ajuster le protocole OSPF à zone unique et résoudre les problèmes</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">5.0.1 Introduction</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="5.0.1.1" class="page-title" href="5.0.1.1/5.0.1.1.html" target="frame">5.0.1.1 Introduction</a>
+                </li>
+                <li>
+                  <a data-ident="5.0.1.2" class="page-title" href="5.0.1.2/5.0.1.2.html" target="frame">5.0.1.2 Exercice en classe : sélection du DR et du BDR</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">5.1 Configurations avancées du protocole OSPF à zone unique </span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">5.1.1 Routage au sein des couches de distribution et cœur de réseau</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="5.1.1.1" class="page-title" href="5.1.1.1/5.1.1.1.html" target="frame">5.1.1.1 Comparaison du routage et de la commutation</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.1.2" class="page-title" href="5.1.1.2/5.1.1.2.html" target="frame">5.1.1.2 Routage statique</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.1.3" class="page-title" href="5.1.1.3/5.1.1.3.html" target="frame">5.1.1.3 Protocoles de routage dynamique</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.1.4" class="page-title" href="5.1.1.4/5.1.1.4.html" target="frame">5.1.1.4 Open Shortest Path First</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.1.5" class="page-title" href="5.1.1.5/5.1.1.5.html" target="frame">5.1.1.5 Configuration du protocole OSPF à zone unique</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.1.6" class="page-title" href="5.1.1.6/5.1.1.6.html" target="frame">5.1.1.6 Vérification du protocole OSPF à zone unique</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.1.7" class="page-title" href="5.1.1.7/5.1.1.7.html" target="frame">5.1.1.7 Configuration du protocole OSPFv3 à zone unique</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.1.8" class="page-title" href="5.1.1.8/5.1.1.8.html" target="frame">5.1.1.8 Vérification du protocole OSPFv3 à zone unique</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.1.9" class="page-title" href="5.1.1.9/5.1.1.9.html" target="frame">5.1.1.9 Travaux pratiques : configuration d&#x0027;une zone unique OSPFv2 de base</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">5.1.2 OSPF dans les réseaux à accès multiple</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="5.1.2.1" class="page-title" href="5.1.2.1/5.1.2.1.html" target="frame">5.1.2.1 Types de réseaux OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.2.2" class="page-title" href="5.1.2.2/5.1.2.2.html" target="frame">5.1.2.2 Défis en matière de réseaux à accès multiple</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.2.3" class="page-title" href="5.1.2.3/5.1.2.3.html" target="frame">5.1.2.3 Routeur désigné OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.2.4" class="page-title" href="5.1.2.4/5.1.2.4.html" target="frame">5.1.2.4 Vérification des rôles de DR/BDR</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.2.5" class="page-title" href="5.1.2.5/5.1.2.5.html" target="frame">5.1.2.5 Vérification des contiguïtés de DR/BDR</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.2.6" class="page-title" href="5.1.2.6/5.1.2.6.html" target="frame">5.1.2.6 Processus de sélection par défaut de DR/BDR</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.2.7" class="page-title" href="5.1.2.7/5.1.2.7.html" target="frame">5.1.2.7 Processus de sélection de DR/BDR</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.2.8" class="page-title" href="5.1.2.8/5.1.2.8.html" target="frame">5.1.2.8 Priorité OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.2.9" class="page-title" href="5.1.2.9/5.1.2.9.html" target="frame">5.1.2.9 Modification de la priorité OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.2.10" class="page-title" href="5.1.2.10/5.1.2.10.html" target="frame">5.1.2.10 Exercice : identification de la terminologie des types de réseaux OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.2.11" class="page-title" href="5.1.2.11/5.1.2.11.html" target="frame">5.1.2.11 Exercice : sélection du routeur désigné</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.2.12" class="page-title" href="5.1.2.12/5.1.2.12.html" target="frame">5.1.2.12 Packet Tracer : détermination du routeur désigné (DR) et du routeur désigné de secours (BDR)</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.2.13" class="page-title" href="5.1.2.13/5.1.2.13.html" target="frame">5.1.2.13 Travaux pratiques : configuration du protocole OSPFv2 sur un réseau à accès multiple</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">5.1.3 Propagation de la route par défaut</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="5.1.3.1" class="page-title" href="5.1.3.1/5.1.3.1.html" target="frame">5.1.3.1 Propagation d&#x0027;une route statique par défaut dans OSPFv2</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.3.2" class="page-title" href="5.1.3.2/5.1.3.2.html" target="frame">5.1.3.2 Vérification de la route par défaut propagée</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.3.3" class="page-title" href="5.1.3.3/5.1.3.3.html" target="frame">5.1.3.3 Propagation d&#x0027;une route statique par défaut dans OSPFv3</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.3.4" class="page-title" href="5.1.3.4/5.1.3.4.html" target="frame">5.1.3.4 Vérification de la route par défaut IPv6 propagée</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.3.5" class="page-title" href="5.1.3.5/5.1.3.5.html" target="frame">5.1.3.5 Packet Tracer : propagation d&#x0027;une route par défaut dans OSPFv2</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">5.1.4 Réglage précis des interfaces OSPF</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="5.1.4.1" class="page-title" href="5.1.4.1/5.1.4.1.html" target="frame">5.1.4.1 Intervalles des paquets Hello et Dead OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.4.2" class="page-title" href="5.1.4.2/5.1.4.2.html" target="frame">5.1.4.2 Modification des intervalles OSPFv2</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.4.3" class="page-title" href="5.1.4.3/5.1.4.3.html" target="frame">5.1.4.3 Modification des intervalles OSPFv3</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">5.1.5 OSPF sécurisé</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="5.1.5.1" class="page-title" href="5.1.5.1/5.1.5.1.html" target="frame">5.1.5.1 Routeurs en tant que cibles</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.5.2" class="page-title" href="5.1.5.2/5.1.5.2.html" target="frame">5.1.5.2 Mises à jour de routage sécurisées</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.5.3" class="page-title" href="5.1.5.3/5.1.5.3.html" target="frame">5.1.5.3 Authentification MD5</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.5.4" class="page-title" href="5.1.5.4/5.1.5.4.html" target="frame">5.1.5.4 Configuration de l&#x0027;authentification MD5 OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.5.5" class="page-title" href="5.1.5.5/5.1.5.5.html" target="frame">5.1.5.5 Exemple d&#x0027;authentification MD5 OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.5.6" class="page-title" href="5.1.5.6/5.1.5.6.html" target="frame">5.1.5.6 Vérification de l&#x0027;authentification MD5 OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.5.7" class="page-title" href="5.1.5.7/5.1.5.7.html" target="frame">5.1.5.7 Packet Tracer : configuration des fonctionnalités avancées du protocole OSPFv2</a>
+                </li>
+                <li>
+                  <a data-ident="5.1.5.8" class="page-title" href="5.1.5.8/5.1.5.8.html" target="frame">5.1.5.8 Travaux pratiques : configuration des fonctionnalités avancées du protocole OSPFv2</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">5.2 Résolution des problèmes liés aux mises en œuvre du protocole OSPF à zone unique</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">5.2.1 Éléments de dépannage du protocole OSPF à zone unique</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="5.2.1.1" class="page-title" href="5.2.1.1/5.2.1.1.html" target="frame">5.2.1.1 Présentation</a>
+                </li>
+                <li>
+                  <a data-ident="5.2.1.2" class="page-title" href="5.2.1.2/5.2.1.2.html" target="frame">5.2.1.2 États OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="5.2.1.3" class="page-title" href="5.2.1.3/5.2.1.3.html" target="frame">5.2.1.3 Commandes de dépannage OSPF </a>
+                </li>
+                <li>
+                  <a data-ident="5.2.1.4" class="page-title" href="5.2.1.4/5.2.1.4.html" target="frame">5.2.1.4 Composantes du dépannage OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="5.2.1.5" class="page-title" href="5.2.1.5/5.2.1.5.html" target="frame">5.2.1.5 Exercice : identification de la commande de dépannage </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">5.2.2 Dépannage des problèmes de routage du protocole OSPFv2 à zone unique</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="5.2.2.1" class="page-title" href="5.2.2.1/5.2.2.1.html" target="frame">5.2.2.1 Résolution des problèmes de voisinage</a>
+                </li>
+                <li>
+                  <a data-ident="5.2.2.2" class="page-title" href="5.2.2.2/5.2.2.2.html" target="frame">5.2.2.2 Résolution des problèmes de table de routage OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="5.2.2.3" class="page-title" href="5.2.2.3/5.2.2.3.html" target="frame">5.2.2.3 Packet Tracer : dépannage du protocole OSPFv2 à zone unique</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">5.2.3 Dépannage des problèmes de routage du protocole OSPFv3 à zone unique</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="5.2.3.1" class="page-title" href="5.2.3.1/5.2.3.1.html" target="frame">5.2.3.1 Commandes de dépannage OSPFv3</a>
+                </li>
+                <li>
+                  <a data-ident="5.2.3.2" class="page-title" href="5.2.3.2/5.2.3.2.html" target="frame">5.2.3.2 Dépannage du protocole OSPFv3</a>
+                </li>
+                <li>
+                  <a data-ident="5.2.3.3" class="page-title" href="5.2.3.3/5.2.3.3.html" target="frame">5.2.3.3 Travaux pratiques : dépannage de base des protocoles OSPFv2 et OSPFv3 à zone unique</a>
+                </li>
+                <li>
+                  <a data-ident="5.2.3.4" class="page-title" href="5.2.3.4/5.2.3.4.html" target="frame">5.2.3.4 Travaux pratiques : dépannage avancé du protocole OSPFv2 à zone unique</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">5.3 Résumé</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">5.3.1 Résumé</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="5.3.1.1" class="page-title" href="5.3.1.1/5.3.1.1.html" target="frame">5.3.1.1 Exercice en classe : maîtrise du dépannage OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="5.3.1.2" class="page-title" href="5.3.1.2/5.3.1.2.html" target="frame">5.3.1.2 Packet Tracer : exercice d&#x0027;intégration des compétences</a>
+                </li>
+                <li>
+                  <a data-ident="5.3.1.3" class="page-title" href="5.3.1.3/5.3.1.3.html" target="frame">5.3.1.3 Résumé</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <ul id="nav-menu" class="contextmenu">
+      <li id="nav-menu-expand">Tout développer</li>
+      <li id="nav-menu-collapse">Tout réduire</li>
+    </ul>
+    <div id="content">
+      <div id="container"></div>
+      <button id="prev-btn" type="button" title="Précédent" disabled><span class="icon">Précédent</span></button>
+      <input id="jump-box" type="text" value=""/>
+      <button id="next-btn" type="button" title="Suivant" disabled><span class="icon">Suivant</span></button>
+      <button id="mini-btn" type="button" title="Basculer"><span class="icon">Basculer</span></button>
+    </div>
+  </body>
+</html>
+

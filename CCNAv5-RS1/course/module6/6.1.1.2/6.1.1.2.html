@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.1.2 Protocoles de couche réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche réseau</h1>
+        <h2>Couche réseau de la communication</h2>
+      </div>
+      <div id="content">
+<p>Il existe plusieurs protocoles de couche réseau. Cependant, seuls les deux protocoles suivants sont généralement mis en œuvre, comme l'illustre la figure :</p>
+<p>
+<ul>
+<li>Le protocole IP version 4 (IPv4)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le protocole IP version 6 (IPv6)</li>
+</ul>
+</p>
+<p></p>
+<p>Il existe également des protocoles de couche réseau peu utilisés :</p>
+<p>
+<ul>
+<li>Novell Internetwork Packet Exchange (IPX)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>AppleTalk</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Connectionless Network Service (CLNS/DECNet)</li>
+</ul>
+</p>
+<p></p>
+<p>Ces protocoles ne seront que peu abordés dans ce cours.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

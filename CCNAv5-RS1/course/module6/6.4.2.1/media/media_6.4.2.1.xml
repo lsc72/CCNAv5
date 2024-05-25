@@ -1,0 +1,95 @@
+﻿<textcomponents>
+
+<!--Slide 1-->
+<component id="ID_SC_title">
+<text><![CDATA[<b>Configuration des interfaces&nbsp;LAN</b>]]></text>
+</component>
+
+<!--Syntax Checker Button Text-->
+<component id="ID_sc_reset">
+<text><![CDATA[Réinitialiser]]></text>
+</component>
+
+<component id="ID_sc_showme">
+<text><![CDATA[Démonstration]]></text>
+</component>
+
+<component id="ID_sc_showall">
+<text><![CDATA[Afficher tout]]></text>
+</component>
+<!--End Syntax Checker Button Text-->
+
+
+<!--Syntax Checker Body Text-->
+<component id="ID_SC" fontFace='Courier New' fontSize="10">
+
+<text></text>	
+
+<feedback id="fb"><![CDATA[<span><font size = '10' face="Arial"><span><b>***</b></span>Vous devez saisir la commande précisément et en entier. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.<span><b>***</b></span></font></span>
+]]></feedback>
+
+<existingcommands><![CDATA[<font size = '10' face="Arial"><b>Configurez l'interface gigabit ethernet&nbsp;0/0 avec l'adresse&nbsp;IP «&nbsp;192.168.10.1&nbsp;» et le masque de sous-réseau «&nbsp;255.255.255.0&nbsp;». Attribuez la description «&nbsp;LAN-10&nbsp;» à la liaison et activez l'interface.</b></font>]]></existingcommands>
+
+<command prompt="R1#" id="cmd1" node="start">
+<correctresponse id="cr1" ignoreCase = 'true'><![CDATA[configure terminal]]></correctresponse>
+<deviceresponse id="dr1"><![CDATA[<dnt>Enter configuration commands, one per line. End with CNTL/Z.</dnt>]]></deviceresponse>
+<instruction id="ins1"><![CDATA[<span></span>]]></instruction> 
+</command>
+
+<command prompt="R1(config)#" id="cmd2">
+<correctresponse  id="cr2" ignoreCase = 'true'><![CDATA[interface gigabitethernet 0/0]]></correctresponse>
+<deviceresponse id="dr2"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins2"><![CDATA[<span></span>]]></instruction> 
+</command>
+
+<command prompt="R1(config-if)#" id="cmd3">
+<correctresponse id="cr3" ignoreCase = 'true'><![CDATA[ip address 192.168.10.1 255.255.255.0]]></correctresponse>
+<deviceresponse id="dr3"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins3"><![CDATA[<span></span>]]></instruction> 
+</command>	
+
+<command prompt="R1(config-if)#" id="cmd4">
+<correctresponse id="cr4" ignoreCase = 'true'><![CDATA[description LAN-10]]></correctresponse>
+<deviceresponse id="dr4"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins4"><![CDATA[<span></span>]]></instruction> 
+</command>	
+
+<command prompt="R1(config-if)#" id="cmd5">
+<correctresponse id="cr5" ignoreCase = 'true'><![CDATA[no shutdown]]></correctresponse>
+<deviceresponse id="dr5"><![CDATA[<dnt><font size='10'>%LINK-5-CHANGED: Interface GigabitEthernet0/0, changed state to up<br>%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to up<br>R1(config-if)#exit<br></font></dnt>]]></deviceresponse>
+<instruction  id="ins5"><![CDATA[<font size = '10' face="Arial"><b>Configurez l'interface gigabit ethernet&nbsp;0/1 avec l'adresse&nbsp;IP «&nbsp;192.168.11.1&nbsp;» et le masque de sous-réseau «&nbsp;255.255.255.0&nbsp;». Attribuez la description «&nbsp;LAN-11&nbsp;» à la liaison et activez l'interface.</b></font>]]></instruction>
+</command>
+
+<command prompt="R1(config)#" id="cmd6">
+<correctresponse id="cr6" ignoreCase = 'true'><![CDATA[interface gigabitethernet 0/1]]></correctresponse>
+<deviceresponse id="dr6"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins6"><![CDATA[<span></span>]]></instruction> 
+</command>
+
+<command prompt="R1(config-if)#"  id="cmd7">
+<correctresponse  id="cr7" ignoreCase = 'true'><![CDATA[ip address 192.168.11.1 255.255.255.0]]></correctresponse>
+<deviceresponse id="dr7"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins7"><![CDATA[<span></span>]]></instruction>
+</command>	
+
+<command prompt="R1(config-if)#"  id="cmd8">
+<correctresponse id="cr8" ignoreCase = 'true'><![CDATA[description LAN-11]]></correctresponse>
+<deviceresponse id="dr8"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins8"><![CDATA[<span></span>]]></instruction> 
+</command>	
+
+<command prompt="R1(config-if)#"  id="cmd9" node="end">
+<correctresponse  id="cr9" ignoreCase = 'true'><![CDATA[no shutdown]]></correctresponse>
+<deviceresponse id="dr9"><![CDATA[<dnt><font size='10'>%LINK-5-CHANGED: Interface GigabitEthernet0/1, changed state to up<br>%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up<br><br></font></dnt>]]></deviceresponse>
+<instruction  id="last"><![CDATA[<font size = '10' face="Arial"><b>Vous avez correctement configuré les interfaces du réseau local du routeur R1.</b></font>]]></instruction>
+</command>
+
+<command prompt=""/>
+
+</component>
+<!--End Syntax Checker Body Text-->
+
+<!--End Slide 1-->
+
+
+</textcomponents> 

@@ -1,0 +1,53 @@
+﻿<textcomponents>
+
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+<component id="ID_title">
+		<text><![CDATA[<b>Dépannage d'une interface série</b>]]></text>
+	</component>
+	
+<component id="ID_SC2" fontFace='Courier New' fontSize="10">
+<feedback id="fb"><![CDATA[<b><font size='10' face="Arial" color="#0000FF">***Vous devez entrer la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font></b>
+]]></feedback>
+<existingcommands><![CDATA[<font size='10' face="Arial"><b>Appliquez les étapes de dépannage comme indiqué.<br>Le routeur R1 doit être configuré selon les paramètres suivants&nbsp;:<ul><li>S0/0/0 est l'interface DCE</li><li>La fréquence d'horloge est de 64000</li><li>Encapsulation HDLC</li></ul><br>Entrez la commande show pour vérifier le type de câble connecté à S0/0/0.</b></font>]]></existingcommands>
+<command prompt="R1#">
+<correctresponse><![CDATA[show controllers s0/0/0]]></correctresponse>
+<deviceresponse><![CDATA[Interface Serial0/0/0 <br>Hardware is PowerQUICC MPC860 <br>DCE V.35, clock rate 64000 <br>idb at 0x81081AC4, driver data structure at 0x81084AC0 <br>Registres SCC&nbsp;: <br>General [GSMR]=0x2:0x00000000, Protocol-specific [PSMR]=0x8 <br>Events [SCCE]=0x0000, Mask [SCCM]=0x0000, Status [SCCS]=0x00 <br>Transmit on Demand [TODR]=0x0, Data Sync [DSR]=0x7E7E <br>&lt;résultat omis&gt;]]></deviceresponse>
+<instruction><![CDATA[<font size='10' face="Arial"><b>Entrez la commande show pour vérifier le paramètre d'encapsulation de S0/0/0.</font>]]></instruction>
+</command>
+<command prompt="R1#">
+<correctresponse><![CDATA[show interfaces s0/0/0]]></correctresponse>
+<deviceresponse><![CDATA[Serial0/0/0 is up, line protocol is down (disabled) <br> Hardware is HD64570 <br> Internet address is 172.16.0.1/30 <br> MTU 1500 bytes, BW 1544 Kbit, DLY 20000 usec, <br> reliability 255/255, txload 1/255, rxload 1/255 <br> Encapsulation PPP, loopback not set, keepalive set (10 sec) <br> LCP Closed <br> Closed: LEXCP, BRIDGECP, IPCP, CCP, CDPCP, LLC2, BACP <br> Last input never, output never, output hang never <br> Last clearing of "show interface" counters never <br>&lt;résultat omis&gt;]]></deviceresponse>
+<instruction><![CDATA[<font size='10' face="Arial"><b>Configurez l'interface S0/0/0 pour qu'elle utilise l'encapsulation par défaut.</font>]]></instruction>
+</command>
+<command prompt="R1#">
+<correctresponse><![CDATA[configure terminal]]></correctresponse>
+<deviceresponse><![CDATA[Entrez les commandes de configuration, une par ligne. End with CNTL/Z.]]></deviceresponse>
+</command>
+<command prompt="R1(config)#">
+<correctresponse><![CDATA[interface s0/0/0]]></correctresponse>
+</command>
+<command prompt="R1(config-if)#">
+<correctresponse><![CDATA[Encapsulation hdlc]]></correctresponse>
+<deviceresponse><![CDATA[%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial0/0/0, changed state to down<br><br>%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial0/0/0, changed state to up]]></deviceresponse>
+<instruction><![CDATA[<font size='10' face="Arial"><b>Entrez la commande «&nbsp;do show&nbsp;» pour vérifier le paramètre d'encapsulation de S0/0/0.</b></font>]]></instruction>
+</command>
+<command prompt="R1(config-if)#">
+<correctresponse><![CDATA[do show interfaces s0/0/0]]></correctresponse>
+<deviceresponse><![CDATA[Serial0/0/0 is up, line protocol is up (connected) <br> Hardware is HD64570 <br> Internet address is 172.16.0.1/30 <br> MTU 1500 bytes, BW 1544 Kbit, DLY 20000 usec, <br> reliability 255/255, txload 1/255, rxload 1/255 <br> Encapsulation HDLC, loopback not set, keepalive set (10 sec) <br> Last input never, output never, output hang never <br> Last clearing of "show interface" counters never <br>&lt;résultat omis&gt;]]></deviceresponse>
+<instruction><![CDATA[<font size='10' face="Arial"><b>Vous avez correctement appliqué les étapes de dépannage pour l'interface série.</font>]]></instruction>
+</command>
+<command prompt=""/>
+</component>
+
+
+
+</textcomponents>

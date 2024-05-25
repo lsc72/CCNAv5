@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.3.2 Modes principaux </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>IOS Bootcamp</h1>
+        <h2>Navigation à travers IOS</h2>
+      </div>
+      <div id="content">
+<p>Les deux modes de fonctionnement principaux sont le mode d'exécution utilisateur et le mode d'exécution privilégié. Par mesure de sécurité, Cisco IOS prévoit deux modes d'accès distincts pour les sessions d'exécution. Comme le montre la figure, le mode d'exécution privilégié a un haut niveau d'autorité dans ce qu'il permet à l'utilisateur de faire avec le périphérique.</p>
+<p></p>
+<p>
+<b>Mode d'exécution utilisateur</b>
+</p>
+<p></p>
+<p>Le mode d'exécution utilisateur offre des fonctionnalités limitées, mais est utile pour certaines opérations de base. Le mode d'exécution utilisateur est à la base de la structure hiérarchique des modes IOS. C'est le premier mode sélectionné dans l'interface en ligne de commande d'un périphérique IOS. </p>
+<p></p>
+<p>Le mode d'exécution utilisateur n'autorise qu'un nombre limité de commandes de surveillance de base. Il est souvent qualifié de mode « affichage seul ». Il n'autorise aucune commande susceptible de modifier la configuration du périphérique.</p>
+<p></p>
+<p>Par défaut, aucune authentification n'est requise pour accéder au mode d'exécution utilisateur depuis la console. Il est donc conseillé de définir une méthode d'authentification lors de la configuration initiale.</p>
+<p></p>
+<p>Le mode d'exécution utilisateur se reconnaît facilement dans l'interface en ligne de commande : l'invite se termine par le symbole >. Voici un exemple montrant le symbole > dans l'invite :</p>
+<p></p>
+<p>
+<span class="cmd">Switch></span>
+</p>
+<p></p>
+<p>
+<b>Mode d'exécution privilégié</b>
+</p>
+<p></p>
+<p>Pour exécuter les commandes de configuration et de gestion, l'administrateur réseau doit utiliser le mode d'exécution privilégié ou un mode plus spécifique. Cela signifie qu'un utilisateur doit d'abord passer en mode d'exécution utilisateur, puis accéder au mode d'exécution privilégié.</p>
+<p></p>
+<p>Le mode d'exécution privilégié se reconnaît à l'invite qui se termine par le symbole # : </p>
+<p></p>
+<p>
+<span class="cmd">Switch</span>#</p>
+<p></p>
+<p>Par défaut, le mode d'exécution privilégié ne requiert pas d'authentification. Il est donc recommandé de s'assurer qu'une authentification est configurée. </p>
+<p></p>
+<p>Pour accéder au mode de configuration globale et aux autres modes de configuration plus spécifiques, il est nécessaire de passer par le mode d'exécution privilégié. Nous traiterons en détail la configuration des périphériques et quelques-uns des modes de configuration plus loin dans ce chapitre.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

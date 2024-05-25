@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.1.3 Avantages pour la communauté et l&#x0027;administration</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Télétravail</h1>
+        <h2>Avantages du télétravail</h2>
+      </div>
+      <div id="content">
+<p>Le télétravail peut s'avérer utile pour les entreprises de toutes tailles, des plus petites aux plus grandes. Toutefois, ces avantages s'étendent bien au-delà du monde de l'entreprise, offrant en effet des opportunités uniques aux entités publiques comme aux communautés, et même aux gouvernements locaux et nationaux. </p>
+<p></p>
+<p>Les entités publiques telles que les communautés et les gouvernements doivent elles aussi gérer des dépenses et des recettes. Elles se doivent d'être les plus efficaces, les plus responsables et les plus transparentes possibles, car il en va de l'argent des contribuables. Par conséquent, tous les avantages du télétravail pour les employés et en matière de réduction des coûts s'appliquent également à ces entités publiques. De plus, les entités publiques peuvent également bénéficier du télétravail pour les raisons suivantes : </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Contribution à la diminution des exigences en matière de trafic et d'infrastructure</b> : le télétravail permet d'éliminer de nombreux problèmes contemporains à la source. Et le trafic routier n'est qu'un exemple parmi d'autres. D'après un article du Washington Post datant de 2004, les retards dus au trafic routier dans la région de Washington, D.C. diminuent de 10 % à chaque augmentation de 3 % du nombre de télétravailleurs. De plus, le télétravail permet de diminuer les coûts de livraison des infrastructures et des services. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Contribution à la diminution de l'exode rural</b> : l'exode rural désigne le déplacement d'individus depuis les zones rurales vers les centres urbains et les villes, à la recherche de meilleures conditions de vie et d'opportunités d'emploi. L'exode rural entraîne la surpopulation et l'engorgement des villes. Le télétravail permet aux individus de travailler de n'importe quel emplacement physique, ce qui peut par exemple leur éviter de devoir déménager en raison de leur emploi. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Amélioration des aménagements ruraux et suburbains</b> : un plus grand nombre de personnes travaillant dans des zones rurales ou suburbaines peuvent nécessiter plus de services de transport de masse et de modifications à apporter au commerce de détail local. Toutefois, les bureaux de poste, les cabinets de médecine, les organismes bancaires ou les stations-service, par exemple, peuvent être relativement difficiles à déplacer. Grâce à une réponse plus flexible, à des entreprises plus productives et à la contribution de l'ensemble des individus, les régions ou le pays concernés peuvent devenir plus compétitifs et attirer plus d'emplois et de développement.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.4.2.4 Dépannage des erreurs de liste de contrôle d&#x0027;accès courantes, exemple 4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.4.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage des listes de contrôle d&#x0027;accès</h1>
+        <h2>Erreurs de listes de contrôle d&#x0027;accès courantes </h2>
+      </div>
+      <div id="content">
+<p>
+<b>4e exemple d'erreur</b>
+</p>
+<p></p>
+<p>Sur la figure, l'hôte 192.168.30.12 peut se connecter à 192.168.31.12 via Telnet, mais la politique de l'entreprise n'autorise pas cette connexion. Le résultat de la commande <span class="cmd"><b>show access-lists 140</b></span> indique que l'instruction d'autorisation a renvoyé une correspondance.</p>
+<p></p>
+<p>
+<b>Solution</b> : l'hôte 192.168.30.12 peut utiliser Telnet pour se connecter à 192.168.31.12 puisqu'aucune règle ne refuse l'hôte 192.168.30.12 ni son réseau comme source. L'instruction 10 de la liste d'accès 140 refuse l'interface du routeur sur lequel le trafic entre dans le routeur. L'adresse IPv4 de l'hôte dans l'instruction 10 devrait être 192.168.30.12.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

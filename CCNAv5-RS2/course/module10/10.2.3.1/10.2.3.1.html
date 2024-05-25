@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.3.1 Configuration d&#x0027;un routeur en tant que serveur DHCPv6 avec état</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 6</h1>
+        <h2>Serveur DHCPv6 avec état</h2>
+      </div>
+      <div id="content">
+<p>La configuration d'un serveur DHCPv6 avec état est similaire à celle d'un serveur sans état. La principale différence réside dans le fait que les serveurs avec état disposent également des informations d'adressage IPv6, de la même manière qu'un serveur DHCPv4 dispose des informations d'adressage IPv4. </p>
+<p></p>
+<p>
+<b>Étape 1. Activation du routage IPv6 </b>
+</p>
+<p></p>
+<p>Comme le montre la figure, la commande <span class="cmd"><b>ipv6 unicast-routing</b></span> doit être utilisée pour activer le routage IPv6. Cette commande n'est pas nécessaire pour que le routeur agisse comme un serveur DHCPv6 avec état, mais elle est requise pour envoyer des messages RA ICMPv6. </p>
+<p></p>
+<p>
+<b>Étape 2.</b>
+<b>Configuration d'un pool DHCPv6</b>
+</p>
+<p></p>
+<p>La commande<span class="cmd"><b> ipv6 dhcp pool </b></span><span class="cmd"><i>pool-name </i></span>crée un pool et sélectionne le routeur en mode de configuration DHCPv6, qui est identifié par l'invite <span class="cmd">Router(config-dhcpv6)#</span>.</p>
+<p></p>
+<p>
+<b>Étape 3.</b>
+<b>Configuration des paramètres du pool</b>
+</p>
+<p></p>
+<p>Dans le cas de DHCPv6 avec état, tous les paramètres d'adressage et de configuration doivent être attribués par le serveur DHCPv6. La commande <span class="cmd"><b>address </b></span><span class="cmd"><i>prefix/length</i></span> sert à indiquer le pool d'adresses à attribuer par le serveur. L'option <span class="cmd"><b>lifetime</b></span> indique la durée de validité et la durée préférée des baux, en secondes. Comme pour DHCPv6 sans état, le client utilise l'adresse IPv6 source du paquet contenant le message RA.</p>
+<p></p>
+<p>Les autres informations fournies par le serveur DHCPv6 avec état incluent généralement l'adresse du serveur DNS et le nom de domaine.</p>
+<p></p>
+<p>
+<b>Étape 4. Commandes d'interface</b>
+</p>
+<p></p>
+<p>La commande d'interface <span class="cmd"><b>ipv6 dhcp server </b></span><span class="cmd"><i>pool-name</i></span> relie le pool DHCPv6 à l'interface. Le routeur répond aux requêtes DHCPv6 sans état sur cette interface avec les informations contenues dans le pool. L'indicateur M doit être modifié pour passer de 0 à 1 à l'aide de la commande d'interface <span class="cmd"><b>ipv6 nd managed-config-flag</b></span>. Il indique au périphérique de ne pas utiliser SLAAC, mais d'obtenir l'adressage IPv6 et tous les paramètres de configuration auprès d'un serveur DHCPv6 avec état.</p>
+<p></p>
+<p>
+<b>Exemple de serveur DHCPv6 avec état</b>
+</p>
+<p></p>
+<p>La Figure 2 présente un exemple des commandes de serveur DHCPv6 avec état utilisées pour un routeur configuré sur R1. Notez qu'aucune passerelle par défaut n'est spécifiée, car le routeur envoie automatiquement sa propre adresse link-local comme passerelle par défaut. Le routeur R3 est configuré en tant que client pour permettre de vérifier le fonctionnement de DHCPv6 avec état. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

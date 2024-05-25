@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.3.1 Masquage de sous-réseau de longueur fixe</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Examen de CIDR et VLSM</h1>
+        <h2>VLSM</h2>
+      </div>
+      <div id="content">
+<p>Avec le masquage de sous-réseau de longueur fixe (FLSM), le même nombre d'adresses est attribué à chaque sous-réseau. Si tous les sous-réseaux avaient besoin d'un même nombre d'hôtes, l'utilisation de blocs d'adresses de taille fixe serait suffisante. Mais, bien souvent, ce n'est pas le cas. </p>
+<p></p>
+<p>
+<b>Remarque :</b> FLSM est également appelé « création classique de sous-réseaux ».</p>
+<p></p>
+<p>La topologie illustrée dans la Figure 1 nécessite que l'adresse réseau 192.168.20.0/24 soit découpée en sept sous-réseaux : un sous-réseau pour chacun des quatre réseaux locaux (bâtiments A à D) et un pour chacune des trois connexions WAN entre les routeurs. </p>
+<p></p>
+<p>La Figure 2 illustre comment le découpage classique en sous-réseaux peut emprunter 3 bits à la partie hôte du dernier octet pour répondre à la nécessité de disposer de sept sous-réseaux. Par exemple, sous la partie Hôte, la partie Sous-réseau illustre comment l'emprunt de 3 bits crée 8 sous-réseaux, tandis que pour la partie Hôte, 5 bits d'hôte fournissent 30 adresses IP d'hôtes utilisables par sous-réseau. Ce schéma permet de créer les sous-réseaux nécessaires et de répondre aux besoins en hôtes du plus grand réseau local.</p>
+<p></p>
+<p>Bien que cette méthode classique satisfasse aux besoins du plus grand réseau local et divise l'espace d'adressage en un nombre approprié de sous-réseaux, de nombreuses adresses sont inutilisées. </p>
+<p></p>
+<p>Par exemple, seules deux adresses sont nécessaires dans chaque sous-réseau des trois liaisons de réseau étendu. Puisque chaque sous-réseau possède 30 adresses utilisables, 28 adresses sont inutilisées dans chacun de ces sous-réseaux. Comme le montre la Figure 3, ce sont au total 84 adresses qui sont inutilisées (28 x 3). De plus, ce schéma ne laisse aucune place à un développement futur, puisqu'il réduit le nombre total de sous-réseaux disponibles. Cette utilisation inefficace des adresses est typique de la méthode classique de segmentation des réseaux par classe. </p>
+<p></p>
+<p>L'application d'un schéma de segmentation classique à ce scénario n'est pas très efficace. En fait, notre exemple illustre parfaitement bien comment le découpage d'un sous-réseau peut être utilisé pour optimiser l'attribution d'adresses. Le découpage en sous-réseaux, ou l'utilisation d'un masque de sous-réseau de longueur variable (VLSM), permet d'éviter le gaspillage d'adresses</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

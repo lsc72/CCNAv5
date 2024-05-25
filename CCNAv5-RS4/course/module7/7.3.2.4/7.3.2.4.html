@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.2.4 Intégrité avec les algorithmes de hachage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation d’IPsec</h1>
+        <h2>Cadre IPsec</h2>
+      </div>
+      <div id="content">
+<p>L'intégrité et l'authentification du trafic VPN sont gérés par des algorithmes de hachage. Les hachages assurent l'intégrité et l'authentification des données en empêchant aux personnes non autorisées d'altérer les messages transmis. Un hachage, également appelé Message Digest, est un nombre généré à partir d'une chaîne de texte. Il est plus petit que le texte lui-même. Le hachage est généré au moyen d'une formule de telle sorte qu'il est extrêmement peu probable qu'un autre texte produise la même valeur de hachage. </p>
+<p></p>
+<p>L'expéditeur d'origine génère un hachage du message et l'envoie avec le message lui-même. Le destinataire analyse le message ainsi que le hachage, génère un autre hachage à partir du message reçu, puis compare les deux hachages. S'ils sont identiques, le destinataire peut être raisonnablement sûr de l'intégrité du message d'origine.</p>
+<p></p>
+<p>Comme le montre la figure, Gail a envoyé à Alex un EFT de 100 €. Jeremy a intercepté et modifié cet EFT de manière à apparaître lui-même en tant que destinataire, et ce, pour un montant de 1000 €. Dans un tel cas, si un algorithme d'intégrité des données avait été utilisé, les hachages n'auraient pas été identiques et la transaction aurait été non valide.</p>
+<p></p>
+<p>Les données de VPN sont transportées via l’Internet public. Comme l’illustre cette figure, ces données risquent d’être interceptées et modifiées. Pour se prémunir contre cette menace, les hôtes peuvent ajouter un hachage au message. Si le hachage transmis correspond au hachage reçu, l’intégrité du message a été préservée. Dans le cas contraire, le message a été modifié.</p>
+<p></p>
+<p>Les VPN utilisent un code d'authentification de message permettant de vérifier l'intégrité et l'authenticité d'un message, sans l'utilisation de mécanismes supplémentaires. </p>
+<p></p>
+<p>Un code d'authentification des messages basé sur le hachage (HMAC) est un mécanisme d'authentification des messages utilisant des fonctions de hachage. Un HMAC à clé est un algorithme d'intégrité des données qui garantit l'intégrité d'un message. Un HMAC possède deux paramètres, à savoir une entrée de message et une clé secrète connue uniquement de l'initiateur du message et des destinataires de celui-ci. L'expéditeur du message utilise une fonction HMAC pour générer une valeur (le code d'authentification du message) qui est formée en associant la clé secrète et l'entrée de message. Le code d'authentification du message est envoyé avec le message. Le destinataire calcule le code d'authentification du message reçu en utilisant la même clé et la même fonction HMAC que celles utilisées par l'expéditeur. Le destinataire compare ensuite le résultat à celui calculé à l'aide du code d'authentification du message reçu. Si les deux valeurs correspondent, le message a été reçu correctement et le destinataire est certain que l’expéditeur est un membre de la communauté d’utilisateurs autorisés à partager la clé. La puissance de chiffrement de la fonction HMAC dépend de celle de la fonction de hachage sous-jacente, de la taille et de la qualité de la clé, et de la longueur de la sortie de hachage en bits.</p>
+<p></p>
+<p>Il existe deux algorithmes HMAC :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>MD5</b> : utilise une clé secrète partagée de 128 bits. Le message de longueur variable et la clé secrète partagée de 128 bits sont combinés et soumis à l'algorithme de hachage HMAC-MD5. La sortie est un hachage de 128 bits. Le hachage est ajouté au message original et transféré à l’extrémité distante.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>SHA</b> : l'algorithme SHA-1 utilise une clé secrète de 160 bits. Le message de longueur variable et la clé secrète partagée de 160 bits sont combinés et soumis à l'algorithme de hachage HMAC-SHA1. La sortie est un hachage de 160 bits. Le hachage est ajouté au message original et transféré à l’extrémité distante. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: Cisco IOS prend également en charge les implémentations SHA de 256, 384 et 512 bits.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

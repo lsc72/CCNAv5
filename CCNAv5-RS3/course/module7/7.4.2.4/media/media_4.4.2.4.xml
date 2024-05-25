@@ -1,0 +1,62 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Activation du protocole EIGRP pour IPv6 sur une interface</b>]]></text>
+</component>
+
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+
+<component id="ID_title"> <!-- If there is not topology, the Title goes in the <text> tag -->
+<text><![CDATA[<b>Activation du protocole EIGRP pour IPv6 sur l'interface</b>]]></text>
+</component>
+<component id="ID_SC5" fontFace='Courier New' fontSize="10">
+<feedback id="fb"><![CDATA[<b>***</b><font face="Arial" color="#0000FF">Vous devez saisir la commande exacte et complète.</font><b>***</b> 
+]]></feedback>		
+<existingcommands><![CDATA[<font face="Arial"><b>Activez le protocole EIGRP pour IPv6, AS 2 sur les interfaces de R3 dans l'ordre suivant&nbsp;:<ul><li>GigabitEthernet 0/0<li>Serial 0/0/0 <li>Serial 0/0/1<li>Exécutez la commande exit avant de configurer l'interface suivante.</b></font>]]></existingcommands>
+<command prompt="R3(config)#">
+<correctresponse><![CDATA[interface gigabitethernet 0/0]]></correctresponse>
+</command>
+<command prompt="R3(config-if)#">
+<correctresponse><![CDATA[ipv6 eigrp 2]]></correctresponse>
+</command>
+<command prompt="R3(config-if)#">
+<correctresponse><![CDATA[exit]]></correctresponse>
+</command>
+<command prompt="R3(config)#">
+<correctresponse><![CDATA[interface serial 0/0/0]]></correctresponse>
+</command>
+<command prompt="R3(config-if)#">
+<correctresponse><![CDATA[ipv6 eigrp 2]]></correctresponse>
+<deviceresponse><![CDATA[<font face="Courier New">R3(config-if)#</font><br>*Mar 4 03:02:00.696: %DUAL-5-NBRCHANGE: EIGRP-IPv6 2: Neighbor FE80::1 (Serial0/0/0) is up: new adjacency]]></deviceresponse>
+</command>
+<command prompt="R3(config-if)#">
+<correctresponse><![CDATA[exit]]></correctresponse>
+</command>
+<command prompt="R3(config)#">
+<correctresponse><![CDATA[interface serial 0/0/1]]></correctresponse>
+</command>
+<command prompt="R3(config-if)#">
+<correctresponse><![CDATA[ipv6 eigrp 2]]></correctresponse>
+<deviceresponse><![CDATA[*Mar 4 03:02:17.264: %DUAL-5-NBRCHANGE: EIGRP-IPv6 2: Neighbor FE80::2 (Serial0/0/1) is up: new adjacency<br><font face="Courier New">R3(config-if)#</font>]]></deviceresponse>
+<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez correctement configuré le protocole EIGRP pour IPv6 sur les interfaces.</b>]]></instruction>
+</command>
+<command prompt=""/>
+</component>
+
+<component id="ID_s3_title">
+<text><![CDATA[<b>Configuration et vérification du protocole EIGRP pour IPv6 avec une interface passive</b>]]></text>
+</component>
+<component id="ID_s3_txt01">
+<text><![CDATA[&lt;résultat omis&gt;]]></text>
+</component>
+
+</textcomponents>

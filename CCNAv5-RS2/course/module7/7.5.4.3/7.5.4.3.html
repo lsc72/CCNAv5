@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.5.4.3 Entrée de réseau IPv6 distant</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.5.4.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>La table de routage</h1>
+        <h2>Analyse d&#x0027;une table de routage IPv6</h2>
+      </div>
+      <div id="content">
+<p>La Figure 1 met en évidence les entrées de la table de routage pour les trois réseaux distants (c'est-à-dire, le LAN de R2, le LAN de R3, et le lien entre R2 et R3). Les trois entrées ont été ajoutées par le protocole EIGRP. </p>
+<p></p>
+<p>La Figure 2 illustre une entrée de table de routage sur R1 pour la route vers le réseau distant 2001:DB8:CAFE:3::/64 sur R3. L'entrée identifie les informations suivantes :</p>
+<p>
+<ul>
+<li>
+<b>Origine de la route</b> : indique comment la route a été apprise. Les codes courants sont O (OSPF), D (EIGRP), R (RIP) et S (route statique).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Réseau de destination</b> : identifie l'adresse du réseau IPv6 distant.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Distance administrative </b>: identifie la fiabilité de la route source. L'IPv6 utilise les mêmes distances que l'IPv4.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Métrique</b> : indique la valeur attribuée pour atteindre le réseau distant. Les valeurs inférieures indiquent les routes préférées. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Tronçon suivant</b> : indique l'adresse IPv6 du prochain routeur auquel transférer le paquet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Interface de sortie</b> : identifie l'interface de sortie à utiliser pour transférer un paquet vers la destination finale.</li>
+</ul>
+</p>
+<p></p>
+<p>Lorsqu'un paquet IPv6 arrive sur une interface de routeur, le routeur examine l'en-tête IPv6 et identifie l'adresse IPv6 de destination. Le routeur passe ensuite au processus de recherche du routeur suivant.</p>
+<p></p>
+<p>Le routeur examine les routes réseau de niveau 1 à la recherche de la meilleure correspondance avec l'adresse de destination du paquet IPv6. Tout comme pour le protocole IPv4, la plus longue correspondance est la meilleure correspondance. Par exemple, s'il existe plusieurs correspondances dans la table de routage, le routeur choisit la route présentant la plus longue correspondance. Une correspondance est obtenue en associant les bits les plus à gauche dans l'adresse IPv6 de destination du paquet au préfixe et à la longueur de préfixe IPv6 dans la table de routage IPv6.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

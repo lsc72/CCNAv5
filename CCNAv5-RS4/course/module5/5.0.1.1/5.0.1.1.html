@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.0.1.1 Introduction</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Introduction</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>Toutes les adresses IPv4 publiques qui traversent Internet doivent être enregistrées auprès d'un organisme d'enregistrement Internet local. Les entreprises peuvent louer des adresses à un fournisseur de services, mais seul le propriétaire officiel d'une adresse Internet publique peut attribuer celle-ci à un périphérique réseau. Toutefois, avec un maximum théorique de 4,3 milliards d'adresses, l'espace d'adressage IPv4 est fortement limité. Lorsqu'en 1981, Bob Kahn et Vint Cerf ont commencé à développer la première suite de protocoles TCP/IP (y compris IPv4), ils étaient loin de s'imagine ce que deviendrait Internet. À l'époque, l'ordinateur personnel était pour beaucoup une curiosité réservée aux passionnés et il fallut attendre encore 10 ans avant la création d'internet. </p>
+<p></p>
+<p>Avec la prolifération de l'informatique individuelle et l'avènement d'internet, il est devenu évident que 4,3 milliards d'adresses IPv4 ne sont pas suffisantes. La solution à long terme était IPv6, mais des solutions plus immédiates pour répondre à la pénurie d'adresses ont été requises. Pour le court terme, plusieurs solutions ont été mises en place par l'IETF, notamment la traduction d'adresse réseau (NAT) et les adresses IPv4 privées définies dans le document RFC 1918. Ce chapitre explique comment la NAT, associée à l'utilisation de l'espace d'adressage privé, est utilisée pour économiser et utiliser plus efficacement les adresses IPv4 afin de fournir des réseaux d'accès à Internet de toutes tailles. Ce chapitre couvre :</p>
+<p>
+<ul>
+<li>Les caractéristiques, la terminologie et le fonctionnement général de la NAT</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les différents types de NAT : NAT statique, NAT dynamique et NAT avec surcharge</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les avantages et les inconvénients de la NAT</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La configuration, la vérification et l'analyse de la NAT statique, de la NAT dynamique et de la NAT avec surcharge</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La manière dont la redirection peut être utilisée pour accéder aux périphériques internes à partir d'Internet</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le dépannage de la NAT à l'aide des commandes <span class="cmd"><b>show</b></span> et <span class="cmd"><b>debug</b></span></li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La manière dont la NAT pour IPv6 est utilisée pour la conversion entre les adresses IPv6 et les adresses IPv4</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

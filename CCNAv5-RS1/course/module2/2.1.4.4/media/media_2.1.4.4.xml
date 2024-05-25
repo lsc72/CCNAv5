@@ -1,0 +1,58 @@
+﻿<textcomponents>
+
+<component id="ID_title">
+<text><![CDATA[<b>Aide pour le contrôle de la syntaxe des commandes</b>]]></text>
+</component>
+
+
+
+<!--slide 1-->
+<component id="ID_s1_txt01">
+<text><![CDATA[L'IOS renvoie un message d'aide indiquant que des mots clés ou arguments requis ont été abandonnés à la fin de la commande.]]></text> 
+</component>
+
+<component id="ID_s1_txt02">
+<text><![CDATA[L'IOS renvoie un message d'aide pour signaler que le nombre de caractères saisis n'était pas suffisant pour que l'interpréteur puisse reconnaître la commande.]]></text> 
+</component>
+
+<component id="ID_s1_txt03">
+<text><![CDATA[L'IOS renvoie un caractère <b>« ^ »</b> pour indiquer à quel endroit l'interpréteur de commandes ne parvient pas à comprendre la commande.]]></text> 
+</component>
+
+<!--slide 2-->
+<component id="ID_s2_table">
+<text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4' width='740px' VALIGN='top' overflow-x='scroll' height="255px" class="mtable">
+<tr>
+	<td colspan='4' bgcolor='#0E6360' class="mtable_top"><font size='1' color='#0E6360'><span style="color:#98D3D1">.</span></font></td>
+</tr>
+<tr>
+	<td bgcolor='#077A77' style="width:210px !important;" class="mtitle" width="87"><font color='#FFFFFF'><b>Message d'erreur</b></font></td>
+	<td bgcolor='#077A77' style="width:268px !important;" class="mtitle" width="90"><font color='#FFFFFF'><b>Description</b></font></td>
+	<td bgcolor='#077A77' style="width:250px !important;" class="mtitle" width="100"><font color='#FFFFFF'><b>Exemples</b></font></td>
+	<td bgcolor='#077A77' style="width:350px !important;" class="mtitle"><font color='#FFFFFF'><b>Comment obtenir de l'aide</b></font></td>
+</tr>
+<tr>
+	<td  width='157' valign='top'  bgcolor='#EFF8F7' style="width:210px !important;">% commande ambiguë : 'commande'</td>
+	<td  width='140' valign='top'  bgcolor='#EFF8F7' style="width:268px !important;">Il n'y a pas assez de caractères pour permettre à l'IOS de reconnaître la commande.</td>
+	<td  width='175' valign='top'  bgcolor='#EFF8F7' style="width:250px !important;"><font >Switch#<b>c </b><br/><b>% Commande ambiguë :'c'</b></font></td>
+	<td  width='210' valign='top'  bgcolor='#EFF8F7'  style="width:350px !important;">Retapez la commande en la faisant suivre d'un point d'interrogation (?) sans ajouter d'espace en ces deux éléments.<br/>Les mots clés que vous pouvez entrer avec la commande s'affichent.</td>
+</tr>
+<tr>
+<td bgcolor='#FFFFFF' valign='top'>% Commande incomplète.</td>
+<td bgcolor='#FFFFFF' valign='top'>Il manque des mots clés ou des arguments obligatoires.</td>
+<td bgcolor='#FFFFFF' valign='top'>Switch#<b>clock set </b><br/><b>% Commande incomplète.</b></td>
+<td bgcolor='#FFFFFF' valign='top'>Retapez la commande en la faisant suivre d'un point d'interrogation (?), avec un espace après le dernier mot. Les mots clés ou arguments obligatoires s'affichent.</td>
+</tr>
+<tr>
+<td bgcolor='#EFF8F7' valign='top'>% Entrée non valide détectée après le repère « ^ »</td>
+<td bgcolor='#EFF8F7' valign='top'>La commande saisie est incorrecte. L'erreur s'est produite au niveau du symbole ^.</td>
+<td bgcolor='#EFF8F7' valign='top'  ><textformat tabstops='[175]'>Switch#<b>clock set 19:50:00 25 6</b><br/><font color="#f3f5e7">Switch#<b>clock set 19:50:00 25 </b></font><b>^</b><br/><b>% Entrée non valide détectée au niveau du symbole « ^ ».</b></textformat></td>
+<td bgcolor='#EFF8F7' valign='top'>Retapez la commande en la faisant suivre d'un point d'interrogation (?) à l'endroit indiqué par le signe « ^ ». Vous devrez peut-être supprimer le ou les derniers mots clés ou arguments.</td>
+</tr>
+</table>]]></text>
+</component>
+
+</textcomponents>
+
+
+

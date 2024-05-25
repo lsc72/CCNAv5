@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		<slide>
+			<element type="IMAGE" src="5_1_2_1.jpg" width="470" height="400" x="0" y="0"/>
+			<element type="TEXT" id="ID_static_1" text="172.16.2.0/24" x="133.95" y="75.4" width="71.3" align="left" bold="1" />
+			<element type="TEXT" id="ID_static_2" text="G0/0" x="140.35" y="121.85" width="28" align="left" />
+			<element type="TEXT" id="ID_static_3" text=".1" x="170.35" y="121.85" width="13.35" align="left" />
+			<element type="TEXT" id="ID_static_4" text="192.168.10.8/30" x="244.15" y="194.7" width="88" align="left" bold="1" />
+			<element type="TEXT" id="ID_static_5" text="172.16.3.0/30" x="34.55" y="186.7" width="88" align="left" bold="1" />
+			<element type="TEXT" id="ID_static_6" text="172.16.1.0/24" x="5.6" y="337.95" width="88" align="left" bold="1" />
+			<element type="TEXT" id="ID_static_7" text="S0/0/0 .2" x="104.95" y="144.35" width="35.95" align="right" />
+			<element type="TEXT" id="ID_static_8" text="S0/0/0 .1" x="14.6" y="221.85" width="35.95" align="right" />
+			<element type="TEXT" id="ID_static_9" text="S0/0/1 .5" x="62.55" y="246.05" width="35.95" align="left" />
+			<element type="TEXT" id="ID_static_10" text="S0/0/1 .10" x="256.65" y="221.85" width="35.95" align="right" />
+			<element type="TEXT" id="ID_static_11" text="192.168.10.4/30" x="125.45" y="274.85" width="88" align="left" bold="1" />
+			<element type="TEXT" id="ID_static_12" text="G0/0 .1" x="258.1" y="284.1" width="28" align="right" />
+			<element type="TEXT" id="ID_static_13" text="192.168.1.0/24" x="254.95" y="337.95" width="88" align="left" bold="1" />
+			<element type="TEXT" id="ID_static_14" text="G0/0 .1" x="8.6" y="283.1" width="28" align="right" />
+			<element type="TEXT" id="ID_static_15" text="S0/0/0 .6" x="226.6" y="257.9" width="35.95" align="right" />
+			<element type="TEXT" id="ID_static_16" text="S0/0/1" x="158.15" y="172.35" width="35.95" align="right" />
+			<element type="TEXT" id="ID_static_17" text="Lo3  .1" x ="311.1" y="244.2" width="38.95" align="left"  />
+			<element type="TEXT" id="ID_static_18" text="Lo2  .1" x="311.1" y="274.75" width="38.95" align="left" />
+			<element type="TEXT" id="ID_static_19" text="192.168.3.0/24" x="355.15" y="244" width="78.85" align="center" color="#f68026" bold="1" />
+			<element type="TEXT" id="ID_static_20" text="192.168.2.0/24" x="354.35" y="274.75" width="78.85" align="center" color="#f68026" bold="1" />
+			<element type="TEXT" id="ID_static_21" text=".9" x="191.9" y="163.35" width="13.35" align="right" />
+			<element type="TEXT" compId="ID_s1_txt01" x="6" y="50" width="104.5" expand="down" align="left" />
+			<element type="TEXT" compId="ID_s1_txt02" x="352.1" y="132.95" width="78.7" expand="up+down" align="center" />
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+		</slide>
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title" />
+			<element type="ROUTER" textId="statictxt" width="430" height="179.3" x="5" y="55"  />
+		</slide>
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title" />
+			<element type="TEXT" compId="ID_s3_txt01" width="104" x="14.35" y="74.85" align="left" expand="right" size="10"/>
+			<element type="TEXT" compId="ID_s3_txt02" width="104" x="14.35" y="230.95" align="left" expand="right" size="10"/>
+			<element type="ROUTER" textId="statictxt1" width="430" height="110.4" x="5" y="55" size="10"/>
+			<element type="ROUTER" textId="statictxt2" width="433" height="110.4" x="5" y="210" size="10"/>
+		</slide>
+	</slide>
+	<text id="statictxt"><![CDATA[
+		R3(config)# <b>interface loopback 2</b><br/>            
+		R3(config-if)# <b>ip add 192.168.2.1 255.255.255.0</b><br/> 
+		R3(config-if)# <b>exit</b><br/> 
+		R3(config)# <b>interface loopback 3</b><br/>             
+		R3(config-if)# <b>ip add 192.168.3.1 255.255.255.0</b><br/>  
+		R3(config-if)# <b>exit</b><br/> 
+		R3(config)# <b>router eigrp 1</b><br/> 
+		R3(config-router)# <b>network 192.168.2.0</b><br/> 
+		R3(config-router)# <b>network 192.168.3.0</b><br/> 
+		R3(config-router)# 
+	]]></text> 
+	<text id="statictxt1"><![CDATA[<pre>R1# <b>show ip route</b>
+
+
+D 192.168.1.0/24 [90/2170112] via 192.168.10.6, 00:47:39,Serial0/0/1
+D 192.168.2.0/24 [90/2297856] via 192.168.10.6, 00:08:09,Serial0/0/1
+D 192.168.3.0/24 [90/2297856] via 192.168.10.6, 00:08:04,Serial0/0/1
+R1#</pre> 
+	]]></text> 
+	<text id="statictxt2"><![CDATA[<pre>R2# <b>show ip route</b>
+
+
+D 192.168.1.0/24 [90/3012096] via 192.168.10.10, 00:47:58,Serial0/0/1
+D 192.168.2.0/24 [90/3139840] via 192.168.10.10, 00:08:28,Serial0/0/1
+D 192.168.3.0/24 [90/3139840] via 192.168.10.10, 00:08:23,Serial0/0/1
+R2# </pre>
+	]]></text> 
+</data>

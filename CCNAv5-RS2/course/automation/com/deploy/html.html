@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/swfobject.js"></script>
+<script type="text/javascript" src="media.js"></script>
+<script type="text/javascript" src="templates.js"></script>
+<script type="text/javascript" src="scripts/preview_engine.js"></script>
+
+
+<style type="text/css">
+#flashdiv {
+	position: relative;
+	height: 400px;
+	width: 600px;
+	left: 0px;
+	top: 0px;
+	border: 2px black solid;}
+#flashpreview {
+	width:400px;
+	height:300px;
+top: 10px;
+	left: 750px;
+	position: absolute;
+	float:left.
+	display:block;
+	float:lleft;;
+	clear:right;
+		border: 2px black solid;
+}
+</style>
+</head>
+<body  style="background-color:#FFFFFF">
+
+
+
+<script type="text/javascript">
+
+    function setPath(module, pagenumber){
+
+		
+loadScript("../../../"+module+"/"+pagenumber+"/media/media_"+pagenumber+"_page.js");
+var localPath = "../../../"+module+"/"+pagenumber+"/media/media_"+pagenumber;
+var localurl = "../../../"+module+"/"+pagenumber+"/media/index.html";
+function loadIt(localPath){
+init(localPath);}
+loadIt(localPath);	
+
+
+var frame = document.getElementById('mainFrame');     
+          frame.setAttribute('src', localurl);
+		
+		
+	}
+
+
+
+
+
+
+
+
+
+
+</script>
+
+<!-- js code for this page only -->
+<!-- js code for template -->
+<div id="flashpreview"></div>
+
+
+<div id="preview"></div>
+<iframe id="mainFrame" style="width:600px; height:500px;" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+
+</body>
+</html

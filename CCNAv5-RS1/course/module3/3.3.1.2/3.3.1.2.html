@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.1.2 Unités de données de protocole (PDU)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Déplacement des données sur le réseau</h1>
+        <h2>Encapsulation de données</h2>
+      </div>
+      <div id="content">
+<p>Lorsque les données d'application descendent la pile de protocoles en vue de leur transmission sur le support réseau, différents protocoles ajoutent des informations à chaque niveau. C'est ce qu'on appelle communément l'encapsulation. </p>
+<p></p>
+<p>La forme que prend une donnée sur n'importe quelle couche est appelée unité de données de protocole. Au cours de l'encapsulation, chaque couche suivante encapsule l'unité de données de protocole qu'elle reçoit de la couche supérieure en respectant le protocole utilisé. À chaque étape du processus, une unité de données de protocole possède un nom différent qui reflète ses nouvelles fonctions. Bien qu'il n'existe aucune convention universelle d'attribution des noms pour les unités de données de protocole, dans ce cours, les unités de données de protocole sont nommées en fonction des protocoles de la suite TCP/IP, comme illustré dans la figure :</p>
+<p>
+<ul>
+<li>
+<b>Donnée</b> : terme générique attribué à l'unité de données de protocole utilisée à la couche application</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Segment</b> : unité de données de protocole de la couche transport</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Paquet</b> : unité de données de protocole de la couche réseau </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Trame :</b> unité de données de protocole de la couche liaison de données</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Bits</b> : unité de données de protocole de la couche physique utilisée lors de la transmission physique des données via le support</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

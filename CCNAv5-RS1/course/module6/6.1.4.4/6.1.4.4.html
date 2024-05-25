@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.4.4 En-tête de paquet IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.4.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche réseau</h1>
+        <h2>Paquet IPv6</h2>
+      </div>
+      <div id="content">
+<p>Les champs d'en-tête de paquet IPv6 incluent :</p>
+<p>
+<ul>
+<li>
+<b>Version</b> – contient une valeur binaire de 4 bits indiquant la version du paquet IP. Pour les paquets IPv6, ce champ est toujours 0110.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Classe de trafic</b> – ce champ de 8 bits est équivalent au champ de services différenciés pour l'IPv4. Il contient également une valeur DSCP de 6 bits utilisée pour classer les paquets et une valeur de notification explicite de congestion de 2 bits utilisée pour contrôler l'encombrement.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Étiquetage de flux</b> – ce champ de 20 bits fournit un service spécifique pour les applications en temps réel. Ce champ peut être utilisé pour indiquer aux routeurs et aux commutateurs de conserver le même chemin pour le flux de paquets, de telle sorte que l'ordre des paquets ne soit pas modifié.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Longueur des données utiles</b> – ce champ de 16 bits est équivalent au champ de longueur totale de l'en-tête IPv4. Il définit la taille globale du paquet (fragment), y compris l'en-tête et les extensions facultatives. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>En-tête suivant</b> – ce champ de 8 bits est équivalent au champ de protocole de l'IPv4. Il indique le type de données utiles transportées par le paquet, permettant ainsi à la couche réseau de transmettre les données au protocole de couche supérieure approprié. Ce champ est également utilisé s'il existe des en-têtes d'extension ajoutés au paquet IPv6.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Limite de nombre de sauts</b> – ce champ de 8 bits remplace le champ de durée de vie (TTL) de l'IPv4. Cette valeur est réduite de un chaque fois qu'un routeur transmet le paquet. Lorsque le compteur atteint 0, le paquet est rejeté et un message ICMPv6 est transféré à l'hôte émetteur, indiquant que le paquet n'a pas atteint sa destination. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse source</b> – ce champ de 128 bits identifie l'adresse IPv6 de l'hôte émetteur. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse de destination</b> – ce champ de 128 bits indique l'adresse IPv6 de l'hôte récepteur.</li>
+</ul>
+</p>
+<p></p>
+<p>Un paquet IPv6 peut également contenir des en-têtes d'extension qui fournissent des informations facultatives de couche réseau. Les en-têtes d'extension sont facultatifs et sont placés entre l'en-tête IPv6 et les données utiles. Ces en-têtes sont utilisés pour la fragmentation, la sécurité, la prise en charge de la mobilité, etc.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

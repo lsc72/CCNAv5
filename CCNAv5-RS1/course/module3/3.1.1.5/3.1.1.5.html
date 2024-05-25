@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.1.5 Taille des messages</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Règles de communication</h1>
+        <h2>Les règles</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Taille des messages</b>
+</p>
+<p>La taille fait également l'objet d'une règle de communication. Lorsque les personnes communiquent, les messages qu'elles envoient sont généralement décomposés en petites parties ou phrases. Ces phrases sont limitées, en termes de taille, à ce que le destinataire peut comprendre ou traiter en une fois, comme le montre la Figure 1. Une conversation personnelle peut être composée de plusieurs petites phrases pour que chaque partie du message soit reçue et comprise. Imaginons que ce cours tienne en une seule et longue phrase. Il serait difficile à lire et à comprendre.</p>
+<p></p>
+<p>De même, lorsqu'un long message est envoyé par un hôte à un autre hôte sur le réseau, il est nécessaire de décomposer le message en plusieurs petites parties, comme illustré à la Figure 2. Les règles qui régissent la taille des parties ou « trames » transmises au réseau sont très strictes. Elles peuvent également être différentes selon le canal utilisé. Les trames trop longues ou trop courtes ne sont pas livrées. </p>
+<p></p>
+<p>En raison des restrictions imposées pour la taille des trames, l'hôte source doit décomposer les messages longs en portions répondant aux impératifs de taille minimale et maximale. C'est ce que l'on appelle la segmentation. Chaque portion est encapsulée dans une trame distincte avec les informations d'adresse, puis transmise sur le réseau. Au niveau de l'hôte destinataire, les messages sont désencapsulés et recomposés pour être traités et interprétés.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

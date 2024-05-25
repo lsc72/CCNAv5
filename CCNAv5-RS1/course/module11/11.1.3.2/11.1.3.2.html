@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.1.3.2 Analyse des protocoles d&#x0027;un petit réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.1.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Création et développement</h1>
+        <h2>Croissance en de plus grands réseaux</h2>
+      </div>
+      <div id="content">
+<p>La prise en charge et le développement d'un petit réseau requièrent une bonne connaissance des protocoles et des applications réseau exécutés sur le réseau concerné. Même si l'administrateur réseau d'un environnement de petite taille a plus de temps pour analyser l'utilisation réseau de chaque périphérique connecté, il est recommandé d'adopter une approche plus globale faisant appel à un analyseur de protocoles logiciel ou matériel. </p>
+<p></p>
+<p>Comme le montre la figure, les analyseurs de protocoles permettent à un professionnel des réseaux de compiler rapidement des données statistiques à propos des flux de trafic sur un réseau.</p>
+<p></p>
+<p>Au moment de déterminer comment gérer le trafic réseau, en particulier s'il se développe, il est important de connaître le type de trafic acheminé sur le réseau, ainsi que le flux de trafic actuel. Si les types de trafic sont inconnus, l'analyseur de protocoles permet d'identifier le trafic et sa source.</p>
+<p></p>
+<p>Pour déterminer des modèles de flux de trafic, il est recommandé d'observer les points suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>capturer le trafic pendant les périodes de pointe pour obtenir une représentation juste des différents types de trafic ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>effectuer la capture sur différents segments du réseau, car certaines parties du trafic peuvent être locales sur un segment spécifique.</li>
+</ul>
+</p>
+<p></p>
+<p>Les informations collectées par l'analyseur de protocole sont analysées en fonction de la source et la destination du trafic, ainsi que du type de trafic envoyé. L'analyse peut ensuite être utilisée pour déterminer comment améliorer la gestion du trafic. Pour ce faire, il peut être nécessaire de réduire les flux de trafic superflus, voire même de modifier les modèles de flux en déplaçant un serveur, par exemple.</p>
+<p></p>
+<p>Parfois, le simple fait de déplacer un serveur ou un service vers un autre segment de réseau améliore les performances réseau et répond aux besoins croissants de trafic. D'autres fois en revanche, une intervention plus radicale sera nécessaire, qui peut se traduire par un remodelage du réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

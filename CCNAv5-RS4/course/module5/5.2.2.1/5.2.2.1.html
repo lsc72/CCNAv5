@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.2.1 Fonctionnement de la NAT dynamique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de la traduction d&#x0027;adresses réseau (NAT)</h1>
+        <h2>Configuration de la NAT dynamique</h2>
+      </div>
+      <div id="content">
+<p>Alors que la NAT statique assure un mappage permanent entre une adresse locale interne et une adresse globale interne, la NAT dynamique permet le mappage automatique des adresses locales internes avec les adresses globales internes. Généralement, ces adresses globales internes sont des adresses IPv4 publiques. La NAT dynamique utilise un groupe, ou pool d'adresses publiques IPv4 pour la traduction. </p>
+<p></p>
+<p>Comme la NAT statique, la NAT dynamique nécessite la configuration des interfaces interne et externe participant à la NAT. Cependant, alors que la NAT statique crée un mappage permanent à une seule adresse, la NAT dynamique utilise un pool d'adresses.</p>
+<p></p>
+<p>
+<b>Remarque</b> : la traduction entre les adresses IPv4 publiques et privées est de loin l'utilisation la plus courante de la NAT. Cependant, les traductions NAT peuvent être effectuées entre toutes les paires d'adresses.</p>
+<p></p>
+<p>L'exemple de topologie représenté sur la figure dispose d'un réseau interne utilisant des adresses de l'espace d'adressage privé RFC 1918. Deux réseaux locaux sont reliés au routeur R1, 192.168.10.0/24 et 192.168.11.0/24. Le routeur R2, qui est le routeur périphérique, est configuré pour la NAT dynamique avec un pool d'adresses IPv4 publiques allant de 209.165.200.226 à 209.165.200.240. </p>
+<p></p>
+<p>Le pool d'adresses IPv4 publiques (pool d'adresses globales internes) est disponible pour tous les périphériques du réseau interne et les adresses sont distribuées selon l'ordre des demandes. Avec la NAT dynamique, une adresse interne est traduite en une seule adresse externe. Avec ce type de traduction, le pool doit contenir suffisamment d'adresses pour prendre en charge tous les périphériques internes ayant besoin d'accéder simultanément au réseau externe. Si toutes les adresses du pool ont été utilisées, le prochain périphérique doit attendre qu'une adresse se libère avant de pouvoir accéder au réseau externe.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.2.3 Traduction d&#x0027;adresses de port (PAT)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement de la NAT</h1>
+        <h2>Types de NAT</h2>
+      </div>
+      <div id="content">
+<p>La traduction d'adresses de port (PAT), également appelée surcharge NAT, mappe plusieurs adresses IPv4 privées à une seule adresse IPv4 publique unique ou à quelques adresses. C'est ce que font la plupart des routeurs de particuliers. Le FAI attribue une adresse au routeur, mais plusieurs membres de la famille peuvent accéder simultanément à Internet. C'est la forme la plus courante de NAT.</p>
+<p></p>
+<p>Grâce à la PAT, plusieurs adresses peuvent être mappées à une ou quelques adresses, car chaque adresse privée est également identifiée par un numéro de port. Lorsqu'un périphérique établit une session TCP/IP, il génère une valeur de port source TCP ou UDP pour identifier de manière unique la session. Lorsque le routeur NAT reçoit un paquet du client, il utilise son numéro de port source pour identifier de manière unique la traduction NAT spécifique.</p>
+<p></p>
+<p>La PAT garantit que les périphériques utilisent un numéro de port TCP différent pour chaque session avec un serveur sur Internet. Lorsqu'une réponse est retournée par le serveur, le numéro de port source, qui devient le numéro du port de destination lors du retour, détermine le périphérique auquel le routeur transfère les paquets. Le processus PAT confirme également que les paquets entrants étaient demandés, ce qui renforce la sécurité de la session.</p>
+<p></p>
+<p>Cliquez sur les boutons Lecture et Pause de la figure pour gérer l'animation.</p>
+<p></p>
+<p>L'animation illustre le processus PAT. La fonction PAT ajoute des numéros de port source uniques à l'adresse globale interne, de façon à permettre de distinguer les traductions. </p>
+<p></p>
+<p>Lorsque R2 traite chaque paquet, il utilise un numéro de port (1331 et 1555 dans cet exemple) pour identifier le périphérique expédiant le paquet. L'adresse source (AS) correspond à l'adresse locale interne à laquelle a été ajouté le numéro de port TCP/IP attribué. L'adresse de destination (AD) est l'adresse locale externe à laquelle le numéro de port de service a été ajouté. Dans cet exemple, le port de service est 80, HTTP.</p>
+<p></p>
+<p>Concernant l'adresse source, R2 traduit l'adresse locale interne en une adresse globale interne à laquelle est ajouté le numéro de port. L'adresse de destination n'est pas modifiée, mais est désormais appelée adresse IP globale externe. Lorsque le serveur Web répond, le chemin est inversé.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

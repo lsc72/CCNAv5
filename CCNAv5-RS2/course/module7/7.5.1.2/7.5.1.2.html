@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.5.1.2 Entrées connectées directement</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.5.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>La table de routage</h1>
+        <h2>Parties d&#x0027;une entrée de route IPv4</h2>
+      </div>
+      <div id="content">
+<p>Comme indiqué dans la Figure 1, la table de routage de R1 contient trois réseaux connectés directement. Remarquez que deux entrées de la table de routage sont automatiquement créées lorsqu'une interface de routeur active est configurée avec une adresse IP et un masque de sous-réseau. </p>
+<p></p>
+<p>La Figure 2 illustre une des entrées de la table de routage sur R1 pour le réseau connecté directement 172.16.1.0. Ces entrées ont été automatiquement ajoutées à la table de routage lorsque l'interface GigabitEthernet 0/0 a été configurée et activée. Les rapports contiennent les informations suivantes :</p>
+<p>
+<ul>
+<li>
+<b>Origine de la route</b> : indique comment la route a été apprise. Les interfaces connectées directement ont deux codes d'origine de la route. <b>C</b> signale un réseau connecté directement. Les réseaux connectés directement sont automatiquement créés lorsqu'une interface est configurée à l'aide d'une adresse IP et activée.<b> L</b> indique qu'il s'agit d'une route locale. Les routes locales sont automatiquement créées chaque fois qu'une interface est configurée avec une adresse IP et est activée.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Réseau de destination</b> : adresse du réseau distant et façon dont ce réseau est connecté.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Interface de sortie</b> : identifie l'interface de sortie à utiliser lors du transfert de paquets au réseau de destination.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque :</b> les entrées de la table de routage locale ne sont pas apparues dans les tables de routage avant la version 15 d'IOS.</p>
+<p></p>
+<p>Un routeur comporte généralement plusieurs interfaces configurées. La table de routage stocke des informations à la fois sur les routes connectées directement et les routes distantes. Comme avec les réseaux connectés directement, la source de la route indique comment la route a été découverte. Par exemple, les codes courants des réseaux distants sont les suivants :</p>
+<p>
+<ul>
+<li>
+<b>S</b> – Indique que la route a été créée manuellement par un administrateur pour atteindre un réseau spécifique. Il s'agit d'une route statique.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>D</b> – Indique que la route a été apprise dynamiquement à partir d'un autre routeur au moyen du protocole de routage EIGRP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>O</b> – Indique que la route a été apprise dynamiquement à partir d'un autre routeur au moyen du protocole de routage OSPF.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>R</b> – Indique que la route a été apprise dynamiquement à partir d'un autre routeur au moyen du protocole de routage RIP.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.3.3 Successeur et distance de faisabilité</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1> Fonctionnement du protocole EIGRP</h1>
+        <h2>Algorithme DUAL et table topologique</h2>
+      </div>
+      <div id="content">
+<p>La Figure 1 présente la topologie pour cette rubrique. Un successeur est un routeur voisin utilisé pour le transfert de paquets et qui constitue la route à moindre coût vers le réseau de destination. L’adresse IP d’un successeur figure dans l’entrée de la table de routage tout de suite après le mot via. </p>
+<p></p>
+<p>La distance de faisabilité (FD) est la métrique la plus basse calculée pour atteindre le réseau de destination. La distance FD est le second nombre entre crochets répertorié dans l’entrée de table de routage. Comme avec d'autres protocoles de routage, on l'appelle également « métrique de la route ». </p>
+<p></p>
+<p>Pendant l'examen de la table de routage de R2 à la Figure 2, notez que le meilleur chemin EIGRP pour le réseau 192.168.1.0/24 passe par le routeur R3 et que la distance de faisabilité est 3 012 096. Il s'agit de la métrique calculée dans la rubrique précédente.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

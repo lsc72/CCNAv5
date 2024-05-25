@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.2.4 Système de démarrage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Gestion des fichiers système IOS</h1>
+        <h2>Gestion des images logicielles Cisco IOS</h2>
+      </div>
+      <div id="content">
+<p>Pour effectuer une mise à niveau vers l'image IOS copiée après son enregistrement dans la mémoire Flash du routeur, configurez le routeur de façon à charger la nouvelle image pendant le démarrage à l'aide de la commande<span class="cmd"><b> boot system</b></span>. Enregistrez la configuration. Redémarrez le routeur pour qu'il démarre avec la nouvelle image. Une fois le routeur démarré, pour vérifier le chargement de la nouvelle image, utilisez la commande<span class="cmd"><b> show version</b></span>.</p>
+<p></p>
+<p>Au démarrage, le code bootstrap analyse le fichier de configuration initiale dans la mémoire vive non volatile à la recherche des commandes<span class="cmd"><b> boot system </b></span>qui indiquent le nom et l'emplacement de l'image du logiciel Cisco IOS à charger. Plusieurs commandes<span class="cmd"><b> boot system </b></span>peuvent être saisies successivement pour créer un plan d'amorçage à tolérance de panne. </p>
+<p></p>
+<p>Présentée à la Figure 1, la commande<span class="cmd"><b> boot system </b></span>est une commande de configuration globale permettant à l'utilisateur de préciser la source de l'image du logiciel Cisco IOS à charger. Voici quelques options de syntaxe disponibles :</p>
+<p>
+<ul>
+<li>Définissez le périphérique Flash comme source de l'image Cisco IOS.</li>
+</ul>
+</p>
+<p>
+<span class="cmd">Router(config)# </span>
+<span class="cmd">
+<b>boot system flash0://c1900-universalk9-mz.SPA.152-4.M3.bin</b>
+</span>
+</p>
+<p>
+<ul>
+<li>Définissez le serveur TFTP comme source de l'image Cisco IOS, avec ROMmon comme sauvegarde.</li>
+</ul>
+</p>
+<p>
+<span class="cmd">Router(config)# </span>
+<span class="cmd">
+<b>boot system tftp://c1900-universalk9-mz.SPA.152-4.M3.bin</b>
+</span>
+</p>
+<p>
+<span class="cmd">Router(config)# </span>
+<span class="cmd">
+<b>boot system rom</b>
+</span>
+</p>
+<p></p>
+<p>En l'absence de commandes<span class="cmd"><b> boot system </b></span>dans la configuration, le routeur charge par défaut la première image Cisco IOS valide dans la mémoire Flash et l'exécute.</p>
+<p></p>
+<p>Comme indiqué à la Figure 2, la commande<span class="cmd"><b> show version </b></span>permet de vérifier le fichier d'image du logiciel.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

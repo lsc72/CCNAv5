@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.1.1 Commande ip route</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration des routes statiques et par défaut</h1>
+        <h2>Configuration des routes statiques IPv4</h2>
+      </div>
+      <div id="content">
+<p>Les routes statiques sont configurées au moyen de la commande de configuration globale <span class="cmd"><b>ip route</b></span>. La syntaxe de la commande est la suivante :</p>
+<p></p>
+<p>
+<span class="cmd">Router(config)# </span>
+<span class="cmd">
+<b>ip route </b>
+</span>
+<span class="cmd">
+<i>network-address subnet-mask </i>
+</span>
+<span class="cmd">{</span>
+<span class="cmd">
+<i>ip-address </i>
+</span>
+<span class="cmd">| </span>
+<span class="cmd">
+<i>interface-type interface-number </i>
+</span>
+<span class="cmd">[</span>
+<span class="cmd">
+<i>ip-address</i>
+</span>
+<span class="cmd">]} [</span>
+<span class="cmd">
+<i>distance</i>
+</span>
+<span class="cmd">] [</span>
+<span class="cmd">
+<b>name </b>
+</span>
+<span class="cmd">
+<i>name</i>
+</span>
+<span class="cmd">] [</span>
+<span class="cmd">
+<b>permanent</b>
+</span>
+<span class="cmd">] [</span>
+<span class="cmd">
+<b>tag </b>
+</span>
+<span class="cmd">
+<i>tag</i>
+</span>
+<span class="cmd">]</span>
+</p>
+<p></p>
+<p>Les paramètres suivants sont nécessaires à la configuration du routage statique :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<i>network-address</i>
+</span>
+<b></b>- Adresse de destination du réseau distant à ajouter à la table de routage, souvent appelée préfixe.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<i>subnet-mask</i>
+</span>
+<b></b>- Masque de sous-réseau, ou simplement masque, du réseau distant à ajouter à la table de routage. Le masque de sous-réseau peut être modifié pour récapituler un groupe de réseaux. </li>
+</ul>
+</p>
+<p></p>
+<p>Un des paramètres suivants ou les deux doivent également être utilisés :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<i>ip-address</i>
+</span>
+<b></b>- Adresse IP du routeur qui se connecte à utiliser pour transférer le paquet vers le réseau de destination distant. Généralement appelé le tronçon suivant. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<i>exit-intf</i>
+</span>
+<b></b> -Interface de sortie à utiliser pour transférer le paquet au prochain tronçon.</li>
+</ul>
+</p>
+<p></p>
+<p>Comme l'illustre la figure, la syntaxe de commande généralement utilisée est<span class="cmd"><b> ip route </b></span><span class="cmd"><i>network-address subnet-mask </i></span><span class="cmd">{</span><span class="cmd"><i>ip-address </i></span><span class="cmd">|</span><span class="cmd"><i> exit-intf</i></span><span class="cmd">}</span>.</p>
+<p></p>
+<p>Le paramètre <span class="cmd"><i>distance</i></span> est utilisé pour créer une route statique flottante en définissant une distance administrative supérieure à une route apprise dynamiquement.</p>
+<p></p>
+<p>
+<b>Remarque :</b> les paramètres restants ne sont pas pertinents par rapport à ce chapitre ou à la certification CCNA.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

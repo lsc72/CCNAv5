@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.1.1 Protocoles du plus court chemin d&#x0027;abord</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage dynamique à état de liens</h1>
+        <h2>Fonctionnement du protocole de routage à état de liens</h2>
+      </div>
+      <div id="content">
+<p>Les protocoles de routage à état de liens sont également connus sous le nom de protocoles du plus court chemin et sont élaborés à partir de l'algorithme du plus court chemin (SPF) d'Edsger Dijkstra. L'algorithme SPF sera expliqué plus en détail dans une section ultérieure. </p>
+<p></p>
+<p>Les protocoles de routage à état de liens IPv4 sont présentés dans la figure :</p>
+<p>
+<ul>
+<li>Protocole OSPF (Open Shortest Path First)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Protocole IS-IS (Intermediate System-to-Intermediate System)</li>
+</ul>
+</p>
+<p></p>
+<p>Les protocoles de routage à état de liens ont la réputation d'être beaucoup plus complexes que leurs équivalents à vecteur de distance. Cependant, les fonctionnalités de base et la configuration des protocoles de routage à état de liens sont également simples.</p>
+<p></p>
+<p>Tout comme les protocoles RIP et EIGRP, les opérations de base du protocole OSPF peuvent être configurées au moyen des éléments suivants :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+La commande de configuration<b> router ospf</b> 
+</span>
+<span class="cmd">
+<i>process-id</i>
+</span>
+<span class="cmd">
+<b></b>
+</span> </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+La commande <b>network</b> 
+</span>pour annoncer les réseaux</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

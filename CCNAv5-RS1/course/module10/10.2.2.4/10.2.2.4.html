@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.2.4 nslookup</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Services et protocoles de couche application courants</h1>
+        <h2>Services d&#x0027;adressage IP</h2>
+      </div>
+      <div id="content">
+<p>Le protocole DNS est un service client/serveur. Cependant, il diffère des autres services de ce type. Les autres services utilisent un client qui est une application (par exemple, un navigateur Web ou un client de messagerie) tandis que le client DNS s'exécute lui-même en tant que service. Le client DNS, parfois appelé résolveur DNS, prend en charge la résolution de noms pour d'autres applications réseau et d'autres services qui en ont besoin. </p>
+<p></p>
+<p>Lors de la configuration d'un périphérique réseau, au minimum une adresse de serveur DNS est fournie, que le client DNS peut utiliser pour la résolution de noms. Le fournisseur d'accès à Internet (FAI) fournit généralement les adresses à utiliser pour les serveurs DNS. Lorsque l'application d'un utilisateur demande à se connecter à un périphérique distant à l'aide d'un nom, le client DNS demandeur interroge l'un de ces serveurs de noms pour convertir le nom en une adresse numérique.</p>
+<p></p>
+<p>Le système d'exploitation des ordinateurs comprend également un utilitaire appelé nslookup qui permet à l'utilisateur d'introduire manuellement une requête auprès des serveurs de noms, afin de convertir un nom d'hôte donné. Cet utilitaire permet également de résoudre les problèmes de résolution de noms et de vérifier l'état actuel des serveurs de noms. </p>
+<p></p>
+<p>Comme le montre la figure, lorsque la commande <span class="cmd"><b>nslookup</b></span> est exécutée, le serveur DNS par défaut configuré pour votre hôte s'affiche. Dans cet exemple, le serveur DNS est dns-sj.cisco.com et possède l'adresse 171.70.168.183. </p>
+<p></p>
+<p>Le nom d'un hôte ou d'un domaine peut être saisi dans l'invite <span class="cmd"><b>nslookup</b></span>. La première requête de la figure concerne <span class="cmd">www.cisco.com</span>. Le serveur de noms qui répond fournit l'adresse <span class="cmd">198.133.219.25</span>. </p>
+<p></p>
+<p>Les demandes affichées à l'écran ne sont que de simples tests. L'utilitaire nslookup propose de nombreuses options permettant de tester et de vérifier le processus DNS de manière approfondie. Lorsque vous avez terminé, saisissez <span class="cmd"><b>exit</b></span> pour quitter l'utilitaire nslookup.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

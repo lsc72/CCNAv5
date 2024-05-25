@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.2.1 Types de listes de contrôle d&#x0027;accès IPv4 Cisco</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement des listes de contrôle d&#x0027;accès IP</h1>
+        <h2>Comparaison des listes de contrôle d&#x0027;accès IPv4 standard et étendues</h2>
+      </div>
+      <div id="content">
+<p>Il existe deux types de listes de contrôle d'accès IPv4 Cisco : les listes standard et les listes étendues.</p>
+<p></p>
+<p>
+<b>Remarque :</b> les listes de contrôle d'accès IPv6 Cisco sont similaires aux listes de contrôle d'accès étendues IPv4 et sont traitées dans la suite du cours. </p>
+<p></p>
+<p>
+<b>Listes de contrôle d'accès standard</b>
+</p>
+<p></p>
+<p>Les listes de contrôle d'accès standard peuvent être utilisées pour autoriser ou refuser le trafic uniquement depuis des adresses IPv4 source. La destination du paquet et les ports concernés ne sont pas évalués. L'exemple de la Figure 1 autorise tout le trafic provenant du réseau 192.168.30.0/24. Compte tenu de l'instruction implicite « deny any » à la fin de la liste, tout autre trafic est bloqué avec cette liste. Les listes de contrôle d'accès standard sont créées en mode de configuration globale.</p>
+<p></p>
+<p>
+<b>Listes de contrôle d'accès étendues</b>
+</p>
+<p></p>
+<p>Les listes de contrôle d'accès étendues filtrent les paquets IPv4 en fonction de différents critères :</p>
+<p>
+<ul>
+<li>Type de protocole</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Adresse IPv4 source</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Adresse IPv4 de destination</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Ports TCP ou UDP source</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Ports TCP ou UDP de destination</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Informations facultatives sur le type de protocole pour un contrôle plus précis</li>
+</ul>
+</p>
+<p></p>
+<p>Sur la Figure 2, la liste de contrôle d'accès 103 autorise tout le trafic provenant des adresses du réseau 192.168.30.0/24 à entrer sur n'importe quel réseau IPv4 si le port de destination de l'hôte est 80 (HTTP). Les listes de contrôle d'accès étendues sont créées en mode de configuration globale. </p>
+<p></p>
+<p>Les commandes pour ces listes sont décrites dans les quelques rubriques suivantes.</p>
+<p></p>
+<p>
+<b>Remarque :</b> les listes de contrôle d'accès standard et étendues sont expliquées plus en détail dans la suite de ce chapitre.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.0.1.1 Introduction</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>VLAN</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>Les performances réseau constituent un facteur important dans la productivité d'une entreprise. L'une des technologies permettant des les améliorer consiste à diviser de vastes domaines de diffusion en domaines plus petits. Par définition, les routeurs bloquent le trafic de diffusion à une interface. Cependant, ils possèdent en général un nombre restreint d'interfaces LAN. Le rôle principal d'un routeur est de déplacer les données entre les réseaux, pas de fournir l'accès réseau aux périphériques finaux. </p>
+<p></p>
+<p>La fourniture d'un accès au LAN est un rôle généralement réservé au commutateur de la couche d'accès. Un réseau local virtuel (VLAN) peut être créé sur un commutateur de couche 2 pour réduire la taille des domaines de diffusion, de sorte qu'elle soit équivalente à celle d'un périphérique de couche 3. Les VLAN sont généralement intégrés à la conception du réseau, ce qui permet à ce dernier de s'adapter aux objectifs d'une entreprise. Alors que les VLAN sont principalement utilisés dans des réseaux locaux commutés, les implémentations modernes leur permettent d'accéder aux réseaux métropolitains et étendus. </p>
+<p></p>
+<p>Ce chapitre porte sur la manière de configurer, de gérer et de dépanner des VLAN et des trunks de VLAN. Il examine également les critères de sécurité et les stratégies relatives aux VLAN et aux trunks, ainsi que les meilleures pratiques de conception de VLAN.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.5.1.4 Sécurité sans fil de base</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.5.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Services de routage intégrés</h1>
+        <h2>Routeur intégré</h2>
+      </div>
+      <div id="content">
+<p>Avant de connecter le point d'accès au réseau ou au FAI, vous devez prévoir et configurer des mesures de sécurité. </p>
+<p></p>
+<p>Comme le montre la Figure 1, il existe des mesures de sécurité de base, notamment :</p>
+<p>
+<ul>
+<li>Modification de la valeur par défaut des SSID, des identifiants et des mots de passe</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Désactivation de la diffusion SSID</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Configuration du chiffrement WEP ou WPA</li>
+</ul>
+</p>
+<p></p>
+<p>Le chiffrement est un processus consistant à transformer les données afin qu'elles soient inutilisables si elles sont interceptées.</p>
+<p></p>
+<p>
+<b>WEP (Wired Equivalency Protocol) </b>
+</p>
+<p>Le protocole WEP est une fonction de sécurité sophistiquée qui permet de chiffrer le trafic réseau lors de sa transmission aérienne. Le WEP utilise des clés préconfigurées pour chiffrer et déchiffrer les données, comme le montre la Figure 2. </p>
+<p></p>
+<p>La clé WEP saisie est une chaîne alphanumérique, généralement d'une longueur de 64 ou 128 bits. Dans certains cas, le protocole WEP prend également en charge les clés 256 bits. Pour simplifier la création et la saisie de ces clés, de nombreux périphériques proposent une option Phrase de passe. La phrase de passe est un moyen simple pour mémoriser le mot ou la phrase utilisé(e) pour générer automatiquement une clé.</p>
+<p></p>
+<p>Pour pouvoir utiliser la fonction WEP, la même clé WEP doit avoir été saisie pour le point d'accès et tout périphérique sans fil autorisé à accéder au réseau. Sans cette clé, les périphériques ne pourront pas comprendre les transmissions sans fil.</p>
+<p></p>
+<p>Cependant, cette fonction présente quelques inconvénients, notamment le fait d'utiliser une clé statique sur tous les périphériques compatibles WEP. Il existe des applications qui permettent aux pirates de découvrir la clé WEP. Ces applications se trouvent facilement sur Internet. Une fois que le pirate a extrait la clé, il dispose d'un accès complet aux données transmises.</p>
+<p></p>
+<p>Il convient donc de changer de clé fréquemment pour mieux se protéger. Il est également possible d'utiliser un mode de chiffrement plus sophistiqué et plus sûr, appelé WPA (Wi-Fi Protected Access). </p>
+<p></p>
+<p>
+<b>Fonction WPA (Wi-Fi Protected Access) </b>
+</p>
+<p></p>
+<p>La fonction WPA utilise également des clés de chiffrement entre 64 et 256 bits. Cependant, contrairement au protocole WEP, le WPA génère de nouvelles clés dynamiques à chaque fois qu'un client tente d'établir une connexion au point d'accès. C'est pourquoi la fonction WPA, beaucoup plus difficile à pirater, est jugée plus sûre que le protocole WEP.</p>
+<p></p>
+<p>Plusieurs autres mesures de sécurité peuvent être configurées sur un point d'accès sans fil, notamment le filtrage des adresses MAC, l'authentification et le filtrage du trafic. Cependant, celles-ci sortent du cadre de ce cours. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

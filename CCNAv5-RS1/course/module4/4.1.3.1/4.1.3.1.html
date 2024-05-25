@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.3.1 Principes fondamentaux de la couche physique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche physique</h1>
+        <h2>Principes fondamentaux de la couche 1</h2>
+      </div>
+      <div id="content">
+<p>Les normes de couche physique correspondent à trois zones fonctionnelles :</p>
+<p></p>
+<p>
+<b>Composants physiques</b>
+</p>
+<p>Les composants physiques sont les périphériques électroniques, les supports et les connecteurs qui transportent et transmettent les signaux pour représenter les bits. Les composants matériels, tels que les cartes réseau, les interfaces et les connecteurs, les matériaux et les types de câble, sont tous répertoriés dans les normes associées à la couche physique. Les différents ports et interfaces d'un routeur Cisco 1941 sont également des exemples de composants physiques équipés de connecteurs et de brochage spécifiques définis dans des normes.</p>
+<p></p>
+<p>
+<b>Codage </b>
+</p>
+<p>Le codage, ou codage de ligne, est une méthode permettant de convertir un flux de bits de données en un code prédéfini. Les codes sont des groupements de bits utilisés pour fournir un modèle prévisible pouvant être reconnu à la fois par l'expéditeur et le récepteur. Dans le cas du réseau, le codage correspond à des variations de tension ou de courant utilisées pour représenter les bits (les 0 et les 1).</p>
+<p></p>
+<p>Outre la création de codes pour les données, les méthodes de codage au niveau de la couche physique peuvent également fournir des codes à des fins de contrôle comme l'identification du début et de la fin d'une trame. </p>
+<p></p>
+<p>Les méthodes de codage réseau les plus répandues sont les suivantes :</p>
+<p>
+<ul>
+<li>
+<b>Le codage Manchester</b> : le 0 est représenté par une baisse de tension et le 1 par une hausse de tension. Ce type de codage est utilisé dans des versions précédentes d'Ethernet, de radio-identification et de communication en champ proche.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>La méthode NRZ (Non-Return to Zero)</b> : méthode commune de codage des données utilisant deux états appelés « zéro » et « un » et aucune position neutre ou de repos. Un 0 peut être représenté par un niveau de tension et un 1 par une autre tension sur les supports.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque :</b> les débits plus élevés nécessitent un codage plus complexe, par exemple de type 4B/5B, mais ces méthodes sortent du cadre de ce cours.</p>
+<p></p>
+<p>
+<b>Signalisation</b>
+</p>
+<p>La couche physique doit générer les signaux électriques, optiques ou sans fil qui représentent le 1 et le 0 sur les supports. La méthode de représentation des bits est appelée méthode de signalisation. Les normes de couche physique doivent définir le type de signal représentant un 1 et celui représentant un 0. Il peut s'agir simplement d'un changement de niveau du signal électrique ou de l'impulsion optique. Par exemple, une impulsion longue peut représenter un 1, alors qu'une impulsion courte représente un 0.</p>
+<p></p>
+<p>Ce code utilise le même principe de communication que le code Morse. Le code Morse est une autre méthode de signalisation qui utilise une série de tonalités, de signaux lumineux ou de clics pour envoyer du texte sur une ligne téléphonique ou entre les bateaux en mer.</p>
+<p></p>
+<p>Il existe deux types de transmission des signaux :</p>
+<p>
+<ul>
+<li>
+<b>Asynchrone</b> : les signaux de données sont transmis sans signal d'horloge associé. L'intervalle de temps entre les caractères ou les blocs de données peut être défini arbitrairement, ce qui signifie qu'il n'est pas normalisé. Par conséquent, les trames doivent comporter des indicateurs de début et de fin.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Synchrone</b> : les signaux de données sont envoyés avec un signal d'horloge qui se produit à des intervalles réguliers appelés temps bits.</li>
+</ul>
+</p>
+<p></p>
+<p>Il existe plusieurs manières de transmettre des signaux. L'utilisation de techniques de modulation pour envoyer des données est courante. La modulation est le processus par lequel la caractéristique d'une onde (signal) modifie une autre onde (porteuse). Les techniques de modulation suivantes sont largement utilisées dans la transmission de données sur un support : </p>
+<p>
+<ul>
+<li>
+<b>Modulation de fréquence (FM)</b> : méthode de communication dans laquelle la fréquence porteuse varie selon le signal.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Modulation d'amplitude (AM)</b> : technique de transmission dans laquelle l'amplitude de la porteuse varie selon le signal.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Modulation par impulsions et codage (PCM)</b> : technique dans laquelle un signal analogique, tel que la voix est converti en un signal numérique en échantillonnant l'amplitude du signal et en exprimant les différentes amplitudes sous forme binaire. La fréquence d'échantillonnage doit être au moins deux fois supérieure à la plus haute fréquence du signal.</li>
+</ul>
+</p>
+<p></p>
+<p>La nature des signaux réels représentant les bits sur le support dépend de la méthode de signalisation utilisée. Certaines méthodes peuvent utiliser un attribut de signal pour représenter un seul 0 et un autre pour représenter un seul 1. </p>
+<p></p>
+<p>La Figure 2 illustre l'utilisation des techniques AM et FM lors de l'envoi d'un signal. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

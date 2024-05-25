@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.3.2 Comparaison de la topologie attendue et de la topologie réelle</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration Spanning Tree (arbre recouvrant)</h1>
+        <h2>Problèmes liés à la configuration du protocole STP</h2>
+      </div>
+      <div id="content">
+<p>Dans de nombreux réseaux, la topologie STP optimale est définie dans le cadre de la conception du réseau, puis implémentée en manipulant la priorité STP et les valeurs de coût. Il peut toutefois arriver que le protocole STP n'ait pas été intégré à la conception et à l'implémentation du réseau, ou bien qu'il n'ait pas été envisagé ou implémenté avant que le réseau subisse une croissance ou des changements majeurs. Dans un tel cas, il est important de savoir comment analyser la topologie STP réelle au sein du fonctionnement du réseau.</p>
+<p></p>
+<p>Une part importante du travail de résolution des problèmes consiste à comparer l'état réel du réseau par rapport à l'état attendu, et à détecter les différences pour recueillir des indices aidant à la résolution des problèmes rencontrés. Un professionnel des réseaux doit être capable d'examiner les commutateurs et de déterminer la topologie réelle, ainsi que de comprendre quelle devrait être la topologie Spanning Tree sous-jacente.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

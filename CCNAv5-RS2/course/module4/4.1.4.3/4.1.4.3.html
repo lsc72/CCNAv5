@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.4.3 Filtrage des résultats de commande show</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.4.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration initiale d&#x0027;un routeur</h1>
+        <h2>Vérification de la connectivité des réseaux connectés directement</h2>
+      </div>
+      <div id="content">
+<p>Les commandes qui génèrent plusieurs écrans de sortie sont, par défaut, mises en pause après 24 lignes. À la fin de cette interruption, le texte « --More-- » s'affiche. Appuyez sur <b>Enter</b> pour afficher la ligne suivante et appuyez sur la touche Espace pour afficher la série de lignes suivante. Utilisez la commande <span class="cmd"><b>terminal length </b></span><span class="cmd"><i>number</i></span> pour indiquer le nombre de lignes à afficher. La valeur 0 (zéro) empêche le routeur de s'arrêter entre les écrans de résultat. </p>
+<p></p>
+<p>Une autre fonctionnalité très utile pour améliorer l'expérience utilisateur dans l'interface en ligne de commande est le filtrage obtenu par la commande <span class="cmd"><b>show</b></span>. Les commandes de filtrage permettent d'afficher des sections de résultat spécifiques. Pour activer la commande de filtrage, tapez le symbole <span class="cmd"><b>|</b></span> après la commande <span class="cmd"><b>show</b></span>, puis saisissez un paramètre de filtrage et une expression de filtrage.</p>
+<p></p>
+<p>Après ce symbole, les paramètres de filtrage suivants peuvent être configurés :</p>
+<p>
+<ul>
+<li>
+<b>section</b> : affiche l'intégralité de la section commençant par l'expression de filtrage</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>include</b> : inclut toutes les lignes de résultat correspondant à l'expression de filtrage</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>exclude</b> : exclut toutes les lignes de résultat correspondant à l'expression de filtrage</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>begin</b> : affiche toutes les lignes de résultat à partir d'un certain point, en commençant par la ligne qui correspond à l'expression de filtrage</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque</b> : les filtres de résultat peuvent être utilisés en combinaison avec toute commande <span class="cmd"><b>show</b></span>. </p>
+<p></p>
+<p>Les Figures 1 à 4 présentent des exemples des différents filtres de résultat.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 5 pour filtrer les résultats.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.5 Commutation de paquets</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation des technologies WAN</h1>
+        <h2>Opérations WAN</h2>
+      </div>
+      <div id="content">
+<p>À l'inverse de la commutation de circuits, la commutation de paquets divise les données de trafic en paquets, qui sont transmis sur un réseau partagé. Les réseaux à commutation de paquets ne requièrent pas l'établissement d'un circuit et permettent à de nombreuses paires de nœuds de communiquer sur le même canal. </p>
+<p></p>
+<p>Les commutateurs du réseau à commutation de paquets déterminent les liaisons sur lesquelles les paquets doivent être envoyés, en fonction des informations d'adressage de chaque paquet. Voici deux approches présentant la façon dont ce choix est fait :</p>
+<p>
+<ul>
+<li>
+<b>Systèmes sans connexion </b>: les informations d'adressage complètes doivent faire partie de chaque paquet. Chaque commutateur doit évaluer l'adresse pour déterminer où envoyer le paquet. Internet est un exemple de système sans connexion.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Systèmes orientés connexion </b>: le réseau prédéfinit la route du paquet, et chaque paquet n'a qu'un seul identificateur à transporter. Le commutateur détermine la route à suivre en recherchant l'identificateur dans des tables en mémoire. Le jeu d'entrées des tables identifie un itinéraire ou circuit particulier sur le système. Lorsque le circuit est établi de façon temporaire pendant qu'il transporte un paquet puis se désactive, il s'agit d'un circuit virtuel. Le Frame Relay est un exemple de système orienté connexion. Dans le cas de Frame Relay, les identifiants utilisés sont des DLCI, ou identifiants de connexion de liaison de données.</li>
+</ul>
+</p>
+<p></p>
+<p>Étant donné que les liaisons internes entre les connecteurs sont partagées par de nombreux utilisateurs, le coût de la commutation de paquets est inférieur à celle de la commutation de circuits. Cependant, le retard (ou latence) et l'instabilité de ce retard (gigue) sont plus fréquents dans les réseaux à commutation de paquets que dans les réseaux à commutation de circuits. En effet, comme les liaisons sont partagées, l'intégralité des paquets doit avoir été reçue par un commutateur avant de pouvoir passer au commutateur suivant. En dépit de la latence et de la gigue inhérentes aux réseaux partagés, la technologie actuelle permet un transport satisfaisant des communications voix et vidéo sur ces réseaux.</p>
+<p></p>
+<p>Cliquez sur le bouton Lecture de la figure pour visualiser un exemple de commutation de paquets. Dans l'animation, SRV1 envoie des données à SRV2. Lorsque le paquet traverse le réseau fournisseur, il arrive au deuxième commutateur du fournisseur. Le paquet est ajouté à la file d'attente, et transmis une fois tous les autres paquets de la file d'attente transmis. Enfin, le paquet arrive sur SRV2.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

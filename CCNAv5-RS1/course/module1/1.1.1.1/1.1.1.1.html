@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.1.1 Les réseaux dans la vie quotidienne</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Connecté au monde entier</h1>
+        <h2>Les réseaux aujourd&#x0027;hui</h2>
+      </div>
+      <div id="content">
+<p>Parmi les éléments essentiels à l'existence humaine, le besoin de communiquer arrive juste après le besoin de survie. Le besoin de communiquer est aussi important pour nous que l'air, l'eau, la nourriture et le gîte. </p>
+<p></p>
+<p>Les méthodes que nous utilisons pour communiquer changent et évoluent en permanence. Alors que nous avons été par le passé limités aux interactions en face à face, les innovations technologiques ont considérablement augmenté la portée de nos communications. Des peintures rupestres à la radio et la télévision, en passant par la presse écrite, chaque innovation a développé et amélioré nos possibilités de connexion et de communication avec les autres. </p>
+<p></p>
+<p>La création et l'interconnexion de réseaux de données fiables ont eu un impact important sur la communication et ces réseaux sont aujourd'hui une nouvelle plate-forme sur laquelle les communications modernes s'effectuent. </p>
+<p></p>
+<p>Aujourd'hui, grâce aux réseaux, nous sommes plus connectés que jamais. Les personnes qui ont des idées peuvent instantanément communiquer avec d'autres pour les concrétiser. Les événements et les découvertes font le tour du monde en quelques secondes. Nous pouvons nous connecter et jouer avec nos amis dans le monde entier. </p>
+<p></p>
+<p>Les réseaux permettent aux personnes d'entrer en relation et de communiquer de manière illimitée. Chacun peut se connecter, partager et exploiter au mieux ses opportunités. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

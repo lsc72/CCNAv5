@@ -1,0 +1,116 @@
+﻿<textcomponents> <!--screen1-->
+<component id="ID_s1_title">
+<text><![CDATA[]]></text>
+</component> <!--screen 1 table -->
+
+<component id="ID_s1_table">
+<text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4'  cellspacing="2">
+	<tr class="mtable_top">
+		<td colspan='2' bgcolor='#0E6360' class="mtable_top"><font size='1' color='#434321'><span style="color:#DAE17A">.</span></font></td>
+	</tr>
+	<tr>
+    <td bgcolor='#EFF8F7' width='80'><b>Étape&nbsp;1</b></td>
+    <td bgcolor='#EFF8F7'><font size='11'>Définissez un pool d'adresses globales à utiliser pour la traduction de surcharge.</font><br/><br/><font face="_typewriter"><b>ip nat pool  </b><i>name start-ip end-ip  </i>{<b>netmask  </b> <i>netmask  </i>| <b>prefix-length  </b><i> prefix-length</i>}  </font></td>
+  </tr>
+  <tr>
+    <td bgcolor='#FFFFFF'><b>Étape&nbsp;2</b></td>
+    <td bgcolor='#FFFFFF'><font size='11'>Définissez une liste d'accès standard autorisant les adresses qui doivent être traduites.</font><br/><br/><font face="_typewriter"><b>access-list  </b><i> access-list-number  </i><b> permit  </b><i> source  </i>[<i>source-wildcard</i>]</font></td>
+  </tr>
+  <tr>
+    <td bgcolor='#EFF8F7'><b>Étape&nbsp;3</b></td>
+    <td bgcolor='#EFF8F7'><font size='11'>Établissez la traduction de surcharge, en spécifiant la liste d'accès et le pool définis lors des étapes précédentes.</font><br/><br/><font face="_typewriter"><b>ip nat inside source list  </b><i> access-list-number  </i><b> pool  </b><i> name  </i><b> overload  </b></font></td>
+  </tr>
+  <tr>
+    <td bgcolor='#FFFFFF'><b>Étape&nbsp;4</b></td>
+    <td bgcolor='#FFFFFF'><font size='11'>Identifiez l'interface interne.</font><br/><br/><font face="_typewriter"><b>interface  </b><i>type number</i><br/><b>ip nat inside</b></font></td>
+  </tr>
+  <tr>
+    <td bgcolor='#EFF8F7'><b>Étape&nbsp;5</b></td>
+    <td bgcolor='#EFF8F7'><font size='11'>Identifiez l'interface externe.</font><br/><br/><font face="_typewriter"><b>interface  </b><i>type number</i><br/><b>ip nat outside</b></font></td>
+  </tr>
+</table>]]></text>
+</component> <!--screen2-->  
+<component id="ID_s2_title">
+<text><![CDATA[<b>Exemple de PAT avec un pool d'adresses</b>]]></text>
+</component>
+
+<component id="ID_s2_txt01">
+<text><![CDATA[<b>Réseau interne</b>]]></text>
+</component>
+<component id="ID_s2_txt02">
+  <text><![CDATA[<b>Réseau externe</b>]]></text> 
+  </component>
+<component id="ID_s2_txt03">
+  <text><![CDATA[Svr1]]></text> 
+  </component>
+<component id="ID_s2_txt04">
+  <text><![CDATA[Internet]]></text> 
+  </component>
+<component id="ID_s2_txt05">
+  <text><![CDATA[Svr2]]></text> 
+  </component>
+
+<component id="ID_s2_txt06">
+<text><![CDATA[<font color="#393536">Définissez un pool d'adresses publiques IPv4 sous le nom de NAT-POOL2.</font><br/><font face="_typewriter">R2(config)# <b>ip nat pool NAT-POOL2 209.165.200.226 209.165.200.240 netmask 255.255.255.224</b></font><br/><br/><font color="#393536">Définissez les adresses pouvant être traduites.</font><br/><font face="_typewriter">R2(config)#<b> access-list 1 permit 192.168.0.0 0.0.255.255</b></font><br/><br/><font color="#393536">Reliez NAT-POOL2 à l'ACL&nbsp;1.</font><br/><font face="_typewriter">R2(config)#<b> ip nat inside source list 1 pool NAT-POOL2 overload</b></font><br/><br/><font color="#393536">Identifiez l'interface série&nbsp;0/0/0 comme étant une interface NAT interne.</font><br/><font face="_typewriter">R2(config)# <b>interface Serial0/0/0</b><br/>R2(config-if)# <b>ip nat inside</b></font><br/><br/><font color="#393536">Identifiez l'interface série 0/1/0 comme étant l'interface NAT externe.</font><br/><font face="_typewriter">R2(config)#<b> interface Serial0/1/0</b><br/>R2(config-if)#<b> ip nat outside</b></font>]]></text>
+</component> <!--screen 3-->
+
+<component id="ID_s3_txt01">
+<text><![CDATA[<b>Réseau interne</b>]]></text>
+</component>
+<component id="ID_s3_txt02">
+  <text><![CDATA[<b>Réseau externe</b>]]></text> 
+  </component>
+<component id="ID_s3_txt03">
+  <text><![CDATA[Svr1]]></text> 
+  </component>
+<component id="ID_s3_txt04">
+  <text><![CDATA[Internet]]></text> 
+  </component>
+<component id="ID_s3_txt05">
+  <text><![CDATA[Svr2]]></text> 
+  </component> <!-- syntax checker -->
+	<component id="ID_sc_reset">
+		<text><![CDATA[<b>Réinitialiser</b>]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[<b>Démonstration</b>]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[<b>Afficher tout</b>]]></text>
+	</component>
+	<component id="ID_title"> <!--text><![CDATA[<b>Configuring PAT using an Address Pool</b>]]></text-->
+	</component>
+	<component id="ID_s3_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font size='10' face="Arial" color="#0000FF">***Vous devez entrer la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font></b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>***Remarque&nbsp;: la taille de police est légèrement réduite en raison de la longueur de commande.***<br>Définissez un pool d'adresses IPv4 publiques portant le nom NAT-POOL-OVERLOAD sur la plage 209.165.200.241 à 209.165.200.250.</b></font>]]></existingcommands>
+		<command prompt="R2(config)#">
+			<correctresponse ignoreCase='false'><![CDATA[ip nat pool NAT-POOL-OVERLOAD 209.165.200.241 209.165.200.250 netmask 255.255.255.224]]></correctresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Configurez l'ACL&nbsp;3 de telle sorte qu'elle permette la traduction NAT des périphériques du réseau&nbsp;10.0.0.0/8.</font>]]></instruction>
+		</command>
+		<command prompt="R2(config)#">
+			<correctresponse><![CDATA[access-list 3 permit 10.0.0.0 0.255.255.255]]></correctresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Reliez le pool NAT-POOL-OVERLOAD à l'ACL&nbsp;3.</font>]]></instruction>
+		</command>
+		<command prompt="R2(config)#">
+			<correctresponse><![CDATA[ip nat inside source list 3 pool NAT-POOL-OVERLOAD overload]]></correctresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Configurez l'interface NAT interne appropriée.</font>]]></instruction>
+		</command>
+		<command prompt="R2(config)#">
+			<correctresponse><![CDATA[interface Serial0/0/0]]></correctresponse>
+		</command>	
+		<command prompt="R2(config-if)#">
+			<correctresponse><![CDATA[ip nat inside]]></correctresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Configurez l'interface NAT externe appropriée.</b></font>]]></instruction>
+		</command>
+		<command prompt="R2(config)#">
+			<correctresponse><![CDATA[interface Serial0/1/0]]></correctresponse>
+		</command>	
+		<command prompt="R2(config-if)#">
+			<correctresponse><![CDATA[ip nat outside]]></correctresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Vous avez correctement configuré la fonction PAT à l'aide d'un pool d'adresses.</font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+</textcomponents>

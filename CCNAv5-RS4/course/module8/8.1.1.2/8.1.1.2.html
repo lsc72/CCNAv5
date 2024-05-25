@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.1.2 Fonctionnement de Syslog</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Syslog</h1>
+        <h2>Fonctionnement de Syslog</h2>
+      </div>
+      <div id="content">
+<p>Sur les périphériques réseau Cisco, le protocole Syslog commence par envoyer des messages système ainsi qu'un résultat de commande <span class="cmd"><b>debug</b></span> à un processus de journalisation local interne au périphérique. La configuration de ces périphériques détermine comment le processus de journalisation gère ces messages et ces résultats. Par exemple, il se peut que des messages Syslog soient envoyés sur le réseau vers un serveur Syslog externe. Ces messages peuvent être récupérés sans qu'il soit nécessaire d'accéder au périphérique réel. Les messages de journalisation et les résultats stockés sur le serveur externe peuvent être placés dans divers rapports pour une meilleure lisibilité. </p>
+<p></p>
+<p>De même, des messages Syslog peuvent également être envoyés vers un tampon interne. Les messages envoyés vers le tampon interne ne peuvent être affichés que par l'intermédiaire de l'interface en ligne de commande du périphérique. </p>
+<p></p>
+<p>Enfin, l'administrateur réseau peut spécifier que seuls certains types de messages sont envoyés à différentes destinations. Il est par exemple possible de configurer le périphérique de telle sorte qu'il transfère tous les messages système vers un serveur Syslog externe. Toutefois, les messages de niveau de débogage sont transférés vers le tampon interne et ne sont accessibles que par l'intermédiaire de l'administrateur à partir de l'interface en ligne de commande. </p>
+<p></p>
+<p>Comme l'illustre la figure, les destinations classiques des messages Syslog sont les suivantes :</p>
+<p>
+<ul>
+<li>Tampon de journalisation (mémoire vive à l'intérieur d'un routeur ou d'un commutateur)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Ligne de console </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Ligne de terminal</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Serveur Syslog</li>
+</ul>
+</p>
+<p></p>
+<p>Il est possible de surveiller à distance les messages système en affichant les journaux sur un serveur Syslog ou en accédant au périphérique par le biais de Telnet, de SSH ou du port de console.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

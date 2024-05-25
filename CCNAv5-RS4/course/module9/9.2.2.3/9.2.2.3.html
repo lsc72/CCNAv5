@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.2.3 Dépannage de la couche réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Symptômes et causes du dépannage réseau</h2>
+      </div>
+      <div id="content">
+<p>Les problèmes de couche réseau incluent tous les problèmes relatifs à un protocole de couche 3, à savoir à la fois les protocoles routés (tels que les protocoles IPv4 et IPv6) et les protocoles de routage (tels que les protocoles EIGRP, OSPF, etc.). </p>
+<p></p>
+<p>Les symptômes courants des problèmes réseau au niveau de la couche réseau sont les suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Panne réseau</b> : on parle de panne réseau lorsque le réseau est presque ou complètement hors d'usage, affectant ainsi l'ensemble de ses utilisateurs et applications. Ces pannes sont généralement constatées rapidement par les utilisateurs et les administrateurs réseau ; elles ont un impact énorme sur la productivité de l’entreprise.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Performances non optimales</b> : les problèmes d'optimisation réseau impliquent généralement une partie des utilisateurs, des applications et des destinations, ou un type spécifique de trafic. Les problèmes d'optimisation peuvent être difficiles à détecter et encore plus difficiles à isoler et à diagnostiquer. Et ce, parce qu'ils impliquent généralement plusieurs couches, voire même la totalité de l'ordinateur hôte. Le fait de déterminer qu'un problème est un problème de couche réseau peut prendre du temps.</li>
+</ul>
+</p>
+<p></p>
+<p>Dans la plupart des réseaux, des routes statiques sont utilisées en combinaison avec des protocoles de routage dynamique. Une configuration incorrecte de ces routes statiques peut entraîner un routage non optimal. Dans certains cas, des routes statiques mal configurées peuvent créer des boucles de routage rendant inaccessibles certaines parties du réseau.</p>
+<p></p>
+<p>Le dépannage des protocoles de routage dynamique nécessite une connaissance approfondie de leur mode de fonctionnement. Certains problèmes sont communs à l'ensemble des protocoles de routage, tandis que d'autres sont spécifiques à un protocole de routage individuel.</p>
+<p></p>
+<p>Il n'existe pas de modèle de résolution unique des problèmes de couche 3. Pour résoudre les problèmes de routage, il convient de suivre un processus méthodique en utilisant une série de commandes afin d’isoler et de diagnostiquer le problème. </p>
+<p></p>
+<p>Vous devez analyser les domaines suivants lorsque vous diagnostiquez un possible problème relatif aux protocoles de routage :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Problèmes généraux de réseau</b> : une modification de la topologie du réseau, par exemple la désactivation d'une liaison, a souvent des effets sur d'autres parties du réseau, qui ne sont pas évidents au départ. Il peut s'agir de l'installation de nouvelles routes, statiques ou dynamiques, ou de la suppression d'autres routes. Déterminez si une modification récente a été apportée au réseau et si quelqu'un a récemment travaillé à l'infrastructure du réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Problèmes de connectivité</b> : recherchez les éventuels problèmes d'équipement et de connectivité, notamment les problèmes d'alimentation comme les pannes de courant et les problèmes environnementaux (par exemple une surchauffe). Recherchez également d’éventuels problèmes de couche 1, notamment des problèmes de câblage, des ports défectueux et des problèmes de FAI. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Problèmes de voisinage</b> : si le protocole de routage établit une contiguïté avec un voisin, vérifiez s'il n'y a pas de problèmes liés aux routeurs formant des contiguïtés de voisinage.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Base de données topologique</b> : si le protocole de routage utilise une table ou une base de données topologique, examinez-la afin de déceler d'éventuelles entrées inattendues ou manquantes.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Table de routage</b> : examinez la table de routage afin d'y détecter d'éventuelles routes inattendues ou manquantes. Utilisez les commandes <span class="cmd"><b>debug</b></span> pour afficher les mises à jour du routage ainsi que la maintenance de la table de routage.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

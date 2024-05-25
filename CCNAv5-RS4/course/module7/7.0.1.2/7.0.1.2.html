@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.0.1.2 Exercice en classe : brève présentation des réseaux privés virtuels (VPN)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Introduction</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Brève présentation des réseaux privés virtuels (VPN)</b>
+</p>
+<p></p>
+<p>Une PME voit sa taille grandir et a besoin que ses clients, télétravailleurs et employés filaires/sans fil puissent accéder à son réseau principal à partir de n'importe quel emplacement. En tant qu'administrateur réseau de l'entreprise, vous avez décidé d'implémenter des VPN pour la sécurité, la facilité d'accès au réseau et la réduction des coûts.</p>
+<p></p>
+<p>Il vous incombe de veiller à ce que les administrateurs réseau entament le processus de planification des VPN avec les mêmes connaissances.</p>
+<p></p>
+<p>Quatre domaines de base sur les VPN doivent être examinés et présentés à l'équipe d'administration du réseau :</p>
+<p>
+<ul>
+<li>Définition concise des VPN</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Quelques considérations générales sur les VPN</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>IPsec en tant qu'option de sécurité VPN</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Mode d'utilisation du tunneling par les VPN</li>
+</ul>
+</p>
+<p></p>
+<p>
+<a href="../../files/7.0.1.2%20VPNs%20at%20a%20Glance%20Instructions.pdf" target="_blank">Exercice en classe : brève présentation des réseaux privés virtuels (VPN)</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

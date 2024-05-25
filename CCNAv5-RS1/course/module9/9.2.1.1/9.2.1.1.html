@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.1.1 Planification de l&#x0027;adressage réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Schémas d&#x0027;adressage</h1>
+        <h2>Conception structurée</h2>
+      </div>
+      <div id="content">
+<p>Comme l'illustre la figure, l'attribution d'un espace d'adressage de couche réseau dans le réseau d'entreprise doit être bien pensée. L'attribution d'adresses ne doit pas être laissée au hasard. Trois critères principaux sont à prendre en compte lors de la planification de l'attribution des adresses.</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Éviter les doublons d'adresses :</b> chaque hôte d'un interréseau doit être associé à une adresse unique. Sans planification et documentation appropriées, une adresse pourrait être affectée à plusieurs hôtes, ce qui entraînerait des problèmes d'accès pour ces hôtes. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Assurer et contrôler l'accès :</b> certains hôtes, tels que les serveurs, fournissent des ressources aux hôtes internes ainsi qu'aux hôtes externes. L'adresse de couche 3 attribuée à un serveur peut être utilisée pour contrôler l'accès à celui-ci. Si, toutefois, l'adresse est attribuée de manière aléatoire et n'est pas bien documentée, le contrôle d'accès devient plus difficile. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Surveiller la sécurité et les performances :</b> de même, la sécurité et les performances des hôtes du réseau et de l'ensemble du réseau doivent être surveillées. Dans le cadre de cette surveillance, le trafic réseau est examiné, à la recherche d'adresses qui génèrent ou reçoivent un nombre trop important de paquets. Lorsque l'adressage réseau est planifié et documenté correctement, les périphériques réseau posant problème peuvent facilement être identifiés. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Attribuer des adresses au sein d'un réseau</b>
+</p>
+<p></p>
+<p>Dans un réseau, il existe quatre types différents de périphériques, notamment :</p>
+<p>
+<ul>
+<li>Périphériques clients des utilisateurs finaux </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Serveurs et périphériques </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Hôtes accessibles depuis Internet</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Périphériques intermédiaires</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Passerelle </li>
+</ul>
+</p>
+<p></p>
+<p>Lors du développement d'un schéma d'adressage IP, il est généralement recommandé de définir un modèle d'attribution des adresses à chaque type de périphérique. Cela apporte des avantages aux administrateurs pour l'ajout et la suppression des périphériques et le filtrage du trafic en fonction des adresses IP. En outre, la documentation devient plus simple.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

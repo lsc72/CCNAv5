@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.2.3 Sécurisation de l&#x0027;accès au mode d&#x0027;exécution utilisateur</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Bases</h1>
+        <h2>Limitation de l&#x0027;accès aux configurations de périphérique</h2>
+      </div>
+      <div id="content">
+<p>Pour cette raison, vous devez sécuriser le port de console des périphériques réseau en exigeant, au minimum, que l'utilisateur fournisse un mot de passe fort. Cela réduit les chances qu'un personnel non autorisé branche physiquement un câble sur le port de console de l'appareil et accède ainsi au périphérique.</p>
+<p></p>
+<p>Vous utilisez les commandes suivantes en mode de configuration globale pour définir un mot de passe pour la ligne de console :</p>
+<p></p>
+<p>
+<span class="cmd">Switch(config)#</span>
+<span class="cmd">
+<b>line console 0</b>
+</span>
+</p>
+<p>
+<span class="cmd">Switch(config-line)#</span>
+<span class="cmd">
+<b>password cisco</b>
+</span>
+</p>
+<p>
+<span class="cmd">Switch(config-line)#</span>
+<span class="cmd">
+<b>login</b>
+</span>
+</p>
+<p></p>
+<p>À partir du mode de configuration globale, la commande <span class="cmd"><b>line console 0</b></span> permet d'entrer en mode de configuration de ligne pour la console. Le zéro sert à représenter la première (et le plus souvent, la seule) interface de console.</p>
+<p></p>
+<p>La deuxième commande,<span class="cmd"><b> password cisco</b></span> définit un mot de passe pour la ligne de console. </p>
+<p></p>
+<p>Enfin, la commande <span class="cmd"><b>login</b></span> permet de configurer le commutateur pour qu'il exige une authentification à l'ouverture de session. Lorsque la connexion est activée et qu'un mot de passe est défini, l'utilisateur de la console est invité à saisir un mot de passe avant d'accéder à la CLI. </p>
+<p></p>
+<p>
+<b>Mot de passe VTY</b>
+</p>
+<p></p>
+<p>Les lignes vty permettent d'accéder à un routeur Cisco via Telnet. Par défaut, de nombreux commutateurs Cisco prennent en charge jusqu'à 16 lignes vty, numérotées de 0 à 15. Le nombre de lignes vty prises en charge par un routeur Cisco varie selon le type de routeur et la version de l'IOS. Cependant, en général, cinq lignes vty sont configurées. Ces lignes sont numérotées de 0 à 4 par défaut, bien que des lignes supplémentaires puissent être configurées. Vous devez définir un mot de passe pour toutes les lignes vty disponibles. Vous pouvez certes définir le même mot de passe pour toutes les connexions. Toutefois, il est souvent souhaitable d'associer un mot de passe unique à une certaine ligne afin de réserver un accès à un administrateur lorsque les autres connexions sont utilisées.</p>
+<p></p>
+<p>Exemples de commandes permettant de définir un mot de passe sur les lignes vty : </p>
+<p></p>
+<p>
+<span class="cmd">Switch(config)#</span>
+<span class="cmd">
+<b>line vty 0 15</b>
+</span>
+</p>
+<p>
+<span class="cmd">Switch(config-line)#</span>
+<span class="cmd">
+<b>password cisco</b>
+</span>
+</p>
+<p>
+<span class="cmd">Switch(config-line)#</span>
+<span class="cmd">
+<b>login</b>
+</span>
+</p>
+<p></p>
+<p>Par défaut, l'IOS inclut la commande <span class="cmd"><b>login</b></span> sur les lignes VTY. Cela permet d'interdire les accès Telnet au périphérique sans authentification préalable. Si vous avez exécuté par inadvertance la commande <span class="cmd"><b>no login</b></span>, rien n'empêche des personnes non autorisées de se connecter à la ligne avec Telnet puisque l'authentification n'est plus obligatoire. Il s'agit d'un risque majeur en matière de sécurité.</p>
+<p></p>
+<p>La figure illustre la sécurisation de l'accès au mode d'exécution utilisateur sur les lignes de console et Telnet.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

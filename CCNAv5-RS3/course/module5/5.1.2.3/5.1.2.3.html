@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.2.3 Routeur désigné OSPF</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées du protocole OSPF à zone unique </h1>
+        <h2>OSPF dans les réseaux à accès multiple</h2>
+      </div>
+      <div id="content">
+<p>La solution pour gérer le nombre de contiguïtés et la diffusion des paquets LSA sur un réseau à accès multiple est le routeur DR. Sur les réseaux à accès multiple, le protocole OSPF sélectionne un routeur DR comme point de collecte et de distribution des paquets LSA envoyés et reçus. Un routeur BDR est également choisi au cas où le routeur DR est défaillant. Le BDR écoute passivement cet échange et maintient une relation avec tous les routeurs. Lorsque le DR arrête de produire des paquets Hello, le BDR s'autodésigne comme DR et en assume le rôle.</p>
+<p></p>
+<p>Tous les autres routeurs non DR ou non BDR deviennent des routeurs DROthers (ni DR, ni BDR). </p>
+<p></p>
+<p>À la Figure 1, R1 a été sélectionné comme routeur désigné pour le réseau local Ethernet interconnectant R2, R3 et R4. Notez que le nombre de contiguïtés a été ainsi réduit à 3.</p>
+<p></p>
+<p>Les routeurs d’un réseau à accès multiple choisissent un DR et un BDR. Les routeurs DROthers forment des contiguïtés complètes uniquement avec le DR et le BDR du réseau. Au lieu d'inonder de paquets LSA tous les routeurs du réseau, les DROthers envoient leurs LSA uniquement au DR et au BDR, en utilisant l'adresse de multidiffusion 224.0.0.6 (tous les routeurs DR). </p>
+<p></p>
+<p>Cliquez sur le bouton Lecture de la Figure 2 pour visualiser l'animation du rôle du DR. Dans l'animation, R1 envoie des LSA au DR. Le BDR écoute également. Le DR est chargé de transmettre les LSA depuis R1 vers les autres routeurs. Le DR utilise l'adresse de multidiffusion 224.0.0.5 (tous les routeurs OSPF). Au final, un seul routeur assure la diffusion de l’ensemble des LSA dans le réseau à accès multiple.</p>
+<p></p>
+<p>
+<b>Remarque</b> : les sélections de DR/BDR ont lieu uniquement dans les réseaux à accès multiple et non dans les réseaux point à point. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

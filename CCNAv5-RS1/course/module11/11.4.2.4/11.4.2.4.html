@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.4.2.4 Sauvegarde et restauration par USB</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.4.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Gestion des fichiers de configuration IOS</h1>
+        <h2>Fichiers de sauvegarde et de restauration de la configuration</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Sauvegarde des configurations à l'aide d'un disque Flash USB</b>
+</p>
+<p>Lorsque vous effectuez une sauvegarde vers un port USB, il est recommandé d'exécuter la commande <span class="cmd"><b>show file systems</b></span> pour vérifier que le disque USB est connecté et pour confirmer son nom, comme à la Figure 1. </p>
+<p></p>
+<p>Ensuite, utilisez la commande <span class="cmd"><b>copy run usbflash0:/</b></span> pour copier le fichier de configuration vers le disque Flash USB. Veillez à utiliser le nom du disque Flash tel qu'il apparait dans le système de fichiers. La barre oblique est facultative et indique le répertoire racine du disque Flash USB. </p>
+<p></p>
+<p>IOS vous invite à indiquer le nom du fichier. Si le fichier existe déjà sur le périphérique USB, le routeur demande s'il peut le remplacer, comme le montre la Figure 2.</p>
+<p></p>
+<p>Utilisez la commande <span class="cmd"><b>dir</b></span> pour afficher le fichier sur le disque USB et la commande <span class="cmd"><b>more</b></span> pour voir le contenu, comme l'illustre la Figure 3.</p>
+<p></p>
+<p>
+<b>Restauration des configurations à l'aide d'un disque Flash USB</b>
+</p>
+<p>Afin de pouvoir copier à nouveau le fichier, vous devrez modifier le fichier USB R1-Config dans un éditeur de texte pour en faire un fichier de configuration valide. Si vous omettez cette étape, de nombreuses entrées seront des commandes non valides et aucune interface ne sera affichée.</p>
+<p></p>
+<p>
+<span class="cmd">R1#</span>
+<span class="cmd">
+<b>copy usbflash0:/R1-Config running-config</b>
+</span>
+</p>
+<p>
+<span class="cmd">Destination filename [running-config]?</span>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

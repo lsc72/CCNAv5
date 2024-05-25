@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.2 Passerelles par défaut</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration initiale d&#x0027;un routeur</h1>
+        <h2>Brancher les périphériques</h2>
+      </div>
+      <div id="content">
+<p>Pour activer l'accès au réseau, les périphériques doivent être configurés avec les informations d'adresse IP permettant d'identifier les éléments corrects suivants :</p>
+<p>
+<ul>
+<li>
+<b>Adresse IP</b> : identifie un hôte unique sur un réseau local.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Masque de sous-réseau</b> : identifie avec quel sous-réseau l'hôte peut communiquer.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Passerelle par défaut</b> : identifie le routeur auquel envoyer un paquet lorsque la destination n'est pas sur le même sous-réseau de réseau local.</li>
+</ul>
+</p>
+<p></p>
+<p>Lorsqu'un hôte envoie un paquet à un périphérique situé sur le même réseau IP, le paquet est simplement transféré de l'interface hôte au périphérique de destination. </p>
+<p></p>
+<p>Lorsqu'un hôte envoie un paquet à un périphérique situé sur un autre réseau IP, le paquet est transmis à la passerelle par défaut, car un périphérique hôte ne peut pas communiquer directement avec les périphériques situés en dehors du réseau local. La passerelle par défaut est la destination qui route le trafic du réseau local vers des périphériques sur des réseaux distants. Elle est souvent utilisée pour connecter un réseau local à Internet. </p>
+<p></p>
+<p>La passerelle par défaut est généralement l'adresse de l'interface du routeur connecté au réseau local. Le routeur gère des entrées de table de routage pour tous les réseaux connectés ainsi que des entrées de réseaux distants et détermine le meilleur chemin pour atteindre ces destinations. </p>
+<p></p>
+<p>Par exemple, si le PC1 envoie un paquet au serveur Web situé à l'adresse 176.16.1.99, il constate que le serveur Web n'est pas sur le réseau local et il doit, par conséquent, envoyer le paquet à l'adresse MAC (contrôle d'accès au support) de sa passerelle par défaut. L'unité de données de protocole de paquet présentée dans la figure identifie les adresses IP source et de destination ainsi que l'adresse MAC.</p>
+<p></p>
+<p>
+<b>Remarque</b> : en général, un routeur est également configuré avec sa propre passerelle par défaut. Celle-ci est parfois appelée passerelle de dernier recours. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.2.4 Packet Tracer : configuration de base du protocole EIGRP avec IPv4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole EIGRP pour IPv4</h1>
+        <h2>Vérification du protocole EIGRP avec IPv4</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Contexte/scénario</b>
+</p>
+<p></p>
+<p>Au cours de cet exercice, vous allez implémenter des configurations de base du protocole EIGRP, avec des commandes <span class="cmd"><b>network</b></span> et des interfaces passives, et désactiver la récapitulation automatique. Vous contrôlerez ensuite votre configuration EIGRP à l'aide d'un éventail de commandes <span class="cmd"><b>show</b></span> et testerez la connectivité de bout en bout.</p>
+<p></p>
+<p>
+<a href="../../files/7.2.2.4%20Packet%20Tracer%20-%20Configuring%20Basic%20EIGRP%20with%20IPv4%20Instructions.pdf" target="_blank">Packet Tracer : instructions de configuration de base du protocole EIGRP avec IPv4</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/7.2.2.4%20Packet%20Tracer%20-%20Configuring%20Basic%20EIGRP%20with%20IPv4.pka" target="_blank">Packet Tracer : configuration de base du protocole EIGRP avec IPv4 - PKA</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

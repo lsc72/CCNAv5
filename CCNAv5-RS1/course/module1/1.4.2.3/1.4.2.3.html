@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.4.2.3 Haut débit sans fil </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.4.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Évolution de l&#x0027;environnement réseau</h1>
+        <h2>Technologies réseau domestiques</h2>
+      </div>
+      <div id="content">
+<p>Une connexion à Internet est essentielle pour les technologies domestiques intelligentes. Les connexions DSL et par câble sont des technologies courantes utilisées pour connecter des particuliers et des petites entreprises à Internet. Cependant, la technologie sans fil est une alternative viable dans de nombreux cas. </p>
+<p></p>
+<p>
+<b>Fournisseur d'accès Internet sans fil</b>
+</p>
+<p></p>
+<p>Un fournisseur d'accès Internet sans fil est un FAI qui permet à ses abonnés de se connecter à un point d'accès spécifique en utilisant des technologies sans fil similaires à celles utilisées dans les réseaux locaux sans fil (WLAN). Les fournisseurs d'accès Internet sans fil opèrent généralement dans les régions rurales où la DSL et les services par câble ne sont pas disponibles. </p>
+<p></p>
+<p>Bien qu'une tour de transmission distincte puisse être érigée pour installer l'antenne, il est courant que l'antenne soit fixée à une structure élevée existante, telle qu'un château d'eau ou un pylône radio. Une petite parabole ou antenne est installée sur le toit de la maison de l'abonné, à portée de l'émetteur du fournisseur d'accès Internet sans fil. L'unité d'accès de l'abonné est connectée au réseau câblé à l'intérieur de la maison. Pour l'utilisateur, cette configuration n'est pas très différente de la DSL ou du câble. La principale différence est en fait la connexion entre la maison et le FAI : celle-ci se fait sans fil et n'utilise pas de câble.</p>
+<p></p>
+<p>
+<b>Service haut débit sans fil</b>
+</p>
+<p></p>
+<p>Le haut débit sans fil est une autre solution pour disposer d'une connexion sans fil chez soi. Cette technologie utilise la même technologie cellulaire de connexion à Internet qu'un smartphone ou une tablette. Une antenne est installée à l'extérieur de la maison pour offrir une connectivité avec ou sans fil aux périphériques du domicile. Dans de nombreuses régions, le haut débit sans fil domestique est en concurrence directe avec la DSL et le câble.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

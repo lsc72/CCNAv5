@@ -1,0 +1,97 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>La configuration prend en charge le gestionnaire SNMP</b>]]></text>
+</component>
+<component id="ID_s1_txt01">
+<text><![CDATA[Visionneuse SNMP installée.]]></text>
+</component>
+<component id="ID_s1_txt02">
+<text><![CDATA[SNMP]]></text>
+</component>
+
+
+
+
+<component id="ID_s2_title">
+<text><![CDATA[<b>Configuration du gestionnaire SNMP</b>]]></text>
+</component>
+
+
+
+
+<component id="ID_s3_title">
+<text><![CDATA[<b>Affichage des messages du gestionnaire SNMP</b>]]></text>
+</component>
+
+
+
+<component id="ID_s4_title">
+<text><![CDATA[<b>Vérification de la configuration SNMP</b>]]></text>
+</component>
+
+
+
+<component id="ID_s5_title">
+<text><![CDATA[<b>Service de communauté SNMP</b>]]></text>
+</component>
+
+
+
+<component id="ID_s6_title">
+		<text><![CDATA[<b>Configuration et vérification de SNMP</b>]]></text>
+	</component>
+	<component id="ID_SC2" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font size='10' face="Arial" color="#0000FF">***Vous devez entrer la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font></b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>Configurez les paramètres snmp-server suivants&nbsp;:<ul><li>Définir la communauté en lecture seule à «&nbsp;batonaug&nbsp;» à l'aide de SNMP_ACL<li>Définir l'emplacement à «&nbsp;NOC_SNMP_MANAGER&nbsp;»<li>Définir le contact à «&nbsp;Wayne World&nbsp;»<li>Définir l'hôte à 192.168.1.3 à l'aide de la version&nbsp;2c de la communauté «&nbsp;batonaug&nbsp;»<li>Activer les déroutements SNMP</li></ul></b></font>]]></existingcommands>
+		<command prompt="R1(config)#">
+			<correctresponse id="cr1" ignoreCase='false'><![CDATA[snmp-server community batonaug ro SNMP_ACL]]></correctresponse>
+		</command>
+		<command prompt="R1(config)#">
+			<correctresponse id="cr1" ignoreCase='false'><![CDATA[snmp-server location NOC_SNMP_MANAGER]]></correctresponse>
+		</command>	
+		<command prompt="R1(config)#">
+			<correctresponse><![CDATA[snmp-server contact Wayne World]]></correctresponse>
+		</command>	
+		<command prompt="R1(config)#">
+			<correctresponse><![CDATA[snmp-server host 192.168.1.3 version 2c batonaug]]></correctresponse>
+		</command>	
+		<command prompt="R1(config)#">
+			<correctresponse><![CDATA[snmp-server enable traps]]></correctresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b><ul><li>Créer la liste de contrôle d'accès nommée standard SNMP_ACL afin d'autoriser l'adresse 192.168.1.3<li>Repasser en mode d'exécution privilégié</li></ul></b></font>]]></instruction>
+		</command>	
+		<command prompt="R1(config)#">
+			<correctresponse id="cr1" ignoreCase='false'><![CDATA[ip access-list standard SNMP_ACL]]></correctresponse>
+		</command>	
+		<command prompt="R1(config-std-nacl)#">
+			<correctresponse><![CDATA[permit 192.168.1.3]]></correctresponse>
+		</command>	
+		<command prompt="R1(config-std-nacl)#">
+			<correctresponse><![CDATA[end]]></correctresponse>
+			<deviceresponse><![CDATA[*Jun 19 00:58:22.558: %SYS-5-CONFIG_I: Configured from console by console<br>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Affichez les paramètres SNMP.</b></font>]]></instruction>
+		</command>	
+		<command prompt="R1#">
+			<correctresponse><![CDATA[show snmp]]></correctresponse>
+			<deviceresponse><![CDATA[Chassis: FTX1636848Z <br>Contact: Wayne World <br>Location: NOC_SNMP_MANAGER <br>0 SNMP packets input <br>    0 Bad SNMP version errors <br>    0 Unknown community name <br>    0 Illegal operation for community name supplied <br>    0 Encoding errors <br>    0 Number of requested variables <br>    0 Number of altered variables <br>    0 Get-request PDUs <br>    0 Get-next PDUs <br>    0 Set-request PDUs <br>    0 Input queue packet drops (Maximum queue size 1000) <br>20 SNMP packets output <br>    0 Too big errors (Maximum packet size 1500) <br>    0 No such name errors <br>    0 Bad values errors <br>    0 General errors <br>    0 Response PDUs <br>    20 Trap PDUs <br>SNMP Dispatcher: <br>   queue 0/75 (current/max), 0 dropped <br>SNMP Engine: <br>   queue 0/1000 (current/max), 0 dropped <br> <br>SNMP logging: enabled <br>    Logging to 192.168.1.3.162, 0/10, 20 sent, 0 dropped.<br>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Affichez les informations de communauté SNMP.</b></font>]]></instruction>
+		</command>
+		<command prompt="R1#">
+			<correctresponse><![CDATA[show snmp community]]></correctresponse>
+			<deviceresponse><![CDATA[<br>Community name: ILMI <br>Community Index: cisco0 <br>Community SecurityName: ILMI <br>storage-type: read-only active <br> <br> <br>Community name: batonaug <br>Community Index: cisco7 <br>Community SecurityName: batonaug <br>storage-type: nonvolatile active access-list: SNMP_ACL <br> <br> <br>Community name: batonaug@1 <br>Community Index: cisco8 <br>Community SecurityName: batonaug@1 <br>storage-type: nonvolatile active access-list: SNMP_ACL<br>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Vous avez configuré et vérifié SNMP.</font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+<component id="ID_sc1_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc1_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc1_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+</textcomponents>

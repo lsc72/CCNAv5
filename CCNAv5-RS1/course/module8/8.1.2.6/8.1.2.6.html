@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.2.6 Importance de l&#x0027;opération AND</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.2.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Masque de sous-réseau IPv4</h2>
+      </div>
+      <div id="content">
+<p>Toute opération AND entre un bit d'adresse ajouté à une valeur de bit 1 du masque de sous-réseau a pour résultat la valeur d'origine du bit de l'adresse. Ainsi, 0 (de l'adresse IPv4) AND 1 (du masque de sous-réseau) = 0. 1 (de l'adresse IPv4) AND 1(du masque de sous-réseau) = 1. Par conséquent, toute opération « AND 0 » a comme résultat 0. Ces propriétés de l'opération AND sont utilisées avec le masque de sous-réseau pour « masquer » les bits d'hôte d'une adresse IPv4. Le bit correspondant du masque de sous-réseau est ajouté à chaque bit de l'adresse par le biais d'une opération AND.</p>
+<p></p>
+<p>Puisque les bits du masque de sous-réseau qui représentent les bits d'hôte sont des 0, la partie hôte de l'adresse réseau résultante comporte uniquement des 0. Rappelez-vous qu'une adresse IPv4 comportant uniquement des 0 dans la partie hôte représente l'adresse réseau. </p>
+<p></p>
+<p>De même, tous les bits du masque de sous-réseau indiquant la partie réseau sont uniquement des 1. Lorsque tous les 1 sont ajoutés au bit d'adresse correspondant (via l'opération AND), les bits qui en résultent sont identiques aux bits d'adresse d'origine.</p>
+<p></p>
+<p>Comme l'illustre la figure ci-contre, les bits 1 du masque de sous-réseau impliquent que la partie réseau de l'adresse réseau a les mêmes bits que la partie réseau de l'hôte. La partie hôte de l'adresse réseau ne sera alors composée que de 0.</p>
+<p></p>
+<p>Pour une adresse IP spécifique et son sous-réseau, l'opération AND permet de déterminer à quel sous-réseau l'adresse appartient, ainsi que les adresses appartenant au même sous-réseau. N'oubliez pas que si deux adresses se trouvent sur le même réseau ou sous-réseau, elles sont considérées comme locales et peuvent donc communiquer directement entre elles. Les adresses qui ne sont pas sur le même réseau ou sous-réseau sont considérées comme distantes et doivent donc avoir un périphérique de couche 3 (tel qu'un routeur ou un commutateur de couche 3) entre elles pour communiquer.</p>
+<p></p>
+<p>Dans le cadre de la vérification/du dépannage d'un réseau, il faut souvent déterminer si deux hôtes sont sur le même réseau local. Cela n'est possible que si l'on se pose dans la perspective des périphériques réseau. Suite à une mauvaise configuration, un hôte peut s'identifier sur un réseau qui n'était pas celui prévu à l'origine. Cela peut créer un fonctionnement imprévisible, sauf si le problème est identifié en examinant les processus d'opération AND utilisés par l'hôte.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

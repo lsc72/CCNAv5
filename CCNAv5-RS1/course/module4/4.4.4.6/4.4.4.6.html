@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.4.6 Trame Ethernet</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.4.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Contrôle d&#x0027;accès au support</h1>
+        <h2>Trame liaison de données</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Ethernet </b>
+</p>
+<p></p>
+<p>Ethernet est la technologie de réseau local prédominante. Ethernet est une famille de technologies réseau définies par les normes IEEE 802.2 et 802.3. </p>
+<p></p>
+<p>Les normes Ethernet définissent à la fois les protocoles de la couche 2 et les technologies de la couche 1. Ethernet est la technologie de réseau local la plus utilisée et prend en charge des bandes passantes de données de 10 Mbit/s, 100 Mbit/s, 1 Gbit/s (1 000 Mbit/s) ou 10 Gbit/s (10 000 Mbit/s). </p>
+<p></p>
+<p>Le format de trame de base et les sous-couches IEEE des couches OSI 1 et 2 restent cohérents quelle que soit la forme d'Ethernet. Cependant, les méthodes de détection et de placement des données sur les supports varient selon les mises en oeuvre. </p>
+<p></p>
+<p>Ethernet fournit un service non orienté connexion sans accusé de réception sur un support partagé en utilisant les méthodes CSMA/CD comme méthodes d'accès au support. Le support partagé nécessite que l'en-tête de trame Ethernet utilise une adresse de couche liaison de données pour identifier les nœuds source et de destination. Comme avec la plupart des protocoles de réseau local, cette adresse est nommée adresse MAC du noeud. Une adresse MAC Ethernet comporte 48  bits et est généralement représentée dans un format hexadécimal. </p>
+<p></p>
+<p>La figure présente les nombreux champs de la trame Ethernet. Au niveau de la couche liaison de données, la structure de trame est presque la même pour tous les débits Ethernet. Cependant, au niveau de la couche physique, les différentes versions d'Ethernet ne placent pas les bits de la même manière sur les supports. Ethernet est traité plus en détail dans le chapitre suivant.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

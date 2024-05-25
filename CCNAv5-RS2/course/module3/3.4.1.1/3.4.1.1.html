@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.4.1.1 Plan VLAN</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.4.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Plan VLAN</b>
+</p>
+<p></p>
+<p>
+<b>Scénario</b>
+</p>
+<p>Vous créez un réseau commuté par VLAN pour votre PME. </p>
+<p>Votre entreprise loue des bureaux sur deux étages d'un gratte-ciel. Les éléments suivants ont besoin des critères et d'un accès VLAN à des fins de planification : </p>
+<p>
+<ul>
+<li>Administration</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Finance</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Ventes</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Ressources humaines </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Administrateur réseau </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Visiteurs généraux sur le site de votre entreprise</li>
+</ul>
+</p>
+<p>Vous avez deux commutateurs Cisco 3560-24PS.</p>
+<p>Utilisez un logiciel de traitement de texte pour concevoir le modèle de votre réseau commuté par VLAN. </p>
+<p>La section 1 de votre conception doit inclure les noms réguliers de vos services, les noms et les numéros de VLAN proposés, ainsi que les ports de commutateur attribués à chaque VLAN. </p>
+<p>La section 2 de votre conception doit indiquer comment la sécurité est prévue pour ce réseau commuté.</p>
+<p>Lorsque votre plan VLAN est terminé, répondez aux questions de réflexion du PDF de cet exercice. </p>
+<p>Enregistrez votre travail. Expliquez et parlez de votre conception VLAN avec un autre groupe ou avec la classe. </p>
+<p></p>
+<p>
+<a href="../../files/3.4.1.1%20VLAN%20Plan%20Instructions.pdf" target="_blank">Exercice en classe - Instructions pour le plan VLAN</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

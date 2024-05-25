@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.1.5 Normes 802.11</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts de la technologie sans fil</h1>
+        <h2>Introduction à la technologie sans fil</h2>
+      </div>
+      <div id="content">
+<p>La norme WLAN IEEE 802.11 WLAN définit la manière dont les fréquences radio des bandes ISM libres sont utilisées pour la couche physique et la sous-couche MAC des liens sans fil.</p>
+<p></p>
+<p>Différentes implémentations de la norme IEEE 802.11 ont été développées au fil des ans. Voici les principales :</p>
+<p>
+<ul>
+<li>
+<b>802.11</b> : diffusée en 1997 et désormais obsolète, il s'agit de la norme WLAN originale fonctionnant dans la bande 2,4 GHz ; elle offrait des débits jusqu'à 2 Mb/s. Lorsque cette norme a été créée, les LAN filaires fonctionnaient à 10 Mb/s ; la nouvelle technologie sans fil n'a donc pas été adoptée avec enthousiasme. Les périphériques sans fil disposent d'une antenne destinée à l'émission et à la réception des signaux sans fil.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>IEEE 802.11a</b> : diffusée en 1999, cette norme est utilisée sur la bande de fréquences 5 GHz, peu utilisée, et offre des débits jusqu'à 54 Mb/s. Cette norme s'appliquant à des fréquences élevées, elle possède une zone de couverture plus petite et est moins efficace pour pénétrer des structures de bâtiments. Les périphériques sans fil disposent d'une antenne destinée à l'émission et à la réception des signaux sans fil. Il n'existe pas d'interopérabilité entre les périphériques fonctionnant sous cette norme et les normes 802.11b et 802.11g.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>IEEE 802.11b</b> : diffusée en 1999, cette norme est utilisée sur la bande de fréquences 2,4 GHz et offre des débits jusqu'à 11 Mb/s. Les périphériques mettant en oeuvre cette norme ont une portée plus longue et sont davantage capables de pénétrer les structures de bâtiments que les périphériques basés sur la norme 802.11a. Les périphériques sans fil disposent d'une antenne destinée à l'émission et à la réception des signaux sans fil.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>IEEE 802.11g</b> : diffusée en 2003, cette norme est utilisée sur la bande de fréquences 2,4 GHz et offre des débits jusqu'à 54 Mb/s. Les périphériques implémentant cette norme fonctionnent par conséquent aux mêmes portées et radiofréquences que la norme 802.11b mais avec la bande passante de la norme 802.11a. Les périphériques sans fil disposent d'une antenne destinée à l'émission et à la réception des signaux sans fil. Elle offre une rétrocompatibilité avec la norme 802.11b. Cependant, lors de la prise en charge d'un client 802.11b, la bande passante globale est réduite.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>IEEE 802.11n</b> : diffusée en 2009, elle fonctionne dans les bandes 2,4 GHz et 5 GHz ; on parle alors de périphériques double bande. Les débits de données standard attendus varient de 150 Mb/s à 600 Mb/s, sur une distance maximale de 70 mètres. Toutefois, pour atteindre des débits supérieurs, les clients sans fil et les points d'accès doivent recourir à plusieurs antennes, en utilisant la technologie MIMO (Multiple-Input Multiple-Output). Celle-ci fait appel à plusieurs antennes utilisées à la fois comme émetteur et comme récepteur, pour améliorer les performances de communication. La configuration peut compter jusqu'à quatre antennes. La norme 802.11n offre la rétrocompatibilité avec les périphériques 802.11a/b/g. Toutefois, la prise en charge d'un environnement mixte limite les débits de données attendus.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>IEEE 802.11ac</b> : diffusée en 2013, elle fonctionne sur la bande de fréquences 5 GHz et offre des débits de données allant de 450 Mb/s à 1,3 Gb/s (1 300 Mb/s). Elle utilise la technologie MIMO pour améliorer les performances de communication. La configuration peut compter jusqu'à huit antennes. La norme 802.11ac offre la rétrocompatibilité avec les périphériques 802.11a/n ; toutefois, la prise en charge d'un environnement mixte limite les débits de données attendus.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>IEEE 802.11ad</b> : prévue pour un lancement en 2014 et baptisée « WiGig », cette norme utilise une solution Wi-Fi tribande sur les bandes de fréquences de 2,4 GHz, 5 GHz et 60 GHz et permet des débits théoriques jusqu'à 7 Gb/s. Cependant, la bande 60 GHz exige une portée optique et ne peut donc passer les murs. Lorsqu'un utilisateur est itinérant, le périphérique passe aux bandes inférieures 2,4 GHz et 5 GHz. Cette norme offre la rétrocompatibilité avec les périphériques Wi-Fi existants. Toutefois, la prise en charge d'un environnement mixte limite les débits de données attendus.</li>
+</ul>
+</p>
+<p></p>
+<p>La figure ci-contre offre un récapitulatif des différentes normes 802.11.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

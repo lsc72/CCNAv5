@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.1.4 Trames de gestion </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement LAN sans fil</h1>
+        <h2>Structure de trame 802.11</h2>
+      </div>
+      <div id="content">
+<p>Les trames de gestion sont utilisées exclusivement pour la recherche, l'authentification et l'association avec un point d'accès. </p>
+<p></p>
+<p>La Figure 1 indique la valeur de champ des trames de gestion les plus courantes, telles que :</p>
+<p>
+<ul>
+<li>
+<b>Trame de demande d'association</b> (0x00) : envoyée par un client sans fil, elle permet au point d'accès d'attribuer des ressources et d'effectuer une synchronisation. Cette trame contient des informations sur la connexion sans fil, notamment les débits de données pris en charge et l'identifiant SSID du réseau du client sans fil demandant l'association. Si la demande est acceptée, le point d'accès réserve de la mémoire et établit un ID d'association pour le périphérique.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Trame de réponse d'association</b> (0x01) : envoyée par un point d'accès à un client sans fil, elle indique si la demande d'association a été acceptée ou refusée. Dans le cas d'une acceptation, la trame contient différentes informations, telles que l'ID d'association et les débits de données pris en charge.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Trame de demande de réassociation</b> (0x02) : un périphérique envoie une demande de réassociation lorsqu'il se déconnecte du point d'accès déjà configuré et trouve un autre point d'accès au signal plus fort. Le nouveau point d'accès coordonne le transfert des éventuelles informations encore stockées dans la mémoire tampon du point d'accès précédent.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Trame de réponse de réassociation</b> (0x03) : envoyée par un point d'accès, elle indique si la demande de réassociation d'un périphérique a été acceptée ou refusée. Cette trame contient les informations nécessaires pour effectuer l'association, notamment l'ID d'association et les débits de données pris en charge.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Trame de demande d'enquête</b> (0x04) : envoyée par un client sans fil demandant des informations à un autre client sans fil.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Trame de réponse d'enquête</b> (0x05) : envoyée par un point d'accès, elle contient des informations de fonctionnalité, telles que les débits de données pris en charge, renvoyées après une demande d'enquête.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Trame de balise</b> (0x08) : envoyée périodiquement par un point d'accès pour annoncer sa présence, elle fournit l'identifiant SSID, ainsi que d'autres paramètres préconfigurés.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Trame de désassociation</b> (0x0A) : envoyée par un périphérique qui souhaite interrompre une connexion. Cette trame permet au point d'accès d'annuler l'allocation de mémoire et de retirer le périphérique de la table d'association.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Trame d'authentification</b> (0x0B) : le périphérique d'origine envoie une trame d'authentification au point d'accès, en indiquant son identité. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Trame de désauthentification</b> (0x0C) : envoyée par un client sans fil qui souhaite annuler sa connexion à un autre client sans fil.</li>
+</ul>
+</p>
+<p></p>
+<p>Les balises sont les seules trames de gestion pouvant être diffusées régulièrement par un point d'accès. Toutes les trames d'enquête, d'authentification et d'association sont utilisées exclusivement durant le processus d'association (ou de réassociation).</p>
+<p></p>
+<p>La Figure 2 contient une capture d'écran Wireshark d'exemple de trame de gestion. Les valeurs de champ changent afin de refléter la fonction de la trame. </p>
+<p></p>
+<p>
+<b>Remarque </b>: l'exemple fourni a été capturé à l'aide de Wireshark. Cependant, Wireshark doit être spécifiquement configuré pour capturer le trafic WLAN. La capacité de capture du trafic varie en fonction du système d'exploitation et peut nécessiter l'utilisation d'une carte réseau sans fil spéciale.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

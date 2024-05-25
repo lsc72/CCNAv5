@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.1.4 Modification de l&#x0027;appartenance des ports aux VLAN</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentations de VLAN</h1>
+        <h2>Affectation de VLAN</h2>
+      </div>
+      <div id="content">
+<p>Il existe plusieurs façons de modifier l'appartenance des ports aux VLAN. La Figure 1 illustre la syntaxe permettant de faire passer un port de commutateur en appartenance VLAN 1 à l'aide de la commande de mode de configuration d'interface <span class="cmd"><b>no switchport access vlan</b></span>. </p>
+<p></p>
+<p>L'interface F0/18 avait été précédemment attribuée au VLAN 20. Saisissez la commande <span class="cmd"><b>no switchport access vlan</b></span> pour l'interface F0/18. Examinez les informations affichées par la commande <span class="cmd"><b>show vlan brief</b></span> qui suit immédiatement, comme illustré en Figure 2. La commande <span class="cmd"><b>show vlan brief</b></span> affiche le type d'attribution de VLAN et d'appartenance de tous les ports du commutateur. La commande <span class="cmd"><b>show vlan brief</b></span> affiche une ligne pour chaque VLAN. Le résultat pour chaque VLAN inclut son nom, son état et ses ports du commutateur.</p>
+<p></p>
+<p>Le VLAN 20 est toujours actif, même si aucun port ne lui est affecté. Dans la Figure 3, la commande <span class="cmd"><b>show interfaces f0/18 switchport</b></span> vérifie que le VLAN d'accès pour l'interface F0/18 a été réinitialisé sur le VLAN 1.</p>
+<p></p>
+<p>Il est très facile de modifier l'appartenance d'un port à un VLAN. Il n'est pas nécessaire de commencer par supprimer un port d'un VLAN pour modifier son appartenance à ce réseau. Lorsqu'un port d'accès est réaffecté à un autre VLAN existant, cette nouvelle appartenance remplace simplement la précédente. Dans la Figure 4, le port F0/11 est affecté au VLAN 20.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 5 pour modifier l'appartenance des ports aux VLAN.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.1.2 Processus serveur TCP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>TCP et UDP</h1>
+        <h2>Communication TCP</h2>
+      </div>
+      <div id="content">
+<p>Les processus d'application s'exécutent sur les serveurs. Un seul serveur peut exécuter plusieurs processus d'application simultanément. Ces processus attendent qu'un client lance une requête d'informations ou d'autres services.</p>
+<p></p>
+<p>Chaque processus applicatif qui s'exécute sur le serveur est configuré par défaut, ou manuellement par un administrateur système, pour utiliser un numéro de port. Deux services ne peuvent pas être affectés au même numéro de port d'un serveur au sein des mêmes services de la couche transport. Il est impossible qu'une application de serveur Web et une application de transfert de fichiers s'exécutant sur un hôte soient toutes deux configurées pour utiliser le même port (par exemple le port TCP 8080). Une application de serveur active affectée à un port spécifique est considérée comme étant ouverte, ce qui signifie que la couche transport accepte et traite les segments adressés à ce port. Toute requête entrante d'un client qui est adressée au socket correct est acceptée et les données sont transmises à l'application de serveur. De nombreux ports peuvent être ouverts simultanément sur un serveur, chacun étant destiné à une application de serveur active. Il est courant qu'un serveur fournisse plusieurs services simultanément, par exemple en tant que serveur Web et en tant que serveur FTP.</p>
+<p></p>
+<p>Limiter l'accès au serveur aux seuls ports associés aux services et applications devant être accessibles aux demandeurs autorisés est un moyen d'améliorer la sécurité sur le serveur. </p>
+<p></p>
+<p>Voir les figures 1 à 5 pour consulter l'affectation standard des ports source et de destination dans le cadre des opérations client-serveur TCP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

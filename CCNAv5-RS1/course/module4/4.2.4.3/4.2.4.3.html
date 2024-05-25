@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.4.3 LAN sans fil</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.4.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Supports réseau</h1>
+        <h2>Supports sans fil</h2>
+      </div>
+      <div id="content">
+<p>Une mise en oeuvre courante de réseau de données sans fil est la possibilité pour des périphériques de se connecter sans fil via un réseau local. Un réseau local sans fil exige généralement les périphériques réseau suivants  :</p>
+<p>
+<ul>
+<li>
+<b>Point d'accès sans fil</b> : il concentre les signaux sans fil des utilisateurs et se connecte, en général via un câble en cuivre, à une infrastructure réseau en cuivre existante telle qu'Ethernet. Les routeurs sans fil pour particuliers et petites entreprises intègrent à la fois les fonctions d'un routeur, d'un commutateur et d'un point d'accès, comme illustré dans la figure.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adaptateurs de carte réseau sans fil</b> : ils fournissent à chaque hôte du réseau la possibilité de communiquer sans fil.</li>
+</ul>
+</p>
+<p></p>
+<p>Au fur et à mesure de la mise au point de cette technologie, un certain nombre de normes Ethernet WLAN ont émergé. L'acquisition de périphériques sans fil doit s'effectuer avec soin pour garantir la compatibilité et l'interopérabilité.</p>
+<p></p>
+<p>Les avantages des technologies de communication de données sans fil sont évidents, en particulier les économies sur le câblage coûteux des locaux et le côté pratique lié à la mobilité des hôtes. Cependant, les administrateurs réseau doivent mettre au point et appliquer des processus et politiques de sécurité stricts pour protéger les réseaux locaux sans fil contre tout accès non autorisé et endommagement.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

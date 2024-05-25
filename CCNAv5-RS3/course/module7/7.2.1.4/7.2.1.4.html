@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.1.4 ID de routeur EIGRP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole EIGRP pour IPv4</h1>
+        <h2>Configuration du protocole EIGRP avec IPv4</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Détermination de l’ID de routeur</b>
+</p>
+<p></p>
+<p>L'ID de routeur EIGRP permet d'identifier de façon unique chaque routeur dans le domaine de routage EIGRP. L'ID de routeur est utilisé à la fois dans les protocoles de routage EIGRP et OSPF, bien que son rôle soit plus important dans OSPF. </p>
+<p></p>
+<p>Dans les implémentations EIGRP IPv4, l'utilisation de l'ID de routeur est moins visible. Le protocole EIGRP pour IPv4 utilise l'ID de routeur de 32 bits pour identifier le routeur d'origine pour la redistribution des routes externes. La nécessité d'un ID de routeur est plus évidente dans le cadre du protocole EIGRP pour IPv6. Bien que l'ID de routeur soit nécessaire pour la redistribution, les détails de la redistribution EIGRP n'entrent pas dans le cadre de ce programme. Ici, il est seulement nécessaire de comprendre la nature et l'origine de l'ID de routeur.</p>
+<p></p>
+<p>Les routeurs Cisco créent l'ID de routeur en fonction de trois critères, dans l'ordre suivant :</p>
+<p></p>
+<p>1. Utilisez l'adresse IPv4 configurée avec la commande de mode de configuration du routeur<span class="cmd"><b> eigrp router-id</b></span>.</p>
+<p></p>
+<p>2. Si l'ID de routeur n'est pas configuré, le routeur choisit l'adresse IPv4 la plus élevée parmi celles de ses interfaces de bouclage.</p>
+<p></p>
+<p>3. Si aucune interface de bouclage n'est configurée, le routeur choisit l'adresse IPv4 active la plus élevée parmi celles de ses interfaces physiques.</p>
+<p></p>
+<p>Si l'administrateur réseau ne configure pas un ID de routeur de façon explicite avec la commande<span class="cmd"><b> eigrp router-id</b></span>, le protocole EIGRP génère son propre ID de routeur avec une adresse IPv4 de bouclage ou physique. Une adresse de bouclage est une interface virtuelle et est automatiquement à l’état actif lorsqu’elle est configurée. Il n'est pas nécessaire d'activer l'interface pour le protocole EIGRP, autrement dit, il n'est pas nécessaire de l'inclure dans l'une des commandes réseau EIGRP. L'interface doit, toutefois, être à l'état up/up (actif/actif).</p>
+<p></p>
+<p>À l'aide des critères décrits ci-dessus, la figure illustre les ID de routeur EIGRP par défaut déterminés par l'adresse IPv4 active la plus élevée des routeurs.</p>
+<p></p>
+<p>
+<b>Remarque </b>: la commande <span class="cmd"><b>eigrp router-id</b></span> est utilisée pour configurer l'ID de routeur pour le protocole EIGRP. Certaines versions de Cisco IOS acceptent la commande <span class="cmd"><b>router-id</b></span> sans la spécification préalable de l'option <span class="cmd"><b>eigrp</b></span>. Toutefois, la configuration en cours affichera <span class="cmd"><b>eigrp router-id</b></span> quelle que soit la commande utilisée.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

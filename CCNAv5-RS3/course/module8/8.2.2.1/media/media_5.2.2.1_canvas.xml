@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+<slide>    
+	
+	<slide>    
+	<element type="TEXT" subType="TITLE" compId="ID_s1_title"/> 
+    <element type="IMAGE" src="5_2_2_1.jpg" x="0" y="0" width="470" height="400"/> 
+    <element type="TEXT" text="S0/0/0 .1" align="right" x="145" y="113.35" width="40" size="11"/>
+    <element type="TEXT" text="S0/0/0 .2" align="right" x="246" y="81.35" width="40" size="11"/>
+    <element type="TEXT" text="G0/0 .1" align="right" x="292" y="51.55" width="40" size="11"/>
+    <element type="TEXT" text="172.16.3.0/30" align="centre" x="185" y="97" width="99" size="11" bold="1"/>
+	 <element type="ROUTER" textId="ID_routertxt01" x="1" y="198.55" width="462.9" height="197.05" size="10"/>
+	 
+	</slide>
+	  	
+</slide>
+ 
+ <text id="ID_routertxt01"><![CDATA[<code>R1# <b>show ip interface brief</b>
+Interface                  IP-Address      OK? Method Status
+Protocol
+GigabitEthernet0/0         172.16.1.1      YES manual up        up
+<span class="orange_block">Serial0/0/0                172.16.3.1      YES manual up        up </span>
+Serial0/0/1                192.168.10.5    YES manual up        up 
+R1# <b>ping 172.16.3.2</b>
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 172.16.3.2, timeout is 2 seconds:
+<span class="orange">!!!!!</span>
+Success rate is 100 percent (5/5), round-trip min/avg/max = 
+28/28/28 ms
+R1# </code>]]>
+  </text> 
+  
+</data>

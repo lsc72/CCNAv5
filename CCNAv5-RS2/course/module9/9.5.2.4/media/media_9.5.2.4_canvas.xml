@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		
+		<slide>
+			<element type="IMAGE" src="9_5_2_4.jpg" x="0" y="0" width="470" height="400"/>
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title" />
+			<element type="TEXT" text="2001:DB8:FEED:1::/64" width="109.1" x="92.25" y="93.7" align="center" bold="1" size="10"/>	
+			<element type="TEXT" text="2001:DB8:FEED:2::/64" width="109.1" x="284.25" y="93.7" align="center" bold="1" size="10"/>
+			<element type="TEXT" text="2001:DB8:CAFE:10::/64" width="115.2" x="2.7" y="208.9" align="center" bold="1" size="10"/>
+			<element type="TEXT" text="2001:DB8:CAFE:11::/64" width="115.2" x="193.85" y="208.9" align="center" bold="1" size="10"/>
+			<element type="TEXT" text="2001:DB8:CAFE:30::/64" width="115.2" x="321.65" y="210.3" align="center" bold="1" size="10" />
+			<element type="TEXT" text="2001:DB8:CAFE:10::10/64" width="112.4" x="1.7" y="349.45" align="center" bold="1" size="10"/>	
+			<element type="TEXT" text="2001:DB8:CAFE:11::11/64" width="112.4" x="148.85" y="349.45" align="center" bold="1" size="10"/>
+			<element type="TEXT" text="2001:DB8:CAFE:30::12/64" width="126.3" x="310.65" y="349.45" align="center" bold="1" size="10"/>
+			<element type="TEXT" text="S0/0/0 :2" width="33.1" x="184.95" y="68.5" align="right" size="10"/>	
+			<element type="TEXT" text="S0/0/1 :2" width="33.1" x="268.95" y="68.5" align="left" size="10"/>
+			<element type="TEXT" text="S0/0/0 :1" width="33.1" x="138.9" y="107.5" align="right" size="10"/>
+			<element type="TEXT" text="S0/0/1 :1" width="33.1" x="302.8" y="107.5" align="left" size="10"/>
+			<element type="TEXT" text="G0/0 :1" width="25.9" x="114.7" y="165.25" align="center" size="10"/>
+			<element type="TEXT" text="G0/1 :1" width="25.9" x="170" y="165.25" align="center" size="10"/>	
+			<element type="TEXT" text="G0/0 :1" width="25.9" x="323.7" y="169.25" align="left" size="10"/>
+		</slide>
+		
+		<slide>	
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title" />		
+			<element type="ROUTER" textId="ID_s2_01" x="3.85" y="45" width="430" height="137.45" size="10"/>
+		</slide>
+			
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title" />
+			<element type="ROUTER" textId="ID_s3_01" x="10" y="45" width="430" height="345.5" size="10"/>
+		</slide>	
+			
+</slide>
+	
+	<text id="ID_s1_01"><![CDATA[
+	<table width="403" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>R1(config-ipv6-acl)# deny | permit protocol {source-ipv6-prefix/prefix-length | any | host source-ipv6-address} [operator [port-number]] {destination-ipv6-prefix/ prefix-length | any | host destination-ipv6-address} [operator [port-number]] </td>
+  </tr>
+</table>
+]]></text>
+
+<text id="ID_s2_01"><![CDATA[<pre>R1(config)# <b>ipv6 access-list NO-FTP-TO-11</b> 
+R1(config-ipv6-acl)# <b>deny tcp any 2001:db8:cafe:11::/64 eq ftp</b>
+R1(config-ipv6-acl)# <b>deny tcp any 2001:db8:cafe:11::/64 eq ftp-data</b>
+R1(config-ipv6-acl)# <b>permit ipv6 any any</b>
+R1(config-ipv6-acl)# <b>exit</b>
+R1(config)# <b>interface g0/0</b>
+R1(config-if)# <b>ipv6 traffic-filter NO-FTP-TO-11 in</b>
+R1(config-if)#
+</pre>]]></text>
+
+<text id="ID_s3_01"><![CDATA[<code>R3(config)# <b>ipv6 access-list RESTRICTED-ACCESS</b>
+R3(config-ipv6-acl)# <b>remark Permit access only HTTP and HTTPS to Network 10</b>
+R3(config-ipv6-acl)# <b>permit tcp any host 2001:db8:cafe:10::10 eq 80</b><span class="connector"></span>    <number value="1" id="n1"></number>
+R3(config-ipv6-acl)# <b>permit tcp any host 2001:db8:cafe:10::10 eq 443</b>
+R3(config-ipv6-acl)# <b>remark Deny all other traffic to Network 10</b>
+R3(config-ipv6-acl)# <b>deny ipv6 any 2001:db8:cafe:10::/64  <number value="2"></number></b>
+R3(config-ipv6-acl)# <b>remark Permit PC3 telnet access to PC2</b>
+R3(config-ipv6-acl)# <b>permit tcp host 2001:DB8:CAFE:30::12 host 2001:DB8:CAFE:11::11 eq 23  <number value="3" id="n3"></number></b>
+R3(config-ipv6-acl)# <b>remark Deny telnet access to PC2 for all other devices</b>
+R3(config-ipv6-acl)# <b>deny tcp any host 2001:db8:cafe:11::11 eq 23  <number value="4" id="n4"></number></b>
+R3(config-ipv6-acl)# <b>remark Permit access to everything else</b>
+R3(config-ipv6-acl)# <b>permit ipv6 any any  <number value="5" id="n5"></number></b>
+R3(config-ipv6-acl)# <b>exit</b>
+R3(config)# <b>interface g0/0</b>
+R3(config-if)# <b>ipv6 traffic-filter RESTRICTED-ACCESS in  <number value="6"></number></b>
+R3(config-if)#</code>
+]]></text>
+
+
+</data>

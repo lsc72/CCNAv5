@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.1.2 Sources de la table de routage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement d&#x0027;un routeur</h1>
+        <h2>Analyse de la table de routage</h2>
+      </div>
+      <div id="content">
+<p>Sur un routeur Cisco IOS, la commande <span class="cmd"><b>show ip route</b></span> peut être utilisée pour afficher la table de routage IPv4 d'un routeur. Un routeur fournit des informations supplémentaires concernant la route, notamment la façon dont elle a été détectée, depuis combien de temps elle se trouve dans la table et quelle interface spécifique permet d'atteindre une destination prédéfinie.</p>
+<p></p>
+<p>Les entrées de la table de routage peuvent être ajoutées en tant que :</p>
+<p>
+<ul>
+<li>
+<b>Interfaces de route locale</b> : ajoutées lorsqu'elles sont configurées et actives. Cette entrée est uniquement affichée dans IOS 15 ou les versions plus récentes pour les routes IPv4 et dans toutes les versions IOS pour les routes IPv6.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Interfaces connectées directement : </b>ajoutées à la table de routage lorsqu'elles sont configurées et actives.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Routes statiques :</b> ajoutées lors de leur configuration manuelle et quand l'interface de sortie est active. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Protocole de routage dynamique</b> : ajouté lorsque des protocoles de routage qui découvrent le réseau de manière dynamique, tels qu'EIGRP ou OSPF, sont mis en œuvre et que des réseaux sont identifiés.</li>
+</ul>
+</p>
+<p></p>
+<p>La source des entrées de la table de routage est identifiée par un code. Ce code définit comment la route a été découverte. Voici quelques exemples de codes courants :</p>
+<p>
+<ul>
+<li>
+<b>L</b> : identifie l'adresse attribuée à l'interface d'un routeur. Ceci permet au routeur de déterminer efficacement s'il reçoit un paquet destiné à l'interface et non à être transféré. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>C</b> : signale un réseau connecté directement. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>S</b> : identifie une route statique créée pour atteindre un réseau donné. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>D</b> : identifie un réseau découvert de manière dynamique depuis un autre routeur à l'aide du protocole EIGRP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>O</b> : identifie un réseau découvert de manière dynamique depuis un autre routeur à l'aide du protocole de routage OSPF.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque :</b> certains des codes ne sont pas abordés dans ce chapitre.</p>
+<p></p>
+<p>La figure ci-contre illustre la table de routage du périphérique R1 dans un réseau simple. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.4.4 Contrôle de la syntaxe des commandes</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.4.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>IOS Bootcamp</h1>
+        <h2>Structure des commandes</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Contrôle de la syntaxe des commandes</b>
+</p>
+<p></p>
+<p>Lorsque vous soumettez une commande en appuyant sur la touche Entrée, l'interpréteur de commandes analyse la commande de gauche à droite pour déterminer l'action demandée. En général, l'IOS fournit uniquement des retours négatifs, comme illustré à la Figure 1. Si l'interpréteur comprend la commande, IOS exécute l'action demandée et l'invite appropriée reparaît dans l'interface CLI. Par contre, s'il ne comprend pas la commande entrée, l'interpréteur affiche des commentaires décrivant le problème rencontré.</p>
+<p></p>
+<p>La Figure 2 présente trois types de messages d'erreur :</p>
+<p></p>
+<p>
+<ul>
+<li>Commande ambiguë</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Commande incomplète</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Commande incorrecte </li>
+</ul>
+</p>
+<p></p>
+<p>La commande <span class="cmd"><b>clock set</b></span> est une commande IOS conçue pour vous familiariser avec les messages de vérification de la syntaxe des commandes, comme illustré à la Figure 1. La Figure 2 décrit les trois types de messages d'erreur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

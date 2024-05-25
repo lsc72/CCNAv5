@@ -1,0 +1,64 @@
+﻿<textcomponents>
+ 
+<component id="ID_s1_title">
+<text><![CDATA[<b>Protocole EIGRP pour la topologie IPv4</b>]]></text>
+</component> 
+
+<component id="ID_s1_txt01">
+<text><![CDATA[<b>64&nbsp;kbit/s</b>]]></text>
+</component> 
+<component id="ID_s1_txt02">
+<text><![CDATA[<b>1024&nbsp;kbit/s</b>]]></text>
+</component> 
+<component id="ID_s1_txt03">
+<text><![CDATA[<b>1544&nbsp;kbit/s</b>]]></text>
+</component> 
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+	
+
+  <component id="ID_s2_title">
+<text><![CDATA[<b>Configuration de l'utilisation de la bande passante avec le protocole EIGRP pour IPv4</b>]]></text>
+</component>
+  
+ <component id="ID_s3_title">
+<text><![CDATA[<b></b>]]></text>
+</component>
+  
+<component id="ID_s4_title">
+<text><![CDATA[<b>Configuration de l'utilisation de la bande passante avec le protocole EIGRP pour IPv6</b>]]></text>
+</component>
+
+
+
+<component id="ID_SC4" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b>***</b><font face="Arial" color="#0000FF">Vous devez saisir la commande exacte et complète.</font><b>***</b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font face="Arial"><b>Configurez les interfaces entre R2 et R3 pour limiter le trafic d'AS&nbsp;1 EIGRP à 75&nbsp;% maximum de la bande passante du lien. Effectuez les tâches dans l'ordre suivant&nbsp;:<ul><li>Configurez l'interface Serial&nbsp;0/0/1 sur R2<li>Configurez l'interface Serial&nbsp;0/0/1 sur R3</ul></b></font>]]></existingcommands>
+		<command  prompt="R2(config)#">
+		    <correctresponse><![CDATA[interface serial 0/0/1]]></correctresponse>
+		</command>
+		<command  prompt="R2(config-if)#">
+		    <correctresponse><![CDATA[ip bandwidth-percent eigrp 1 75]]></correctresponse>
+			<instruction><![CDATA[<font face="Arial"><b>Vous configurez maintenant R3.</b>]]></instruction>
+		</command>
+		<command  prompt="R3(config)#">
+		    <correctresponse><![CDATA[interface serial 0/0/1]]></correctresponse>
+		</command>
+		<command  prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[ip bandwidth-percent eigrp 1 75]]></correctresponse>
+			<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez correctement configuré l'utilisation de la bande passante.</b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+	
+	
+</textcomponents>

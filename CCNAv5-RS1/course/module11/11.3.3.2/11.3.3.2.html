@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.3.3.2 Affichage des paramètres du routeur grâce à la commande show version</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.3.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Performances réseau de base</h1>
+        <h2>Commandes Show</h2>
+      </div>
+      <div id="content">
+<p>Une fois le fichier de configuration initiale chargé et le routeur démarré correctement, vous pouvez utiliser la commande <span class="cmd"><b>show version</b></span> pour vérifier et dépanner certains composants matériels et logiciels de base utilisés au cours du processus de démarrage. Le résultat de la commande <span class="cmd"><b>show version</b></span> comprend les éléments suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>la version du logiciel Cisco IOS utilisé ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>la version du logiciel de démarrage système (bootstrap) stocké dans la mémoire vive qui a été utilisé pour démarrer le routeur ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>le nom de fichier complet de l'image Cisco IOS et l'emplacement auquel le programme d'amorçage l'a recherchée ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>le type de processeur utilisé sur le routeur et la taille de la mémoire vive. Vous devrez peut-être mettre à niveau la taille de la mémoire vive lors de la mise à niveau du logiciel Cisco IOS ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>le nombre et le type d'interfaces physiques sur le routeur ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>la taille de la mémoire vive non volatile (NVRAM). La mémoire vive non volatile sert à stocker le fichier de configuration initiale.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>la taille de la mémoire flash du routeur. Vous devrez peut-être mettre à niveau la taille de la mémoire flash lors de la mise à niveau du logiciel Cisco IOS ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>la valeur configurée actuellement du registre de configuration du logiciel, au format hexadécimal.</li>
+</ul>
+</p>
+<p></p>
+<p>Cliquez sur le bouton Lecture de la figure pour regarder une animation sur l'identification de ces fonctions du résultat de la commande show version.</p>
+<p></p>
+<p>Le registre de configuration indique au routeur comment démarrer. Par exemple, le paramètre d'usine par défaut pour le registre de configuration est 0x2102. Cette valeur indique que le routeur tente de charger une image du logiciel Cisco IOS à partir de la mémoire flash et essaie de charger le fichier de configuration initiale à partir de la mémoire vive non volatile. Il est possible de modifier le registre de configuration et, par conséquent, de modifier l'emplacement auquel le routeur recherche l'image Cisco IOS et le fichier de configuration initiale au cours du processus de démarrage. S'il existe une deuxième valeur entre parenthèses, celle-ci indique la valeur du registre de configuration à utiliser au cours du prochain rechargement du routeur.</p>
+<p></p>
+<p>Cliquez sur l'icône Remarque dans le coin inférieur droit de la figure pour obtenir plus d'informations sur le registre de configuration.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.2.4 Couche cœur de réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation de la conception de réseau hiérarchique</h1>
+        <h2>Conception hiérarchique du réseau</h2>
+      </div>
+      <div id="content">
+<p>La couche cœur de réseau est aussi appelée réseau fédérateur. Elle se compose de périphériques réseau à grande vitesse, par exemple les Cisco Catalyst 6500 ou 6800. Ils sont conçus pour transmettre les paquets le plus rapidement possible et pour connecter entre eux plusieurs composants du campus, par exemple les modules de distribution, les modules de service, le data center et la périphérie WAN.</p>
+<p></p>
+<p>Comme présenté dans la figure, la couche cœur de réseau est cruciale pour la connexion entre périphériques de la couche de distribution, par exemple, l'interconnexion entre le bloc de distribution vers le WAN et la périphérie Internet. Le cœur doit être extrêmement disponible et redondant. La couche cœur de réseau regroupe le trafic provenant de tous les périphériques de la couche de distribution. Elle doit donc être capable d'effectuer la transmission rapide d'importantes quantités de données.</p>
+<p></p>
+<p>Éléments à prendre en considération au niveau du cœur :</p>
+<p>
+<ul>
+<li>Commutation haute vitesse (transport rapide)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Fiabilité et tolérance aux pannes</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Mise à l'échelle avec un équipement plus rapide, et non en rajoutant des éléments</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Pas de manipulation de paquets gourmande en ressources processeur provoquée par la sécurité, l'inspection, la classification de qualité de service (QS) ou tout autre processus</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

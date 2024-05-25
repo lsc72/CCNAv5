@@ -1,0 +1,27 @@
+
+/*   load the main media CSS file    */
+
+@import url('../../../common/styles/media2.css');
+
+html, body {
+	margin:0;
+	height:100%; 
+}
+ 
+#flashContent {
+	width:98%;
+	height:98%; 
+	position:fixed;/* ... absolute possible if on :root */
+	top:0;bottom:0;right:0;left:0;
+	overflow:hidden; 
+}
+
+ 
+  
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+
+#videoTag_video { margin:0 auto !important; text-align:center;}
+#ytplayer {width:310px !important; margin:0 auto;}
+
+}

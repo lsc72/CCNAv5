@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.1.2 Évolution des technologies</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Connecté au monde entier</h1>
+        <h2>Les réseaux aujourd&#x0027;hui</h2>
+      </div>
+      <div id="content">
+<p>Imaginez un monde sans Internet. Plus de Google, de YouTube, de messagerie instantanée, de Facebook, de Wikipedia, de jeux en ligne, de Netflix, d'iTunes et d'accès facile aux informations. Plus de sites Web de comparaison de tarifs, plus de shopping en ligne, plus de recherche rapide de numéros de téléphone et d'itinéraires. Dans quelles mesures nos vies seraient-elles différentes sans toutes ces technologies ? En fait, ce serait tout simplement le monde dans lequel nous vivions il y a 15 ou 20 ans. Au fil des années, les réseaux de données se sont développés lentement et ont été redéfinis pour améliorer la qualité de vie de tous.</p>
+<p></p>
+<p>Au cours d'une seule journée, les ressources disponibles sur Internet peuvent vous aider à :</p>
+<p>
+<ul>
+<li>publier vos photographies, vidéos personnelles et expériences et les partager avec vos amis ou avec le monde entier.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>accéder à vos devoirs et envoyer vos travaux à l'école ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>communiquer avec vos amis, votre famille, et vos collègues par messagerie électronique, messagerie instantanée ou appels téléphoniques sur Internet ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>visionner des vidéos, des films ou des émissions à la demande ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>jouer sur Internet avec vos amis ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>choisir en ligne ce que vous allez porter en fonction de la météo ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>déterminer le trajet le moins embouteillé en visualisant les vidéos du trafic routier et les conditions météo transmises par les webcams ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>consulter votre compte bancaire et payer vos factures en ligne.</li>
+</ul>
+</p>
+<p></p>
+<p>Les innovateurs cherchent des façons d'exploiter au mieux Internet, chaque jour. Alors que les développeurs repoussent les limites du Web, les fonctionnalités d'Internet et le rôle qu'Internet joue dans nos vies se développent de plus en plus. Tenez compte des modifications qui se sont produites depuis 1995, comme indiqué dans la figure. À présent, essayez d'imaginer les modifications qui se produiront pendant les 25 prochaines années. Cet avenir inclut l'Internet of Everything (IoE).</p>
+<p></p>
+<p>L'IoE rassemble les personnes, les processus, les données, et les périphériques pour mettre en place les connexions réseau les plus adaptées et les plus efficaces. Il exploite les informations en créant de nouvelles fonctionnalités, des expériences plus riches et des opportunités économiques sans précédent pour les utilisateurs, les entreprises et les pays.</p>
+<p></p>
+<p>Que pensez-vous pouvoir faire d'autre avec le réseau en tant que plate-forme ?</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

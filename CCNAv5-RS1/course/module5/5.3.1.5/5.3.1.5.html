@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.3.1.5 Méthodes de transmission de trames sur les commutateurs Cisco</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.3.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Commutateurs LAN</h1>
+        <h2>Commutation</h2>
+      </div>
+      <div id="content">
+<p>Auparavant, les commutateurs faisaient appel aux méthodes de transmission pour la commutation des données entre des ports réseau : </p>
+<p>
+<ul>
+<li>Stockage et retransmission (Store-and-Forward)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Commutation Cut-through</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 1 indique les différences entre ces deux méthodes. </p>
+<p></p>
+<p>Dans le cas de la commutation Store and Forward, lorsque le commutateur reçoit la trame, il stocke les données dans des mémoires tampons jusqu'à ce qu'il ait reçu l'intégralité de la trame. Au cours de ce processus de stockage, le commutateur recherche dans la trame des informations concernant sa destination. Dans le cadre de ce même processus, le commutateur procède à un contrôle d'erreur à l'aide du contrôle par redondance cyclique (CRC) du code de fin de la trame Ethernet. </p>
+<p></p>
+<p>Le contrôle par redondance cyclique (CRC) a recours à une formule mathématique fondée sur le nombre de bits (de uns) dans la trame afin de déterminer si la trame reçue possède une erreur. Une fois l'intégrité de la trame confirmée, celle-ci est transférée via le port approprié vers la destination. En cas d'erreur détectée au sein de la trame, le commutateur ignore la trame. L'abandon des trames avec erreurs réduit le volume de bande passante consommé par les données altérées. La commutation Store and Forward est nécessaire pour l'analyse de la qualité de service (QS) sur des réseaux convergés où la classification des trames pour la priorité du trafic est indispensable. Par exemple, les flux de données de voix sur IP doivent être prioritaires sur le trafic Web. </p>
+<p></p>
+<p>Sur la Figure 2, lancez l'animation pour afficher une démonstration du processus de stockage et retransmission. Cette méthode est actuellement la seule employée sur les modèles actuels de commutateurs Cisco Catalyst.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.2.3 Présentation de l&#x0027;UDP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole de couche Transport</h1>
+        <h2>Présentation des protocoles TCP et UDP</h2>
+      </div>
+      <div id="content">
+<p>
+<b>protocole UDP (User Datagram Protocol)</b>
+</p>
+<p></p>
+<p>Le protocole UDP est un protocole de transport d'acheminement au mieux, décrit dans le document RFC 768. Le protocole UDP est un protocole de transport léger qui offre les mêmes fonctions de segmentation et de réorganisation des données que le protocole TCP, mais sans la fiabilité et le contrôle de flux du protocole TCP. C'est un protocole simple, qui est généralement décrit en indiquant ce qu'il ne fait pas par rapport au protocole TCP. </p>
+<p></p>
+<p>Comme l'illustre la figure, les fonctionnalités suivantes constituent le protocole UDP :</p>
+<p>
+<ul>
+<li>
+<b>Sans connexion</b> – le protocole UDP n'établit pas de connexion entre les hôtes avant que les données puissent être envoyées et reçues. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Acheminement non fiable</b> – le protocole UDP ne fournit pas de services garantissant que les données sont acheminées de façon fiable. Il n'existe pas de processus dans le protocole UDP permettant de faire retransmettre à l'expéditeur les données perdues ou endommagées.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Aucune reconstitution ordonnée des données</b> – parfois, les données sont reçues dans un ordre différent de celui dans lequel elles ont été envoyées. Le protocole UDP n'offre aucun mécanisme permettant de réorganiser les données dans leur ordre initial. Les données sont simplement remises à l'application dans l'ordre où elles arrivent.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Aucun contrôle de flux</b> – le protocole UDP ne propose aucun service permettant de contrôler la quantité de données envoyées par la source pour éviter de submerger le périphérique de destination. La source envoie les données. Si les ressources sur l'hôte de destination sont surexploitées, l'hôte de destination abandonne généralement les données envoyées jusqu'à ce que des ressources soient disponibles. Contrairement au protocole TCP, le protocole UDP ne fournit aucun mécanisme permettant de retransmettre automatiquement les données abandonnées.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

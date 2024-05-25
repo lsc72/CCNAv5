@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+  <slide type="MBAR"> 
+    
+    <slide>    
+    <element type="TEXT" subType="TITLE" compId="ID_s1_title"/> 
+    <element type="ROUTER" textId="ID_s1_txt01" x="6.55" y="44.75" width="426" height="321.4" size="11"/>
+    </slide>
+    <slide>    
+    <element type="TEXT" subType="TITLE" compId="ID_s2_title"/> 
+    <element type="ROUTER" textId="ID_s2_txt01" x="6.55" y="44.75" width="426" height="144.35" size="11"/>
+    </slide>
+    <slide>    
+    <element type="TEXT" subType="TITLE" compId="ID_s3_title"/> 
+    <element type="ROUTER" textId="ID_s3_txt01" x="6.55" y="44.75" width="426" height="269.35" size="11"/>
+    </slide>
+    <slide>
+      <element type="TEXT" subType="TITLE" compId="ID_s4_title" />
+      <element type="ACTIVITY" subType="SYNTAX" compId="ID_SC5" x="1.5" y="30.95" width="437.1" height="367" size="10" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall" />     
+    </slide>
+
+   </slide>
+
+ 
+  <text id="ID_s1_txt01"><![CDATA[<pre>R1# <b>show ip protocols </b>
+*** IP Routing is NSF aware ***
+
+Routing Protocol is "ospf 10"
+  Outgoing update filter list for all interfaces is not set
+  Incoming update filter list for all interfaces is not set
+<span>  Router ID 192.168.10.5</span>
+  Number of areas in this router is 1. 1 normal 0 stub 0 
+  nssa
+  Maximum path: 4
+  Routing for Networks:
+    172.16.1.0 0.0.0.255 area 0
+    172.16.3.0 0.0.0.3 area 0
+    192.168.10.4 0.0.0.3 area 0
+  Routing Information Sources:
+    Gateway         Distance      Last Update
+    209.165.200.225      110      00:07:02
+    192.168.10.10        110      00:07:02
+  Distance: (default is 110)
+
+R1#</pre>]]>
+  </text> 
+  <text id="ID_s2_txt01"><![CDATA[<pre>R1(config)# <b>router ospf 10</b>
+R1(config-router)# <b>router-id 1.1.1.1</b>
+<span>% OSPF: Reload or use "clear ip ospf process" command, for
+ this to take effect</span>
+R1(config-router)# <b>end</b>
+R1#
+*Mar 25 19:46:09.711: %SYS-5-CONFIG_I: Configured from
+console by console
+</pre>]]>
+  </text> 
+
+<text id="ID_s2_txt01"><![CDATA[<pre></pre>]]>
+</text> 
+
+ 
+  <text id="ID_s3_txt01"><![CDATA[<pre>R1# <b>clear ip ospf process</b>
+Reset ALL OSPF processes? [no]: <b>y</b>
+R1#
+*Mar 25 19:46:22.423: %OSPF-5-ADJCHG: Process 10, Nbr 
+3.3.3.3 on Serial0/0/1 from <span>FULL to DOWN,</span> Neighbor Down:
+ Interface down or detached
+*Mar 25 19:46:22.423: %OSPF-5-ADJCHG: Process 10, Nbr 
+2.2.2.2 on Serial0/0/0 from <span>FULL to DOWN,</span> Neighbor Down:
+ Interface down or detached
+*Mar 25 19:46:22.475: %OSPF-5-ADJCHG: Process 10, Nbr 
+3.3.3.3 on Serial0/0/1 from <span>LOADING to FULL,</span> Loading Done
+*Mar 25 19:46:22.475: %OSPF-5-ADJCHG: Process 10, Nbr 
+2.2.2.2 on Serial0/0/0 from <span>LOADING to FULL,</span> Loading Done
+R1#
+R1# <b>show ip protocols | section Router ID</b>
+  <span>Router ID 1.1.1.1</span>
+R1#
+</pre>]]>
+  </text> 
+
+<text id="ID_s2_txt01"><![CDATA[<pre></pre>]]>
+</text> 
+      
+   
+</data>

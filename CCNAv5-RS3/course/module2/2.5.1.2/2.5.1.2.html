@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.5.1.2 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.5.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Les problèmes associés à un réseau redondant de couche 2 incluent les tempêtes de diffusion, l'instabilité de la base de données MAC et les trames de monodiffusion en double. STP est un protocole de couche 2 qui garantit qu'il n'existe qu'un seul chemin logique entre toutes les destinations d'un réseau, en bloquant volontairement les chemins d'accès redondants pouvant générer une boucle.</p>
+<p></p>
+<p>Le protocole STP envoie des trames BPDU pour assurer la communication entre les commutateurs. Un commutateur est défini en tant que pont racine pour chaque instance Spanning Tree. Un administrateur peut contrôler ce choix en modifiant la priorité du pont. Les ponts racine peuvent être configurés pour permettre l'équilibrage de la charge Spanning Tree pour chaque VLAN ou groupe de VLAN, en fonction du protocole STP utilisé. Le protocole STP affecte alors un rôle à chaque port participant, à l'aide d'un coût de chemin. Le coût de chemin est égal à la somme des coûts de tous les ports situés sur le chemin vers le pont racine. Un coût est automatiquement affecté à chaque port ; cependant, cette valeur peut également être configurée manuellement. Les chemins dont le coût est le plus bas deviennent les chemins préférés et tous les autres chemins redondants sont bloqués.</p>
+<p></p>
+<p>Le protocole PVST+ est la configuration par défaut du protocole IEEE 802.1D sur les commutateurs Cisco. Il exécute une instance STP pour chaque VLAN. RSTP est un nouveau protocole STP à la convergence rapide, qui peut être implémenté sur les commutateurs Cisco individuellement pour chaque VLAN, sous la forme de Rapid PVST+. MST (Multiple Spanning Tree) est l'implémentation Cisco du protocole MSTP (Multiple Spanning Tree Protocol), avec lequel une instance Spanning Tree est exécutée pour un groupe donné de VLAN. Les fonctions telles que PortFast et la protection BPDU garantissent que les hôtes de l'environnement commuté bénéficient d'un accès immédiat au réseau, sans interférer avec le fonctionnement STP.</p>
+<p></p>
+<p>Les protocoles de redondance au premier saut, tels que HSRP, VRRP et GLBP, fournissent des passerelles par défaut alternatives pour les hôtes d'un routeur redondant ou d'un environnement commuté multicouche. Plusieurs routeurs partagent une adresse IP virtuelle et une adresse MAC utilisée comme passerelle par défaut sur un client. Ceci permet de garantir la connectivité des hôtes, même en cas de défaillance d'un périphérique jouant le rôle de passerelle par défaut pour un VLAN ou un groupe de VLAN. Avec HSRP ou VRRP, un seul routeur est actif ou en réacheminement pour un groupe donné, tandis que les autres sont en mode secours. Le protocole GLBP permet d'utiliser simultanément plusieurs passerelles, en plus de la fonction de basculement automatique.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

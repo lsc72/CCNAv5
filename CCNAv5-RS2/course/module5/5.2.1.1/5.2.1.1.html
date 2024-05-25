@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.1.1 Problèmes liés aux ports de commutateur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout; 
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du routage inter-VLAN</h1>
+        <h2>Problèmes de configuration inter-VLAN</h2>
+      </div>
+      <div id="content">
+<p>Il n'est pas rare que certaines erreurs de configuration du commutateur surviennent lors de la configuration du routage entre plusieurs VLAN.</p>
+<p></p>
+<p>Lors de l'utilisation du modèle de routage existant pour le routage inter-VLAN, assurez-vous que les ports de commutateur se connectant aux interfaces de routeur sont configurés sur les VLAN corrects. Si un port de commutateur n'est pas configuré pour le bon VLAN, les périphériques configurés sur ce VLAN ne peuvent pas se connecter à l'interface du routeur et sont donc incapables d'envoyer des données à d'autres VLAN.</p>
+<p></p>
+<p>Comme présenté dans la topologie de la Figure 1, le PC1 et l'interface G0/0 du routeur R1 sont configurés pour se trouver sur le même sous-réseau logique, comme indiqué par leur affectation d'adresse IP. Cependant, le port de commutateur F0/4 qui se connecte à l'interface G0/0 du routeur R1 n'a pas été configuré et reste dans le VLAN par défaut. Le routeur R1 se trouvant sur un autre VLAN que PC1, ils ne sont pas en mesure de communiquer.</p>
+<p></p>
+<p>Pour corriger ce problème, exécutez la commande de mode de configuration d'interface<span class="cmd"><b> switchport access vlan 10</b></span> sur le port de commutateur F0/4 du commutateur S1. Lorsque le port de commutateur est configuré pour le VLAN correct, PC1 peut communiquer avec l'interface G0/0 du routeur R1, qui lui permet d'accéder aux autres VLAN connectés au routeur R1.  </p></p>
+<p></p>
+<p>La topologie de la Figure 2 illustre le modèle de routage router-on-a-stick. Cependant, l'interface F0/5 sur le commutateur S1 n'est pas configurée comme trunk et demeure dans le VLAN par défaut pour le port. Par conséquent, le routeur n'est pas en mesure d'assurer le routage inter-VLAN, car chacune de ses sous-interfaces configurées est incapable d'envoyer ou de recevoir le trafic étiqueté VLAN. </p>
+<p></p>
+<p>Pour corriger ce problème, exécutez la commande en mode de configuration d'interface <span class="cmd"><b>switchport mode trunk</b></span> sur le port de commutateur F0/5 de S1. L'interface est alors convertie en port trunk, ce qui permet d'établir un trunk entre R1 et S1. Lorsque le trunk est établi avec succès, les périphériques connectés à chacun des VLAN sont en mesure de communiquer avec la sous-interface affectée à leur VLAN, ce qui permet d'activer le routage inter-VLAN.</p>
+<p></p>
+<p>La topologie de la Figure 3 montre que la liaison trunk entre S1 et S2 est interrompue. Comme il n'existe aucun chemin ni connexion redondante entre les périphériques, tous les périphériques connectés à S2 sont incapables d'atteindre R1. Par conséquent, tous les périphériques connectés à S2 sont incapables d'assurer le routage vers d'autres VLAN via R1.</p>
+<p></p>
+<p>Pour réduire les risques de liaison défectueuse entre commutateurs interrompant le routage inter-VLAN, les liaisons redondantes et les chemins de substitution doivent être pris en compte dans la conception du réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

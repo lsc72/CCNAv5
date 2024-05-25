@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.1.1 Configuration automatique des adresses sans état (SLAAC)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 6</h1>
+        <h2>SLAAC et DHCPv6</h2>
+      </div>
+      <div id="content">
+<p>Comme pour IPv4, les adresses de monodiffusion globale IPv6 peuvent être configurées manuellement ou de façon dynamique. Cependant, il existe deux méthodes d'attribution dynamique des adresses de monodiffusion globale IPv6 :</p>
+<p></p>
+<p>
+<ul>
+<li>Configuration automatique des adresses sans état (SLAAC), illustrée sur la figure</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Protocole DHCP (Dynamic Host Configuration Protocol) pour IPv6 (DHCPv6 avec état)</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Présentation de l'SLAAC</b>
+</p>
+<p></p>
+<p>SLAAC est une méthode grâce à laquelle un périphérique peut obtenir une adresse de monodiffusion globale IPv6 sans les services d'un serveur DHCPv6. Le protocole ICMPv6 se trouve au cœur du processus SLAAC. ICMPv6 est similaire à ICMPv4, mais inclut des fonctionnalités supplémentaires, ce qui en fait un protocole bien plus robuste. SLAAC utilise des messages d'annonce et de sollicitation de routeur ICMPv6 pour fournir les informations d'adressage et d'autres informations de configuration autres qui seraient normalement fournies par un serveur DHCP :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Message de sollicitation de routeur (RS) :</b> lorsqu'un client est configuré pour obtenir ses informations d'adressage automatiquement via le processus SLAAC, celui-ci envoie un message RS au routeur. Le message RS est envoyé à l'adresse de multidiffusion à tous les routeurs IPv6, FF02::2.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Message d'annonce de routeur (RA)</b> : les messages RA sont envoyés par les routeurs pour fournir des informations d'adressage aux clients configurés pour obtenir leurs adresses IPv6 automatiquement. Le message RA inclut le préfixe et la longueur de préfixe du segment local. Les clients utilisent ces informations pour créer leur propre adresse de monodiffusion globale IPv6. Les routeurs envoient un message d'annonce de routeur à intervalles réguliers ou en réponse à un message de sollicitation. Par défaut, les routeurs Cisco envoient des messages d'annonce de routeur toutes les 200 secondes. Ces messages sont toujours envoyés à l'adresse de multidiffusion à tous les nœuds IPv6, FF02::1. </li>
+</ul>
+</p>
+<p></p>
+<p>Comme son nom l'indique, le processus SLAAC est sans état. Un service sans état ne fait appel à aucun serveur pour maintenir à jour les informations d'adresse réseau. Contrairement à DHCP, aucun serveur SLAAC ne sait quelles adresses IPv6 sont utilisées et lesquelles sont disponibles.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

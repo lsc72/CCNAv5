@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.1.1 Conception modulaire</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Architecture d&#x0027;entreprise Cisco</h1>
+        <h2>Conception réseau modulaire</h2>
+      </div>
+      <div id="content">
+<p>Alors que la conception de réseau hiérarchique fonctionne bien dans l'infrastructure de campus, les réseaux ont dépassé ces frontières. Comme présenté dans l'illustration, les réseaux deviennent de plus en plus sophistiqués et complexes, certains exigeant des connexions à des data centers dédiés se trouvant souvent à l'extérieur. Les sites de filiales exigent une connectivité au réseau fédérateur du campus et les employés souhaitent pouvoir travailler de chez eux ou depuis d'autres endroits. À mesure que la complexité des réseaux augmentait pour faire face à ces besoins, la conception réseau a dû être modifiée pour adopter une approche plus modulaire. </p>
+<p></p>
+<p>La conception réseau modulaire décompose le réseau en différents modules, chacun de ces modules occupant une place particulière ou répondant à un besoin spécifique dans le réseau. Les modules représentent des zones possédant une connectivité physique ou logique différente. Ils indiquent où ont lieu les différentes fonctions au sein du réseau. L'approche modulaire présente plusieurs avantages :</p>
+<p>
+<ul>
+<li>Les échecs se produisant dans un module peuvent être isolés du reste du réseau, ce qui permet de détecter de façon plus simple les problèmes et ainsi offrir une plus grande disponibilité du système. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les modifications ou les mises à jour du réseau, ou l'introduction de nouveaux services peuvent se faire de façon contrôlée et maîtrisée, avec plus de flexibilité dans l'exploitation et la maintenance du réseau de campus. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Lorsqu'un module n'a plus la capacité suffisante ou bien ne dispose pas d'une nouvelle fonction ou d'un nouveau service, il peut être mis à jour ou remplacé par un autre module qui joue le même rôle structurel dans la hiérarchie générale. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La sécurité peut être mise en place module par module, ce qui offre un contrôle de sécurité renforcé.</li>
+</ul>
+</p>
+<p></p>
+<p>L'utilisation de modules offre plus de flexibilité et simplifie la mise en œuvre et la résolution des problèmes. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

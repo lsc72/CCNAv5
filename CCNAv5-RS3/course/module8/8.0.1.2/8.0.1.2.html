@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.0.1.2 Exercice en classe : EIGRP - Retour vers le futur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées et résolutions des problèmes liés au protocole EIGRP</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Exercice :</b>
+<b>EIGRP - Retour vers le futur</b>
+</p>
+<p></p>
+<p>Ce chapitre vous apprend à gérer vos réseaux EIGRP et à les influencer pour qu'ils effectuent les opérations souhaitées. Concepts EIGRP abordés dans ce chapitre :</p>
+<p></p>
+<p>
+<ul>
+<li>Récapitulation automatique </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Équilibrage de charge</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Routes par défaut</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Minuteurs de mise hors service</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Authentification</li>
+</ul>
+</p>
+<p></p>
+<p>Avec un partenaire, rédigez 10 questions de réflexion sur le protocole EIGRP, basées sur le contenu du chapitre précédent de ce cursus. Trois de ces questions doivent se concentrer sur les éléments de la liste à puces ci-dessus. Idéalement, les questions doivent être du type à choix multiple, vrai ou faux, ou avec des zones vides à compléter. Lorsque vous rédigez vos questions, veillez à noter la section du programme et les numéros de page du contenu de support de façon à pouvoir vous y référer pour vérifier les réponses.</p>
+<p></p>
+<p>Enregistrez votre travail, puis allez à la rencontre d'un autre groupe ou de la classe entière, et posez-leur les questions que vous avez imaginées.</p>
+<p></p>
+<p>
+<a href="../../files/8.0.1.2%20EIGRP%20-%20Back%20to%20the%20Future%20Instructions.pdf" target="_blank">Exercice en classe : EIGRP - Retour vers le futur</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

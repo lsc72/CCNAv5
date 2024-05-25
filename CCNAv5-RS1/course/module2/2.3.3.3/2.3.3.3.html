@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.3.3 Vérification de la connectivité de bout en bout</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Schémas d&#x0027;adressage</h1>
+        <h2>Vérification de la connectivité</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Test de la connectivité PC-commutateur</b>
+</p>
+<p></p>
+<p>La commande <span class="cmd"><b>ping</b></span> peut être utilisée sur un PC, de la même manière que sur un périphérique Cisco IOS. La figure montre qu'une requête ping du PC1 sur l'adresse IP de l'interface VLAN 1 du périphérique S1, 192.168.10.2, doit aboutir.</p>
+<p></p>
+<p>
+<b>Vérification de la connectivité de bout en bout</b>
+</p>
+<p></p>
+<p>L'adresse IP de PC1 est 192.168.10.10, avec le masque de sous-réseau 255.255.255.0 et la passerelle par défaut 192.168.10.1.</p>
+<p></p>
+<p>L'adresse IP de PC2 est 192.168.10.11, avec le masque de sous-réseau 255.255.255.0 et la passerelle par défaut 192.168.10.1.</p>
+<p></p>
+<p>Une requête ping de PC1 vers PC2 doit également aboutir. Une requête ping de PC1 vers PC2 permet de vérifier la connectivité de bout en bout sur le réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Configuration d'EtherChannel avec LACP</b>]]></text>
+</component>
+<component id="ID_s1_txt01">
+<text><![CDATA[Fa0/1]]></text>
+</component>
+
+<component id="ID_s1_txt02">
+<text><![CDATA[Fa0/2]]></text>
+</component>
+
+<component id="ID_s1_txt03">
+<text><![CDATA[Crée EtherChannel et configure le trunk.]]></text>
+</component>
+
+
+
+	<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+
+<component id="ID_s2_title">
+		<text><![CDATA[<b>Configuration du protocole EtherChannel</b>]]></text>
+	</component>
+
+<component id="ID_s2_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font size='10' face="Arial" color="#0000FF">***Vous devez entrer la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font></b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>Entrez le mode de la plage d'interface pour FastEthernet0/1 et FastEthernet0/2. Affichez les options de groupe de canaux en utilisant l'aide contextuelle (?).</b></font>]]></existingcommands>
+		<command prompt="S1(config)#">
+			<correctresponse><![CDATA[interface range FastEthernet0/1 - 2]]></correctresponse>
+		</command>	
+		<command prompt="S1(config-if-range)#">
+			<correctresponse><![CDATA[channel-group ?]]></correctresponse>
+				<deviceresponse><![CDATA[  &lt;1-6&gt; Channel group number]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Sélectionnez le groupe de canaux&nbsp;1 et affichez l'option suivante.</b></font>]]></instruction>
+		</command>	
+		<command prompt="S1(config-if-range)#">
+			<correctresponse><![CDATA[channel-group 1 ?]]></correctresponse>
+				<deviceresponse><![CDATA[  mode Etherchannel Mode of the interface]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Entrez le mot-clé mode et affichez l'option suivante.</b></font>]]></instruction>
+		</command>	
+		<command prompt="S1(config-if-range)#">
+			<correctresponse><![CDATA[channel-group 1 mode ?]]></correctresponse>
+				<deviceresponse><![CDATA[  active Enable LACP unconditionally<br>  auto Enable PAgP only if a PAgP device is detected<br>  desirable Enable PAgP unconditionally<br>  on Enable Etherchannel only<br>  passive Enable LACP only if a LACP device is detected]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Configurez le groupe de canaux pour utiliser LACP de manière inconditionnelle.</b></font>]]></instruction>
+		</command>	
+		<command prompt="S1(config-if-range)#">
+			<correctresponse><![CDATA[channel-group 1 mode active]]></correctresponse>
+				<deviceresponse><![CDATA[S1(config-if-range)# <br>*Mar 21 00:02:28,184: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state <br>to down <br>*Mar 21 00:02:28,193: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/2, changed state <br>to down <br>*Mar 21 00:02:36,179: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state <br>to up <br>*Mar 21 00:02:36,674: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/2, changed state <br>to up <br>S1(config-if-range)# <br>*Mar 21 00:04:31,170: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state <br>to down <br>*Mar 21 00:04:31,186: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/2, changed state <br>to down <br>*Mar 21 00:04:33,116: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state <br>to up <br>*Mar 21 00:04:34,114: %LINK-3-UPDOWN: Interface Port-channel1, changed state to up <br>*Mar 21 00:04:35,037: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/2, changed state <br>to up <br>*Mar 21 00:04:35,121: %LINEPROTO-5-UPDOWN: Line protocol on Interface Port-channel1, changed state to <br>up <br>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Configurez les paramètres du switchport pour le port-channel qui a été créé. Configurez port-channel&nbsp;1 en tant que trunk et autorisez les VLAN&nbsp;1, 2 et 20 à traverser la liaison trunk.</b></font>]]></instruction>
+		</command>
+		<command prompt="S1(config-if-range)#">
+			<correctresponse><![CDATA[interface port-channel 1]]></correctresponse>
+		</command>
+		<command prompt="S1(config-if)#">
+			<correctresponse><![CDATA[switchport mode trunk]]></correctresponse>
+		</command>
+		<command prompt="S1(config-if)#">
+			<correctresponse><![CDATA[switchport trunk allowed vlan 1,2,20]]></correctresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Vous avez correctement configuré EtherChannel.</font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+	
+	
+</textcomponents>

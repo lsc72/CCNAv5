@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.1.1.2 Choix des périphériques d&#x0027;un réseau de petite taille</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Création et développement</h1>
+        <h2>Périphériques d&#x0027;un petit réseau</h2>
+      </div>
+      <div id="content">
+<p>Pour répondre aux besoins des utilisateurs, même les réseaux de petite taille doivent faire l'objet d'une planification et d'une conception. La planification garantit que tous les besoins, les facteurs de coûts et les options de déploiement sont pris en compte. </p>
+<p></p>
+<p>L'un des premiers critères à prendre en compte lors de la mise en œuvre d'un réseau de petite taille est le type de périphériques intermédiaires à utiliser pour le fonctionnement du réseau. Plusieurs facteurs déterminent le choix des périphériques intermédiaires, comme le montre la figure. </p>
+<p></p>
+<p>
+<b>Coût</b>
+</p>
+<p></p>
+<p>Dans les réseaux de petites entreprises, le coût est généralement l'un des aspects les plus importants. Le coût d'un commutateur ou d'un routeur dépend de sa capacité et de ses fonctionnalités. La capacité de l'équipement fait notamment référence au nombre et aux types de ports disponibles, ainsi qu'à la vitesse de fond de panier. Les autres facteurs déterminant le coût sont ses fonctions de gestion réseau, ses technologies de sécurité intégrées et ses technologies de commutation avancées en option. Le coût des câblages permettant de connecter chaque périphérique au réseau doit également être pris en compte. Enfin, la redondance du réseau a également un impact sur le coût. Elle détermine notamment les équipements, le nombre de ports par appareil et le type de câblage (cuivre ou fibre optique).</p>
+<p></p>
+<p>
+<b>Vitesse et types de port/d'interface</b>
+</p>
+<p></p>
+<p>Le choix du nombre et du type de ports sur un routeur ou un commutateur est décisif. Il faut notamment se poser les questions suivantes : « Allons-nous commander juste assez de ports pour répondre aux besoins actuels ou également tenir compte de la croissance potentielle ? », « Avons-nous besoin de câbles à paires torsadées non blindées de différents débits ? » et « Avons-nous besoin à la fois de ports en cuivre et à fibre optique ? » </p>
+<p></p>
+<p>Sur les ordinateurs récents, une carte réseau de 1 Gbit/s est intégrée. Certains ordinateurs et serveurs sont même équipés de ports 10 Gbit/s. Les équipements de couche 2 sont certes plus onéreux, mais ils peuvent gérer des débits supérieurs et permettent au réseau d'évoluer sans remplacer les périphériques centraux. </p>
+<p>
+<b>Évolutivité</b>
+</p>
+<p></p>
+<p>Les périphériques réseau sont fournis selon les deux configurations physiques, fixes et modulaires. Les configurations fixes possèdent un nombre de ports et un type de port ou d'interface spécifiques. Les périphériques modulaires possèdent des logements d'extension qui offrent la possibilité d'ajouter de nouveaux modules à mesure que les besoins évoluent. La plupart des périphériques modulaires sont fournis avec un nombre standard de ports fixes et de logements d'extension. Les commutateurs peuvent être équipés de ports supplémentaires spéciaux pour les liaisons montantes haut débit en option. En outre, dans la mesure où les routeurs peuvent être utilisés pour connecter des quantités et des types de réseau différents, vous devez veiller à choisir les modules et les interfaces adaptés aux supports. Les questions à se poser sont notamment les suivantes : « Allons-nous commander des équipements dont les modules sont évolutifs ? » et « Quel type d'interfaces WAN sont nécessaires sur les routeurs, le cas échéant ? »</p>
+<p></p>
+<p>
+<b>Fonctions et services du système d'exploitation</b>
+</p>
+<p>En fonction de la version du système d'exploitation, le périphérique réseau peut prendre en charge certaines fonctions, notamment :</p>
+<p>
+<ul>
+<li>Sécurité</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>QS</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>VoIP</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>commutation de couche 3</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>NAT</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>DHCP</li>
+</ul>
+</p>
+<p></p>
+<p>Les routeurs peuvent être coûteux en fonction des interfaces et des fonctions nécessaires. Les modules supplémentaires, notamment les modules à fibre optique augmentent le coût des périphériques réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

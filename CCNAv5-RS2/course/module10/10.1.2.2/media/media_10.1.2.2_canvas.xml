@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<data>		
+		<slide type="MBAR">	
+		<slide>	
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+			<element type="IMAGE" src="media_10.1.2.2.jpg" x="0" y="0" width="470" height="400"/>
+			<element type="TEXT" id="ID_static_1" text="192.168.10.0/24" x="16" y="195.45" width="83.5" align="left" />
+			<element type="TEXT" id="ID_static_2" text="192.168.11.0/24" x="170.95" y="195.45" width="83.5" align="left" />
+			<element type="TEXT" id="ID_static_3" text="192.168.11.5" x="213.95" y="364.15" width="68.25" align="left" />
+			<element type="TEXT" id="ID_static_4" text="192.168.30.0/24" x="292.95" y="195.45" width="83.5" align="left" />
+			<element type="TEXT" id="ID_static_5" text="S0/0/0" x="214.95" y="59.15" width="35.95" align="left" />
+			<element type="TEXT" id="ID_static_6" text="S0/0/1" x="300.95" y="58.15" width="35.95" align="left" />
+			<element type="TEXT" id="ID_static_7" text="S0/0/0" x="158" y="86.15" width="35.95" align="left" />
+			<element type="TEXT" id="ID_static_8" text="10.1.1.1/30" x="195.95" y="105.15" width="59.1" align="left" />
+			<element type="TEXT" id="ID_static_9" text="G0/0 .1" x="109" y="129.15" width="28" align="right" />
+			<element type="TEXT" id="ID_static_10" text="G0/1 .1" x="172.95" y="136.15" width="28" align="left" />
+			<element type="TEXT" id="ID_static_11" text="S0/0/1" x="361.95" y="86.15" width="35.95" align="left" />
+			<element type="TEXT" id="ID_static_12" text="G0/0" x="381.95" y="137.15" width="28" align="left" />
+			<element type="TEXT" compId="ID_s1_txt03" x="14" y="107" width="129.6" expand="up" align="right" />
+			<element type="TEXT" compId="ID_s1_txt04" x="264" y="341" width="84.35" expand="up" align="left" />		
+		</slide>
+			
+		<slide>	
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title" />
+			<element type="ROUTER" textId="ID_router_txt1" x="3.8" y="35.45" width="433.25" height="362" />		
+		</slide>
+			
+		<slide>	
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title" />
+			<element type="ROUTER" textId="ID_router_txt2" x="3.8" y="35.45" width="433.25" height="362" />		
+		</slide>
+		
+		<slide>	
+			<element type="TEXT" subType="TITLE" compId="ID_s4_title" />
+			<element type="ROUTER" textId="ID_router_txt3" x="3.8" y="35.45" width="433.25" height="362" />		
+		</slide>
+			
+	
+			<slide>	
+			<element type="TEXT" subType="TITLE" compId="ID_s5_title"/>
+			<element type="IMAGE" src="media_10.1.2.2.A.jpg" x="0" y="0" width="470" height="400"/>
+			<element type="TEXT" textId="ID_static_79" x="22" y="72.45" width="430" align="left" size="10" />	
+
+			</slide>
+		</slide>	
+		
+		
+		
+<text id="ID_router_txt1"><![CDATA[<pre>R1# <b>show running-config | section dhcp </b>
+ip dhcp excluded-address 192.168.10.1 192.168.10.9
+ip dhcp excluded-address 192.168.10.254
+ip dhcp excluded-address 192.168.11.1 192.168.11.9
+ip dhcp excluded-address 192.168.11.254
+ip dhcp pool LAN-POOL-1
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1 
+ dns-server 192.168.11.5 
+ domain-name example.com
+ip dhcp pool LAN-POOL-2
+ network 192.168.11.0 255.255.255.0
+ default-router 192.168.11.1 
+ dns-server 192.168.11.5 
+ domain-name example.com
+R1# 
+</pre>
+]]></text>
+
+<text id="ID_router_txt2"><![CDATA[<pre>R1# <b>show ip dhcp binding </b>
+Bindings from all pools not associated with VRF:
+IP address     Client-ID/         Lease expiration   Type
+               Hardware address/
+               User name
+
+R1# <b>show ip dhcp server statistics </b>
+Memory usage         23543
+Address pools        1
+Database agents      0
+Automatic bindings   0
+Manual bindings      0
+Expired bindings     0
+Malformed messages   0
+Secure arp entries   0
+
+Message              Received
+BOOTREQUEST          0
+DHCPDISCOVER         0
+DHCPREQUEST          0
+DHCPDECLINE          0
+DHCPRELEASE          0
+DHCPINFORM           0
+
+Message              Sent
+BOOTREPLY            0
+DHCPOFFER            0
+DHCPACK              0
+DHCPNAK              0
+R1#
+</pre>
+]]></text>
+
+<text id="ID_router_txt3"><![CDATA[<pre>R1# <b>show ip dhcp binding </b>
+Bindings from all pools not associated with VRF:
+IP address     Client-ID/         Lease expiration     Type
+               Hardware address/
+               User name
+192.168.10.10  0100.e018.5bdd.35  May 28 2013 01:06 PM Automatic
+192.168.11.10  0100.b0d0.d817.e6  May 28 2013 01:10 PM Automatic
+
+
+R1# <b>show ip dhcp server statistics </b>
+Memory usage         25307
+Address pools        2
+Database agents      0
+Automatic bindings   2
+Manual bindings      0
+Expired bindings     0
+Malformed messages   0
+Secure arp entries   0
+
+Message              Received
+BOOTREQUEST          0
+DHCPDISCOVER         8
+DHCPREQUEST          3
+DHCPDECLINE          0
+DHCPRELEASE          0
+DHCPINFORM           0
+
+Message              Sent
+BOOTREPLY            0
+DHCPOFFER            3
+DHCPACK              3
+DHCPNAK              0
+R1#
+</pre>
+]]></text>
+
+<text id="ID_static_79"><![CDATA[<pre>C:\Documents and Settings\SpanPC>ipconfig /all
+
+Windows IP Configuration
+
+  Host Name......................: ciscolab
+  Primary Dns Suffix ............:
+  Node Type .....................: Unknown
+  IP Routing Enabled.............: No
+  WINS Proxy Enabled ............: No
+
+Ethernet Adapter Local Area Connection
+
+  Connection-specific DNS Suffix.: example.com
+  Description ...................: SiS 900 PCI Fast Ethernet
+                                   Adapter
+  Physical Address...............: 00-E0-18-5B-DD-35
+  Dhcp Enabled ..................: Yes
+  Autoconfiguration Enabled......: Yes
+  IP Address ....................: 192.168.10.10
+  Subnet Mask....................: 255.255.255.0
+  Default Gateway................: 192.168.10.1
+  DHCP Server ...................: 192.168.10.1
+  Lease Obtained.................: Monday,May 27,2013 1:06:22PM
+
+  Lease Expires .................: Tuesday,May 28,2013 1:06:22PM
+
+  DNS Servers   . . . . . . . . .: 192.168.11.5
+
+C:\Documents and settings\SpanPC>
+</pre>
+<div id="a1"><img src="arrow.png" width="65" height="10" /></div>
+<div id="a2"><img src="arrow.png" width="65" height="10" /></div>
+<div id="a3"><img src="arrow.png" width="65" height="10" /></div>
+<div id="a4"><img src="arrow.png" width="65" height="10" /></div>
+]]></text>
+
+
+
+		
+	</data>

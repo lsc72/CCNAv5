@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.1.3 Solutions VPN SSL de Cisco</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Accès à distance</h1>
+        <h2>Solutions VPN d&#x0027;accès à distance</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Client Cisco AnyConnect Secure Mobility avec SSL</b>
+</p>
+<p>Les VPN SSL basés sur le client offrent aux utilisateurs authentifiés un accès réseau complet de type LAN aux ressources de l'entreprise. Toutefois, les périphériques distants nécessitent l'installation d'une application cliente, comme le client VPN de Cisco ou le nouveau client AnyConnect, sur le périphérique d'utilisateur final. </p>
+<p></p>
+<p>Dans le cas d'un Cisco ASA de base configuré pour le tunneling complet et d'une solution VPN SSL d'accès à distance, les utilisateurs distants utilisent le logiciel Cisco AnyConnect Secure Mobility Client, représenté à la Figure 1, pour établir un tunnel SSL avec le Cisco ASA. Après l'établissement du VPN par le Cisco ASA avec l'utilisateur distant, ce dernier peut transférer le trafic IP dans le tunnel SSL. Le logiciel Cisco AnyConnect Secure Mobility Client crée une interface de réseau virtuel afin d'offrir cette fonctionnalité. Le client peut utiliser n'importe quelle application pour accéder à n'importe quelle ressource, soumise à des règles d'accès, derrière la passerelle VPN Cisco ASA.</p>
+<p></p>
+<p>
+<b>VPN SSL sans client Cisco Secure Mobility</b>
+</p>
+<p>Le modèle de déploiement VPN SSL sans client permet aux entreprises d'offrir un accès à leurs ressources, même si elles ne gèrent pas le périphérique distant. Dans ce modèle de déploiement, le Cisco ASA est utilisé en tant que périphérique proxy pour les ressources réseau. Il fournit une interface de portail Web afin de permettre aux périphériques distants de parcourir le réseau en utilisant des fonctionnalités de transfert de port.</p>
+<p></p>
+<p>Dans une solution VPN SSL sans client Cisco ASA de base, les utilisateurs distants utilisent un navigateur Web standard pour établir une session SSL avec le Cisco ASA, comme le montre la Figure 2. Le Cisco ASA soumet un portail Web à l'utilisateur, avec lequel il peut accéder à des ressources internes. Dans la solution sans client de base, l'utilisateur ne peut accéder qu'à certains services, par exemple des applications Web internes, ainsi qu'à certaines ressources de partage de fichiers basées sur un navigateur, comme l'indique la Figure 3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.2.6 Calcul de la métrique EIGRP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.2.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1> Fonctionnement du protocole EIGRP</h1>
+        <h2>Métriques</h2>
+      </div>
+      <div id="content">
+<p>La Figure 1 présente la topologie à trois routeurs. Cet exemple illustre la façon dont le protocole EIGRP détermine la métrique affichée dans la table de routage de R2 pour le réseau 192.168.1.0/24. </p>
+<p></p>
+<p>
+<b>Bande passante</b>
+</p>
+<p></p>
+<p>Le protocole EIGRP utilise la bande passante la plus lente dans le calcul de sa métrique. Vous pouvez déterminer la bande passante la plus lente en examinant chaque interface entre R2 et le réseau de destination 192.168.1.0. L'interface Serial 0/0/1 sur R2 présente une bande passante de 1 024 kb/s. L'interface GigabitEthernet 0/0 sur R3 présente une bande passante de 1 000 000 kb/s. Par conséquent, la bande passante la plus lente est 1 024 kb/s et sert au calcul de la métrique.</p>
+<p></p>
+<p>Le protocole EIGRP divise une valeur de bande passante de référence de 10 000 000 par la valeur de bande passante de l'interface en kb/s. Résultat : les valeurs de bande passante plus élevées reçoivent une métrique inférieure et les valeurs de bande passante plus basses reçoivent une métrique supérieure. 10 000 000 est divisé par 1 024. Si le résultat n'est pas un nombre entier, la valeur est arrondie au nombre inférieur. Dans ce cas, 10 000 000 divisé par 1 024 est égal à 9 765,625. En arrondissant au nombre inférieur, le résultat est 9 765 pour la partie bande passante de la métrique composite, comme indiqué à la Figure 2.</p>
+<p></p>
+<p>
+<b>Délai</b>
+</p>
+<p></p>
+<p>Les mêmes interfaces sortantes servent à déterminer la valeur de délai, comme indiqué à la Figure 3.</p>
+<p></p>
+<p>Le protocole EIGRP utilise la somme de tous les délais vers la destination. L'interface Serial 0/0/1 sur R2 a un délai de 20 000 microsecondes. L'interface Gigabit 0/0 sur R3 a un délai de 10 microsecondes. La somme de ces délais est divisée par 10. Dans cet exemple, (20 000+10)/10 est égal à 2 001 pour la partie délai de la métrique composite.</p>
+<p></p>
+<p>
+<b>Calcul de la métrique</b>
+</p>
+<p></p>
+<p>Utilisez les valeurs calculées de bande passante et de délai dans la formule de métrique. Il en résulte une métrique de 3 012 096, comme indiqué à la Figure 4. Cette valeur correspond à celle figurant dans la table de routage de R2. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

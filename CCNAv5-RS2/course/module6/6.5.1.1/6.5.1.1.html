@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.5.1.1 Routes statiques et transfert de paquets</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.5.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage des problèmes de routes statiques et par défaut</h1>
+        <h2>Traitement des paquets à l&#x0027;aide de routes statiques</h2>
+      </div>
+      <div id="content">
+<p>L'exemple suivant décrit le processus de transfert de paquets avec des routes statiques. </p>
+<p></p>
+<p>Dans la figure, cliquez sur le bouton Lecture pour lancer l'animation, dans laquelle PC1 envoie un paquet à PC3 :</p>
+<p>1. Le paquet arrive sur l'interface GigabitEthernet 0/0 de R1.</p>
+<p>2. R1 n'a pas de route spécifique vers le réseau de destination, 192.168.2.0/24 ; par conséquent, R1 utilise la route statique par défaut.</p>
+<p>3. R1 encapsule le paquet dans une nouvelle trame. Comme la liaison vers R2 est une liaison point à point, R1 ajoute une adresse composée uniquement de 1 pour l'adresse de destination de couche 2.</p>
+<p>4. La trame est transférée depuis l'interface Serial 0/0/0. Le paquet arrive sur l'interface Serial 0/0/0 sur R2.</p>
+<p>5. R2 désencapsule la trame et recherche une route vers la destination. R2 dispose d'une route statique vers 192.168.2.0/24 depuis l'interface Serial 0/0/1.</p>
+<p>6. R2 encapsule le paquet dans une nouvelle trame. Comme la liaison vers R3 est une liaison point à point, R2 ajoute une adresse composée uniquement de 1 pour l'adresse de destination de couche 2.</p>
+<p>7. La trame est transférée depuis l'interface Serial 0/0/1. Le paquet arrive sur l'interface Serial 0/0/1 sur R3.</p>
+<p>8. R3 désencapsule la trame et recherche une route vers la destination. R3 dispose d'une route connectée vers 192.168.2.0/24 depuis l'interface GigabitEthernet 0/0.</p>
+<p>9. R3 recherche l'entrée 192.168.2.10 dans le tableau ARP afin de trouver l'adresse MAC (Media Access Control) de couche 2 pour l'ordinateur PC3. Si aucune entrée n'existe, R3 envoie une requête de protocole ARP (Address Resolution Protocol) depuis l'interface Gigabit Ethernet 0/0, et PC3 répond avec une réponse ARP, qui inclut l'adresse MAC de PC3.</p>
+<p>10. R3 encapsule le paquet dans une nouvelle trame avec l'adresse MAC de l'interface GigabitEthernet 0/0 comme adresse source de couche 2 et l'adresse MAC de PC3 comme adresse MAC de destination.</p>
+<p>11. La trame est transférée depuis l'interface GigabitEthernet 0/0. Le paquet arrive sur l'interface de la carte réseau de PC3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.2.2 Association entre points d&#x0027;accès et clients sans fil</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement LAN sans fil</h1>
+        <h2>Fonctionnement sans fil</h2>
+      </div>
+      <div id="content">
+<p>Pour que les périphériques sans fil puissent communiquer sur le réseau, ils doivent tout d'abord être associés à un point d'accès ou à un routeur sans fil. Une étape importante du processus 802.11 est la détection du WLAN et la connexion à celui-ci. </p>
+<p></p>
+<p>Les trames de gestion sont utilisées par les périphériques sans fil pour exécuter le processus en trois étapes ci-dessous :</p>
+<p>
+<ul>
+<li>détection d'un nouveau point d'accès sans fil.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>authentification auprès du point d'accès.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>association avec le point d'accès.</li>
+</ul>
+</p>
+<p></p>
+<p>Pour effectuer l'association, le client sans fil et le point d'accès doivent convenir de paramètres communs spécifiques. Ces paramètres doivent être configurés sur le point d'accès, puis sur le client, pour permettre la négociation de ces processus. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

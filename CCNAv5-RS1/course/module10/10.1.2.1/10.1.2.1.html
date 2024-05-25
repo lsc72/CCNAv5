@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.1.2.1 Réseaux P2P</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche Application</h1>
+        <h2>Interaction des protocoles d&#x0027;application avec les applications des utilisateurs finaux</h2>
+      </div>
+      <div id="content">
+<p>Lorsque vous accédez à des informations sur un périphérique réseau, qu'il s'agisse d'un ordinateur de bureau, d'un ordinateur portable, d'une tablette, d'un smartphone ou de tout autre périphérique connecté à un réseau, les données ne sont pas forcément stockées physiquement sur le périphérique. Si elles ne le sont pas, une requête d'accès à ces informations doit être adressée au périphérique sur lequel résident les données. Dans le modèle de réseau peer-to-peer (P2P), les données sont accessibles à partir d'un périphérique homologue (peer) sans l'intervention d'un serveur dédié.</p>
+<p></p>
+<p>Le modèle de réseau P2P implique deux parties : les réseaux P2P et les applications P2P. Celles-ci ont des caractéristiques similaires, mais dans les faits, elles fonctionnent très différemment.</p>
+<p></p>
+<p>
+<b>Réseaux P2P</b>
+</p>
+<p></p>
+<p>Dans un réseau P2P, au moins deux ordinateurs sont connectés via un réseau et peuvent partager des ressources (telles que des imprimantes et des fichiers) sans disposer de serveur dédié. Chaque périphérique final connecté (« peer » ou « homologue ») peut opérer en tant que serveur ou en tant que client. Un ordinateur peut remplir le rôle de serveur pour une transaction tout en servant simultanément de client pour un autre ordinateur. Les rôles de client et de serveur sont définis en fonction de chaque requête.</p>
+<p></p>
+<p>Prenons l'exemple d'un réseau domestique simple composé de deux ordinateurs, comme illustré sur la figure. Dans cet exemple, une imprimante est reliée directement à Peer2 par un câble USB. Peer2 est également configuré pour partager l'imprimante sur le réseau de sorte que Peer1 puisse imprimer sur celle-ci. Peer1 est configuré pour partager un disque dur ou un dossier sur le réseau. Cela permet à Peer2 d'accéder aux fichiers du dossier partager et de sauvegarder des fichiers dans celui-ci. Outre le partage de fichiers, un réseau comme celui-ci peut autoriser le jeu en réseau ou le partage de connexion Internet.</p>
+<p></p>
+<p>Les réseaux P2P décentralisent les ressources sur un réseau. Au lieu d'être stockées sur des serveurs dédiés, les données à partager peuvent se situer n'importe où et sur n'importe quel périphérique connecté. La plupart des systèmes d'exploitation actuels prennent en charge le partage des fichiers et des imprimantes sans nécessiter un logiciel serveur supplémentaire. Toutefois, les réseaux P2P n'utilisent pas de comptes utilisateurs centralisés ni de serveurs d'accès pour gérer les autorisations. Par conséquent, il est difficile d'appliquer les règles de sécurité et d'accès aux réseaux comportant un certain nombre d'ordinateurs. Les comptes et les droits d'accès utilisateur doivent être définis individuellement sur chaque périphérique homologue.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

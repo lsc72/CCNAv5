@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.1 Communications bidirectionnelles simultanées (full duplex)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de base d&#x0027;un commutateur</h1>
+        <h2>Configuration des ports de commutateur</h2>
+      </div>
+      <div id="content">
+<p>La figure illustre les communications bidirectionnelles simultanées et non simultanées.</p>
+<p></p>
+<p>Les communications bidirectionnelles simultanées améliorent les performances d'un réseau LAN commuté. Les communications bidirectionnelles simultanées augmentent la bande passante réelle car les deux extrémités de la connexion transmettent et reçoivent simultanément des données. On parle également de bidirectionnalité. Cette méthode d'optimisation des performances réseau nécessite la microsegmentation du réseau. Un LAN microsegmenté est créé lorsqu'un port de commutateur est connecté à un seul périphérique et fonctionne en mode bidirectionnel simultané. Un microdomaine de collision constitué d'un seul périphérique est ainsi créé. Toutefois, étant donné qu'un seul périphérique est connecté, un LAN microsegmenté ne présente aucune collision.</p>
+<p></p>
+<p>Contrairement aux communications bidirectionnelles simultanées, les communications bidirectionnelles non simultanées sont unidirectionnelles. L'envoi et la réception de données n'ont jamais lieu simultanément. Les communications bidirectionnelles non simultanées entraînent des problèmes de performances car les données ne peuvent circuler que dans un sens à la fois, ce qui se traduit souvent par des collisions. Les connexions bidirectionnelles non simultanées se rencontrent généralement dans du matériel ancien, tel que des concentrateurs. Les communications bidirectionnelles simultanées ont remplacé les communications bidirectionnelles non simultanées pour la plupart du matériel.</p>
+<p></p>
+<p>La plupart des cartes réseau Ethernet et Fast Ethernet commercialisées aujourd'hui permettent les communications bidirectionnelles simultanées. Les cartes réseau Gigabit Ethernet et 10Gb fonctionnent obligatoirement en mode bidirectionnel simultané. En mode bidirectionnel simultané, le circuit de détection de collision de la carte réseau est désactivé. Les trames transmises par les deux périphériques connectés ne peuvent entrer en collision puisque ces derniers utilisent deux circuits distincts sur le câble réseau. Les connexions bidirectionnelles simultanées nécessitent un commutateur qui prend en charge la configuration bidirectionnelle simultanée, ou une connexion directe à l'aide d'un câble Ethernet entre les deux périphériques. </p>
+<p></p>
+<p>L'efficacité d'une configuration Ethernet avec concentrateur standard et partagée est généralement évaluée entre 50 et 60 % de la bande passante allouée. Les communications bidirectionnelles simultanées offrent une efficacité de 100 % dans les deux sens (émission et réception). Ainsi, le taux d'utilisation maximal potentiel de la bande passante allouée est de 200 %.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

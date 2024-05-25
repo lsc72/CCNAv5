@@ -1,0 +1,221 @@
+﻿<textcomponents> <!--slide 1-->
+
+<component id="ID_s1_title">
+<text><![CDATA[<b>Vérification de la configuration NetFlow</b>]]></text>
+</component> <!--slide 2-->
+
+<component id="ID_s2_title">
+<text><![CDATA[<b>Descripteurs de cache de commutateur avec la commande <font face="_typewriter">show ip cache flow </font> </b>]]></text>
+</component>
+
+<component id="ID_s2_table">
+<text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4' class="mtable">
+
+<tr class="mtable_top">
+<td colspan='2' bgcolor='#0E6360' class="mtable_top"><font size='1' color='#0E6360'><span style="color:#98D3D1">.</span></font></td>
+</tr>
+
+<tr colspan='2'>
+<td bgcolor='#077A77'  valign="top" class="width50"><font color='#ffffff' class="bold"><b>Champ</b></font></td>
+<td bgcolor='#077A77'  valign="top" class="width50"><font color='#ffffff' class="bold"><b>Description</b></font></td>	
+</tr>
+
+<tr>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536' face="_typewriter">bytes</font></td>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>Nombre d'octets de mémoire utilisés par le cache de NetFlow.</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#FFFFFF' valign="top"><font color='#393536' face="_typewriter">active</font></td>
+<td bgcolor='#FFFFFF' valign="top"><font color='#393536'>Nombre de flux actifs dans le cache de NetFlow lors de l'exécution de cette commande.</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536' face="_typewriter">inactive</font></td>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>Nombre de tampons de flux alloués dans le cache de NetFlow, mais non attribués à un flux spécifique lors de l'exécution de cette commande.</font></td>
+</tr>
+
+</table>]]></text> 
+</component> <!--slide 3-->
+
+<component id="ID_s3_title">
+<text><![CDATA[<b>Descripteurs de sortie de protocole avec la commande <font face="_typewriter">show ip cache flow </font> </b>]]></text>
+</component>
+
+<component id="ID_s3_table">
+<text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4' class="mtable">
+
+<tr class="mtable_top">
+<td colspan='2' bgcolor='#0E6360' class="mtable_top"><font size='1' color='#0E6360'><span style="color:#98D3D1">.</span></font></td>
+</tr>
+
+<tr colspan='2'>
+<td bgcolor='#077A77'  valign="top" width="120"><font color='#ffffff'><b>Opération</b></font></td>
+<td bgcolor='#077A77'  valign="top"><font color='#ffffff'><b>Description</b></font></td>	
+</tr>
+
+<tr>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536' face="_typewriter">Protocol</font></td>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>Protocole IP et numéro de port réservé.</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#FFFFFF' valign="top"><font color='#393536' face="_typewriter">Total Flows</font></td>
+<td bgcolor='#FFFFFF' valign="top"><font color='#393536'>Nombre total de flux dans le cache pour ce protocole depuis le dernier effacement des statistiques.</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536' face="_typewriter">Flows/Sec</font></td>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>Nombre moyen de flux par seconde pour ce protocole, égal au nombre total de flux divisé par le nombre de secondes pour cette période récapitulative.</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#FFFFFF' valign="top"><font color='#393536' face="_typewriter">Packets/Flow</font></td>
+<td bgcolor='#FFFFFF' valign="top"><font color='#393536'>Nombre moyen de paquets pour les flux de ce protocole, égal au nombre total de paquets pour ce protocole divisé par le nombre de flux de ce protocole pour cette période récapitulative.</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536' face="_typewriter">Bytes/Pkt</font></td>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>Nombre moyen d'octets pour les paquets de ce protocole, égal au nombre total d'octets pour ce protocole divisé par le nombre total de paquets de ce protocole pour cette période récapitulative.</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#FFFFFF' valign="top"><font color='#393536' face="_typewriter">Packets/Sec</font></td>
+<td bgcolor='#FFFFFF' valign="top"><font color='#393536'>Nombre moyen de paquets par seconde pour ce protocole, égal au nombre total de paquets de ce protocole divisé par le nombre total de secondes pour cette période récapitulative.</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536' face="_typewriter">Active(Sec)/Flow</font></td>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>Nombre de secondes écoulées entre le premier et le dernier paquet d'un flux expiré divisé par le nombre total de flux de ce protocole pour cette période récapitulative.</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#FFFFFF' valign="top"><font color='#393536' face="_typewriter">Idle(Sec)/Flow</font></td>
+<td bgcolor='#FFFFFF' valign="top"><font color='#393536'>Nombre de secondes écoulées entre le dernier paquet de chaque flux non expiré de ce protocole et le moment où la commande <font face="_typewriter"><b>show ip cache verbose flow </b></font> a été exécutée divisé par le nombre total de flux de ce protocole pour cette période récapitulative.</font></td>
+</tr>
+
+</table>]]></text> 
+</component> <!--slide 4-->  
+
+<component id="ID_s4_title">
+<text><![CDATA[<b>Descripteurs d'enregistrement NetFlow avec la commande <font face="_typewriter">show ip cache flow </font></b>]]></text>
+</component>
+
+<component id="ID_s4_table">
+<text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4' class="mtable">
+
+<tr class="mtable_top">
+<td colspan='2' bgcolor='#0E6360' class="mtable_top"><font size='1' color='#0E6360'><span style="color:#98D3D1">.</span></font></td>
+</tr>
+
+<tr colspan='2'>
+<td bgcolor='#077A77'  valign="top" width="120"><font color='#ffffff'><b>Opération</b></font></td>
+<td bgcolor='#077A77'  valign="top"><font color='#ffffff'><b>Description</b></font></td>	
+</tr>
+
+<tr>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536' face="_typewriter">SrcIf</font></td>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>Interface sur laquelle le paquet a été reçu</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#FFFFFF' valign="top"><font color='#393536' face="_typewriter">SrcIPaddress</font></td>
+<td bgcolor='#FFFFFF' valign="top"><font color='#393536'>Adresse IP du périphérique qui a transmis le paquet</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536' face="_typewriter">DstIf</font></td>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>Interface à partir de laquelle le paquet a été transmis (si un astérisque (*) suit immédiatement le champ DstIf, le flux indiqué est un flux de sortie).</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#FFFFFF' valign="top"><font color='#393536' face="_typewriter">DstIPaddress</font></td>
+<td bgcolor='#FFFFFF' valign="top"><font color='#393536'>Adresse IP du périphérique de destination.</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536' face="_typewriter">Pr</font></td>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>Numéro de port «&nbsp;réservé&nbsp;» du protocole IP, affiché au format hexadécimal.</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#FFFFFF' valign="top"><font color='#393536' face="_typewriter">SrcP</font></td>
+<td bgcolor='#FFFFFF' valign="top"><font color='#393536'>Numéro de port du protocole source au format hexadécimal.</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536' face="_typewriter">DstP</font></td>
+<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>Numéro de port du protocole de destination au format hexadécimal.</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#FFFFFF' valign="top"><font color='#393536' face="_typewriter">Pkts</font></td>
+<td bgcolor='#FFFFFF' valign="top"><font color='#393536'>Nombre de paquets commutés par l'intermédiaire de ce flux.</font></td>
+</tr>
+
+</table>]]></text> 
+</component> <!--slide 5-->
+<component id="ID_s5_title">
+<text><![CDATA[<b>Vérification de la configuration NetFlow</b>]]></text>
+</component> <!--slide 5-->  
+<component id="ID_s6_title">
+<text><![CDATA[<b>Configuration et vérification de NetFlow</b>]]></text>
+</component>
+
+<component id="ID_SC2" fontFace='_typewriter' fontSize="10">
+<feedback id="fb"><![CDATA[<b><font size='10' face="Arial" color="#0000FF">***Vous devez entrer la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font></b>
+]]></feedback>
+<existingcommands><![CDATA[<font size='10' face="Arial"><b>Effectuez les tâches suivantes dans l'ordre&nbsp;:<ul><li>Configurer GigabitEthernet 0/1 pour le trafic d'entrée de NetFlow<li>Configurer GigabitEthernet 0/1 pour le trafic de sortie de NetFlow<li>Passer en mode de configuration globale<li>Configurer la destination d'exportation de NetFlow vers le port&nbsp;2055 de 192.168.1.3<li>Configurer la version d'exportation de NetFlow à la valeur&nbsp;5<li>Passer en mode d'exécution privilégié</li></ul></b></font>]]></existingcommands>
+<command prompt="R1(config)#">
+<correctresponse><![CDATA[interface GigabitEthernet 0/1]]></correctresponse>
+</command>
+<command prompt="R1(config-if)#">
+<correctresponse><![CDATA[ip flow ingress]]></correctresponse>
+</command>
+<command prompt="R1(config-if)#">
+<correctresponse><![CDATA[ip flow egress]]></correctresponse>
+</command>
+<command prompt="R1(config-if)#">
+<correctresponse><![CDATA[exit]]></correctresponse>
+</command>
+<command prompt="R1(config)#">
+<correctresponse><![CDATA[ip flow-export destination 192.168.1.3 2055]]></correctresponse>
+</command>
+<command prompt="R1(config)#">
+<correctresponse><![CDATA[ip flow-export version 5]]></correctresponse>
+</command>
+<command prompt="R1(config)#">
+<correctresponse><![CDATA[exit]]></correctresponse>
+<instruction><![CDATA[<font size='10' face="Arial"><b>Affichez les informations de flux de cache.</b></font>]]></instruction>
+</command>
+<command prompt="R1#">
+<correctresponse><![CDATA[show ip cache flow]]></correctresponse>
+<deviceresponse><![CDATA[<font size='8'><pre>IP packet size distribution (178617 total packets): <br> 1-32   64   96  128  160  192 224  256  288  320  352  384  416  448  480 <br> .002 .080 .008 .005 .001 .000 .001 .001 .000 .000 .000 .000 .000 .000 .000 <br> <br>  512  544  576 1024 1536 2048 2560 3072 3584 4096 4608 <br> .000 .000 .000 .000 .895  .000 .000 .000 .000 .000 .000 <br> <br>IP Flow Switching Cache, 278544 bytes <br> 5 active, 4091 inactive, 1573 added <br> 18467 ager polls, 0 flow alloc failures <br> Active flows timeout in 1 minutes <br> Inactive flows timeout in 15 seconds <br>IP Sub Flow Cache, 34056 bytes <br> 5 active, 1019 inactive, 1569 added, 1569 added to flow <br> 0 alloc failures, 0 force free <br> 1 chunk, 1 chunk added <br> last clearing of statistics never <br>Protocol         Total    Flows   Packets Bytes  Packets Active(Sec) Idle(Sec)<br>--------         Flows     /Sec     /Flow  /Pkt     /Sec     /Flow     /Flow<br>TCP-Telnet           3      0.0         3    50      0.0       1.0      15.0<br>TCP-WWW            245      0.0         6    93      0.0       0.3       2.4<br>TCP-other          529      0.0        27    57      0.2       0.7       6.2<br>UDP-other          328      0.0         6   107      0.0       2.4      15.3<br>ICMP               711      0.0       226  1261      2.4       0.2      15.4<br>Total:            1816      0.0        98  1137      2.7       0.8      11.0<br> <br>SrcIf         SrcIPaddress    DstIf         DstIPaddress    Pr SrcP DstP  Pkts<br>UDP-other          253      0.0         6  105      0.0       2.6      15.3<br>ICMP               560      0.0       286  1262     2.6       0.2      15.5<br>Total:            1568      0.0       113  1142     2.9       0.8      10.4<br> <br>SrcIf         SrcIPaddress    DstIf         DstIPaddress    Pr SrcP DstP    Pkts<br>Gi0/1         192.168.1.3     Local         192.168.1.1     06 100B 01BB      1 <br>Gi0/1         192.168.1.3     Local         192.168.1.1     01 0000 0303      1 <br>Gi0/1         192.168.1.3     Local         192.168.1.1     01 0000 0800      1<br><pre></font>R1#]]></deviceresponse>
+<instruction><![CDATA[<font size = '10' face="Arial"><b>Afficher les informations netflow interface.</b></font>]]></instruction>
+</command>
+<command prompt="R1#">
+<correctresponse><![CDATA[show ip flow interface]]></correctresponse>
+<deviceresponse><![CDATA[GigabitEthernet0/1<br> ip flow ingress<br> ip flow egress<br>R1#]]></deviceresponse>
+<instruction><![CDATA[<font size = '10' face="Arial"><b>Afficher les paramètres d'exportation netflow.</b></font>]]></instruction>
+</command>
+<command prompt="R1#">
+<correctresponse><![CDATA[show ip flow export]]></correctresponse>
+<deviceresponse><![CDATA[Flow export v5 is enabled for main cache <br> Export source and destination details : <br> VRF ID : Default <br> Destination(1) 192.168.1.3 (2055) <br> Version 5 flow records <br> 1764 flows exported in 532 udp datagrams <br> 0 flows failed due to lack of export packet <br> 0 export packets were sent up to process level <br> 0 export packets were dropped due to no fib <br> 0 export packets were dropped due to adjacency issues <br> 0 export packets were dropped due to fragmentation failures <br> 0 export packets were dropped due to encapsulation fixup failures<br>R1#]]></deviceresponse>
+<instruction><![CDATA[<font size = '10' face="Arial" class="syntaxBottomLine"><b>Vous avez configuré avec succès et vérifié Netflow.</font>]]></instruction>
+</command>
+<command prompt=""/>
+</component>
+
+	
+	
+	<component id="ID_sc1_reset">
+		<text><![CDATA[Reset]]></text>
+	</component>
+	<component id="ID_sc1_showme">
+		<text><![CDATA[Show Me]]></text>
+	</component>
+	<component id="ID_sc1_showall">
+		<text><![CDATA[Show All]]></text>
+	</component>
+	
+</textcomponents>

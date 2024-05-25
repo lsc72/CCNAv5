@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.1.1 Communication des messages</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Déplacement des données sur le réseau</h1>
+        <h2>Encapsulation de données</h2>
+      </div>
+      <div id="content">
+<p>En théorie, une communication unique, comme une vidéo musicale ou un e-mail pourrait être transmise à travers un réseau depuis une source vers une destination sous la forme d'un flux ininterrompu et volumineux de bits. Si des messages étaient réellement transmis de cette manière, alors aucun autre périphérique ne serait en mesure d'envoyer ou de recevoir des messages sur ce même réseau pendant le transfert de ces données. Ces flux de données volumineux entraîneraient des retards conséquents. En outre, si un lien dans l'infrastructure du réseau interconnecté échouait durant la transmission, la totalité du message serait perdue et devrait être retransmise dans son intégralité. </p>
+<p></p>
+<p>Il existe une meilleure approche, qui consiste à diviser les données en parties de taille moins importante et plus facilement gérables pour les envoyer sur le réseau. Cette division du flux de données en parties plus petites est appelée segmentation. La segmentation des messages présente deux avantages principaux :</p>
+<p></p>
+<p>
+<ul>
+<li>Par l'envoi de parties individuelles de plus petite taille depuis une source vers une destination, de nombreuses conversations différentes peuvent s'entremêler sur le réseau. Le processus qui sert à entremêler les parties des différentes conversations entre elles sur le réseau est appelé multiplexage. Cliquez sur chaque bouton de la Figure 1, puis sur le bouton Lire pour afficher les animations sur la segmentation et le multiplexage.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La segmentation peut augmenter la fiabilité des communications réseau. Les différentes parties de chaque message n'ont pas besoin de parcourir le même chemin sur le réseau depuis la source jusqu'à la destination. Si un chemin particulier devient encombré en raison du trafic de données ou qu'il connaît une défaillance, les parties individuelles du message peuvent toujours être adressées à la destination via d'autres chemins. Si une partie du message ne parvient pas à sa destination, seules les parties manquantes doivent être transmises à nouveau.</li>
+</ul>
+</p>
+<p></p>
+<p>L'inconvénient de l'utilisation de la segmentation et du multiplexage pour la transmission des messages à travers un réseau réside dans le niveau de complexité ajouté au processus. Imaginez que vous deviez envoyer une lettre de 100 pages, mais que chaque enveloppe ne peut contenir qu'une seule page. Le processus d'adressage, d'étiquetage, d'envoi, de réception et d'ouverture de la totalité des 100 enveloppes prendrait beaucoup de temps à l'expéditeur et au destinataire. </p>
+<p></p>
+<p>Dans les communications réseau, chaque partie du message doit suivre un processus similaire permettant de s'assurer qu'elle arrive à la bonne destination et qu'elle peut être réassemblée pour former le contenu du message d'origine, comme le montre la Figure 2. </p>
+<p></p>
+<p>À travers le réseau, plusieurs types de périphériques contribuent à garantir que les parties du message arrivent de manière fiable à leur destination. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

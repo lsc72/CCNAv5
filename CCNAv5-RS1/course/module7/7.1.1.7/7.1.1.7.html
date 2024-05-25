@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.1.7 Le bon protocole de couche transport pour la bonne application</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.1.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole de couche Transport</h1>
+        <h2>Transport des données</h2>
+      </div>
+      <div id="content">
+<p>Les protocoles TCP et UDP sont des protocoles de transport valides. En fonction des besoins des applications, un ou deux de ces protocoles de transport peuvent être utilisés. Les développeurs d'applications doivent déterminer quel type de protocole de transport est approprié en fonction des exigences des applications.</p>
+<p></p>
+<p>Pour certaines applications, les segments doivent arriver dans un ordre donné pour être traités correctement. Pour d'autres applications, toutes les données doivent être entièrement reçues pour être utilisées. Dans les deux cas, le protocole TCP est utilisé comme protocole de transport. Par exemple, les applications telles que les bases de données, les navigateurs Web et les clients de messagerie ont besoin que toutes les données envoyées arrivent à destination dans leur état d'origine. Toute donnée manquante risque de corrompre la communication en la rendant incomplète ou illisible. Par conséquent, ces applications sont conçues pour utiliser le protocole TCP. On considère que cette surcharge supplémentaire pour le réseau est indispensable pour ces applications.</p>
+<p></p>
+<p>Dans d'autres cas, une application peut tolérer une certaine perte lors de la transmission de données sur le réseau, mais pas les retards de transmission. Le protocole UDP est le choix idéal pour ces applications, car il implique moins de surcharge sur le réseau. Le protocole UDP est à privilégier pour la lecture audio/vidéo en continu et la voix sur IP (VoIP). Les accusés de réception ralentiraient la livraison, et les retransmissions ne sont pas souhaitables. </p>
+<p></p>
+<p>Si, par exemple, un ou deux segments d'un flux vidéo en continu n'arrivent pas à destination, cela ne fait que créer une interruption momentanée du flux. Cela peut se traduire par une distorsion de l'image que l'utilisateur ne remarquera peut-être même pas. Cependant, l'image produite par un flux vidéo en continu serait fortement dégradée si le périphérique de destination devait rendre compte des données perdues et retarder la lecture le temps qu'elles arrivent. Dans ce cas, il est donc préférable de fournir la meilleure qualité vidéo possible en fonction des segments reçus et de renoncer à la fiabilité.</p>
+<p></p>
+<p>La radio sur Internet est un autre exemple d'application utilisant le protocole UDP. Si une partie du message est perdue pendant sa transmission via le réseau, elle n'est pas retransmise. Si certains paquets manquent, il se peut que la personne qui écoute entende de légères interruptions dans le son. Si TCP était utilisé et si les paquets perdus étaient renvoyés, la transmission serait interrompue pour recevoir ces paquets, et l'interruption se remarquerait davantage. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

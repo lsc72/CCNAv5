@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide type="MBAR">	
+	<element type="IMAGE" src="2_5_2_1.jpg" x="0" y="0" width="470" height="400"/>
+	<element type="TEXT" text="172.16.1.0/24" x="127.75" y="78.8" width="65.3" align="center" size="10" bold="1" />
+	<element type="TEXT" text="172.16.2.0/24" x="109.9" y="148.15" width="65.3" align="center" size="10" bold="1" />
+	<element type="TEXT" text="192.168.1.0/24" x="254.75" y="148.15" width="70.9" align="center" size="10" bold="1" />
+	<element type="TEXT" text="172.16.3.0/24" x="58.7" y="206.9" width="65.3" align="center" size="10" bold="1" />
+	<element type="TEXT" text="192.168.2.0/24" x="312.75" y="205.9" width="70.9" align="center" size="10" bold="1" style="letter-spacing:-.5px !important;"/>
+	<element type="TEXT" text="G0/0" x="189.85" y="100.45" width="25.9" align="center" size="10" />
+	<element type="TEXT" text="S0/0/1 DCE" x="239.3" y="124.55" width="33.1" align="left" size="10" />
+	<element type="TEXT" text="S0/0/0" x="166.55" y="135.15" width="33.1" align="center" size="10" />
+	<element type="TEXT" text="S0/0/1" x="232.95" y="179.05" width="33.1" align="center" size="10" />
+	<element type="TEXT" text="G0/0" x="115.35" y="178.65" width="25.9" align="center" size="10" />
+	<element type="TEXT" text="G0/0" x="300.9" y="178.65" width="25.9" align="center" size="10" />
+	<element type="TEXT" text="S0/0/0 DCE" x="182.25" y="174.55" width="33.1" align="left" size="10" />
+	<element type="TEXT" text="172.16.3.1" x="-1.45" y="208.9" width="51.4" align="center" size="10" />
+	<element type="TEXT" text="192.168.2.1" x="384.7" y="208.9" width="57" align="center" size="10" style="letter-spacing:-.5px !important;"/>	
+	<slide>
+	<element type="TEXT" compId="ID_s1_title" x="5" y="2" width="432.1" expand="down" align="center" size="13" />
+	<element type="ROUTER" textId="ID_s4_txt01" x="1.55" y="246.7" width="435" height="151.40"/>	
+	</slide>	
+	
+	<slide>
+		<element type="TEXT" compId="ID_s2_title" x="5" y="2" width="432.1" expand="down" align="center" size="13" />
+		<element type="ROUTER" textId="ID_s5_txt01" x="1.55" y="246.7" width="435" height="151.40"/>	
+	</slide>	
+	
+	<slide>
+		<element type="TEXT" compId="ID_s3_title" x="5" y="2" width="432.05" expand="down" align="center" size="13" />
+		<element type="ROUTER" textId="ID_s6_txt01" x="1.55" y="246.7" width="435" height="151.40"/>	
+	</slide>	
+	
+	<slide>
+		<element type="TEXT" compId="ID_s4_title" x="5" y="2" width="432.1" expand="down" align="center" size="13" />
+		<element type="ROUTER" textId="ID_s7_txt01" x="1.55" y="246.7" width="435" height="151.40"/>	
+	</slide>	
+	
+	<slide>
+		<element type="TEXT" compId="ID_s5_title" x="5" y="2" width="432.1" expand="down" align="center" size="13" />
+		<element type="ROUTER" textId="ID_s8_txt01" x="1.55" y="246.7" width="435" height="151.40" />	
+	</slide>
+	
+	<text id="ID_s4_txt01"><![CDATA[<pre>R1# <b>ping 192.168.2.1 source 172.16.3.1 </b>
+Type escape sequence to abort. 
+Sending 5, 100-byte ICMP Echos to 192.168.2.1, timeout is 2 seconds:
+Packet sent with a source address of 172.16.3.1 
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 28/28/28
+ms
+R1#</pre>
+		]]></text>
+		
+		<text id="ID_s5_txt01"><![CDATA[<pre>R1# <b>traceroute 192.168.2.1 </b>
+Type escape sequence to abort. 
+Tracing the route to 192.168.2.1
+VRF info: (vrf in name/id, vrf out name/id)
+  1 172.16.2.2 4 msec 4 msec 8 msec
+  2 192.168.1.1 12 msec 12 msec * 
+R1#</pre>
+		]]></text>
+		
+		<text id="ID_s6_txt01"><![CDATA[<pre>R1# <b>show ip route | begin Gateway </b>
+Gateway of last resort is not set
+
+     172.16.0.0/16 is variably subnetted, 5 subnets, 2 masks
+S       172.16.1.0/24 [1/0] via 172.16.2.2
+C       172.16.2.0/24 is directly connected, Serial0/0/0
+L       172.16.2.1/32 is directly connected, Serial0/0/0
+C       172.16.3.0/24 is directly connected, GigabitEthernet0/0
+L       172.16.3.1/32 is directly connected, GigabitEthernet0/0
+S    192.168.1.0/24 [1/0] via 172.16.2.2
+S    192.168.2.0/24 [1/0] via 172.16.2.2
+R1# 
+</pre>
+		]]></text>
+		
+		<text id="ID_s7_txt01"><![CDATA[<pre>R1# <b>show ip interface brief </b>
+Interface                  IP-Address  OK? Method Status                Protocol
+Embedded-Service-Engine0/0 unassigned  YES unset  administratively down down    
+GigabitEthernet0/0         172.16.3.1  YES manual up                    up      
+GigabitEthernet0/1         unassigned  YES unset  administratively down down    
+Serial0/0/0                172.16.2.1  YES manual up                    up      
+Serial0/0/1                unassigned  YES unset  administratively down down    
+R1#</pre>]]></text>
+		
+		<text id="ID_s8_txt01"><![CDATA[<pre>R1# <b>show cdp neighbors </b>       
+Capability Codes: R - Router, T - Trans Bridge, 
+                  B - Source Route Bridge, S - Switch, H - Host,
+                  I - IGMP, r - Repeater, P - Phone, D - Remote, 
+                  C - CVTA, M - Two-port Mac Relay 
+
+Device ID   Local Intrfce  Holdtme  Capability  Platform   Port ID
+netlab-cs5  Gig 0/0         156      S I        WS-C2960-  Fas 0/1
+R2          Ser 0/0/0       153      R S I      CISCO1941  Ser 0/0/0
+R1#</pre>
+		]]></text>
+			
+	</slide>
+</data>

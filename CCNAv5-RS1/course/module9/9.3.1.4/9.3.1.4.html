@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.3.1.4 Packet Tracer : mettre en œuvre un schéma d&#x0027;adressage IPv6 divisé en sous-réseaux</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.3.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Critères de conception à prendre en compte pour les réseaux IPv6</h1>
+        <h2>Segmentation en sous-réseaux d&#x0027;un réseau IPv6</h2>
+      </div>
+      <div id="content">
+<p>Votre administrateur réseau vous demande d'attribuer cinq sous-réseaux IPv6 /64 au réseau représenté dans la topologie. Votre travail consiste à déterminer les sous-réseaux IPv6, à attribuer les adresses IPv6 aux routeurs et à configurer les ordinateurs de sorte qu'ils reçoivent automatiquement les adresses IPv6. La dernière étape consiste à vérifier la connectivité entre les hôtes IPv6.</p>
+<p></p>
+<p>
+<a href="../../files/9.3.1.4%20Packet%20Tracer%20-%20Implementing%20a%20Subnetted%20IPv6%20Addressing%20Scheme%20Instructions.pdf" target="_blank">Instructions de Packet Tracer - Mettre en œuvre un schéma d'adressage IPv6 divisé en sous-réseaux</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/9.3.1.4%20Packet%20Tracer%20-%20Implementing%20a%20Subnetted%20IPv6%20Addressing%20Scheme.pka" target="_blank">PKA de Packet Tracer - Mettre en œuvre un schéma d'adressage IPv6 divisé en sous-réseaux</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.1.5 Traitement des trames</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole Ethernet</h1>
+        <h2>Fonctionnement du protocole Ethernet</h2>
+      </div>
+      <div id="content">
+<p>L'adresse MAC est souvent dite rémanente, car elle était au départ stockée dans la mémoire morte (ROM) de la carte réseau. Cela signifie que l'adresse est codée dans la puce de mémoire morte (ROM) définitivement, et qu'elle ne peut pas être modifiée à l'aide d'un logiciel. </p>
+<p></p>
+<p>
+<b>Remarque</b> : sur les systèmes d'exploitation et les cartes réseau des ordinateurs actuels, il est possible de modifier l'adresse MAC dans le logiciel. Cela peut s'avérer utile lorsque l'utilisateur tente d'accéder à un réseau qui base son filtre sur l'adresse rémanente, ce qui signifie que le contrôle du trafic en fonction de l'adresse MAC n'est plus aussi sécurisé. </p>
+<p></p>
+<p>Les adresses MAC sont attribuées à tous les périphériques susceptibles de devoir envoyer et/ou recevoir des données sur le réseau : postes de travail, serveurs, imprimantes, routeurs, etc. Tous les périphériques connectés à un réseau local Ethernet ont des interfaces dotées d'une adresse MAC. Les fabricants de matériel et de logiciels peuvent représenter l'adresse MAC dans des formats hexadécimaux différents. Les formats d'adresse peuvent être les suivants :</p>
+<p>
+<ul>
+<li>00-05-9A-3C-78-00</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>00:05:9A:3C:78:00</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>0005.9A3C.7800 </li>
+</ul>
+</p>
+<p></p>
+<p>Lorsque l'ordinateur démarre, la carte réseau commence par copier l'adresse MAC de la mémoire morte à la mémoire vive. Lorsqu'un périphérique transmet un message à un réseau Ethernet, il intègre des informations d'en-tête au paquet. Les informations d'en-tête contiennent l'adresse MAC source et de destination. Le périphérique source envoie les données sur le réseau.</p>
+<p></p>
+<p>Chaque carte réseau du réseau examine les informations au niveau de la sous-couche MAC pour voir si l'adresse MAC de destination indiquée dans la trame correspond à l'adresse MAC physique stockée dans la mémoire vive du périphérique. En l'absence de correspondance, la carte réseau ignore la trame. Lorsque la trame atteint la destination à laquelle l'adresse MAC de la carte réseau correspond à l'adresse MAC de destination de la trame, la carte réseau fait passer la trame à travers les couches OSI, où la désencapsulation a lieu.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

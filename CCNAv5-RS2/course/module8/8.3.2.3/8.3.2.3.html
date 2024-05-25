@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.2.3 Attribution des adresses link-local</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv3 à zone unique</h1>
+        <h2>Configuration du OSPFv3</h2>
+      </div>
+      <div id="content">
+<p>Il est difficile d'identifier et de mémoriser les adresses link-local créées au moyen du format EUI-64 ou, dans certains cas, les ID d'interface aléatoires Étant donné que les protocoles de routage IPv6 utilisent des adresses link-local IPv6 pour l'adressage de monodiffusion et les informations d'adresse de tronçon suivant dans la table de routage, il est courant de définir des adresses facilement reconnaissables. </p>
+<p></p>
+<p>Configurer manuellement l'adresse link-local permet de créer une adresse qui est reconnaissable et plus facile à mémoriser. Ainsi, un routeur avec plusieurs interfaces peut attribuer la même adresse link-local à chaque interface IPv6. La raison en est que l'adresse link-local est uniquement requise pour les communications locales. </p>
+<p></p>
+<p>Les adresses link-local peuvent être configurées manuellement au moyen de la même commande d'interface que celle utilisée pour créer des adresses de monodiffusion globale IPv6, mais en ajoutant le mot clé <span class="cmd"><b>link-local</b></span> à la commande <span class="cmd"><b>ipv6 address</b></span>. </p>
+<p></p>
+<p>Une adresse link-local possède un préfixe dans la plage FE80 à FEBF. Lorsqu'une adresse commence par cet hextet (segment de 16 bits), le mot clé <span class="cmd"><b>link-local</b></span> doit suivre l'adresse. </p>
+<p></p>
+<p>L'exemple de la Figure 1 configure la même adresse link-local FE80::1 sur les trois interfaces de R1. FE80::1 a été choisi pour faciliter la mémorisation des adresses link-local de R1. </p>
+<p></p>
+<p>Un examen rapide des interfaces telles qu'illustrées dans la Figure 2 confirme que les adresses link-local de l'interface de R1 ont été remplacées par FE80::1.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 3 pour configurer et vérifier l'adresse link-local FE80::2 sur R2 ainsi que l'adresse link-local FE80::3 sur R3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

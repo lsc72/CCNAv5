@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		
+		<slide>		
+		<element type="TEXT" subType="TITLE" compId="ID_s1_title" />	
+		<element type="ROUTER" textId="ID_s5_txt01" x="1" y="40" width="437" height="69"/>
+		<element type="ROUTER" textId="ID_s6_txt01" x="1" y="120" width="437" height="69"/>
+		
+		</slide>	
+	
+		<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s2_title" />	
+		<element type="ROUTER" textId="ID_s7_txt01" x="1" y="40" width="437" height="347"/>
+		</slide>
+		
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title" />
+			<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC5" x="1" y="36.8" width="437.1" height="359.65" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+		</slide>
+		
+		
+		
+			
+		<text id="ID_s5_txt01"><![CDATA[<pre>R1(config)# <b>router eigrp 1</b>
+R1(config-router)# <b>eigrp router-id 1.1.1.1</b>
+R1(config-router)#</pre>]]></text>
+		
+		<text id="ID_s6_txt01"><![CDATA[<pre>R2(config)# <b>router eigrp 1</b>
+R2(config-router)# <b>eigrp router-id 2.2.2.2</b>
+R2(config-router)#</pre>]]></text>
+		
+		
+		
+		
+		<text id="ID_s7_txt01"><![CDATA[<pre>R1# <b>show ip protocols</b>
+*** IP Routing is NSF aware ***
+
+Routing Protocol is "eigrp 1"
+  Outgoing update filter list for all interfaces is not 
+  set
+  Incoming update filter list for all interfaces is not 
+  set
+  Default networks flagged in outgoing updates
+  Default networks accepted from incoming updates
+  EIGRP-IPv4 Protocol for AS(1)
+    Metric weight K1=1, K2=0, K3=1, K4=0, K5=0
+    NSF-aware route hold timer is 240
+<span class="orange">    Router-ID: 1.1.1.1</span>
+    Topology : 0 (base) 
+      Active Timer: 3 min
+      Distance: internal 90 external 170
+      Maximum path: 4
+      Maximum hopcount 100
+      Maximum metric variance 1
+
+  Automatic Summarization: disabled
+  Maximum path: 4
+  Routing for Networks:
+  Routing Information Sources:
+    Gateway         Distance      Last Update
+  Distance: internal 90 external 170
+
+R1#
+</pre>]]></text>
+		
+		
+	</slide>
+</data>

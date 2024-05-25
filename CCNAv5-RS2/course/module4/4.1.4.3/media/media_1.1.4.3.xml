@@ -1,0 +1,55 @@
+﻿<textcomponents> <!--Slide 1-->
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Filtrage des commandes show  </b>]]></text>
+	</component> <!--Slide 2-->
+	<component id="ID_s2_title">
+		<text><![CDATA[<b>Filtrage des commandes show  </b>]]></text>
+	</component> <!--Slide 3-->
+	<component id="ID_s3_title">
+		<text><![CDATA[<b>Filtrage des commandes show  </b>]]></text>
+	</component> <!--Slide 4-->
+	<component id="ID_s4_title">
+		<text><![CDATA[<b>Filtrage des commandes show  </b>]]></text>
+	</component> <!--Slide 5-->
+	
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+	<component id="ID_s5_title">
+		<text><![CDATA[<b>Vérification des interfaces des routeurs  </b>]]></text>
+	</component>
+	<component id="ID_SC" fontFace='Courier New' fontSize="10" class="font10px">		
+		<feedback id="fb"><![CDATA[<b> *** </b><font face="Arial" color="#0000FF" class="font10px"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font  face="Arial" class="font10px"><b>Entrez la commande permettant de filtrer le résultat de la commande show running-config pour la section «&nbsp;line con&nbsp;».  </b></font>]]></existingcommands>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[show running-config | section line con]]></correctresponse>
+		    <deviceresponse><![CDATA[<font>line con 0<br> password 7 110A1016141D<br> login</font>]]></deviceresponse>
+		    <instruction><![CDATA[<font  face="Arial" class="font10px"><b>Entrez la commande permettant d'afficher uniquement les interfaces «&nbsp;down&nbsp;» dans le récapitulatif.  </b></font>]]></instruction>
+			</command>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[show ip interface brief | include down]]></correctresponse>
+<deviceresponse><![CDATA[<font>Embedded-Service-Engine0/0 unassigned YES unset<br/>administratively down down <br>Serial0/0/1 unassigned YES unset  <br/>administratively down down</font>]]></deviceresponse>
+		    <instruction><![CDATA[<font  face="Arial" class="font10px"><b>Entrez la commande permettant d'exclure les interfaces «&nbsp;up&nbsp;» dans le récapitulatif.  </b></font>]]></instruction>
+		</command>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[show ip interface brief | exclude up]]></correctresponse>
+<deviceresponse><![CDATA[<font>Interface IP-Address OK? Method <br/>Status Protocol<br>Embedded-Service-Engine0/0 unassigned YES unset  <br/>administratively down down    <br>Serial0/0/1 unassigned YES unset  <br/>administratively down down </font>]]></deviceresponse>
+		    <instruction><![CDATA[<font  face="Arial" class="font10px"><b>Entrez la commande permettant de filtrer le résultat de la commande show running-config pour commencer au mot «&nbsp;line&nbsp;».  </b></font>]]></instruction>
+			</command>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[show running-config | begin line]]></correctresponse>
+<deviceresponse><![CDATA[<font>line con 0 <br> password 7 110A1016141D <br> login <br>line aux 0 <br>line 2 <br> no activation-character <br> no exec <br> transport preferred none <br> transport input all <br> transport output pad telnet rlogin lapb-ta mop udptn v120 <br/>ssh <br> stopbits 1 <br>line vty 0 4 <br> password 7 030752180500 <br> login <br> transport input all <br>&nbsp;!  <br>scheduler allocate 20000 1000 <br>&nbsp;!  <br>end <br> <br>R1#  </font>]]></deviceresponse>
+			<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez correctement exécuté les commandes show filtrées.  </b></font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+</textcomponents>

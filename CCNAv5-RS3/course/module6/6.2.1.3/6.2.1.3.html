@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.1.3 Configuration du routage OSPFv3 à zones multiples</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du routage OSPF à zones multiples</h1>
+        <h2>Configuration du routage OSPF à zones multiples</h2>
+      </div>
+      <div id="content">
+<p>Tout comme l'implémentation OSPFv2, l'implémentation de la topologie OSPFv3 à zones multiples illustrée à la Figure 1 est simple. Aucune commande spéciale n’est nécessaire. Un routeur devient un ABR lorsqu’il a deux interfaces différentes zones.</p>
+<p></p>
+<p>Par exemple, à la Figure 2, l'ID du routeur R1 est 1.1.1.1. Dans cet exemple, le protocole OSPF est également activé sur les deux interfaces LAN de la zone 1 et sur l'interface série de la zone 0. Puisque R1 a des interfaces connectées dans deux zones différentes, il devient un ABR.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe à la Figure 3 pour configurer le protocole OSPFv3 à zones multiples sur R2 et R3.</p>
+<p></p>
+<p>Une fois la configuration de R2 terminée, prenez note du message d'information indiquant une contiguïté avec R1 (1.1.1.1).</p>
+<p></p>
+<p>Une fois la configuration de R3 terminée, prenez note du message d'information indiquant une contiguïté avec R2 (2.2.2.2). </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

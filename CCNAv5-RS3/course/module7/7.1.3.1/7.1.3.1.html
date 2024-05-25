@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.3.1 Encapsulation des messages EIGRP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Caractéristiques du protocole EIGRP</h1>
+        <h2>Messages EIGRP</h2>
+      </div>
+      <div id="content">
+<p>La partie données d’un message EIGRP est encapsulée dans un paquet. Ce champ de données est appelé type, longueur, valeur (TLV). Les types de TLV relatifs à ce cours sont les paramètres EIGRP, les routes internes IP et les routes externes IP. </p>
+<p></p>
+<p>L’en-tête de paquet EIGRP est inclus dans chaque paquet EIGRP, quel que soit son type. L'en-tête de paquet EIGRP et le TLV sont ensuite encapsulés dans un paquet IPv4. Dans l'en-tête de paquet IPv4, le champ de protocole est réglé sur 88 pour indiquer EIGRP. L'adresse de destination IPv4 est définie sur la multidiffusion 224.0.0.10. Si le paquet EIGRP est encapsulé dans une trame Ethernet, l'adresse MAC de destination est également une adresse de multidiffusion, 01-00-5E-00-00-0A.</p>
+<p></p>
+<p>Les Figures 1 à 4 présentent la trame Ethernet de liaison de données. Le protocole EIGRP pour IPv4 est encapsulé dans un paquet IPv4. Le protocole EIGRP pour IPv6 devrait utiliser un type d'encapsulation identique. Le protocole EIGRP pour IPv6 est encapsulé dans un en-tête IPv6. L'adresse de destination IPv6 devrait correspondre à l'adresse de multidiffusion FF02::A et le champ d'en-tête suivant devrait être défini sur 88.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

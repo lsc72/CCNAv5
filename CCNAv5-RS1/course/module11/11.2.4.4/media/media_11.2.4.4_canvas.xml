@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide>
+		<element type="IMAGE" x="0" y="0" width="470" height="400" src="media_11.2.4.4.jpg" />s
+		<element type="TEXT" compId="ID_txt02" x="46.2" y="72.65" width="37.15" expand="right" align="left" />
+		<element type="ROUTER" textId="ID_router_txt1" x="16" y="94.3" width="444" height="205" />
+		<element type="TEXTBOX" titleId="null" bodyId="ID_txt01" x="20" y="305.1" width="444" height="91.4" />
+	</slide>
+	<text id="ID_router_txt1"><![CDATA[<pre>R1#conf t</b>
+R1(config)#<b>ip domain-name span.com</b>
+R1(config)#<b>crypto key generate rsa general-keys modulus 1024</b>
+The name for the keys will be: R1.span.com
+% The key modulus size is 1024 bits
+% Generating 1024 bit RSA keys, keys will be non-exportable...[OK]
+R1(config)#
+*Dec 13 16:19:12.079: %SSH-5-ENABLED: SSH 1.99 has been enabled
+R1(config)#<b>username Bob secret cisco</b>
+R1(config)#<b>line vty 0 4</b>
+R1(config-line)#<b>login local</b>
+R1(config-line)#<b>transport input ssh</b>
+R1(config-line)#<b>exit</b></pre>]]></text>
+</data>

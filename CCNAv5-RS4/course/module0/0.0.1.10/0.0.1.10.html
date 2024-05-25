@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>0.0.1.10 Comment Packet Tracer permet d&#x0027;assimiler certains concepts</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_0.0.1.10_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Connexion de réseaux</h1>
+        <h2>Message destiné aux participants</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Jeux éducatifs</b>
+</p>
+<p>Les jeux Packet Tracer multiutilisateurs vous permettent, à vous ou votre équipe, de vous mesurer aux autres participants pour savoir lequel d'entre vous exécute une série de tâches le plus rapidement. C'est un excellent moyen de mettre en pratique les compétences acquises dans les exercices Packet Tracer et les travaux pratiques.</p>
+<p>Cisco Aspire est un jeu de simulation et de stratégie qui se joue seul. Les joueurs testent leurs compétences relatives aux réseaux en passant des contrats dans une ville virtuelle. L'édition Networking Academy est spécialement conçue pour vous aider à vous préparer à l'examen de certification CCENT. Elle aborde également les compétences professionnelles et les techniques de communication que les employeurs du secteur des réseaux recherchent activement.</p>
+<p></p>
+<p>
+<b>Les évaluations basées sur la performance</b>
+</p>
+<p>Les évaluations basées sur la performance de Networking Academy vous font effectuer des exercices Packet Tracer comme vous l'avez fait tout au long de la formation, à ceci près que ces exercices sont couplés à un moteur d'évaluation en ligne qui note automatiquement vos performances et vous fournit des commentaires instantanés. Ces commentaires vous aident à identifier plus précisément les connaissances et compétences que vous maîtrisez et celles sur lesquelles vous avez besoin de vous entraîner. Certaines des questions des questionnaires et examens de chapitre utilisent des exercices Packet Tracer pour vous fournir des commentaires supplémentaires sur votre progression.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

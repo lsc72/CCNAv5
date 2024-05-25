@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.1 La couche physique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche physique</h1>
+        <h2>Objectif de la couche physique</h2>
+      </div>
+      <div id="content">
+<p>La couche physique OSI fournit un moyen de transporter sur le support réseau les bits constituant une trame de couche liaison de données. Cette couche accepte une trame complète de la couche liaison de données et la code sous la forme d'une série de signaux transmis sur les supports locaux. Les bits codés composant une trame sont reçus par un périphérique final ou intermédiaire.</p>
+<p></p>
+<p>Le processus subi par les données, du nœud source au nœud de destination, est le suivant : </p>
+<p>
+<ul>
+<li>Les données utilisateur sont segmentées par la couche transport, placées dans des paquets par la couche réseau, puis encapsulées sous forme de trames par la couche liaison de données. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La couche physique code les trames et crée les signaux électriques, optiques ou ondulatoires (radio) qui représentent les bits dans chaque trame. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Ces signaux sont alors envoyés sur le support individuellement. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La couche physique du nœud de destination récupère ces signaux individuels sur les supports, les convertit en représentations binaires et transmet les bits à la couche liaison de données sous forme de trame complète.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

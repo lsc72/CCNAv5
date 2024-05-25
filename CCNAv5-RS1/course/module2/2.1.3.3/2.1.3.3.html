@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.3.3 Mode de configuration globale et sous-modes</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>IOS Bootcamp</h1>
+        <h2>Navigation à travers IOS</h2>
+      </div>
+      <div id="content">
+<p>Pour accéder au mode de configuration globale et aux modes de configuration d'interface, il est nécessaire de passer par le mode d'exécution privilégié. </p>
+<p></p>
+<p>
+<b>Mode de configuration globale</b>
+</p>
+<p></p>
+<p>Le principal mode de configuration est appelé mode de  configuration globale. Les modifications de la configuration effectuées dans la CLI en mode de configuration globale affectent le fonctionnement du périphérique dans son ensemble. Le mode de configuration globale est sélectionné avant d'accéder à des modes de configuration spécifiques.</p>
+<p></p>
+<p>La commande IOS suivante permet de faire passer le périphérique du mode d'exécution privilégié au mode de configuration globale et d'autoriser l'entrée de commandes de configuration à partir d'un terminal :</p>
+<p></p>
+<p>
+<span class="cmd">Switch#</span>
+<span class="cmd">
+<b>configure terminal</b>
+</span>
+</p>
+<p></p>
+<p>Une fois la commande exécutée, l'invite change pour indiquer que le commutateur se trouve en mode de configuration globale.</p>
+<p></p>
+<p>
+<span class="cmd">Switch(config)#</span>
+</p>
+<p></p>
+<p>
+<b>Modes de configuration spécifiques</b>
+</p>
+<p></p>
+<p>À partir du mode de configuration globale, l'utilisateur peut accéder à différents sous-modes de configuration. Ceux-ci permettent tous de configurer une partie ou une fonction spéciale du périphérique IOS. La liste ci-dessous en présente quelques-uns  :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Mode interface</b> - pour configurer l'une des interfaces réseau (Fa0/0, S0/0/0)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Mode ligne</b> - pour configurer l'une des lignes physiques ou virtuelles (console, AUX, VTY) </li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 1 illustre les invites de certains de ces modes. Pour quitter un mode de configuration spécifique et retourner au mode de configuration globale, entrez <span class="cmd"><b>exit</b></span> à une invite. Pour quitter complètement le mode de configuration et retourner au mode d'exécution privilégié, entrez <span class="cmd"><b>end</b></span> ou utilisez la combinaison de touches <b>Ctrl-Z</b>. </p>
+<p></p>
+<p>
+<b>Invites de commandes</b>
+</p>
+<p></p>
+<p>Dans la CLI, le mode dans lequel vous travaillez est reconnaissable à son invite de commandes unique. Par défaut, toute invite commence par le nom du périphérique. Après le nom du périphérique, le reste de l'invite précise le mode. Par exemple, l'invite par défaut pour le mode de configuration globale d'un commutateur est :</p>
+<p></p>
+<p>
+<span class="cmd">Switch(config)#</span>
+</p>
+<p></p>
+<p>Comme le montre la Figure 2, lorsque vous entrez des commandes et passez d'un mode à l'autre, l'invite change pour refléter le mode en cours d'utilisation.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

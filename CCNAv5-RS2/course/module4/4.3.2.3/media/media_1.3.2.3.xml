@@ -1,0 +1,86 @@
+﻿<textcomponents>
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Configuration d'une interface Gigabit Ethernet connectée directement</b>]]></text>
+	</component>
+	<component id="ID_s2_title">
+		<text><![CDATA[<b>Configuration d'une interface Gigabit Ethernet connectée directement</b>]]></text>
+	</component>
+	<component id="ID_s3_title">
+		<text><![CDATA[<b>Configuration d'une interface série connectée directement</b>]]></text>
+	</component>
+	<component id="ID_s4_title">
+		<text><![CDATA[<b>Vérification des entrées de la table de routage connectée directement</b>]]></text>
+	</component>
+	<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+	<component id="ID_SC_title">
+		<text><![CDATA[<b>Configuration des interfaces connectées directement sur R2</b>]]></text>
+	</component>
+	<component id="ID_SC5" fontFace='Courier New' fontSize="10">
+		<text></text>		
+		<feedback id="fb"><![CDATA[<b> *** </b><font size='10' face="Arial" color="#0000FF" class="font10px"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font size='10' face="Arial" class="font10px"><b>Configurez l'interface GigabitEthernet 0/0 en la décrivant comme «&nbsp;liaison au LAN&nbsp;3&nbsp;» avec l'adresse 10.1.1.1/24. Activez l'interface.  </b></font>]]></existingcommands>
+		<command prompt="R2(config)# ">
+		    <correctresponse><![CDATA[interface gigabitethernet 0/0]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)# ">
+		    <correctresponse><![CDATA[description Link to LAN 3]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)# ">
+		    <correctresponse><![CDATA[ip address 10.1.1.1 255.255.255.0]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)# ">
+		    <correctresponse><![CDATA[no shutdown]]></correctresponse>
+			<deviceresponse><![CDATA[<font size='10' class="font10px">*Feb 1 18:15:59.031: %LINK-3-UPDOWN: Interface GigabitEthernet0/0, changed state to down <br>*Feb 1 18:16:01.991: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to up</font>]]></deviceresponse>		    
+		    <instruction><![CDATA[<font size='10' face="Arial" class="font10px"><b>Affichez la table de routage active en commençant par le mot «&nbsp;gateway&nbsp;». Utilisez la commande «&nbsp;do show IP route&nbsp;» avec le filtre permettant de rester en mode de configuration.  </b></font>]]></instruction>
+		</command>
+		<command prompt="R2(config-if)# ">
+		    <correctresponse><![CDATA[do show ip route | begin Gateway]]></correctresponse>
+<deviceresponse><![CDATA[<font size='10' class="font10px">Gateway of last resort is not set <br> <br>      10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks <br>C 10.1.1.0/24 is directly connected, GigabitEthernet0/0 <br>L 10.1.1.1/32 is directly connected, GigabitEthernet0/0</font>]]></deviceresponse>
+		<instruction><![CDATA[<font size='10' face="Arial" class="font10px"><b>Configurez l'interface GigabitEthernet 0/1 en la décrivant comme «&nbsp;liaison au LAN&nbsp;4&nbsp;» avec l'adresse 10.1.2.1/24. Activez l'interface.  </b></font>]]></instruction>
+		</command>
+		<command prompt="R2(config)# ">
+		    <correctresponse><![CDATA[interface gigabitethernet 0/1]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)# ">
+		    <correctresponse><![CDATA[description Link to LAN 4]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)# ">
+		    <correctresponse><![CDATA[ip address 10.1.2.1 255.255.255.0]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)# ">
+		    <correctresponse><![CDATA[no shutdown]]></correctresponse>
+			<deviceresponse><![CDATA[<font size='10' class="font10px">*Feb 1 18:16:58.031: %LINK-3-UPDOWN: Interface GigabitEthernet0/1, changed state to down <br>*Feb 1 18:17:01.991: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up</font>]]></deviceresponse>		    
+		<instruction><![CDATA[<font size='10' face="Arial" class="font10px"><b>Configurez l'interface Serial 0/0/0 avec l'adresse 209.165.200.226/30 en la décrivant comme «&nbsp;liaison à R1&nbsp;». Activez l'interface.  </b></font>]]></instruction>
+		</command>
+		<command prompt="R2(config)# ">
+		    <correctresponse><![CDATA[interface serial 0/0/0]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)# ">
+		    <correctresponse><![CDATA[description Link to R1]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)# ">
+		    <correctresponse><![CDATA[ip address 209.165.200.226 255.255.255.252]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)# ">
+		    <correctresponse><![CDATA[no shutdown]]></correctresponse>
+			<deviceresponse><![CDATA[<font size='10' class="font10px">*Feb 1 18:17:49.831: %LINK-3-UPDOWN: Interface Serial0/0/0, changed state to up <br>*Feb 1 18:17:50.831: %LINEPROTO-5-UPDOWN: Line protocol on Interface Serial0/0/0, changed state to up</font>]]></deviceresponse>		    
+		    <instruction><![CDATA[<font size='10' face="Arial" class="font10px"><b>Affichez la table de routage active en commençant par le mot «&nbsp;gateway&nbsp;». Utilisez la commande «&nbsp;do show IP route&nbsp;» avec le filtre permettant de rester en mode de configuration.  </b></font>]]></instruction>
+		</command>
+		<command prompt="R2(config-if)# ">
+		    <correctresponse><![CDATA[do show ip route | begin Gateway]]></correctresponse>
+			<deviceresponse><![CDATA[<font size='10' class="font10px">Gateway of last resort is not set <br> <br>      10.0.0.0/8 is variably subnetted, 4 subnets, 2 masks <br>C 10.1.1.0/24 is directly connected, GigabitEthernet0/0 <br>L 10.1.1.1/32 is directly connected, GigabitEthernet0/0 <br>C 10.1.2.0/24 is directly connected, GigabitEthernet0/1 <br>L 10.1.2.1/32 is directly connected, GigabitEthernet0/1 <br>      209.165.200.0/24 is variably subnetted, 2 subnets, 2 masks <br>C 209.165.200.224/30 is directly connected, Serial0/0/0 <br>L 209.165.200.226/32 is directly connected, Serial0/0/0 <br></font>R2(config-if) #]]>			</deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"  class="syntaxBottomLine"><b>Vous avez correctement configuré les interfaces connectées et avez affiché la table de routage.  </b></font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+</textcomponents>

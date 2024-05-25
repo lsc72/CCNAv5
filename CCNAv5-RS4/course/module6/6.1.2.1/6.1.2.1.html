@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.2.1 Solution pour les télétravailleurs</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Télétravail</h1>
+        <h2>Contraintes professionnelles des services de télétravail</h2>
+      </div>
+      <div id="content">
+<p>Les entreprises ont besoin de réseaux sécurisés, fiables et rentables afin de relier leur siège social, leurs filiales et leurs fournisseurs. Avec le nombre croissant de télétravailleurs, les entreprises ont de plus en plus besoin de disposer de moyens à la fois sûrs, fiables et rentables permettant de connecter ces télétravailleurs aux ressources réseau situées sur des sites de LAN.</p>
+<p></p>
+<p>La figure illustre les topologies de connexion à distance utilisées par les réseaux modernes pour se connecter à des emplacements distants. Dans certains cas, les sites distants sont uniquement connectés au siège, alors que dans d’autres cas, ils sont connectés à divers sites. La filiale de la figure se connecte au siège social et aux sites des partenaires, tandis que le télétravailleur ne possède qu'une seule connexion avec le siège social. </p>
+<p></p>
+<p>Il existe trois technologies de connexion à distance principales disponibles pour les entreprises qui prennent en charge des services de télétravail :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Connexions haut débit</b> : le terme haut débit se réfère aux systèmes de communication avancés capables de fournir la transmission à haute vitesse de services tels que la communication de données, de voix et de vidéo sur Internet et d'autres réseaux. La transmission est fournie par une large gamme de technologies, comme la technologie de ligne d'abonné numérique (DSL), la technologie FTTH (fibre optique jusqu'au domicile), les systèmes à câble coaxial, la technologie sans fil et le satellite. Les vitesses de transmission de données des services haut débit excèdent généralement 200 kbit/s dans au moins une direction entre le FAI et l'utilisateur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>VPN IPsec</b> : il s'agit de l'option la plus courante pour les télétravailleurs, combinée à un accès à distance haut débit, permettant d'établir un VPN sécurisé sur le réseau Internet public. Ce type de connexion WAN offre une connectivité à la fois flexible et évolutive. Les connexions de site à site peuvent assurer une connexion à distance fiable, rapide et sécurisée pour les télétravailleurs. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Technologies WAN de couche 2 privées traditionnelles</b> : ces types de connexions offrent de nombreuses solutions de connexions à distance et incluent des technologies telles que Frame Relay, ATM et les lignes louées. La sécurité de ces connexions dépend du fournisseur de services concerné. </li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

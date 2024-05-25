@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.1.1 Topologie de réseau OSPF</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv2 à zone unique</h1>
+        <h2>ID de routeur OSPF</h2>
+      </div>
+      <div id="content">
+<p>Introduit en 1991, OSPFv2 est un protocole de routage à état de liens pour IPv4. Le protocole OSPF a été conçu comme alternative à un autre protocole de routage IPv4, le protocole RIP.</p>
+<p></p>
+<p>La figure montre la topologie utilisée pour configurer le protocole OSPFv2 dans cette section. Les types de ports série et leurs bandes passantes associées ne correspondent pas nécessairement aux types de connexions plus courantes figurant sur les réseaux actuels. Les bandes passantes des liens série utilisés dans cette topologie ont été choisies pour expliquer le calcul des métriques du protocole de routage et le processus de sélection du meilleur chemin.</p>
+<p></p>
+<p>Les routeurs de la topologie disposent d'une configuration initiale, qui inclut les adresses d'interface. Aucun routage statique ou dynamique n'est actuellement configuré sur l'un des routeurs. Toutes les interfaces des routeurs R1, R2 et R3 (sauf le bouclage sur R2) se trouvent dans la zone de réseau fédérateur OSPF. Le routeur du FAI est utilisé comme passerelle du domaine de routage pour accéder à Internet.</p>
+<p></p>
+<p>
+<b>Remarque :</b> dans cette topologie, l'interface de bouclage est utilisée pour simuler le lien de réseau étendu donnant accès à Internet. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

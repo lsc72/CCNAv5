@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>0.0.1.7 Journaux de conception</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_0.0.1.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Bienvenue dans le cours Présentation des réseaux</h1>
+        <h2>Message destiné aux participants</h2>
+      </div>
+      <div id="content">
+<p>Les professionnels du secteur des réseaux tiennent souvent des journaux de conception dans lesquels ils notent les choses qu'ils observent et qu'ils apprennent (comme l'utilisation des protocoles et des commandes). Tenir un journal de conception vous permet de disposer d'une référence que vous pouvez consulter dans le cadre de votre travail. Écrire renforce l'apprentissage, tout comme la lecture, l'observation et la mise en pratique.</p>
+<p>Dans le cadre de l'implémentation d'une technologie spécifique, vous pouvez répertorier dans votre journal les commandes logicielles requises, l'objectif de ces commandes, les variables de commande et un schéma de topologie indiquant le contexte d'utilisation des commandes de configuration.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

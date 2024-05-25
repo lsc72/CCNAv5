@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.4.3 Vérification d&#x0027;une route statique par défaut</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.4.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration des routes statiques et par défaut</h1>
+        <h2>Configuration des routes par défaut IPv6</h2>
+      </div>
+      <div id="content">
+<p>Dans la Figure 1, la commande <span class="cmd"><b>show ipv6 route static</b></span> affiche le contenu de la table de routage. </p>
+<p></p>
+<p>Contrairement au protocole IPv4, le protocole IPv6 ne spécifie pas explicitement que le protocole IPv6 par défaut est la passerelle de dernier recours. </p>
+<p></p>
+<p>L'élément essentiel de cette configuration est le masque <span class="cmd"><b>::/0</b></span>. Souvenez-vous qu'ipv6 prefix-length dans une table de routage détermine le nombre de bits devant correspondre entre l'adresse IP de destination du paquet et la route dans la table de routage. Le masque<span class="cmd"><b> ::/0</b></span> indique qu'aucun des bits ne doit correspondre. Tant qu'il n'y a pas de correspondance plus spécifique, la route IPv6 statique par défaut correspond à tous les paquets.</p>
+<p></p>
+<p>La Figure 2 présente une requête ping réussie vers l'interface du réseau local de R3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

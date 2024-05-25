@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.2.5 Dépannage d&#x0027;une interface série</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation des connexions série point à point</h1>
+        <h2>Encapsulation HDLC</h2>
+      </div>
+      <div id="content">
+<p>Le résultat de la commande <span class="cmd"><b>show interfaces serial</b></span> affiche les informations spécifiques aux interfaces série. Lorsque le protocole HDLC est configuré, <span class="cmd">encapsulation HDLC</span> doit apparaître dans le résultat, comme illustré à la Figure 1. <span class="cmd">Serial 0/0/0 is up, line protocol is up</span> indique que la ligne est active et fonctionne. <span class="cmd">Encapsulation HDLC</span> indique que l'encapsulation série par défaut (HDLC) est activée.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>show interfaces serial</b></span> renvoie un état parmi six états possibles : </p>
+<p>
+<ul>
+<li>Serial x is up, line protocol is up </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Serial x is down, line protocol is down </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Serial x is up, line protocol is down </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Serial x is up, line protocol is up (looped) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Serial x is up, line protocol is down (disabled) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Serial x is administratively down, line protocol is down</li>
+</ul>
+</p>
+<p></p>
+<p>Sur les six états possibles, cinq indiquent un problème. La Figure 2 présente ces cinq états, le problème associé à chaque état, et indique comment résoudre ce problème.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>show controllers </b></span>est un autre outil de diagnostic important dans le cadre du dépannage de lignes série, comme illustré à la Figure 3. La sortie renvoyée indique l'état des canaux de l'interface et signale la présence ou l'absence d'un câble. Dans la figure, l'interface série 0/0/0 comporte un câble DCE V.35 connecté. La syntaxe de la commande est variable, en fonction de la plateforme. Les routeurs Cisco série 7000 utilisent une carte de contrôleur cBus pour connecter les liaisons série. Avec ces routeurs, utilisez la commande <span class="cmd"><b>show controllers cbus</b></span>. </p>
+<p></p>
+<p>Si la sortie de l'interface électrique affiche <span class="cmd">UNKNOWN</span> au lieu de <span class="cmd">V.35, EIA/TIA-449</span> ou un autre type d'interface électrique, le problème vient sans doute d'un câble qui n'est pas correctement branché. Il est également possible que le câblage interne de la carte présente un problème. Si l'interface électrique est inconnue, l'affichage correspondant à la commande <span class="cmd"><b>show interfaces serial <x></b></span> présente l'interface et le protocole comme étant désactivés.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

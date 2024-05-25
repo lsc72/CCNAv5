@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.3.1.4 Auto-MDIX</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.3.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Commutateurs LAN</h1>
+        <h2>Commutation</h2>
+      </div>
+      <div id="content">
+<p>Outre le paramètre bidirectionnel approprié, il est également nécessaire que le type de câble adéquat soit défini pour chaque port. Les connexions entre des périphériques spécifiques, notamment entre deux commutateurs, un commutateur et un routeur, un commutateur et un hôte, et un routeur et un périphérique d'hôte nécessitaient au départ l'utilisation de types de câble spécifiques (croisés ou droits). Désormais, la plupart des commutateurs prennent en charge la commande de configuration d'interface <span class="cmd"><b>mdix auto</b></span> dans l'interface de ligne de commande, qui active la fonction auto-MDIX. </p>
+<p></p>
+<p>Lorsque vous activez cette fonction, le commutateur détecte le type de câble requis pour les connexions Ethernet cuivre, puis configure les interfaces en conséquence. Vous devez donc opter pour un câble croisé ou un câble droit pour les connexions sur un port 10/100/1000 cuivre sur le commutateur, quel que soit le type de périphérique à l'autre extrémité de la connexion. </p>
+<p></p>
+<p>Par défaut, la fonction auto-MDIX est activée sur des commutateurs dotés de la version 12.2(18)SE (ou ultérieure) du logiciel Cisco IOS. Pour les versions comprises entre 12.1(14)EA1 et 12.2(18)SE de ce même logiciel, la fonction auto-MDIX est désactivée par défaut.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.2.3 Vérification du protocole EIGRP : examen de la table de routage IPv4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole EIGRP pour IPv4</h1>
+        <h2>Vérification du protocole EIGRP avec IPv4</h2>
+      </div>
+      <div id="content">
+<p>Une autre façon de vérifier la configuration du protocole EIGRP et d'autres fonctions consiste à examiner les tables de routage IPv4 à l'aide de la commande<span class="cmd"><b> show ip route</b></span>. Comme avec tout protocole de routage dynamique, l'administrateur réseau doit vérifier les informations contenues dans la table de routage afin de s'assurer qu'elles sont conformes aux configurations saisies. C'est la raison pour laquelle il est important de bien comprendre les commandes de configuration du protocole de routage, ainsi que les opérations du protocole de routage et les processus utilisés pour créer la table de routage IP.</p>
+<p></p>
+<p>Notez que les résultats utilisés tout au long de ce cours proviennent de Cisco IOS 15. Avant IOS 15, la récapitulation automatique EIGRP était activée par défaut. L'état de la récapitulation automatique peut faire une différence sur les informations affichées dans la table de routage IPv4. Si une version précédente de IOS est utilisée, la récapitulation automatique peut être désactivée à l'aide de la commande de mode de configuration du routeur <span class="cmd"><b>no auto-summary </b></span>: </p>
+<p></p>
+<p>
+<span class="cmd">Router(config-router)# </span>
+<span class="cmd">
+<b>no auto-summary</b>
+</span>
+</p>
+<p></p>
+<p>La Figure 1 présente la topologie de R1, R2 et R3.</p>
+<p></p>
+<p>À la Figure 2, la table de routage IPv4 est examinée à l'aide de la commande<span class="cmd"><b> show ip route</b></span>. Les routes EIGRP sont signalées dans la table de routage par la lettre<span class="cmd"><b> D</b></span>. La lettre D a servi à représenter le protocole EIGRP, car le protocole repose sur l'algorithme DUAL. </p>
+<p></p>
+<p>La commande<span class="cmd"><b> show ip route </b></span>vérifie que les routes reçues par les voisins EIGRP sont installées dans la table de routage IPv4. La commande<span class="cmd"><b> show ip route </b></span>affiche toute la table de routage, y compris les réseaux distants appris de façon dynamique, connectés directement et les routes statiques. C'est la raison pour laquelle la première commande sert normalement à vérifier la convergence. Une fois le routage correctement configuré sur tous les routeurs, la commande<span class="cmd"><b> show ip route </b></span>montre que chaque routeur dispose d'une table de routage complète, avec une route vers chaque réseau de la topologie.</p>
+<p></p>
+<p>Notez que R1 a installé des routes vers trois réseaux distants IPv4 dans sa table de routage IPv4 :</p>
+<p>
+<ul>
+<li>Réseau 172.16.2.0/24, reçu à partir du routeur R2 sur l'interface Serial0/0/0</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Réseau 192.168.1.0/24, reçu à partir du routeur R2 sur l'interface Serial0/0/1</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Réseau 192.168.10.8/30, reçu à partir du routeur R2 sur l'interface Serial0/0/0 et du routeur R3 sur l'interface Serial0/0/1</li>
+</ul>
+</p>
+<p></p>
+<p>R1 dispose de deux chemins vers le réseau 192.168.10.8/30, car son coût ou sa métrique pour atteindre ce réseau est identique ou équivalent à l'utilisation des deux routeurs. C'est ce que l'on appelle des routes à coût égal. R1 utilise les deux chemins pour atteindre ce réseau, que l'on appelle équilibrage de la charge. La métrique EIGRP est présentée plus loin dans ce chapitre.</p>
+<p></p>
+<p>La Figure 3 affiche la table de routage de R2. Notez que les mêmes résultats s'affichent avec une route à coût égal pour le réseau 192.168.10.4/30.</p>
+<p></p>
+<p>La Figure 4 affiche la table de routage de R3. Tout comme les résultats de R1 et R2, les réseaux distants sont appris à l'aide du protocole EIGRP, avec une route à coût égal pour le réseau 172.16.3.0/30.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

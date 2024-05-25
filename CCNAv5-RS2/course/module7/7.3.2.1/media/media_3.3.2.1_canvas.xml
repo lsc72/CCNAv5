@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+	<data>
+	  <slide type="MBAR">
+				<element type="TEXT" text="DCE" x="119.05" y="113.15" align="center" width="27.55" size="10" />
+				<element type="TEXT" text="S0/0/0" x="118.05" y="133.05" align="center" width="35.7" size="10" />
+				<element type="TEXT" text=":1" x="116.05" y="142.65" align="center" width="14.7" size="10" />
+				<element type="TEXT" text=":1" x="54" y="115.55" align="center" width="14.7" size="10" />
+				<element type="TEXT" text="G0/0" x="43.45" y="132.5" align="center" width="28.4" size="10" />
+				<element type="TEXT" text="S0/0/0" x="160.3" y="120.15" align="center" width="35.7" size="10" />
+				<element type="TEXT" text=":2" x="183.45" y="136.05" align="center" width="14.7" size="10" />
+				<element type="TEXT" text="DCE" x="239.55" y="113.15" align="center" width="27.55" size="10" />
+				<element type="TEXT" text="S0/0/1" x="236.55" y="133.05" align="center" width="35.7" size="10" />
+				<element type="TEXT" text=":2" x="239.55" y="142.65" align="center" width="14.7" size="10" />
+				<element type="TEXT" text="S0/0/1" x="285.25" y="121.15" align="center" width="35.7" size="10" />
+				<element type="TEXT" text=":1" x="308.05" y="137.05" align="center" width="14.7" size="10" />
+				<element type="TEXT" text=":1" x="360.55" y="116.15" align="center" width="14.7" size="10" />
+				<element type="TEXT" text="G0/0" x="361.2" y="132" align="center" width="28.4" size="10" />
+				<element type="TEXT" text="2001:DB8:CAFE:1::/64" x="3.05" y="95.95" align="center" width="112.5" size="10"  bold="1" />
+				<element type="TEXT" text="2001:DB8:CAFE:3::/64" x="328.3" y="97.95" align="center" width="112.5" size="10" bold="1" />
+				<element type="TEXT" text="2001:DB8:CAFE:A001::/64" x="99.05" y="153.95" align="center" width="130.8" size="10" bold="1" />
+				<element type="TEXT" text="2001:DB8:CAFE:A002::/64" x="239.55" y="153.95" align="center" width="130.8" size="10" bold="1" />
+				<element type="TEXT" text="2001:DB8:CAFE:2::/64" x="172.45" y="41.95" align="center" width="112.5" size="10" bold="1" />
+				<element type="TEXT" text=":1" x="200.45" y="97.45" align="center" width="14.7" size="10" />
+				<element type="TEXT" text="G0/0" x="221.45" y="97.45" align="center" width="28.4" size="10" />
+				
+
+			
+			<slide>
+			    <element type="TEXT" subType="TITLE" compId="ID_s1_title"/>	
+			    <element type="IMAGE" src="media_3.3.2.1.jpg" x="0" y="0" width="470" height="400" />			  
+				<element type="ROUTER" textId="router_text1" x="6.55" y="204.75" width="426" height="182.35"  />
+			</slide> 		
+
+			<slide>
+			   <element type="TEXT" subType="TITLE" compId="ID_s2_title"/>	
+			   <element type="IMAGE" src="media_3.3.2.1A.jpg" x="0" y="0" width="470" height="400" />		
+			   <element type="ACTIVITY" subType="SYNTAX" compId="ID_s2_SC5" x="1.5" y="166.8" width="437.1" height="230" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+			</slide> 
+
+		</slide> 	
+
+
+	   
+		<text id="router_text1"><![CDATA[<code>R1(config)# <b>ipv6 unicast-routing</b>
+R1(config)#
+R1(config)# <b>interface gigabitethernet 0/0</b>
+R1(config-if)# <b>ipv6 rip RIP-AS enable</b>
+R1(config-if)# <b>exit</b>
+R1(config)#
+R1(config)# <b>interface serial 0/0/0  </b>          
+R1(config-if)# <b>ipv6 rip RIP-AS enable</b>
+R1(config-if)# <b>no shutdown</b>
+R1(config-if)#</code>]]></text>
+	</data>
+	
+
+
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.1.1 Présentation du protocole NetFlow</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>NetFlow</h1>
+        <h2>Fonctionnement de NetFlow</h2>
+      </div>
+      <div id="content">
+<p>NetFlow est une technologie Cisco IOS qui fournit des statistiques sur les paquets traversant un routeur ou un commutateur multicouche Cisco. NetFlow est la norme pour la collecte de données opérationnelles IP à partir de réseaux IP.</p>
+<p></p>
+<p>Historiquement, la technologie NetFlow a été développée parce que les professionnels des réseaux avaient besoin d'une méthode efficace permettant d'assurer le suivi des flux TCP/IP au sein du réseau et que le protocole SNMP ne suffisait pas à réaliser cet objectif. Tandis que le protocole SNMP tente d'offrir une très large gamme de fonctionnalités et d'options de gestion du réseau, NetFlow se concentre sur la fourniture de statistiques relatives aux paquets IP circulant entre les périphériques réseau. </p>
+<p></p>
+<p>NetFlow fournit des données permettant la surveillance du réseau et de la sécurité, la planification réseau, l'analyse du trafic destinée à identifier les goulots d'étranglements du réseau ainsi que la comptabilité IP à des fins de facturation. Par exemple, dans la figure, PC1 se connecte à PC2 à l'aide d'une application comme HTTPS. Le protocole NetFlow peut contrôler la connexion de cette application, en effectuant le suivi du nombre d'octets et de paquets pour ce flux d'application individuel. Il envoie ensuite les statistiques correspondantes vers un serveur externe appelé connecteur NetFlow.</p>
+<p></p>
+<p>Le protocole NetFlow est devenu une norme en matière de surveillance réseau et il est aujourd'hui largement répandu dans l'industrie des réseaux.</p>
+<p></p>
+<p>Flexible NetFlow est la technologie NetFlow la plus récente. Flexible NetFlow est une amélioration du protocole NetFlow d'origine, car il lui ajoute la possibilité de personnaliser les paramètres d'analyse du trafic selon les exigences spécifiques de l'administrateur réseau. Flexible NetFlow facilite la création de configurations plus complexes en matière d'analyse du trafic et d'exportation des données, grâce à l'utilisation de composants de configuration réutilisables. </p>
+<p></p>
+<p>Flexible NetFlow utilise le format d'exportation de la version 9. La spécificité du format d'exportation de la version 9 de NetFlow est qu'il se base sur des modèles. Les modèles offrent une conception extensible au format des enregistrements, une fonctionnalité qui permet des améliorations futures aux services NetFlow sans nécessiter de modifications simultanées au format de base des flux et des enregistrements. Il est important de noter que de nombreuses commandes utiles de Flexible NetFlow ont été introduites avec la version 15.1 de Cisco IOS.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

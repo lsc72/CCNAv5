@@ -1,0 +1,54 @@
+﻿<textcomponents> 
+
+<!--Slide 1-->
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Vérification du statut OSPF à zones multiples sur R1</b>]]></text>
+	</component> 
+	
+	<!--Slide 2-->	
+	<component id="ID_s2_title">
+		<text><![CDATA[<b>Vérification des interfaces OSPF sur R1</b>]]></text>
+	</component> 
+	
+	<!--Slide 3-->	
+	<component id="ID_s3_title">
+		<text><![CDATA[<b>Vérification du statut OSPF à zones multiples</b>]]></text>
+	</component> 
+	
+	<!-- SC -->
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+	<component id="ID_s3_SC5" fontFace='Courier New' fontSize="10" class="font10px">
+		<feedback id="fb"><![CDATA[<b>***</b><font  face="Arial" color="#0000FF">Vous devez saisir la commande exacte et complète.</font><b>***</b> ]]></feedback>		
+		<existingcommands><![CDATA[<font face="Arial"><b>Affichez les informations de protocole IP.</font>]]></existingcommands>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ip protocols]]></correctresponse>
+				<deviceresponse><![CDATA[<font  face="Courier New">*** IP Routing is NSF aware *** <br> <br>Routing Protocol is "ospf 10" <br>  Outgoing update filter list for all interfaces is not set <br>  Incoming update filter list for all interfaces is not set <br>  Router ID 2.2.2.2 <br>  Number of areas in this router is 1. 1 normal 0 stub 0 nssa <br>  Maximum path: 4 <br>  Routing for Networks: <br>    10.2.1.0 0.0.0.255 area 0 <br>    192.168.10.0 0.0.0.7 area 0 <br>  Routing Information Sources: <br>    Gateway         Distance      Last Update <br>    3.3.3.3              110      00:05:34 <br>    1.1.1.1              110      00:05:34 <br>  Distance: (default is 110) <br> <br>R2#]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial"><b>Affichez une courte liste des interfaces participant au processus OSPF sur R2.</b>]]></instruction>
+		</command>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ip ospf interface brief]]></correctresponse>
+				<deviceresponse><![CDATA[<font size='9' face="Courier New" class="font9px">Interface    PID   Area            IP Address/Mask    Cost  State Nbrs F/C <br>Se0/0/1      10    0               192.168.10.5/30    647   P2P   1/1 <br>Se0/0/0      10    0               192.168.10.2/30    647   P2P   1/1 <br>Gi0/0        10    0               10.2.1.1/24        1     DR    0/0 <br>R2#]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial"><b>Vous êtes maintenant connecté à R3. Affichez les informations de protocole IP.</b>]]></instruction>
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip protocols]]></correctresponse>
+				<deviceresponse><![CDATA[<font face="Courier New">*** IP Routing is NSF aware *** <br> <br>Routing Protocol is "ospf 10" <br>  Outgoing update filter list for all interfaces is not set <br>  Incoming update filter list for all interfaces is not set <br>  Router ID 3.3.3.3 <br>  It is an area border router <br>  Number of areas in this router is 2. 2 normal 0 stub 0 nssa <br>  Maximum path: 4 <br>  Routing for Networks: <br>    192.168.1.1 0.0.0.0 area 2 <br>    192.168.2.1 0.0.0.0 area 2 <br>    192.168.10.4 0.0.0.3 area 0 <br>  Routing Information Sources: <br>    Gateway         Distance      Last Update <br>    1.1.1.1              110      00:06:25 <br>    2.2.2.2              110      00:06:25 <br>  Distance: (default is 110)</font><br>R3#]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial"><b>Affichez une courte liste des interfaces participant au processus OSPF sur R3.</b>]]></instruction>
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip ospf interface brief]]></correctresponse>
+				<deviceresponse><![CDATA[<font size='9' face="Courier New" class="font9px">Interface    PID   Area            IP Address/Mask    Cost  State Nbrs F/C <br>Se0/0/1      10    0               192.168.10.6/30    647   P2P   1/1 <br>Gi0/1        10    2               192.168.2.1/24     1     DR    0/0 <br>Gi0/0        10    2               192.168.1.1/24     1     DR    0/0 <br>R3#]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez correctement vérifié le statut OSPF à zones multiples.</b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+</textcomponents>

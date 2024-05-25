@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.1.6 Exemples de TDM</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation des connexions série point à point</h1>
+        <h2>Communications série</h2>
+      </div>
+      <div id="content">
+<p>
+<b>SONET et SDH</b>
+</p>
+<p>À plus grande échelle, le secteur des télécommunications utilise la norme SONET (Synchronous Optical Networking) ou SDH (Synchronous Digital Hierarchy) pour le transport optique de données TDM. La norme SONET utilisée en Amérique du Nord et la norme SDH utilisée partout ailleurs dans le monde, sont deux normes très similaires qui spécifient les paramètres d'interface, les débits, les formats de trame, les méthodes de multiplexage, ainsi que la gestion du TDM synchrone sur fibre optique. </p>
+<p></p>
+<p>La figure présente SONET, qui est un exemple de STDM. SONET/SDH prend <i>n</i> flux de bits, les multiplexe et module le signal sous forme optique. Elle envoie ensuite le signal sur la fibre à l'aide d'un appareil d'émission de lumière selon un débit égal au débit d'entrée x <i>n</i>. Ainsi, le trafic qui arrive au multiplexeur SONET de quatre flux différents à 2,5 Gbit/s repart en un seul flux à la vitesse de 4 x 2,5 Gbit/s, soit 10 Gbit/s. Ce principe est illustré dans la figure, qui présente une multiplication du débit par quatre dans le créneau horaire T. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

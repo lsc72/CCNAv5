@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.2.4 Dépannage de la couche transport - listes de contrôle d&#x0027;accès</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Symptômes et causes du dépannage réseau</h2>
+      </div>
+      <div id="content">
+<p>Des problèmes réseau peuvent survenir à partir de problèmes de couche transport sur le routeur, en particulier au niveau de la périphérie du réseau où le trafic est examiné et modifié. Deux des technologies de couche transport les plus souvent mises en œuvre sont les listes de contrôle d'accès et la traduction d'adresses réseau (NAT), comme le montre la Figure 1. </p>
+<p></p>
+<p>Les problèmes les plus fréquents liés aux listes de contrôle d'accès sont dus à une configuration incorrecte, comme l'indique la Figure 2. Les problèmes de listes de contrôle d'accès peuvent entraîner la défaillance de systèmes parfaitement opérationnels. Des erreurs de configuration fréquentes peuvent avoir lieu dans les divers domaines suivants : </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Sélection de flux de trafic</b> : l'erreur de configuration de routeur la plus courante consiste à appliquer un trafic incorrect à la liste de contrôle d'accès. Le trafic est défini par l’interface de routeur via laquelle le trafic est acheminé et par la direction du flux de trafic. Une liste de contrôle d'accès doit être appliquée à l'interface correcte et le sens correct du trafic doit être sélectionné en vue d'assurer un fonctionnement approprié.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Ordre des entrées de contrôle d'accès</b> : les entrées d'une liste de contrôle d'accès doivent être de spécifique à général. Même si une entrée dans une liste de contrôle d'accès autorise de manière spécifique un flux de trafic particulier, aucun paquet ne correspondra jamais à cette entrée s'il a été refusé par une autre entrée située plus avant dans la liste. Si le routeur exécute à la fois les listes de contrôle d'accès et la traduction d'adresses réseau (NAT), l'ordre dans lequel chacune de ces technologies est appliquée à un flux de trafic est important. Le trafic entrant est traité par la liste de contrôle d’accès entrante avant d’être traité par la fonction NAT de l’extérieur vers l’intérieur. Le trafic sortant est traité par la liste de contrôle d’accès sortante après avoir été traité par la fonction NAT de l’intérieur vers l’extérieur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Instruction implicite deny all</b> : lorsque la liste de contrôle d'accès ne nécessite pas une sécurité élevée, cet élément de contrôle d'accès implicite peut être à l'origine d'une mauvaise configuration de la liste de contrôle d'accès.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Masques génériques d'adresses et IPv4</b> : les masques génériques IPv4 complexes offrent des améliorations significatives en termes d'efficacité, mais ils sont plus sujets aux erreurs de configuration. Un exemple de masque générique complexe est l'utilisation de l'adresse IPv4 10.0.32.0 et du masque générique 0.0.32.15 pour sélectionner les 15 premières adresses d'hôte dans le réseau 10.0.0.0 ou le réseau 10.0.32.0. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Sélection de protocole de couche transport</b> : lors de la configuration de listes de contrôle d'accès, il est important de ne spécifier que les protocoles de couche transport corrects. De nombreux administrateurs réseau, lorsqu'ils ne savent pas avec certitude si un flux de trafic donné utilise un port TCP ou un port UDP, configurent les deux. Lorsque les deux ports sont spécifiés, un trou se crée dans le pare-feu, laissant la possibilité aux pirates d’accéder au réseau. Cela introduit également un élément supplémentaire dans la liste de contrôle d'accès, de telle sorte que le traitement de celle-ci prend plus de temps, d'où une augmentation de la latence dans les communications réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Ports source et de destination</b> : le contrôle correct du trafic entre deux hôtes nécessite la présence d'éléments de contrôle d'accès symétriques pour les listes de contrôle d'accès entrantes et sortantes. Les informations d'adresse et de port du trafic généré par un hôte qui répond est l'image miroir des informations d'adresse et de port du trafic généré par l'hôte initiateur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Utilisation </b>
+<b>du</b>
+<span class="cmd">
+<b> mot-clé </b>
+</span>
+<b>established</b>
+<b></b>- Le mot-clé <span class="cmd"><b>established</b></span> permet d'accroître la sécurité offerte par une liste de contrôle d'accès. Toutefois, une utilisation incorrecte de ce mot-clé peut entraîner des résultats inattendus.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Protocoles non courants</b> : les listes de contrôle d'accès mal configurées sont souvent à l'origine de problèmes avec les protocoles autres que TCP et UDP. Les protocoles non courants tels que les VPN et les protocoles de chiffrement connaissent un succès croissant.</li>
+</ul>
+</p>
+<p></p>
+<p>Le mot-clé <span class="cmd"><b>log</b></span> est une commande utile pour l'affichage du fonctionnement des listes de contrôle d'accès sur les entrées de liste de contrôle d'accès. Ce mot clé demande au routeur de placer une entrée dans le journal du système chaque fois que cette condition d’entrée est satisfaite. L'événement consigné contient des détails relatifs au paquet qui correspondait à l'élément de liste de contrôle d'accès. Le mot-clé <span class="cmd"><b>log</b></span> est particulièrement utile en cas de dépannage et il fournit également des informations sur les tentatives d'intrusion bloquées par la liste de contrôle d'accès.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

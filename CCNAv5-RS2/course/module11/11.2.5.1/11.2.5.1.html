@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.2.5.1 NAT pour IPv6 ?</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.2.5.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de la traduction d&#x0027;adresses réseau (NAT)</h1>
+        <h2>Configuration de NAT et IPv6</h2>
+      </div>
+      <div id="content">
+<p>Depuis le début des années 1990, la pénurie de l'espace d'adresses IPv4 est l'une des priorités de l'IETF. La combinaison des adresses IPv4 privées de l'espace RFC 1918 et de la NAT a largement contribué à retarder cette pénurie. Toutefois, la NAT présente des inconvénients importants et, en janvier 2011, l'IANA a attribué ses dernières adresses IPv4 à des organismes d'enregistrement Internet local (RIR). </p>
+<p></p>
+<p>En revanche, la NAT présente notamment un avantage involontaire pour IPv4 : elle permet de rendre le réseau privé invisible sur Internet. La NAT permet également de fournir un niveau de sécurité appréciable en empêchant les ordinateurs de l'Internet public d'accéder aux hôtes internes. Cependant, elle ne peut remplacer une stratégie appropriée de sécurité du réseau, telle que celle fournie par un pare-feu.</p>
+<p></p>
+<p>Dans le document RFC 5902, l'IAB (Internet Architecture Board) a inclus le passage suivant sur la traduction d'adresses réseau IPv6 :</p>
+<p></p>
+<p>« On estime généralement que la NAT offre un niveau de protection, puisque les hôtes externes ne peuvent pas établir de communication directe avec les hôtes derrière une NAT. Toutefois, il ne faut pas confondre la NAT et les pare-feu. Comme évoqué dans la section 2.2 du document [RFC4864], le fait de traduire n'apporte en soit aucune sécurité. La fonction de filtrage avec état peut fournir le même niveau de protection sans nécessiter de mécanisme de traduction. »</p>
+<p></p>
+<p>IPv6 fournit 340 sextillions d'adresses à partir d'une adresse 128 bits. Par conséquent, l'espace d'adressage n'est pas un problème. IPv6 a été développé dans l'intention de rendre inutiles la NAT pour IPv4 et sa traduction entre les adresses IPv4 publiques et privées. Toutefois, IPv6 implémente une forme de NAT. IPv6 comprend son propre espace d'adressage IPv6 privé et sa NAT, qui sont mis en œuvre de manière différente que dans le cas d'IPv4.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

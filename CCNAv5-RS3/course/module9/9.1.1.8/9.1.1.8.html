@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.1.8 Noms de fichiers d&#x0027;image IOS</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.1.8_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Gestion des fichiers système IOS</h1>
+        <h2>Conventions d&#x0027;attribution de noms</h2>
+      </div>
+      <div id="content">
+<p>Lors de la sélection ou de la mise à niveau d'un routeur Cisco IOS, il est important de choisir l'image Cisco IOS correcte avec l'ensemble de fonctionnalités et la version adéquats. Le fichier d'image Cisco IOS est basé sur une convention d'attribution de noms spéciale. Ce nom se compose de plusieurs parties, ayant chacune leur propre signification. Il est important de comprendre cette convention d'attribution de noms lors de la mise à niveau et de la sélection d'un logiciel Cisco IOS. </p>
+<p></p>
+<p>Comme indiqué à la Figure 1, la commande<span class="cmd"><b> show flash </b></span>affiche les fichiers stockés dans la mémoire Flash, y compris les fichiers d'image système.</p>
+<p></p>
+<p>Un exemple de nom d'image du logiciel IOS 12.4 est présenté à la Figure 2. </p>
+<p>
+<ul>
+<li>
+<b>Nom d'image (c2800nm)</b> : identifie la plate-forme sur laquelle l'image est exécutée. Dans cet exemple, la plate-forme est un routeur Cisco 2800 avec un module réseau. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>advipservicesk9</b> : indique l'ensemble de fonctionnalités. Dans cet exemple, advipservicesk9 désigne l'ensemble de fonctionnalités des services IP avancés, qui comprend les packages Advanced Security et Service Provider Services, avec IPv6. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>mz</b> : indique l'emplacement où l'image est exécutée et si le fichier est comprimé. Dans cet exemple, mz indique que le fichier s'exécute à partir de la mémoire vive et qu'il est compressé. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>124-6.T</b> : format de nom de fichier de l'image 12.4(6)T. Il s'agit du numéro de catégorie, du numéro de version de maintenance et de l'identificateur de catégorie.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>bin</b> : extension de fichier. Cette extension indique qu'il s'agit d'un fichier exécutable binaire.</li>
+</ul>
+</p>
+<p></p>
+<p></p>
+<p>La Figure 3 illustre les différentes parties d'un fichier d'image système IOS 15 sur un périphérique ISR G2 :</p>
+<p>
+<ul>
+<li>
+<b>Nom d'image (c1900)</b> : identifie la plate-forme sur laquelle l'image est exécutée. Dans cet exemple, la plate-forme est un routeur Cisco 1900.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>universalk9</b> : indique la désignation de l'image. Les deux désignations d'un routeur ISR G2 sont universalk9 et universalk9_npe. Universalk9_npe ne contient pas de chiffrement fort et convient aux pays dans lesquels s'appliquent des restrictions sur le chiffrement. Les fonctionnalités sont contrôlées par le processus d'obtention de licences et peuvent être divisées en quatre packages technologiques : IP Base, Sécurité, Communications unifiées et Données.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>mz</b> : indique l'emplacement où l'image est exécutée et si le fichier est comprimé. Dans cet exemple, mz indique que le fichier s'exécute à partir de la mémoire vive et qu'il est compressé. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>SPA</b> : indique que le fichier est signé numériquement par Cisco.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>152-4.M3</b> : indique le format de nom de fichier de l'image 15.2(4)M3. Il s'agit de la version d'IOS qui comprend les numéros de version majeure, de version mineure, de version de maintenance et de reconstruction de maintenance. La lettre M indique qu'il s'agit d'une version de maintenance étendue. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>bin</b> : extension de fichier. Cette extension indique qu'il s'agit d'un fichier exécutable binaire.</li>
+</ul>
+</p>
+<p></p>
+<p></p>
+<p>La désignation la plus courante pour l'emplacement mémoire et le format de compression est mz. La première lettre indique l'emplacement d'exécution de l'image sur le routeur. Les emplacements possibles sont :</p>
+<p>
+<ul>
+<li>
+<b>f</b> : Flash </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>m</b> : mémoire vive </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>r</b> : ROM </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>l</b> : réadressable </li>
+</ul>
+</p>
+<p></p>
+<p>Le format de compression peut être z pour zip ou x pour mzip. Cisco utilise la compression zip pour compresser des images exécutées à partir de la mémoire vive. Cette méthode permet de réduire efficacement la taille de l'image. La décompression est automatique, ce qui signifie que lorsque l'image est chargée dans la mémoire vive pour être exécutée, elle est d'abord décompressée.</p>
+<p></p>
+<p>
+<b>Remarque </b>: les conventions d'attribution de noms, la signification des champs, le contenu de l'image et d'autres détails du logiciel Cisco IOS peuvent faire l'objet de modifications.</p>
+<p></p>
+<p>
+<b>Mémoire requise</b>
+</p>
+<p></p>
+<p>Sur la plupart des routeurs Cisco, y compris les routeurs à services intégrés, l'IOS est stocké dans une mémoire Flash compacte sous forme d'image compressée et chargé dans la mémoire DRAM au démarrage. Les images de la version du logiciel Cisco IOS 15.0 disponibles pour les routeurs ISR Cisco 1900 et 2900 requièrent 256 Mo de mémoire Flash et 512 Mo de mémoire vive. Le routeur ISR 3900 requiert 256 Mo de mémoire Flash et 1 Go de mémoire vive. Ces valeurs ne tiennent pas compte des outils de gestion supplémentaires tels que Cisco Configuration Professional (Cisco CP). Pour plus de détails, consultez la fiche technique du routeur concerné. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

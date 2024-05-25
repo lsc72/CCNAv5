@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.1.7 Options de remise des messages</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.1.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Règles de communication</h1>
+        <h2>Les règles</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Options de remise des messages</b>
+</p>
+<p>Un message peut être transmis de différentes manières selon les besoins, comme illustré à la Figure 1. Il arrive qu'une personne souhaite communiquer des informations à un seul individu. La même personne peut aussi vouloir envoyer des informations à tout un groupe de personnes ou à toutes les personnes d'une même zone géographique. Une conversation entre deux individus est un exemple de communication « un à un ». Lorsqu'un groupe de destinataires doit recevoir simultanément le même message, un message de type « un à plusieurs » ou « un à tous » est nécessaire. </p>
+<p></p>
+<p>Parfois, l'expéditeur d'un message doit également s'assurer que le message a bien été reçu par son destinataire. Dans ce cas, le destinataire doit renvoyer un accusé de réception à l'expéditeur. Si aucun accusé de réception n'est requis, l'option de remise est dite « sans accusé de réception ».</p>
+<p></p>
+<p>Les hôtes d'un réseau utilisent des options similaires de remise des messages pour communiquer, comme illustré à la Figure 2.</p>
+<p></p>
+<p>Une option de livraison « un à un » est appelée monodiffusion, ce qui signifie qu'il n'existe qu'une seule destination pour le message. </p>
+<p></p>
+<p>Lorsqu'un hôte envoie des messages selon une option de livraison de type « un à plusieurs », il s'agit d'une multidiffusion. La multidiffusion est la livraison simultanée du même message à un groupe d'hôtes de destination. </p>
+<p></p>
+<p>Si tous les hôtes du réseau doivent recevoir le message en même temps, une diffusion est utilisée. La diffusion correspond à une option de remise de type « un à tous ». De plus, les hôtes requièrent des messages avec accusés de réception.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

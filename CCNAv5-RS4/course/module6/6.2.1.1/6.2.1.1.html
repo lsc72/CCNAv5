@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.1.1 Qu&#x0027;est-ce qu&#x0027;un système de câblage ?</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Comparaison des solutions haut débit</h1>
+        <h2>Câble</h2>
+      </div>
+      <div id="content">
+<p>L'accès à Internet par l'intermédiaire d'un réseau filaire est une solution couramment utilisée par les télétravailleurs pour accéder au réseau de leur entreprise. Le système de câblage utilise un câble coaxial qui transporte les signaux de radiofréquence (RF) sur le réseau. Le câble coaxial est le support principal utilisé pour la réalisation de systèmes TV par câble.</p>
+<p></p>
+<p>La télévision par câble est tout d'abord apparue en Pennsylvanie en 1948. John Walson, le propriétaire d'un magasin d'appareils électroménagers dans une petite ville de montagne, avait besoin de résoudre les problèmes rencontrés par ses clients en matière de mauvaise réception des signaux de télévision aériens émis à partir de Philadelphie. Walson fixa une antenne sur un poteau d’électricité en haut d’une montagne. Ce positionnement lui permit de recevoir sur ses postes en magasin des signaux de diffusion puissants, capables de capter les trois stations de Philadelphie. Il connecta l’antenne à son magasin par le biais d’un câble et de préamplificateurs de signaux modifiés. Il connecta ensuite plusieurs clients résidant à proximité du passage du câble. Il s'agissait du premier système TV par câble (CATV) implanté aux États-Unis. </p>
+<p></p>
+<p>La société de John Walson a grandi au fil des ans, ce dernier étant aujourd'hui reconnu comme étant le fondateur de l'industrie de la télévision par câble. Il a également été le premier câblo-opérateur à utiliser les micro-ondes pour importer des stations de télévision distantes et le premier à utiliser la technologie du câble coaxial pour améliorer la qualité des images.</p>
+<p></p>
+<p>La plupart des câblo-opérateurs utilisent des antennes paraboliques pour la réception des signaux de télévision. Les anciens systèmes reposaient sur des échanges en une étape, avec des amplificateurs en cascade placés en série sur le réseau pour compenser la perte de signaux. Ces systèmes utilisaient des dispositifs permettant de coupler les signaux vidéo depuis les trunks principaux jusqu'au domicile des abonnés via des câbles de descente. </p>
+<p></p>
+<p>Les systèmes de câblage modernes permettent une communication bidirectionnelle entre les abonnés et le câblo-opérateur. De nos jours, les câblo-opérateurs fournissent à leurs clients des services de télécommunications avancés, notamment l’accès Internet à haut débit, la télévision câblée numérique et des services téléphoniques résidentiels. En règle générale, les câblo-opérateurs déploient des réseaux hybrides fibres et coaxiaux (HFC) pour une transmission à haut débit des données jusqu’aux modems situés chez les particuliers et dans les petites entreprises. </p>
+<p></p>
+<p>Cliquez dans les zones en surbrillance de la figure pour afficher des informations supplémentaires sur les composants d'un système de câblage moderne typique.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

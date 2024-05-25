@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.2.6 Exemples de table de routage d&#x0027;un routeur IPv4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.2.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage</h1>
+        <h2>Tables de routage du routeur</h2>
+      </div>
+      <div id="content">
+<p>Supposons que le PC1 avec l'adresse IP 192.168.10.10 souhaite envoyer un paquet à un autre hôte sur le même réseau. Le PC1 vérifie la table de route IPv4 en fonction de l'adresse IP de destination. Ensuite, le PC1 détecte que l'hôte se trouve sur le même réseau et l'envoie simplement hors de son interface (on-link).</p>
+<p></p>
+<p>
+<b>Remarque</b> : le périphérique R1 n'est pas impliqué dans le transfert du paquet. Si le PC1 transfère un paquet à un réseau autre que son réseau local, il doit utiliser les services du routeur R1 et transférer le paquet à la route locale par défaut (192.168.10.1).</p>
+<p></p>
+<p>Les exemples suivants illustrent comment un hôte et un routeur prennent des décisions de routage de paquets en consultant leurs tables de routage respectives :</p>
+<p></p>
+<p>Exemple 1 : le PC1 souhaite vérifier la connectivité à sa passerelle locale par défaut à l'adresse 192.168.10.1 (l'interface du routeur) : </p>
+<p>1. Le PC1 vérifie la table de route IPv4 en fonction de l'adresse IP de destination.</p>
+<p>2. Le PC1 détecte que l'hôte se trouve sur le même réseau et envoie simplement un paquet de requête ping hors de son interface (on-link).</p>
+<p>3. Le périphérique R1 reçoit le paquet sur son interface gigabit ethernet 0/0 (G0/0) et recherche l'adresse IP de destination.</p>
+<p>4. Le périphérique R1 consulte sa table de routage</p>
+<p>5. Il fait correspondre l'adresse IP de destination à l'entrée de table de routage <b>L 192.168.10.1/32</b> et découvre que cette route pointe vers sa propre interface locale, comme illustré à la Figure 1.</p>
+<p>6. Le périphérique R1 affiche le reste du paquet IP et réagit en conséquence.</p>
+<p></p>
+<p>Exemple 2 : le PC1 souhaite envoyer un paquet au PC2 (192.168.11.10) : </p>
+<p>1. Le PC1 consulte la table de route IPv4 et découvre qu'il n'existe pas de correspondance exacte.</p>
+<p>2. Le PC1 utilise par conséquent le réseau de toutes les routes (0.0.0.0) et envoie le paquet via la route locale par défaut (192.168.10.1).</p>
+<p>3. Le périphérique R1 reçoit le paquet sur son interface gigabit ethernet 0/0 (G0/0) et recherche l'adresse IP de destination (192.168.11.10).</p>
+<p>4. Le périphérique R1 consulte sa table de routage et fait correspondre l'adresse IP de destination à l'entrée de table de routage <b>C 192.168.11.0/24</b>, comme illustré à la Figure 2.</p>
+<p>5. Le périphérique R1 transmet le paquet hors de son interface gigabit ethernet 0/1 directement connectée (G0/1).</p>
+<p>6. Le PC2 reçoit le paquet et consulte sa table de routage d'hôte IPv4.</p>
+<p>7. Le PC2 détecte que le paquet lui est adressé, ouvre le reste du paquet et réagit en conséquence.</p>
+<p></p>
+<p>Exemple 3 : le PC1 souhaite envoyer un paquet à 209.165.200.226 : </p>
+<p>1. Le PC1 consulte la table de route IPv4 et découvre qu'il n'existe pas de correspondance exacte.</p>
+<p>2. Le PC1 utilise par conséquent la route par défaut (0.0.0.0/0) et transfère le paquet via la passerelle par défaut (192.168.10.1).</p>
+<p>3. Le périphérique R1 reçoit le paquet sur son interface gigabit ethernet 0/0 (G0/0) et recherche l'adresse IP de destination (209.165.200.226).</p>
+<p>4. Le périphérique R1 consulte sa table de routage et fait correspondre l'adresse IP de destination à l'entrée de table de routage <b>C 209.165.200.224/30</b>, comme illustré à la Figure 3.</p>
+<p>5. Le routeur R1 transmet le paquet hors de son interface série 0/0/0 (S0/0/0) connectée directement.</p>
+<p></p>
+<p>Exemple 4 : le PC1 souhaite envoyer un paquet à l'hôte avec l'adresse IP 10.1.1.10 : </p>
+<p>1. Le PC1 consulte la table de route IPv4 et découvre qu'il n'existe pas de correspondance exacte.</p>
+<p>2. Le PC1 utilise par conséquent le réseau de toutes les routes (0.0.0.0) et envoie le paquet via la route locale par défaut (192.168.10.1).</p>
+<p>3. Le périphérique R1 reçoit le paquet sur son interface gigabit ethernet 0/0 (G0/0) et recherche l'adresse IP de destination (10.1.1.10).</p>
+<p>4. Le périphérique R1 consulte sa table de routage et fait correspondre l'adresse IP de destination à l'entrée de table de routage <b>D 10.1.1.0/24</b>, comme illustré à la Figure 4.</p>
+<p>5. Le périphérique R1 détecte qu'il doit envoyer le paquet à l'adresse de saut suivant 209.165.200.226.</p>
+<p>6. Le périphérique R1 consulte sa table de routage et fait correspondre l'adresse IP de destination à l'entrée de table de routage <b>C 209.165.200.224/30</b>, comme illustré à la Figure 4.</p>
+<p>7. Le routeur R1 transmet le paquet hors de son interface série 0/0/0 (S0/0/0) connectée directement.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

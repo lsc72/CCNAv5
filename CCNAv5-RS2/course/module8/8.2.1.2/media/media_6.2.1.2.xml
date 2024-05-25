@@ -1,0 +1,48 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+	<text><![CDATA[<b>Topologie de référence OSPF  </b>]]></text>		
+</component>
+<component id="ID_s2_title">
+	<text><![CDATA[<b>Passage en mode de configuration de routeur OSPF sur R1  </b>]]></text>		
+</component>
+<component id="ID_s3_title">
+	<text><![CDATA[<b>Passage en mode de configuration de routeur OSPF sur R2  </b>]]></text>		
+</component>
+	
+<component id="ID_s1_txt01">
+	<text><![CDATA[<b>Zone&nbsp;0  </b>]]></text>		
+</component>
+<component id="ID_s1_txt02">
+	<text><![CDATA[<b>Internet  </b>]]></text>		
+</component>
+<component id="ID_s2_txt01">
+	<text><![CDATA[<b>Remarque&nbsp;: </b> les résultats ont été modifiés pour afficher uniquement les commandes utilisées dans ce chapitre.]]></text>		
+</component>
+	
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+
+	<component id="ID_SC3" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b> *** </b><font  face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> ]]></feedback>		
+		<existingcommands><![CDATA[<font  face="Arial"><b>Passez en mode de configuration du routeur OSPF en utilisant l'ID de processus 10.  </b></font>]]></existingcommands>
+		<command prompt="R2(config)#">
+		    <correctresponse><![CDATA[router ospf 10]]></correctresponse>
+			<instruction><![CDATA[<font  face="Arial"><b>Utilisez le raccourci d'aide pour afficher les options disponibles dans le mode de configuration de routeur OSPF.  </b>]]></instruction>			
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[?]]></correctresponse>
+					<!--	<deviceresponse><![CDATA[<font face="Courier New">Router configuration commands: <br> address-family Enter Address Family command mode <br>  area OSPF area parameters <br>  auto-cost Calculate OSPF interface cost according to bandwidth <br>  bfd BFD configuration commands <br>  capability Enable specific OSPF feature <br>  compatible OSPF compatibility list <br>  default Set a command to its defaults <br>  default-information Control distribution of default information <br>  default-metric Set metric of redistributed routes <br>  discard-route Enable or disable discard-route installation <br>  distance Define an administrative distance <br>  distribute-list Filter networks in routing updates <br>  domain-id OSPF domain-id <br>  domain-tag OSPF domain-tag <br>  event-log OSPF Event Logging <br>  exit Exit from routing protocol configuration mode <br>  help Description of the interactive help system <br>  ignore Do not complain about specific event <br>  interface-id Source of the interface ID <br>  ispf Enable incremental SPF computation <br>  limit Limit a specific OSPF feature <br>  local-rib-criteria Enable or disable usage of local RIB as route criteria <br>  log-adjacency-changes Log changes in adjacency state <br>  max-lsa maximum number of LSAs OSPF process will receive <br>  max-metric Set maximum metric <br>  maximum-paths Forward packets over multiple paths <br>  neighbor Specify a neighbor router <br>  network Enable routing on an IP network <br>  no Negate a command or set its defaults <br>  nsf Non-stop forwarding <br>  passive-interface Suppress routing updates on an interface <br>  prefix-suppression OSPF prefix suppression <br>  priority OSPF topology priority <br>  queue-depth OSPF Hello/Router process queue depth <br>  redistribute Redistribute information from another routing protocol <br>  router-id router-id for this OSPF process <br>  shutdown Shutdown the OSPF protocol under the current instance <br>  snmp Modify snmp parameters <br>  summary-address Configure IP address summaries <br>  timers Adjust routing timers <br>  traffic-share How to compute traffic share over alternate paths <br>  ttl-security TTL security check <br> <br>R2(config-router)#]]></deviceresponse> -->
+					<deviceresponse><![CDATA[<font face="Courier New">Router configuration commands: <br>  address-family         Enter Address Family command mode <br>  area                   OSPF area parameters <br>  auto-cost              Calculate OSPF interface cost according to bandwidth <br>  bfd                    BFD configuration commands <br>  capability             Enable specific OSPF feature <br>  compatible             OSPF compatibility list <br>  default                Set a command to its defaults <br>  default-information    Control distribution of default information <br>  default-metric         Set metric of redistributed routes <br>  discard-route          Enable or disable discard-route installation <br>  distance               Define an administrative distance <br>  distribute-list        Filter networks in routing updates <br>  domain-id              OSPF domain-id <br>  domain-tag             OSPF domain-tag <br>  event-log              OSPF Event Logging <br>  exit                   Exit from routing protocol configuration mode <br>  help                   Description of the interactive help system <br>  ignore                 Do not complain about specific event <br>  interface-id           Source of the interface ID <br>  ispf                   Enable incremental SPF computation <br>  limit                  Limit a specific OSPF feature <br>  local-rib-criteria     Enable or disable usage of local RIB as route criteria <br>  log-adjacency-changes  Log changes in adjacency state <br>  max-lsa                maximum number of LSAs OSPF process will receive <br>  max-metric             Set maximum metric <br>  maximum-paths          Forward packets over multiple paths <br>  neighbor               Specify a neighbor router <br>  network                Enable routing on an IP network <br>  no                     Negate a command or set its defaults <br>  nsf                    Non-stop forwarding <br>  passive-interface      Suppress routing updates on an interface <br>  prefix-suppression     OSPF prefix suppression <br>  priority               OSPF topology priority <br>  queue-depth            OSPF Hello/Router process queue depth <br>  redistribute           Redistribute information from another routing protocol <br>  router-id              router-id for this OSPF process <br>  shutdown               Shutdown the OSPF protocol under the current instance <br>  snmp                   Modify snmp parameters <br>  summary-address        Configure IP address summaries <br>  timers                 Adjust routing timers <br>  traffic-share          How to compute traffic share over alternate paths <br>  ttl-security           TTL security check <br> <br>R2(config-router)#]]></deviceresponse> 
+			<instruction><![CDATA[<font  face="Arial" class="syntaxBottomLine"><b>Vous avez correctement entré le mode de configuration du routeur et répertorié les options disponibles.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+</textcomponents>

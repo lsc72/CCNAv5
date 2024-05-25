@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.2.2 Examen de la longueur du préfixe</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Masque de sous-réseau IPv4</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Préfixes réseau</b>
+</p>
+<p>La longueur de préfixe est une autre façon d'exprimer le masque de sous-réseau. La longueur de préfixe correspond au nombre de bits définis sur 1 dans le masque de sous-réseau. Elle est notée au moyen de la « notation de barre oblique », à savoir un « / » suivi du nombre de bits définis sur 1. Par exemple, si le masque de sous-réseau est 255.255.255.0, il existe 24 bits définis sur 1 dans la version binaire du masque de sous-réseau. La longueur du préfixe est donc de 24 bits, soit /24. Le préfixe et le masque de sous-réseau constituent des moyens distincts de représenter la même chose : la partie réseau d'une adresse. </p>
+<p></p>
+<p>Les réseaux ne se voient pas toujours attribuer un préfixe /24. En fonction du nombre d'hôtes sur le réseau, le préfixe attribué peut être différent. Un numéro de préfixe différent modifie la plage d'hôtes et l'adresse de diffusion pour chaque réseau.</p>
+<p></p>
+<p>Les figures illustrent différents préfixes sur la même adresse 10.1.1.0. La Figure 1 illustre les préfixes /24 à /26. La Figure 2 illustre les préfixes /27 à /28.</p>
+<p></p>
+<p>Vous remarquerez que l'adresse réseau peut rester inchangée, mais que la plage d'hôtes et l'adresse de diffusion varient selon les longueurs de préfixe. Dans les figures, vous pouvez voir que le nombre d'hôtes accessibles sur le réseau change également.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

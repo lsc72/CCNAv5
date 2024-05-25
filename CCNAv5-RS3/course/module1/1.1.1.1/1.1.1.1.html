@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.1.1 Nécessité de mise à l&#x0027;échelle du réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentation d&#x0027;une conception réseau</h1>
+        <h2>Conception hiérarchique du réseau</h2>
+      </div>
+      <div id="content">
+<p>Les entreprises s'appuient de plus en plus sur leur infrastructure réseau pour offrir des services critiques. À mesure de la croissance et de l'évolution de leurs activités, elles embauchent davantage de personnel, ouvrent des filiales et se développent à l'international. Ces changements ont une influence directe sur les attentes en matière de réseau. Un environnement professionnel étendu, comptant de nombreux utilisateurs, sites et systèmes est appelé une entreprise. Le réseau utilisé pour prendre en charge les activités de l'entreprise est appelé un réseau d'entreprise.</p>
+<p></p>
+<p>Cliquez sur le bouton Lecture de la figure pour voir une animation d'un petit réseau devenant un réseau d'entreprise.</p>
+<p></p>
+<p>Un réseau d'entreprise doit assurer l'échange de types de trafic variés, tels que les fichiers de données, le courrier électronique, la téléphonie sur IP et les applications vidéo pour des domaines d'activités multiples. Tous les réseaux d'entreprise doivent :</p>
+<p>
+<ul>
+<li>Prendre en charge des applications critiques </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Assurer le trafic de réseaux convergents</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Répondre à des besoins métier variés</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Apporter un contrôle administratif centralisé</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

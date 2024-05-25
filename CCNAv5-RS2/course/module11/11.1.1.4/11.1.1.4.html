@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.1.1.4 Terminologie NAT (suite)</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement de la NAT</h1>
+        <h2>Caractéristiques de la NAT</h2>
+      </div>
+      <div id="content">
+<p>Les termes « interne » et « externe » sont associés aux termes « local » et « global » pour désigner des adresses spécifiques. Sur la figure, le routeur R2 a été configuré pour assurer la NAT. Il dispose d'un pool d'adresses publiques à affecter aux hôtes internes. </p>
+<p>
+<ul>
+<li>
+<b>Adresse locale interne</b> : l'adresse de la source vue du réseau interne. Sur la figure, l'adresse IPv4 192.168.10.10 est attribuée à PC1. Il s'agit de l'adresse locale interne de PC1. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse globale interne</b> : l'adresse de la source vue du réseau externe. Sur la figure, lorsque le trafic provenant de PC1 est envoyé au serveur Web sur 209.165.201.1, R2 traduit l'adresse locale interne en adresse globale interne. Dans ce cas, R2 modifie l'adresse IPv4 source, qui passe de 192.168.10.10 à 209.165.200.226. Dans la terminologie NAT, l'adresse locale interne 192.168.10.10 est traduite en adresse globale interne 209.165.200.226. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse globale externe</b> : l'adresse de destination vue du réseau externe. Il s'agit d'une adresse IPv4 routable unique au monde attribuée à un hôte sur Internet. Par exemple, le serveur Web est accessible à l'adresse IPv4 209.165.201.1. Le plus souvent, les adresses locale et globale externes sont identiques.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse locale externe</b> : l'adresse de la destination vue du réseau interne. Dans cet exemple, PC1 envoie le trafic au serveur Web à l'adresse IPv4 209.165.201.1. Bien que cela soit rarement le cas, cette adresse peut être différente de l'adresse de destination globalement routable.</li>
+</ul>
+</p>
+<p></p>
+<p>La figure montre comment le trafic est adressé, c'est-à-dire envoyé depuis un PC interne vers un serveur Web externe par l'intermédiaire du routeur configuré pour la NAT. Elle illustre également l'adressage initial et la traduction du trafic de retour.</p>
+<p></p>
+<p>
+<b>Remarque</b> : l'utilisation de l'adresse locale externe n'est pas abordée dans ce cours. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	
+	<slide>	
+		<element type="TEXT" subType="TITLE" compId="ID_title" />
+		<element type="IMAGE" src="9.3.2.4.png" x="0" y="28" width="429.65" height="181.20"/>		
+		<element type="ROUTER" textId="ID_s6_txt01" x="0" y="216" width="468.25" height="185.05"/>
+	</slide>	
+	
+	<text id="ID_s6_txt01"><![CDATA[ 		R1(config)#<b>ip access-list extended SURFING  </b><br /> R1(config-ext-nacl)#<b>permit tcp 192.168.10.0 0.0.0.255 any eq 80  </b><br /> R1(config-ext-nacl)#<b>permit tcp 192.168.10.0 0.0.0.255 any eq 443  </b><br /> R1(config-ext-nacl)#<b>exit  </b><br /> R1(config)#<b>ip access-list extended BROWSING   </b><br /> R1(config-ext-nacl)#<b>permit tcp any 192.168.10.0 0.0.0.255 established  </b><br /> R1(config-ext-nacl)#<b>exit  </b><br /> R1(config)#<b>interface g0/0  </b><br /> R1(config-if)#<b>ip access-group SURFING in  </b><br /> R1(config-if)#<b>ip access-group BROWSING out  </b><br />
+	]]></text>		
+
+</data>

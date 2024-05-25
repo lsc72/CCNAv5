@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.1.1 Vérification du fonctionnement de Frame Relay : interface Frame Relay</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage de la connectivité</h1>
+        <h2>Dépannage du protocole Frame Relay</h2>
+      </div>
+      <div id="content">
+<p>Frame Relay est en général un service très fiable. Néanmoins, il arrive que le réseau fonctionne moins bien que prévu et qu'un dépannage soit nécessaire. Par exemple, il se peut que les utilisateurs signalent des connexions lentes ou intermittentes sur le circuit, ou bien certains circuits totalement interrompus. Quelles qu'en soient les causes, les pannes de réseau sont très coûteuses en termes de perte de productivité. Une pratique recommandée consiste à vérifier la configuration avant que le problème ne survienne. </p>
+<p></p>
+<p>Dans cette rubrique, vous allez suivre une procédure de vérification pour contrôler si tout fonctionne correctement avant de lancer la configuration sur le réseau réel. </p>
+<p></p>
+<p>
+<b>Vérification de la configuration de Frame Relay.</b>
+</p>
+<p></p>
+<p>Après avoir configuré un circuit virtuel permanent Frame Relay et pendant le dépannage d'un problème, vérifiez que Frame Relay fonctionne correctement sur cette interface à l'aide de la commande <span class="cmd"><b>show interfaces</b></span>. </p>
+<p></p>
+<p>Souvenez-vous que pour Frame Relay, le routeur est normalement considéré comme un périphérique ETTD. Cependant, lorsque vous effectuez des tests, un routeur Cisco peut être configuré comme DCE afin de simuler un commutateur Frame Relay. Dans ce cas, le routeur se transforme en périphérique DCE lorsqu'il est configuré comme commutateur Frame Relay.</p>
+<p></p>
+<p>Comme illustré dans la figure, la commande <span class="cmd"><b>show interfaces</b></span> affiche la définition de l'encapsulation, ainsi que des informations utiles sur l'état des couches 1 et 2 :</p>
+<p>
+<ul>
+<li>le DLCI de la LMI  </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>le type de la LMI  </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>le type d'ETTD/DCE Frame Relay </li>
+</ul>
+</p>
+<p></p>
+<p>La première étape est de confirmer la configuration des interfaces. La figure présente entre autres des détails sur l'encapsulation, le DLCI sur l'interface série Frame Relay et le DLCI utilisé pour la LMI. Vérifiez si ces valeurs sont celles attendues. Sinon, effectuez les modifications nécessaires.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

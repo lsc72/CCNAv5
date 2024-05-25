@@ -1,0 +1,94 @@
+﻿<textcomponents>
+
+
+
+<component id="ID_txt01">
+<text><![CDATA[<b>Fournisseur de services</b>]]></text>
+</component>  
+
+
+<component id="ID_s1_title">
+<text><![CDATA[<b>Configuration de l'authentification PAP</b>]]></text>
+</component>
+  
+  
+  
+<component id="ID_s2_title">
+<text><![CDATA[<b>Configuration de l'authentification PAP</b>]]></text>
+</component>
+
+
+<component id="ID_title"> <!--text><![CDATA[<b>Configure PPP with PAP Authentication</b>]]></text-->
+	</component>
+	<component id="ID_s2_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font size='10' face="Arial" color="#0000FF">***Vous devez entrer la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font></b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>Sur l'interface série 0/0/1 de R1, ajoutez les commandes pour configurer l'authentification PPP avec PAP. Effectuez les tâches dans l'ordre suivant&nbsp;:<ul><li>Configurez l'authentification PAP sur l'interface</li><li>Configurez le nom d'utilisateur distant de R1 et le mot de passe supersecret</li><li>Configurez le nom d'utilisateur distant de R3 et le mot de passe supersecret</li></ul><br>Configuration actuelle&nbsp;:<br></b></font><font size='10' face="Courier New">R1(config)# interface serial 0/0/1<br>R1(config-if)# ip address 10.0.1.5 255.255.255.252<br>R1(config-if)# ipv6 address 2001:db8:cafe:3::1/64<br>R1(config-if)# encapsulation ppp</b></font>]]></existingcommands>
+		<command prompt="R1(config-if)#">
+			<correctresponse><![CDATA[ppp authentication pap]]></correctresponse>
+		</command>
+		<command prompt="R1(config-if)#">
+			<correctresponse><![CDATA[ppp pap sent-username R1 password supersecret]]></correctresponse>
+		</command>
+		<command prompt="R1(config-if)#">
+			<correctresponse><![CDATA[username R3 password supersecret]]></correctresponse>
+			<deviceresponse><![CDATA[R1(config)#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Vous avez correctement configuré PPP avec l'authentification PAP.</font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+<component id="ID_sc2_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc2_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc2_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+	
+	
+	
+	
+	
+	
+	
+<component id="ID_s3_title">
+<text><![CDATA[<b>Configuration de l'authentification CHAP</b>]]></text>
+</component>
+  
+  
+  
+<component id="ID_s4_title">
+<text><![CDATA[<b>Configuration de l'authentification CHAP</b>]]></text>
+</component>
+
+
+<component id="ID_title"> <!--text><![CDATA[<b>Configuring PPP with CHAP Authentication</b>]]></text-->
+	</component>
+	<component id="ID_s4_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font size='10' face="Arial" color="#0000FF">***Vous devez entrer la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font></b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>Sur l'interface série 0/0/1 de R1, ajoutez les commandes pour configurer l'authentification PPP avec CHAP. Effectuez les tâches dans l'ordre suivant&nbsp;:<ul><li>Configurez l'authentification CHAP sur l'interface</li><li>Configurez le nom d'utilisateur distant de R3 et le mot de passe supersecret</li></ul><br>Configuration actuelle&nbsp;:<br></b></font><font size='10' face="Courier New">R1(config)# interface serial 0/0/1<br>R1(config-if)# ip address 10.0.1.5 255.255.255.252<br>R1(config-if)# ipv6 address 2001:db8:cafe:3::1/64<br>R1(config-if)# encapsulation ppp</b></font>]]></existingcommands>
+		<command prompt="R1(config-if)#">
+			<correctresponse><![CDATA[ppp authentication chap]]></correctresponse>
+		</command>
+		<command prompt="R1(config-if)#">
+			<correctresponse><![CDATA[username R3 password supersecret]]></correctresponse>
+			<deviceresponse><![CDATA[R1(config)#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Vous avez correctement configuré PPP avec l'authentification CHAP.</font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+<component id="ID_sc4_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc4_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc4_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+</textcomponents>

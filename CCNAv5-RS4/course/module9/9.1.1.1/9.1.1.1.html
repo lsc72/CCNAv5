@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.1.1 Documentation du réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage avec une approche systématique</h1>
+        <h2>Documentation du réseau</h2>
+      </div>
+      <div id="content">
+<p>Pour que les administrateurs réseau soient en mesure de surveiller et de dépanner un réseau, ils doivent posséder une documentation à la fois complète, précise et actuelle du réseau. Cette documentation comprend :</p>
+<p>
+<ul>
+<li>les fichiers de configuration, y compris les fichiers de configuration réseau et les fichiers de configuration du système terminal </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>les schémas de topologie physique et logique  </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>un niveau de performances de référence</li>
+</ul>
+</p>
+<p></p>
+<p>La documentation réseau permet aux administrateurs de diagnostiquer et de résoudre efficacement les problèmes réseau, sur la base de la conception du réseau et des performances attendues en conditions de fonctionnement normales. La totalité de la documentation réseau doit être conservée dans un emplacement unique, soit sous forme de copie papier soit sur un serveur protégé du réseau. La documentation de sauvegarde doit quant à elle être conservée à un autre endroit. </p>
+<p></p>
+<p>
+<b>Fichiers de configuration réseau</b>
+</p>
+<p>Les fichiers de configuration réseau contiennent des enregistrements précis et à jour du matériel et des logiciels utilisés dans un réseau. Les fichiers de configuration réseau doivent inclure une table pour chaque périphérique réseau, reprenant toutes les informations pertinentes à propos de ce périphérique. La Figure 1 illustre des exemples de tables de configuration réseau pour deux routeurs. La Figure 2 montre une table similaire pour un commutateur LAN.</p>
+<p></p>
+<p>Les informations pouvant être capturées dans une table de périphérique sont les suivantes :</p>
+<p>
+<ul>
+<li>le type de périphérique et la désignation du modèle </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>le nom de l’image IOS  </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>le nom d’hôte du réseau du périphérique  </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>l’emplacement du périphérique (bâtiment, étage, salle, bâti, panneau)  </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>s’il s’agit d’un périphérique modulaire, tous les types de module et l’emplacement de module où ils se situent </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>les adresses de couche liaison de données  </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>les adresses de couche réseau  </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>toute information importante supplémentaire sur les aspects physiques du périphérique</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Fichiers de configuration du système terminal</b>
+</p>
+<p>Les fichiers de configuration du système terminal concernent principalement le matériel et les logiciels utilisés au niveau des périphériques du système terminal, tels que les serveurs, les consoles de gestion du réseau et les stations de travail utilisateur. Un système terminal incorrectement configuré peut nuire aux performances globales d'un réseau. Pour cette raison, la possession d'un exemple d'enregistrement de planification initiale du matériel et des logiciels utilisés sur les périphériques et figurant dans la documentation du système terminal, comme le montre la Figure 3, peut s'avérer très utile lors du dépannage.</p>
+<p></p>
+<p>Pour les besoins du dépannage, les informations suivantes doivent être documentées dans la table de configuration du système terminal :</p>
+<p>
+<ul>
+<li>le nom du périphérique (fonction)  </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>le système d’exploitation et la version  </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>les adresses IPv4 et IPv6  </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>le masque de sous-réseau et la longueur de préfixe </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>les adresses de la passerelle par défaut, du serveur de noms de domaine (DNS) et du serveur WINS  </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>toute application réseau à haut débit exécutée par le système terminal</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

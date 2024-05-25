@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.2.2 Besoins en connectivité des télétravailleurs</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Télétravail</h1>
+        <h2>Contraintes professionnelles des services de télétravail</h2>
+      </div>
+      <div id="content">
+<p>Quelle que soit la technologie de connexion à distance utilisée pour la connexion au réseau d'une entreprise, les télétravailleurs ont besoin à la fois de composants de bureaux à domicile et de composants d'entreprises : </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Composants de bureaux à domicile</b> : les composants de bureaux à domicile requis sont un ordinateur portable ou de bureau, un accès au haut débit (câble, DSL ou sans fil), ainsi qu'un logiciel de routeur ou client VPN installé sur l'ordinateur. Un point d'accès sans fil est parfois nécessaire en tant que composant supplémentaire. Lors de leurs déplacements, les télétravailleurs ont besoin d’une connexion Internet et d’un client de réseau privé virtuel pour se connecter au réseau du siège par le biais d’une connexion commutée, réseau ou haut débit.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Composants d'entreprises</b> : les composants d'entreprises requis sont des routeurs compatibles VPN, des concentrateurs VPN, des appareils de sécurité multifonction, des systèmes d'authentification et de gestion centralisée pour l'agrégation résiliente, ainsi que des systèmes de raccordement des connexions VPN.</li>
+</ul>
+</p>
+<p></p>
+<p>Les composants VoIP et de vidéoconférence prenant en charge la qualité de service (QS) font aujourd'hui partie intégrante de l'ensemble des outils des télétravailleurs. QS indique si un réseau est capable de fournir de meilleurs services au trafic réseau sélectionné, comme l’exigent les applications vocales et vidéo. Les services VoIP et de vidéoconférence nécessitent des routeurs et des périphériques mis à niveau prenant en charge la fonctionnalité QS. </p>
+<p></p>
+<p>La figure illustre un tunnel VPN chiffré connectant le télétravailleur au réseau de l'entreprise. Il s'agit du composant principal de base en matière de connexions sécurisées et fiables de télétravailleurs. Un réseau privé virtuel représente un réseau de données privé sollicitant l’infrastructure publique de télécommunication. La sécurité VPN permet de garantir la confidentialité grâce à l'utilisation d'un protocole de tunneling et de procédures de sécurité. Ce cours présente le protocole IPsec (IP Security) en tant que méthode favorite permettant de réaliser des tunnels VPN sécurisés. Contrairement aux stratégies de sécurité précédentes, qui consistaient à sécuriser la couche application du modèle OSI, le protocole IPsec opère au niveau de la couche réseau où a lieu le traitement des paquets.</p>
+<p></p>
+<p>Comme indiqué, un tunnel VPN sécurisé est utilisé sur une infrastructure publique de télécommunication. Cela signifie qu'avant d'initier un VPN, les utilisateurs à domicile doivent au préalable être capables de se connecter aux services Internet par le biais d'un accès au haut débit rapide. Les trois formes les plus courantes d'accès au haut débit sont les suivantes :</p>
+<p>
+<ul>
+<li>Câble</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>DSL</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Accès haut débit sans fil</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

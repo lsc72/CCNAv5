@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.4.1 Propriétés des supports sans fil</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Supports réseau</h1>
+        <h2>Supports sans fil</h2>
+      </div>
+      <div id="content">
+<p>Les supports sans fil transportent les signaux électromagnétiques qui représentent les bits des communications de données via des fréquences radio ou micro-ondes. </p>
+<p></p>
+<p>En tant que support réseau, la transmission sans fil n'est pas limitée aux conducteurs ou voies d'accès, comme les supports en cuivre et à fibre optique. Ce sont les supports sans fil qui offrent le plus d'options de mobilité. De plus, le nombre de périphériques sans fil augmente sans cesse. De ce fait, la technologie sans fil est devenue le support de choix pour les réseaux domestiques. Alors que les options de bande passante augmentent, le sans fil gagne rapidement du terrain dans les réseaux d'entreprise. </p>
+<p></p>
+<p>La figure illustre les différents symboles associés à la technologie sans fil.</p>
+<p></p>
+<p>Toutefois, le sans fil présente également quelques contraintes :</p>
+<p>
+<ul>
+<li>
+<b>Zone de couverture </b>: les technologies de communication de données sans fil fonctionnent bien dans les environnements ouverts. Cependant, certains matériaux de construction utilisés dans les bâtiments et structures, ainsi que le terrain local, limitent la couverture effective. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Interférences </b>: la transmission sans fil est sensible aux interférences et peut être perturbée par des appareils aussi courants que les téléphones fixes sans fil, certains types d'éclairages fluorescents, les fours à micro-ondes et d'autres communications sans fil.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Sécurité</b> : la connexion à un réseau sans fil ne nécessite aucun accès physique à un support. Par conséquent, les périphériques et les utilisateurs non autorisés à accéder au réseau peuvent tout de même se connecter. La sécurité du réseau constitue donc un composant essentiel de l'administration des réseaux sans fil.</li>
+</ul>
+</p>
+<p></p>
+<p>Bien que la technologie sans fil soit de plus en plus utilisée sur les ordinateurs de bureau, le cuivre et la fibre sont les supports de couche physique les plus répandus dans les déploiements réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

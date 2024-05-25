@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.1.1 Protocole OSPF à zone unique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement du protocole OSPF à zones multiples</h1>
+        <h2>Pourquoi choisir le routage OSPF à zones multiples ?</h2>
+      </div>
+      <div id="content">
+<p>Le protocole OSPF à zone unique est utile sur les réseaux de petite taille où la structure des liaisons du routeur n'est pas complexe et où les chemins d'accès aux différentes destinations peuvent être déterminés facilement.</p>
+<p></p>
+<p>Toutefois, lorsqu'une zone devient trop grande, les problèmes suivants peuvent surgir (cf. figure pour l'illustration) :</p>
+<p>
+<ul>
+<li>
+<b>Taille excessive de la table de routage de grande taille</b> : le protocole OSPF n'effectue pas une récapitulation de route par défaut. Si les routes ne sont pas récapitulées, la table de routage peut devenir très importante, selon la taille du réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Taille excessive de la base de données d'états de liens (LSDB)</b> :<b></b> la LSDB couvrant la topologie de l'ensemble du réseau, chaque routeur doit conserver une entrée pour chaque réseau de la zone, même si toutes les routes ne sont pas sélectionnées pour la table de routage.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Fréquence élevée des calculs de l'algorithme SPF</b> : dans un réseau de grande taille, les changements sont inévitables ; les routeurs passent donc de nombreux cycles de processeur à recalculer l'algorithme SPF et à mettre à jour la table de routage.</li>
+</ul>
+</p>
+<p></p>
+<p>Pour une efficacité et une évolutivité supérieures, le protocole OSPF prend en charge le routage hiérarchique à l'aide de zones. Une zone (ou area) OSPF correspond à un groupe de routeurs qui partagent les mêmes informations dans leur base de données d’états de liens. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.3.2.2 Architecture de collaboration</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.3.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Évolution des architectures réseau</h1>
+        <h2>Architectures réseau émergentes</h2>
+      </div>
+      <div id="content">
+<p>Le travail dans un environnement collaboratif contribue à l'amélioration de la productivité. La collaboration, ainsi que d'autres types de logiciels de travail en groupe, sont utilisés pour rassembler les personnes, pour diverses raisons : faire connaissance, travailler ensemble, coopérer, contribuer à la production, ou bien encore innover. </p>
+<p></p>
+<p>L'architecture Cisco Collaboration comprend un ensemble de produits, d'applications, de kit de développement logiciel (SDK) et d'API. Tous ces composants travaillent à créer une solution complète.</p>
+<p></p>
+<p>Comme présenté dans l'illustration, l'architecture de collaboration Cisco se compose de trois couches :</p>
+<p>
+<ul>
+<li>
+<b>Applications et périphériques </b>: cette couche contient les applications de conférence et de communications unifiées, comme Cisco WebEx Meetings, WebEx Social, Cisco Jabber et TelePresence. Les applications de cette couche aident les utilisateurs à rester connectés et à rester productifs. Ces applications sont la voix, la vidéo, les conférences Web, la messagerie, les applications mobiles et le logiciel social de l'entreprise.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Services de collaboration </b>: cette couche prend en charge les applications de collaboration, dont font partie les services suivants : présence, emplacement, gestion de session, gestion des contacts, cadre client, balises et gestion des stratégies et de la sécurité.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Infrastructure informatique et de réseau </b>: cette couche est chargée d'assurer la collaboration, en toute heure et en tout lieu et sur tout appareil. Elle comprend les ordinateurs virtuels, le réseau et le stockage.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.1.2 Masques de sous-réseau par classe</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Examen de CIDR et VLSM</h1>
+        <h2>Adressage par classe</h2>
+      </div>
+      <div id="content">
+<p>Comme le définit le document RFC 790, chaque classe de réseau est associée à un masque de sous-réseau par défaut. </p>
+<p></p>
+<p>Comme vous le voyez dans la Figure 1, les réseaux de classe A utilisaient le premier octet pour identifier la partie réseau de l'adresse. Ceci est traduit dans le masque de sous-réseau par classe 255.0.0.0. Étant qu'il ne restait que 7 bits dans le premier octet (rappelez-vous que le premier bit est toujours 0), on obtient 2 à la puissance 7, soit 128 réseaux. Le nombre correspond en fait à 126 réseaux, car deux adresses de classe A sont réservées (0.0.0.0/8 et 127.0.0.0/8). Avec 24 bits dans la partie hôte, chaque adresse de classe A peut contenir plus de 16 millions d'adresses d'hôte individuelles. </p>
+<p></p>
+<p>Comme le montre la Figure 2, les réseaux de classe B utilisaient les deux premiers octets pour identifier la partie réseau de l'adresse réseau. Les deux premiers bits définis comme 1 et 0, cela laisse 14 bits dans les deux premiers octets pour attribuer les réseaux, soit 16 384 adresses réseau de classe B. Chaque adresse réseau de classe B contenant 16 bits dans la partie hôte, elle contrôle 65 534 adresses. (Souvenez-vous que les deux adresses étaient réservées aux adresses réseau et de diffusion.)</p>
+<p></p>
+<p>Comme le montre la Figure 3, les réseaux de classe C utilisaient les trois premiers octets pour identifier la partie réseau de l'adresse réseau. Les trois premiers bits étant définis sur 1, 1 et 0, cela laisse 21 bits pour attribuer les réseaux à plus de 2 millions de réseaux de classe C. Cependant, chaque réseau de classe C ne possède que 8 bits dans la partie hôte, soit 254 adresses d'hôte possibles.</p>
+<p></p>
+<p>Un avantage de l'attribution de masques de sous-réseau par défaut spécifiques à chaque classe est que les messages de mise à jour de routage sont plus petits. Les protocoles de routage par classe n'incluent pas les informations de masque de sous-réseau dans leurs mises à jour. Le routeur destinataire applique le masque par défaut sur base de la valeur du premier octet qui identifie la classe.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.3.1.5 Acheminement des données jusqu&#x0027;à l&#x0027;application adéquate </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.3.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Un même message dans le monde entier</h1>
+        <h2>Faites passer le message !</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Acheminement des données jusqu'à l'application de destination adéquate</b>
+</p>
+<p>Enfin, le périphérique final de destination reçoit la trame. Celle-ci passe alors à travers la pile de protocoles qui désencapsule les données et les réassemble. Les données traversent toutes les couches : couche d'accès au réseau, puis couche réseau, puis couche transport et enfin couche application où elles peuvent être traitées. Mais comment le périphérique peut-il être sûr que le processus d'application approprié est identifié ?</p>
+<p></p>
+<p>Souvenez-vous qu'au niveau de la couche transport, les informations contenues dans l'en-tête de l'unité de données de protocole identifient le processus ou le service spécifique exécuté sur le périphérique hôte de destination qui traitera les données (cf figure). Les hôtes, qu'il s'agisse de clients ou de serveurs sur Internet, peuvent exécuter simultanément plusieurs applications réseau. Les personnes qui utilisent des ordinateurs de bureau exécutent souvent un client de messagerie en même temps qu'un navigateur Web, un programme de messagerie instantanée, des flux multimédias en continu et même parfois un jeu. Tous ces programmes qui s'exécutent séparément constituent des exemples de processus individuels. </p>
+<p></p>
+<p>L'affichage d'une page Web invoque au moins un processus réseau. Cliquer sur un lien hypertexte entraîne la communication d'un navigateur Web avec un serveur Web. Au même moment, en arrière-plan, un client de messagerie peut envoyer et recevoir un e-mail, et un collègue ou un ami peut être en train d'envoyer un message instantané. </p>
+<p></p>
+<p>Imaginez un ordinateur ne disposant que d'une interface réseau. Tous les flux de données créés par les applications exécutées sur l'ordinateur entrent et sortent par le biais de cette interface, mais les messages instantanés n'apparaissent pas soudainement au milieu des documents de traitement de texte et les e-mails ne s'affichent pas non plus dans l'interface d'un jeu.</p>
+<p></p>
+<p>La raison à cela est que les processus individuels exécutés sur les hôtes source et de destination communiquent entre eux. Chaque application ou service est représenté(e) au niveau de la couche  4 par un numéro de port. Un dialogue unique entre des périphériques est identifié par une paire de numéros de port source et de destination de la couche  4, qui représentent les deux applications qui communiquent. Lors de la réception des données sur l'hôte, le numéro de port est examiné pour déterminer quel processus ou application constitue la destination correcte des données.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

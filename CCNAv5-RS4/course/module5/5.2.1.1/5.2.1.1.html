@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.1.1 Configuration de la fonction NAT statique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de la traduction d&#x0027;adresses réseau (NAT)</h1>
+        <h2>Configuration de la fonction NAT statique</h2>
+      </div>
+      <div id="content">
+<p>La NAT statique est un mappage de type un à un entre une adresse interne et une adresse externe. La NAT statique permet aux périphériques externes d'établir des connexions avec des périphériques internes à l'aide de l'adresse publique attribuée de manière statique. Par exemple, un serveur Web interne peut être mappé à une adresse globale interne spécifique de sorte qu'il soit accessible depuis les réseaux externes. </p>
+<p></p>
+<p>La Figure 1 illustre un réseau interne comprenant un serveur Web associé à une adresse IPv4 privée. Le routeur R2 est configuré avec la fonction NAT statique pour permettre aux périphériques sur le réseau externe (Internet) d'accéder au serveur Web. Le client situé sur le réseau externe accède au serveur Web à l'aide d'une adresse IPv4 publique. La NAT statique traduit l'adresse IPv4 publique en adresse IPv4 privée.</p>
+<p></p>
+<p>La configuration des traductions NAT statiques comporte deux étapes fondamentales. </p>
+<p></p>
+<p>
+<b>Étape 1. </b>La première tâche consiste à créer un mappage entre les adresses locales internes et les adresses globales internes. Par exemple, l'adresse locale interne 192.168.10.254 et l'adresse globale interne 209.165.201.5 de la Figure 1 sont configurées comme étant une traduction NAT statique. </p>
+<p></p>
+<p>
+<b>Étape 2. </b>Une fois que le mappage est configuré, les interfaces participant à la traduction sont configurées comme étant internes ou externes par rapport à la NAT. Dans l'exemple, l'interface série 0/0/0 de R2 est une interface interne et l'interface série 0/1/0 est une interface externe.</p>
+<p></p>
+<p>Les paquets arrivant sur l'interface interne de R2 (série 0/0/0) depuis l'adresse IPv4 locale interne configurée (192.168.10.254) sont traduits puis transférés vers le réseau externe. Les paquets arrivant sur l'interface externe de R2 (série 0/1/0), qui sont destinés à l'adresse IPv4 globale interne configurée (209.165.201.5), sont traduits en adresse locale interne (192.168.10.254), puis transférés sur le réseau interne.</p>
+<p></p>
+<p>La Figure 2 décrit les commandes requises pour configurer la NAT statique. </p>
+<p></p>
+<p>La Figure 3 montre les commandes à exécuter sur R2 pour créer un mappage NAT statique avec le serveur Web dans cet exemple de topologie. Avec la configuration représentée, R2 traduit les paquets provenant du serveur Web avec l'adresse 192.168.10.254 en adresse IPv4 publique 209.165.201.5. Le client Internet dirige les requêtes Web vers l'adresse IPv4 publique 209.165.201.5. R2 transfère ce trafic au serveur Web sur 192.168.10.254.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 4 pour configurer une entrée NAT statique supplémentaire sur R2.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.4.3 Adresse de couche 2</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.4.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Contrôle d&#x0027;accès au support</h1>
+        <h2>Trame liaison de données</h2>
+      </div>
+      <div id="content">
+<p>La couche liaison de données assure l'adressage utilisé pour acheminer la trame à travers les supports locaux partagés. Au niveau de cette couche, les adresses de périphérique sont appelées adresses physiques. L'adressage de couche liaison de données est spécifié dans l'en-tête de trame et indique le noeud de destination de trame sur le réseau local. L'en-tête de la trame peut également contenir son adresse source. </p>
+<p></p>
+<p>Contrairement aux adresses logiques de couche 3, qui sont des adresses hiérarchiques, les adresses physiques n'indiquent pas le réseau sur lequel le périphérique se situe. Au contraire, l'adresse physique est une adresse unique spécifique du périphérique. Si le périphérique est déplacé vers un autre réseau ou sous-réseau, il opère encore avec la même adresse physique de couche 2.</p>
+<p></p>
+<p>Une adresse spécifique du périphérique et non hiérarchique ne peut pas être utilisée pour localiser un périphérique sur des réseaux de grande envergure ou sur Internet. Cela reviendrait à chercher une certaine maison dans le monde entier, en ne connaissant que la rue et le numéro de celle-ci. En revanche, l'adresse physique permet de localiser un périphérique dans une zone limitée. Pour cette raison, l'adresse de la couche liaison de données est utilisée uniquement pour l'acheminement local. Au niveau de cette couche, les adresses n'ont une signification que sur le réseau local. Comparons ce scénario à celui de la couche 3, où les adresses présentes dans l'en-tête de paquet sont acheminées de l'hôte source à l'hôte de destination quel que soit le nombre de tronçons réseau figurant sur le chemin.</p>
+<p></p>
+<p>Si les données doivent passer sur un autre segment du réseau, alors un périphérique intermédiaire tel qu'un routeur est requis. Le routeur doit accepter la trame en fonction de son adresse physique et la désencapsuler afin d'en examiner l'adresse hiérarchique, ou adresse IP. Grâce à l'adresse IP, le routeur peut déterminer l'emplacement réseau du périphérique de destination et le meilleur chemin pour l'atteindre. Une fois qu'il sait où transférer le paquet, le routeur crée une nouvelle trame pour le paquet, laquelle est envoyée sur le segment suivant en direction de sa destination finale. </p>
+<p></p>
+<p>La figure présente les exigences applicables aux adresses de couche 2 dans les topologies à accès multiple et point à point.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

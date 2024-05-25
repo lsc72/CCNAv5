@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.1.1 Trame 802.11 sans fil </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement LAN sans fil</h1>
+        <h2>Structure de trame 802.11</h2>
+      </div>
+      <div id="content">
+<p>Toutes les trames de couche 2 sont composées d'un en-tête, de données utiles et d'une section FCS, comme illustré à la Figure 1. Le format des trames 802.11 est similaire au format des trames Ethernet, excepté qu'il contient davantage de champs. </p>
+<p></p>
+<p>Comme le montre la Figure 2, toutes les trames sans fil 802.11 contiennent les champs suivants :</p>
+<p>
+<ul>
+<li>
+<b> Frame Control (Contrôle de trame)</b> : identifie le type de trame sans fil concerné et contient des sous-champs pour la version de protocole, le type de trame, le type d'adresse, la gestion d'alimentation et les paramètres de sécurité. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Duration (Durée)</b> : champ généralement utilisé pour indiquer le délai nécessaire avant réception de la transmission de trame suivante. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Address1 (Adresse 1)</b> : contient généralement l'adresse MAC du point d'accès ou du périphérique sans fil de réception. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Address2 (Adresse 2)</b> : contient généralement l'adresse MAC du point d'accès ou du périphérique sans fil d'émission.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Address3 (Adresse 3)</b> : contient parfois l'adresse MAC de la destination, par exemple l'interface du routeur (passerelle par défaut) auquel le point d'accès est associé.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Sequence Control (Contrôle de séquence)</b> : contient les sous-champs Sequence Number (Numéro d'ordre) et Fragment Number (Numéro de fragment). Le premier indique le numéro d'ordre de chaque trame. Le second indique le numéro de chaque trame envoyée dans le cas d'une trame fragmentée. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Address4 (Adresse 4)</b> : champ généralement absent car utilisé uniquement en mode ad hoc.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Payload (Données utiles)</b> : contient les données à transmettre.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>FCS</b> : (Frame Check Sequence, séquence de contrôle de trame) champ utilisé pour le contrôle des erreurs de couche 2.</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 3 contient la capture Wireshark d'une trame de balise WLAN. Notez que le champ de contrôle de trame a également été développé pour afficher ses sous-champs.</p>
+<p></p>
+<p>
+<b>Remarque </b>: le contenu des champs d'adresse varie en fonction des paramètres du champ de contrôle de trame.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+<slide type="MBAR">
+	<!-- slide 01-->
+	<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+		<element type="IMAGE" src="4_2_2_4A.jpg" x="0" y="0" width="470" height="400"/>
+		<element type="TEXT" compId="ID_s1_txt01" x="171" y="208" width="100.5" expand="up+down" align="center" />
+		<element type="TEXT" id="ID_static_1" text="S0/0/1" x="192" y="114.5" align="center" width="30.25" />
+		<element type="TEXT" id="ID_static_2" text="S0/0/1" x="67.5" y="225" align="center" width="30.25" />
+		<element type="TEXT" id="ID_static_3" text="S0/0/0" x="349" y="225" align="center" width="31.75" />
+		<element type="TEXT" id="ID_txt1" text="S0/0/1.201" x="160" y="125" width="136" height="23.7" color="#F68026" bold="1"/>
+		<element type="TEXT" id="ID_txt1" text="S0/0/1.203"  x="160" y="138" width="136" height="23.7" color="#46A040" bold="1"/>
+		<element type="TEXT" id="ID_txt1" text="10.1.1.2/30" x="230" y="125" width="136" height="23.7" color="#F68026" bold="1"/>
+		<element type="TEXT" id="ID_txt1" text="10.1.1.9/30" x="230" y="138" width="136" height="23.7" color="#46A040" bold="1"/>
+		<element type="TEXT" id="ID_txt2" text="S0/0/1.102 10.1.1.1/30" x="26.85" y="275.5" width="127" height="23.7" color="#F68026" bold="1"/>
+		<element type="TEXT" id="ID_txt2" text="S0/0/1.103 10.1.1.5/30" x="26.85" y="289" width="127" height="23.7" color="#00918E" bold="1"/>
+		<element type="TEXT" id="ID_txt3" text="S0/0/0.301 10.1.1.6/30"  x="297.6" y="275.5" width="133" height="23.7" color="#00918E" bold="1"/>
+		<element type="TEXT" id="ID_txt3" text="S0/0/0.302 10.1.1.10/30"  x="297.6" y="289" width="133" height="23.7" color="#46A040" bold="1"/>
+		<element type="TEXT" compId="ID_s1_txt04" x="21" y="220" width="60.55" expand="up" align="center" rotation="-45"/>
+		<element type="TEXT" compId="ID_s1_txt05" x="136" y="104" width="60.55" expand="up" align="center" rotation="-45"/>
+		<element type="TEXT" compId="ID_s1_txt06" x="269" y="64" width="60.55" expand="up" align="center" rotation="45"/>
+		<element type="TEXT" compId="ID_s1_txt07" x="384" y="179" width="60.55" expand="up" align="center" rotation="45"/>
+		<element type="TEXT" compId="ID_s1_txt02" x="108" y="310" width="60.55" expand="down" align="center" />
+		<element type="TEXT" compId="ID_s1_txt03" x="272" y="310" width="60.55" expand="down" align="center" />
+	</slide>
+
+	<!-- slide 02-->
+	<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+		<element type="ROUTER" textId="ID_router_txt4" x="5" y="37" width="430" height="244" />
+		<text id="ID_router_txt4"><![CDATA[<pre>
+R1(config)# <b>interface serial 0/0/1</b>
+<span class="orange">R1(config-if)# <b>encapsulation frame-relay</b>                  </span>
+R1(config-if)# <b>no shutdown</b>
+R1(config-if)# <b>exit</b>
+R1(config)# <b>interface serial 0/0/1.102 point-to-point</b>
+R1(config-subif)# <b>ip address 10.1.1.1 255.255.255.252</b>
+R1(config-subif)# <b>bandwidth 64</b>
+<span class="orange">R1(config-subif)# <b>frame-relay interface-dlci 102</b>          </span>
+R1(config-fr-dlci)# <b>exit</b>
+R1(config-subif)# <b>exit</b>
+R1(config)# <b>interface serial 0/0/1.103 point-to-point</b>
+R1(config-subif)# <b>ip address 10.1.1.5 255.255.255.252</b> 
+R1(config-subif)# <b>bandwidth 64</b>                        
+<span class="orange">R1(config-subif)# <b>frame-relay interface-dlci 103</b>          </span>
+R1(config-fr-dlci)#  
+</pre>]]></text>	
+	</slide>
+	
+	<!-- slide 03-->
+	<slide>
+	<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+	<element type="ACTIVITY" subType="SYNTAX" compId="ID_s3_SC5" x="1.2" y="35" width="437.1" height="360" resetId = "ID_sc3_reset" showMeId="ID_sc3_showme" showAllId="ID_sc3_showall"/>
+	</slide>		
+</slide>	
+</data>

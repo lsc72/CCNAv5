@@ -1,0 +1,51 @@
+﻿<textcomponents>
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Vérification des interfaces OSPF de R1  </b>]]></text>
+	</component>
+	<component id="ID_s2_title">
+		<text><![CDATA[<b>Vérification des paramètres de l'interface OSPF  </b>]]></text>
+	</component>
+	
+	
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+
+	<component id="ID_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b> *** </b><font size='10'  face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font size='10'  face="Arial"><b>Affichez le récapitulatif des interfaces utilisant OSPF.  </b></font>]]></existingcommands>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ip ospf interface brief]]></correctresponse>
+			<deviceresponse><![CDATA[<font size='9'  face='Courier New'>Interface PID Area IP Address/Mask Cost State Nbrs F/C <br>Se0/0/1 10 0 192.168.10.9/30 976 P2P 1/1 <br>Se0/0/0 10 0 172.16.3.2/30 647 P2P 1/1 <br>Gi0/0 10 0 172.16.2.1/24 1 DR 0/0 <br></font>R2#]]></deviceresponse> 
+			<instruction><![CDATA[<font size='10'  face="Arial"><b>Vérifiez les informations OSPF spécifiques à l'interface série 0/0/1.</font>  </b>]]></instruction>			
+		</command>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ip ospf interface serial 0/0/1]]></correctresponse>
+			<deviceresponse><![CDATA[<font size='9'  face='Courier New'>Serial0/0/1 is up, line protocol is up <br>  Internet Address 192.168.10.9/30, Area 0, Attached via Network Statement <br>  Process ID 10, Router ID 2.2.2.2, Network Type POINT_TO_POINT, Cost: 976 <br>  Topology-MTID Cost Disabled Shutdown Topology Name <br>        0 976 no no Base <br>  Transmit Delay is 1 sec, State POINT_TO_POINT <br>  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5 <br>    oob-resync timeout 40 <br>    Hello due in 00:00:03 <br>  Supports Link-local Signaling (LLS) <br>  Cisco NSF helper support enabled <br>  IETF NSF helper support enabled <br>  Index 3/3, flood queue length 0 <br>  Next 0x0(0)/0x0(0) <br>  Last flood scan length is 1, maximum is 1 <br>  Last flood scan time is 0 msec, maximum is 0 msec <br>  Neighbor Count is 1, Adjacent neighbor count is 1 <br>    Adjacent with neighbor 3.3.3.3 <br>  Suppress hello for 0 neighbor(s) <br></font>R2#]]></deviceresponse> 
+			<instruction><![CDATA[<font size='10'  face="Arial"><b>Vous êtes maintenant connecté au routeur R3. Affichez le récapitulatif des interfaces utilisant OSPF.  </b>]]></instruction>
+			</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip ospf interface brief]]></correctresponse>
+			<deviceresponse><![CDATA[<font size='9'  face='Courier New'>Interface PID Area IP Address/Mask Cost State Nbrs F/C <br>Se0/0/1 10 0 192.168.10.10/30 976 P2P 1/1 <br>Se0/0/0 10 0 192.168.10.6/30 15625 P2P 1/1 <br>Gi0/0 10 0 192.168.1.1/24 1 DR 0/0 <br></font>R3#]]></deviceresponse> 
+			<instruction><![CDATA[<font size='10'  face="Arial"><b>Vérifiez les informations OSPF spécifiques à l'interface série 0/0/0.  </b>]]></instruction>
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip ospf interface s0/0/0]]></correctresponse>
+			<deviceresponse><![CDATA[<font size='9'  face='Courier New'>Serial0/0/0 is up, line protocol is up <br>  Internet Address 192.168.10.6/30, Area 0, Attached via Network Statement <br>  Process ID 10, Router ID 3.3.3.3, Network Type POINT_TO_POINT, Cost: 15625 <br>  Topology-MTID Cost Disabled Shutdown Topology Name <br>        0 15625 no no Base <br>  Transmit Delay is 1 sec, State POINT_TO_POINT <br>  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5 <br>    oob-resync timeout 40 <br>    Hello due in 00:00:08 <br>  Supports Link-local Signaling (LLS) <br>  Cisco NSF helper support enabled <br>  IETF NSF helper support enabled <br>  Index 2/2, flood queue length 0 <br>  Next 0x0(0)/0x0(0) <br>  Last flood scan length is 1, maximum is 1 <br>  Last flood scan time is 0 msec, maximum is 0 msec <br>  Neighbor Count is 1, Adjacent neighbor count is 1 <br>    Adjacent with neighbor 1.1.1.1 <br>  Suppress hello for 0 neighbor(s) <br></font>R3#]]></deviceresponse> 
+			<instruction><![CDATA[<font size='10'  face="Arial" class="syntaxBottomLine"><b>Vous avez correctement vérifié les paramètres d'interface OSPF.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+	
+	
+	
+
+</textcomponents>

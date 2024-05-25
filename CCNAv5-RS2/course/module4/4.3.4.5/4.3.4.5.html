@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.4.5 Exemples de routage dynamique IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.4.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement d&#x0027;un routeur</h1>
+        <h2>Protocoles de routage dynamique</h2>
+      </div>
+      <div id="content">
+<p>Les routeurs R1 et R2 ont été configurés avec le protocole de routage dynamique EIGRP pour IPv6. (Il s'agit de l'équivalent IPv6 du protocole EIGRP pour IPv4.)</p>
+<p></p>
+<p>Pour afficher la table de routage sur R1, entrez la commande<span class="cmd"><b> show ipv6 route</b></span>, comme indiqué dans la figure. Le résultat dans l'illustration affiche la table de routage de R1 après que les routeurs ont échangé des mises à jour et ont convergé. Avec les routes connectées et locales, il existe deux entrées « <span class="cmd">D</span> » (routes EIGRP) dans la table de routage. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

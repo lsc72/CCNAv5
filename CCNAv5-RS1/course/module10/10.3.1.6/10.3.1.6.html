@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.3.1.6 Guerriers du réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.3.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Un même message dans le monde entier</h1>
+        <h2>Faites passer le message !</h2>
+      </div>
+      <div id="content">
+<p>Il existe une ressource amusante qui vous aide à visualiser les concepts de réseau : l'animation « Warriors of the Net », ou Guerriers du réseau, de TNG Media Lab. Avant de visualiser la vidéo, tenez compte des remarques suivantes. Premièrement, au regard des concepts étudiés dans ce chapitre, demandez-vous à quel moment dans la vidéo vous vous trouvez sur un réseau local, sur un réseau étendu, sur un intranet, sur Internet ; identifiez quels sont les périphériques finaux par rapport aux périphériques intermédiaires ; comment les modèles OSI et TCP/IP s'appliquent ; quels protocoles sont impliqués.</p>
+<p></p>
+<p>Deuxièmement, s'il est explicitement fait référence aux numéros de port 21, 23, 25, 53 et 80 dans la vidéo, il n'est fait référence aux adresses IP qu'implicitement. Savez-vous à quel moment ? À quel moment dans la vidéo des adresses MAC sont-elles impliquées ?</p>
+<p></p>
+<p>Enfin, même si toutes les animations comportent souvent des simplifications, la vidéo comporte une erreur évidente. Au bout de 5 minutes environ, vous entendez le commentaire suivant : « Si M. IP ne reçoit pas la confirmation que le paquet a été reçu dans les délais requis, il en envoie tout simplement une copie. » Il ne s'agit pas d'une fonction du protocole IP de couche 3, qui est « peu fiable » et achemine au mieux les paquets, mais d'une fonction du protocole TCP de la couche transport.</p>
+<p></p>
+<p>Téléchargez le film sur le site <a href="http://www.warriorsofthe.net/" target="_blank">http://www.warriorsofthe.net</a>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

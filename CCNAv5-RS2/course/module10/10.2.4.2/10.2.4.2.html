@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.4.2 Vérification de la configuration de DHCPv6 du routeur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 6</h1>
+        <h2>Dépannage de DHCPv6</h2>
+      </div>
+      <div id="content">
+<p>Les configurations des routeurs pour les services DHCPv6 avec et sans état présentent de nombreux points communs, mais également des différences importantes. La Figure 1 présente les commandes de configuration pour les deux types de services DHCPv6.</p>
+<p></p>
+<p>
+<b>DHCPv6 avec état </b>
+</p>
+<p></p>
+<p>Un routeur configuré pour les services DHCPv6 avec état dispose de la commande <span class="cmd"><b>address prefix</b></span> qui fournit les informations d'adressage.</p>
+<p>Pour les services DHCPv6 avec état, la commande du mode de configuration d'interface <span class="cmd"><b>ipv6 nd managed-config-flag</b></span> est utilisée. Dans ce cas, le client ignore les informations d'adressage du message RA et communique avec un serveur DHCPv6 à la fois pour l'adressage et les autres informations.</p>
+<p></p>
+<p>
+<b>DHCPv6 sans état</b>
+</p>
+<p></p>
+<p>Pour les services DHCPv6 sans état, la commande du mode de configuration d'interface <span class="cmd"><b>ipv6 nd other-config-flag</b></span> est utilisée. Elle indique au périphérique d'utiliser SLAAC pour les informations d'adressage et un serveur DHCPv6 sans état pour les autres paramètres de configuration.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>show ipv6 interface</b></span> peut être utilisée pour afficher la configuration actuelle de la méthode d'attribution des adresses. Comme le montre la Figure 2, la dernière ligne du résultat indique comment les clients obtiennent les adresses et les autres paramètres.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

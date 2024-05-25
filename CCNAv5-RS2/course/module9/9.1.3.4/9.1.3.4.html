@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.3.4 Mots-clés de masque générique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement des listes de contrôle d&#x0027;accès IP</h1>
+        <h2>Masques génériques dans les listes de contrôle d&#x0027;accès</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Mots-clés des bits de masque générique</b>
+</p>
+<p></p>
+<p>Travailler avec des représentations décimales de bits de masque générique peut être fastidieux. Les mots-clés<span class="cmd"><b> host</b></span> (hôte) et<span class="cmd"><b> any</b></span> (tous) permettent d'identifier les utilisations les plus courantes des masques génériques, et simplifient ainsi cette tâche. Ils suppriment la saisie des masques génériques lorsque vous identifiez un hôte spécifique ou un réseau. Ces mots-clés facilitent également la lecture d'une liste de contrôle d'accès en offrant des indices visuels comme la source ou la destination des critères.</p>
+<p></p>
+<p>Le mot-clé <span class="cmd"><b>host</b></span> remplace le masque 0.0.0.0. Ce masque indique que tous les bits de l'adresse IPv4 doivent correspondre ou qu'un seul hôte est conforme.</p>
+<p>Le mot-clé <span class="cmd"><b>any</b></span> remplace l'adresse IP et le masque 255.255.255.255. Ce masque indique qu'il convient d'ignorer l'intégralité de l'adresse IPv4 ou d'accepter n'importe quelle adresse. </p>
+<p></p>
+<p>
+<b>Exemple 1 : processus de masque générique avec une adresse IP unique</b>
+</p>
+<p></p>
+<p>Dans l'exemple 1 de la figure, au lieu de saisir <span class="cmd"><b>192.168.10.10 0.0.0.0</b></span>, vous pouvez utiliser <span class="cmd"><b>host 192.168.10.10</b></span>. </p>
+<p></p>
+<p>
+<b>Exemple 2 : processus de masque générique avec une adresse IP à concordance quelconque</b>
+</p>
+<p></p>
+<p>Dans l'exemple 2 de la figure, au lieu de saisir<span class="cmd"><b> 0.0.0.0 255.255.255.255</b></span>, vous pouvez utiliser le mot-clé<span class="cmd"><b> any</b></span> seul.</p>
+<p></p>
+<p>
+<b>Remarque</b> : les mots-clés <span class="cmd"><b>host</b></span> et <span class="cmd"><b>any</b></span> peuvent également être utilisés lors de la configuration d'une liste de contrôle d'accès IPv6. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

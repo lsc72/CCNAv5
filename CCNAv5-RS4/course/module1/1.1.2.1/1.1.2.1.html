@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.2.1 Hiérarchie du réseau </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation de la conception de réseau hiérarchique</h1>
+        <h2>Conception hiérarchique du réseau</h2>
+      </div>
+      <div id="content">
+<p>Dans le domaine des réseaux, la conception hiérarchique divise le réseau en couches distinctes. Chaque couche, ou niveau, de la hiérarchie offre des fonctions spécifiques qui définissent son rôle dans le réseau. Ceci permet au concepteur et à l'architecte du réseau de sélectionner le matériel et les logiciels réseau adaptés, ainsi que les fonctionnalités nécessaires aux rôles de cette couche réseau. Les modèles hiérarchiques appliquent à la fois les conceptions LAN et WAN.</p>
+<p></p>
+<p>Une conception de réseau typique de LAN hiérarchique comprend les trois couches suivantes : </p>
+<p>
+<ul>
+<li>
+<b>Couche d'accès</b> : permet aux groupes de travail et aux utilisateurs d'accéder au réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Couche de distribution</b> : fournit la connectivité basée sur les stratégies et contrôle la limite entre les couches d'accès et cœur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Couche cœur de réseau </b>: assure le transport rapide entre commutateurs de distribution dans le campus d'entreprise.</li>
+</ul>
+</p>
+<p></p>
+<p>De par la division des réseaux linéaires non hiérarchiques en sections plus petites et plus faciles à gérer, le trafic local reste véritablement local. Seul le trafic destiné aux autres réseaux est déplacé vers une couche supérieure.</p>
+<p></p>
+<p>Les périphériques de la couche 2 d'un réseau plat ne permettent pas vraiment de contrôler la diffusion ou de filtrer le trafic indésirable. À mesure que des périphériques et des applications sont ajoutés au réseau plat, le temps de réponse se dégrade, au point que le réseau devient inutilisable.</p>
+<p></p>
+<p>Cliquez sur Lecture dans la Figure 1 pour voir la transition d'un réseau plat vers un réseau hiérarchique.</p>
+<p></p>
+<p>La Figure 2 présente un autre exemple de réseau hiérarchique à trois couches. Notez que chaque bâtiment utilise le même modèle de réseau hiérarchique, qui comprend les couches d'accès, de distribution et cœur de réseau. </p>
+<p></p>
+<p>
+<b>Remarque </b>: il n'y a pas de règles absolues pour la manière dont le réseau de campus est conçu physiquement. Bien que la plupart des réseaux de campus soient construits selon trois étages de commutateurs, il ne s'agit pas d'une règle stricte. Dans un plus petit campus, le réseau peut comporter deux étages de commutateurs dans lesquels les éléments de cœur et de distribution sont regroupés en un seul commutateur physique. Il s'agit là d'une conception en cœur de réseau regroupé.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

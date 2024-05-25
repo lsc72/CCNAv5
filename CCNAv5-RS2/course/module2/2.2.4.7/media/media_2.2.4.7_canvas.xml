@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide type="MBAR">
+	
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+			<element type="ROUTER" textId="ID_s1_txt01" x="4.45" y="80.3" width="430" height="159.45"/>				
+		</slide>
+		
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+			<element type="ROUTER" textId="ID_s2_txt01" x="4.45" y="80.3" width="430" height="256.40"/>				
+		</slide>
+		
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+			<element type="ROUTER" textId="ID_s3_txt01" x="4.45" y="80.3" width="430" height="159.45"/>		
+		</slide>	
+	
+	</slide>
+	
+	
+	
+	
+	
+	<text id="ID_s1_txt01"><![CDATA[<pre>Sep 20 06:44:54.966: %PM-4-ERR_DISABLE: psecure-violation
+error detected on Fa0/18, putting Fa0/18 in err-disable state
+Sep 20 06:44:54.966: %PORT_SECURITY-2-PSECURE_VIOLATION:
+Security violation occurred, caused by MAC address
+000c.292b.4c75 on port FastEthernet0/18. 
+Sep 20 06:44:55.973: %LINEPROTO-5-PPDOWN: Line protocol on
+Interface
+FastEthernet0/18, changed state to down
+Sep 20 06:44:56.971: %LINK-3-UPDOWN: Interface
+FastEthernet0/18, changed state to down</pre>
+	]]></text>
+	
+	
+<text id="ID_s2_txt01"><![CDATA[<pre>S1# <b>show interface fa0/18 status </b>
+Port Name  Status        Vlan  Duplex  Speed   Type
+Fa0/18     err-disabled  1     auto    auto    10/100BaseTX
+
+S1# <b>show port-security interface fastethernet 0/18 </b>
+Port Security               : Enabled
+Port Status                 : Secure-shutdown
+Violation Mode              : Shutdown
+Aging Time                  : 0 mins
+Aging Type                  : Absolute
+SecureStatic Address Aging  : Disabled
+Maximum MAC Addresses       : 1
+Total MAC Addresses         : 0
+Configured MAC Addresses    : 0
+Sticky MAC Addresses        : 0
+Last Source Address:Vlan    : 000c.292b.4c75:1
+Security Violation Count    : 1</pre>
+]]></text>
+
+<text id="ID_s3_txt01"><![CDATA[<pre>S1(config)# <b>interface FastEthernet 0/18 </b>
+S1(config-if)# <b>shutdown </b>
+Sep 20 06:57:28.532: %LINK-5-CHANGED: Interface
+FastEthernet0/18, changed state to administratively down
+S1(config-if)# <b>no shutdown </b>
+Sep 20 06:57:48.186: %LINK-3-UPDOWN: Interface
+FastEthernet0/18, changed state to up
+Sep 20 06:57:49.193: %LINEPROTO-5-UPDOWN: Line protocol on
+Interface
+FastEthernet0/18, changed state to up</pre>
+]]></text>
+	
+	
+	
+</data>

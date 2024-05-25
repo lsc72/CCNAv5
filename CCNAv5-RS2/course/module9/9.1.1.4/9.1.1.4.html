@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.1.4 Filtrage des paquets (suite)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement des listes de contrôle d&#x0027;accès IP</h1>
+        <h2>Objectif des listes de contrôle d&#x0027;accès</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Exemple de filtrage des paquets</b>
+</p>
+<p></p>
+<p>Pour comprendre comment un routeur utilise le filtrage des paquets, imaginez qu'un gardien a été placé devant une porte verrouillée. Le gardien a reçu pour instruction de ne laisser passer que les personnes dont les noms figurent sur une liste. Il filtre le passage des personnes conformément à la liste des noms autorisés. Les listes de contrôle d'accès fonctionnent de la même façon et prennent des décisions en fonction de critères définis.</p>
+<p></p>
+<p>Par exemple, une liste de contrôle d'accès peut être configurée pour « autoriser l'accès Web aux utilisateurs du réseau A, mais leur refuser l'accès à tous les autres services. Refuser l'accès HTTP aux utilisateurs du réseau B, mais leur autoriser tous les autres accès. », et ce, de manière logique. Reportez-vous à la figure qui présente le processus décisionnel suivi par le filtre de paquets pour accomplir cette tâche. </p>
+<p></p>
+<p>Dans ce scénario, le filtre de paquet vérifie chaque paquet comme suit :</p>
+<p></p>
+<p>
+<ul>
+<li>S'il s'agit d'un paquet SYN TCP du réseau A et qu'il utilise le port 80, son passage est autorisé. Tout autre accès est refusé à ces utilisateurs.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>S'il s'agit d'un paquet SYN TCP du réseau B et qu'il utilise le port 80, son passage est bloqué. Néanmoins, tout autre accès est autorisé.</li>
+</ul>
+</p>
+<p></p>
+<p></p>
+<p>Ceci n'est qu'un exemple. Plusieurs règles peuvent être configurées pour autoriser ou refuser plus précisément des services aux utilisateurs spécifiques. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

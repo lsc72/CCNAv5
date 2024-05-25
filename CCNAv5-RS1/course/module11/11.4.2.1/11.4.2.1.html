@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.4.2.1 Sauvegarde et restauration à l&#x0027;aide de fichiers texte</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.4.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Gestion des fichiers de configuration IOS</h1>
+        <h2>Fichiers de sauvegarde et de restauration de la configuration</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Sauvegarde des configurations par capture de texte (Tera Term)</b>
+</p>
+<p></p>
+<p>Vous pouvez également utiliser Tera Term pour enregistrer/archiver les fichiers de configuration dans un document texte. </p>
+<p></p>
+<p>Comme le montre la figure, la procédure est la suivante :</p>
+<p></p>
+<p>
+<b>Étape 1</b>. Dans le menu File, cliquez sur <b>Log</b>.</p>
+<p></p>
+<p>
+<b>Étape 2</b>. Choisissez l'emplacement où vous souhaitez enregistrer le fichier. Tera Term commence à capturer le texte. </p>
+<p></p>
+<p>
+<b>Étape 3</b>. Après avoir démarré la capture, exécutez la commande <span class="cmd"><b>show running-config</b></span> ou <span class="cmd"><b>show startup-config</b></span> à l'invite du mode d'exécution privilégié. Le texte affiché dans la fenêtre du terminal est alors placé dans le fichier choisi.</p>
+<p></p>
+<p>
+<b>Étape 4</b>. Une fois la capture terminée, sélectionnez <b>Close</b> dans la fenêtre Tera Term:Log.</p>
+<p></p>
+<p>
+<b>Étape 5</b>. Affichez le fichier pour vérifier qu'aucun problème n'est survenu.</p>
+<p></p>
+<p></p>
+<p>
+<b>Restauration des configurations sauvegardées dans un document texte</b>
+</p>
+<p>Il est possible de copier une configuration à partir d'un fichier vers un périphérique. Lorsque vous avez copié la configuration depuis un fichier texte et que vous l'avez collée dans une fenêtre de terminal, IOS exécute chaque ligne de texte de la configuration comme une commande. Il est donc nécessaire de modifier le fichier pour s'assurer que les mots de passe chiffrés apparaissent en clair et supprimer le texte ne correspondant pas à des commandes, par exemple « --More-- » et les messages IOS. Ce processus est expliqué dans les travaux pratiques. </p>
+<p></p>
+<p>En outre, dans la CLI, le périphérique doit être placé en mode de configuration globale pour recevoir les commandes du fichier texte copié dans la fenêtre de terminal.</p>
+<p></p>
+<p>Avec Tera Term, la procédure est la suivante :</p>
+<p></p>
+<p>
+<b>Étape 1</b>. Dans le menu File, cliquez sur <b>Send</b>.</p>
+<p></p>
+<p>
+<b>Étape 2</b>. Recherchez le fichier à copier sur le périphérique et cliquez sur <b>Open</b>.</p>
+<p></p>
+<p>
+<b>Étape 3</b>. Tera Term colle alors le fichier dans le périphérique.</p>
+<p></p>
+<p>Le texte contenu dans le fichier est appliqué sous forme de commandes dans l'interface en ligne de commande et devient la configuration en cours du périphérique. Cette méthode s'avère pratique pour configurer manuellement un routeur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.0.1.1 Introduction</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Principes de routage</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>Les réseaux permettent de communiquer, de collaborer et d'interagir de diverses manières. Ils sont utilisés pour accéder aux pages Web, échanger par le biais de téléphones IP, participer à des conférences vidéo, s'affronter dans le cadre de jeux interactifs, acheter sur Internet, suivre des cours en ligne et bien plus encore. </p>
+<p></p>
+<p>La fonction des commutateurs Ethernet sur la couche liaison de données et la couche 2 permet de transmettre des trames Ethernet entre les périphériques d'un même réseau. </p>
+<p>Cependant, lorsque les adresses IP source et de destination se trouvent sur des réseaux différents, la trame Ethernet doit être envoyée à un routeur. </p>
+<p></p>
+<p>Le but d'un routeur est de relier un réseau à un autre. Le routeur est responsable de la transmission de paquets à travers différents réseaux. La destination du paquet IP peut être un serveur Web se trouvant dans un autre pays ou un serveur de messagerie situé sur le réseau local. </p>
+<p></p>
+<p>Le routeur utilise sa table de routage pour déterminer le meilleur chemin à utiliser pour transférer un paquet. Les routeurs doivent transmettre ces paquets rapidement. L'efficacité des communications interréseaux dépend, en grande partie, de la capacité des routeurs à transférer des paquets de la manière la plus efficace possible. </p>
+<p></p>
+<p>Lorsqu'un hôte envoie un paquet à un périphérique situé sur un autre réseau IP, le paquet est transmis à la passerelle par défaut, car un périphérique hôte ne peut pas communiquer directement avec les périphériques situés en dehors du réseau local. La passerelle par défaut est la destination qui route le trafic du réseau local vers des périphériques sur des réseaux distants. Elle est souvent utilisée pour connecter un réseau local à Internet. </p>
+<p></p>
+<p>Ce chapitre répond également à la question suivante : « Qu'est-ce qu'un routeur fait d'un paquet envoyé par un réseau et destiné à un autre réseau ? ». Il passe en revue les détails de la table de routage, notamment les routes connectées, statiques et dynamiques.</p>
+<p></p>
+<p>Comme le routeur peut acheminer des paquets entre les réseaux, les périphériques situés sur des réseaux différents peuvent communiquer. Ce chapitre présente le routeur, son rôle au sein des réseaux, ses principaux composants matériels et logiciels, ainsi que le processus de routage. Des exercices permettant de comprendre comment accéder au routeur, configurer les paramètres de base du routeur et vérifier les paramètres sont proposés.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

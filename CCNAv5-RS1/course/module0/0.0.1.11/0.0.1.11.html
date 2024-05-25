@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>0.0.1.11 Présentation du cours</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_0.0.1.11_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Bienvenue dans le cours Présentation des réseaux</h1>
+        <h2>Message destiné aux participants</h2>
+      </div>
+      <div id="content">
+<p>Comme l'indique le titre du cours, l'objectif principal de cette formation est de vous présenter les notions de base sur les réseaux. Dans ce cours, vous acquerrez à la fois les compétences pratiques et conceptuelles sur lesquelles repose la compréhension des réseaux de base. Le cours se déroulera comme suit : </p>
+<p></p>
+<p>
+<ul>
+<li>Vous comparerez la communication humaine à la communication réseau et ferez des parallèles.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Vous découvrirez les deux modèles principaux utilisés pour planifier et mettre en œuvre des réseaux : OSI et TCP/IP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Vous apprendrez ce qu'est l'approche « en couches » appliquée aux réseaux. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Vous observerez en détail les couches des modèles OSI et TCP/IP pour comprendre les fonctions et services associés.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Vous vous familiariserez avec les différents périphériques réseau et schémas d'adressage réseau. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Vous découvrirez les types de support utilisés pour acheminer les données sur les réseaux.</li>
+</ul>
+</p>
+<p></p>
+<p>À la fin de ce cours, vous pourrez créer des LAN simples, effectuer des configurations de base des routeurs et des commutateurs et implémenter des schémas d'adressage IP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.1.4 Configuration d&#x0027;une route statique connectée directement</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration des routes statiques et par défaut</h1>
+        <h2>Configuration des routes statiques IPv4</h2>
+      </div>
+      <div id="content">
+<p>Lors de la configuration d'une route statique, une autre possibilité consiste à utiliser l'interface de sortie pour spécifier l'adresse du tronçon suivant. Dans les versions plus anciennes du système d'exploitation IOS, avant le protocole CEF, cette méthode est utilisée pour éviter le problème de recherche récursive. </p>
+<p></p>
+<p>Dans la Figure 1, trois routes statiques directement connectées sont configurées sur R1 au moyen de l'interface de sortie. La table de routage pour R1 dans la Figure 2 montre que lorsqu'un paquet est destiné au réseau 192.168.2.0/24, R1 recherche une correspondance dans la table de routage et s'aperçoit qu'il peut transmettre le paquet en dehors de son interface Serial 0/0/0. Aucune autre recherche n'est requise.</p>
+<p></p>
+<p>Remarquez comme la table de routage est différente entre la route configurée avec une interface de sortie et la route configurée avec une entrée récursive.</p>
+<p></p>
+<p>La configuration d'une route statique directement connectée à une interface de sortie permet à la table de routage de résoudre l'interface de sortie en une seule recherche, au lieu de deux recherches. Bien que l'entrée de table de routage indique « directement connecté », la distance administrative de la route statique correspond toujours à 1. Seule une interface directement connectée peut avoir une distance administrative de 0.</p>
+<p></p>
+<p>
+<b>Remarque :</b> pour les interfaces de point à point, vous pouvez utiliser des routes statiques qui pointent vers l'interface de sortie ou l'adresse de tronçon suivant. Pour les interfaces multipoint/diffusion, il est conseillé d'utiliser des routes statiques qui pointent vers une adresse de tronçon suivant.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe dans les Figures 3 et 4 pour configurer et vérifier les routes statiques directement connectées sur R2 et R3.</p>
+<p></p>
+<p>Bien que les routes statiques qui utilisent uniquement une interface de sortie sur les réseaux point à point soient courantes, l'utilisation du mécanisme de transfert par défaut CEF rend cette pratique inutile. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

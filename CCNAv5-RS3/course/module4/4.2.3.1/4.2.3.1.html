@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.3.1 Saturation des canaux de fréquence</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement LAN sans fil</h1>
+        <h2>Gestion des canaux</h2>
+      </div>
+      <div id="content">
+<p>Comme nous l'avons expliqué précédemment, les périphériques de LAN sans fil sont équipés d'un émetteur et d'un récepteur réglés sur des fréquences d'ondes radio spécifiques, aux fins de communication. Il est courant d'attribuer les fréquences par plages. Ces plages sont ensuite divisées en plages plus petites, appelées canaux.</p>
+<p></p>
+<p>Si la demande pour un canal donné est trop importante, il est fort probable que ce canal se retrouve saturé. La saturation du support sans fil dégrade la qualité de la communication. Au fil des ans, un certain nombre de techniques ont été mises au point pour améliorer les communications sans fil et réduire la saturation. Les techniques présentées ci-dessous réduisent la saturation des canaux en utilisant ceux-ci de manière plus efficace :</p>
+<p>
+<ul>
+<li>
+<b>Technique DSSS (Direct-Sequence Spread Spectrum)</b> : DSSS est une technique de modulation de spectre étalé à séquence directe. La technique de spectre étalé a été conçue pour répartir un signal sur une large bande de fréquence, afin d'accroître la résistance aux interférences. Avec le procédé DSSS, le signal est multiplié par un « bruit volontaire » appelé code d'étalement. Le récepteur, connaissant le code d'étalement et le moment où il a été ajouté, est capable de le supprimer mathématiquement et de reconstruire le signal d'origine. Concrètement, cela crée une redondance au niveau du signal transmis dans le but de contrebalancer la perte de qualité due au support sans fil. La technique DSSS est utilisée par la norme 802.11b. Elle est également utilisée par les téléphones sans fil fonctionnant dans les bandes 900 MHz, 2,4 GHz et 5,8 GHz, et sur les réseaux cellulaires CDMA et GPS. (Figure 1)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Technique FHSS (Frequency-Hopping Spread Spectrum)</b> : la technique FHSS repose également sur les méthodes de spectre étalé. Elle est similaire à la méthode DSSS, mais transmet les signaux radio en commutant rapidement un signal porteur entre plusieurs canaux de fréquence. Avec la méthode FHSS, l'émetteur et le récepteur doivent être synchronisés pour « savoir » sur quel canal passer. Ce processus de « saut » de canal permet une utilisation plus efficace des canaux, et diminue l'encombrement. Les talkies-walkies et les téléphones sans fil 900 MHz utilisent également la technique FHSS, et la technologie Bluetooth une variante FHSS. La technique FHSS est également utilisée par la norme 802.11 originale. (Figure 2)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Technique OFDM (Orthogonal Frequency-Division Multiplexing)</b> : la technique OFDM est un sous-ensemble du procédé de multiplexage par répartition de la fréquence, dans lequel un canal unique utilise plusieurs sous-canaux sur des fréquences adjacentes. Les sous-canaux d'un système OFDM sont précisément orthogonaux les uns par rapport aux autres, ce qui leur permet de se chevaucher sans interférence. De ce fait, les systèmes OFDM sont capables d'optimiser l'efficacité spectrale sans causer d'interférence au niveau des canaux adjacents. En effet, il est alors plus facile pour la station réceptrice d'« entendre » le signal. Du fait que le procédé OFDM utilise les sous-canaux, l'utilisation des canaux est particulièrement efficace. La technique OFDM est utilisée par un certain nombre de systèmes de communication, y compris ceux de type 802.11a/g/n/ac. (Figure 3)</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

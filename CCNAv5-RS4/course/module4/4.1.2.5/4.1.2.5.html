@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.5 Topologies Frame Relay (suite)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation du protocole Frame Relay</h1>
+        <h2>Fonctionnement de la technologie Frame Relay</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Topologie à maillage global</b>
+</p>
+<p></p>
+<p>La Figure 1 représente une topologie à maillage global avec des lignes dédiées. Une topologie à maillage global convient dans le cas où l'accès aux services doit être très fiable et que ces services sont dispersés géographiquement. Une topologie à maillage global connecte un site à chacun des autres sites. L'utilisation de lignes louées pour les interconnexions, les interfaces série et les lignes supplémentaires viennent augmenter les coûts. Dans cet exemple, 10 lignes dédiées sont nécessaires pour connecter chaque site dans une topologie à maillage global.</p>
+<p></p>
+<p>Avec le maillage Frame Relay, le concepteur du réseau peut concevoir des connexions multiples en configurant simplement des circuits virtuels supplémentaires sur chaque liaison existante, comme illustré à la Figure 2. Cette mise à niveau logicielle fait évoluer la topologie en étoile en une topologie à maillage global, sans supplément de coût en matériel ou lignes dédiées. Comme les circuits virtuels utilisent le multiplexage statistique, l'emploi de circuits virtuels multiples sur une liaison d'accès permet en général de mieux exploiter Frame Relay que l'emploi de circuits virtuels uniques. La Figure 2 montre comment SPAN a utilisé quatre circuits virtuels sur chaque liaison pour étendre son réseau sans matériel supplémentaire. Les fournisseurs de services facturent la bande passante supplémentaire, mais cette solution est en général plus efficace que l'utilisation de lignes dédiées.</p>
+<p></p>
+<p>
+<b>Topologie à maillage partiel</b>
+</p>
+<p></p>
+<p>Pour les grands réseaux, la topologie à maillage global est rarement abordable, car le nombre de liaisons supplémentaires augmente de façon exponentielle. Il ne s'agit pas d'un problème de coût en matériel, mais bien de nombre de circuits virtuels dont la limite théorique est de 1000 par liaison. Dans la pratique, la limite est inférieure à ce chiffre.</p>
+<p></p>
+<p>Pour cette raison, les réseaux de grande taille sont en général configurés dans une topologie à maillage partiel. Dans le maillage partiel, le nombre d'interconnexions est plus élevé que dans une disposition en étoile, mais moins élevé que dans un maillage global. La disposition physique dépend des flux de données prévus.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

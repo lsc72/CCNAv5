@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.1.3 Exigences en matière de liaison dédiée</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation du protocole Frame Relay</h1>
+        <h2>Avantages du protocole Frame Relay</h2>
+      </div>
+      <div id="content">
+<p>Par l'intermédiaire de lignes louées, chaque site de SPAN est connecté via un commutateur au central téléphonique de l'opérateur via la boucle locale, et ensuite au reste du réseau. Les sites de Chicago et de New York utilisent chacun une ligne T1 dédiée (soit l'équivalent de 24 canaux DS0) pour se connecter au commutateur, alors que les autres sites utilisent des connexions RNIS (56 kbit/s), comme illustré à la figure. Étant donné qu'il est relié à la fois à New York et Chicago, le site de Dallas utilise deux lignes louées locales. Les fournisseurs de réseau mettent à disposition de SPAN une ligne DS0 entre leurs centrales téléphoniques respectives, à l'exception de la connexion plus rapide entre Chicago et New York, qui se compose de quatre DS0. Les canaux DS0 sont facturés selon un tarif différent d'une région à l'autre et sont généralement proposés à un prix fixe. Ces lignes sont totalement dédiées, c'est-à-dire que le fournisseur réseau réserve cette ligne pour SPAN uniquement. Il n'y a pas de partage, et SPAN paie pour le circuit de bout en bout, quelle que soit la bande passante utilisée.</p>
+<p></p>
+<p>La ligne dédiée se prête mal aux communications un à plusieurs sans que le fournisseur réseau ajoute plus de lignes. Dans l'exemple, la quasi-totalité des communications doit passer par le siège social, afin de réduire le coût de lignes supplémentaires.</p>
+<p></p>
+<p>Après un examen approfondi des besoins en bande passante de chaque site, il apparaît clairement que le système manque d'efficacité : </p>
+<p></p>
+<p>
+<ul>
+<li>Sur les 24 canaux DS0 disponibles sur la connexion T1, le site de Chicago n'en utilise que sept. Certains opérateurs proposent des connexions T1 décomposées en éléments de 64 kbit/s, mais cela nécessite un appareil spécialisé côté client, appelé un multiplexeur, pour canaliser les signaux. Dans ce cas, SPAN a opté pour le service T1 complet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>De même, le site de New York n'utilise que cinq des 24 DS0 disponibles.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Comme Dallas doit se connecter à Chicago et à New York, deux lignes reliant ces sites passent par le central téléphonique.</li>
+</ul>
+</p>
+<p></p>
+<p>La conception en ligne louée restreint également la flexibilité. Dans le cas où les circuits nécessaires n'existent pas, le raccordement de nouveaux sites requiert de nouvelles installations, ce qui demande un certain temps avant installation. Du point de vue de la fiabilité du réseau, imaginez ce que représentent les coûts supplémentaires et la complexité de l'ajout de circuits redondants et de circuits de secours.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

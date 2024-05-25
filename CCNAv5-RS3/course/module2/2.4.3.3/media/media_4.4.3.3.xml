@@ -1,0 +1,67 @@
+﻿<textcomponents>
+<component id="ID_txt01">
+<text><![CDATA[Cœur de réseau]]></text>
+</component>
+<component id="ID_txt02">
+<text><![CDATA[Adresse IP virtuelle <br/>172.16.10.1]]></text>
+</component>
+
+<component id="ID_sc_reset">
+		<text><![CDATA[<b>Réinitialiser</b>]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[<b>Démonstration</b>]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[<b>Afficher tout</b>]]></text>
+	</component>
+	
+<component id="ID_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font size='10' face="Arial" color="#0000FF">***Vous devez entrer la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font></b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>R2 a été configuré pour le groupe HSRP&nbsp;10, priorité 110, adresse IP 172.16.10.3 et adresse IP virtuelle 172.16.10.1. Exécutez la commande «&nbsp;show running-config interface GigabitEthernet0/1&nbsp;» pour afficher la configuration de secours sur R2.</b></font>]]></existingcommands>
+		<command prompt="R2#">
+			<correctresponse><![CDATA[show running-config interface GigabitEthernet0/1]]></correctresponse>
+				<deviceresponse><![CDATA[<font size='10' face="Courier New">&lt;résultat omis&gt; <br>interface GigabitEthernet0/1 <br> ip address 172,16.10,3 255,255.255,0 <br> standby 10 ip 172.16.10.1 <br> standby 10 priority 110 <br>&lt;résultat omis&gt;</font>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>En utilisant la configuration de R2 en exemple, configurez R1 comme le routeur HSRP actif, de priorité 150 et d'adresse IP virtuelle 172.16.10.1.<br>Configuration actuelle sur R1&nbsp;:</b><br></font><font size='10' face="Courier New">R1(config)#interface GigabitEthernet0/1<br>R1(config)#ip address 172.16.10.2 255.255.255.0<br>R1(config)#no shutdown</font>]]></instruction>
+		</command>	
+		<command prompt="R1(config-if)#">
+			<correctresponse><![CDATA[standby 10 ip 172.16.10.1]]></correctresponse>
+		</command>	
+		<command prompt="R1(config-if)#">
+			<correctresponse><![CDATA[standby 10 priority 150]]></correctresponse>
+				<deviceresponse><![CDATA[<font size='10' face="Courier New">%HSRP-6-STATECHANGE: GigabitEthernet0/0 Grp 10 state Speak -&gt; Standby<br><br>%HSRP-6-STATECHANGE: GigabitEthernet0/0 Grp 10 state Standby -&gt; Active</font>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Revenez au mode d'exécution privilégié et affichez l'état de secours succinct.</font>]]></instruction>
+		</command>	
+		<command prompt="R1(config-if)#">
+			<correctresponse><![CDATA[end]]></correctresponse>
+		</command>	
+		<command prompt="R1#">
+			<correctresponse><![CDATA[show standby brief]]></correctresponse>
+				<deviceresponse><![CDATA[<font size='10' face="Courier New">                     P indicates configured to preempt. |<br>Interface Grp Pri P State Active Standby Virtual IP<br>Gi0/1 10 150 Active local 172.16.10.3 172.16.10.1<br></font>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>La société a décidé d'implémenter GLBP plutôt que HSRP. Toutes les configurations HSRP ont été supprimées.<br>R2 a été configuré pour le groupe GLBP&nbsp;10, priorité 110, adresse IP 172.16.10.3 et adresse IP virtuelle 172.16.10.1. Exécutez la commande «&nbsp;show running-config interface GigabitEthernet0/1&nbsp;» pour afficher la configuration GLBP sur R2.</font>]]></instruction>
+		</command>	
+		<command prompt="R2#">
+			<correctresponse><![CDATA[show running-config interface GigabitEthernet0/1]]></correctresponse>
+				<deviceresponse><![CDATA[<font size='10' face="Courier New">&lt;résultat omis&gt; <br>interface GigabitEthernet0/1 <br> ip address 172,16.10,3 255,255.255,0 <br> glbp 10 ip 172.16.10.1 <br> glbp 10 priority 110 <br>&lt;résultat omis&gt;</font>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>En utilisant la configuration de R2 en exemple, configurez GLBP sur R1 avec une priorité de 150 et une adresse IP virtuelle de 172.16.10.1.<br>Configuration actuelle sur R1&nbsp;:</b><br></font><font size='10' face="Courier New">R1(config)#interface GigabitEthernet0/1<br>R1(config)#ip address 172.16.10.2 255.255.255.0<br>R1(config)#no shutdown</font>]]></instruction>
+		</command>	
+		<command prompt="R1(config-if)#">
+			<correctresponse><![CDATA[glbp 10 ip 172.16.10.1]]></correctresponse>
+		</command>	
+		<command prompt="R1(config-if)#">
+			<correctresponse><![CDATA[glbp 10 priority 150]]></correctresponse>
+				<deviceresponse><![CDATA[<font size='10' face="Courier New">*Jun 16 19:26:45.871: %GLBP-6-FWDSTATECHANGE: GigabitEthernet0/0 Grp 10 Fwd 1 state Listen -&gt; Active</font>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Revenez au mode d'exécution privilégié et affichez l'état GLBP sans paramètres.</font>]]></instruction>
+		</command>	
+		<command prompt="R1(config-if)#">
+			<correctresponse><![CDATA[end]]></correctresponse>
+		</command>	
+		<command prompt="R1#">
+			<correctresponse><![CDATA[show glbp]]></correctresponse>
+				<deviceresponse><![CDATA[<font size='10' face="Courier New" class="font10px">GigabitEthernet0/0 - Group 10 <br>  State is Active <br>    1 state change, last state change 00:03:05 <br>  Virtual IP address is 172.16.10.1 <br>  Hello time 3 sec, hold time 10 sec <br>    Next hello sent in 1.792 secs <br>  Redirect time 600 sec, forwarder timeout 14400 sec <br>  Preemption disabled <br>  Active is local <br>  Standby is 172.16.10.3, priority 100 (expires in 9.024 sec) <br>  Priority 150 (configured) <br>  Weighting 100 (default 100), thresholds: lower 1, upper 100 <br>  Load balancing: round-robin <br>  Group members: <br>    0006.f671.db58 (172.16.10.2) local <br>    0006.f671.eb38 (172.16.10.3) <br>  There are 2 forwarders (1 active) <br>  Forwarder 1 <br>    State is Active <br>      1 state change, last state change 00:02:53 <br>    MAC address is 0007.b400.0a01 (default) <br>    Owner ID is 0006.f671.db58 <br>    Redirection enabled <br>    Preemption enabled, min delay 30 sec <br>    Active is local, weighting 100 <br>  Forwarder 2 <br>    State is Listen <br>    MAC address is 0007.b400.0a02 (learnt) <br>    Owner ID is 0006.f671.eb38 <br>    Redirection enabled, 599.040 sec remaining (maximum 600 sec) <br>    Time to live: 14399.040 sec (maximum 14400 sec) <br>    Preemption enabled, min delay 30 sec <br>    Active is 172.16.10.3 (primary), weighting 100 (expires in 9.312 sec)</font>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Vous avez correctement configuré HSRP et GLBP.</font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+</textcomponents>

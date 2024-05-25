@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.2.4 Contrôle de flux TCP – Taille de fenêtre et accusés de réception</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>TCP et UDP</h1>
+        <h2>Fiabilité et contrôle de flux</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Contrôle de flux</b>
+</p>
+<p></p>
+<p>Le protocole TCP inclut également des mécanismes de contrôle de flux. Le contrôle de flux aide à maintenir la fiabilité des transmissions TCP en réglant le flux de données entre la source et la destination pour une session donnée. Le contrôle de flux consiste à limiter la quantité de données de segments transférées en une seule fois et à demander des accusés de réception avant de transmettre davantage de données. </p>
+<p></p>
+<p>Pour effectuer le contrôle de flux, la première chose que le protocole TCP doit déterminer est la quantité de données de segments que le périphérique de destination peut accepter. L'en-tête TCP comprend un champ de 16 bits appelé la taille de fenêtre. Il s'agit du nombre d'octets que le périphérique de destination d'une session TCP peut accepter et traiter en une seule fois. La taille de fenêtre initiale est convenue lors du démarrage de la session, via la connexion en trois étapes entre la source et la destination. Une fois cette taille approuvée, le périphérique source doit limiter la quantité de données de segments envoyées au périphérique de destination en fonction de la taille de fenêtre. Une fois que le périphérique source a reçu un accusé de réception l'informant que les segments de données ont été reçus, il peut continuer à envoyer des données pour la session. </p>
+<p></p>
+<p>Pendant le délai d'attente de l'accusé de réception, l'expéditeur n'envoie pas de segment supplémentaire. Quand le réseau est encombré ou que les ressources de l'hôte récepteur subissent une forte pression, le délai peut augmenter. Plus ce délai s'allonge, plus le taux de transmission effectif des données de cette session diminue. Le ralentissement de la transmission de données de chaque session permet de réduire les conflits d'utilisation des ressources sur le réseau et sur le périphérique de destination lorsque plusieurs sessions sont en cours.</p>
+<p></p>
+<p>La figure ci-contre présente une représentation simplifiée de la taille de fenêtre et des accusés de réception. Dans cet exemple, la taille de fenêtre initiale d'une session TCP représentée est définie à 3000 octets. Lorsque l'expéditeur a transmis 3 000 octets, il attend l'accusé de réception de ces octets avant de transmettre d'autres segments de cette session. Une fois que l'expéditeur a reçu l'accusé de réception provenant du destinataire, il peut transmettre 3 000 octets supplémentaires. </p>
+<p></p>
+<p>Le protocole TCP utilise les tailles de fenêtre pour maintenir le plus haut débit de transmission possible sur le réseau et le périphérique de destination, tout en réduisant la perte et les retransmissions de données.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

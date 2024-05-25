@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.1.2 Simulation Packet Tracer - Communications TCP et UDP</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Cet exercice de simulation vise à fournir une base pour comprendre les protocoles TCP et UDP en détail. Le mode Simulation permet de voir les fonctionnalités des différents protocoles. </p>
+<p>Lors de la transmission des données sur le réseau, ces dernières sont divisées en parties plus petites et sont étiquetées afin qu'elles puissent être réassemblées. Chacune de ces parties reçoit un nom spécifique (unité de données de protocole, PDU) et est associée à une couche donnée. Le mode Simulation de Packet Tracer permet à l'utilisateur de consulter tous les protocoles et les PDU associées. Les étapes présentées ci-dessous guident l'utilisateur tout au long du processus de demande de services à l'aide de diverses applications disponibles sur un PC client. </p>
+<p>Cet exercice permet de découvrir les fonctionnalités des protocoles TCP et UDP, le multiplexage et l'utilité des numéros de port lors de l'identification de l'application locale ayant demandé/qui envoie les données.</p>
+<p></p>
+<p>
+<a href="../../files/7.3.1.2%20Packet%20Tracer%20Simulation%20-%20Exploration%20of%20TCP%20and%20UDP%20Instructions.pdf" target="_blank">Simulation Packet Tracer - Communications TCP et UDP : instructions</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/7.3.1.2%20Packet%20Tracer%20Simulation%20-%20Exploration%20of%20TCP%20and%20UDP.pka" target="_blank">Simulation Packet Tracer - Communications TCP et UDP : PKA</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

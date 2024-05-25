@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.0.1.2 Exercice en classe – Ce n&#x0027;est qu&#x0027;un système d&#x0027;exploitation</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration d&#x0027;un système d&#x0027;exploitation de réseau</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Ce n'est qu'un système d'exploitation !</b>
+</p>
+<p></p>
+<p>Dans cet exercice, imaginez que vous êtes employé en tant qu'ingénieur par un fabricant de voitures. L'entreprise travaille actuellement sur un nouveau modèle de voiture. Ce modèle sera équipé de fonctionnalités pouvant être gérées par commandes vocales. </p>
+<p></p>
+<p>Concevez un ensemble de commandes utilisées par ce système de commandes vocales et imaginez la façon dont ces commandes vont être exécutées. Les fonctions de la voiture qui peuvent être contrôlées par des commandes vocales sont les suivantes :</p>
+<p>
+<ul>
+<li>Voyants</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Essuie-glace</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Radio</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Téléphone </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Climatisation</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Démarrage</li>
+</ul>
+</p>
+<p></p>
+<p>
+<a href="../../files/2.0.1.2%20Class%20Activity%20-%20It%20is%20Just%20an%20Operating%20System%20Instructions.pdf" target="_blank">Exercice en classe – Ce n'est qu'un système d'exploitation : instructions</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

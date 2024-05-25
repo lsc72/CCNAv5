@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.2.1 Cisco IOS</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routeurs</h1>
+        <h2>Démarrage du routeur</h2>
+      </div>
+      <div id="content">
+<p>Les détails du fonctionnement de Cisco IOS varient d'un périphérique à l'autre selon le but et l'ensemble de fonctionnalités du périphérique. Toutefois, Cisco IOS offre les avantages suivants aux routeurs :</p>
+<p>
+<ul>
+<li>Adressage</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Interfaces</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Routage</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Sécurité</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>QS</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Gestion des ressources</li>
+</ul>
+</p>
+<p></p>
+<p>Le fichier IOS proprement dit pèse plusieurs mégaoctets et, comme sur les commutateurs Cisco IOS, il est stocké dans la mémoire Flash. Grâce à la mémoire Flash, il est possible de mettre l'IOS à niveau en installant de nouvelles versions ou en ajoutant de nouvelles fonctionnalités. Lors du démarrage, l'IOS est copié de la mémoire Flash vers la mémoire vive. La mémoire DRAM est beaucoup plus rapide que la mémoire Flash. Par conséquent, copier l'IOS dans la mémoire vive améliore les performances du périphérique.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

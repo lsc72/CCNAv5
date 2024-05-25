@@ -1,0 +1,149 @@
+@import url(reset.css);
+
+html, body {
+  width: 100%;
+  height: 100%;
+/*
+  min-width: 960px;
+  min-height: 540px;
+*/
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  position: relative;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 20px;
+  line-height: 24px;
+}
+
+#header {
+  border-bottom: 1px solid black;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 63px;
+  overflow: hidden;
+}
+
+#nav {
+  border-right: 1px solid black;
+  position: absolute;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  width: 192px;
+  overflow: auto;
+}
+
+#content {
+  position: absolute;
+  top: 64px;
+  right: 0;
+  bottom: 0;
+  left: 192px;
+  overflow: hidden;
+}
+
+#container {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  bottom: 48px;
+  left: 8px;
+}
+
+#frame {
+  width: 100%;
+  height: 100%;
+}
+
+#prev-btn, #next-btn {
+  position: absolute;
+  bottom: 8px;
+  height: 32px;
+  width: 96px;
+}
+
+#prev-btn {
+  left: 8px;
+}
+
+#next-btn {
+  right: 8px;
+}
+
+#nav ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#nav a {
+  color: black;
+  text-decoration: none;
+}
+
+li {
+  cursor: pointer;
+}
+
+li.collapse > ul {
+  display: none;
+}
+
+.section-title, .topic-title, .page-title {
+  border-bottom: 1px solid black;
+  display: block;
+  padding: 4px;
+}
+
+.section-title {
+  background-color: #EFEFEF;
+  background-image: url(images/arrow-s.png);
+  background-repeat: no-repeat;
+  background-position: 0px 2px;
+  padding-left: 16px;
+}
+
+.topic-title {
+  background-color: #DFDFDF;
+  background-image: url(images/arrow-s.png);
+  background-repeat: no-repeat;
+  background-position: 8px 2px;
+  padding-left: 24px;
+}
+
+.page-title {
+  background-color: #CFCFCF;
+  padding-left: 32px;
+}
+
+li.collapse > .section-title {
+  background-image: url(images/arrow-e.png);
+  background-repeat: no-repeat;
+  background-position: 0px 2px;
+}
+
+li.collapse > .topic-title {
+  background-image: url(images/arrow-e.png);
+  background-repeat: no-repeat;
+  background-position: 8px 2px;
+}
+
+.page-title.current {
+  background-image: url(images/arrow-e.png);
+  background-repeat: no-repeat;
+  background-position: 16px 2px;
+}
+
+.error {
+  position: absolute;
+  border: 1px solid #EF0000;
+  color: #EF0000;
+  padding: 8px;
+}
+

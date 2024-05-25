@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.3.7 Table topologique : aucun successeur potentiel</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.3.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1> Fonctionnement du protocole EIGRP</h1>
+        <h2>Algorithme DUAL et table topologique</h2>
+      </div>
+      <div id="content">
+<p>Pour voir comment DUAL utilise les successeurs et successeurs potentiels, examinez la table de routage de R1, à condition que le réseau soit convergent, comme indiqué à la Figure 1. </p>
+<p></p>
+<p>La Figure 2 affiche un résultat partiel à partir de la commande<span class="cmd"><b> show ip route </b></span>sur R1. La route vers 192.168.1.0/24 montre que le successeur est R3 via 192.168.10.6 avec une distance de faisabilité de 2 170 112.</p>
+<p></p>
+<p>La table de routage IP inclut uniquement le meilleur chemin, le successeur. Pour voir s'il existe des successeurs potentiels, nous devons examiner la table topologique EIGRP. La table topologique présentée à la Figure 3 montre uniquement le successeur 192.168.10.6, qui est R3. Il n'existe aucun successeur potentiel. En examinant la topologie physique réelle ou le schéma du réseau, on peut immédiatement constater qu’un chemin de secours existe vers 192.168.1.0/24 via R2. R2 n'est pas un successeur potentiel, car il ne remplit pas la condition de faisabilité. Même si, en regardant la topologie, il est évident que R2 est une route de sauvegarde, le protocole EIGRP ne dispose pas de carte de la topologie du réseau. EIGRP est un protocole de routage à vecteur de distance qui ne connaît les informations de réseau distant que par ses voisins.</p>
+<p></p>
+<p>DUAL ne stocke pas la route via R2 dans la table topologique. Tous les liens peuvent être affichés à l'aide de la commande<span class="cmd"><b> show ip eigrp topology all-links</b></span>. Cette commande affiche les liens, qu'ils remplissent ou non la condition de faisabilité.</p>
+<p></p>
+<p>Comme indiqué à la Figure 4, la commande<span class="cmd"><b> show ip eigrp topology all-links </b></span>affiche tous les chemins possibles vers un réseau, y compris les successeurs, les successeurs potentiels et même les routes qui ne correspondent pas à des successeurs potentiels. La distance de faisabilité de R1 vers 192.168.1.0/24 est 2 170 112 via le successeur R3. Pour que R2 soit considéré comme un successeur potentiel, il doit remplir la condition de faisabilité. La distance annoncée de R2 vers R1 pour atteindre 192.168.1.0/24 doit être inférieure à la distance de faisabilité actuelle de R1. D'après la figure, la distance annoncée de R2 est 3 012 096, ce qui est supérieur à la distance de faisabilité actuelle de R1, 2 170 112. </p>
+<p></p>
+<p>Même si R2 semble être un chemin de secours viable vers 192.168.1.0/24, R1 ne voit pas que le chemin n'est pas un bouclage potentiel. EIGRP est un protocole à vecteur de distance, qui ne dispose pas d’une carte topologique sans boucle du réseau. La méthode de l'algorithme DUAL pour garantir qu'un voisin dispose d'un chemin sans boucle consiste à vérifier que la métrique du voisin remplit la condition de faisabilité. En s'assurant que la distance annoncée du voisin est inférieure à sa propre distance de faisabilité, le routeur peut supposer que son routeur voisin n'appartient pas à sa propre route annoncée, ce qui permet d'éviter toute boucle potentielle.</p>
+<p></p>
+<p>R2 peut servir de successeur en cas d'échec de R3 ; toutefois, le délai d'ajout à la table de routage est plus long. Pour que R2 soit utilisé comme successeur, DUAL doit effectuer un traitement supplémentaire.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

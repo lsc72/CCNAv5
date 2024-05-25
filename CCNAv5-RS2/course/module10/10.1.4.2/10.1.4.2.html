@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.1.4.2 Vérification de la configuration de DHCPv4 du routeur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.1.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 4</h1>
+        <h2>Dépannage de DHCPv4</h2>
+      </div>
+      <div id="content">
+<p>Lorsque le serveur DHCPv4 se trouve sur un réseau local différent de celui du client, l'interface du routeur reliée au client doit être configurée pour relayer les requêtes DHCPv4 à l'aide de l'adresse de diffusion IPv4. Si l'adresse de diffusion IPv4 n'est pas correctement configurée, les requêtes du client DHCPv4 ne sont pas transférées au serveur DHCPv4.</p>
+<p></p>
+<p>Suivez les étapes suivantes pour vérifier la configuration du routeur :</p>
+<p></p>
+<p>
+<b>Étape 1. </b>Vérifiez que la commande <span class="cmd"><b>ip helper-address</b></span> est configurée sur l'interface appropriée. Elle doit être présente sur l'interface entrante du réseau local comprenant les stations de travail DHCPv4 clientes et doit être dirigée vers le bon serveur DHCPv4. Sur la figure, le résultat de la commande <span class="cmd"><b>show running-config</b></span> permet de vérifier que l'adresse IPv4 du relais DHCPv4 fait référence à l'adresse du serveur DHCPv4, 192.168.11.6.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>show ip interface</b></span> peut également servir à vérifier le relais DHCPv4 sur une interface.</p>
+<p></p>
+<p>
+<b>Étape 2. </b>Vérifiez que la commande de configuration globale <span class="cmd"><b>no service dhcp</b></span> n'a pas été configurée. Cette commande désactive toutes les fonctionnalités de relais et de serveur DHCP sur le routeur. La commande <span class="cmd"><b>service dhcp</b></span> n'apparaît pas dans la configuration en cours, car il s'agit de la configuration par défaut.</p>
+<p></p>
+<p>Sur la figure, la commande <span class="cmd"><b>show running-config | include no service dhcp</b></span> permet de vérifier que le service DHCPv4 est activé puisqu'il n'existe aucune correspondance avec la commande <span class="cmd"><b>show running-config | include no service dhcp</b></span>. Si le service a été désactivé, la commande <span class="cmd"><b>no service dhcp</b></span> apparaît dans le résultat.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

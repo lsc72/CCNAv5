@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.1.2 Communication entre les sous-réseaux</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmenter un réseau IPv4 en sous-réseaux</h1>
+        <h2>Segmentation du réseau</h2>
+      </div>
+      <div id="content">
+<p>Le routeur est indispensable à la communication des périphériques de différents réseaux. Les périphériques réseau utilisent l'interface du routeur reliée à leur réseau local comme passerelle par défaut. Le trafic destiné à un périphérique sur un réseau distant est traité par le routeur et transmis à sa destination. Pour déterminer si le trafic est local ou distant, le routeur utilise le masque de sous-réseau. </p>
+<p></p>
+<p>Dans un espace réseau comportant des sous-réseaux, le fonctionnement est exactement le même. Comme l'illustre la figure, la segmentation en sous-réseaux crée plusieurs réseaux logiques à partir d'un seul bloc d'adresses ou d'une adresse réseau. Chaque sous-réseau est traité comme un espace réseau distinct. Les périphériques d'un même sous-réseau doivent utiliser une adresse, un masque de sous-réseau et une passerelle par défaut qui correspondent au sous-réseau auquel ils appartiennent. </p>
+<p></p>
+<p>Le trafic ne peut pas être transféré entre les sous-réseaux sans l'intervention d'un routeur. Chaque interface du routeur doit disposer d'une adresse d'hôte IPv4 qui appartient au réseau ou au sous-réseau auquel elle est connectée. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

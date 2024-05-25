@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.3.1.3 Paramètres bidirectionnels</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.3.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Commutateurs LAN</h1>
+        <h2>Commutation</h2>
+      </div>
+      <div id="content">
+<p>Bien qu'ils soient transparents pour les protocoles réseau et les applications utilisateur, les commutateurs peuvent fonctionner dans différents modes qui peuvent avoir des effets positifs et négatifs lors du transfert des trames Ethernet sur un réseau. L'un des paramètres de base d'un commutateur est le paramètre bidirectionnel de chaque port connecté à chaque périphérique hôte. Les ports des commutateurs doivent être configurés de sorte à correspondre aux paramètres bidirectionnels du type de support. Deux types de paramètres bidirectionnels sont employés pour les communications sur les réseaux Ethernet : le mode bidirectionnel non simultané et le mode bidirectionnel simultané.</p>
+<p></p>
+<p>
+<b>Mode bidirectionnel non simultané</b>
+</p>
+<p>La communication bidirectionnelle non simultanée repose sur un flux de données unidirectionnel où l'envoi et la réception des données n'ont pas lieu simultanément. Ceci s'apparente à la manière dont les talkies-walkies ou les radios bidirectionnelles fonctionnent puisqu'une seule personne est autorisée à parler à la fois. Si une personne prend la parole au même moment qu'une autre, il y a collision. C'est pourquoi la communication bidirectionnelle non simultanée met en oeuvre la technologie CSMA/CD afin de mieux réduire les risques de collision et les détecter dès qu'ils surviennent. Le temps d'attente qu'exigent en permanence les communications bidirectionnelles non simultanées pose des problèmes de performance puisque les données ne peuvent circuler que dans un sens à la fois. Les connexions bidirectionnelles non simultanées se rencontrent généralement dans des équipements anciens, tels que des concentrateurs. Les noeuds reliés aux concentrateurs qui partagent leur connexion avec le port d'un commutateur doivent fonctionner en mode bidirectionnel non simultané, car les ordinateurs finaux doivent être capables de détecter des collisions. Les noeuds doivent opérer en mode bidirectionnel non simultané si la carte réseau ne peut être configurée pour des opérations bidirectionnelles simultanées. Dans ce cas, le port du commutateur fonctionne également par défaut en mode bidirectionnel non simultané. Du fait de ces restrictions, la communication bidirectionnelle simultanée a remplacé la communication bidirectionnelle non simultanée dans la plupart des équipements.</p>
+<p></p>
+<p>
+<b>Mode bidirectionnel simultané</b>
+</p>
+<p>Dans le cadre de la communication bidirectionnelle simultanée, le flux de données est bidirectionnel, de sorte que les données peuvent être envoyées et reçues de manière simultanée. La prise en charge bidirectionnelle améliore les performances en réduisant le temps d'attente entre les transmissions. La majorité des cartes réseau Ethernet, Fast Ethernet et Gigabit Ethernet vendues à l'heure actuelle offrent des fonctions bidirectionnelles simultanées. En mode bidirectionnel simultané, le circuit de détection de collision est désactivé. Les trames transmises par les deux noeuds finaux connectés ne peuvent entrer en collision puisque ces derniers utilisent deux circuits distincts sur le câble réseau. Chaque connexion bidirectionnelle simultanée utilise un seul port. Les connexions bidirectionnelles simultanées nécessitent un commutateur qui prend en charge une connexion bidirectionnelle simultanée ou directe entre les deux noeuds qui eux-mêmes prennent individuellement en charge le mode bidirectionnel simultané. Les noeuds reliés directement à un port de commutateur dédié par l'entremise de cartes réseau prenant en charge le mode bidirectionnel simultané doivent être connectés à des ports de commutateur configurés pour fonctionner en mode bidirectionnel simultané.</p>
+<p></p>
+<p>La figure illustre les deux paramètres bidirectionnels disponibles dans les équipements réseau modernes.</p>
+<p></p>
+<p>Un commutateur Cisco Catalyst prend en charge trois paramètres bidirectionnels :</p>
+<p></p>
+<p>
+<ul>
+<li>L'option full configure le mode bidirectionnel simultané.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>L'option half configure le mode bidirectionnel non simultané. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>L'option auto configure la négociation automatique du mode bidirectionnel simultané. Avec l'auto-négociation activée, les deux ports communiquent entre eux pour convenir du meilleur mode opératoire.</li>
+</ul>
+</p>
+<p></p>
+<p>Pour les ports Fast Ethernet et 10/100/1000, la valeur par défaut est auto. Pour les ports 100BASE-FX, l'option par défaut est full. Les ports 10/100/1000 fonctionnent soit en mode bidirectionnel non simultané, soit en mode bidirectionnel simultané lorsqu'ils sont définis à 10 ou 100 Mbit/s. Par contre, à 1000 Mbit/s, ils fonctionnent en mode bidirectionnel simultané.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

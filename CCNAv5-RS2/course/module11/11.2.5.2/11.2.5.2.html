@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.2.5.2 Adresses IPv6 locales uniques</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.2.5.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de la traduction d&#x0027;adresses réseau (NAT)</h1>
+        <h2>Configuration de NAT et IPv6</h2>
+      </div>
+      <div id="content">
+<p>Les adresses IPv6 locales uniques (ULA) ont certains points communs avec les adresses RFC 1918 privées pour l'IPv4, mais ces deux types d'adresse diffèrent également sur certains points. L'objectif des ULA est de fournir un espace d'adressage IPv6 pour les communications au sein d'un site local. Elles ne sont pas destinées à fournir d'espace supplémentaire d'adressage IPv6, ni un niveau supplémentaire de sécurité.</p>
+<p></p>
+<p>Comme l'illustre la figure, les ULA possèdent le préfixe FC00::/7. Le premier hextet appartient donc à la plage de FC00 à FDFF. Le prochain bit est défini sur 1 si le préfixe est attribué localement. S'il est défini sur 0, il peut être défini ultérieurement. Les 40 bits suivants correspondent à un ID global suivi d'un ID de sous-réseau de 16 bits. Les 64 premiers bits forment ensemble le préfixe ULA. Il reste donc 64 bits pour l'ID d'interface, ou en termes IPv4, la partie hôte de l'adresse.</p>
+<p></p>
+<p>Les adresses locales uniques sont définies dans le document RFC 4193. Les ULA sont également appelées adresses IPv6 locales (à ne pas confondre avec les adresses IPv6 link-local) et présentent plusieurs caractéristiques, notamment : </p>
+<p>
+<ul>
+<li>Elles permettent aux sites d'être combinés ou interconnectés de manière privée sans créer de conflits d'adresses ni exiger la renumérotation des interfaces utilisant ces préfixes.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Elles sont indépendantes de tout FAI et peuvent être utilisées pour les communications au sein d'un site sans nécessiter de connexion à Internet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Elles ne sont pas routables sur Internet, mais si elles sont accidentellement transmises via le routage ou DNS, il n'existe aucun conflit avec d'autres adresses.</li>
+</ul>
+</p>
+<p></p>
+<p>Les ULA ne sont pas aussi simples que les adresses du RFC 1918. Contrairement aux adresses IPv4 privées, l'IETF n'a pas eu l'intention d'utiliser une forme de NAT pour effectuer des traductions des adresses locales uniques et des adresses de monodiffusion globales IPv6 et vice versa. </p>
+<p></p>
+<p>La mise en œuvre et les utilisations potentielles des adresses IPv6 locales uniques sont toujours étudiées par la communauté Internet. Par exemple, l'IETF envisage d'autoriser la création locale du préfixe des ULA à l'aide de FC00::/8 ou encore de le faire attribuer automatiquement par un tiers qui le ferait commencer par FD00::/8. </p>
+<p></p>
+<p>
+<b>Remarque</b> : la spécification IPv6 initiale attribuait de l'espace d'adressage aux adresses site-local définies dans le document RFC 3513. Depuis, les adresses site-local ont été désapprouvées par l'IETF dans le RFC 3879 en raison de l'ambiguïté du terme « site ». Les adresses site-local possédaient la plage de préfixe FEC0::/10 et existent toujours dans certaines documentations IPv6 obsolètes.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

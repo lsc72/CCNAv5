@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.3.2 Configuration de la PAT : adresse unique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de la traduction d&#x0027;adresses réseau (NAT)</h1>
+        <h2>Configuration de la traduction d&#x0027;adresses de port (PAT)</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Configuration de la PAT pour une adresse IPv4 publique unique</b>
+</p>
+<p></p>
+<p>La Figure 1 représente la topologie d'une mise en œuvre de PAT pour une traduction d'adresse IPv4 publique unique. Dans cet exemple, les adresses de tous les hôtes du réseau 192.168.0.0/16 (correspondant à l'ACL 1) qui envoient du trafic via le routeur R2 sur Internet sont traduites en l'adresse IPv4 209.165.200.225 (adresse IPv4 de l'interface S0/1/0). Les flux de trafic sont identifiés par les numéros de port dans la table NAT, car le mot-clé <span class="cmd"><b>overload</b></span> a été utilisé.</p>
+<p></p>
+<p>La Figure 2 décrit les étapes à suivre pour configurer la PAT avec une adresse IPv4 unique. Si une seule adresse IPv4 publique est disponible, la configuration de la surcharge attribue généralement l'adresse publique à l'interface externe qui se connecte au FAI. Toutes les adresses internes sont traduites en une seule adresse IPv4 lorsqu'elles quittent l'interface externe. </p>
+<p></p>
+<p>
+<b>Étape 1. </b>Définissez une liste de contrôle d'accès de sorte qu'elle autorise le trafic à traduire.</p>
+<p></p>
+<p>
+<b>Étape 2. </b>Configurez la traduction de la source à l'aide des mots-clés <span class="cmd"><b>interface</b></span> et <span class="cmd"><b>overload</b></span>. Le mot-clé <span class="cmd"><b>interface</b></span> identifie l'adresse IP d'interface à utiliser lors de la traduction des adresses internes. Le mot-clé <span class="cmd"><b>overload</b></span> indique au routeur d'effectuer le suivi des numéros de port dans chaque entrée NAT.</p>
+<p></p>
+<p>
+<b>Étape 3. </b>Identifiez les interfaces internes par rapport à la NAT, c'est-à-dire toutes les interfaces qui se connectent au réseau interne.</p>
+<p></p>
+<p>
+<b>Étape 4. </b>Identifiez l'interface externe par rapport à la NAT. Il doit s'agir de l'interface identifiée dans l'instruction de traduction de source à l'étape 2.</p>
+<p></p>
+<p>La configuration est similaire à celle de la NAT dynamique, mais au lieu d'un pool d'adresses, c'est le mot-clé <span class="cmd"><b>interface</b></span> qui est utilisé pour identifier l'adresse IPv4 externe. Par conséquent, aucun pool de traduction d'adresses de réseau n'est défini. </p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 3 pour configurer la PAT en utilisant une adresse unique sur R2.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

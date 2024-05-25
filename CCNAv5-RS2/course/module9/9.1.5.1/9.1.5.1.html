@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.5.1 Positionnement des listes de contrôle d&#x0027;accès</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.5.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement des listes de contrôle d&#x0027;accès IP</h1>
+        <h2>Directives concernant le placement des listes de contrôle d&#x0027;accès</h2>
+      </div>
+      <div id="content">
+<p>Le positionnement approprié d'une liste de contrôle d'accès peut optimiser l'efficacité du réseau. Une liste de contrôle d'accès peut être placée de sorte à réduire le trafic superflu. Par exemple, le trafic qui sera refusé sur une destination distante ne doit pas être acheminé à l'aide de ressources réseau situées sur la route menant à cette destination. </p>
+<p></p>
+<p>Chaque liste de contrôle d'accès doit être placée là où elle aura le plus grand impact sur les performances. Comme le montre la figure, les règles de base sont les suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Listes de contrôle d'accès étendues</b> : placez les listes de contrôle d'accès étendues le plus près possible de la source du trafic à filtrer. De cette manière, le trafic indésirable est refusé près du réseau source et ne traverse pas l'infrastructure réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Listes de contrôle d'accès standard</b> : étant donné que les listes de contrôle d'accès standard ne précisent pas les adresses de destination, placez-les le plus près possible de la destination. Le fait de placer une liste de contrôle d'accès standard à la source du trafic empêche efficacement ce trafic d'accéder à tous les autres réseaux via l'interface à laquelle la liste est appliquée. </li>
+</ul>
+</p>
+<p></p>
+<p>La position de la liste de contrôle d'accès et donc le type de liste utilisé peuvent également dépendre des caractéristiques suivantes :</p>
+<p>
+<ul>
+<li>
+<b>Le contrôle de l'administrateur réseau</b> : la position de la liste de contrôle d'accès peut être différente si l'administrateur réseau contrôle à la fois les réseaux source et de destination.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Bande passante des réseaux concernés</b> : le filtrage du trafic indésirable à la source empêche la transmission du trafic avant qu'il consomme de la bande passante sur le chemin vers une destination. Cela est particulièrement important sur les réseaux à faible bande passante.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Facilité de configuration</b> : si un administrateur réseau souhaite refuser le trafic provenant de plusieurs réseaux, il est possible d'utiliser une seule liste de contrôle d'accès standard sur le routeur le plus proche de la destination. L'inconvénient est que le trafic de ces réseaux « gaspille » de la bande passante. Une liste de contrôle d'accès étendue peut être utilisée sur chaque routeur d'où provient le trafic. Cela permet d'économiser de la bande passante en filtrant le trafic à la source, mais nécessite la création de listes de contrôle d'accès étendues sur plusieurs routeurs.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque :</b> pour la certification CCNA, la règle générale est de placer les listes de contrôle d'accès étendues aussi près que possible de la source et les listes de contrôle d'accès standard aussi près que possible de la destination.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

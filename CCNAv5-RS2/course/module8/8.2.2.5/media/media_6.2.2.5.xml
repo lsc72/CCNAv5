@@ -1,0 +1,69 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Configuration d'une interface passive sur R1</b>]]></text>
+</component>
+<component id="ID_s2_title">
+  <text><![CDATA[<b>Vérification d'une route par défaut sur R1.</b>]]></text> 
+  </component>
+<component id="ID_s3_title">
+  <text><![CDATA[<b>Configuration des interfaces passives</b>]]></text> 
+  </component>
+
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+	
+	
+<component id="ID_s3_SC01" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b> *** </b><font  face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font face="Arial"><b><ul><li>Passer en mode de configuration du routeur OSPF en utilisant l'ID de processus 10<li>Configurer l'interface LAN comme passive<li>Repasser en mode d'exécution privilégié<li>Vérifier les paramètres OSPF avec la commande show ip protocols</b></font>]]></existingcommands>
+		<command prompt="R2(config)#">
+		    <correctresponse><![CDATA[router ospf 10]]></correctresponse>
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[passive-interface GigabitEthernet 0/0]]></correctresponse>
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+			<deviceresponse><![CDATA[<font Face="Courier New">R2#<br>*Apr 7 16:17:53,590: %SYS-5-CONFIG_I: Configured from console by console<br></font>]]></deviceresponse> 			
+		</command>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ip protocols]]></correctresponse>
+			<deviceresponse><![CDATA[<pre>*** IP Routing is NSF aware ***<br><br>Routing Protocol is "ospf 10"<br>  Outgoing update filter list for all interfaces is not set<br>  Incoming update filter list for all interfaces is not set<br>  Router ID 2.2.2.2<br>  It is an autonomous system boundary router<br> Redistributing External Routes from,<br>  Number of areas in this router is 1. 1 normal 0 stub 0 nssa<br>  Maximum path: 4<br>  Routing for Networks:<br>    172.16.2.0 0.0.0.255 area 0<br>    172.16.3.0 0.0.0.3 area 0<br>    192.168.10.8 0.0.0.3 area 0<br>  Passive Interface(s):<br>    GigabitEthernet0/0<br>  Routing Information Sources:<br>    Gateway    Distance      Last Update<br>    3.3.3.3         110      00:12:24<br>    1.1.1.1         110      00:12:34<br>  Distance: (default is 110)<br><br></pre>]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial"><b>Vous êtes maintenant connecté à R3&nbsp;:<ul><li>Passer en mode de configuration du routeur OSPF en utilisant l'ID de processus 10<li>Utiliser une commande pour configurer toutes les interfaces comme passives<li>Supprimer les interfaces Serial&nbsp;0/0/0 et Serial&nbsp; 0/0/1 dans la liste passive<li>Repasser en mode d'exécution privilégié<li>Vérifier les paramètres OSPF avec la commande show ip protocols</ul>  </b>]]></instruction>			
+		</command>
+		<command prompt="R3(config)#">
+		    <correctresponse><![CDATA[router ospf 10]]></correctresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[passive-interface default]]></correctresponse>
+			<deviceresponse><![CDATA[<pre>R3(config-router)#<br>*Apr  7 16:22:58.090: %OSPF-5-ADJCHG: Process 10, Nbr 1.1.1.1 <br/>on Serial0/0/0 from FULL to DOWN, Neighbor Down: Interface down <br/>or detached<br>*Apr  7 16:22:58.090: %OSPF-5-ADJCHG: Process 10, Nbr 2.2.2.2 <br/>on Serial0/0/1 from FULL to DOWN, Neighbor Down: Interface down <br/>or detached<br></pre>]]></deviceresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[no passive-interface serial 0/0/0]]></correctresponse>
+			<deviceresponse><![CDATA[<font Face="Courier New">R3(config-router)#<br>*Apr 7 16:23:18,590: %OSPF-5-ADJCHG: Process 10, Nbr 1.1.1.1 on Serial0/0/0 from LOADING to FULL, Loading Done<br></font>]]></deviceresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[no passive-interface serial 0/0/1]]></correctresponse>
+			<deviceresponse><![CDATA[<font Face="Courier New">R3(config-router)#<br>*Apr 7 16:23:24,462: %OSPF-5-ADJCHG: Process 10, Nbr 2.2.2.2 on Serial0/0/1 from LOADING to FULL, Loading Done<br></font>]]></deviceresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip protocols]]></correctresponse>
+			<deviceresponse><![CDATA[<pre>*** IP Routing is NSF aware ***<br><br>Routing Protocol is "ospf 10"<br>  Outgoing update filter list for all interfaces is not set<br>  Incoming update filter list for all interfaces is not set<br>  Router ID 3.3.3.3<br>  Number of areas in this router is 1. 1 normal 0 stub 0 nssa<br>  Maximum path: 4<br>  Routing for Networks:<br>    192.168.1.0 0.0.0.255 area 0<br>    192.168.10.4 0.0.0.3 area 0<br>    192.168.10.8 0.0.0.3 area 0<br>  Passive Interface(s):<br>    Embedded-Service-Engine0/0<br>    GigabitEthernet0/0<br>    GigabitEthernet0/1<br>    GigabitEthernet0/3<br>    RG-AR-IF-INPUT1<br>  Routing Information Sources:<br>    Gateway         Distance      Last Update<br>    2.2.2.2              110      00:00:06<br>    1.1.1.1              110      00:00:11<br>  Distance: (default is 110)<br><br>R3#<br></pre>]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez correctement configuré les interfaces passives.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+  
+</textcomponents>

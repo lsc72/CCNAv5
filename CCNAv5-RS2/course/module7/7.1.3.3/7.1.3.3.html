@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.3.3 Découverte du réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de routage dynamique</h1>
+        <h2>Principes fondamentaux des protocoles de routage</h2>
+      </div>
+      <div id="content">
+<p>Après un démarrage et une détection initiaux, la table de routage est mise à jour avec tous les réseaux directement connectés et les interfaces sur lesquelles ces réseaux résident.</p>
+<p></p>
+<p>Si un protocole de routage est configuré, l'étape suivante pour le routeur est de commencer à échanger des mises à jour de routage pour découvrir toutes les routes distantes.</p>
+<p></p>
+<p>Le routeur envoie un paquet de mise à jour à toutes les interfaces activées sur le routeur. La mise à jour contient les informations de la table de routage, qui correspondent actuellement à tous les réseaux directement connectés.</p>
+<p></p>
+<p>Parallèlement, le routeur reçoit et traite également les mises à jour similaires provenant d'autres routeurs connectés. Dès qu'il reçoit une mise à jour, le routeur y recherche de nouvelles informations. Tous les réseaux qui ne sont actuellement pas répertoriés dans la table de routage sont ajoutés. </p>
+<p></p>
+<p>Reportez-vous à la figure ci-contre pour obtenir une configuration de topologie entre trois routeurs, R1, R2 et R3. En fonction de cette topologie, vous trouverez ci-dessous une liste des différentes mises à jour que R1, R2 et R3 envoient et reçoivent durant la convergence initiale.</p>
+<p></p>
+<p>R1 : </p>
+<p>
+<ul>
+<li>Envoie une mise à jour sur le réseau 10.1.0.0 via l'interface Serial 0/0/0.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Envoie une mise à jour sur le réseau 10.2.0.0 via l'interface FastEthernet0/0.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Reçoit une mise à jour de R2 sur le réseau 10.3.0.0 et augmente le nombre de sauts de 1.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Stocke le réseau 10.3.0.0 dans la table de routage avec une métrique de 1.</li>
+</ul>
+</p>
+<p></p>
+<p>R2 : </p>
+<p>
+<ul>
+<li>Envoie une mise à jour sur le réseau 10.3.0.0 via l'interface Serial 0/0/0.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Envoie une mise à jour sur le réseau 10.2.0.0 via l'interface Serial 0/0/1.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Reçoit une mise à jour de R1 sur le réseau 10.1.0.0 et augmente le nombre de sauts de 1.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Stocke le réseau 10.1.0.0 dans la table de routage avec une métrique de 1.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Reçoit une mise à jour de R3 sur le réseau 10.4.0.0 et augmente le nombre de sauts de 1.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Stocke le réseau 10.4.0.0 dans la table de routage avec une métrique de 1.</li>
+</ul>
+</p>
+<p></p>
+<p>R3 : </p>
+<p>
+<ul>
+<li>Envoie une mise à jour sur le réseau 10.4.0.0 via l'interface Serial 0/0/1.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Envoie une mise à jour sur le réseau 10.3.0.0 via l'interface FastEthernet0/0.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Reçoit une mise à jour de R2 sur le réseau 10.2.0.0 et augmente le nombre de sauts de 1.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Stocke le réseau 10.2.0.0 dans la table de routage avec une métrique de 1.</li>
+</ul>
+</p>
+<p></p>
+<p>Cliquez sur Lecture dans la figure pour voir une animation de R1, R2 et R3 démarrant l'échange initial. </p>
+<p></p>
+<p>Après cette première série d'échange de mises à jour, chaque routeur connaît les réseaux connectés de ses voisins connectés directement. Toutefois, avez-vous noté que R1 ne connaît pas encore l'existence du réseau 10.4.0.0 et que R3 ne connaît pas encore l'existence du réseau 10.1.0.0 ? La connaissance du réseau n'est pas complète et sa convergence ne peut pas avoir lieu tant qu'un autre échange d'informations de routage n'a pas été effectué. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

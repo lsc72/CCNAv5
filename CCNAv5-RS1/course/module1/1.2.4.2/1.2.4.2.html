@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.4.2 Connexion des utilisateurs distants à Internet</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>LAN, WAN et Internet</h1>
+        <h2>Connexion à Internet</h2>
+      </div>
+      <div id="content">
+<p>La figure ci-contre illustre les options de connexion courantes pour les utilisateurs de petits bureaux et de bureaux à domicile :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Câble</b> – généralement proposé par les fournisseurs de services de télévision par câble, le signal de données Internet est transmis grâce au câble coaxial utilisé pour la télévision par câble. Il offre une connexion permanente à Internet haut débit. Un modem câble spécial sépare le signal Internet des autres signaux transmis sur le câble et fournit une connexion Ethernet à un ordinateur hôte ou à un LAN.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>DSL </b>– offre une connexion permanente à Internet haut débit. La ligne DSL utilise un modem spécifique haut débit, qui sépare le signal DSL du signal téléphonique et fournit une connexion Ethernet à un ordinateur hôte ou à un LAN. La DSL fonctionne sur une ligne téléphonique divisée en trois canaux. Un canal est utilisé pour les appels téléphoniques. Ce canal permet à une personne de recevoir des appels sans se déconnecter d'Internet. Un deuxième canal de téléchargement, plus rapide, est utilisé pour recevoir des informations depuis Internet. Le troisième canal est utilisé pour envoyer des informations. Ce canal est généralement légèrement moins performant que le canal de téléchargement. La qualité et la vitesse de la connexion DSL dépendent essentiellement de la qualité de la ligne téléphonique et de la distance du central de la compagnie de téléphone. Plus vous êtes éloigné du central, plus la connexion est lente. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Cellulaire</b> – l'accès Internet cellulaire utilise un réseau de téléphonie mobile. Partout où vous captez un signal cellulaire, vous pouvez accéder à Internet. Les performances sont cependant limitées par les fonctionnalités du téléphone et de la station de base à laquelle l'appareil est connecté. La disponibilité de l'accès Internet cellulaire constitue un réel avantage dans les régions qui n'ont aucune autre possibilité d'accéder à Internet ou pour les utilisateurs constamment en déplacement. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Satellite</b> – le service par satellite est l'option idéale pour les maisons ou les bureaux qui n'ont pas accès à la DSL ou au câble. Les paraboles nécessitent une visibilité directe sur le satellite et peuvent ne pas fonctionner convenablement dans des zones boisées ou des emplacements entourés d'éléments faisant obstacle aux transmissions. Les débits dépendent du contrat choisi, mais sont en général élevés. Les frais liés au matériel et à l'installation peuvent être élevés (même si les fournisseurs peuvent proposer des promotions), et un forfait mensuel est ensuite mis en place. La disponibilité de l'accès Internet par satellite constitue un réel avantage dans les régions qui n'ont aucune autre possibilité d'accéder à Internet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Ligne commutée</b> – option peu onéreuse nécessitant une ligne téléphonique et un modem. Pour se connecter au FAI, l'utilisateur appelle le numéro de téléphone d'accès du FAI. La faible bande passante des connexions par ligne commutée n'est généralement pas suffisante pour les transferts de données importants, mais cette solution reste utile pour accéder à Internet lors d'un déplacement. Il ne faut opter pour une connexion par ligne commutée que lorsque les autres options de connexion haut débit ne sont pas disponibles.</li>
+</ul>
+</p>
+<p></p>
+<p>Les habitations et les petits bureaux sont de plus en plus connectés directement à Internet par le biais de la fibre optique. Cette infrastructure permet à un fournisseur d'accès Internet de fournir une bande passante très élevée et de prendre en charge plus de services tels qu'Internet, le téléphone et la télévision. </p>
+<p></p>
+<p>Le choix de la connexion dépend de l'emplacement géographique et de la disponibilité du fournisseur d'accès.</p>
+<p></p>
+<p>Quelles sont les différentes solutions de connexion à Internet ?</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

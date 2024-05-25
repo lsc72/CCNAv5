@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.4.2 La configuration statique d&#x0027;une adresse de monodiffusion globale</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Les adresses réseau IPv6</h1>
+        <h2>Les adresses de monodiffusion globale IPv6</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Configuration de routeur</b>
+</p>
+<p>La plupart des commandes de configuration et de vérification IPv6 de Cisco IOS sont semblables aux commandes utilisées pour l'IPv4. Dans de nombreux cas, la seule différence est l'utilisation d'<span class="cmd"><b>ipv6</b></span> au lieu d'<span class="cmd"><b>ip</b></span> dans les commandes. </p>
+<p></p>
+<p>La commande <span class="cmd"><b>interface</b></span> permettant de configurer une adresse de monodiffusion IPv6 sur une interface est<b> ipv6 address</b><i> adresse IPv6/longueur du préfixe</i>. </p>
+<p></p>
+<p>Notez qu'il n'y a aucun espace entre l'<i>adresse IPv6</i> et la<i> longueur du préfixe</i>.</p>
+<p></p>
+<p>La configuration utilisée en exemple utilise la topologie de la Figure 1 et les sous-réseaux IPv6 suivants : </p>
+<p>
+<ul>
+<li>2001:0DB8:ACAD:0001:/64 (<i>ou</i> 2001:DB8:ACAD:1::/64)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>2001:0DB8:ACAD:0002:/64 (<i>ou</i> 2001:DB8:ACAD:2::/64)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>2001:0DB8:ACAD:0003:/64 (<i>ou</i> 2001:DB8:ACAD:3::/64)</li>
+</ul>
+</p>
+<p></p>
+<p>Comme illustré à la Figure 2, les commandes nécessaires pour configurer l'adresse de monodiffusion globale IPv6 sur l'interface gigabit ethernet 0/0 du périphérique R1 sont :</p>
+<p></p>
+<p>
+<span class="cmd">
+<b>Router(config)#interface GigabitEthernet 0/0 </b>
+</span>
+</p>
+<p>
+<span class="cmd">
+<b>Router(config-if)#ipv6 address 2001:db8:acad:1::1/64</b>
+</span>
+</p>
+<p>
+<span class="cmd">
+<b>Router(config-if)#no shutdown</b>
+</span>
+</p>
+<p></p>
+<p>
+<b>Configuration d'hôte</b>
+</p>
+<p>La configuration manuelle de l'adresse IPv6 sur un hôte est similaire à la configuration d'une adresse IPv4.</p>
+<p></p>
+<p>Comme l'illustre la Figure 3, l'adresse de la passerelle par défaut configurée pour le PC1 est 2001:DB8:ACAD:1::1, l'adresse de monodiffusion globale de l'interface gigabit ethernet du périphérique R1 sur le même réseau. </p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 4 pour configurer l'adresse de monodiffusion globale IPv6.</p>
+<p></p>
+<p>Tout comme avec l'IPv4, la configuration des adresses statiques sur les clients ne convient pas aux environnements de grande taille. Pour cette raison, la plupart des administrateurs de réseaux IPv6 utilisent l'attribution dynamique des adresses IPv6. </p>
+<p></p>
+<p>Il existe deux façons pour un périphérique d'obtenir automatiquement une adresse de monodiffusion globale IPv6 :</p>
+<p>
+<ul>
+<li>Configuration automatique des adresses sans état (SLAAC)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>DHCPv6</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

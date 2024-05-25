@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.2.3 Méthodes de chiffrement</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité LAN sans fil</h1>
+        <h2>Sécurisation de WLAN</h2>
+      </div>
+      <div id="content">
+<p>Le chiffrement est une technique utilisée pour protéger les données. Si un intrus capture des données chiffrées, il sera incapable de les déchiffrer pendant un délai raisonnable.</p>
+<p></p>
+<p>Les normes IEEE 802.11i, WPA et WPA2 (Wi-Fi Alliance) utilisent les protocoles de chiffrement suivants : </p>
+<p>
+<ul>
+<li>
+<b>Protocole TKIP (Temporal Key Integrity Protocol)</b> : TKIP est la méthode de chiffrement utilisée par la norme WPA. Il offre une prise en charge de l’équipement de réseau LAN sans fil hérité en palliant les déficiences initiales inhérentes à la méthode de chiffrement WEP 802.11. Le protocole TKIP est basé sur la technique WEP, mais chiffre les données utiles de couche 2 en TKIP et effectue un contrôle MIC (Message Integrity Check) au niveau du paquet crypté pour s'assurer que le message n'a pas été altéré.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>AES (Advanced Encryption Standard)</b> : AES est la méthode de chiffrement utilisée par la norme WPA2. Cette méthode a été préférée car elle est alignée sur la norme sectorielle IEEE 802.11i. AES exécute les mêmes fonctions que le protocole TKIP, mais offre un chiffrement bien plus solide. Elle utilise le mode Counter Cipher (contre-chiffrement) avec le protocole CCMP (Block Chaining Message Authentication Code Protocol), ce qui permet aux hôtes de destination de savoir si les bits chiffrés et non chiffrés ont été altérés. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: choisissez toujours la norme WPA2 avec la technologie AES, lorsque cela est possible.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.2.4 Distance administrative</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Décisions de routage</h1>
+        <h2>Détermination du chemin</h2>
+      </div>
+      <div id="content">
+<p>Il est possible de configurer un routeur avec plusieurs protocoles de routage et des routes statiques. Dans ce cas, la table de routage peut disposer de plusieurs sources de route pour le même réseau de destination. Par exemple, si les protocoles RIP et EIGRP sont tous deux configurés sur un routeur, les deux protocoles de routage peuvent détecter le même réseau de destination. Cependant, chaque protocole de routage peut décider d'un chemin différent vers la destination en fonction de ses métriques. Le protocole RIP choisit un chemin en fonction du nombre de sauts, tandis que le protocole EIGRP le fait en fonction de sa métrique composite. Comment le routeur sait-il quelle route il doit utiliser ?</p>
+<p></p>
+<p>Le logiciel CISCO IOS utilise ce que l'on appelle la distance administrative (AD) pour déterminer la route à installer dans la table de routage IP. Le domaine administratif représente le degré de fiabilité de la route. Plus il est faible, plus la source de la route est fiable. Par exemple, une route statique a un domaine administratif de 1, alors qu'une route découverte par le protocole EIGRP a un domaine administratif de 90. Sur deux routes distinctes menant à la même destination, le routeur choisit celle présentant le plus faible domaine administratif. Si le routeur doit choisir entre une route statique et une route EIGRP, la route statique est prioritaire. De même, une route connectée directement avec un domaine administratif de 0 est prioritaire sur une route statique avec un domaine administratif de 1.</p>
+<p></p>
+<p>La figure répertorie divers protocoles de routage et leurs domaines administratifs associés.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

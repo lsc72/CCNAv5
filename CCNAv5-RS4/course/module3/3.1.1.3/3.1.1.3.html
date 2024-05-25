@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.1.3 Liaisons de communication point à point</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation des connexions série point à point</h1>
+        <h2>Communications série</h2>
+      </div>
+      <div id="content">
+<p>Lorsque vous avez besoin de connexions permanentes dédiées, la liaison point à point permet de créer un chemin de communication WAN pré-établi unique depuis les locaux du client jusqu'à la destination distante, comme illustré à la figure. </p>
+<p></p>
+<p>La liaison point à point peut connecter deux sites distants, par exemple un bureau à New York et un autre à Londres. Pour une ligne point à point, l'opérateur alloue des ressources spécifiques pour une ligne louée par le client (ligne louée). </p>
+<p></p>
+<p>
+<b>Remarque </b>: les connexions point à point ne se limitent pas aux connexions sur l'ensemble du pays. Les pays et continents partout dans le monde sont connectés par des centaines de milliers de kilomètres de câbles sous-marins en fibre optique. Une simple recherche Internet sur « carte des câbles Internet sous-marins » présente plusieurs cartes de ces connexions sous-marines.</p>
+<p></p>
+<p>Les liaisons point à point sont en général plus coûteuses que les services partagés. Le coût des liaisons louées peut être important lorsqu'elles servent à connecter plusieurs sites répartis sur de grandes distances. Toutefois, le coût de la ligne louée est parfois compensé par les avantages qu'elle offre. L'aspect dédié de la ligne permet d'éviter la latence ou la gigue entre les points d'extrémité. La disponibilité constante est essentielle pour certaines applications, comme celles de voix ou de vidéo sur IP. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

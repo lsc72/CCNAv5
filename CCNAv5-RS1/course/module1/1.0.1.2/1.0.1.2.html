@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.0.1.2 Exercice en classe – Illustrez votre vision d&#x0027;Internet</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Découverte du réseau</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>Bienvenue dans un nouveau composant de notre cursus Networking Academy : les exercices de conception ! Vous les trouverez au début et à la fin de chaque chapitre.</p>
+<p></p>
+<p>Certains exercices peuvent être réalisés individuellement (chez vous ou en classe) et certains requièrent une interaction avec des groupes ou des communautés d'apprentissage. Votre instructeur vous aidera à bénéficier pleinement de ces exercices d'introduction.</p>
+<p></p>
+<p>Ces exercices vous aideront à améliorer votre compréhension en vous donnant la possibilité de visualiser certains des concepts abstraits que vous aborderez dans ce cours. Soyez créatif et profitez de ces exercices !</p>
+<p></p>
+<p>
+<b>Voici le premier exercice de conception :</b>
+</p>
+<p></p>
+<p>
+<b>Illustrez votre vision d'Internet</b>
+</p>
+<p></p>
+<p>Dessinez une carte d'Internet (et inscrivez les légendes correspondantes) conforme à votre vision actuelle. Indiquez l'emplacement de votre domicile ou de votre école/université ainsi que les informations relatives au câblage, au matériel, aux périphériques, etc. Voici certains des éléments que vous pourriez vouloir inclure : </p>
+<p>
+<ul>
+<li>Périphériques/Équipement </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Supports (câblage) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Adresses ou noms de liaison </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Sources et destinations </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Fournisseurs d'accès Internet</li>
+</ul>
+</p>
+<p> </p>
+<p>Lorsque vous avez terminé, veillez à imprimer votre travail, car il sera utilisé ultérieurement, à la fin de ce chapitre. Si c'est un document électronique, enregistrez-le dans le dossier du serveur fourni par votre instructeur. Préparez-vous à partager et expliquer votre travail en classe.</p>
+<p></p>
+<p>Pour consulter un exemple, rendez-vous sur<a href="http://www.kk.org/internet-mapping/" target="_blank"> http://www.kk.org/internet-mapping/</a>.</p>
+<p></p>
+<p></p>
+<p>
+<a href="../../files/1.0.1.2%20Class%20Activity%20-%20Draw%20Your%20Concept%20of%20the%20Internet%20Instructions.pdf" target="_blank">Exercice en classe – Illustrez votre vision d'Internet : instructions</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

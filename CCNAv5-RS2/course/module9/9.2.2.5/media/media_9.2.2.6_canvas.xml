@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide type="MBAR">
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title" />
+			<element type="TEXT" compId="ID_s1_txt01" width="105" x="318" y="220.75" align="center" expand="up"/>
+			<element type="ROUTER" textId="staticTxt" width="428" height="144" x="7" y="30" style="font-family:Courier New"/>
+			<element type="TEXT" text="Output after pinging PC3 from PC1." width="177.55" x="120" y="185.3" />	
+			<element type="ROUTER" textId="staticTxt1" width="428" height="144" x="7" y="214" style="font-family:Courier New"/>
+			<element type="IMAGE" src="arrow.png" width="71" height="40.4" x="285.35" y="220.75"/>
+		</slide>
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title" />
+			<element type="TEXT" compId="ID_s2_txt01" width="152" x="224.3" y="170.25" align="center" expand="up"/>
+			<element type="ROUTER" textId="staticTxt2" width="428" height="273" x="7" y="30" style="font-family:Courier New"/>
+			<element type="IMAGE" src="arrow.png" width="71" height="40.4" x="185.65" y="176.75"/>
+		</slide>
+	</slide>
+	<text id="staticTxt"><![CDATA[ 				R1# <b>show access-lists  </b><br/> Standard IP access list 1<br/>
+			<div class="space">10 deny 192.168.10.10 (4 match(es))<br/> 20 permit 192.168.0.0, wildcard bits 0.0.255.255</div> 		Standard IP access list NO_ACCESS<br/>
+			<div class="space"> 			15 deny 192.168.11.11<br/> 10 deny 192.168.11.10 (4 match(es))<br/> 20 permit 192.168.11.0, wildcard bits 0.0.0.255</div> 		R1#
+	]]></text>
+	
+	<text id="staticTxt1"><![CDATA[ 			R1# <b>show access-lists  </b><br/> Standard IP access list 1<br/> <span style="margin-left:20px;background-color:#FACCA8;">10 deny 192.168.10.10 (8 match(es))</span><br/> <span class="space">20 permit 192.168.0.0, wildcard bits 0.0.255.255</span><br/> Standard IP access list NO_ACCESS<br/>
+				<div class="space"> 				15 deny 192.168.11.11<br/> 10 deny 192.168.11.10 (4 match(es))<br/> 20 permit 192.168.11.0, wildcard bits 0.0.0.255</div> 			R1#
+
+	]]></text>
+	<text id="staticTxt2"><![CDATA[ 			R1# <b>show access-lists  </b><br/> Standard IP access list 1<br/>
+			<div class="space">10 deny 192.168.10.10 (4 match(es))<br/> 20 permit 192.168.0.0, wildcard bits 0.0.255.255</div> 		Standard IP access list NO_ACCESS<br/>
+			<div class="space"> 			15 deny 192.168.11.11<br/> 10 deny 192.168.11.10 (4 match(es))<br/> 20 permit 192.168.11.0, wildcard bits 0.0.0.255</div> 		R1# <b>clear access-list counters 1  </b><br/> R1#<br/> R1# <b>show access-lists  </b><br/> Standard IP access list 1<br/> <span style="margin-left:20px;background-color:#FACCA8;">10 deny 192.168.10.10</span><br/> <span class="space">20 permit 192.168.0.0, wildcard bits 0.0.255.255</span><br/> Standard IP access list NO_ACCESS<br/>
+				<div class="space"> 				15 deny 192.168.11.11<br/> 10 deny 192.168.11.10 (4 match(es))<br/> 20 permit 192.168.11.0, wildcard bits 0.0.0.255</div>
+			
+	]]></text>
+</data>

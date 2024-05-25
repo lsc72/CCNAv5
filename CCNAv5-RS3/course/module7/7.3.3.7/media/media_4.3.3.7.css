@@ -1,0 +1,50 @@
+
+/*   load the main media CSS file    */
+
+@import url('../../../common/styles/media2.css');
+
+html, body {
+	margin:0;
+	height:100%;
+}
+#flashContent {
+	width:98%;
+	height:98%;
+}
+.color{
+	background-color:#FACCA8;
+}
+#ID_s2_txt01, #ID_s2_txt02, #ID_s3_txt01, #ID_s4_txt01, #ID_s4_txt02, #ID_s4_txt03, #ID_s4_txt04{
+padding:5px;
+border:2px solid #F68026;
+background:#FDE6D4;
+border-radius:5px;
+line-height:12px;
+text-align:left;
+}
+#ID_s4_txt01, #ID_s4_txt02, #ID_s4_txt03, #ID_s4_txt04{
+	position:absolute; 
+	top:2px;
+	z-index:2;
+	line-height:16px;
+}
+
+.orange1{margin-top:3px !important;}
+
+
+#ID_s2_text01,#ID_s3_text01,#ID_s4_text01{padding-left:4px !important;letter-spacing:-.5px !important;}
+#ID_s4_text01{z-index:1;}
+#one{z-index:2;position:absolute;top:0px;left:0px;}
+
+/* iPads (portrait and landscape) ----------- */
+/*@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+#ID_s4_text01{letter-spacing:-.09px !important}
+}*/
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+  #ID_s4_text01{letter-spacing:-.09px !important}/* your css rules for ipad portrait */
+}
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape) {
+  #ID_s4_text01{letter-spacing:-.09px !important} /* your css rules for ipad landscape */
+}

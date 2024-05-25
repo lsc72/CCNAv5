@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.3.2 Problème de connectivité de bout en bout nécessitant un dépannage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Dépannage de la connectivité IP</h2>
+      </div>
+      <div id="content">
+<p>D'une manière générale, c'est la découverte d'un problème de connectivité de bout en bout qui initie un dépannage. Deux des utilitaires les plus courants employés pour tester un problème de connectivité de bout en bout sont les commandes <span class="cmd"><b>ping</b></span> et <span class="cmd"><b>traceroute</b></span>, comme le montre la Figure 1.</p>
+<p></p>
+<p>La commande ping est probablement l'utilitaire de test de connectivité réseau le plus connu et elle a toujours été intégrée au logiciel Cisco IOS. Elle permet d'envoyer des demandes de réponses à partir d'une adresse hôte spécifiée. La commande <span class="cmd"><b>ping</b></span> utilise un protocole de couche 3 faisant partie de la suite TCP/IP et appelé ICMP. Elle utilise des paquets de requête d'écho ICMP et de réponse d'écho ICMP. Si l'hôte se trouvant à l'adresse spécifiée reçoit une requête d'écho ICMP, il répond en envoyant un paquet de réponse d'écho ICMP. La commande ping peut être utilisée pour tester la connectivité de bout en bout à la fois pour IPv4 et IPv6. La Figure 2 montre une commande ping qui a abouti entre PC1 et SRV1, à l'adresse 172.16.1.100.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>traceroute</b></span> illustrée à la Figure 3 montre le chemin emprunté par les paquets IPv4 pour atteindre leur destination. Comme la commande <span class="cmd"><b>ping</b></span>, la commande <span class="cmd"><b>traceroute</b></span> de Cisco IOS peut être utilisée à la fois pour IPv4 et IPv6. La commande <span class="cmd"><b>tracert</b></span> s'utilise avec le système d'exploitation Windows. La commande trace génère une liste de sauts, d'adresses IP de routeurs ainsi qu'une adresse IP de destination finale, qui sont atteintes le long du chemin. Cette liste fournit des informations importantes pour la vérification et le dépannage. Si les données parviennent à destination, la commande trace répertorie les interfaces de chaque routeur le long du chemin. Si les données restent bloquées au niveau d'un saut, l'adresse du dernier routeur ayant répondu à la commande trace est connue. Cette adresse peut fournir une indication sur l'endroit où se situe le problème ou sur d'éventuelles restrictions de sécurité.</p>
+<p></p>
+<p>Comme indiqué précédemment, les utilitaires ping et traceroute peuvent être utilisés pour tester et diagnostiquer la connectivité IPv6 de bout en bout en fournissant l'adresse IPv6 en guise d'adresse de destination. Lors de l'utilisation de ces outils, l'utilitaire Cisco IOS reconnaît si l'adresse est une adresse IPv4 ou IPv6, puis utilise le protocole approprié pour tester la connectivité. La Figure 4 illustre les commandes <span class="cmd"><b>ping</b></span> et <span class="cmd"><b>traceroute</b></span> exécutées sur le routeur R1 afin de tester la connectivité IPv6.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

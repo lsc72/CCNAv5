@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.2.6 Adressage de ports TCP et UDP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.2.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole de couche Transport</h1>
+        <h2>Présentation des protocoles TCP et UDP</h2>
+      </div>
+      <div id="content">
+<p>L'en-tête de chaque segment ou datagramme contient un port source et un port de destination. Le numéro de port source est le numéro associé à l'application d'origine sur l'hôte local pour cette communication. Comme l'illustre la figure, le numéro de port de destination est le numéro de cette communication associé à l'application de destination sur l'hôte distant.</p>
+<p></p>
+<p>Lorsqu'un message est transmis à l'aide du protocole TCP ou UDP, les protocoles et services demandés sont identifiés par un numéro de port. Un port est un identifiant numérique, présent dans chaque segment, qui est utilisé pour conserver la trace de certaines conversations et de certains services de destination demandés. Chaque message envoyé par un hôte contient un port source et un port de destination.</p>
+<p></p>
+<p>
+<b>Port de destination</b>
+</p>
+<p></p>
+<p>Le client place un numéro de port de destination dans le segment pour informer le serveur de destination du service demandé. Par exemple, le port 80 renvoie au service HTTP ou Web. Lorsque le client spécifie le port 80 comme port de destination, le serveur qui reçoit le message sait que des services Web sont demandés. Un serveur peut proposer plusieurs services simultanément. Par exemple, il peut proposer des services Web sur le port 80 et, en même temps, l'établissement d'une connexion FTP sur le port 21. </p>
+<p></p>
+<p>
+<b>Port source</b>
+</p>
+<p></p>
+<p>Le numéro du port source est généré de manière aléatoire par le périphérique émetteur pour identifier une conversation entre deux périphériques. Ainsi, plusieurs conversations peuvent s'effectuer simultanément. En d'autres termes, un périphérique peut envoyer plusieurs requêtes de service HTTP à un serveur Web en même temps. Un suivi des différentes conversations est effectué sur la base des ports sources.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

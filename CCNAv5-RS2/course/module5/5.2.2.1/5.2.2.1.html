@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.2.1 Erreurs au niveau des adresses IP et des masques de sous-réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout; 
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du routage inter-VLAN</h1>
+        <h2>Problèmes d&#x0027;adressage IP</h2>
+      </div>
+      <div id="content">
+<p>Les VLAN correspondent à des sous-réseaux uniques sur le réseau. Pour que le routage inter-VLAN fonctionne, un routeur doit être connecté à tous les VLAN, par des interfaces physiques distinctes ou des sous-interfaces. Une adresse IP correspondant au sous-réseau pour lequel elle est connectée doit être affectée à chaque interface ou sous-interface. Ceci permet aux périphériques du VLAN de communiquer avec l'interface de routeur et d'activer le routage de trafic vers d'autres VLAN connectés au routeur.</p>
+<p></p>
+<p>Voici quelques erreurs courantes d'adressage IP :</p>
+<p>
+<ul>
+<li>Comme l'illustre la Figure 1, le routeur R1 a été configuré avec une adresse IP incorrecte sur l'interface G0/0, ce qui empêche le PC1 de communiquer avec le routeur R1 sur le VLAN 10. Pour corriger ce problème, affectez l'adresse IP correcte à l'interface G0/0 du routeur R1 à l'aide de la commande<span class="cmd"><b> ip address 172.17.10.1 255.255.255.0</b></span>. Une fois l'adresse IP correcte affectée à l'interface du routeur, le PC1 peut utiliser cette dernière comme passerelle par défaut pour accéder à d'autres VLAN.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Dans la Figure 2, le PC1 a été configuré avec une adresse IP incorrecte pour le sous-réseau associé au VLAN 10. Ceci empêche PC1 de communiquer avec le routeur R1 sur le VLAN 10. Pour corriger ce problème, affectez l'adresse IP correcte à PC1. Selon le type de PC utilisé, les détails de configuration peuvent être différents.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Dans la Figure 3, le PC1 a été configuré avec un masque de sous-réseau incorrect. Selon le masque de sous-réseau configuré pour PC1, PC1 se trouve sur le réseau 172.17.0.0. Ainsi, le PC1 calcule que le PC3, avec l'adresse IP 172.17.30.23, se trouve sur le même sous-réseau que le PC1. Par conséquent, le PC1 ne transmet pas le trafic destiné au PC3 à l'interface G0/0 du routeur R1. Ce trafic n'atteint donc jamais le PC3. Pour corriger ce problème, changez le masque de sous-réseau sur PC1 en 255.255.255.0. Selon le type de PC utilisé, les détails de configuration peuvent être différents.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

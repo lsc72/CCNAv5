@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+  <slide type="MBAR">	
+		 
+			<slide>
+				<element type="TEXT" subType="TITLE" compId="ID_s1_title" />
+				<element type="TEXT" x="19" y="365" width="150" align="left" expand="right" compId="ID_s1_txt01" />	
+			    <element type="ROUTER" textId="ID_routerOutput1" x="9.85" y="25" width="424.55" height="370"  size="10"/>
+			</slide>
+
+			<slide>
+				<element type="TEXT" subType="TITLE" compId="ID_s2_title" />
+				<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC2" x="2.5" y="28.95" width="430" height="361.10" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+			</slide>
+
+		
+   </slide>
+
+   <text id="ID_routerOutput1"><![CDATA[<code>S1(config)# <b>interface f0/1</b>
+S1(config-if)# <b>switchport mode trunk</b>
+S1(config-if)# <b>switchport trunk native vlan 99</b>
+S1(config-if)# <b>end</b>
+S1# <b>show interfaces f0/1 switchport</b>
+Name: Fa0/1
+Switchport: Enabled
+<span class="orange">Administrative Mode: trunk
+Operational Mode: trunk
+Administrative Trunking Encapsulation: dot1q
+Operational Trunking Encapsulation: dot1q</span>
+Negotiation of Trunking: On
+Access Mode VLAN: 1 (default)
+<span class="orange">Trunking Native Mode VLAN: 99 (VLAN0099)
+Administrative Native VLAN tagging: enabled</span>
+Voice VLAN: none
+Administrative private-vlan host-association: none 
+Administrative private-vlan mapping: none 
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk Native VLAN tagging: enabled
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk associations: none
+Administrative private-vlan trunk mappings: none
+Operational private-vlan: none
+<span class="orange">Trunking VLANs Enabled: ALL</span>
+Pruning VLANs Enabled: 2-1001
+
+</code>]]></text>
+</data>

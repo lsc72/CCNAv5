@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.3.3 Packet Tracer : configuration d&#x0027;une liste de contrôle d&#x0027;accès sur des lignes VTY</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Listes de contrôle d&#x0027;accès IPv4 standard </h1>
+        <h2>Sécurisation des ports VTY à l&#x0027;aide d&#x0027;une liste de contrôle d&#x0027;accès IPv4 standard </h2>
+      </div>
+      <div id="content">
+<p>En tant qu'administrateur d'un réseau, vous devez disposer d'un accès distant à votre routeur. Cet accès ne doit pas être permis pour les autres utilisateurs du réseau. Par conséquent, vous allez configurer et appliquer une liste de contrôle d'accès autorisant l'accès du PC aux lignes Telnet, mais refusant toutes les autres adresses IP sources.</p>
+<p></p>
+<p>
+<a href="../../files/9.2.3.3%20Packet%20Tracer%20-%20Configuring%20an%20ACL%20on%20VTY%20Lines%20Instructions.pdf" target="_blank">Instructions de Packet Tracer : configuration d'une liste de contrôle d'accès sur des lignes VTY</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/9.2.3.3%20Packet%20Tracer%20-%20Configuring%20an%20ACL%20on%20VTY%20Lines.pka" target="_blank">PKA de Packet Tracer : configuration d'une liste de contrôle d'accès sur des lignes VTY</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

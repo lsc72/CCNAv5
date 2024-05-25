@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.1.4 Open Shortest Path First</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées du protocole OSPF à zone unique </h1>
+        <h2>Routage au sein des couches de distribution et cœur de réseau</h2>
+      </div>
+      <div id="content">
+<p>Le protocole OSPF est un protocole de routage à état de liens couramment implémenté. Il a été développé pour remplacer le protocole de routage à vecteur de distance RIP. Le protocole OSPF présente des avantages considérables par rapport au protocole RIP, car il apporte une convergence plus rapide et s'adapte mieux aux réseaux de plus grande taille.</p>
+<p></p>
+<p>Comme illustré par la figure, le protocole OSPF inclut les caractéristiques ci-après.</p>
+<p>
+<ul>
+<li>
+<b>Sans classe</b> : sans classe par conception, il prend donc en charge VLSM et CIDR.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Efficacité</b> : les changements de routage déclenchent des mises à jour de routage (pas de mises à jour régulières). Il utilise l'algorithme SPF pour déterminer le meilleur chemin.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Convergence rapide</b> : il diffuse rapidement les modifications apportées au réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Évolutivité</b> : il fonctionne correctement sur les réseaux de faible ou de grande étendue. Les routeurs peuvent être regroupés en zones pour prendre en charge un système hiérarchique. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Sécurité</b> : il prend en charge l'authentification MD5 (Message Digest 5). Une fois activés, les routeurs OSPF acceptent uniquement les mises à jour de routage chiffrées des homologues avec le même mot de passe pré-partagé.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

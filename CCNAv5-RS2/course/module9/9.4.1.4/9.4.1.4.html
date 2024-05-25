@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.4.1.4 Processus décisionnel des listes de contrôle d&#x0027;accès étendues</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.4.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage des listes de contrôle d&#x0027;accès</h1>
+        <h2>Traitement des paquets avec les listes de contrôle d&#x0027;accès</h2>
+      </div>
+      <div id="content">
+<p>La figure illustre le processus de décision logique suivi par une liste de contrôle d'accès étendue pour filtrer les adresses source et de destination, le protocole et les numéros de port. Dans cet exemple, la liste de contrôle d'accès filtre en fonction de l'adresse source, avant de passer au port et au protocole de la source. Elle filtre en fonction de l'adresse de destination, du port et du protocole de destination, avant de prendre une décision finale d'autorisation ou de refus. </p>
+<p></p>
+<p>Rappelez-vous que les entrées des listes de contrôle d'accès sont traitées les unes après les autres. Ainsi, une décision négative ne correspond pas nécessairement à un refus. En parcourant le processus de décision logique, remarquez qu'un « Non » signifie que vous devez passer à l'entrée suivante jusqu'à obtenir une correspondance.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

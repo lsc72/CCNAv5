@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.2.1 Résolution des problèmes de voisinage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résolution des problèmes liés aux mises en œuvre du protocole OSPF à zone unique</h1>
+        <h2>Dépannage des problèmes de routage du protocole OSPFv2 à zone unique</h2>
+      </div>
+      <div id="content">
+<p>Cet exemple illustre comment résoudre des problèmes de voisinage. Dans la topologie de la Figure 1, tous les routeurs ont été configurés de manière à prendre en charge le routage OSPF. </p>
+<p></p>
+<p>Un examen rapide de la table de routage de R1, comme illustré à la Figure 2, révèle que ce routeur n'ajoute aucune route OSPF. Cela peut être causé par de multiples raisons. Cependant, une condition requise pour l'établissement d'une relation de voisinage entre deux routeurs est la connectivité de couche 3 OSI. </p>
+<p></p>
+<p>La Figure 3 confirme que l'interface S0/0/0 est activée et qu'elle fonctionne. La réussite de la requête ping confirme également que l'interface série de R2 est active. Une requête ping réussie ne signifie pas qu'une contiguïté va s'établir, car il est possible que des sous-réseaux se chevauchent. Vous devez encore vérifier que les interfaces sur les périphériques connectés partagent le même sous-réseau. En cas d'échec de la requête ping, vérifiez le câblage et vérifiez que les interfaces sur les périphériques connectés sont configurées correctement et qu'elles fonctionnent.</p>
+<p></p>
+<p>Pour que le protocole OSPF soit activé sur une interface, une commande <span class="cmd"><b>network</b></span> correspondante doit être configurée dans le processus de routage OSPF. Pour vérifier les interfaces OSPF actives, utilisez la commande<span class="cmd"><b> show ip ospf interface</b></span>. Le résultat de la Figure 4 vérifie que l'interface Serial 0/0/0 est activée pour OSPF. Si les interfaces connectées de deux routeurs ne sont pas activées pour OSPF, les voisins ne peuvent pas établir de contiguïté.</p>
+<p></p>
+<p>Vérifiez les paramètres OSPF avec la commande<span class="cmd"><b> show ip protocols</b></span>. Le résultat de la Figure 5 vérifie que le protocole OSPF est activé et répertorie les réseaux annoncés comme activés par la commande <span class="cmd"><b>network</b></span>. Si l'adresse IP d'une interface fait partie d'un réseau activé pour OSPF, l'interface est activée pour OSPF. </p>
+<p></p>
+<p>Cependant, notez que l'interface Serial 0/0/0 est répertoriée comme passive. N'oubliez pas que la commande<span class="cmd"><b> passive-interface </b></span>stoppe les mises à jour de routage entrantes et sortantes, car elle entraîne l'arrêt par le routeur de l'envoi et de la réception des paquets Hello sur l'interface concernée. Pour cette raison, les routeurs ne deviennent pas des voisins.</p>
+<p></p>
+<p>Pour désactiver une interface passive, utilisez la commande de mode de configuration de routeur<span class="cmd"><b> no passive-interface </b></span>comme illustré à la Figure 6. Dès que vous avez désactivé l'interface passive, les routeurs deviennent contigus, comme indiqué par le message d'information produit automatiquement.</p>
+<p></p>
+<p>Une vérification rapide de la table de routage, comme illustré à la Figure 7, confirme que le protocole OSPF échange désormais des informations de routage.</p>
+<p></p>
+<p>Un autre problème peut survenir lorsque deux routeurs voisins présentent des tailles de MTU (Maximum Transmission Unit, unité de transmission maximale) différentes sur leurs interfaces de connexion. La taille MTU est la taille maximale des paquets de couche réseau transférés par le routeur sur chaque interface. La taille MTU par défaut d'un routeur est de 1 500 octets. Cependant, cette valeur peut être modifiée, au moyen de la commande<span class="cmd"><b> ip mtu </b></span><span class="cmd"><i>size</i></span><span class="cmd"><b></b></span> en mode de configuration d'interface pour les paquets IPv4 et au moyen de la commande d'interface<span class="cmd"><b> ipv6 mtu </b></span><span class="cmd"><i>size</i></span><span class="cmd"><b></b></span> pour les paquets IPv6. Si deux routeurs connectés comportent des MTU différentes, ils tentent d'établir une contiguïté, mais ils ne réussissent pas à échanger leurs LSDB (Link-state Database, base de données d'états de liens) et la relation de voisinage échoue. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

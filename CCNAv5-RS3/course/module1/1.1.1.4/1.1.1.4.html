@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.1.4 Architecture d&#x0027;entreprise Cisco</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentation d&#x0027;une conception réseau</h1>
+        <h2>Conception hiérarchique du réseau</h2>
+      </div>
+      <div id="content">
+<p>L'architecture d'entreprise Cisco sépare le réseau en composants fonctionnels, tout en préservant les couches d'accès, de distribution et cœur de réseau. Comme illustré par la figure, l'architecture d'entreprise Cisco comprend les modules principaux suivants :</p>
+<p>
+<ul>
+<li>Campus d'entreprise </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Périphérie d'entreprise </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Périphérie du fournisseur de services </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>À distance</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Campus d'entreprise</b>
+</p>
+<p>Le campus d'entreprise comprend l'ensemble de l'infrastructure du campus, de manière à inclure les couches d'accès, de distribution et cœur de réseau. Le module de couche d'accès contient des commutateurs de couche 2 ou 3 pour assurer la densité de port requise. Il assure l'implémentation des réseaux locaux virtuels et des liens trunk vers la couche de distribution du bâtiment. La redondance des commutateurs de distribution du bâtiment est importante. Le module de la couche de distribution regroupe l'accès du bâtiment au moyen de périphériques de couche 3. Le routage, le contrôle d'accès et la qualité de service (QS) sont effectués par ce module de la couche de distribution. Le module de la couche cœur de réseau assure une interconnectivité de haut débit entre les modules de la couche de distribution, les batteries de serveurs des Data centers et la périphérie d'entreprise. La conception de ce module se concentre sur la redondance, la convergence rapide et la tolérance aux pannes.</p>
+<p></p>
+<p>À part ces modules, le Campus d'entreprise peut aussi inclure les autres sous-modules ci-dessous: </p>
+<p>
+<ul>
+<li>
+<b>Module de batterie de serveurs et de Data center</b> : ce module assure une connectivité haut débit et une protection pour les serveurs. Il est essentiel pour apporter sécurité, redondance et tolérance aux pannes. Les systèmes de gestion du réseau surveillent les performances en contrôlant la disponibilité des périphériques et du réseau. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Module de services</b> : ce module apporte un accès à tous les services, tels que la téléphonie IP, les contrôleurs sans fil et les services unifiés. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Périphérie d'entreprise </b>
+</p>
+<p>La périphérie d'entreprise se compose des modules Internet, VPN et WAN, qui connectent l'entreprise au réseau du fournisseur de services. Ce module étend les services de l'entreprise à des sites distants et permet à l'entreprise d'utiliser Internet et les ressources de partenaires. Il apporte qualité de service (QS), application des stratégies, niveaux de service et sécurité.</p>
+<p></p>
+<p>
+<b>Périphérie du fournisseur de services </b>
+</p>
+<p>La périphérie du fournisseur de services fournit des services Internet, de réseau téléphonique public commuté (RTPC) et WAN.</p>
+<p></p>
+<p>Toutes les données qui entrent dans le modèle de réseau d'entreprise composé (ECNM) ou le quittent transitent via un équipement de périphérie. C'est le point où tous les paquets peuvent être examinés, afin de les autoriser ou non à pénétrer sur le réseau d'entreprise. Les systèmes de détection d'intrusions (IDS) et de protection contre les intrusions (IPS) peuvent également être configurés à la périphérie d'entreprise, afin d'assurer la protection contre des activités malveillantes.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

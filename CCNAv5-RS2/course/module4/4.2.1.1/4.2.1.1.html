@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.1.1 Fonctions de commutation du routeur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Décisions de routage</h1>
+        <h2>Commutation des paquets entre les réseaux</h2>
+      </div>
+      <div id="content">
+<p>La fonction principale d'un routeur consiste à acheminer des paquets vers leur destination. Il faut pour cela faire appel à la fonction de commutation, qui est le processus utilisé par un routeur pour recevoir un paquet sur une interface et l'envoyer depuis une autre interface. La fonction de commutation a pour responsabilité principale d'encapsuler les paquets dans le type de trame liaison de données adéquat pour la liaison de données de sortie. </p>
+<p></p>
+<p>
+<b>Remarque</b> : dans ce contexte, le terme « commutation » désigne littéralement les paquets se déplaçant d'une source vers une destination. Il ne faut pas le confondre avec la fonction d'un commutateur de couche 2.</p>
+<p></p>
+<p>Une fois que le routeur a déterminé l'interface de sortie à l'aide de la fonction de détermination du chemin, le routeur doit encapsuler le paquet dans la trame liaison de données de l'interface de sortie.</p>
+<p></p>
+<p>Que fait un routeur d'un paquet qu'il a reçu d'un réseau et qui est destiné à un autre réseau ? Le routeur effectue les trois étapes principales suivantes :</p>
+<p></p>
+<p>
+<b>Étape 1.</b> Il désencapsule le paquet de couche 3 en supprimant l'en-tête et le code de fin (trailer) de la trame de couche 2.</p>
+<p>
+<b>Étape 2.</b> Il examine l'adresse IP de destination du paquet IP pour trouver le meilleur chemin dans la table de routage.</p>
+<p>
+<b>Étape 3.</b> Si le routeur trouve un chemin vers la destination, il encapsule le paquet de couche 3 dans une nouvelle trame de couche 2 et transfère la trame à l'interface de sortie.</p>
+<p></p>
+<p>Comme l'illustre la figure, les périphériques ont des adresses IPv4 de couche 3 et les interfaces Ethernet ont des adresses de liaison de données de couche 2. Par exemple, le PC1 est configuré avec l'adresse IPv4 192.168.1.10 et l'exemple d'adresse MAC 0A-10. Lorsqu'un paquet circule du périphérique source au périphérique de destination final, les adresses IP de couche 3 demeurent identiques. Cependant, les adresses de liaison de données de couche 2 changent à chaque saut, lorsque le paquet est désencapsulé, puis encapsulé dans une nouvelle trame par chacun des routeurs. Il est très probable que le paquet soit encapsulé dans un type de trame de couche 2 différent de celui dans lequel il a été reçu. Par exemple, une trame Ethernet encapsulée peut être reçue par le routeur sur une interface FastEthernet, puis traitée pour être transmise par une interface série en tant que trame encapsulée par le protocole PPP. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

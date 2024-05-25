@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.4.3.3 Test de la route statique flottante</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.4.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration des routes récapitulatives et des routes statiques flottantes</h1>
+        <h2>Configuration des routes statiques flottantes</h2>
+      </div>
+      <div id="content">
+<p>Étant donné que la route statique par défaut de R1 à R2 a une distance administrative de 1, le trafic entre R1 et R3 doit transiter par R2. Le résultat dans la Figure 1 confirme que le trafic entre R1 et R3 traverse R2. </p>
+<p></p>
+<p>Que se passerait-il en cas de panne de R2 ? Pour simuler cette panne, les deux interfaces série de R2 sont désactivées, comme illustré dans la Figure 2.</p>
+<p></p>
+<p>Vous remarquerez dans la Figure 3 que R1 génère automatiquement des messages indiquant que l'interface série vers R2 est en panne. Examinez la table de routage pour vérifier que la route par défaut pointe désormais vers R3 au moyen de la route statique flottante par défaut configurée pour le tronçon suivant 10.10.10.2.</p>
+<p></p>
+<p>Le résultat dans la Figure 4 confirme que le trafic passe directement de R1 à R3. </p>
+<p></p>
+<p>
+<b>Remarque :</b> la configuration de routes statiques flottantes IPv6 sort du cadre de ce chapitre.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

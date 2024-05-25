@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.4.4 La fin de trame</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.4.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Contrôle d&#x0027;accès au support</h1>
+        <h2>Trame liaison de données</h2>
+      </div>
+      <div id="content">
+<p>Les protocoles de couche liaison de données ajoutent un code de fin à la fin de chaque trame. Ce code permet de déterminer si la trame est arrivée sans erreur. Ce processus est appelé la détection d'erreurs et s'effectue par le placement dans la fin de trame d'un résumé logique ou mathématique des bits qui constituent la trame. La détection d'erreurs est ajoutée à la couche liaison de données, car les signaux sur les supports peuvent être soumis à des interférences, une distorsion ou une perte qui modifierait de manière significative les valeurs binaires qu'ils représentent.</p>
+<p></p>
+<p>Un nœud de transmission crée un résumé logique du contenu de la trame. Ce résumé est appelé valeur de contrôle par redondance cyclique (CRC). Cette valeur est placée dans le champ de séquence de contrôle de trame de la trame pour représenter le contenu de la trame. </p>
+<p></p>
+<p>Cliquez sur les champs FCS et Stop Frame de la figure pour afficher plus d'informations.</p>
+<p></p>
+<p>Lorsque la trame arrive au niveau du noeud de destination, le noeud de réception calcule son propre résumé logique (ou CRC) de la trame. Le noeud de réception compare les deux valeurs CRC. Si les deux valeurs sont les mêmes, la trame est considérée comme arrivée telle que transmise. Si la valeur CRC du champ de séquence de contrôle de trame diffère de la valeur CRC calculée au niveau du noeud de réception, la trame est ignorée.</p>
+<p></p>
+<p>Par conséquent, le champ de séquence de contrôle de trame permet de déterminer si des erreurs se sont produites lors de la transmission et de la réception de la trame. Le mécanisme de détection d'erreur mis en oeuvre par le champ de séquence de contrôle de trame détecte la plupart des erreurs survenant sur le support.</p>
+<p></p>
+<p>Il existe toujours un faible risque qu'une trame ayant un résultat CRC correct soit en fait endommagée. Des erreurs de bits peuvent s'annuler mutuellement lorsque la valeur CRC est calculée. Les protocoles de couche supérieure seraient alors requis pour détecter et corriger cette perte de données. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

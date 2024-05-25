@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.4.6 Protocoles de routage sans classe</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.4.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de routage dynamique</h1>
+        <h2>Types de protocoles de routage</h2>
+      </div>
+      <div id="content">
+<p>Les réseaux modernes n'utilisent plus l'adressage IP par classe et le masque de sous-réseau ne peut pas être déterminé par la valeur du premier octet. Les protocoles de routage IPv4 sans classe (RIPv2, EIGRP, OSPF et IS-IS) incluent tous les informations de masque de sous-réseau avec l'adresse réseau dans les mises à jour de routage. Les protocoles de routage sans classe prennent en charge le masquage de sous-réseau de longueur variable (VLSM) et le routage interdomaine sans classe (CIDR). </p>
+<p></p>
+<p>Les protocoles de routage IPv6 sont sans classe. Généralement, la distinction entre un protocole de routage par classe ou sans classe s'applique uniquement aux protocoles de routage IPv4. Tous les protocoles de routage IPv6 sont considérés comme étant sans classe car ils incluent la longueur de préfixe avec l'adresse IPv6. </p>
+<p></p>
+<p>Les Figures 1 à 5 illustrent la façon dont le routage sans classe résout les problèmes créés par le routage par classe :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Figure 1</b> - Dans cette conception de réseau discontinu, le protocole sans classe RIPv2 a été mis en œuvre sur l'ensemble des trois routeurs. Lorsque R1 transmet une mise à jour à R2, le protocole RIPv2 inclut les informations de masque de sous-réseau avec la mise à jour 172.16.1.0/24. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Figure 2</b> - R2 reçoit, traite et ajoute deux entrées dans la table de routage. La première ligne affiche l'adresse réseau par classe 172.16.0.0 avec le masque de sous-réseau /24 de la mise à jour. Il s'agit de la route parent. La seconde entrée indique l'adresse réseau VLSM 172.16.1.0 avec l'adresse de sortie et de tronçon suivant. On parle alors de « route enfant ». Les routes parent n'incluent jamais l'adresse IP d'interface de sortie ou de tronçon suivant. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Figure 3</b> - Lorsque R3 transmet une mise à jour à R2, le protocole RIPv2 inclut les informations de masque de sous-réseau avec la mise à jour 172.16.2.0/24.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Figure 4</b> - R2 reçoit, traite et ajoute une autre entrée de route enfant 172.16.2.0/24 sous l'entrée de route parent 172.16.0.0. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Figure 5</b> - R2 est maintenant au courant des réseaux divisés en sous-réseaux. </li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

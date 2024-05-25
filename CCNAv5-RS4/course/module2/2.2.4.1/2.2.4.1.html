@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.4.1 Sélection d&#x0027;une connexion de liaison de réseau étendu</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Choix d&#x0027;une technologie WAN</h1>
+        <h2>Sélection de services WAN</h2>
+      </div>
+      <div id="content">
+<p>Plusieurs facteurs doivent entrer en ligne de compte dans le choix de la connexion WAN. Pour que l'administrateur réseau puisse décider quelle technologie WAN correspond le mieux aux besoins de son entreprise, il doit répondre aux questions suivantes :</p>
+<p></p>
+<p>
+<b>Quel est l'objectif du WAN ? </b>
+</p>
+<p>Les facteurs déterminants sont les suivants :</p>
+<p>
+<ul>
+<li>L'entreprise va-t-elle connecter des filiales locales dans la même ville, connecter des filiales distantes ou bien connecter une seule filiale ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le WAN sera-t-il utilisé pour connecter des employés internes ou bien des partenaires et des clients externes, ou bien tout cela en même temps ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>L'entreprise va-t-elle se connecter à ses clients, se connecter à ses partenaires, se connecter à ses employés, ou bien tout cela en même temps ? </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le WAN offrira-t-il aux utilisateurs autorisés un accès complet ou limité à l'intranet de la société ? </li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Quelle en est l'étendue géographique ? </b>
+</p>
+<p>Les facteurs déterminants sont les suivants :</p>
+<p>
+<ul>
+<li>Le WAN est-il local, régional ou mondial ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le WAN doit-il assurer une résidence unique, des connexions multiples, ou une connexion distribuée ? </li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Quelles sont les conditions requises en matière de trafic ? </b>
+</p>
+<p>Les facteurs déterminants sont les suivants :</p>
+<p>
+<ul>
+<li>Quel est le type de trafic à prendre en charge (données uniquement, VoIP, vidéo, fichiers volumineux, diffusion de fichiers) ? Ceci détermine les spécifications de qualité et de performances. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Quel est le volume de chaque type de trafic (voix, vidéo ou données) à prendre en compte pour chaque destination ? Ceci détermine la capacité de bande passante nécessaire pour la connexion du réseau étendu à Internet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Quel est le niveau de qualité de service (QS) requis ? Ceci peut limiter le choix. Si le trafic est très sensible à la latence et à la gigue, éliminez les options de connexion WAN qui ne peuvent pas offrir la qualité nécessaire.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Quelles sont les exigences en matière de sécurité (intégrité des données, confidentialité et sécurité) ? Ce sont des facteurs importants si le trafic est de nature confidentielle, ou s'il offre des services essentiels, par exemple pour des services d'urgence.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

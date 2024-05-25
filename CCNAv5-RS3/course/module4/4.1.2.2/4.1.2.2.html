@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.2 Routeur domestique sans fil</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts de la technologie sans fil</h1>
+        <h2>Composants de WLAN</h2>
+      </div>
+      <div id="content">
+<p>Le type de périphérique d'infrastructure auquel un périphérique final s'associe et s'authentifie varie en fonction de la taille et des critères d'exigence du WLAN. </p>
+<p></p>
+<p>Par exemple, un utilisateur domestique interconnecte généralement des périphériques sans fil à l'aide d'un petit routeur sans fil intégré. Ces petits routeurs intégrés servent tout à la fois de :</p>
+<p>
+<ul>
+<li>
+<b>Point d'accès</b> : ils fournissent l'accès sans fil 802.11a/b/g/n/ac. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Commutateur</b> : ils jouent le rôle de commutateur Ethernet 10/100/1000, à quatre ports et bidirectionnel simultané, pour les périphériques filaires connectés. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Routeur</b> : ils offrent une passerelle par défaut pour la connexion à d'autres infrastructures de réseau.</li>
+</ul>
+</p>
+<p></p>
+<p>Par exemple, le routeur Cisco Linksys EA6500, illustré à la Figure 1, est couramment implémenté en tant que périphérique d'accès sans fil pour les petites entreprises et les particuliers. Ce routeur sans fil se connecte au modem ADSL du FAI et annonce ses services en envoyant des balises contenant son identifiant SSID (Service Set Identifier, identifiant de l'ensemble de services). Les périphériques internes détectent par voie sans fil l'identifiant SSID du routeur et tentent de s'associer à celui-ci et de s'authentifier pour accéder à Internet. </p>
+<p></p>
+<p>La charge prévue sur le routeur Linksys EA6500, dans cet environnement, est suffisamment faible pour pouvoir prendre en charge le provisionnement d'un WLAN, la norme 802.3 Ethernet et se connecter à un FAI. Il fournit également des fonctionnalités avancées, telles que l'accès haut débit, est optimisé pour prendre en charge la lecture vidéo en continu, est compatible IPv6, offre une QS, ainsi qu'une configuration facile grâce à Wi-Fi WPS, et des ports USB pour raccorder des imprimantes ou des disques externes. </p>
+<p></p>
+<p>En outre, pour les utilisateurs domestiques qui souhaitent étendre leurs services de réseau, aussi bien filaires que sans fil, des adaptateurs Powerline sans fil peuvent être implémentés. Grâce à ces appareils, un périphérique peut se connecter directement au réseau via les prises électriques, une solution idéale pour la vidéo HD en continu et les jeux en ligne. Ces adaptateurs sont très faciles à installer : il suffit de les brancher sur une prise secteur ou une rallonge et d'appuyer sur le bouton.</p>
+<p></p>
+<p>Cliquez sur le bouton Lecture de la Figure 2 pour afficher une présentation des adaptateurs Linksys Powerline.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

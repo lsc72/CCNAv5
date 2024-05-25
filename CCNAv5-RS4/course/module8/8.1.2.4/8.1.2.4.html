@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.2.4 Vérification de Syslog</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Syslog</h1>
+        <h2>Configuration de Syslog</h2>
+      </div>
+      <div id="content">
+<p>Vous pouvez utiliser la commande <span class="cmd"><b>show logging</b></span> pour afficher tous les messages qui ont été consignés. Lorsque le tampon de journalisation est important, il est pratique d'utiliser le symbole « <span class="cmd">|</span> » avec la commande <span class="cmd"><b>show logging</b></span>. Ce symbole permet à l'administrateur de définir spécifiquement quels messages doivent être affichés.</p>
+<p></p>
+<p>Par exemple, l'exécution de la commande <span class="cmd"><b>show logging </b></span><span class="cmd">|</span><span class="cmd"><b> include changed state to up</b></span>, comme le montre la Figure 1, permet de s'assurer que seules les notifications d'interface contenant le message « changed to state up », seront affichées. </p>
+<p></p>
+<p>Comme indiqué à la Figure 1, l'exécution de la commande <span class="cmd"><b>show logging </b></span><span class="cmd">|</span><span class="cmd"><b> begin June 12 22:35</b></span> affiche le contenu du tampon de journalisation à partir du 12 juin.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe indiqué à la Figure 2 pour configurer et vérifier le serveur Syslog sur R1.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

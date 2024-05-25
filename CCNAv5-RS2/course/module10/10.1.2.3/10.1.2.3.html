@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.1.2.3 Relais DHCPv4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 4</h1>
+        <h2>Configuration d&#x0027;un serveur DHCPv4 de base</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Qu'est-ce que le relais DHCP ?</b>
+</p>
+<p></p>
+<p>Dans le cas d'un réseau hiérarchique complexe, les serveurs d'entreprise se trouvent généralement dans une batterie de serveurs. Ces serveurs peuvent fournir au réseau des services DHCP, DNS, TFTP et FTP. Les clients du réseau ne sont généralement pas sur le même sous-réseau que ces serveurs. Afin de localiser les serveurs et de bénéficier des services, les clients utilisent souvent des messages de diffusion. </p>
+<p></p>
+<p>Sur la Figure 1, PC1 essaie d'acquérir une adresse IPv4 à partir d'un serveur DHCP à l'aide d'un message de diffusion. Dans ce scénario, le routeur R1 n'est pas configuré en tant que serveur DHCPv4 et ne transmet pas la diffusion. Étant donné que le serveur DHCPv4 se trouve sur un autre réseau, PC1 ne peut pas recevoir d'adresse IP via DHCP.</p>
+<p></p>
+<p>Sur la Figure 2, PC1 essaie de renouveler son adresse IPv4. Pour ce faire, la commande <span class="cmd"><b>ipconfig /release</b></span> est exécutée. On constate que l'adresse IPv4 est libérée et que l'adresse apparaît désormais comme étant 0.0.0.0. Ensuite, la commande <span class="cmd"><b>ipconfig /renew</b></span> est exécutée. Cette commande fait que PC1 envoie un message de diffusion DHCPDISCOVER. Le résultat indique que PC1 n'est pas en mesure de localiser le serveur DHCPv4. Étant donné que les routeurs ne transmettent pas les diffusions, la requête échoue.</p>
+<p></p>
+<p>Pour résoudre ce problème, un administrateur peut ajouter des serveurs DHCPv4 sur tous les sous-réseaux. Cependant, l'exécution de ces services sur plusieurs ordinateurs entraîne des surcharges administratives et des coûts supplémentaires. </p>
+<p></p>
+<p>Il est plus judicieux de configurer une adresse de diffusion Cisco IOS. Cette solution permet à un routeur de transférer les diffusions DHCPv4 au serveur DHCPv4. Lorsqu'un routeur transfère des requêtes de paramètre/attribution d'adresse, il agit comme agent de relais DHCPv4. Dans cet exemple de topologie, PC1 diffuserait une requête pour localiser un serveur DHCPv4. Si R1 avait été configuré en tant qu'agent de relais DHCPv4, il transfèrerait la requête au serveur DHCPv4 situé sur le sous-réseau 192.168.11.0.</p>
+<p></p>
+<p>Comme le montre la Figure 3, l'interface sur R1 recevant la diffusion est configurée avec la commande du mode de configuration d'interface <span class="cmd"><b>ip helper-address</b></span>. L'adresse du serveur DHCPv4 est configurée comme seul paramètre. </p>
+<p></p>
+<p>Lorsque R1 a été configuré en tant qu'agent de relais DHCPv4, il accepte les requêtes de diffusion liées au service DHCPv4, puis transmet ces demandes en monodiffusion à l'adresse IPv4 192.168.11.6. La commande <span class="cmd"><b>show ip interface</b></span> permet de vérifier la configuration.</p>
+<p></p>
+<p>Comme le montre la Figure 4, PC1 est maintenant en mesure d'acquérir une adresse IPv4 auprès du serveur DHCPv4.</p>
+<p></p>
+<p>DHCPv4 n'est pas le seul service que le routeur peut relayer suite à une configuration spécifique. Par défaut, la commande <span class="cmd"><b>ip helper-address</b></span> transfère les huit services UDP suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>Port 37 : heure </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Port 49 : TACACS</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Port 53 : DNS</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Port 67 : client BOOTP/DHCP</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Port 68 : serveur BOOTP/DHCP</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Port 69 : TFTP</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Port 137 : service de noms NetBIOS</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Port 138 : service de datagrammes NetBIOS</li>
+</ul>
+</p>
+<p></p>
+<p>À l'aide du contrôleur de syntaxe de la Figure 5, configurez les commandes de relais DHCPv4 sur le routeur approprié afin que PC3 puisse recevoir les informations d'adressage IPv4 du serveur DHCPv4. Reportez-vous à la Figure 1 pour consulter la topologie du réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.1.5 Analyse de la connexion TCP en trois étapes - Étape 2</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>TCP et UDP</h1>
+        <h2>Communication TCP</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Étape 2 : Le serveur accuse réception de la session de communication client-serveur et demande l'établissement d'une session de communication serveur-client.</b> </p>
+<p></p>
+<p>Le serveur TCP doit accuser réception du segment SYN provenant du client pour établir la session du client vers le serveur. Pour cela, le serveur renvoie au client un segment accompagné de l'indicateur ACK indiquant que le numéro d'accusé de réception est valide. Grâce à cet indicateur présent dans le segment, le client identifie ceci comme un accusé de réception indiquant que le serveur a reçu le SYN du client TCP. </p>
+<p></p>
+<p>La valeur du champ de numéro d'accusé de réception est égale à l'ISN + 1. Cela établit une session du client au serveur. L'indicateur ACK demeure défini pour le reste de la session. Souvenez-vous que la communication entre le client et le serveur est composée de deux sessions unidirectionnelles : une allant du client vers le serveur et l'autre du serveur vers le client. Dans le cadre de la deuxième étape de la connexion en trois étapes, le serveur doit déclencher la réponse au client. Pour lancer cette session, le serveur utilise l'indicateur SYN comme le client l'a fait. Il inclut l'indicateur de contrôle SYN dans l'en-tête pour établir une session du serveur vers le client. L'indicateur SYN précise que la valeur initiale du champ de numéro d'ordre se trouve dans l'en-tête. Cette valeur sert à effectuer le suivi du flux de données dans cette session, du serveur vers le client.</p>
+<p></p>
+<p>Comme l'illustre la figure ci-contre, les résultats de l'analyseur de protocole montrent que les indicateurs de contrôle ACK et SYN sont définis et les numéros d'ordre et d'accusé de réception relatifs sont affichés.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

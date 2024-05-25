@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.2.1 Encapsulation Ethernet</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole Ethernet</h1>
+        <h2>Attributs de trame Ethernet</h2>
+      </div>
+      <div id="content">
+<p>Depuis la création d'Ethernet en 1973, les normes se sont développées et spécifient désormais des versions plus rapides et plus flexibles. Cette capacité d'Ethernet de s'améliorer au fil du temps est l'une des raisons pour lesquelles il est devenu si populaire. Les versions précédentes d'Ethernet étaient relativement lentes, de l'ordre de 10 Mbit/s. Les versions d'Ethernet les plus récentes fonctionnent à 10 gigabits par seconde au minimum. La Figure 1 illustre l'évolution d'Ethernet au fil des versions.</p>
+<p></p>
+<p>Au niveau de la couche liaison de données, la structure de trame est presque la même pour tous les débits Ethernet. La structure de trame Ethernet ajoute des en-têtes et des codes de fin à l'unité de données de protocole de la couche 3 pour encapsuler le message envoyé.</p>
+<p></p>
+<p>L'en-tête et le code de fin Ethernet disposent tous les deux de plusieurs sections (ou champs) d'informations que le protocole Ethernet exploite. Chaque section de la trame est appelée un champ. Comme l'illustre la Figure 2, il existe deux types de tramage Ethernet : </p>
+<p>
+<ul>
+<li>La norme Ethernet IEEE 802.3, qui a été mise à jour plusieurs fois pour inclure de nouvelles technologies</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La norme Ethernet créée par DIX qui est maintenant appelée Ethernet II</li>
+</ul>
+</p>
+<p></p>
+<p></p>
+<p>Les différences entre les deux types de tramage sont minimes. La différence principale entre les deux normes est l'ajout d'un délimiteur de début de trame (SFD) et le remplacement du champ Type en un champ Longueur pour la norme 802.3.</p>
+<p></p>
+<p>Ethernet II est le format de trame Ethernet utilisé par les réseaux TCP/IP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

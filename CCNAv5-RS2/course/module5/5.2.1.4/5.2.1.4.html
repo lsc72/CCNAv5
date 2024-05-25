@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.1.4 Vérifier la configuration du routeur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout; 
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du routage inter-VLAN</h1>
+        <h2>Problèmes de configuration inter-VLAN</h2>
+      </div>
+      <div id="content">
+<p>Avec les configurations router-on-a-stick, il arrive souvent que l'ID de VLAN attribué à la sous-interface ne soit pas correct.</p>
+<p></p>
+<p>Comme l'illustre la Figure 1, le routeur R1 a été configuré avec le mauvais VLAN sur la sous-interface G0/0.10, empêchant les périphériques configurés sur le VLAN 10 de communiquer avec la sous-interface G0/0.10. Ces périphériques se retrouvent dans l'incapacité d'envoyer des données à d'autres VLAN du réseau.</p>
+<p></p>
+<p>Les commandes <span class="cmd"><b>show interface</b></span> et <span class="cmd"><b>show running-config</b></span> peuvent être utiles pour résoudre ce type de problème, comme indiqué dans la figure. </p>
+<p></p>
+<p>La commande <span class="cmd"><b>show interface</b></span> produisant de nombreux résultats, il est parfois difficile de détecter le problème, comme l'illustre la Figure 2. Cependant, la section supérieure mise en surbrillance indique que la sous-interface G0/0.10 sur le routeur R1 utilise le VLAN 100.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>show running-config</b></span> confirme que la sous-interface G0/0.10 sur le routeur R1 a été configurée pour autoriser l'accès au trafic VLAN 100 et non au trafic VLAN 10.</p>
+<p></p>
+<p>Pour corriger ce problème, configurez la sous-interface G0/0.10 sur le VLAN correct à l'aide de la commande de mode de configuration de sous-interface <span class="cmd"><b>encapsulation dot1q 10</b></span>. Lorsque la sous-interface a été affectée au VLAN correct, elle est accessible par des périphériques de ce VLAN et le routeur peut assurer le routage inter-VLAN.</p>
+<p></p>
+<p>Une vérification appropriée permet de traiter rapidement les problèmes de configuration du routeur, ce qui permet au routage inter-VLAN de fonctionner à nouveau correctement. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

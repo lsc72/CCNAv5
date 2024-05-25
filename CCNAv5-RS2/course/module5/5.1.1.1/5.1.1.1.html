@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.1.1 Qu&#x0027;est-ce que le routage inter-VLAN ?</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout; 
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du routage inter-VLAN</h1>
+        <h2>Fonctionnement du routage inter-VLAN</h2>
+      </div>
+      <div id="content">
+<p>Les VLAN permettent de segmenter les réseaux commutés. Les commutateurs de couche 2, tels que ceux de la gamme Catalyst 2960, peuvent être configurés par un professionnel des réseaux avec plus de 4 000 VLAN. Cependant, les commutateurs de couche 2 ont des fonctionnalités IPv4 et IPv6 très limitées et ne peuvent pas exécuter la fonction de routage des routeurs. Alors que les commutateurs de couche 2 disposent de plus de fonctionnalités IP, telles que la possibilité d'effectuer le routage statique, ils ne prennent pas en charge le routage dynamique. Malgré le grand nombre de VLAN possibles sur ces commutateurs, le routage statique est insuffisant. </p>
+<p></p>
+<p>Un VLAN est un domaine de diffusion : les ordinateurs se trouvant sur des VLAN différents ne peuvent donc pas communiquer sans l'intervention d'un dispositif de routage. Un périphérique qui prend en charge le routage de couche 3, tel qu'un routeur ou un commutateur multicouche, permet d'exécuter les fonctions de routage nécessaires. Quel que soit le périphérique utilisé, le processus de transfert du trafic réseau d'un VLAN à un autre à l'aide du routage est appelé routage inter-VLAN. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

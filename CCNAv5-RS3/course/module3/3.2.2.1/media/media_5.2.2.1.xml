@@ -1,0 +1,120 @@
+﻿<textcomponents>
+
+<!--Slide 1-->
+<component id="ID_s1_title">
+<text><![CDATA[<b>Vérification de la fonctionnalité EtherChannel</b>]]></text>
+</component>
+
+<component id="ID_s1_txt01">
+<text><![CDATA[Fa0/1]]></text>
+</component>
+
+<component id="ID_s1_txt02">
+<text><![CDATA[Fa0/2]]></text>
+</component>
+
+<component id="ID_s1_txt03">
+<text><![CDATA[Vérifie l'état de l'interface.]]></text>
+</component>
+
+<component id="ID_s1_txt04">
+<text><![CDATA[&lt;résultat omis&gt;]]></text>
+</component>
+
+<!--End Slide 1-->
+
+
+
+<!--Slide 2-->
+<component id="ID_s2_title">
+<text><![CDATA[<b>Vérification de la fonctionnalité EtherChannel</b>]]></text>
+</component>
+
+<component id="ID_s2_txt01">
+<text><![CDATA[Affiche un récapitulatif d'une ligne pour chaque groupe de canaux.]]></text>
+</component>
+
+<!--End Slide 2-->
+
+
+
+<!--Slide 3-->
+<component id="ID_s3_title">
+<text><![CDATA[<b>Vérification de la fonctionnalité EtherChannel</b>]]></text>
+</component>
+
+<component id="ID_s3_txt01">
+<text><![CDATA[Affiche les informations de Port Channel.]]></text>
+</component>
+
+<!--End Slide 3-->
+
+
+
+<!--Slide 4-->
+<component id="ID_s4_title">
+<text><![CDATA[<b>Vérification de la fonctionnalité EtherChannel</b>]]></text>
+</component>
+
+<component id="ID_s4_txt01">
+<text><![CDATA[Affiche le rôle d'une interface particulière dans un EtherChannel.]]></text>
+</component>
+
+<!--End Slide 4-->
+
+
+
+<!--Slide 5-->
+<component id="ID_s5_title">
+	<text><![CDATA[<b>Vérification de la fonctionnalité EtherChannel</b>]]></text>
+</component>
+
+<component id="ID_sc_reset">
+	<text><![CDATA[Réinitialiser]]></text>
+</component>
+<component id="ID_sc_showme">
+	<text><![CDATA[Démonstration]]></text>
+</component>
+<component id="ID_sc_showall">
+	<text><![CDATA[Afficher tout]]></text>
+</component>
+
+
+	<!--SyntaxChecker-->
+	<component id="ID_s5_SC5" fontFace='_typewriter' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font size='10' face="_sans" color="#0000FF">***Vous devez entrer la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font></b>]]></feedback>
+
+		<existingcommands><![CDATA[<font size='10' face="_sans"><b>Affichez l'état de l'interface port-channel&nbsp;1.</b></font>]]></existingcommands>
+
+		<command prompt="S1#">
+			<correctresponse><![CDATA[show interface Port-channel1]]></correctresponse>
+				<deviceresponse><![CDATA[Port-channel1 is up, line protocol is up (connected) <br>  Hardware is EtherChannel, address is 0cd9.96e8.8a01<br>     (bia 0cd9.96e8.8a01) <br>  MTU 1500 bytes, BW 200000 Kbit/sec, DLY 100 usec, <br>     reliability 255/255, txload 1/255, rxload 1/255 <br>  Encapsulation ARPA, loopback not set <br>  Keepalive set (10 sec) <br>  Full-duplex, 100Mb/s, link type is auto, media type is unknown <br>  input flow-control is off, output flow-control is unsupported <br>  Members in this channel: Fa0/1 Fa0/2 <br>  ARP type: ARPA, ARP Timeout 04:00:00 <br>  Last input 00:00:00, output 00:04:21, output hang never <br>  Last clearing of "show interface" counters never <br>  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output <br>     drops: 0 <br>  Queueing strategy: fifo <br>  Output queue: 0/40 (size/max) <br>  5 minute input rate 2000 bits/sec, 2 packets/sec <br>  5 minute output rate 1000 bits/sec, 1 packets/sec <br>     799 packets input, 89672 bytes, 0 no buffer <br>     Received 689 broadcasts (585 multicasts) <br>     0 runts, 0 giants, 0 throttles <br>     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored <br>     0 watchdog, 585 multicast, 0 pause input <br>     0 input packets with dribble condition detected <br>     352 packets output, 46085 bytes, 0 underruns <br>     0 output errors, 0 collisions, 1 interface resets <br>     0 unknown protocol drops <br>     0 babbles, 0 late collision, 0 deferred <br>     0 lost carrier, 0 no carrier, 0 pause output <br>     0 output buffer failures, 0 output buffers swapped out]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="_sans"><b>Affichez le récapitulatif des EtherChannel configurés.</b></font>]]></instruction>
+		</command>	
+
+		<command prompt="S1#">
+			<correctresponse><![CDATA[show etherchannel summary]]></correctresponse>
+				<deviceresponse><![CDATA[Flags:  D - down        P - bundled in port-channel <br>        I - stand-alone s - suspended <br>        H - Hot-standby (LACP only) <br>        R - Layer3      S - Layer2 <br>        U - in use      f - failed to allocate aggregator <br> <br>        M - not in use, minimum links not met <br>        u - unsuitable for bundling <br>        w - waiting to be aggregated <br>        d - default port <br> <br> <br>Number of channel-groups in use: 1 <br>Number of aggregators:           1 <br> <br>Group  Port-channel  Protocol    Ports <br>------+-------------+-----------+----------------------------<br>1      Po1(SU)         LACP      Fa0/1(P)    Fa0/2(P)]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="_sans"><b>Affichez les informations relatives au port-channel de l'Etherchannel.</b></font>]]></instruction>
+		</command>
+
+		<command prompt="S1#">
+			<correctresponse><![CDATA[show etherchannel Port-channel]]></correctresponse>
+				<deviceresponse><![CDATA[Channel-group listing: <br>---------------------- <br> <br>Group: 1 <br>---------- <br>Port-channels in the group: <br>--------------------------- <br> <br>Port-channel: Po1    (Primary Aggregator) <br> <br>------------ <br> <br>Age of the Port-channel   = 0d:00h:25m:17s <br>Logical slot/port   = 2/1          Number of ports = 2 <br>HotStandBy port = null <br>Port state          = Port-channel Ag-Inuse <br>Protocol            =   LACP <br>Port security       = Disabled <br> <br>Ports in the Port-channel: <br> <br>Index   Load   Port     EC state        No of bits <br>------+------+------+------------------+----------- <br>  0     00     Fa0/1    Active             0 <br>  0     00     Fa0/2    Active             0 <br> <br>Time since last port bundled:    0d:00h:05m:41s    Fa0/2 <br>Time since last port Un-bundled: 0d:00h:05m:48s    Fa0/2]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="_sans"><b>Affichez les informations relatives à l'Etherchannel pour F0/1 en utilisant la commande show interfaces.</b></font>]]></instruction>
+		</command>
+		
+		<command prompt="S1#">
+			<correctresponse><![CDATA[show interfaces f0/1 etherchannel]]></correctresponse>
+				<deviceresponse><![CDATA[Port state    = Up Mstr Assoc In-Bndl <br>Channel group = 1     Mode = Active   Gcchange = - <br>Port-channel  = Po1   GC   =   -      Pseudo port-channel = Po1 <br>Port index    = 0     Load = 0x00     Protocol =   LACP <br><br>Flags:  S - Device is sending Slow LACPDUs<br>        F - Device is sending fast LACPDUs.<br>        A - Device is in active mode.<br>        P - Device is in passive mode.  <br><br>Local information: <br>                        LACP port  Admin  Oper  Port    Port <br>Port    Flags   State   Priority   Key    Key   Number  State <br>Fa0/1   SA      bndl    32768      0x1    0x1   0x102   0x3D  <br> <br>Partner's information: <br><br><font size = '9' face="_typewriter">              LACP port                    Admin Oper Port   Port<br>Port   Flags  Priority  Dev ID         Age key   Key  Number State <br>Fa0/1  SA     32768     0cd9.96d2.4000 4s  0x0   0x1  0x102  0x3D </font><br> <br>Age of the port in the current state: 0d:00h:24m:59s]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="_sans"><b>Vous avez correctement vérifié EtherChannel.</font>]]></instruction>
+		</command>
+		
+		<command prompt=""/>
+	</component>
+	<!--End SyntaxChecker-->
+	
+<!--End Slide 5-->
+	
+	
+</textcomponents>

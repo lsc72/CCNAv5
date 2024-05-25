@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.2 Méthodes d&#x0027;accès : Telnet, SSH et AUX</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>IOS Bootcamp</h1>
+        <h2>Accès à un périphérique Cisco IOS</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Telnet </b>
+</p>
+<p></p>
+<p>Telnet est une méthode permettant de créer à distance une session CLI sur un périphérique, par le biais d'une interface virtuelle, via un réseau. À la différence des connexions console, les sessions Telnet requièrent des services réseau actifs sur le périphérique. Le périphérique réseau doit disposer d'au moins une interface active configurée avec une adresse Internet, par exemple une adresse IPv4. Les périphériques Cisco IOS comportent un processus serveur Telnet qui permet aux utilisateurs d'entrer des commandes de configuration à partir d'un client Telnet. En plus de prendre en charge le processus serveur Telnet, les périphériques Cisco IOS contiennent également un client Telnet. Cela permet à un administrateur réseau d'établir une connexion Telnet à partir de la CLI du périphérique Cisco vers tout autre périphérique prenant en charge un processus serveur Telnet. </p>
+<p></p>
+<p>
+<b>SSH</b>
+</p>
+<p></p>
+<p>Le protocole Secure Shell (SSH) fournit une connexion à distance semblable à Telnet, sauf qu'il utilise des services réseau plus sécurisés. SSH fournit une authentification par mot de passe plus résistante que celle de Telnet et emploie un chiffrement lors du transport des données de la session. Ceci préserve la confidentialité de l'ID d'utilisateur, du mot de passe et des détails de la session de gestion. Il est fortement conseillé d'utiliser SSH plutôt que Telnet dans la mesure du possible.</p>
+<p></p>
+<p>La plupart des versions de Cisco IOS comprennent un serveur SSH. Dans certains périphériques, ce service est activé par défaut. D'autres périphériques requièrent une activation manuelle du serveur SSH. Les périphériques IOS incluent également un client SSH permettant d'établir des sessions SSH avec d'autres périphériques. </p>
+<p></p>
+<p>
+<b>Port</b>
+</p>
+<p></p>
+<p>Il est possible d'établir une session CLI à distance par le biais d'une connexion téléphonique commutée, à l'aide d'un modem connecté au port auxiliaire (AUX) d'un routeur (mis en surbrillance dans la figure). Tout comme la connexion console, la méthode d'accès AUX est une connexion hors réseau et ne nécessite aucun service réseau pour être configurée ou disponible sur le périphérique. En cas de défaillance des services réseau, un administrateur à distance peut accéder au commutateur ou au routeur par le biais d'une ligne téléphonique. </p>
+<p></p>
+<p>Le port AUX peut également s'utiliser localement, comme le port de console, avec une connexion directe à un ordinateur exécutant un programme d'émulation de terminal. Cependant, il est préférable d'utiliser le port de console plutôt que le port AUX pour le dépannage, car celui-ci affiche par défaut les messages de démarrage, de débogage et d'erreur du routeur. </p>
+<p></p>
+<p>
+<b>Remarque :</b> les commutateurs Cisco Catalyst ne prennent pas en charge les connexions auxiliaires.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

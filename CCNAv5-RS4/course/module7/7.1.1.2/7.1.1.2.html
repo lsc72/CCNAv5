@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.1.2 Avantages des réseaux privés virtuels</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Réseaux privés virtuels (VPN)</h1>
+        <h2>Notions de base des VPN</h2>
+      </div>
+      <div id="content">
+<p>Comme le montre la figure, un VPN utilise des connexions virtuelles qui sont routées via Internet depuis le réseau privé de l'entreprise jusqu'au site ou à l'hôte distant. Les informations issues d'un réseau privé sont transportées de manière sécurisée sur le réseau public afin de constituer un réseau virtuel. </p>
+<p></p>
+<p>Les avantages d'un VPN sont les suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Réductions des coûts</b> : les VPN permettent aux entreprises d'utiliser un transport Internet tiers et économique pour la connexion des bureaux et des utilisateurs distants au site principal, éliminant par conséquent le besoin de disposer de liaisons WAN et de bancs de modem dédiés et onéreux. De plus, avec l'apparition de technologies économiques haut débit, telles que la technologie DSL, les entreprises peuvent utiliser les VPN pour diminuer leurs coûts de connectivité tout en augmentant en même temps la bande passante de connexion à distance.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Évolutivité</b> : les VPN permettent aux entreprises d'utiliser l'infrastructure d'Internet des FAI et des périphériques, ce qui permet d'ajouter facilement de nouveaux utilisateurs. Les grandes entreprises peuvent ajouter des volumes importants de capacité sans ajouter d'infrastructure importante.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Compatibilité avec la technologie haut débit</b> : les VPN permettent aux travailleurs mobiles et aux télétravailleurs de bénéficier d'une connectivité haut débit rapide, comme la technologie DSL et le câble, pour accéder au réseau de leur entreprise. La connectivité haut débit offre flexibilité et efficacité. Les connexions haut débit rapides peuvent également être une solution rentable pour connecter des bureaux distants.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Sécurité</b> : les VPN peuvent inclure des mécanismes de sécurité offrant un niveau de sécurité très élevé grâce à l'utilisation de protocoles de chiffrement et d'authentification avancés qui protègent les données de tout accès non autorisé.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

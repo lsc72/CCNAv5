@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.2.8 Adressage de ports TCP et UDP (suite)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.2.8_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole de couche Transport</h1>
+        <h2>Présentation des protocoles TCP et UDP</h2>
+      </div>
+      <div id="content">
+<p>L'Internet Assigned Numbers Authority (IANA) attribue les numéros de port. L'IANA est une agence de normalisation responsable de l'affectation de diverses normes d'adressage.</p>
+<p></p>
+<p>Il existe différents types de numéros de port, comme illustré à la Figure 1 :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Ports réservés (numéros 0 à 1023)</b> – Ces numéros sont réservés à des services et applications. Ils sont généralement utilisés pour les applications telles que HTTP (serveur Web), Internet Message Access Protocol (IMAP)/Simple Mail Transfer Protocol (SMTP) (serveur de messagerie) et Telnet. En définissant ces ports réservés pour une utilisation par des applications serveur, il est possible de programmer les applications clientes de façon à ce qu'elles demandent à être connectées à un port précis et au service qui lui est associé.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Ports inscrits (numéros 1024 à 49151)</b> – Ces numéros de port sont affectés à des processus ou applications d'utilisateurs. Ces processus sont essentiellement des applications particulières qu'un utilisateur a choisi d'installer plutôt que des applications courantes qui recevraient un numéro de port réservé. Un client peut également sélectionner dynamiquement ces ports en tant que ports source lorsqu'ils ne sont pas utilisés par une ressource serveur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Ports privés ou dynamiques (numéros 49152 à 65535)</b> – Également appelés ports éphémères, ces ports sont généralement affectés de façon dynamique à des applications clientes lorsqu'une connexion à un service est initiée par un client. Le port dynamique est très souvent utilisé pour identifier l'application cliente durant la communication, alors que le client utilise le port réservé pour identifier et se connecter au service demandé au serveur. Il est relativement rare pour un client de se connecter à un service par le biais d'un port dynamique ou privé (bien que certains programmes de partage de fichiers peer-to-peer utilisent ces ports).</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 2 représente certains des ports réservés et inscrits dans le cadre du protocole TCP. La Figure 3 représente certains des ports réservés et inscrits dans le cadre du protocole UDP. </p>
+<p></p>
+<p>
+<b>Utilisation du protocole TCP et du protocole UDP</b>
+</p>
+<p></p>
+<p>Certaines applications peuvent utiliser à la fois le protocole TCP et le protocole UDP (Figure 4). En effet, la faible surcharge du protocole UDP permet au service DNS de gérer très rapidement de nombreuses requêtes de clients. Parfois, cependant, l'envoi des informations demandées exige la fiabilité du protocole TCP. Dans ce cas, le port réservé 53 est utilisé par les deux protocoles en association avec ce service.</p>
+<p></p>
+<p>Une liste à jour des numéros de port et des applications associées est disponible sur le site Web de l'organisme IANA. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

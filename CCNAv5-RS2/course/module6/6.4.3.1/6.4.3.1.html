@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.4.3.1 Routes statiques flottantes</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.4.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration des routes récapitulatives et des routes statiques flottantes</h1>
+        <h2>Configuration des routes statiques flottantes</h2>
+      </div>
+      <div id="content">
+<p>Les routes statiques flottantes sont des routes statiques qui ont une distance administrative supérieure à la distance administrative d'une autre route statique ou de routes dynamiques. Elles sont très utiles comme routes de secours pour une liaison principale, comme le montre la figure. </p>
+<p></p>
+<p>Par défaut, les routes statiques ont une distance administrative égale à 1, ce qui les rend préférables aux routes acquises à partir des protocoles de routage dynamique. Par exemple, les distances administratives de certains protocoles de routage dynamique courants sont les suivantes :</p>
+<p>
+<ul>
+<li>EIGRP = 90</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>IGRP = 100</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>OSPF = 110</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>IS-IS = 115</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>RIP = 120</li>
+</ul>
+</p>
+<p></p>
+<p>La distance administrative d'une route statique peut être augmentée pour rendre la route moins souhaitable que celle d'une autre route statique ou d'une route apprise via un protocole de routage dynamique. De cette manière, la route statique « flotte » et n'est pas utilisée lorsque la route dont la distance administrative est meilleure est active. Toutefois, si la route préférée est perdue, la route statique flottante peut relayer, et le trafic peut être envoyé par cette autre route. </p>
+<p></p>
+<p>Une route statique flottante peut être utilisée pour fournir une route de secours à plusieurs interfaces ou réseaux sur un routeur. Elle est également indépendante par rapport à l'encapsulation, ce qui signifie qu'elle peut être utilisée pour transférer des paquets à partir de n'importe quelle interface, quel que soit le type d'encapsulation. </p>
+<p></p>
+<p>Une considération importante en ce qui concerne les routes statiques flottantes est qu'elles sont affectées par le temps de convergence. Une route qui interrompt et rétablit constamment une connexion peut entraîner une activation inutile de l'interface de secours.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

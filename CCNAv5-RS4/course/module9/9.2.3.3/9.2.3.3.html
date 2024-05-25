@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.3.3 Étape 1 : vérification de la couche physique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Dépannage de la connectivité IP</h2>
+      </div>
+      <div id="content">
+<p>Tous les périphériques réseau sont des systèmes informatiques spécialisés. Au minimum, ces périphériques se composent d'un processeur, d'une mémoire vive et d'un espace de stockage, permettant au périphérique de démarrer et d'exécuter un système d'exploitation ainsi que des interfaces. Cette structure permet la réception et la transmission de trafic réseau. Lorsqu'un administrateur réseau détecte l'existence d'un problème sur un périphérique donné et qu'il semble que ce problème soit lié au matériel, il est utile de vérifier le fonctionnement de ces composants génériques. Les commandes Cisco IOS les plus couramment utilisées à cette fin sont <span class="cmd"><b>show processes cpu</b></span>,<span class="cmd"><b> show memory</b></span> et <span class="cmd"><b>show interfaces</b></span>. Cette rubrique présente la commande <span class="cmd"><b>show interfaces</b></span>.</p>
+<p></p>
+<p>Lorsque vous dépannez des problèmes de performances et que vous suspectez la présence d'une défaillance matérielle, vous pouvez utiliser la commande <span class="cmd"><b>show interfaces</b></span> afin de vérifier les interfaces par lesquelles transite le trafic. </p>
+<p></p>
+<p>Le résultat de la commande <span class="cmd"><b>show interfaces</b></span> illustré dans la figure répertorie un certain nombre de statistiques importantes qu'il est possible de vérifier :</p>
+<p>
+<ul>
+<li>
+<b>Abandons de file d'attente d'entrée (Input queue drops)</b> : les abandons de file d'attente d'entrée (ainsi que les compteurs associés « ignored » et « throttle ») signifient qu'à un certain moment, un trafic supérieur à ce que pouvait traiter le routeur a été transmis à celui-ci. Cela ne signifie pas nécessairement qu'il y a un problème. Cette situation peut être tout à fait normale pendant les périodes de pointe de trafic. Cela peut toutefois indiquer que le processeur ne peut pas traiter les paquets à temps, par conséquent si ce nombre est relativement élevé, cela vaut la peine de déterminer à quels moments ces compteurs augmentent et dans quelle mesure cela se réfère à l'utilisation du processeur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Abandons de file d'attente de sortie (Output queue drops)</b> : les abandons de file d'attente de sortie indiquent que des paquets ont été abandonnés en raison de l'encombrement sur l'interface. L'existence d'abandons de sortie est normale en tout point où le trafic d'entrée d'agrégation est supérieur au trafic de sortie. Pendant les périodes de pointe de trafic, des paquets sont abandonnés si du trafic est fourni à l'interface plus rapidement qu'il ne peut être envoyé. Toutefois, même si ce comportement est considéré comme étant normal, il entraîne des abandons de paquets et des retards de mise en file d'attente, ce qui implique que les applications sensibles à ce comportement, par exemple VoIP, risquent de connaître des problèmes de performances. La présence constante d'abandons de sortie peut indiquer la nécessité d'implémenter un mécanisme de mise en file d'attente avancé afin de fournir une QS correcte à chaque application. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Erreurs en entrée</b> : les erreurs en entrée indiquent des erreurs qui sont rencontrées lors de la réception de la trame, comme des erreurs CRC. Un nombre élevé d'erreurs CRC peut indiquer des problèmes de câblage, des problèmes matériels d'interface ou, dans un réseau Ethernet, des incohérences dans les paramètres bidirectionnels.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Erreurs en sortie</b> : les erreurs en sortie indiquent des erreurs, telles que des collisions, rencontrées lors de la transmission d'une trame. Dans la plupart des réseaux Ethernet actuels, la transmission bidirectionnelle simultanée constitue la norme et la transmission bidirectionnelle non simultanée l'exception. Dans le cas de la transmission bidirectionnelle simultanée, les collisions de fonctionnement ne peuvent pas se produire ; par conséquent, les collisions et plus particulièrement les collisions tardives indiquent souvent des incohérences dans les paramètres bidirectionnels.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

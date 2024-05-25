@@ -1,0 +1,214 @@
+﻿<textcomponents> <!--Feedback for use by actionscript--> <!--Do not need to duplicate for each activity-->
+
+<component id="ID_correctTitle">
+<text><![CDATA[<b>Réponse correcte  </b>]]></text>
+</component>
+
+<component id="ID_correctBody">
+<text><![CDATA[Correct&nbsp;!]]></text>
+</component>
+
+<component id="ID_incorrectTitle">
+<text><![CDATA[<b>Réponse incorrecte  </b>]]></text>
+</component>
+
+<component id="ID_incorrectBody">
+<text><![CDATA[Cette réponse est incorrecte. Cliquez sur Réinitialiser pour réessayer.]]></text>
+</component>
+
+<component id="ID_blankTitle">
+<text><![CDATA[<b>Sans réponse  </b>]]></text>
+</component>
+
+<component id="ID_blankBody">
+<text><![CDATA[Sélectionnez une réponse.]]></text>
+</component> <!--slide 1-->
+<component id="ID_s1_inst">
+<text><![CDATA[<b>Exercice&nbsp;: vérifiez votre compréhension des listes de contrôle d'accès   </b><br><br>Cliquez sur les boutons 2 à 6 pour effectuer l'exercice. Cliquez sur le bouton&nbsp;1 pour consulter cette topologie à tout moment. Pour continuer, appuyez maintenant sur le bouton&nbsp;2. ]]></text>
+</component>
+
+<component id='ID_s1_txt01'>
+<text><![CDATA[Internet]]></text>
+</component>
+
+<component id='ID_s1_txt02'>
+<text><![CDATA[Serveur FTP]]></text>
+</component>
+
+<component id="ID_s1_correctBody">
+<text><![CDATA[Correct&nbsp;! Cliquez sur le bouton&nbsp;2 pour continuer.]]></text>
+</component> <!--slide 2-->
+<component id="ID_s2_inst">
+<text><![CDATA[<b>Exercice&nbsp;: vérifiez votre compréhension des listes de contrôle d'accès  </b><br><br><b>Question&nbsp;1 </b>&nbsp;: Une seule liste d'accès doit être créée pour empêcher les réseaux 10.10.1.0/24 et 10.10.20.0/24 d'atteindre le réseau 10.10.30.0/24. L'hôte 10.10.1.1 doit avoir accès au serveur FTP uniquement. Le reste du réseau 10.0.0.0 doit avoir accès au réseau 10.10.30.0/24. Tous les périphériques doivent avoir accès à Internet. Cliquez sur le bouton&nbsp;3 pour continuer.]]></text>
+</component>
+
+<component id='ID_s2_txt01'>
+<text><![CDATA[Quelle doit être la première ligne de la nouvelle liste d'accès décrite dans le scénario pratique ci-dessus&nbsp;?]]></text>
+</component>
+
+<component id='ID_s2_txt02'>
+<text><![CDATA[<font face="_typewriter">Router(config)# <b>access-list 10 deny 10.10.1.0 0.0.0.255  </b></font>]]></text>
+</component>
+
+<component id='ID_s2_txt03'>
+<text><![CDATA[<font face="_typewriter">Router(config)# <b>access-list 101 permit ip 10.10.1.1 0.0.0.0 10.10.30.2 0.0.0.0  </b></font>]]></text>
+</component>
+
+<component id='ID_s2_txt04'>
+<text><![CDATA[<font face="_typewriter">Router(config)# <b>access-list 101 permit ip 10.10.1.1 0.0.0.0 10.10.30.0 0.0.0.255  </b></font>]]></text>
+</component>
+
+<component id='ID_s2_txt05'>
+<text><![CDATA[<font face="_typewriter">Router(config)# <b>access-list 101 deny ip 10.10.1.0 0.0.0.255 10.10.30.0 0.0.0.255  </b></font>]]></text>
+</component>
+
+<component id='ID_s2_check'>
+	<text><![CDATA[Contrôler]]></text>
+</component>
+
+<component id='ID_s2_reset'>
+	<text><![CDATA[Réinitialiser]]></text>
+</component>
+<component id="ID_s2_correctBody">
+<text><![CDATA[Correct&nbsp;! Cliquez sur le bouton&nbsp;3 pour continuer.]]></text>
+</component> <!--slide 3-->
+<component id="ID_s3_inst">
+<text><![CDATA[<b>Exercice&nbsp;: vérifiez votre compréhension des listes de contrôle d'accès  </b><br><br><b>Question&nbsp;2 </b>&nbsp;: Une seule liste d'accès doit être créée pour empêcher les réseaux 10.10.1.0/24 et 10.10.20.0/24 d'atteindre le réseau 10.10.30.0/24. L'hôte 10.10.1.1 doit avoir accès au serveur FTP uniquement. Le reste du réseau 10.0.0.0 doit avoir accès au réseau 10.10.30.0/24. Tous les périphériques doivent avoir accès à Internet. Cliquez sur le bouton&nbsp;4 pour continuer.]]></text>
+</component>
+
+<component id='ID_s3_txt01'>
+<text><![CDATA[Quelle doit être la deuxième ligne de la nouvelle liste d'accès décrite dans le scénario pratique ci-dessus&nbsp;?]]></text>
+</component>
+
+<component id='ID_s3_txt02'>
+<text><![CDATA[<font face="_typewriter">Router(config)# <b>access-list 101 permit ip host 10.10.1.1 host 10.10.30.1  </b></font>]]></text>
+</component>
+
+<component id='ID_s3_txt03'>
+<text><![CDATA[<font face="_typewriter">Router(config)# <b>access-list 101 permit ip host 10.10.1.1 host 10.10.30.0 0.0.0.255  </b></font>]]></text>
+</component>
+
+<component id='ID_s3_txt04'>
+<text><![CDATA[<font face="_typewriter">Router(config)# <b>access-list 101 deny ip 10.10.1.0 0.0.0.255 10.10.30.0 0.0.0.255  </b></font>]]></text>
+</component>
+
+<component id='ID_s3_txt05'>
+<text><![CDATA[<font face="_typewriter">Router(config)# <b>access-list 101 deny ip 10.10.1.0 0.0.0.255 any  </b></font>]]></text>
+</component>
+
+<component id='ID_s3_check'>
+	<text><![CDATA[Contrôler]]></text>
+</component>
+
+<component id='ID_s3_reset'>
+	<text><![CDATA[Réinitialiser]]></text>
+</component>
+
+<component id="ID_s3_correctBody">
+<text><![CDATA[Correct&nbsp;! Cliquez sur le bouton&nbsp;4 pour continuer.]]></text>
+</component> <!--slide 4-->
+<component id="ID_s4_inst">
+<text><![CDATA[<b>Exercice&nbsp;: vérifiez votre compréhension des listes de contrôle d'accès  </b><br><br><b>Question&nbsp;3 </b>&nbsp;: Une seule liste d'accès doit être créée pour empêcher les réseaux 10.10.1.0/24 et 10.10.20.0/24 d'atteindre le réseau 10.10.30.0/24. L'hôte 10.10.1.1 doit avoir accès au serveur FTP uniquement. Le reste du réseau 10.0.0.0 doit avoir accès au réseau 10.10.30.0/24. Tous les périphériques doivent avoir accès à Internet. Cliquez sur le bouton&nbsp;5 pour continuer.]]></text>
+</component>
+
+<component id='ID_s4_txt01'>
+<text><![CDATA[Quelle doit être la troisième ligne de la nouvelle liste d'accès décrite dans le scénario pratique ci-dessus&nbsp;?]]></text>
+</component>
+
+<component id='ID_s4_txt02'>
+<text><![CDATA[<font face="_typewriter">Router(config)# <b>access-list 101 permit ip host 10.10.1.1 host 10.10.30.1 eq ftp  </b></font>]]></text>
+</component>
+
+<component id='ID_s4_txt03'>
+<text><![CDATA[<font face="_typewriter">Router(config)# <b>access-list 101 permit ip host 10.10.1.1 10.10.30.0 0.0.0.255 eq any  </b></font>]]></text>
+</component>
+
+<component id='ID_s4_txt04'>
+<text><![CDATA[<font face="_typewriter">Router(config)# <b>access-list 101 deny ip 10.10.20.0 0.0.0.255 10.10.30.0 0.0.0.255 eq any  </b></font>]]></text>
+</component>
+
+<component id='ID_s4_txt05'>
+<text><![CDATA[<font face="_typewriter">Router(config)# <b>access-list 101 deny ip 10.20.1.0 0.0.0.255 any  </b></font>]]></text>
+</component>
+
+<component id='ID_s4_check'>
+	<text><![CDATA[Contrôler]]></text>
+</component>
+
+<component id='ID_s4_reset'>
+	<text><![CDATA[Réinitialiser]]></text>
+</component>
+<component id="ID_s4_correctBody">
+<text><![CDATA[Correct&nbsp;! Cliquez sur le bouton&nbsp;5 pour continuer.]]></text>
+</component> <!--slide 5-->
+<component id="ID_s5_inst">
+<text><![CDATA[<b>Exercice&nbsp;: vérifiez votre compréhension des listes de contrôle d'accès  </b><br><br><b>Question&nbsp;4 </b>&nbsp;: Une seule liste d'accès doit être créée pour empêcher les réseaux 10.10.1.0/24 et 10.10.20.0/24 d'atteindre le réseau 10.10.30.0/24. L'hôte 10.10.1.1 doit avoir accès au serveur FTP uniquement. Le reste du réseau 10.0.0.0 doit avoir accès au réseau 10.10.30.0/24. Tous les périphériques doivent avoir accès à Internet. Cliquez sur le bouton&nbsp;6 pour continuer.]]></text>
+</component>
+
+<component id='ID_s5_txt01'>
+<text><![CDATA[Quelle doit être la quatrième ligne de la nouvelle liste d'accès décrite dans le scénario pratique ci-dessus&nbsp;?]]></text>
+</component>
+
+<component id='ID_s5_txt02'>
+<text><![CDATA[<font face="_typewriter">Router(config)# <b>access-list 10 permit ip host 10.0.0.0 0.0.0.255  </b></font>]]></text>
+</component>
+
+<component id='ID_s5_txt03'>
+<text><![CDATA[<font face="_typewriter">Router(config)# <b>access-list 101 permit ip 10.0.0.0 0.0.0.0 10.10.30.0 0.0.0.255  </b></font>]]></text>
+</component>
+
+<component id='ID_s5_txt04'>
+<text><![CDATA[<font face="_typewriter">Router(config)# <b>access-list 101 permit ip 10.0.0.0 0.255.255.255 any  </b></font>]]></text>
+</component>
+
+<component id='ID_s5_txt05'>
+<text><![CDATA[<font face="_typewriter">Router(config)# <b>access-list 101 deny ip 10.10.1.0 0.0.0.255 10.10.30.0 0.0.0.255 eq any  </b></font>]]></text>
+</component>
+
+<component id='ID_s5_check'>
+	<text><![CDATA[Contrôler]]></text>
+</component>
+
+<component id='ID_s5_reset'>
+	<text><![CDATA[Réinitialiser]]></text>
+</component>
+
+<component id="ID_s5_correctBody">
+<text><![CDATA[Correct&nbsp;! Cliquez sur le bouton&nbsp;6 pour continuer.]]></text>
+</component> <!--slide 6-->
+<component id="ID_s6_inst">
+<text><![CDATA[<b>Exercice&nbsp;: vérifiez votre compréhension des listes de contrôle d'accès  </b><br><br><b>Question&nbsp;5 </b>&nbsp;: Une seule liste d'accès doit être créée pour empêcher les réseaux 10.10.1.0/24 et 10.10.20.0/24 d'atteindre le réseau 10.10.30.0/24. L'hôte 10.10.1.1 doit avoir accès au serveur FTP uniquement. Le reste du réseau 10.0.0.0 doit avoir accès au réseau 10.10.30.0/24. Tous les périphériques doivent avoir accès à Internet.]]></text>
+</component>
+
+<component id='ID_s6_txt01'>
+<text><![CDATA[Où la nouvelle liste d'accès décrite dans le scénario pratique ci-dessus doit-elle être placée pour être efficace&nbsp;?]]></text>
+</component>
+
+<component id='ID_s6_txt02'>
+<text><![CDATA[S 0/2/0 sur RTB en tant que liste sortante]]></text>
+</component>
+
+<component id='ID_s6_txt03'>
+<text><![CDATA[G 0/0 sur RTB en tant que liste sortante]]></text>
+</component>
+
+<component id='ID_s6_txt04'>
+<text><![CDATA[G 0/1 sur RTA en tant que liste entrante]]></text>
+</component>
+
+<component id='ID_s6_txt05'>
+<text><![CDATA[G 0/1 sur RTA en tant que liste entrante]]></text>
+</component>
+
+<component id='ID_s6_check'>
+	<text><![CDATA[Contrôler]]></text>
+</component>
+
+<component id='ID_s6_reset'>
+	<text><![CDATA[Réinitialiser]]></text>
+</component>
+<component id="ID_s6_correctBody">
+<text><![CDATA[Correct&nbsp;!]]></text>
+</component>
+
+</textcomponents>

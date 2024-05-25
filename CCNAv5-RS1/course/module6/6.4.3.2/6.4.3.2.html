@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.4.3.2 Passerelle par défaut sur un commutateur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.4.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration d&#x0027;un routeur Cisco</h1>
+        <h2>Configuration de la passerelle par défaut</h2>
+      </div>
+      <div id="content">
+<p>Une passerelle par défaut est utilisée par tous les périphériques qui requièrent l'utilisation d'un routeur pour déterminer le meilleur chemin vers une destination distante. Les périphériques finaux nécessitent des adresses de passerelle par défaut, tout comme les périphériques intermédiaires tels que le commutateur Cisco IOS. </p>
+<p></p>
+<p>Les informations d'adresse IP d'un commutateur sont uniquement nécessaires pour gérer le commutateur à distance. En d'autres termes, pour pouvoir établir une connexion Telnet au commutateur, ce dernier doit comporter une adresse IP sur laquelle il est possible d'établir une connexion Telnet. Si le commutateur est uniquement accessible depuis les périphériques du réseau local, seule une adresse IP est requise.</p>
+<p></p>
+<p>Pour configurer l'adresse IP sur un commutateur, il faut utiliser l'interface virtuelle de commutateur (SVI) : </p>
+<p></p>
+<p>
+<span class="cmd">S1(config)#</span>
+<span class="cmd">
+<b>interface vlan1</b>
+</span>
+</p>
+<p>
+<span class="cmd">S1(config-vlan)#</span>
+<span class="cmd">
+<b>ip address 192.168.10.50 255.255.255.0</b>
+</span>
+</p>
+<p>
+<span class="cmd">S1(config-vlan)#</span>
+<span class="cmd">
+<b>no shut</b>
+</span>
+</p>
+<p></p>
+<p>Cependant, si le commutateur doit être accessible pour les périphériques d'un autre réseau, il doit être configuré avec une adresse de passerelle par défaut, car les paquets provenant du commutateur sont pris en charge comme les paquets provenant d'un périphérique hôte. Par conséquent, les paquets provenant du commutateur et destinés à un périphérique sur le même réseau sont transmis directement au périphérique approprié. Les paquets provenant du commutateur et destinés à un périphérique sur un réseau distant doivent être transmis à la passerelle par défaut pour déterminer le chemin à emprunter. </p>
+<p></p>
+<p>Pour configurer une passerelle par défaut sur un commutateur, utilisez la commande de configuration globale suivante :</p>
+<p></p>
+<p>
+<span class="cmd">S1(config)#</span>
+<span class="cmd">
+<b>ip default-gateway 192.168.10.1</b>
+</span>
+</p>
+<p></p>
+<p>La Figure 1 montre un administrateur se connectant à un commutateur sur un réseau distant. Pour que le commutateur transfère les paquets de réponse à l'administrateur, la passerelle par défaut doit être configurée. </p>
+<p></p>
+<p>On pense souvent à tort que le commutateur utilise son adresse de passerelle par défaut pour savoir où transmettre des paquets provenant des hôtes connectés au commutateur et destinés aux hôtes sur un réseau distant. En fait, l'adresse IP et les informations relatives à la passerelle par défaut ne sont utilisées que pour les paquets provenant du commutateur. Les paquets provenant des hôtes connectés au commutateur doivent comporter des informations sur la passerelle par défaut pour communiquer sur les réseaux distants. À l'aide de la Figure 2, essayez de configurer une passerelle par défaut sur un commutateur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.4.3.1 Menaces de sécurité</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.4.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Évolution de l&#x0027;environnement réseau</h1>
+        <h2>Sécurité du réseau</h2>
+      </div>
+      <div id="content">
+<p>La sécurité du réseau est une partie intégrante des réseaux informatiques, qu'il s'agisse d'un simple environnement domestique avec une seule connexion à Internet ou d'une entreprise avec des milliers d'utilisateurs. La sécurité réseau mise en œuvre doit prendre en compte l'environnement, ainsi que les outils et les besoins du réseau. Le réseau doit être capable de sécuriser les données, tout en garantissant en permanence la qualité de service attendue.</p>
+<p></p>
+<p>La sécurisation d'un réseau implique l'utilisation de protocoles, de technologies, de périphériques, d'outils, et de techniques pour sécuriser les données et limiter les risques. De nombreuses menaces externes sur la sécurité réseau se diffusent aujourd'hui par Internet. Les menaces externes les plus courantes pour les réseaux sont les suivantes :</p>
+<p>
+<ul>
+<li>
+<b>Virus, vers, et chevaux de Troie</b> – logiciels malveillants et code arbitraire s'exécutant sur un périphérique utilisateur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Logiciels espions et publicitaires</b> – logiciels installés sur un périphérique utilisateur qui collectent secrètement des informations sur l'utilisateur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Attaques zero-day, également appelées attaques zero-hour</b> – attaques qui se produisent le jour où une vulnérabilité est détectée.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Attaques de pirates</b> – attaques lancées sur des périphériques utilisateur ou des ressources réseau par une personne qui possède de solides connaissances en informatique.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Attaques par déni de service</b> – attaques conçues pour ralentir ou bloquer les applications et les processus d'un périphérique réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Interception et vol de données</b> – attaques visant à acquérir des informations confidentielles à partir du réseau d'une entreprise.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Usurpation d'identité</b> - attaques visant à recueillir les informations de connexion d'un utilisateur afin d'accéder à des données privées.</li>
+</ul>
+</p>
+<p></p>
+<p>Il est également important de prendre en compte les menaces internes. Il existe de nombreuses études démontrant que la plupart des violations de données se produisent par la faute des utilisateurs internes du réseau. Ces violations peuvent découler d'une perte ou d'un vol de périphériques, d'une mauvaise utilisation d'un périphérique par un employé et, dans un contexte professionnel, d'un employé malveillant. En raison de la croissance des stratégies BYOD, les données d'entreprise sont beaucoup plus vulnérables. Par conséquent, lors du développement d'une stratégie de sécurité, il est important de prendre en compte les menaces externes et internes.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

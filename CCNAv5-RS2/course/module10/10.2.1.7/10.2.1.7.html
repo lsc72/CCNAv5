@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.1.7 Fonctionnement de DHCPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.1.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 6</h1>
+        <h2>SLAAC et DHCPv6</h2>
+      </div>
+      <div id="content">
+<p> Comme le montre la Figure 1, DHCPv6 avec et sans état commencent tous deux par un message AR ICMPv6 du routeur. Le message AR aurait pu être un message périodique ou avoir été sollicité par le périphérique à l'aide d'un message SR. </p>
+<p></p>
+<p>Si DHCPv6 avec ou sans état est indiqué dans le message AR, alors le périphérique démarre les communications DHCPv6 entre le client et le serveur.</p>
+<p></p>
+<p>
+<b>Communications DHCPv6</b>
+</p>
+<p></p>
+<p>Lorsque DHCPv6 avec ou sans état est indiqué par l'annonce de routeur, le processus DHCPv6 est invoqué. Les messages DHCPv6 sont envoyés via UDP. Les messages DHCPv6 envoyés par le serveur au client utilisent le port de destination UDP 546. Le client envoie des messages DHCPv6 au serveur via le port de destination UDP 547.</p>
+<p></p>
+<p>Le client, qui est maintenant un client DHCPv6, doit localiser un serveur DHCPv6. Sur la Figure 2, le client envoie un message SOLLICITATION DHCPv6 à l'adresse de multidiffusion IPv6 réservée pour tous les serveurs DHCPv6, FF02::1:2. Cette adresse multidiffusion a une portée link-local, ce qui signifie que les routeurs ne transfèrent pas les messages à d'autres réseaux. </p>
+<p></p>
+<p>Un ou plusieurs serveurs DHCPv6 répondent par un message ANNONCE DHCPv6 comme le montre la Figure 3. Le message ANNONCE informe le client DHCPv6 que le serveur est disponible pour le service DHCPv6.</p>
+<p></p>
+<p>Sur la Figure 4, le client répond au serveur par un message DHCPv6 REQUÊTE ou DEMANDE D'INFORMATIONS, selon qu'il utilise DHCPv6 avec ou sans état.</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Client DHCPv6 sans état</b> : le client envoie un message DEMANDE D'INFORMATIONS DHCPv6 au serveur DHCPv6 demandant uniquement les paramètres de configuration, tels que l'adresse du serveur DNS. Le client a généré sa propre adresse IPv6 à l'aide du préfixe indiqué dans le message AR et d'un ID d'interface aléatoire.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Client DHCPv6 avec état</b> : le client envoie un message REQUÊTE DHCPv6 au serveur pour obtenir du serveur une adresse IPv6 et tous les autres paramètres de configuration.</li>
+</ul>
+</p>
+<p></p>
+<p>Le serveur envoie un message RÉPONSE DHCPv6 au client contenant les informations demandées dans le message REQUÊTE ou DEMANDE D'INFORMATIONS, comme le montre la Figure 5.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

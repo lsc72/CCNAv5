@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.0.1.2 Exercice - Recherche sur les applications</title>
+    <!-- Activity -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Couche application</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Que se passerait-il si...</b>
+</p>
+<p></p>
+<p>Votre employeur a décidé d'installer des téléphones IP sur votre lieu de travail, ce qui va rendre le réseau inutilisable pendant une semaine.</p>
+<p>Vous devez toutefois continuer à travailler. Vous avez des e-mails à envoyer et des devis à rédiger puis à faire valider par votre responsable. En raison de problèmes de sécurité potentiels, vous n'êtes pas autorisé à utiliser un système informatique ou un équipement personnel ou externe pour terminer votre travail.</p>
+<p></p>
+<p>Votre instructeur peut vous demander de répondre aux questions des deux scénarios ci-dessous ou de sélectionner un scénario (A. E-mails ou B. Devis à faire valider par le responsable). Répondez aux questions en détail pour les scénarios concernés. Soyez prêt à expliquer vos réponses en classe.</p>
+<p></p>
+<p>
+<b>A. E-mail</b>
+</p>
+<p>
+<ul>
+<li>Quelles méthodes pouvez-vous utiliser pour envoyer vos e-mails ? </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Comment pouvez-vous envoyer le même message à plusieurs destinataires ? </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Comment pouvez-vous envoyer une pièce jointe de grande taille à plusieurs destinataires ? </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Ces méthodes sont-elles rentables pour l'entreprise ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Violent-elles certaines politiques de sécurité de l'entreprise ?</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>B. Devis à faire valider par le responsable</b>
+</p>
+<p>
+<ul>
+<li>Des applications de bureau sont installées sur votre ordinateur. Sera-t-il simple de rédiger le devis que votre responsable doit valider pour le nouveau contrat à envoyer avant la fin de la semaine ? À quelles limitations serez-vous confronté en essayant de rédiger le devis ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Comment présenterez-vous le devis à faire valider à votre responsable ? Comment pensez-vous que votre responsable enverra le devis au client ? </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Ces méthodes sont-elles rentables pour l'entreprise ? Justifiez votre réponse.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<a href="../../files/10.0.1.2%20Class%20Activity%20-%20What%20would%20happen%20if...%20Instructions.pdf" target="_blank">Instructions de l'exercice en classe - Que se passerait-il si...</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

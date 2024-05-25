@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.2.5 Adresse du tronçon suivant</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage</h1>
+        <h2>Tables de routage du routeur</h2>
+      </div>
+      <div id="content">
+<p>Le saut suivant est l'adresse du prochain périphérique à traiter le paquet. Pour un hôte sur un réseau, l'adresse de la passerelle par défaut (interface de routeur) est le saut suivant pour tous les paquets destinés à un autre réseau. Dans la table de routage d'un routeur, chaque route vers un réseau distant indique le saut suivant. </p>
+<p></p>
+<p>Lorsqu'un paquet destiné à un réseau distant arrive au niveau du routeur, ce dernier compare le réseau de destination à une route de la table de routage. Si une correspondance est trouvée, le routeur transfère le paquet à l'adresse IP du routeur du saut suivant à l'aide de l'interface indiquée par l'entrée de route.</p>
+<p></p>
+<p>Un routeur de saut suivant est la passerelle vers les réseaux distants.</p>
+<p></p>
+<p>Par exemple, dans la figure, un paquet arrivant au périphérique R1 et destiné au réseau 10.1.1.0 ou 10.1.2.0 est transféré à l'adresse de saut suivant, 209.165.200.226, par le biais de l'interface série 0/0/0.</p>
+<p></p>
+<p>Les réseaux directement connectés à un routeur n'ont pas d'adresse de saut suivant, car un routeur peut transférer des paquets directement aux hôtes sur ces réseaux via l'interface indiquée.</p>
+<p></p>
+<p>Les paquets ne peuvent pas être acheminés par le routeur sans route pour le réseau de destination dans la table de routage. Si une route représentant le réseau de destination ne figure pas dans la table de routage, le paquet est abandonné (non transféré). </p>
+<p></p>
+<p>Toutefois, tout comme un hôte peut utiliser une passerelle par défaut pour transférer un paquet vers une destination inconnue, un routeur peut également être configuré pour utiliser une route statique par défaut pour créer une passerelle de dernier recours. La passerelle de dernier recours est traitée plus en détail dans le cours CCNA sur le routage. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

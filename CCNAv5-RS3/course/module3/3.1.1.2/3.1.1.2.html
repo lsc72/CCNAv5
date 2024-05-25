@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.1.2 Avantages de l&#x0027;EtherChannel</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts d&#x0027;agrégation de liaisons</h1>
+        <h2>Agrégation de liaisons</h2>
+      </div>
+      <div id="content">
+<p>La technologie EtherChannel a initialement été développée par Cisco comme une technique de réseau local entre deux commutateurs permettant de regrouper plusieurs ports Fast Ethernet ou Gigabit Ethernet en un seul canal logique. Quand un EtherChannel est configuré, l'interface virtuelle résultante est appelée un canal de port. Les interfaces physiques sont regroupées dans une interface de canal de port.</p>
+<p></p>
+<p>La technologie EtherChannel présente de nombreux avantages : </p>
+<p></p>
+<p>
+<ul>
+<li>La plupart des tâches de configuration peuvent être réalisées sur l'interface EtherChannel plutôt que sur chaque port, ce qui assure la cohérence de la configuration sur toutes les liaisons.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Un EtherChannel repose sur les ports de commutation existants. Il n'est pas nécessaire de mettre à niveau la liaison vers une connexion plus rapide et plus coûteuse pour avoir davantage de bande passante.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>L'équilibrage de la charge se fait entre les liaisons appartenant au même EtherChannel. En fonction de la plate-forme matérielle, une ou plusieurs méthodes d'équilibrage de charge peuvent être implémentées. Ces méthodes incluent l'équilibrage de la charge entre les adresses MAC source et de destination ou entre les adresses IP source et de destination, sur les liaisons physiques.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>EtherChannel crée une agrégation considérée comme une seule liaison logique. Quand plusieurs groupes EtherChannel existent entre deux commutateurs, STP peut bloquer l'un des groupes pour éviter les boucles de commutation. Quand STP bloque l'une des liaisons redondantes, cela bloque la totalité de l'EtherChannel. Cela bloque tous les ports appartenant à cette liaison EtherChannel. Quand il existe uniquement une liaison EtherChannel, toutes les liaisons physiques de l'EtherChannel sont actives, car STP considère une seule liaison (logique).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>EtherChannel offre de la redondance car la liaison globale est considérée comme une seule connexion logique. En outre, la perte d'une liaison physique dans le canal ne génère pas de modification de la topologie ; un recalcul de l'arbre recouvrant n'est donc pas nécessaire. En supposant qu'il existe au moins une liaison physique, l'EtherChannel fonctionne normalement, même si son débit global diminue à cause de la perte d'une liaison dans l'EtherChannel.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

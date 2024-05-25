@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.2.2 Facteurs de forme</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Conception d&#x0027;un réseau local</h1>
+        <h2>Réseaux commutés</h2>
+      </div>
+      <div id="content">
+<p>Différents types de commutateurs sont utilisés dans les réseaux d'entreprise. Il est important de déployer des commutateurs de type adapté aux besoins du réseau. La Figure 1 illustre quelques aspects métier répandus dont il faut tenir compte lors du choix des commutateurs.</p>
+<p></p>
+<p>Pour sélectionner le type d'un commutateur, le concepteur de réseau doit choisir une configuration fixe ou modulaire, et empilable ou non empilable. L'épaisseur du commutateur, exprimée en nombre d'unités de rack, doit également être déterminée. Cela est important pour les commutateurs montés dans un rack. Par exemple, les commutateurs de configuration fixe illustrés à la Figure 2 occupent tous 1 unité de rack (1U). Ces options caractérisent parfois le type de commutateur.</p>
+<p></p>
+<p>
+<b>Commutateurs de configuration fixe</b>
+</p>
+<p></p>
+<p>Les commutateurs de configuration fixe prennent en charge uniquement les fonctionnalités et les options fournies d'origine avec le commutateur (Figure 2). Chaque modèle particulier détermine les fonctionnalités et les options disponibles. Par exemple, un commutateur fixe gigabit à 24 ports ne peut pas prendre en charge des ports supplémentaires. Pour un commutateur de configuration fixe, il existe en général différents choix de configuration, selon le nombre et les types de ports inclus.</p>
+<p></p>
+<p>
+<b>Commutateurs de configuration modulaire</b>
+</p>
+<p></p>
+<p>Les commutateurs de configuration modulaire apportent plus de flexibilité de configuration. En général, les commutateurs de configuration modulaire sont livrés avec des châssis de différentes tailles, qui permettent l'installation de plusieurs cartes d'interface modulaires (Figure 3). Ces cartes d'interface contiennent les ports. La carte d'interface s'insère dans le châssis du commutateur, comme les cartes d'extension dans un ordinateur. Plus la taille du châssis est importante, plus celui-ci peut contenir de modules. De nombreuses tailles de châssis différentes peuvent être proposées. Un commutateur modulaire avec une carte d'interface à 24 ports peut prendre en charge une carte d'interface 24 ports supplémentaire, pour un nombre total de 48 ports. </p>
+<p></p>
+<p>
+<b>Commutateurs de configuration empilable</b>
+</p>
+<p></p>
+<p>Les commutateurs de configuration empilable peuvent être interconnectés à l'aide d'un câble spécial fournissant un débit de bande passante élevé entre les commutateurs (Figure 4). La technologie Cisco StackWise permet l'interconnexion de neuf commutateurs maximum. Les commutateurs peuvent être empilés les uns sur les autres et connectés en chaîne par des câbles. Les commutateurs empilés fonctionnent comme un unique commutateur plus important. Ils sont recommandés lorsque la tolérance aux pannes et la disponibilité de la bande passante constituent des éléments essentiels, et que l'implémentation d'un commutateur modulaire représente une dépense trop importante. À l'aide de connexions interconnectées, le réseau reprend plus rapidement en cas de panne d'un seul commutateur. Les commutateurs empilables utilisent un port spécial pour les interconnexions. De nombreux commutateurs empilables Cisco prennent également en charge la technologie StackPower, qui permet de répartir l'énergie parmi les membres de la pile.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

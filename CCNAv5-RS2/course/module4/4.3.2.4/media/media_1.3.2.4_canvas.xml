@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide type="MBAR">
+		 
+			<element type="IMAGE" src="1_3_2_4.png" x="0" y="0" width="470" height="400"/>
+			<element type="TEXT" text=":10" x="39" y="36.15" width="22.55" align="left" size="10" />
+			<element type="TEXT" text=":10" x="39" y="108.15" width="22.55" align="left" size="10" />
+			<element type="TEXT" text=":10" x="378" y="38.65" width="22.55" align="right" size="10" />
+			<element type="TEXT" text="G0/0 :1" x="84.4" y="64.3" width="30.8" align="right" size="10" />
+			<element type="TEXT" text=":1 S0/0/0" x="155" y="59.85" width="38.2" align="left" size="10" />
+			<element type="TEXT" text=":1 G0/1" x="104.45" y="105.9" width="30.8" align="right" size="10" />
+			<element type="TEXT" text=":10" x="378" y="106.65" width="22.55" align="right" size="10" />
+			<element type="TEXT" text="2001:0DB8:ACAD:3::/64" x="164.6" y="42.25" width="116.9" align="center" size="10" bold="1" />
+			<element type="TEXT" text="2001:0DB8:ACAD:1::/64" x="42.6" y="25" width="116.9" align="left" size="10" bold="1" />
+			<element type="TEXT" text="2001:0DB8:ACAD:2::/64" x="49.6" y="137.5" width="116.9" align="left" size="10" bold="1" />
+			<element type="TEXT" text="2001:0DB8:ACAD:0004::/64" x="257.1" y="24" width="133.55" align="left" size="10" bold="1" />
+			<element type="TEXT" text="2001:0DB8:ACAD:0005::/64" x="257.1" y="137.5" width="133.55" align="left" size="10" bold="1" />
+			<element type="TEXT" text=":2 S0/0/0" x="251.1" y="59.85" width="38.2" align="right" size="10" />
+			<element type="TEXT" text="G0/0 :1" x="322" y="69.8" width="30.8" align="left" size="10" />
+			<element type="TEXT" text="G0/1 :1" x="280.6" y="104" width="30.8" align="right" size="10" />
+		<slide>
+		 	<element type="TEXT" subType="TITLE" compId="ID_s1_title" />
+	 
+			<element type="ROUTER"  textId="s1_staticTxt1" width="426" height="226.4" x="6.55" y="168.75" color="#000" style="font-family:Courier New" size="11"/>
+		
+	</slide>
+	<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title" />
+	 
+			<element type="ROUTER"  textId="s2_staticTxt1" width="426" height="226.4" x="6.55" y="168.75" color="#000" style="font-family:Courier New" size="11"/>
+		
+	</slide>
+	<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title" />
+			<element type="ROUTER"  textId="s3_staticTxt1" width="426" height="226.4" x="6.55" y="168.75" color="#000" style="font-family:Courier New" size="11"/>
+		
+	</slide>
+	<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s4_title" />
+			<element type="ROUTER"  textId="s4_staticTxt1" width="426" height="226.4" x="6.55" y="168.75" color="#000" style="font-family:Courier New" size="11"/>
+		
+	</slide>
+	<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s5_title" />
+			<element type="ROUTER"  textId="s5_staticTxt1" width="426" height="226.4" x="6.55" y="168.75" color="#000" style="font-family:Courier New" size="11"/>
+		
+	</slide>
+	
+	
+	</slide>
+
+ <text id="s1_staticTxt1"><![CDATA[<pre>R1(config)# <b>interface gigabitethernet 0/0 </b>
+R1(config-if)# <b>description Link to LAN 1 </b>
+R1(config-if)# <b>ipv6 address 2001:db8:acad:1::1/64 </b>
+R1(config-if)# <b>no shutdown </b>
+R1(config-if)# <b>exit </b>
+*Feb  3 21:38:37.279: %LINK-3-UPDOWN: Interface
+GigabitEthernet0/0, changed state to down
+*Feb  3 21:38:40.967: %LINK-3-UPDOWN: Interface 
+GigabitEthernet0/0, changed state to up
+*Feb  3 21:38:41.967: %LINEPROTO-5-UPDOWN: Line protocol on 
+Interface GigabitEthernet0/0, changed state to up
+R1(config)# 
+R1(config)# <b>interface gigabitethernet 0/1 </b>
+R1(config-if)<b># description Link to LAN 2 </b>
+R1(config-if)<b># ipv6 address 2001:db8:acad:2::1/64 </b>
+R1(config-if)# <b>no shutdown </b>
+R1(config-if)# <b>exit </b>
+*Feb  3 21:39:21.867: %LINK-3-UPDOWN: Interface 
+GigabitEthernet0/1, changed state to down
+*Feb  3 21:39:24.967: %LINK-3-UPDOWN: Interface 
+GigabitEthernet0/1, changed state to up
+*Feb  3 21:39:25.967: %LINEPROTO-5-UPDOWN: Line protocol on 
+Interface GigabitEthernet0/1, changed state to up
+R1(config)# 
+R1(config)# <b>interface serial 0/0/0 </b>
+R1(config-if)# <b>description Link to R2 </b>
+R1(config-if)# <b>ipv6 address 2001:db8:acad:3::1/64 </b>
+R1(config-if)# <b>clock rate 128000 </b>
+R1(config-if)# <b>no shutdown </b>
+R1(config-if)# 
+*Feb  3 21:39:43.307: %LINK-3-UPDOWN: Interface 
+Serial0/0/0, changed state to down
+R1(config-if)# 
+</pre>]]>
+</text>  
+
+<text id="s2_staticTxt1"><![CDATA[<pre>R1# <b>show ipv6 route </b>
+IPv6 Routing Table - default - 5 entries
+Codes: C - Connected, L - Local, S - Static,
+       U - Per-user Static route, B - BGP, R - RIP
+       H - NHRP, I1 - ISIS L1, I2 - ISIS L2
+       IA - ISIS interarea, IS - ISIS summary, D - EIGRP
+       EX - EIGRP external, ND - ND Default
+       NDp - ND Prefix, DCE - Destination, NDr - Redirect
+       O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF ext 1
+       OE2 - OSPF ext 2, ON1 - OSPF NSSA ext 1
+       ON2 - OSPF NSSA ext 2
+C   2001:DB8:ACAD:1::/64 [0/0]
+     via GigabitEthernet0/0, directly connected
+L   2001:DB8:ACAD:1::1/128 [0/0]
+     via GigabitEthernet0/0, receive
+C   2001:DB8:ACAD:2::/64 [0/0]
+     via GigabitEthernet0/1, directly connected
+L   2001:DB8:ACAD:2::1/128 [0/0]
+     via GigabitEthernet0/1, receive
+L   FF00::/8 [0/0]
+     via Null0, receive
+R1#
+</pre>]]>
+</text>
+<text id="s3_staticTxt1"><![CDATA[<pre>R1# <b>show ipv6 route 2001:db8:acad:1::/64 </b>
+Routing entry for 2001:DB8:ACAD:1::/64
+  Known via "connected", distance 0, metric 0, type connected
+  Route count is 1/1, share count 0
+  Routing paths:
+    directly connected via GigabitEthernet0/0
+      Last updated 03:14:56 ago
+
+R1#</pre>]]>
+</text>
+
+<text id="s4_staticTxt1"><![CDATA[<pre>R1# <b>ping 2001:db8:acad:3::2 </b>
+Type escape sequence to abort. 
+Sending 5, 100-byte ICMP Echos to 2001:DB8:ACAD:3::2, 
+timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 
+12/13/16 ms
+R1#
+</pre>]]>
+</text>
+<text id="s5_staticTxt1"><![CDATA[<pre>R1# <b>ping 2001:db8:acad:4::1 </b>
+Type escape sequence to abort. 
+Sending 5, 100-byte ICMP Echos to 2001:DB8:ACAD:4::1, 
+timeout is 2 seconds:
+
+% No valid route for destination
+Success rate is 0 percent (0/1)
+R1#
+</pre>]]>
+</text>
+</data>

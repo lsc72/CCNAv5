@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.4.1.1 Systèmes de fichiers du routeur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.4.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Gestion des fichiers de configuration IOS</h1>
+        <h2>Systèmes de fichiers du routeur et du commutateur</h2>
+      </div>
+      <div id="content">
+<p>L'administrateur réseau est non seulement chargé de mettre en œuvre et de sécuriser le réseau de petite taille, mais il doit également gérer les fichiers de configuration. La gestion des fichiers de configuration est importante pour la sauvegarde et la récupération en cas de défaillance d'un périphérique.</p>
+<p></p>
+<p>Cisco IFS (système de fichiers Cisco IOS) offre une interface unique à tous les systèmes de fichiers utilisés par un routeur, notamment : </p>
+<p>
+<ul>
+<li>Les systèmes de fichiers de la mémoire Flash </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les systèmes de fichiers réseau (TFTP et FTP) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Tout autre terminal permettant la lecture ou l'écriture de données (tel que la mémoire vive non volatile, la configuration en cours, la mémoire morte, etc.)</li>
+</ul>
+</p>
+<p></p>
+<p>Avec Cisco IFS, tous les fichiers peuvent être affichés et classés (image, fichier texte, etc.) y compris ceux situés sur des serveurs distants. Par exemple, il est possible d'afficher un fichier de configuration situé sur un serveur distant pour vérifier qu'il s'agit du bon fichier avant de le charger sur le routeur.</p>
+<p></p>
+<p>Cisco IFS permet à l'administrateur de naviguer dans différents répertoires et d'établir la liste des fichiers d'un répertoire, mais également de créer des sous-répertoires dans la mémoire Flash ou sur un disque. Les répertoires disponibles dépendent du périphérique.</p>
+<p></p>
+<p>La Figure 1 présente le résultat de la commande <span class="cmd"><b>show file systems</b></span>, qui répertorie tous les systèmes de fichiers disponibles sur un routeur, le modèle Cisco 1941 dans cet exemple. Cette commande fournit des informations utiles comme la quantité de mémoire disponible, le type de système de fichiers et les autorisations appliquées. Les autorisations sont indiquées dans la colonne Flags du résultat de la commande. Elles peuvent être la lecture seule (ro pour « read only ») ou la lecture et l'écriture (rw pour « read and write »).</p>
+<p></p>
+<p>Bien que plusieurs systèmes de fichiers soient répertoriés, seuls les systèmes de fichiers TFTP, Flash et NVRAM nous intéressent. </p>
+<p></p>
+<p>Notez l'astérisque devant le système de fichiers Flash. Il indique qu'il s'agit du système de fichiers par défaut actuel. L'IOS amorçable se trouve dans la mémoire Flash. Par conséquent, le symbole dièse (#) est ajouté à la liste Flash pour indiquer qu'il s'agit d'un disque amorçable.</p>
+<p></p>
+<p>
+<b>Le système de fichiers Flash</b>
+</p>
+<p></p>
+<p>La Figure 2 présente le contenu du système de fichiers par défaut actuel. Dans le cas présent, il s'agit de la mémoire Flash comme l'indique l'astérisque en début de ligne dans la figure précédente. Plusieurs fichiers se trouvent dans la mémoire Flash, mais seule la dernière liste nous intéresse. Il s'agit du nom de l'image en cours des fichiers Cisco IOS qui s'exécute dans la mémoire vive.</p>
+<p></p>
+<p>
+<b>Le système de fichiers NVRAM</b>
+</p>
+<p></p>
+<p>Pour afficher le contenu de la mémoire vive non volatile (NVRAM), vous devez modifier le système de fichiers par défaut à l'aide de la commande <span class="cmd"><b>cd</b></span> (« change directory », changer de répertoire), comme le montre la Figure 3. La commande <span class="cmd"><b>pwd</b></span> (« present working directory », répertoire courant) confirme que nous consultons le répertoire NVRAM. Enfin, la commande <span class="cmd"><b>dir</b></span> (« directory », répertoire) affiche la liste du contenu de la mémoire NVRAM. Parmi les différents fichiers affichés, le seul qui présente un intérêt pour nous est le fichier nommé « startup-configuration » qui définit la configuration de démarrage. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

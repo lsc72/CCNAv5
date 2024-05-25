@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.1.1 Les messages ICMPv4 et ICMPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Vérification de la connectivité</h1>
+        <h2>ICMP</h2>
+      </div>
+      <div id="content">
+<p>Bien que le protocole IP ne soit pas un protocole fiable, la suite TCP/IP permet d'envoyer des messages si certaines erreurs se produisent. Ces messages sont envoyés via les services du protocole ICMP. Ces messages ont pour objectif de fournir des commentaires sur les problèmes liés au traitement de paquets IP dans certaines circonstances. Les messages ICMP ne sont pas obligatoires et sont souvent interdits au sein des réseaux pour des raisons de sécurité.</p>
+<p></p>
+<p>Le protocole ICMP est disponible pour IPv4 et pour IPv6. ICMPv4 est le protocole de message des réseaux IPv4. L'ICMPv6 fournit ces mêmes services pour l'IPv6, mais inclut des fonctionnalités supplémentaires. Dans ce cours, le terme ICMP est utilisé pour faire référence à l'ICMPv4 et à l'ICMPv6.</p>
+<p></p>
+<p>Il existe différents types de messages ICMP, et les raisons pour lesquelles ils sont envoyés sont très diverses. Nous décrirons les messages les plus courants.</p>
+<p></p>
+<p>Les messages ICMP communs à ICMPv4 et à ICMPv6 sont notamment les suivants :</p>
+<p>
+<ul>
+<li>Host confirmation (Confirmation de l'hôte)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Destination or Service Unreachable (destination ou service inaccessible)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Time exceeded (Délai dépassé)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Route redirection (Redirection de la route)</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Host Confirmation (Confirmation de l'hôte)</b>
+</p>
+<p>Un message ICMP Echo (Écho ICMP) permet de déterminer si un hôte est fonctionnel. L'hôte local envoie un message ICMP Echo Request (Requête d'écho) à un autre hôte. Si l'hôte est disponible, l'hôte de destination répond en envoyant une réponse d'écho. Dans la figure ci-contre, cliquez sur le bouton Lecture pour afficher une animation concernant les requêtes et les réponses d'écho ICMP. L'utilisation de messages ICM Echo est à la base de l'utilitaire ping. </p>
+<p></p>
+<p>
+<b>Destination or Service Unreachable (destination ou service inaccessible)</b>
+</p>
+<p>Lorsqu'un hôte ou une passerelle reçoit un paquet impossible à acheminer, il ou elle peut utiliser un message ICMP de destination inaccessible pour avertir la source que la destination ou le service est inaccessible. Ce message comprend un code indiquant pourquoi le paquet n'a pas pu être acheminé.</p>
+<p></p>
+<p>Certains des codes de destination inaccessible pour l'ICMPv4 sont :</p>
+<p>
+<ul>
+<li>0 – réseau inaccessible. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>1 – hôte inaccessible.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>2 – protocole inaccessible.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>3 – port inaccessible.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque</b> : l'ICMPv6 a des codes légèrement différents pour des messages de destination inaccessible.</p>
+<p></p>
+<p>
+<b>Dépassement du délai</b>
+</p>
+<p>Un message de dépassement de délai ICMPv4 est utilisé par un routeur pour indiquer qu'il ne peut pas transférer un paquet car le champ TTL de durée de vie du paquet a atteint 0. Si un routeur reçoit un paquet et décrémente le champ TTL de durée de vie du paquet IPv4 pour atteindre zéro, il abandonne le paquet et envoie un message de dépassement de délai à l'hôte source.</p>
+<p></p>
+<p>Le protocole ICMPv6 envoie également un message de dépassement de délai si le routeur ne peut pas transmettre un paquet IPv6 en raison de son expiration. Les paquets IPv6 n'ont pas de champ de durée de vie TTL : le champ de limite de nombre de sauts est utilisé pour déterminer si le paquet a expiré.</p>
+<p></p>
+<p>
+<b>Route redirection (Redirection de la route) </b>
+</p>
+<p>Un routeur peut envoyer un message de redirection ICMP Redirect pour notifier l'hôte sur un réseau, qu'une meilleure route est disponible jusqu'à une destination particulière. Ce message ne peut être utilisé que si l'hôte source appartient au même réseau physique que les deux passerelles. </p>
+<p></p>
+<p>L'ICMPv4 et l'ICMPv6 utilisent tous deux des messages de redirection de route.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

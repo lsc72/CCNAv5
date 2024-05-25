@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.4.1.1 Dépannage du protocole PPP avec encapsulation de série</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.4.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage de la connectivité WAN</h1>
+        <h2>Dépannage de PPP</h2>
+      </div>
+      <div id="content">
+<p>Souvenez-vous que la commande <span class="cmd"><b>debug</b></span> sert au dépannage. Elle est accessible depuis le mode d'exécution privilégié de l'interface en ligne de commande. Le résultat de <span class="cmd"><b>debug</b></span> affiche des informations sur le fonctionnement des routeurs, le trafic généré par le routeur ou reçu par le routeur, ainsi que tous les messages d'erreur. Il peut par conséquent utiliser une grande quantité de ressources, obligeant ainsi le routeur à commuter les paquets en cours de débogage. La commande <span class="cmd"><b>debug</b></span> ne doit pas être utilisée comme outil de surveillance. Elle est faite pour être utilisée pendant un laps de temps réduit, pour le dépannage. </p>
+<p></p>
+<p>Utilisez la commande <span class="cmd"><b>debug ppp</b></span> pour afficher des informations sur le fonctionnement du protocole PPP. La figure ci-contre affiche la syntaxe de la commande. Utilisez la forme <span class="cmd"><b>no</b></span> de cette commande pour désactiver la sortie de débogage.</p>
+<p></p>
+<p>Utilisez la commande <span class="cmd"><b>debug ppp</b></span> lorsque vous recherchez les éléments suivants : </p>
+<p>
+<ul>
+<li>Les NCP pris en charge aux deux extrémités d'une connexion PPP </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les boucles dans un interréseau PPP</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les nœuds qui négocient correctement les connexions PPP (ou ceux qui ne le font pas)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les erreurs sur la connexion PPP</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les causes d'échec de la session CHAP</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les causes d'échec de la session PAP</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les informations spécifiques à l'échange de connexions PPP avec le protocole CBCP (Callback Control Protocol), utilisé par les clients Microsoft</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les informations sur le numéro de séquence des paquets incorrects lorsque la compression MPPC est activée</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

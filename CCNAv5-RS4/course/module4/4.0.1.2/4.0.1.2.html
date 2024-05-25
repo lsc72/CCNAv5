@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.0.1.2 Exercice en classe : technologies WAN émergentes</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Frame Relay</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Technologies WAN émergentes</b>
+</p>
+<p></p>
+<p>En tant qu'administrateur réseau de votre PME, vous êtes déjà passé d'une connectivité WAN par ligne louée à une connectivité Frame Relay pour les communications réseau WAN. Vous devez donc vous tenir informé de toutes les futures mises à niveau du réseau.</p>
+<p>En vous tenant informé des technologies émergentes et en développement, vous découvrez qu'il existe d'autres options disponibles en matière de connectivité WAN. Voici quelques exemples :</p>
+<p>
+<ul>
+<li>Frame Relay</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>DSL haut débit</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Modem câble haut débit</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>GigaMAN</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>VPN</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>MPLS</li>
+</ul>
+</p>
+<p>Étant donné que vous souhaitez offrir le service réseau WAN de meilleure qualité et de moindre coût à votre entreprise, vous décidez de rechercher au moins deux technologies émergentes et en développement. Votre intention est de collecter des informations sur ces deux options WAN alternatives afin de discuter de manière intelligente des objectifs futurs de votre réseau avec votre responsable commercial et d'autres administrateurs réseau.</p>
+<p></p>
+<p>
+<a href="../../files/4.0.1.2%20Emerging%20WAN%20Technologies%20Instructions.pdf" target="_blank">Exercice en classe : technologies WAN émergentes</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

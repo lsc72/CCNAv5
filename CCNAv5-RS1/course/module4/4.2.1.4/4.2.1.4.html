@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.1.4 Câble à paires torsadées blindées (STP)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Supports réseau</h1>
+        <h2>L&#x0027;utilisation de câbles en cuivre</h2>
+      </div>
+      <div id="content">
+<p>Les câbles à paires torsadées blindées (STP) offrent une meilleure protection parasitaire que le câblage UTP. Toutefois, par rapport aux UTP, les câbles STP sont bien plus onéreux et plus difficiles à installer. Comme les câbles UTP, les câbles STP utilisent un connecteur RJ-45. </p>
+<p></p>
+<p>Les câbles à paires torsadées blindées allient la technique de blindage pour contrer les interférences électromagnétiques et radioélectriques, et les torsades pour éviter la diaphonie. Pour tirer entièrement parti des avantages du blindage, les câbles STP sont terminés par des connecteurs de données STP blindés spécifiques. Si le câble n'est pas correctement mis à la terre, le blindage peut agir comme une antenne et capter des signaux parasites.</p>
+<p></p>
+<p>Différents types de câbles STP sont disponibles, chacun avec des caractéristiques différentes. Il existe toutefois deux variantes principales de ces câbles :</p>
+<p>
+<ul>
+<li>Le câble STP entoure de feuilles de blindage l'ensemble du faisceau de fils et élimine ainsi presque toutes les interférences (version la plus répandue).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le câble STP entoure de feuilles de blindage l'ensemble du faisceau de fils ainsi que chaque paire de fils, et élimine ainsi toute interférence.</li>
+</ul>
+</p>
+<p></p>
+<p>Le câble STP représenté utilise quatre paires de fils, chacune enveloppée dans une feuille de blindage. Le tout est ensuite entouré dans une torsade ou une feuille métallique. </p>
+<p></p>
+<p>Pendant de nombreuses années, le câblage STP a constitué la structure de câblage spécifiée pour les installations réseau Token Ring. Les réseaux de type Token Ring étant de moins en moins employés, la demande de câblage à paires torsadées blindées a également décliné. Cependant, la nouvelle norme relative à 10 Gigabit Ethernet prévoit l'utilisation de câblage STP, ce qui crée un certain regain d'intérêt envers ce type de câble.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

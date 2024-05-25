@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.2.1 Sécurisation de l&#x0027;accès au périphérique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Bases</h1>
+        <h2>Limitation de l&#x0027;accès aux configurations de périphérique</h2>
+      </div>
+      <div id="content">
+<p>Il est recommandé de limiter physiquement l'accès aux périphériques réseau en les plaçant dans des pièces et des armoires fermées à clé ; toutefois, les mots de passe sont la principale défense contre l'accès non autorisé à ces périphériques. Tous les périphériques, même des routeurs domestiques, doivent être configurés localement avec des mots de passe pour limiter l'accès au réseau. Plus tard, nous expliquerons comment renforcer la sécurité en demandant un nom d'utilisateur et un mot de passe à la connexion. Pour l'instant, nous allons présenter des précautions de base en matière de sécurité qui reposent uniquement sur l'emploi de mots de passe.</p>
+<p></p>
+<p>Comme vous le savez, IOS utilise des modes organisés hiérarchiquement pour faciliter la protection des périphériques. Dans le cadre de ce dispositif de sécurité, IOS peut accepter plusieurs mots de passe, ce qui vous permet d'établir différents privilèges d'accès au périphérique.</p>
+<p></p>
+<p>Caractéristiques des mots de passe présentés ici :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Mot de passe d'activation (enable)</b> – limite l'accès au mode d'exécution privilégié.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Mot de passe secret actif</b> – chiffré, limite l'accès au mode d'exécution privilégié. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Mot de passe de console</b> – limite l'accès au périphérique par une connexion console.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Mot de passe VTY</b> – limite l'accès au périphérique par une connexion Telnet.</li>
+</ul>
+</p>
+<p></p>
+<p></p>
+<p>Il est recommandé d'utiliser des mots de passe différents pour chacun de ces niveaux d'accès. En effet, bien que l'utilisation de plusieurs mots de passe différents ne facilite pas l'ouverture d'une session, cette précaution est nécessaire pour protéger convenablement l'infrastructure réseau contre l'accès non autorisé. </p>
+<p></p>
+<p>En outre, utilisez des mots de passe forts qui ne sont pas faciles à deviner. L'utilisation de mots de passe faibles ou faciles à deviner demeure un véritable problème de sécurité dans de nombreuses entreprises. </p>
+<p></p>
+<p>Pour choisir les mots de passe, respectez les règles suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>Utilisez des mots de passe de plus de 8  caractères.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Utilisez une combinaison de lettres majuscules et minuscules, des chiffres, des caractères spéciaux et/ou des séquences de chiffres dans les mots de passe.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Évitez d'utiliser le même mot de passe pour tous les périphériques.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Abstenez-vous d'employer des mots communs tels que mot de passe ou administrateur, parce qu'ils sont faciles à deviner.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque :</b> dans la plupart des travaux pratiques de ce cours, nous utiliserons des mots de passe simples tels<b> que cisco</b> ou<b> class</b>. Il faut éviter ces mots de passe dans un environnement de production, car ils sont considérés comme faibles et faciles à deviner. Nous n'utilisons ces mots de passe que pour une utilisation dans une salle de cours ou pour illustrer des exemples de configuration.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

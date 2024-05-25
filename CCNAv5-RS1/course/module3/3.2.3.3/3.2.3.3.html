@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.3.3 IEEE</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Normes et protocoles réseau</h1>
+        <h2>Organismes de normalisation</h2>
+      </div>
+      <div id="content">
+<p>L'IEEE (Institute of Electrical and Electronics Engineers) est une association américaine professionnelle s'adressant aux spécialistes du génie électrique et de l'électronique qui souhaitent se consacrer à l'innovation technologique et à la création de normes. En 2012, l'IEEE se composait de 38 sociétés, avait publié 130 journaux et parrainé plus de 1 300 conférences par an dans le monde entier. L'IEEE compte actuellement plus de 1 300 normes et projets en cours de développement. </p>
+<p></p>
+<p>L'organisme rassemble plus de 400 000 membres dans plus de 160 pays, dont plus de 107 000 étudiants. L'IEEE offre des opportunités de formation et de valorisation professionnelle dans l'optique de promouvoir les compétences et les connaissances du domaine de l'électronique. </p>
+<p></p>
+<p>Il s'agit d'un organisme de normalisation majeur sur le plan international. Il crée et gère des normes affectant un grand nombre de secteurs, notamment l'électricité et l'énergie, la santé, les télécommunications et les réseaux. Les normes 802 de l'IEEE traitent des réseaux locaux et des réseaux métropolitains, y compris les réseaux filaires et sans fil. Comme l'illustre la figure, chaque norme IEEE correspond à un groupe de travail chargé de créer et d'améliorer des normes.</p>
+<p></p>
+<p>Les normes 802.3 et 802.11 de l'IEEE jouent un rôle de premier plan dans les réseaux informatiques. La norme 802.3 définit le contrôle d'accès au support (MAC ou Media Access Control) de l'Ethernet filaire. Cette technologie sert généralement aux réseaux locaux, mais certaines de ses applications concernent également le réseau étendu (WAN). La norme 802.11 définit un ensemble de normes relatives à la mise en œuvre des réseaux locaux sans fil (WLAN). Elle définit la couche physique et la sous-couche de liaison de données MAC du modèle OSI (Open Systems Interconnection) pour les communications sans fil.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

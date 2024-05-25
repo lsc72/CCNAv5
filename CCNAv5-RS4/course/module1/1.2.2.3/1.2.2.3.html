@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.2.3 Périphérie d&#x0027;entreprise Cisco </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Architecture d&#x0027;entreprise Cisco</h1>
+        <h2>Modèle d&#x0027;architecture d&#x0027;entreprise Cisco</h2>
+      </div>
+      <div id="content">
+<p>Le module de périphérie d'entreprise fournit la connectivité aux services de voix, de vidéo et de données à l'extérieur de l'entreprise. Ce module fait office de lien entre le module de campus d'entreprise et les autres modules. </p>
+<p></p>
+<p>Le module de périphérie d'entreprise se compose des sous-modules suivants :</p>
+<p>
+<ul>
+<li>
+<b>Réseaux et serveurs de commerce électronique </b>: ce sous-module de commerce électronique permet aux entreprises de prendre en charge les applications de commerce électronique via Internet. Il utilise les conceptions à haute disponibilité du module du data center. Les périphériques qui se trouvent dans le sous-module de commerce électronique sont les suivants : serveurs Web, serveurs d'applications et serveurs de base de données, pare-feu et routeurs de pare-feu et système de protection contre les intrusions.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Connectivité Internet et zone démilitarisée</b> : le sous-module de connectivité Internet permet aux utilisateurs internes d'accéder en toute sécurité aux serveurs publics, à la messagerie électronique et aux DNS. La connectivité à un ou plusieurs FAI est également fournie. Les composants de ce sous-module sont le pare-feu et les routeurs de pare-feu, les routeurs de périphérie Internet, les serveurs FTP et HTTP, les serveurs relais SMTP et les serveurs DNS.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Accès à distance et réseau privé virtuel</b> : le sous-module de VPN et d'accès à distance offre des services de fin d'accès distant, comme l'authentification des utilisateurs et des sites distants. Les composants de ce sous-module sont les pare-feu, les concentrateurs d'accès commuté, les appareils de sécurité adaptatifs Cisco et les appareils du système de prévention contre les intrusions.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>WAN</b> : le sous-module WAN utilise différentes technologies WAN pour router le trafic entre les sites distants et le central téléphonique (CO). Les liaisons WAN d'entreprise comprennent des technologies telles que commutation MPLS, Metro Ethernet, lignes louées, Synchronous Optical Network (SONET) et Synchronous Digital Hierarchy (SDH), PPP, Frame Relay, ATM, câble, DSL et sans fil.</li>
+</ul>
+</p>
+<p></p>
+<p>Cliquez sur le module de périphérie d'entreprise dans la figure pour plus d'informations. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

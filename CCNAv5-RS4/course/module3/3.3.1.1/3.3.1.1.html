@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.1.1 Options de configuration PPP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de PPP</h1>
+        <h2>Configuration de PPP</h2>
+      </div>
+      <div id="content">
+<p>Dans la section précédente, des options de protocole LCP configurables ont été ajoutées pour répondre à des besoins de connexion WAN spécifiques. Le protocole PPP peut comprendre les options LCP suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Authentification</b> : les routeurs homologues échangent des messages d'authentification. Pour l'authentification, les deux choix sont le protocole d'authentification du mot de passe (PAP, Password Authentication Protocol) et le protocole d'authentification à échanges confirmés (CHAP, Challenge Handshake Authentication Protocol). </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Compression</b> : augmente le débit effectif des connexions PPP en diminuant la quantité de données dans la trame qui doit être acheminée sur la liaison. Le protocole décompresse la trame à l'arrivée. Les deux protocoles de compression disponibles sur les routeurs Cisco sont Stacker et Predictor. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Détection des erreurs </b>: identifie les défaillances. Les options Quality et Magic Number aident à assurer que la liaison de données reste fiable et sans boucle. Le champ Magic Number permet de détecter les liaisons qui présentent une boucle. Tant que la négociation de l'option de configuration Magic-Number n'a pas abouti, le champ Magic-Number doit être transmis comme valeur zéro. Les numéros magiques sont générés de façon aléatoire à chaque extrémité de la connexion.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Rappel PPP </b>: le rappel PPP permet d'augmenter le niveau de sécurité. Grâce à cette option LCP, un routeur Cisco peut servir de client ou de serveur de rappel. Le client effectue l'appel initial, demande à être rappelé, puis met fin à son appel initial. Le routeur de rappel répond à l'appel initial et rappelle le client en s'appuyant sur ses instructions de configuration. La commande est <span class="cmd"><b>ppp callback</b></span><span class="cmd"> [</span><span class="cmd"><b>accept</b></span><span class="cmd"> | </span><span class="cmd"><b>request</b></span><span class="cmd">]</span>.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Multiliaison </b>: offre un équilibrage de la charge sur les interfaces de routeur utilisées par PPP. Le protocole PPP multiliaison, aussi appelé MP, MPPP, MLP ou Multiliaison, permet de répartir le trafic sur plusieurs liaisons WAN physiques, tout en assurant la fragmentation et le réassemblage des paquets, le séquençage, l'interopérabilité entre fournisseurs et l'équilibrage de la charge de travail sur le trafic entrant et sortant. </li>
+</ul>
+</p>
+<p></p>
+<p>Lorsque des options sont configurées, un champ de valeur correspondant est inséré dans le champ d'option LCP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.2.2 Paramètres EIGRP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du protocole EIGRP</h1>
+        <h2>Dépannage des problèmes de voisinage EIGRP</h2>
+      </div>
+      <div id="content">
+<p>Lors du dépannage d'un réseau EIGRP, l'une des premières choses à vérifier est que tous les routeurs participants au réseau EIGRP sont configurés avec le même numéro de système autonome. La commande<span class="cmd"><b> router eigrp </b></span><span class="cmd"><i>as-number </i></span>démarre le processus EIGRP et est suivie d'un numéro qui correspond au numéro de système autonome. La valeur de l'argument<span class="cmd"><i> as-number </i></span>doit être identique sur tous les routeurs du domaine de routage EIGRP.</p>
+<p></p>
+<p>La Figure 1 montre que tous les routeurs doivent participer au numéro de système autonome 1. À la Figure 2, la commande<span class="cmd"><b> show ip protocols </b></span>vérifie que R1, R2 et R3 utilisent tous le même numéro de système autonome.</p>
+<p></p>
+<p>
+<b>Protocole EIGRP pour IPv6</b>
+</p>
+<p></p>
+<p>Des commandes et des critères de dépannage similaires s'appliquent également au protocole EIGRP pour IPv6.</p>
+<p></p>
+<p>Les commandes équivalentes utilisées dans le cadre du protocole EIGRP pour IPv6 sont les suivantes :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">Router(config)# </span>
+<span class="cmd">
+<b>ipv6 router eigrp </b>
+</span>
+<span class="cmd">
+<i>as-number</i>
+</span>
+<span class="cmd">
+<b></b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">Router# </span>
+<span class="cmd">
+<b>show ipv6 protocols</b>
+</span>
+</li>
+</ul>
+</p>
+<p></p>
+<p></p>
+<p>
+<b>Remarque </b>: en haut du résultat, « IP Routing is NSF aware » renvoie à la fonction NSF (Nonstop Forwarding). Cette fonction permet aux homologues EIGRP d'un routeur défaillant de conserver les informations de routage annoncées et de continuer à utiliser ces informations jusqu'à ce que le routeur défaillant reprenne un fonctionnement normal et puisse échanger des informations de routage. Pour plus d'informations, rendez-vous sur : <a href="http://www.cisco.com/en/US/docs/ios-xml/ios/iproute_eigrp/configuration/15-mt/eigrp-nsf-awa.html" target="_blank">http://www.cisco.com/en/US/docs/ios-xml/ios/iproute_eigrp/configuration/15-mt/eigrp-nsf-awa.html</a></p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

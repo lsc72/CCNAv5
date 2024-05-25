@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.3.4 Types de liaisons</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Types de protocoles STP</h1>
+        <h2>Rapid PVST+</h2>
+      </div>
+      <div id="content">
+<p>Le type de lien catégorise chaque port participant à RSTP en utilisant le mode bidirectionnel du port. Suivant l'élément connecté à chaque port, deux types de lien peuvent être identifiés :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Point à point</b> : un port fonctionnant en mode bidirectionnel simultané connecte généralement un commutateur à un autre commutateur, et constitue un bon candidat pour une transition rapide vers l'état de réacheminement.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Partagé</b> : un port fonctionnant en mode bidirectionnel non simultané raccorde un commutateur à un concentrateur, pour la connexion de plusieurs périphériques.</li>
+</ul>
+</p>
+<p></p>
+<p>Dans cette figure, cliquez sur chaque lien pour en savoir plus sur son type.</p>
+<p></p>
+<p>Le type de lien permet de déterminer si le port peut immédiatement passer à l'état de réacheminement, si certaines conditions sont réunies. Ces conditions ne sont pas les mêmes pour les ports de périphérie et les ports Non-Edge. Les ports Non-Edge appartiennent à deux catégories de type de liaison : point à point et partagée. Le type de lien est automatiquement défini, mais peut être remplacé par une configuration de port explicite à l'aide de la commande <span class="cmd"><b>spanning-tree link-type </b></span><span class="cmd"><i>parameter</i></span>.</p>
+<p></p>
+<p>Les connexions de ports de périphérie et les connexions point à point sont d'excellentes candidates pour une transition rapide vers l'état de réacheminement. Cependant, avant de prendre en compte le paramètre de type de lien, RSTP doit déterminer le rôle du port. Les caractéristiques des rôles de port concernant les types de lien incluent les éléments suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>Les ports racine n'utilisent pas le paramètre de type de lien. Les ports racine sont capables d’opérer une transition rapide vers l’état d’acheminement dès que le port est synchronisé.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les ports alternatifs et de sauvegarde n'utilisent pas le paramètre de type de lien dans la majorité des cas. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le paramètre de type de lien est principalement utilisé par les ports désignés. Une transition rapide vers l'état de réacheminement pour le port désigné se produit uniquement si le paramètre de type de lien est défini sur <span class="cmd"><i>point-to-point</i></span>.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

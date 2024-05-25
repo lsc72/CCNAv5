@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+  <slide type="MBAR">
+<slide>    
+<element type="TEXT" subType="TITLE" compId="ID_s1_title"/> 
+  <element type="TEXT" compId="ID_s1_txt01" x="8.3" y="36.85" width="425" size="11" align="left" expand="down"/>
+  <element type="ROUTER" textId="ID_staticTxt1" x="9.45" y="60.95" width="425" height="150" size="11"/>
+  <element type="TEXT" compId="ID_s1_txt02" x="8.3" y="219.85" width="425" size="11" align="left" expand="down"/>
+
+<element type="TEXT" compId="ID_s1_txt04" x="17.5" y="272.00" width="104" size="11" align="left" expand="right"/>  
+  <element type="ROUTER" textId="ID_staticTxt2" x="9.45" y="246.95" width="425" height="150" size="11"/> 
+</slide>  
+<slide>    
+<element type="TEXT" subType="TITLE" compId="ID_s2_title"/> 
+ <element type="ROUTER" textId="ID_staticTxt3" x="8.3" y="44.75" width="427" height="300" size="11"/> 
+  
+</slide>
+     
+</slide>
+ 
+<text id="ID_staticTxt1"><![CDATA[
+<pre>R3# <b>show ip route eigrp</b>
+<span id="ID_s1_txt03"></span>
+
+ 172.16.0.0/16 is variably subnetted, 3 subnets, 2 masks
+D   <span class="spanClass1">172.16.1.0/24</span> [90/2170112] via 192.168.10.5, 
+                   02:21:10, Serial0/0/0
+D   172.16.2.0/24 [90/3012096] via 192.168.10.9, 
+                    02:21:10, Serial0/0/1
+D   172.16.3.0/30 [90/41024000] via 192.168.10.9, 
+                    02:21:10, Serial0/0/1
+                   [90/41024000] via 192.168.10.5, 
+                    02:21:10, Serial0/0/0
+R3#
+</pre>
+]]>
+  </text>
+
+  <text id="ID_staticTxt2"><![CDATA[
+ <pre>R3# <b>show ip route eigrp</b>
+
+
+D     <span class="spanClass">172.16.0.0/16 [90/2170112] via 192.168.10.5</span>, 00:12:05, 
+      Serial0/0/0
+      192.168.10.0/24 is variably subnetted, 5 subnets, 3        
+      masks
+D        192.168.10.0/24 is a summary, 00:11:43, Null0
+R3#</pre>
+]]>
+  </text> 
+
+<text id="ID_staticTxt3"><![CDATA[
+ <pre>R1# <b>show ip route</b>
+
+   172.16.0.0/16 is variably subnetted, 6 subnets, 4 masks
+<span class="spanClass">D     172.16.0.0/16 is a summary, 00:03:06, Null0</span>
+C     172.16.1.0/24 is directly connected, GigabitEthernet0/0
+L     172.16.1.1/32 is directly connected, GigabitEthernet0/0
+D     172.16.2.0/24 [90/40512256] via 172.16.3.2, 00:02:52,
+Serial0/0/0
+C     172.16.3.0/30 is directly connected, Serial0/0/0
+L     172.16.3.1/32 is directly connected, Serial0/0/0
+D   192.168.1.0/24 [90/2170112] via 192.168.10.6, 00:02:51,
+Serial0/0/1
+   192.168.10.0/24 is variably subnetted, 4 subnets, 3 masks
+<span class="spanClass">D     192.168.10.0/24 is a summary, 00:02:52, Null0</span>
+C     192.168.10.4/30 is directly connected, Serial0/0/1
+L     192.168.10.5/32 is directly connected, Serial0/0/1
+D     192.168.10.8/30 [90/3523840] via 192.168.10.6, 00:02:59,
+Serial0/0/1
+R1#  
+</pre>
+]]>
+  </text> 
+</data>

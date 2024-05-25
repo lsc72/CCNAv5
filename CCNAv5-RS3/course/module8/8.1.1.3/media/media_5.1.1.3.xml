@@ -1,0 +1,77 @@
+﻿<textcomponents>
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Vérification de la désactivation de la récapitulation automatique</b>]]></text>
+	</component>
+	
+	<component id="ID_s1_txt01">
+		<text><![CDATA[&lt;résultat omis&gt;]]></text>
+	</component>
+	
+	<component id="ID_s1_txt02">
+		<text><![CDATA[&lt;résultat omis&gt;]]></text>
+	</component>
+	 
+	<component id="ID_s2_title">
+		<text><![CDATA[<b>Vérification de l'absence de récapitulation automatique des routes</b>]]></text>
+	</component>
+	
+	<component id="ID_s2_txt01">
+		<text><![CDATA[&lt;résultat omis&gt;]]></text>
+	</component>
+	
+	<component id="ID_s3_title">
+		<text><![CDATA[<b>Configuration de la récapitulation automatique</b>]]></text>
+	</component>
+	
+	<component id="ID_sc1_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc1_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc1_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+	<component id="ID_s4_title">
+		<text><![CDATA[<b>Configuration de la récapitulation automatique EIGRP sur R3</b>]]></text>		
+	</component>
+	
+	<component id="ID_s4_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b>***</b><font  face="_sans" color="#0000FF">Vous devez saisir la commande exacte et complète.</font><b>***</b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font  face="_sans"><b>Affichez la table de routage EIGRP actuelle sur R3 pour visualiser les routes avant la récapitulation.</b></font>]]></existingcommands>
+		<command  prompt="R3#">
+		    <correctresponse><![CDATA[show ip route eigrp]]></correctresponse>
+				<deviceresponse><![CDATA[<font face="_sans">&lt;résultat omis&gt;</font><font size="9"> <br> <br>  172.16.0.0/16 is variably subnetted, 3 subnets, 2 masks <br>D   172.16.1.0/24 [90/2170112] via 192.168.10.5, 02:21:10, Serial0/0/0 <br>D   172.16.2.0/24 [90/3012096] via 192.168.10.9, 02:21:10, Serial0/0/1 <br>D   172.16.3.0/30 [90/41024000] via 192.168.10.9, 02:21:10, Serial0/0/1 <br>                  [90/41024000] via 192.168.10.5, 02:21:10, Serial0/0/0 </font><br>R3#]]></deviceresponse> 
+			<instruction><![CDATA[<font  face="_sans"><b>Effectuez les actions ci-dessous&nbsp;: <ul><li>Configurez la récapitulation automatique EIGRP sur le routeur R3 pour le système autonome EIGRP AS&nbsp;1<li>Repasser en mode d'exécution privilégié</ul></b>]]></instruction>
+		</command>
+		<command  prompt="R3(config)#">
+		    <correctresponse><![CDATA[router eigrp 1]]></correctresponse>
+		</command>
+		<command  prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[auto-summary]]></correctresponse>
+		</command>
+		<command  prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+			<instruction><![CDATA[<font  face="_sans"><b>Affichez la table de routage EIGRP sur R3 pour visualiser les routes après la récapitulation automatique.</b>]]></instruction>
+		</command>
+		<command  prompt="R3#">
+		    <correctresponse><![CDATA[show ip route eigrp]]></correctresponse>
+				<deviceresponse><![CDATA[<font face="_sans">&lt;résultat omis&gt;</font><br><font size="9">D   172.16.0.0/16 [90/2170112] via 192.168.10.5, 00:12:05, Serial0/0/0<br>  192.168.10.0/24 is variably subnetted, 5 subnets, 3 masks<br>D   192.168.10.0/24 is a summary, 00:11:43, Null0</font><br>R3#]]></deviceresponse> 
+			<instruction><![CDATA[<font  face="_sans"><b>Affichez les paramètres du protocole de routage sur R1.</b>]]></instruction>
+		</command>
+		<command  prompt="R1#">
+		    <correctresponse><![CDATA[show ip protocols]]></correctresponse>
+				<deviceresponse><![CDATA[*** IP Routing is NSF aware *** <br> <br>Routing Protocol is "eigrp 1" <br>  Outgoing update filter list for all interfaces is not set <br>  Incoming update filter list for all interfaces is not set <br>  Default networks flagged in outgoing updates <br>  Default networks accepted from incoming updates <br>  EIGRP-IPv4 Protocol for AS(1) <br>    Metric weight K1=1, K2=0, K3=1, K4=0, K5=0 <br><font face="_sans">&lt;résultat omis&gt;</font> <br> <br>Automatic Summarization: enabled <br>    192.168.10.0/24 for Gi0/0, Se0/0/0 <br>      Summarizing 2 components with metric 2169856 <br>    172.16.0.0/16 for Se0/0/1 <br>      Summarizing 3 components with metric 2816 <br><font face="_sans">&lt;résultat omis&gt;</font> <br>]]></deviceresponse> 
+			<instruction><![CDATA[<font  face="_sans"><b>Affichez la table topologique EIGRP en utilisant le paramètre «&nbsp;all-links&nbsp;» sur R3.</b>]]></instruction>
+		</command>
+		<command  prompt="R3#">
+		    <correctresponse><![CDATA[show ip eigrp topology all-links]]></correctresponse>
+				<deviceresponse><![CDATA[<br>P 172.16.0.0/16, 1 successors, FD is 2170112, serno 9<br>        via 192.168.10.5 (2170112/2816), Serial0/0/0<br>        via 192.168.10.9 (3012096/2816), Serial0/0/1<br><font face="_sans">&lt;résultat omis&gt;</font><br>]]></deviceresponse> 
+			<instruction><![CDATA[<font  face="_sans" class="syntaxBottomLine"><b>Vous avez correctement configuré la récapitulation automatique EIGRP sur R3.</b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+  
+</textcomponents>

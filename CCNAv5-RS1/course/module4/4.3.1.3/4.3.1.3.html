@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.1.3 Contrôle d&#x0027;accès au support</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche liaison de données</h1>
+        <h2>Objectif de la couche liaison de données</h2>
+      </div>
+      <div id="content">
+<p>Les protocoles de couche 2 spécifient l'encapsulation d'un paquet dans une trame et les techniques permettant de placer le paquet encapsulé sur chaque support et de le récupérer. La technique utilisée pour placer la trame sur les supports et la récupérer à partir des supports est dite méthode de contrôle d'accès au support. </p>
+<p></p>
+<p>Lorsque les paquets voyagent de l'hôte source à l'hôte de destination, ils traversent généralement différents réseaux physiques. Ces réseaux physiques peuvent être basés sur différents types de supports physiques tels que des câbles en cuivre, des câbles a fibre optique et des supports sans fil constitués de signaux électromagnétiques, à fréquences radio ou hyperfréquences et des liaisons par satellite. </p>
+<p></p>
+<p>Les paquets ne sont pas en mesure d'accéder directement à ces différents supports. Le rôle de la couche liaison de données OSI est de préparer les paquets de couche réseau en vue de leur transmission et de contrôler l'accès aux supports physiques. Les méthodes de contrôle d'accès au support décrites par les protocoles de couche liaison de données définissent les processus qui permettent aux périphériques réseau d'accéder aux supports réseau et de transmettre des trames dans divers environnements réseau.</p>
+<p></p>
+<p>Sans la couche liaison de données, les protocoles de couche réseau (par exemple, IP) devraient prévoir d'établir une connexion à chaque type de support pouvant se trouver sur le chemin. En outre, le protocole IP devrait s'adapter à chaque développement d'une nouvelle technologie réseau ou d'un nouveau support. Cela freinerait l'innovation et le développement des protocoles et des supports réseau. C'est une des raisons majeures de l'approche en couches appliquée aux réseaux. </p>
+<p></p>
+<p>L'animation de la figure présente un exemple d'un ordinateur situé à Paris qui se connecte à un ordinateur portable au Japon. Bien que les deux hôtes communiquent en utilisant exclusivement le protocole IP, il est probable que de nombreux protocoles de couche liaison de données soient utilisés pour transmettre les paquets IP sur différents types de réseau locaux et étendus. Chaque transition effectuée au niveau d'un routeur peut nécessiter un protocole de couche liaison de données différent en vue du transport sur un nouveau support.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.4.1 Sécurisation des ports inutilisés</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité du commutateur : gestion et implémentation</h1>
+        <h2>Sécurité des ports de commutateur</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Désactivation des ports inutilisés</b>
+</p>
+<p></p>
+<p>Une méthode simple à laquelle nombre d'administrateurs ont recours pour mieux protéger le réseau contre tout accès non autorisé est de désactiver tous les ports qui ne sont pas exploités sur un commutateur. Par exemple, si un commutateur Cisco Catalyst 2960 est doté de 24 ports et si trois connexions Fast Ethernet sont utilisées, il est conseillé de désactiver les 21 ports inutilisés. Accédez à chaque port inutilisé et exécutez la commande Cisco IOS <span class="cmd"><b>shutdown</b></span>. Si un port doit par la suite être réactivé, exécutez la commande <span class="cmd"><b>no shutdown</b></span>. La figure montre un résultat partiel de cette configuration.</p>
+<p></p>
+<p>Il est facile de modifier la configuration de plusieurs ports sur un commutateur. Si une plage de ports doit être configurée, utilisez la commande<span class="cmd"><b> interface range</b></span>.</p>
+<p></p>
+<p>
+<span class="cmd">Switch(config)# </span>
+<span class="cmd">
+<b>interface range</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>type module/premier nombre – dernier nombre</i>
+</span>
+</p>
+<p></p>
+<p>Le processus d'activation et de désactivation des ports peut être long, mais il renforce la sécurité sur le réseau et en vaut vraiment la peine.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

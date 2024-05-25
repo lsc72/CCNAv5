@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.1.1 Acheminement fiable TCP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>TCP et UDP</h1>
+        <h2>Communication TCP</h2>
+      </div>
+      <div id="content">
+<p>La fiabilité est le principal élément différenciateur entre les protocoles TCP et UDP. La fiabilité des communications TCP est obtenue grâce aux sessions orientées connexion. Avant qu'un hôte utilisant le protocole TCP n'envoie des données à un autre hôte, le protocole TCP initie un processus destiné à établir une connexion avec la destination. Cette connexion rend possible le suivi d'une session ou d'un flux de communication entre les hôtes. Ce processus veille à ce que chaque hôte soit notifié du flux de communication et qu'il y soit préparé. Une conversation TCP nécessite l'établissement d'une session entre les hôtes dans les deux directions, comme illustré dans l'animation.</p>
+<p></p>
+<p>Une fois une session établie et le transfert des données commencé, la destination envoie des accusés de réception à la source pour les segments qu'elle reçoit. Ces accusés constituent l'élément de base de la fiabilité dans la session TCP. Quand la source reçoit un accusé de réception, elle sait que les données ont bien été reçues et qu'elle peut cesser d'en effectuer le suivi. Si la source ne reçoit pas d'accusé de réception dans un délai prédéterminé, elle retransmet ces données vers la destination. </p>
+<p></p>
+<p>La surcharge provoquée par l'utilisation du protocole TCP provient en partie du trafic réseau généré par les accusés de réception et les retransmissions. L'établissement des sessions crée une surcharge prenant la forme d'un échange de segments supplémentaires. Une surcharge supplémentaire provoquée par la nécessité d'effectuer un suivi des segments pour lesquels on attend un accusé de réception et par le processus de retransmission pèse également sur les hôtes individuels.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

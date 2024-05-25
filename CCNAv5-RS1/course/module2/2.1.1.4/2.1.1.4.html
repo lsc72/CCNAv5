@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.1.4 Fonctions IOS</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>IOS Bootcamp</h1>
+        <h2>Cisco IOS</h2>
+      </div>
+      <div id="content">
+<p>Les routeurs et commutateurs Cisco IOS exécutent des fonctions dont les professionnels réseau ont besoin pour faire en sorte que les réseaux fonctionnent comme prévu. Les routeurs et les commutateurs Cisco assurent principalement les fonctions suivantes, ou permettent de les effectuer :</p>
+<p></p>
+<p>
+<ul>
+<li>Garantir la sécurité du réseau</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>L'adressage IP des interfaces virtuelles et physiques</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les configurations spécifiques aux interfaces pour optimiser la connectivité des supports respectifs</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Routage </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les technologies de qualité de service (QS)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La prise en charge des technologies de gestion de réseau</li>
+</ul>
+</p>
+<p></p>
+<p>Chaque fonction ou service possède un groupe associé de commandes de configuration qui permettent à un technicien réseau d'effectuer sa mise en œuvre. </p>
+<p></p>
+<p>Pour accéder aux services fournis par Cisco IOS, l'interface de ligne de commande (CLI) est généralement utilisée. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

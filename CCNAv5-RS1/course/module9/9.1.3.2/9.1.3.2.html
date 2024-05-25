@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.3.2 Les sous-réseaux dans la pratique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmenter un réseau IPv4 en sous-réseaux</h1>
+        <h2>Segmenter un réseau IPv4 en sous-réseaux</h2>
+      </div>
+      <div id="content">
+<p>Dans l'exemple précédent, le réseau 192.168.1.0/24 a été segmenté en deux sous-réseaux :</p>
+<p></p>
+<p>192.168.1.0/25</p>
+<p>192.168.1.128/25</p>
+<p></p>
+<p>Sur la Figure 1, observez que deux segments de réseau local sont reliés aux interfaces GigabitEthernet du routeur R1. Les sous-réseaux seront utilisés pour les segments reliés à ces interfaces. Pour qu'elles puissent servir de passerelle pour les périphériques du réseau local, chacune des interfaces du routeur doit obtenir une adresse IP appartenant à la plage d'adresses valides du sous-réseau attribué. Il est courant d'attribuer la première ou la dernière adresse disponible d'une plage réseau à l'interface du routeur.</p>
+<p></p>
+<p>Le premier sous-réseau, 192.168.1.0/25, est utilisé pour le réseau connecté à l'interface GigabitEthernet 0/0 et le second sous-réseau, 192.168.1.128/25, est utilisé pour le réseau connecté à l'interface GigabitEthernet 0/1. Avant d'attribuer une adresse IP à chacune de ces interfaces, il est nécessaire de déterminer la plage d'adresses IP valides pour chaque sous-réseau.</p>
+<p></p>
+<p>Voici quelques recommandations à appliquer à chacun des sous-réseaux :</p>
+<p>
+<ul>
+<li>
+<b>Adresse réseau</b> : tous les bits 0 de la partie hôte de l'adresse.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Première adresse d'hôte</b> : tous les bits 0 et le bit 1 le plus à droite de la partie hôte de l'adresse. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Dernière adresse d'hôte</b> : tous les bits 1 et le bit 0 le plus à droite de la partie hôte de l'adresse.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse de diffusion</b> : tous les bits 1 de la partie hôte de l'adresse.</li>
+</ul>
+</p>
+<p></p>
+<p>Comme l'illustre la Figure 2, la première adresse d'hôte du réseau 192.168.1.0/25 est 192.168.1.1 et la dernière adresse d'hôte est 192.168.1.126. La Figure 3 montre que la première adresse d'hôte du réseau 192.168.1.128/25 est 192.168.1.129 et que la dernière adresse d'hôte est 192.168.1.254.</p>
+<p></p>
+<p>Pour attribuer la première adresse d'hôte de chaque sous-réseau à l'interface du routeur correspondante, exécutez la commande <span class="cmd"><b>ip address</b></span> en mode de configuration d'interface, comme illustré à la Figure 4. Notez que chaque sous-réseau utilise le masque de sous-réseau 255.255.255.128 pour indiquer que la partie réseau de l'adresse est 25 bits.</p>
+<p></p>
+<p>La configuration d'un hôte du réseau 192.168.1.128/25 est représentée à la Figure 5. Notez que l'adresse IP de la passerelle est l'adresse configurée sur l'interface G0/1 de R1, 192.168.1.129, et que le masque de sous-réseau est 255.255.255.128. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

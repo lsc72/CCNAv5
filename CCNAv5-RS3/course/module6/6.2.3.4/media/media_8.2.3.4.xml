@@ -1,0 +1,37 @@
+﻿<textcomponents> 
+<!--Slide 1-->
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Vérification de la LSDB OSPF sur R1</b>]]></text>
+	</component> 
+	
+	<!-- Slide 2-->
+	<component id="ID_s2_title">
+		<text><![CDATA[<b>Vérification de la LSDB OSPF sur R2 et R3</b>]]></text>		
+	</component>
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+	<component id="ID_s2_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b>***</b><font face="Arial" color="#0000FF">Vous devez saisir la commande exacte et complète.</font><b>***</b> ]]></feedback>		
+		<existingcommands><![CDATA[<font face="Arial"><b>Affichez la base de données d'états de liens OSPF sur R2.</font>]]></existingcommands>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ip ospf database]]></correctresponse>
+				<deviceresponse  fontSize="10"><![CDATA[<font  face="Courier New"><br>         OSPF Router with ID (2.2.2.2) (Process ID 10) <br> <br>            Router Link States (Area 0) <br> <br>Link ID     ADV Router  Age   Seq#       Checksum Link count <br>1.1.1.1     1.1.1.1     843   0x80000002 0x00B961 2 <br>2.2.2.2     2.2.2.2     839   0x80000004 0x007458 5 <br>3.3.3.3     3.3.3.3     834   0x80000002 0x00BF42 2 <br> <br>            Summary Net Link States (Area 0) <br> <br>Link ID     ADV Router  Age   Seq#       Checksum <br>10.1.1.0    1.1.1.1     117   0x80000002 0x00D951 <br>10.1.2.0    1.1.1.1     117   0x80000002 0x00CE5B <br>192.168.1.0 3.3.3.3     103   0x80000003 0x00784B <br>192.168.2.0 3.3.3.3     103   0x80000002 0x006F54 <br>R2#</font>]]></deviceresponse> 
+			<instruction><![CDATA[<font  face="Arial"><b>Vous êtes maintenant connecté à R3. Affichez la base de données d'états de liens OSPF sur R3.</b>]]></instruction>
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip ospf database]]></correctresponse>
+				<deviceresponse  fontSize="10"><![CDATA[<font face="Courier New"><br>         OSPF Router with ID (3.3.3.3) (Process ID 10) <br> <br>            Router Link States (Area 0) <br> <br>Link ID     ADV Router  Age   Seq#       Checksum Link count <br>1.1.1.1     1.1.1.1     904   0x80000002 0x00B961 2 <br>2.2.2.2     2.2.2.2     900   0x80000004 0x007458 5 <br>3.3.3.3     3.3.3.3     893   0x80000002 0x00BF42 2 <br> <br>            Summary Net Link States (Area 0) <br> <br>Link ID     ADV Router  Age   Seq#       Checksum <br>10.1.1.0    1.1.1.1     178   0x80000002 0x00D951 <br>10.1.2.0    1.1.1.1     178   0x80000002 0x00CE5B <br>192.168.1.0 3.3.3.3     162   0x80000003 0x00784B <br>192.168.2.0 3.3.3.3     162   0x80000002 0x006F54 <br> <br>            Router Link States (Area 2) <br> <br>Link ID     ADV Router  Age   Seq#       Checksum Link count <br>3.3.3.3     3.3.3.3     162   0x80000003 0x00CF60 2 <br> <br>            Summary Net Link States (Area 2) <br> <br>Link ID      ADV Router  Age   Seq#       Checksum <br>10.1.1.0     3.3.3.3     892   0x80000003 0x0055B9 <br>10.1.2.0     3.3.3.3     892   0x80000003 0x004AC3 <br>10.2.1.0     3.3.3.3     892   0x80000002 0x00EEA9 <br>192.168.10.0 3.3.3.3     892   0x80000003 0x00B2F8 <br>192.168.10.4 3.3.3.3     892   0x80000002 0x003002 <br>R3#</font>]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez correctement vérifié la base de données d'états de liens OSPF.</b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+</textcomponents>

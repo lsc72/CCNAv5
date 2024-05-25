@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.1.6 Utilisation d&#x0027;une interface de bouclage comme ID de routeur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv2 à zone unique</h1>
+        <h2>ID de routeur OSPF</h2>
+      </div>
+      <div id="content">
+<p>Un ID de routeur peut également être affecté au moyen d'une interface de bouclage. </p>
+<p></p>
+<p>L'adresse IPv4 de l'interface de bouclage doit être configurée avec un masque de sous-réseau 32 bits (255.255.255.255). Cette méthode permet de créer une route d'hôte de façon efficace. Une route d'hôte 32 bits n'est pas annoncée comme route aux autres routeurs OSPF. </p>
+<p></p>
+<p>L'exemple de la figure indique comment configurer une interface de bouclage avec une route d'hôte sur R1. R1 utilise la route d'hôte comme ID de routeur, à supposer qu'aucun ID de routeur n'ait été explicitement configuré ou appris précédemment.</p>
+<p></p>
+<p>
+<b>Remarque :</b> certaines versions antérieures de l'IOS ne reconnaissent pas la commande <span class="cmd"><b>router-id</b></span> ; par conséquent, le meilleur moyen de définir l'ID du routeur sur ces routeurs est d'utiliser une interface de bouclage.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

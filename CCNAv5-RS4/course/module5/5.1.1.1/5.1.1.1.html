@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.1.1 Espace d&#x0027;adressage privé IPv4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement de la NAT</h1>
+        <h2>Caractéristiques de la NAT</h2>
+      </div>
+      <div id="content">
+<p>Il n'existe pas suffisamment d'adresses IPv4 publiques pour pouvoir attribuer une adresse unique à chaque périphérique connecté à Internet. Les réseaux sont généralement mis en œuvre à l'aide d'adresses IPv4 privées, tel que défini dans le document RFC 1918. La Figure 1 présente la plage des adresses indiquées dans le document RFC 1918. Il est très probable que l'ordinateur que vous utilisez pour afficher ce cours possède une adresse privée.</p>
+<p></p>
+<p>Les adresses privées sont utilisées au sein d'une entreprise ou d'un site pour permettre aux périphériques de communiquer localement. Cependant, comme ces adresses n'identifient aucune entreprise ou organisation unique, les adresses IPv4 privées ne peuvent pas être acheminées sur Internet. Pour permettre à un périphérique possédant une adresse IPv4 privée d'accéder aux périphériques et aux ressources situés en dehors du réseau local, l'adresse privée doit d'abord être traduite en adresse publique. </p>
+<p></p>
+<p>Comme le montre la Figure 2, la traduction d'adresse réseau (NAT) assure la traduction des adresses privées en adresses publiques. Cela permet à un périphérique possédant une adresse IPv4 privée d'accéder aux ressources situées en dehors de son réseau privé, notamment celles d'Internet. La combinaison de la fonction NAT aux adresses IPv4 privées s'est révélée être une méthode utile pour préserver les adresses IPv4 publiques. Une seule et même adresse IPv4 publique peut être partagée par des centaines, voire des milliers d'équipements, chacun étant configuré avec une adresse IPv4 privée unique.</p>
+<p></p>
+<p>Sans la NAT, l'espace d'adressage IPv4 aurait été saturé bien avant l'an 2000. Cependant, la fonction NAT présente certaines limitations qui seront étudiées dans la suite de ce chapitre. La transition vers IPv6 peut permettre de contrer l'épuisement de l'espace d'adressage IPv4 et les limites de la NAT.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

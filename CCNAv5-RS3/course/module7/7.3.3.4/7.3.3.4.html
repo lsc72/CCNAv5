@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.3.4 Successeurs potentiels, condition de faisabilité et distance annoncée</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1> Fonctionnement du protocole EIGRP</h1>
+        <h2>Algorithme DUAL et table topologique</h2>
+      </div>
+      <div id="content">
+<p>DUAL peut converger rapidement après une modification de la topologie, car il peut utiliser les chemins de secours vers d'autres réseaux sans nouveau calcul. Ces chemins de secours sont appelés « successeurs potentiels » (FS).</p>
+<p></p>
+<p>Un successeur potentiel est un voisin disposant d'un chemin de secours sans boucle vers le même réseau que le successeur, et qui remplit la condition de faisabilité (FC). Le successeur de R2 pour le réseau 192.168.1.0/24 est R3, qui fournit le meilleur chemin ou la métrique la plus basse vers le réseau de destination. Notez à la Figure 1 que R1 fournit un autre chemin, mais s'agit-il d'un successeur potentiel ? Pour que R1 soit un successeur potentiel de R2, il doit d'abord remplir la condition de faisabilité.</p>
+<p></p>
+<p>La condition de faisabilité est remplie lorsque la distance annoncée (RD) d'un voisin à un réseau est inférieure à la distance de faisabilité du routeur local par rapport à ce même réseau de destination. Si la distance annoncée est inférieure, elle représente un chemin sans boucle. La distance annoncée correspond simplement à la distance de faisabilité d'un voisin EIGRP vers le même réseau de destination. La distance annoncée est la métrique qu’un routeur annonce à un voisin à propos de son propre coût vers le réseau. </p>
+<p></p>
+<p>À la Figure 2, la distance de faisabilité de R1 vers 192.168.1.0/24 est 2 170 112. </p>
+<p>
+<ul>
+<li>R1 indique à R2 que sa distance de faisabilité vers 192.168.1.0/24 est 2 170 112. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Du point de vue de R2, 2 170 112 est la distance annoncée de R1. </li>
+</ul>
+</p>
+<p>R2 utilise cette information pour déterminer si R1 remplit la condition de faisabilité et donc, s'il peut constituer un successeur potentiel. </p>
+<p></p>
+<p>Comme indiqué à la Figure 3, la distance annoncée de R1 (2 170 112) étant inférieure à la distance de faisabilité de R2 (3 012 096), R1 remplit la condition de faisabilité. </p>
+<p></p>
+<p>R1 est désormais considéré comme un successeur potentiel de R2 vers le réseau 192.168.1.0/24.</p>
+<p></p>
+<p>En cas de problème sur le chemin de R2 vers 192.168.1.0/24 via R3 (successeur), R2 installe immédiatement le chemin via R1 (FS) dans sa table de routage. R1 devient le nouveau successeur du chemin de R2 vers ce réseau, comme indiqué à la Figure 4.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

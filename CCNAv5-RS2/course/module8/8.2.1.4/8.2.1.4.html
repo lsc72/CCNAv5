@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.1.4 Configuration d&#x0027;un ID de routeur OSPF</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv2 à zone unique</h1>
+        <h2>ID de routeur OSPF</h2>
+      </div>
+      <div id="content">
+<p>Utilisez la commande du mode de configuration de routeur <span class="cmd"><b>router-id </b></span><span class="cmd"><i>rid </i></span>pour affecter manuellement une valeur 32 bits exprimée sous forme d'adresse IPv4 à un routeur. Un routeur OSPF s'identifie auprès des autres routeurs au moyen de cet ID de routeur. </p>
+<p></p>
+<p>Comme illustré dans la Figure 1, R1 est configuré avec l'ID de routeur 1.1.1.1, R2 avec 2.2.2.2 et R3 avec 3.3.3.3. </p>
+<p></p>
+<p>Dans la Figure 2, l'ID de routeur 1.1.1.1 est attribué à R1. Utilisez la commande<span class="cmd"><b> show ip protocols </b></span>pour vérifier l'ID de routeur.</p>
+<p></p>
+<p>
+<b>Remarque :</b> R1 n'avait jamais été configuré avec un ID de routeur OSPF. Si c'était le cas, l'ID du routeur devrait être modifié.</p>
+<p></p>
+<p>Si l'ID de routeur est identique sur deux routeurs voisins, le routeur affiche un message d'erreur similaire à celui-ci : </p>
+<p></p>
+<p>
+<span class="cmd">%OSPF-4-DUP_RTRID1: Detected router with duplicate router ID. </span>
+</p>
+<p></p>
+<p>Pour corriger ce problème, configurez tous les routeurs de manière à ce qu'ils aient un ID OSPF unique.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe dans la Figure 3 pour attribuer l'ID de routeur à R2 et R3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

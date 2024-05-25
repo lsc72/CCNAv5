@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.3.3 Présentation de l&#x0027;état STP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration Spanning Tree (arbre recouvrant)</h1>
+        <h2>Problèmes liés à la configuration du protocole STP</h2>
+      </div>
+      <div id="content">
+<p>La commande <span class="cmd"><b>show spanning-tree</b></span> utilisée sans options supplémentaires offre un aperçu rapide de l'état STP pour l'ensemble des VLAN configurés sur un commutateur. Si vous ne vous intéressez qu'à un VLAN en particulier, limitez l'étendue de cette commande en spécifiant le VLAN comme option.</p>
+<p></p>
+<p>Servez-vous de la commande <span class="cmd"><b>show spanning-tree vlan </b></span><span class="cmd"><i>vlan_id</i></span> pour obtenir des informations STP sur un VLAN donné. Utilisez notamment cette commande pour obtenir des informations sur le rôle et l'état de chaque port du commutateur. L'exemple de résultat pour le commutateur S1 indique que les trois ports sont en état de réacheminement (FWD) et que le rôle de ces trois ports est soit port désigné, soit port racine. Les ports bloqués, le cas échéant, affichent l'état « BLK » dans la sortie.</p>
+<p></p>
+<p>La sortie fournit également des informations sur l'ID de pont du commutateur local et sur l'ID de racine, qui correspond à l'ID de pont du pont racine.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+			<element type="ROUTER" textId="router_txt" width="434" height="357" x="2" y="37"/>
+		</slide>
+		<slide>
+			<element type="TEXT" subType="TABLE" compId="ID_s2_table" x="5" y="39" width="416" height="355" />
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+		</slide>
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+			<element type="ROUTER" textId="router_txt1" width="434" height="388" x="0" y="2"/>
+		</slide>
+	</slide>
+	<text id="router_txt"><![CDATA[<pre>R1# <b>show interface serial 0/0/0</b>
+<span class="orange" style="width:100%;">Serial0/0/0 is up, line protocol is up</span>
+  Hardware is GT96K Serial
+  Internet address is 172.16.0.1/30
+  MTU 1500 bytes, BW 1544 Kbit/sec, DLY 20000 usec,
+     reliability 255/255, txload 1/255, rxload 1/255
+  <span class="orange" style="padding:1px">Encapsulation HDLC,</span> loopback not set
+  Keepalive set (10 sec)
+  CRC checking enabled
+  Last input 00:00:05, output 00:00:04, output hang
+  never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total
+  output drops: 0
+  Queueing strategy: weighted fair
+  Output queue: 0/1000/64/0 (size/max total/threshold
+  /drops)
+     Conversations  0/1/256 (active/max active/max total)
+     Reserved Conversations 0/0 (allocated/max allocated)
+     Available Bandwidth 1158 kilobits/sec
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     5 packets input, 1017 bytes, 0 no buffer
+     Received 5 broadcasts (0 IP multicasts)
+     0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun,
+	 0 ignored, 0 abort
+     4 packets output, 395 bytes, 0 underruns
+     0 output errors, 0 collisions, 4 interface resets
+     0 unknown protocol drops
+     0 output buffer failures, 0 output buffers 
+	 swapped out
+     2 carrier transitions
+     DCD=up  DSR=up  DTR=up  RTS=up  CTS=up
+</pre>]]></text>
+<text id="router_txt1"><![CDATA[<pre>R1# <b>show controllers serial 0/0/0</b>
+Interface Serial0/0/0
+Hardware is GT96K
+<span class="orange" style="padding:1px">DCE V.35,</span> clock rate 64000
+idb at 0x66855120, driver data structure at 0x6685C93C
+wic_info 0x6685CF68
+Physical Port 0, SCC Num 0
+MPSC Registers:
+MMCR_L=0x000304C0, MMCR_H=0x00000000, MPCR=0x00000000
+CHR1=0x00FE007E, CHR2=0x00000000, CHR3=0x0000064A, 
+CHR4=0x00000000
+CHR5=0x00000000, CHR6=0x00000000, CHR7=0x00000000, 
+CHR8=0x00000000
+CHR9=0x00000000, CHR10=0x00003008
+SDMA Registers:
+SDC=0x00002201, SDCM=0x00000080, SGC=0x0000C000
+CRDP=0x0DBD2DB0, CTDP=0x0DBD31D0, FTDB=0x0DBD31D0
+Main Routing Register=0x0003FE38 BRG Conf 
+Register=0x0005023F
+Rx Clk Routing Register=0x76543818 Tx Clk 
+Routing Register=0x76543910
+GPP Registers:
+Conf=0x430002  , Io=0x46C050  , Data=0x7F4BBFAD, 
+Level=0x80004   
+Conf0=0x430002  , Io0=0x46C050  , Data0=0x7F4BBFAD, 
+Level0=0x80004   
+0 input aborts on receiving flag sequence
+0 throttles, 0 enables
+0 overruns
+0 transmitter underruns
+ --More-- 
+</pre>]]></text>
+</data>

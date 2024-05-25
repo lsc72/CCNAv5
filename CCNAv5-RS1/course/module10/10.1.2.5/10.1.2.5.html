@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.1.2.5 Modèle client-serveur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche Application</h1>
+        <h2>Interaction des protocoles d&#x0027;application avec les applications des utilisateurs finaux</h2>
+      </div>
+      <div id="content">
+<p>Dans le modèle client-serveur, le périphérique qui demande les informations est appelé « client » et celui qui répond à la requête est appelé « serveur ». Les processus client et serveur sont considérés comme faisant partie de la couche application. Le client commence l'échange en demandant des données au serveur, qui répond en envoyant un ou plusieurs flux de données au client. Les protocoles de couche application décrivent le format des requêtes et des réponses entre clients et serveurs. Outre le transfert de données proprement dit, cet échange peut également nécessiter l'authentification de l'utilisateur et l'identification des fichiers de données à transférer. </p>
+<p></p>
+<p>Les services de messagerie électronique des FAI qui permettent d'envoyer, de recevoir et de stocker les e-mails sont des exemples de réseau client-serveur. Le client de messagerie sur un ordinateur domestique envoie une requête au serveur de messagerie du FAI pour tout e-mail non lu. Le serveur répond en renvoyant au client les e-mails demandés.</p>
+<p></p>
+<p>Bien que les données soient généralement décrites comme étant transmises du serveur au client, certaines données sont toujours transmises du client au serveur. Le flux de données peut être égal dans les deux sens ou même plus important dans le sens client vers serveur. Par exemple, un client peut transférer un fichier vers le serveur à des fins de stockage. Comme le montre la figure, le téléchargement de données d'un client vers un serveur est dit « ascendant » et le téléchargement de données d'un serveur vers un client est dit « descendant ».</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

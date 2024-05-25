@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.1.1 Contiguïté de voisinage EIGRP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1> Fonctionnement du protocole EIGRP</h1>
+        <h2>Détection de route initiale EIGRP</h2>
+      </div>
+      <div id="content">
+<p>L'objectif d'un protocole de routage dynamique est de détecter les réseaux distants à partir des autres routeurs et d'atteindre la convergence dans le domaine de routage. Pour que des routeurs puissent échanger des paquets de mise à jour EIGRP, le protocole EIGRP doit d'abord détecter ses voisins. Les voisins EIGRP sont d'autres routeurs exécutant le protocole EIGRP sur des réseaux connectés directement.</p>
+<p></p>
+<p>Le protocole EIGRP utilise des paquets Hello pour établir des contiguïtés de voisinage et les gérer. Pour que deux routeurs EIGRP deviennent voisins, plusieurs paramètres doivent être concordants entre les deux routeurs. Par exemple, deux routeurs EIGRP doivent utiliser les mêmes paramètres de métrique EIGRP et ils doivent être configurés avec le même numéro de système autonome.</p>
+<p></p>
+<p>Chaque routeur EIGRP gère une table de voisinage, qui contient la liste des routeurs sur des liens partagés qui disposent d'une contiguïté EIGRP avec lui. La table de voisinage permet de suivre l'état des voisins EIGRP. </p>
+<p></p>
+<p>La figure présente deux routeurs EIGRP qui s'échangent des paquets Hello EIGRP initiaux. Lorsqu'un routeur sur lequel le protocole EIGRP est activé reçoit un paquet Hello sur une interface, il ajoute le routeur expéditeur à sa table de voisinage.</p>
+<p></p>
+<p>1. Un nouveau routeur (R1) apparaît sur le lien et envoie un paquet Hello EIGRP via toutes ses interfaces configurées EIGRP.</p>
+<p></p>
+<p>2. Le routeur R2 reçoit le paquet Hello sur une interface sur laquelle le protocole EIGRP est activé. R2 répond avec un paquet de mise à jour EIGRP qui contient toutes les routes de sa table de routage, à l'exception de celles apprises via cette interface (découpage d'horizon). Toutefois, la contiguïté de voisinage n'est établie que lorsque R2 envoie également un paquet Hello EIGRP à R1.</p>
+<p></p>
+<p>3. Une fois que les deux routeurs ont échangé des paquets Hello, la contiguïté de voisinage est établie. R1 et R2 mettent à jour leurs tables de voisinage EIGRP en ajoutant le routeur adjacent comme voisin.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

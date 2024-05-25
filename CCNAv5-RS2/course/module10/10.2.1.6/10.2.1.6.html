@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.1.6 Option DHCPv6 avec état</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 6</h1>
+        <h2>SLAAC et DHCPv6</h2>
+      </div>
+      <div id="content">
+<p>
+<b>DHCPv6 avec état (DHCPv6 uniquement)</b>
+</p>
+<p></p>
+<p>Cette option est la plus proche de DHCPv4. Dans ce cas, le message RA enjoint le client de ne pas utiliser les informations qu'il contient. Toutes les informations d'adressage et de configuration doivent être obtenues auprès d'un serveur DHCPv6 avec état. On parle de DHCPv6 avec état, car le serveur DHCPv6 maintient à jour les informations relatives à l'état des adresses IPv6. Le principe est similaire à celui d'un serveur DHCPv4 attribuant des adresses pour IPv4.</p>
+<p></p>
+<p>L'indicateur M indique si DHCPv6 avec état doit être utilisé. L'indicateur O n'a pas d'effet. La commande suivante permet de faire passer l'indicateur M de 0 à 1 pour indiquer DHCPv6 avec état :</p>
+<p></p>
+<p>
+<span class="cmd">Router(config-if)# </span>
+<span class="cmd">
+<b>ipv6 nd managed-config-flag</b>
+</span>
+<span class="cmd"></span>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

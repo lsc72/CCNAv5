@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.4.1.4 Packet Tracer : dépannage du protocole PPP avec authentification</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.4.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage de la connectivité WAN</h1>
+        <h2>Dépannage de PPP</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Contexte/</b>
+<b>Scénario</b>
+</p>
+<p></p>
+<p>Les routeurs de votre société ont été configurés par un ingénieur réseau sans expérience. La présence de plusieurs erreurs dans la configuration a provoqué des problèmes de connectivité. Votre responsable vous demande de détecter les erreurs de configuration et de les corriger, puis de décrire le travail réalisé. En utilisant vos connaissances en matière de protocole PPP, ainsi que des méthodes de vérification standard, détectez les erreurs et corrigez-les. Veillez à ce que toutes les liaisons série utilisent l'authentification PPP CHAP et vérifiez que tous les réseaux sont accessibles. Les mots de passe sont « cisco » et « class ».</p>
+<p></p>
+<p>
+<a href="../../files/3.4.1.4%20Packet%20Tracer%20-%20Troubleshooting%20PPP%20with%20Authentication%20Instructions.pdf" target="_blank">Packet Tracer : dépannage du protocole PPP avec instructions d'authentification</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/3.4.1.4%20Packet%20Tracer%20-%20Troubleshooting%20PPP%20with%20Authentication.pka" target="_blank">Packet Tracer : dépannage du protocole PPP avec authentification - PKA</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

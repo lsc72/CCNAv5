@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.1.5 Fond de panier de routeur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routeurs</h1>
+        <h2>Composants d&#x0027;un routeur</h2>
+      </div>
+      <div id="content">
+<p>Un routeur Cisco 1941 comprend les connexions suivantes :</p>
+<p>
+<ul>
+<li>
+<b>Ports de console</b> – deux ports de console pour la configuration initiale et l'accès à l'interface de ligne de commande (CLI) via un port RJ-45 standard et un nouveau connecteur USB de type B (USB mini B).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Port AUX</b> – un port RJ-45 pour la gestion à distance, similaire au port de console.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Deux interfaces LAN</b> – deux interfaces gigabit ethernet pour l'accès au réseau local.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Slots EHWIC (carte d'interface WAN haut débit avancée)</b> – deux slots qui fournissent modularité et flexibilité en permettant au routeur de prendre en charge différents types de module d'interface, y compris la connexion série, la DSL, le port de commutateur et le sans fil.</li>
+</ul>
+</p>
+<p></p>
+<p>Le routeur à services intégrés Cisco 1941 est également équipé de slots pour que sa capacité puisse être augmentée. Les deux slots de mémoire CompactFlash sont capables de prendre en charge des cartes CompactFlash de 4 Go chacune pour augmenter l'espace de stockage. Deux ports hôtes USB sont inclus pour permettre l'augmentation de l'espace de stockage et de le sécuriser à l'aide de la fonctionnalité de jeton. </p>
+<p></p>
+<p>Une carte CompactFlash permet de stocker l'image du logiciel Cisco IOS, les fichiers logs, les fichiers de configuration vocale, les fichiers HTML, les sauvegardes de configuration, ou d'autres fichiers requis pour le système. Par défaut, seul le slot 0 est équipé en usine d'une carte CompactFlash et constitue l'emplacement de démarrage par défaut. </p>
+<p></p>
+<p>La figure ci-contre indique l'emplacement de ces connexions et slots.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

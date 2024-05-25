@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.7 Interface de gestion locale (LMI)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation du protocole Frame Relay</h1>
+        <h2>Fonctionnement de la technologie Frame Relay</h2>
+      </div>
+      <div id="content">
+<p>Un autre concept important de Frame Relay est l'interface de gestion locale LMI (Local Management Interface). La conception de Frame Relay assure la transmission de données à commutation de paquets avec un minimum de retard de bout en bout. La conception initiale omet tout ce qui peut contribuer à ce retard. </p>
+<p></p>
+<p>Lors de la mise en place de Frame Relay en tant que technologie distincte plutôt que dans le cadre de la technologie RNIS, il est apparu que les ETTD devaient pouvoir obtenir de façon dynamique des informations sur l'état du réseau. Cette fonctionnalité ne figurait cependant pas dans le concept initial. Cisco, Digital Equipment Corporation (DEC), Northern Telecomet StrataCom constituèrent alors un consortium afin d'étendre le protocole Frame Relay et de lui ajouter d'autres possibilités pour des environnements de réseau Internet complexes. C'est l'ensemble de ces extensions que l'on appelle « interface de gestion locale ». </p>
+<p></p>
+<p>Consultez la topologie Frame Relay dans la Figure 1. La LMI est un mécanisme de maintien de connexion qui fournit des informations d'état sur les connexions Frame Relay entre le routeur (ETTD) et le commutateur Frame Relay (DCE). Environ toutes les 10 secondes, le périphérique final interroge le réseau pour obtenir soit une simple séquence de réponses, soit des informations sur l'état des canaux. Si le réseau ne fournit pas les informations demandées, le périphérique utilisateur peut considérer que la connexion est coupée. Si le réseau fournit une réponse à la demande FULL STATUS, cette réponse comprend des informations d'état sur les DLCI attribués à la ligne en question. Le périphérique de fin peut utiliser ces informations pour déterminer si les connexions logiques sont en mesure de transmettre les données.</p>
+<p></p>
+<p>La Figure 2 présente le résultat de la commande <span class="cmd"><b>show frame-relay lmi</b></span>. La sortie affichée comprend le type de LMI utilisé par l'interface Frame Relay, ainsi que les compteurs de la séquence d'échange sur l'état LMI, y compris les erreurs telles que des dépassements de temps LMI.</p>
+<p></p>
+<p>Il est facile de confondre la LMI et l'encapsulation. La LMI est une définition des messages utilisés entre l'ETTD (R1) et le DCE (commutateur Frame Relay du fournisseur de services). L'encapsulation définit les en-têtes utilisés par un ETTD pour communiquer des informations à son homologue situé à l'autre extrémité d'un circuit virtuel. Le commutateur et son routeur doivent veiller à utiliser la même LMI. Le commutateur n'est pas concerné par l'encapsulation. Les points de terminaison (ETTD) ne sont pas concernés par l'encapsulation.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

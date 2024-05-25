@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.2.1 Annonce des réseaux IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage RIP et RIPng</h1>
+        <h2>Configuration du protocole RIPng</h2>
+      </div>
+      <div id="content">
+<p>Comme pour son homologue IPv4, le protocole RIPng est rarement utilisé sur les réseaux modernes. Il est également utile pour comprendre les principes de base du routage de réseau. Pour cette raison, cette section donne un bref aperçu de la configuration de base du protocole RIPng.</p>
+<p></p>
+<p>Examinez la topologie de référence dans la figure. Dans ce scénario, tous les routeurs ont été configurés avec les fonctionnalités de gestion de base et toutes les interfaces identifiées dans la topologie de référence sont configurées et activées. Aucune route statique n'est configurée et aucun protocole de routage n'est activé. Par conséquent, l'accès au réseau distant est actuellement impossible. </p>
+<p></p>
+<p>Pour permettre à un routeur IPv6 de transférer des paquets IPv6, la commande <span class="cmd"><b>ipv6 unicast-routing</b></span> doit être configurée. </p>
+<p></p>
+<p>Contrairement au protocole RIPv2, le protocole RIPng est activé sur une interface, mais pas en mode de configuration du routeur. En fait, aucune commande <span class="cmd"><b>network</b></span> <span class="cmd"><i>network-address</i></span> n'est disponible dans le protocole RIPng. À la place, utilisez la commande de configuration d'interface<span class="cmd"><b> ipv6 rip </b></span><span class="cmd"><i>domain-name</i></span> <span class="cmd"><b>enable</b></span>. </p>
+<p></p>
+<p>Dans la Figure 1, le routage monodiffusion IPv6 est activé et les interfaces Gigabit Ethernet 0/0 et Serial 0/0/0 sont activées pour le protocole RIPng en utilisant le nom de domaine RIP-AS. </p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe dans la Figure 2 pour configurer R2 et R3 de manière similaire.</p>
+<p></p>
+<p>Le processus de propagation d'une route par défaut dans le protocole RIPng est identique pour le protocole RIPv2, mis à part qu'une route statique par défaut IPv6 doit être spécifiée. Par exemple, supposons que R1 a une connexion Internet depuis une interface Serial 0/0/1 vers l'adresse IP 2001:DB8:FEED:1::1/64. Pour propager une route par défaut, R3 doit être configuré avec :</p>
+<p>
+<ul>
+<li>Une route statique par défaut au moyen de la commande de configuration globale <span class="cmd"><b>ipv6 route 0::/0 2001:DB8:FEED:1::1</b></span>.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La commande du mode de configuration d'interface <span class="cmd"><b>ipv6 rip </b></span><span class="cmd"><i>domain-name</i></span><span class="cmd"><b> default-information originate</b></span>. Cette commande demande à R3 d'être la source des informations de route par défaut et de propager la route statique par défaut dans les mises à jour RIPng envoyées via l'interface configurée.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.2.4 Types de câble à paires torsadées non blindées </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Supports réseau</h1>
+        <h2>Câblage à paires torsadées non blindées (UTP)</h2>
+      </div>
+      <div id="content">
+<p>D'autres situations peuvent nécessiter des câbles UTP répondant à différentes conventions de câblage. Cela signifie que les fils du câble doivent être connectés dans des ordres différents avec diverses séries de broches des connecteurs RJ-45. </p>
+<p></p>
+<p>Les principaux types de câbles obtenus en utilisant des conventions de câblage spécifiques sont les suivants  :</p>
+<p>
+<ul>
+<li>
+<b>Câble Ethernet droit</b> : le type le plus courant de câbles réseau. Il est généralement utilisé pour connecter un hôte à un commutateur et un commutateur à un routeur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Câble Ethernet croisé</b> : câble peu utilisé permettant de relier des périphériques similaires. Par exemple, pour connecter un commutateur à un commutateur, un hôte à un autre hôte ou un routeur à un routeur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Câble de renversement</b> : câble propriétaire Cisco permettant d'établir une connexion avec un routeur ou un port de console de commutateur. </li>
+</ul>
+</p>
+<p></p>
+<p>L'utilisation incorrecte d'un câble croisé ou droit entre des périphériques ne peut pas les endommager, mais la connectivité et la communication entre les périphériques deviennent alors impossibles. Il s'agit d'une erreur courante dans les TP et la vérification des connexions de périphériques doit constituer la première action de dépannage en cas de problème de connectivité.</p>
+<p></p>
+<p>La figure indique le type de câble UTP, les normes associées et l'application la plus courante de ces câbles. Elle identifie également les paires de fils selon les normes TIA 568A et TIA 568B. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

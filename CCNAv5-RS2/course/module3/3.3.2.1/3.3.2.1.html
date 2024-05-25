@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.2.1 Directives de conception d&#x0027;un VLAN</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité et conception de VLAN</h1>
+        <h2>Meilleures pratiques de conception de VLAN</h2>
+      </div>
+      <div id="content">
+<p>Les commutateurs Cisco possèdent une configuration par défaut comprenant des VLAN préconfigurés, afin de prendre en charge plusieurs types de supports et de protocoles. Le VLAN Ethernet par défaut est le VLAN 1. Il est recommandé, pour des raisons de sécurité, de configurer tous les ports de tous les commutateurs de sorte qu'ils soient associés à des VLAN autres que le VLAN 1. Pour cela, il suffit généralement de configurer tous les ports non utilisés dans un VLAN « black hole » ne servant à rien sur le réseau. Tous les ports utilisés sont associés à des VLAN distincts du VLAN 1 et du VLAN black hole. Il est également conseillé de désactiver les ports inutilisés pour empêcher tout accès non autorisé.</p>
+<p></p>
+<p>Pour des raisons de sécurité, il est recommandé de séparer le trafic de gestion et de données utilisateur. Le VLAN de gestion, qui est le VLAN 1 par défaut, doit être remplacé par un VLAN distinct. Pour communiquer à distance avec un commutateur Cisco à des fins de gestion, le commutateur doit disposer d'une adresse IP configurée sur le VLAN de gestion. Les utilisateurs des autres VLAN ne peuvent pas établir de sessions d'accès à distance au commutateur à moins qu'ils n'aient été acheminés vers le VLAN de gestion, ce qui offre une couche de sécurité supplémentaire. En outre, le commutateur doit être configuré pour accepter uniquement les sessions SSH chiffrées pour la gestion à distance.</p>
+<p></p>
+<p>Tout le trafic de contrôle est envoyé sur le VLAN 1. Par conséquent, lorsque le VLAN natif prend une valeur autre que le VLAN 1, tout le trafic de contrôle est étiqueté sur les trunks de VLAN IEEE 802.1Q (étiquetées avec l'ID de VLAN 1). Il est recommandé de définir le VLAN natif sur un VLAN autre que le VLAN 1. Le VLAN natif doit également être différent de tous les VLAN utilisateur. Assurez-vous que le VLAN natif pour un trunk 802.1Q est le même aux deux extrémités de la liaison trunk. </p>
+<p></p>
+<p>Le protocole DTP offre quatre modes de port de commutateur : actif, trunk inconditionnel, dynamique automatique et dynamique souhaitable. En règle générale, il convient de désactiver la négociation automatique. Pour assurer la sécurité des ports, n'utilisez pas les modes de port de commutateur dynamique automatique ou dynamique souhaitable. </p>
+<p></p>
+<p>Enfin, le trafic voix comporte de strictes exigences QoS. Si les PC des utilisateurs et les téléphones IP sont sur le même VLAN, chacun essaie d'utiliser la bande passante disponible sans tenir compte de l'autre périphérique. Pour éviter ce conflit, il est recommandé d'utiliser des VLAN distincts pour la téléphonie IP et le trafic de données. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

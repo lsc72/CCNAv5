@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.4.11 Travaux pratiques : configuration des fonctions de sécurité des commutateurs</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.4.11_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité du commutateur : gestion et implémentation</h1>
+        <h2>Sécurité des ports de commutateur</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Au cours de ces travaux pratiques, vous aborderez les points suivants :</b>
+</p>
+<p>
+<ul>
+<li>1re partie : Configurer la topologie et initialiser les périphériques</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Partie 2 : configuration des paramètres du périphérique de base et vérification de la connectivité</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Partie 3 : configuration et vérification de l'accès SSH sur S1</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Partie 4 : configuration et vérification des fonctions de sécurité sur S1</li>
+</ul>
+</p>
+<p></p>
+<p>
+<a href="../../files/2.2.4.11%20Lab%20-%20Configuring%20Switch%20Security%20Features.pdf" target="_blank">Travaux pratiques : configuration des fonctions de sécurité des commutateurs</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

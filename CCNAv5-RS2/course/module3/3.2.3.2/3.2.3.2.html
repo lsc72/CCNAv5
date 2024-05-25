@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.3.2 Modes d&#x0027;interface négociés</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentations de VLAN</h1>
+        <h2>Protocole DTP</h2>
+      </div>
+      <div id="content">
+<p>Les interfaces Ethernet des commutateurs Catalyst 2960 et Catalyst 3560 prennent en charge différents modes trunking à l'aide du protocole DTP :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>switchport mode access </b>
+</span>- Place l'interface (port d'accès) en mode non-trunking permanent et négocie pour convertir le lien en liaison non-trunk. L'interface devient une interface non-trunk, indépendamment du fait que l'interface voisine soit une interface de trunk ou non.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>switchport mode dynamic auto</b>
+</span> - Rend l'interface capable de convertir le lien en liaison trunk. L'interface devient une interface trunk si l'interface voisine est configurée en mode trunk inconditionnel ou souhaitable. Le mode du port de commutateur par défaut pour toutes les interfaces Ethernet est <span class="cmd"><b>dynamic auto</b></span>.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>switchport mode dynamic desirable</b>
+</span> - Fait en sorte que l'interface tente activement de convertir le lien en liaison trunk. L'interface devient une interface trunk si l'interface voisine est configurée pour le mode trunk, desirable ou auto. Il s'agit du mode de port par défaut sur les commutateurs plus anciens, comme les Catalyst 2950 et 3550.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>switchport mode trunk</b>
+</span> - Place l'interface en mode trunking permanent et négocie pour convertir la liaison voisine en liaison trunk. L'interface devient une interface trunk même si l'interface voisine n'est pas une interface trunk.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>switchport nonegotiate</b>
+</span> - Empêche l'interface de générer des trames DTP. Vous pouvez utiliser cette commande uniquement lorsque le mode du port de commutateur de l'interface est <span class="cmd"><b>access</b></span> ou <span class="cmd"><b>trunk</b></span>. Vous devez configurer manuellement l'interface voisine en tant qu'interface trunk pour établir une liaison trunk.</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 1 illustre les résultats des options de configuration DTP sur les extrémités opposées d'une liaison trunk connectée aux ports du commutateur Catalyst 2960.</p>
+<p></p>
+<p>Configurez des liaisons trunk de manière statique autant que possible. Le mode DTP par défaut dépend de la version du logiciel Cisco IOS et de la plate-forme. Pour déterminer le mode DTP en cours, exécutez la commande <span class="cmd"><b>show dtp interface</b></span> comme indiqué en Figure 2.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 3 pour déterminer le mode DTP sur l'interface F0/1.</p>
+<p></p>
+<p>
+<b>Remarque </b>: il est généralement recommandé de définir l'interface sur <span class="cmd"><b>trunk</b></span> et <span class="cmd"><b>nonegotiate</b></span> lorsqu'une liaison trunk est requise. Sur les liaisons où vous ne souhaitez pas de trunking, désactivez le mode DTP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

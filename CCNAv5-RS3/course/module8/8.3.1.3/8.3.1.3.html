@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.1.3 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Le protocole EIGRP est l'un des protocoles de routage les plus couramment utilisés dans les réseaux de grandes entreprises. Un ingénieur réseau impliqué dans l'implémentation et la maintenance de grands réseaux d'entreprise routés utilisant le protocole EIGRP doit principalement savoir comment modifier les fonctionnalités EIGRP et résoudre les problèmes.</p>
+<p></p>
+<p>Le résumé permet de réduire le nombre d’entrées dans les mises à jour de routage, ainsi que dans les tables de routage locales. Il réduit également la consommation de bande passante par les mises à jour de routage et accélère les recherches dans les tables de routage. La récapitulation automatique du protocole EIGRP pour IPv4 est désactivée par défaut à partir des versions Cisco IOS 15.0(1)M et 12.2(33). Auparavant, la récapitulation automatique était activée par défaut. Pour activer la récapitulation automatique du protocole EIGRP, utilisez la commande<span class="cmd"><b> auto-summary </b></span>en mode de configuration du routeur. Utilisez la commande<span class="cmd"><b> show ip protocols</b></span> pour vérifier l'état de la récapitulation automatique. Examinez la table de routage pour vérifier le bon fonctionnement de la récapitulation automatique.</p>
+<p></p>
+<p>Le protocole EIGRP inclut automatiquement des routes récapitulatives vers Null0 pour empêcher les boucles de routage qui sont présentes dans le récapitulatif, mais inexistantes dans la table de routage. L'interface Null0 est une interface IOS virtuelle qui ne conduit nulle part, également appelée « le grand vide ». Les paquets qui correspondent à une route avec une interface de sortie Null0 sont mis à l'écart. </p>
+<p></p>
+<p>Pour établir la récapitulation manuelle du protocole EIGRP sur une interface EIGRP spécifique, utilisez la commande de mode de configuration d'interface suivante : </p>
+<p></p>
+<p>
+<span class="cmd">Router(config-if)#</span>
+<span class="cmd">
+<b>ip summary-address eigrp </b>
+</span>
+<span class="cmd">
+<i>as-number network-address subnet-mask</i>
+</span>
+</p>
+<p></p>
+<p>Pour configurer la récapitulation manuelle du protocole EIGRP pour IPv6 sur une interface EIGRP spécifique, utilisez la commande de mode de configuration d'interface suivante : </p>
+<p></p>
+<p>
+<span class="cmd">Router(config-if)#</span>
+<span class="cmd">
+<b>ipv6 summary-address eigrp</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>as-number prefix/prefix-length</i>
+</span>
+</p>
+<p></p>
+<p>Une méthode de propagation d'une route par défaut dans le domaine de routage EIGRP consiste à utiliser la commande<span class="cmd"><b> redistribute static</b></span>. Cette commande demande au protocole EIGRP d'inclure la route statique dans ses mises à jour EIGRP vers d'autres routeurs. La commande<span class="cmd"><b> show ip protocols </b></span>vérifie que les routes statiques du domaine de routage EIGRP sont bien redistribuées.</p>
+<p></p>
+<p>Utilisez la commande de mode de configuration d'interface <span class="cmd"><b>ip bandwidth-percent eigrp </b></span><span class="cmd"><i>as-number percent </i></span>pour configurer le pourcentage de bande passante pouvant être utilisé par le protocole EIGRP sur une interface.</p>
+<p></p>
+<p>Pour configurer le pourcentage de bande passante pouvant être utilisé par le protocole EIGRP pour IPv6 sur une interface, exécutez la commande <span class="cmd"><b>ipv6 bandwidth-percent eigrp</b></span> en mode de configuration d'interface. Pour restaurer la valeur par défaut, utilisez la forme <span class="cmd"><b>no</b></span> de cette commande.</p>
+<p></p>
+<p>Les intervalles Hello et les temps d'attente sont configurables pour chaque interface dans le protocole EIGRP et ne doivent pas nécessairement correspondre aux autres routeurs EIGRP pour établir ou gérer des contiguïtés.</p>
+<p></p>
+<p>Pour IP dans le protocole EIGRP, le logiciel Cisco IOS applique l'équilibrage de la charge à l'aide de quatre chemins à coût égal par défaut, au maximum. À l'aide de la commande de mode de configuration du routeur<span class="cmd"><b> maximum-paths</b></span>, vous pouvez conserver jusqu'à 32 routes à coût égal dans la table de routage. </p>
+<p></p>
+<p>Le protocole EIGRP prend en charge l'authentification des protocoles de routage à l'aide de MD5. Les algorithmes et la configuration servant à authentifier les messages EIGRP pour IPv4 sont les mêmes que pour EIGRP pour IPv6. La seule différence est que les commandes de mode de configuration de l'interface utilisent<span class="cmd"><b> ip</b></span> à la place de<span class="cmd"><b> ipv6</b></span>.</p>
+<p></p>
+<p>
+<span class="cmd">Router(config-if)#</span>
+<span class="cmd">
+<b>ipv6 authentication mode eigrp </b>
+</span>
+<span class="cmd">
+<i>as-number </i>
+</span>
+<span class="cmd">
+<b>md5</b>
+</span>
+</p>
+<p>
+<span class="cmd">Router(config-if)#</span>
+<span class="cmd">
+<b>ipv6 authentication key-chain eigrp</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>as-number name-of-chain</i>
+</span>
+</p>
+<p></p>
+<p>Afin de vérifier que les contiguïtés EIGRP correctes ont été formées après avoir été configurées pour l'authentification, exécutez la commande <span class="cmd"><b>show ip eigrp neighbors</b></span> sur chaque routeur.</p>
+<p></p>
+<p>La commande<span class="cmd"><b> show ip route </b></span>vérifie que le routeur a appris les routes EIGRP. La commande<span class="cmd"><b> show ip protocols</b></span> permet de vérifier que le protocole EIGRP affiche les valeurs actuellement configurées.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

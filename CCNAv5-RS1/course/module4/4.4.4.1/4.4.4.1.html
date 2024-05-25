@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.4.1 Trame</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Contrôle d&#x0027;accès au support</h1>
+        <h2>Trame liaison de données</h2>
+      </div>
+      <div id="content">
+<p>Même si de nombreux protocoles de couche liaison de données différents décrivent les trames de couche liaison de données, chaque type de trame comprend trois parties élémentaires :</p>
+<p>
+<ul>
+<li>En-tête</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Données</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Code de fin</li>
+</ul>
+</p>
+<p></p>
+<p>Tous les protocoles de couche liaison de données encapsulent l'unité de données de protocole de couche 3 dans le champ de données de la trame. Cependant, la structure de la trame et les champs contenus dans l'en-tête et le code de fin varient selon le protocole. </p>
+<p></p>
+<p>Le protocole de couche liaison de données décrit les fonctionnalités nécessaires au transport des paquets à travers différents supports. Ces fonctionnalités du protocole sont intégrées à l'encapsulation de la trame. Lorsque la trame arrive à destination et que le protocole de liaison de données la retire du support, les informations de trame sont lues et supprimées. </p>
+<p></p>
+<p>Il n'existe aucune structure de trame répondant aux besoins de tout le transport de données sur tous les types de supports. En fonction de l'environnement, la quantité d'informations de contrôle requises dans la trame varie selon les exigences du contrôle d'accès au support et de la topologie logique. </p>
+<p></p>
+<p>Comme l'illustre la Figure 1, un environnement fragile nécessite plus de contrôle. Au contraire, un environnement protégé (Figure 2) requiert moins de contrôles.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

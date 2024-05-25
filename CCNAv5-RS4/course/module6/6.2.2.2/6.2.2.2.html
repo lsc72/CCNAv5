@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.2.2 Connexions DSL</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Comparaison des solutions haut débit</h1>
+        <h2>DSL</h2>
+      </div>
+      <div id="content">
+<p>Les fournisseurs de services déploient les connexions DSL lors de la dernière étape de l'installation d'un réseau de téléphonie locale, appelée boucle locale ou « dernier kilomètre ». La connexion est configurée entre deux modems à chaque extrémité d’un fil de cuivre, qui s’étend entre l’équipement placé chez le client (équipement d’abonné) et le multiplexeur d’accès DSL (DSLAM). Le DSLAM est le périphérique situé au niveau du central téléphonique (CO) du fournisseur, qui concentre les connexions issues de plusieurs abonnés DSL. Le DSLAM est souvent intégré à un routeur d'agrégation.</p>
+<p></p>
+<p>La Figure 1 illustre l'équipement nécessaire à la fourniture d'une connexion DSL à un SOHO. Les deux composants sont l'émetteur-récepteur DSL et le DSLAM :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Émetteur-récepteur</b> : connecte l'ordinateur du télétravailleur au service DSL. En règle générale, l’émetteur-récepteur est un modem DSL connecté à l’ordinateur équipé d’un câble USB ou Ethernet. Les derniers émetteurs-récepteurs DSL peuvent être intégrés aux routeurs de petite taille avec plusieurs ports de commutation 10/100 adaptés aux bureaux à domicile. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>DSLAM</b> : situé au niveau du central téléphonique (CO) du porteur, le DSLAM combine des connexions DSL individuelles issues des utilisateurs en une liaison haute capacité vers un FAI et par conséquent vers Internet.</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 2 montre des routeurs DSL et des routeurs d'agrégation haut débit modernes. L'avantage de la technologie DSL par rapport à la technologie du câble est qu'elle n'est pas un support partagé. Chaque utilisateur bénéficie d’une connexion directe et distincte au multiplexeur DSLAM. L’ajout de nouveaux utilisateurs n’entrave aucunement les performances, à moins que la connexion Internet du multiplexeur DSLAM au FAI, ou Internet, soit saturée.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

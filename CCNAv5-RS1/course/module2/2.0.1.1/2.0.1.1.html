@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.0.1.1 Initiation à Cisco IOS</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration d&#x0027;un système d&#x0027;exploitation de réseau</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>Les réseaux domestiques relient généralement une grande variété de périphériques finaux, notamment des ordinateurs de bureau, des ordinateurs portables, des tablettes, des smartphones, des télévisions connectées, des lecteurs multimédias réseau compatibles DLNA (Xbox 360, PlayStation 3), etc. </p>
+<p></p>
+<p>Tous ces périphériques finaux se connectent généralement à un routeur domestique. Les routeurs domestiques regroupent en fait 4 périphériques en un :</p>
+<p>
+<ul>
+<li>
+<b>Router</b>
+<b>-</b> Transfère les paquets de données vers Internet et reçoit des paquets depuis Internet</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Switch</b>
+<b>-</b> Connecte des périphériques finaux à l'aide de câbles réseau</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Point d'accès sans fil</b>
+<b>-</b> Se compose d'un émetteur radio capable de connecter des périphériques finaux sans fil</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Pare-feu</b>
+<b>-</b> Sécurise le trafic sortant et contrôle le trafic entrant</li>
+</ul>
+</p>
+<p></p>
+<p>À une échelle plus importante, dans les réseaux d'entreprise comportant beaucoup plus de périphériques et gérant plus de trafic, ces périphériques sont souvent intégrés comme des périphériques indépendants et autonomes, assurant un service spécifique. Des périphériques finaux, tels que des PC et des ordinateurs portables, sont connectés aux commutateurs réseau par le biais de connexions câblées. Pour envoyer des paquets en dehors du réseau local, les commutateurs réseau se connectent aux routeurs du réseau. Les points d'accès sans fil et les dispositifs de sécurité dédiés, tels que des pare-feu, sont également des périphériques d'infrastructure réseau. </p>
+<p></p>
+<p>Chaque périphérique est très différent en termes de matériel, d'utilisation et de fonctionnalités. Cependant, dans tous les cas, c'est le système d'exploitation qui permet au matériel de fonctionner.</p>
+<p></p>
+<p>Les systèmes d'exploitation sont utilisés sur presque tous les périphériques utilisateur et réseau connectés à Internet. Les périphériques utilisateur incluent les smartphones, les tablettes, les ordinateurs de bureau et les ordinateurs portables. Les périphériques réseau, ou périphériques intermédiaires, sont utilisés pour transporter les données sur l'ensemble du réseau et comprennent les commutateurs, les routeurs, les points d'accès sans fil et les pare-feu. Le système d'exploitation d'un périphérique réseau est appelé système d'exploitation réseau. </p>
+<p></p>
+<p>Cisco Internetwork Operating System (IOS) est un terme générique utilisé pour désigner l'ensemble des systèmes d'exploitation réseau utilisés sur les périphériques réseau Cisco. Cisco IOS est utilisé par la plupart des périphériques Cisco, quels que soient leur taille et leur type.</p>
+<p></p>
+<p>Ce chapitre fait référence à une topologie de réseau de base, comportant deux commutateurs et deux PC, pour illustrer l'utilisation de Cisco IOS.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

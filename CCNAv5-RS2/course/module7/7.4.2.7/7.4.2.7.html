@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.2.7 Élaboration de l&#x0027;arborescence SPF</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.2.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage dynamique à état de liens</h1>
+        <h2>Mises à jour d&#x0027;état de liens</h2>
+      </div>
+      <div id="content">
+<p>Chaque routeur de la zone de routage utilise la base de données d'états de liens et l'algorithme SPF pour construire l'arborescence SPF. </p>
+<p></p>
+<p>Par exemple, grâce aux informations d'état de liens de tous les autres routeurs, R1 est en mesure de construire une arborescence SPF du réseau. Pour commencer, l'algorithme SPF interprète les paquets LSP de chaque routeur pour identifier les réseaux et les coûts associés.</p>
+<p></p>
+<p>Dans la Figure 1, R1 identifie ses réseaux directement connectés et les coûts.</p>
+<p></p>
+<p>Dans les Figures 2 à 5, R1 continue à ajouter tous les réseaux inconnus et les coûts associés à l'arborescence SPF. Notez que R1 ignore tous les réseaux qu'il a déjà identifiés.</p>
+<p></p>
+<p>L'algorithme SPF calcule ensuite les chemins les plus courts pour atteindre chaque réseau individuel résultant dans l'arborescence SPF comme indiqué dans la Figure 6. R1 possède maintenant une topologie complète de la zone d'état de liens.</p>
+<p></p>
+<p>Chaque routeur construit sa propre arborescence SPF indépendamment des autres routeurs. Pour garantir un routage approprié, les bases de données d'états de liens utilisées pour élaborer ces arborescences restent identiques sur tous les routeurs.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

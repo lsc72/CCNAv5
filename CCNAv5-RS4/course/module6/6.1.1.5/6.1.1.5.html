@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.1.5 Inconvénients du télétravail</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Télétravail</h1>
+        <h2>Avantages du télétravail</h2>
+      </div>
+      <div id="content">
+<p>Sans oublier les nombreux avantages du télétravail, celui-ci présente toutefois quelques inconvénients qu'il faut également prendre en considération :</p>
+<p></p>
+<p>Du point de vue de l'employeur :</p>
+<p>
+<ul>
+<li>
+<b>Suivi du travail des employés</b> : il peut s'avérer difficile pour certains managers d'effectuer le suivi de l'état d'avancement des travaux des employés qui télétravaillent. Il est par conséquent nécessaire d'organiser des points de contrôle et de valider la progression des tâches d'une manière spécifique pour les employés qui travaillent à domicile.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Nécessité de mettre en œuvre un nouveau style de management</b> : les managers qui ont la responsabilité d'employés travaillant dans un bureau ont la possibilité de maintenir des contacts personnels avec eux. Cela signifie qu'en cas de problème ou de mésentente quant aux tâches à effectuer, une réunion impromptue en tête à tête permet souvent de résoudre rapidement la question. Dans un environnement de télétravail, les managers doivent établir des processus de validation de la compréhension mutuelle et rester ouverts aux différents besoins de l'employé qui télétravaille. </li>
+</ul>
+</p>
+<p></p>
+<p>Du point de vue de l'employé :</p>
+<p>
+<ul>
+<li>
+<b>Sentiment d'isolement</b> : pour de nombreuses personnes, le fait de travailler seul leur procure un sentiment d'isolement. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Connexions plus lentes</b> : les zones résidentielles et rurales n'offrent généralement pas le niveau de prise en charge technologique et de services dont on peut bénéficier dans les bureaux situés en ville, et les coûts associés peuvent également être plus élevés. Si l'exécution de votre travail nécessite une bande passante large, réfléchissez soigneusement avant de décider de travailler depuis votre domicile. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Distractions</b> : les distractions éventuelles sont nombreuses à la maison (voisins, conjoint, enfants, tondeuses à gazon, lave-linge, télévision ou réfrigérateur). De plus, de nombreuses personnes pensent que le fait de télétravailler permet de se passer de garde d'enfants, mais ce n'est pas nécessairement vrai. En particulier en cas de jeunes enfants, il est important de planifier une garderie pour les périodes pendant lesquelles il est nécessaire de se concentrer sur son travail.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

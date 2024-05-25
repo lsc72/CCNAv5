@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.3 Encapsulation Frame Relay</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation du protocole Frame Relay</h1>
+        <h2>Fonctionnement de la technologie Frame Relay</h2>
+      </div>
+      <div id="content">
+<p>Frame Relay prend des paquets de données d'un protocole de couche réseau, par exemple IPv4 ou IPv6, les encapsule comme portion de données de trame Frame Relay, puis transmet cette trame à la couche physique pour transfert via le câble. Pour comprendre ce fonctionnement, il est bon de comprendre comment il se rattache aux couches inférieures du modèle OSI. </p>
+<p></p>
+<p>Frame Relay encapsule les données pour le transport et les transfère sur la couche physique pour livraison, comme illustré à la Figure 1.</p>
+<p></p>
+<p>Tout d'abord, Frame Relay accepte le paquet d'un protocole de couche réseau, par exemple IPv4. Il ajoute ensuite un champ d'adresse qui contient le DLCI et une somme de contrôle. Des champs d'indicateur sont ajoutés pour indiquer le début et la fin de la trame. Ces champs marquent le début et la fin de la trame et sont toujours les mêmes. Ces indicateurs sont représentés soit en hexadécimal par 7E, soit en binaire par 01111110. Une fois le paquet encapsulé, Frame Relay passe la trame à la couche physique qui assure le transport.</p>
+<p></p>
+<p>Le routeur d'équipement d'abonné encapsule chaque paquet de couche 3 dans un en-tête et un code de fin Frame Relay avant de l'envoyer sur le circuit virtuel. L'en-tête et le code de fin sont définis par la spécification Link Access Procedure for Frame Relay (LAPF) Bearer Services, UIT Q.922-A. Comme illustré à la Figure 2, l'en-tête Frame Relay header (champ d'adresse) contient les éléments suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>DLCI </b>: le DLCI 10 bits est un des champs les plus importants de l'en-tête Frame Relay. Cette valeur représente la connexion virtuelle entre l'équipement ETTD et le commutateur. Chaque connexion virtuelle multiplexée sur le canal physique est représentée par un DLCI unique. Les identificateurs DLCI n'ont qu'une signification locale. En d'autres termes, ils ne sont uniques que sur le canal physique sur lequel ils résident. Les équipements situés à l'autre extrémité d'une connexion peuvent donc faire référence à la même connexion virtuelle par des identificateurs DLCI différents. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>C/R </b>: bit qui suit l'octet DLCI significatif dans le champ d'adresse. Le bit C/R n'est pas actuellement défini.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>EA (Extended Address) </b>: si la valeur du champ EA est 1, l'octet actuel est considéré comme le dernier octet DLCI. Toutes les mises en œuvre actuelles du protocole Frame Relay utilisent cependant un DLCI de 2 octets, ce qui permet une extension des adresses DLCI dans le futur. Le huitième bit de chaque octet du champ d'adresse sert à indiquer une adresse étendue. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Contrôle d'encombrement </b>: composé de trois bits de notification d'encombrement Frame Relay. Ces trois bits sont appelés FECN (Forward Explicit Congestion Notification), BECN (Backward Explicit Congestion Notification) et DE (Discard Eligible).</li>
+</ul>
+</p>
+<p></p>
+<p>La couche physique est en général EIA/TIA-232, 449 ou 530, V.35 ou X.21. La trame Frame Relay est un sous-ensemble du type de trame HDLC. Elle est donc délimitée par des champs d'indicateur. L'indicateur à 1 octet utilise la séquence de bits 01111110. La séquence de contrôle de trame (FCS) indique si des erreurs dans le champ d'adresse de couche 2 se sont produites pendant la transmission. La FCS est calculée avant la transmission par le nœud émetteur et le résultat est inséré dans le champ FCS. À l'autre extrémité, une deuxième valeur FCS est calculée et comparée à la FCS de la trame. Si les résultats sont identiques, la trame est traitée. S'ils diffèrent, la trame est abandonnée. Frame Relay n'envoie aucun avertissement à la source en cas d'abandon de trame. Le contrôle d'erreur est laissé sous la responsabilité des couches supérieures du modèle OSI.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

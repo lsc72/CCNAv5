@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.1.1 Caractéristiques des supports en cuivre</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Supports réseau</h1>
+        <h2>L&#x0027;utilisation de câbles en cuivre</h2>
+      </div>
+      <div id="content">
+<p>Les supports en cuivre sont utilisés sur certains réseaux, car ils sont bon marché, faciles à installer et qu'ils présentent une faible résistance au courant électrique. Cependant, les supports en cuivre sont limités par la distance et les interférences du signal.</p>
+<p></p>
+<p>Les données sont transmises sur les câbles en cuivre sous forme d'impulsions électriques. Un détecteur dans l'interface réseau d'un périphérique de destination doit recevoir un signal pouvant être décodé correctement pour correspondre au signal envoyé. Toutefois, plus la distance de transmission du signal est longue, plus il se détériore selon un phénomène dit d'atténuation du signal. Pour cette raison, tous les supports en cuivre sont soumis à des restrictions de distance strictes spécifiées par les normes en la matière.</p>
+<p></p>
+<p>La durée et la tension des impulsions électriques sont également susceptibles de subir des interférences de deux sources :</p>
+<p>
+<ul>
+<li>
+<b>Interférences électromagnétiques (EMI) ou interférences radioélectriques (RFI) :</b> les signaux électromagnétiques et radioélectriques peuvent déformer et détériorer les signaux de données transportés par les supports en cuivre. Les sources potentielles d'interférences EMI et RFI sont notamment les ondes radio et les appareils électromagnétiques tels que les éclairages fluorescents ou les moteurs électriques comme illustré sur la figure.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Diaphonie</b> : la diaphonie est une perturbation causée par les champs électriques ou magnétiques d'un signal dans un câble au signal traversant le câble adjacent. Dans les circuits téléphoniques, les interlocuteurs peuvent entendre une partie d'une autre conversation vocale provenant d'un circuit adjacent. Plus précisément, lorsque le courant électrique circule dans un câble, il crée un petit champ magnétique circulaire autour du câble qui peut être capté par le fil adjacent.</li>
+</ul>
+</p>
+<p></p>
+<p>Lancez l'animation de la figure pour voir l'effet des interférences sur la transmission de données. </p>
+<p></p>
+<p>Pour contrer les effets négatifs des perturbations électromagnétiques et radioélectriques, certains types de câbles en cuivre sont entourés d'un blindage métallique et nécessitent des connexions de mise à la terre appropriées.</p>
+<p></p>
+<p>Pour contrer les effets négatifs de la diaphonie, certains types de câbles en cuivre utilisent des paires de fils opposés torsadés qui annulent la perturbation. </p>
+<p></p>
+<p>La sensibilité des câbles en cuivre aux parasites électroniques peut également être limitée :</p>
+<p>
+<ul>
+<li>En sélectionnant le type ou la catégorie de câble la mieux adaptée à un environnement réseau spécifique.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>En concevant une infrastructure de câblage afin d'éviter les sources connues et potentielles d'interférences dans la structure de construction.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>En utilisant des techniques de câblage comprenant la manipulation et la terminaison correctes des câbles.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

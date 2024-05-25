@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.1.4 Horodatage de service</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Syslog</h1>
+        <h2>Fonctionnement de Syslog</h2>
+      </div>
+      <div id="content">
+<p>Il est possible d'horodater les messages de journal et de définir l'adresse source des messages Syslog. Cela permet d'améliorer le débogage et la gestion en temps réel.</p>
+<p></p>
+<p>Lors de l'exécution de la commande de mode de configuration globale <span class="cmd"><b>service timestamps log uptime</b></span>, le temps écoulé depuis le dernier démarrage du commutateur s'affiche dans les événements consignés. Une version plus utile de cette commande s'applique au mot-clé <span class="cmd"><b>datetime</b></span> au lieu du mot-clé <span class="cmd"><b>uptime</b></span>, forçant ainsi chaque événement consigné à afficher la date et l'heure associées à l'événement. </p>
+<p></p>
+<p>En cas d'utilisation du mot-clé <span class="cmd"><b>datetime</b></span>, il est nécessaire de configurer l'horloge du périphérique réseau. Cette opération peut être accomplie de deux manières différentes : </p>
+<p>
+<ul>
+<li>manuellement, à l'aide de la commande <span class="cmd"><b>clock set</b></span></li>
+</ul>
+</p>
+<p>
+<ul>
+<li>automatiquement, à l'aide du protocole NTP.</li>
+</ul>
+</p>
+<p></p>
+<p>Souvenez-vous que NTP est un protocole utilisé pour permettre aux périphériques réseau de synchroniser leurs paramètres de temps avec un serveur NTP. </p>
+<p></p>
+<p>Pour permettre à l'horloge logicielle de se synchroniser à un serveur de temps NTP, utilisez la commande de mode de configuration globale<span class="cmd"><b> ntp server </b></span><span class="cmd"><i>ip-address</i></span>. Un exemple de configuration est indiqué sur la figure. Le routeur R1 est configuré en tant que client NTP, tandis que le routeur R2 fait office de serveur NTP faisant autorité. Un périphérique réseau peut être configuré soit comme un serveur NTP, autorisant ainsi les autres périphériques à synchroniser leurs paramètres de temps avec ce serveur, soit en tant que client NTP.</p>
+<p></p>
+<p>Dans le reste de ce chapitre, on suppose que l'horloge a été réglée et que la commande <span class="cmd"><b>service timestamps log datetime</b></span> a été configurée sur l'ensemble des périphériques.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

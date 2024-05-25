@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.6.1.1 Projet Capstone - Conception et création du réseau d&#x0027;une petite entreprise</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.6.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Projet Capstone</b>
+</p>
+<p>
+<b>Concevoir et mettre en œuvre le réseau d'une petite entreprise</b>
+</p>
+<p></p>
+<p>Utilisez Packet Tracer et une application de traitement de texte pour effectuer cet exercice par groupe de 2 ou 3 étudiants.</p>
+<p></p>
+<p>Concevez et créez un réseau en partant de zéro. </p>
+<p>
+<ul>
+<li>Votre conception doit inclure au minimum un routeur, un commutateur et un PC. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Configurez entièrement le réseau en utilisant le protocole IPv4 ou IPv6 (la segmentation en sous-réseaux doit être intégrée à votre schéma d'adressage).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Vérifiez le réseau à l'aide d'au moins cinq commandes <span class="cmd"><b>show</b></span>.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Sécurisez le réseau à l'aide du protocole SSH, de mots de passe sécurisés et de mots de passe de console (au minimum).</li>
+</ul>
+</p>
+<p></p>
+<p>Créez un barème à utiliser pour évaluer vos camarades (votre instructeur peut également choisir d'utiliser le barème fourni dans cet exercice). </p>
+<p></p>
+<p>Présentez votre projet Capstone à la classe. Tenez-vous prêt à répondre aux questions de vos camarades et de votre instructeur.</p>
+<p></p>
+<p></p>
+<p>
+<a href="../../files/11.6.1.1%20Class%20Activity%20-%20%20Design%20and%20Build%20a%20Small%20Network%20Instructions.pdf" target="_blank">Instructions de l'exercice en classe - Concevoir et mettre en œuvre le réseau d'une petite entreprise</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

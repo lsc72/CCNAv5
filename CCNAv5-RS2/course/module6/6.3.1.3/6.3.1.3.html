@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.1.3 Exemple de protocole de routage par classe</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Examen de CIDR et VLSM</h1>
+        <h2>Adressage par classe</h2>
+      </div>
+      <div id="content">
+<p>L'utilisation d'adresses IP par classe signifie que le masque de sous-réseau d'une adresse réseau peut être déterminé par la valeur du premier octet ou, plus précisément, par les quatre premiers bits de l'adresse. Les protocoles de routage, tels que RIPv1, ont uniquement besoin de propager l'adresse réseau des routes connues mais n'ont pas besoin d'inclure le masque de sous-réseau dans la mise à jour du routage. La raison en est que le routeur recevant la mise à jour de routage peut déterminer le masque de sous-réseau simplement en examinant la valeur du premier octet de l'adresse réseau, ou bien en appliquant le masque de son interface d'entrée dans le cas de routes découpées en sous-réseaux. Le masque du sous-réseau étant associé à l'adresse réseau de l'interface d'entrée. </p>
+<p></p>
+<p>Dans la Figure 1, R1 envoie une mise à jour à R2. Dans l'exemple, R1 sait que le sous-réseau 172.16.1.0 appartient au même réseau principal par classe que l'interface sortante. Par conséquent, il envoie à R2 une mise à jour RIP contenant le sous-réseau 172.16.1.0. Lorsque R2 reçoit la mise à jour, il applique le masque de sous-réseau d'interface réceptrice (/24) à la mise à jour et ajoute 172.16.1.0 à la table de routage.</p>
+<p></p>
+<p>Dans la Figure 2, R2 envoie une mise à jour à R3. Lors de l'envoi des mises à jour à R3, R2 regroupe les sous-réseaux 172.16.1.0/24, 172.16.2.0/24 et 172.16.3.0/24 dans le réseau principal par classe 172.16.0.0. Aucun sous-réseau de R3 n'appartenant à 172.16.0.0, il applique le masque par classe d'un réseau de classe B (/16). </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

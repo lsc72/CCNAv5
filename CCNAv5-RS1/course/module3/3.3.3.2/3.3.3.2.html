@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.3.2 Communication avec un périphérique sur un réseau distant</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Déplacement des données sur le réseau</h1>
+        <h2>Accès aux ressources distantes</h2>
+      </div>
+      <div id="content">
+<p>Mais quels sont les rôles de l'adresse de couche réseau et de l'adresse de couche liaison de données lorsqu'un périphérique communique avec un autre périphérique situé sur un réseau distant ? Dans cet exemple, nous avons un ordinateur client (PC1) communiquant avec un serveur appelé « serveur Web », situé sur un autre réseau IP.</p>
+<p></p>
+<p>
+<b>Adresses réseau</b>
+</p>
+<p></p>
+<p>Les adresses IP indiquent les adresses des réseaux et des périphériques source et de destination. Lorsque l'expéditeur du paquet appartient à un réseau différent de celui du récepteur, les adresses IP source et de destination représentent des hôtes sur différents réseaux. Cette information est indiquée par la partie réseau de l'adresse IP de l'hôte de destination.</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Adresse IP source</b> : adresse IP du périphérique expéditeur, l'ordinateur client PC1 : 192.168.1.110.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse IP de destination</b> : adresse IP du périphérique récepteur, ici le serveur Web : 172.16.1.99.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Adresses de liaison de données</b>
+</p>
+<p></p>
+<p>Lorsque l'expéditeur et le récepteur du paquet IP se trouvent sur des réseaux différents, la trame liaison de données Ethernet ne peut pas être envoyée directement à l'hôte de destination, car celui-ci n'est pas directement accessible sur le réseau de l'expéditeur. La trame Ethernet doit être envoyée à un autre périphérique appelé routeur ou passerelle par défaut. Dans notre exemple, la passerelle par défaut est R1. R1 dispose d'une interface, et d'une adresse IP qui se trouve sur le même réseau que PC1. Cela permet à PC1 d'accéder directement au routeur. </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Adresse MAC source</b> : adresse MAC Ethernet du périphérique expéditeur, PC1. L'adresse MAC de l'interface Ethernet de PC1 est AA-AA-AA-AA-AA-AA.</li>
+</ul>
+</p>
+<p>
+<b>Adresse MAC de destination</b> : lorsque le périphérique récepteur se trouve sur un réseau différent de celui du périphérique expéditeur, il s'agit de l'adresse MAC Ethernet de la passerelle par défaut ou routeur. Dans cet exemple, l'adresse MAC de destination est l'adresse MAC de l'interface Ethernet de R1 qui est reliée au réseau de PC1, 11-11-11-11-11-11.</p>
+<p></p>
+<p>La trame Ethernet contenant le paquet IP encapsulé peut être transmise à R1. R1 achemine le paquet vers la destination, le serveur Web. R1 peut transmettre le paquet à un autre routeur ou bien directement au serveur Web si la destination se trouve sur un réseau connecté à R1. </p>
+<p></p>
+<p>Comment le périphérique destinataire détermine-t-il l'adresse MAC du routeur ? </p>
+<p>Chaque périphérique obtient l'adresse IP du routeur à travers l'adresse de la passerelle par défaut configurée dans ses paramètres TCP/IP. L'adresse de la passerelle par défaut est l'adresse de l'interface du routeur connectée au même réseau local que le périphérique source. Tous les périphériques du réseau local utilisent l'adresse de la passerelle par défaut pour envoyer des messages au routeur. Une fois que l'hôte connaît l'adresse IP de la passerelle par défaut, il peut utiliser le protocole ARP pour en déterminer l'adresse MAC. L'adresse MAC de la passerelle par défaut est ensuite incluse dans la trame.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.4.4 Protocoles de routage IPv6 </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.4.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement d&#x0027;un routeur</h1>
+        <h2>Protocoles de routage dynamique</h2>
+      </div>
+      <div id="content">
+<p>Comme l'illustre la figure, les routeurs ISR peuvent prendre en charge les protocoles de routage IPv6 dynamiques, notamment :</p>
+<p>
+<ul>
+<li>RIPng (protocole RIP nouvelle génération)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>OSPFv3</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>EIGRP pour IPv6</li>
+</ul>
+</p>
+<p></p>
+<p>La prise en charge des protocoles de routage IPv6 dynamiques dépend du matériel et de la version du logiciel IOS. La plupart des modifications apportées aux protocoles de routage permettent de prendre en charge les adresses IPv6 plus longues et les différentes structures d'en-tête. </p>
+<p></p>
+<p>Pour permettre aux routeurs IPv6 de transmettre le trafic, vous devez configurer la commande de configuration globale <span class="cmd"><b>ipv6 unicast-routing</b></span>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

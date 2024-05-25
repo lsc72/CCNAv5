@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.2.4 Authentification d&#x0027;un utilisateur domestique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité LAN sans fil</h1>
+        <h2>Sécurisation de WLAN</h2>
+      </div>
+      <div id="content">
+<p>La figure ci-contre présente les différents modes de sécurité proposés par le routeur sans fil Linksys EA6500. Notez que le <b>mode de sécurité</b> pour le réseau 2,4 GHz utilise une authentification ouverte (c'est-à-dire, aucune) et qu'aucun mot de passe n'est requis, tandis que le <b>mode de sécurité</b> pour le réseau 5 GHz utilise une authentification WPA2/WPA mixte particulier et un mot de passe obligatoire.</p>
+<p></p>
+<p>
+<b>Remarque </b>: généralement, les réseaux 2,4 GHz comme les réseaux 5 GHz doivent être configurés sur les mêmes modes de sécurité. L'exemple présenté dans la figure ci-contre est fourni à titre de démonstration uniquement.</p>
+<p></p>
+<p>La liste déroulante <b>Security mode</b> (mode de sécurité) du réseau 2,4 GHz contient les méthodes de sécurité disponibles sur le routeur Linksys EA6500. Elle répertorie les plus faibles (None, aucune) comme les plus robustes (WPA2/WPA Mixed Enterprise, WPA2/WPA mixte entreprise). La section du réseau 5 GHz contient le même type de liste.</p>
+<p></p>
+<p>Les normes WPA et WPA2 prennent en charge deux types d'authentification :</p>
+<p>
+<ul>
+<li>
+<b>Particulier</b> : destinée aux réseaux domestiques et de PME/PMI, les utilisateurs s'authentifient à l'aide d'une clé prépartagée (PSK). Les clients sans fil s'authentifient auprès du point d'accès à l'aide d'un mot de passe prépartagé. Aucun serveur d'authentification spécial n'est requis.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Entreprise</b> : destinée aux réseaux d'entreprise, elle requiert un serveur d'authentification RADIUS (Remote Authentication Dial-In User Service). Bien que plus compliquée à configurer, cette méthode offre une sécurité renforcée. Le périphérique doit être authentifié par le serveur RADIUS, puis les utilisateurs doivent s'authentifier à l'aide de la norme 802.1X, qui utilise le protocole EAP (Extensible Authentication Protocol) pour l'authentification. </li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.5.1 Les adresses de multidiffusion IPv6 attribuées</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.5.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Les adresses réseau IPv6</h1>
+        <h2>Les adresses de multidiffusion IPv6</h2>
+      </div>
+      <div id="content">
+<p>Les adresses de multidiffusion IPv6 sont semblables aux adresses de multidiffusion IPv4. Rappelez-vous qu'une adresse de multidiffusion est utilisée pour envoyer un paquet à un ou plusieurs destinataires (groupe de multidiffusion). Les adresses de multidiffusion IPv6 ont le préfixe FF00::/8. </p>
+<p></p>
+<p>
+<b>Remarque</b> : les adresses de multidiffusion ne peuvent être que des adresses de destination et non des adresses source.</p>
+<p></p>
+<p>Il existe deux types d'adresses de multidiffusion IPv6 :</p>
+<p>
+<ul>
+<li>Les adresses de multidiffusion attribuées</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les adresses de multidiffusion de nœud sollicité</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Les adresses de multidiffusion attribuées</b>
+</p>
+<p></p>
+<p>Les adresses de multidiffusion attribuées sont des adresses de multidiffusion réservées à des groupes ou périphériques prédéfinis. Une adresse de multidiffusion attribuée est une adresse unique utilisée pour joindre un groupe de périphériques exécutant un service ou un protocole commun. Les adresses de multidiffusion attribuées sont utilisées avec des protocoles spécifiques, tels que DHCPv6. </p>
+<p></p>
+<p>Les deux groupes suivants de multidiffusion IPv6 attribuée sont les plus courants :</p>
+<p>
+<ul>
+<li>
+<b>Groupe de multidiffusion à tous les nœuds FF02::1</b> – il s'agit d'un groupe de multidiffusion que tous les périphériques IPv6 peuvent joindre. Un paquet envoyé à ce groupe est reçu et traité par toutes les interfaces IPv6 situées sur la liaison ou le réseau. Cette opération a le même effet qu'une adresse de diffusion IPv4. La figure illustre un exemple de communication via l'adresse de multidiffusion à tous les nœuds. Un routeur IPv6 envoie des messages d'annonce de routeur ICMPv6 au groupe de multidiffusion à tous les nœuds. Le message d'annonce de routeur indique à tous les périphériques IPv6 du réseau les informations d'adressage telles que le préfixe, la longueur du préfixe et la passerelle par défaut. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Groupe de multidiffusion à tous les routeurs FF02::2</b> – il s'agit d'un groupe de multidiffusion que tous les routeurs IPv6 peuvent joindre. Un routeur devient un membre de ce groupe lorsqu'il est activé en tant que routeur IPv6 avec la commande de configuration globale <span class="cmd"><b>ipv6 unicast-routing</b></span>. Un paquet envoyé à ce groupe est reçu et traité par tous les routeurs IPv6 situés sur la liaison ou le réseau. </li>
+</ul>
+</p>
+<p>Les périphériques IPv6 envoient des messages de sollicitation de routeur ICMPv6 à l'adresse de multidiffusion à tous les routeurs. Le message de sollicitation de routeur demande un message d'annonce au routeur IPv6 pour faciliter la configuration d'adresse du périphérique. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

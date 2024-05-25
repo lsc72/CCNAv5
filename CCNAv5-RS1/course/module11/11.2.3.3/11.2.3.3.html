@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.2.3.3 Pare-feu</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.2.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Garantie de la sécurité du réseau</h1>
+        <h2>La limitation des attaques de réseau</h2>
+      </div>
+      <div id="content">
+<p>Il est important de protéger les ordinateurs individuels et les serveurs reliés au réseau, mais il convient également de contrôler le trafic en direction et en provenance du réseau. </p>
+<p></p>
+<p>Le pare-feu est l'un des outils de sécurité les plus efficaces pour protéger les utilisateurs internes du réseau des menaces externes. Un pare-feu se trouve entre deux réseaux, ou plus, et contrôle le trafic entre eux tout en contribuant à éviter les accès non autorisés. Les pare-feu emploient diverses techniques pour déterminer les accès autorisés à un réseau ou les accès à interdire. Ces techniques sont les suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Filtrage des paquets</b> : interdit ou autorise l'accès selon les adresses IP ou MAC.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Filtrage des applications</b> : interdit ou autorise l'accès à des types d'applications spécifiques en fonction des numéros de ports. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Filtrage d'URL</b> : interdit ou autorise l'accès à des sites Web en fonction d'URL ou de mots clés spécifiques.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Inspection dynamique de paquets (SPI)</b> : les paquets entrants doivent constituer des réponses légitimes aux requêtes d'hôtes internes. Les paquets non sollicités sont bloqués, sauf s'ils sont expressément autorisés. L'inspection SPI peut éventuellement reconnaître et filtrer des types d'attaques spécifiques telles que le déni de service.</li>
+</ul>
+</p>
+<p></p>
+<p>Les pare-feu peuvent prendre en charge une ou plusieurs possibilités de filtrage, parmi celles décrites. En outre, les pare-feu effectuent souvent une traduction d'adresses réseau (NAT). Ce mécanisme consiste à traduire (ou convertir) une adresse IP ou un groupe d'adresses IP internes en une adresse IP publique externe envoyée sur le réseau. Cela permet de dissimuler les adresses IP internes aux utilisateurs externes.</p>
+<p></p>
+<p>Les pare-feu sont disponibles sous plusieurs formes, comme l'illustre la figure.</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Pare-feu matériel</b> - Un pare-feu matériel est intégré à un périphérique matériel dédié appelé appareil de sécurité. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Pare-feu basé sur un serveur</b> : un pare-feu basé sur un serveur est constitué d'une application de pare-feu qui s'exécute sur un système d'exploitation réseau tel qu'UNIX ou Windows.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Pare-feu intégré</b> : un pare-feu intégré est mis en œuvre par l'ajout d'une fonction de pare-feu à un périphérique existant, comme un routeur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Pare-feu personnel</b> - Un pare-feu personnel se trouve sur un ordinateur hôte et n'est pas conçu pour une mise en œuvre sur un réseau local. Il peut être disponible par défaut dans le système d'exploitation ou obtenu auprès d'un vendeur externe.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

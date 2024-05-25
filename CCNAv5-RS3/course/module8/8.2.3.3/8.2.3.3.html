@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.3.3 Résumé automatique </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du protocole EIGRP</h1>
+        <h2>Dépannage des problèmes de table de routage EIGRP</h2>
+      </div>
+      <div id="content">
+<p>La récapitulation automatique du protocole EIGRP peut également engendrer des problèmes pour l'administrateur réseau.</p>
+<p></p>
+<p>La Figure 1 présente une topologie du réseau différente de celle utilisée tout au long de ce chapitre. Il n'y a aucune connexion entre R1 et R3. Le réseau local de R1 a pour adresse réseau 10.10.10.0/24, tandis que le réseau local de R3 a pour adresse 10.20.20.0/24. Les connexions série entre les deux routeurs et R2 comportent la même bande passante de 1 024 kb/s.</p>
+<p></p>
+<p>Les interfaces série et réseaux locaux de R1 et R3 sont activés pour le protocole EIGRP, comme indiqué à la Figure 2. Les deux routeurs effectuent la récapitulation automatique du protocole EIGRP.</p>
+<p></p>
+<p>Le protocole EIGRP pour IPv4 peut être configuré pour récapituler automatiquement les routes aux frontières par classe. La récapitulation automatique peut entraîner un routage incohérent dans un réseau discontinu.</p>
+<p></p>
+<p>À la Figure 3, la table de routage de R2 montre qu'elle ne reçoit pas les routes des sous-réseaux 10.10.10.0/24 et 10.20.20.0/24. Les deux routeurs R1 et R3 ont automatiquement récapitulé ces sous-réseaux vers la frontière par classe 10.0.0.0/8 lors de l'envoi des paquets de mise à jour EIGRP à R2. Résultat : R2 comporte deux routes à coût égal vers 10.0.0.0/8 dans la table de routage, ce qui peut entraîner un routage imprécis et une perte de paquets. En fonction du type d'équilibrage de la charge utilisé (par paquet, par destination ou CEF), les paquets peuvent ou non être réacheminés à partir de l'interface appropriée.</p>
+<p></p>
+<p>À la Figure 4, la commande<span class="cmd"><b> show ip protocols </b></span>vérifie la bonne exécution de la récapitulation automatique sur R1 et R3. Notez que les deux routeurs récapitulent le réseau 10.0.0.0/8 avec la même métrique.</p>
+<p></p>
+<p>La commande<span class="cmd"><b> auto-summary </b></span>est désactivée par défaut sur les versions du logiciel Cisco IOS 15 et sur les versions postérieures à 12.2(33). Par défaut, la récapitulation automatique est activée sur les versions plus anciennes du logiciel. Pour désactiver la récapitulation automatique, saisissez la commande<span class="cmd"><b> no auto-summary </b></span>dans le mode de configuration<span class="cmd"><b> router EIGRP</b></span>.</p>
+<p></p>
+<p>Pour corriger ce problème, la récapitulation automatique a été désactivée sur R1 et R3 :</p>
+<p></p>
+<p>
+<span class="cmd">R1(config)# </span>
+<span class="cmd">
+<b>router eigrp 1</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config-router)# </span>
+<span class="cmd">
+<b>no auto-summary</b>
+</span>
+</p>
+<p></p>
+<p>
+<span class="cmd">R3(config)# </span>
+<span class="cmd">
+<b>router eigrp 1</b>
+</span>
+</p>
+<p>
+<span class="cmd">R3(config-router)# </span>
+<span class="cmd">
+<b>no auto-summary</b>
+</span>
+</p>
+<p></p>
+<p>Une fois la récapitulation automatique désactivée sur R1 et R3, la table de routage de R2 indique maintenant la réception des sous-réseaux 10.10.10.0/24 et 10.20.20.0/24 à partir de R1 et R3, respectivement, comme indiqué à la Figure 5. La précision du routage et la connectivité aux deux sous-réseaux sont maintenant restaurées.</p>
+<p></p>
+<p>
+<b>Protocole EIGRP pour IPv6</b>
+</p>
+<p></p>
+<p>Les réseaux par classe n'existent pas dans IPv6 ; le protocole EIGRP pour IPv6 ne prend donc pas en charge la récapitulation automatique. Toutes les tâches de récapitulation doivent être réalisées à l'aide des routes récapitulatives manuelles EIGRP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

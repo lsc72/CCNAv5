@@ -1,0 +1,80 @@
+﻿<textcomponents> <!-- Slide 1 -->
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Réglages de l'interface série 0/0/1 de R1  </b>]]></text>
+	</component> <!-- Slide 2 -->
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+	<component id="ID_s2_title"> <!-- If there is not topology, the Title goes in the <text> tag -->
+		<text><![CDATA[<b>Réglage des bandes passantes des interfaces  </b>]]></text>
+	</component>
+	<component id="ID_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b> *** </b><font size='10' face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b><li>Configurer la bande passante pour l'interface série 0/0/1 sur 1024<li>Repasser en mode d'exécution privilégié  </b></font>]]></existingcommands>
+		<command prompt="R2(config)#">
+		    <correctresponse><![CDATA[interface serial 0/0/1]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)#">
+		    <correctresponse><![CDATA[bandwidth 1024]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+				<deviceresponse><![CDATA[<font size='10' face="Courier New">R2#<br>*Mar 27 10:30:34,375: %SYS-5-CONFIG_I: Configured from console by console<br>]]></deviceresponse> 
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Entrez la commande «&nbsp;show interfaces&nbsp;» pour l'interface série 0/0/1 afin de vérifier le paramètre de bande passante.  </b>]]></instruction>			
+		</command>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show interfaces serial 0/0/1]]></correctresponse>
+				<deviceresponse><![CDATA[<font size='10' face="Courier New">Serial0/0/1 is up, line protocol is up <br>  Hardware is WIC MBRD Serial <br>  Description: Link to R3            <br>  Internet address is 192.168.10.9/30 <br>  MTU 1500 bytes, BW 1024 Kbit/sec, DLY 20000 usec, <br>     reliability 255/255, txload 1/255, rxload 1/255 <br>  Encapsulation HDLC, loopback not set <br>  Keepalive set (10 sec) <br>  Last input 00:00:01, output 00:00:05, output hang never <br>  Last clearing of "show interface" counters never <br>  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0 <br>  Queueing strategy: fifo <br>  Output queue: 0/40 (size/max) <br>  5 minute input rate 0 bits/sec, 0 packets/sec <br>  5 minute output rate 0 bits/sec, 0 packets/sec <br>     2134 packets input, 167658 bytes, 0 no buffer <br>     Received 1115 broadcasts (0 IP multicasts) <br>     0 runts, 0 giants, 0 throttles <br>     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored, 0 abort <br>     2132 packets output, 166968 bytes, 0 underruns <br>     0 output errors, 0 collisions, 3 interface resets <br>     0 unknown protocol drops <br>     0 output buffer failures, 0 output buffers swapped out <br>     2 carrier transitions <br>     DCD=up DSR=up DTR=up RTS=up CTS=up <br> <br>R2#]]></deviceresponse> 
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Affichez le coût («&nbsp;Cost&nbsp;») pour l'interface série 0/0/0 au moyen de la commande «&nbsp;show ip ospf interface&nbsp;».  </b>]]></instruction>			
+		</command>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ip ospf interface serial 0/0/0]]></correctresponse>
+				<deviceresponse><![CDATA[<font size='9' face="Courier New">Serial0/0/0 is up, line protocol is up <br>  Internet Address 172.16.3.2/30, Area 0, Attached via Network Statement <br>  Process ID 10, Router ID 2.2.2.2, Network Type POINT_TO_POINT, Cost: 647 <br>  Topology-MTID Cost Disabled Shutdown Topology Name <br>        0 647 no no Base <br>  Transmit Delay is 1 sec, State POINT_TO_POINT <br>  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5 <br></font>    oob-resync timeout 40 <br>    Hello due in 00:00:07 <br>  Supports Link-local Signaling (LLS) <br>  Cisco NSF helper support enabled <br>  IETF NSF helper support enabled <br>  Index 2/2, flood queue length 0 <br>  Next 0x0(0)/0x0(0) <br>  Last flood scan length is 1, maximum is 1 <br>  Last flood scan time is 0 msec, maximum is 0 msec <br>  Neighbor Count is 1, Adjacent neighbor count is 1 <br>    Adjacent with neighbor 1.1.1.1 <br>  Suppress hello for 0 neighbor(s) <br>R2#]]></deviceresponse> 
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Vous configurez maintenant R3. <li>Configurer la bande passante de l'interface série 0/0/0 sur 64<li>Configurer la bande passante de l'interface série 0/0/1 sur 1024<li>Repasser en mode d'exécution privilégié  </b>]]></instruction>			
+		</command>
+		<command prompt="R3(config)#">
+		    <correctresponse><![CDATA[interface serial 0/0/0]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[bandwidth 64]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[interface serial 0/0/1]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[bandwidth 1024]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+			<deviceresponse><![CDATA[<font size='10' face="Courier New">R3#<br>*Mar 27 10:32:53,775: %SYS-5-CONFIG_I: Configured from console by console<br>R3#]]></deviceresponse> 
+			<instruction><![CDATA[<font size='10' face="Arial"><b><ul><li>Filtrer le résultat de la commande show interfaces pour l'interface série 0/0/0 afin d'inclure uniquement les lignes contenant «&nbsp;BW&nbsp; »<li>Filtrer le résultat de la commande show interfaces pour l'interface série 0/0/1 afin d'inclure uniquement les lignes contenant «&nbsp;BW&nbsp; »<li>Filtrer le résultat de la commande show ip ospf interface pour l'interface série 0/0/0 afin d'inclure les lignes contenant «&nbsp;Cost:&nbsp;»<li>Filtrer le résultat de la commande show ip ospf interface pour l'interface série 0/0/1 afin d'inclure les lignes contenant «&nbsp;Cost:&nbsp;»</ul>  </b>]]></instruction>
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show interfaces serial 0/0/0 | include BW]]></correctresponse>
+			<deviceresponse><![CDATA[<font size='10' face="Courier New">  MTU 1500 bytes, BW 64 Kbit/sec, DLY 20000 usec, <br>R3#]]></deviceresponse> 
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show interfaces serial 0/0/1 | include BW]]></correctresponse>
+			<deviceresponse><![CDATA[<font size='10' face="Courier New">  MTU 1500 bytes, BW 1024 Kbit/sec, DLY 20000 usec, <br>R3#]]></deviceresponse> 
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip ospf interface serial 0/0/0 | include Cost:]]></correctresponse>
+			<deviceresponse><![CDATA[<font size='10' face="Courier New">  Process ID 10, Router ID 3.3.3.3, Network Type POINT_TO_POINT, Cost: 15625<br>R3#]]></deviceresponse> 
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip ospf interface serial 0/0/1 | include Cost:]]></correctresponse>
+			<deviceresponse><![CDATA[<font size='10' face="Courier New">  Process ID 10, Router ID 3.3.3.3, Network Type POINT_TO_POINT, Cost: 976<br>R3#]]></deviceresponse> 
+			<instruction><![CDATA[<font size='10' face="Arial" class="syntaxBottomLine"><b>Vous avez correctement modifié les bandes passantes des interfaces sur R2 et R3.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+</textcomponents>

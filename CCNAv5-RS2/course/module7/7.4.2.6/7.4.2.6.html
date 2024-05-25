@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.2.6 Création de la base de données d&#x0027;états de liens</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.2.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage dynamique à état de liens</h1>
+        <h2>Mises à jour d&#x0027;état de liens</h2>
+      </div>
+      <div id="content">
+<p>L'étape finale du processus de routage d'état de liens est la suivante : chaque routeur utilise la base de données pour créer une carte topologique complète et calcule le meilleur chemin vers chaque réseau de destination. </p>
+<p></p>
+<p>Par la suite, tous les routeurs reçoivent un paquet LSP de chaque autre routeur à état de liens dans la zone de routage. Les LSP sont stockés dans la base de données d'états de liens. </p>
+<p></p>
+<p>L'exemple de la figure affiche le contenu de la base de données d'états de liens de R1.</p>
+<p></p>
+<p>Après le processus d'inondation, R1 a recueilli les informations d'état de liens relatives à chaque routeur de sa zone routage. Notez que R1 inclut également ses propres informations d'état de liens dans sa base de données d'états de liens.</p>
+<p></p>
+<p>Lorsque la base de données d'états de liens est complète, R1 peut utiliser cette dernière ainsi que l'algorithme SPF (short path first) pour calculer le chemin préféré ou le plus court de chaque réseau résultant dans l'arborescence SPF. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

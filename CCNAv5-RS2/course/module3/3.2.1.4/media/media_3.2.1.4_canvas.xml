@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide type="MBAR">
+		 <slide>
+	    <element type="TEXT" subType="TITLE" compId="ID_s1_title"/> 
+		<element type="TEXT" subType="TABLE" compId="ID_table" x="2" y="40" width="436" height="304" /> 
+	</slide>
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title" />
+			<element type="ROUTER" textId="staticTxt" width="434.95" height="318.35" x="3.45" y="40" size="11"/>
+		</slide>
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title" />
+			<element type="ROUTER" textId="staticTxt1" width="436" height="192" x="2" y="40" size="11"/>
+			<element type="TEXT" compId="ID_s3_txt01" width="178" x="10" y="188" size="11" expand="right" align="left"/>
+		</slide>
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s4_title" />
+			<element type="ROUTER" textId="staticTxt2" width="436" height="350" x="2" y="35" size="11"/>
+		</slide>
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s5_title" />
+			<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC" x="2" y="40" width="437.1" height="355" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+		</slide>
+		
+	</slide>
+	<text id="staticTxt"><![CDATA[<pre>S1(config)# <b>int f0/18 </b>
+S1(config-if)# <b>no switchport access vlan </b>
+S1(config-if)# <b>end </b>
+S1# <b>show vlan brief </b>
+
+VLAN Name              Status     Ports
+---- ----------------- -------  -----------------------------
+1    default            active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                  Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                  Fa0/9, Fa0/10, Fa0/11, Fa0/12
+                                  Fa0/13, Fa0/14, Fa0/15, Fa0/16
+                                  Fa0/17, Fa0/18, Fa0/19, Fa0/20
+                                  Fa0/21, Fa0/22, Fa0/23, Fa0/24
+                                  Gi0/1, Gi0/2
+<span class="orange">20   student            active</span>
+1002 fddi-default       act/unsup
+1003 token-ring-default act/unsup
+1004 fddinet-default    act/unsup
+1005 trnet-default      act/unsup
+S1#
+</pre>
+	]]></text> 
+	
+<text id="staticTxt1"><![CDATA[<pre>S1# <b>sh interfaces f0/18 switchport</b>
+Name: F0/18
+Switchport: Enabled
+Administrative Mode: static access
+Operational Mode: down
+Administrative Trunking Encapsulation: dot1q
+Negotiation of Trunking: Off
+<span class="orange">Access Mode VLAN: 1 (default)</span>
+Trunking Native Mode VLAN: 1 (default)
+
+ </pre>
+	
+	]]></text> 
+	<text id="staticTxt2"><![CDATA[<pre>S1# <b>config t </b>
+S1(config)# <b>int f0/11</b>
+S1(config-if)# <b>switchport mode access </b>
+S1(config-if)# <b>switchport access vlan 20 </b>
+S1(config-if)# <b>end </b>
+S1#
+S1# <b>show vlan brief </b>
+
+VLAN Name                Status     Ports
+---- ------------------- --------- ----------------------------------
+1    default             active     Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                    Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                    Fa0/9, Fa0/10, Fa0/12, Fa0/13
+                                    Fa0/14, Fa0/15, Fa0/16, Fa0/17
+                                    Fa0/18, Fa0/19, Fa0/20, Fa0/21
+                                    Fa0/22, Fa0/23, Fa0/24, Gi0/1
+                                    Gi0/2
+<span class="orange">20   student             active     F0/11</span>
+1002 fddi-default        act/unsup 
+1003 token-ring-default  act/unsup 
+1004 fddinet-default     act/unsup 
+1005 trnet-default       act/unsup 
+S1#
+</pre>
+	
+	]]></text> 
+</data>

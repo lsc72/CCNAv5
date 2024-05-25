@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.1.4 Format et encapsulation des messages</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Règles de communication</h1>
+        <h2>Les règles</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Format et encapsulation des messages</b>
+</p>
+<p>Lorsqu'un message est envoyé de la source à la destination, il doit respecter un format ou une structure spécifique. Les formats des messages dépendent du type de message et du type de canal utilisés pour remettre le message.</p>
+<p></p>
+<p>La lettre est l'une des formes les plus communes de communication écrite. Durant des siècles, le format convenu pour les lettres personnelles n'a pas changé. Dans de nombreuses cultures, une lettre personnelle comprend les éléments suivants :</p>
+<p>
+<ul>
+<li>Le nom du destinataire</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Une formule de politesse</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le contenu du message</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Une phrase de conclusion</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le nom de l'expéditeur</li>
+</ul>
+</p>
+<p></p>
+<p>Outre le format approprié, la plupart des lettres personnelles doivent également être insérées ou contenues dans une enveloppe pour être acheminées, comme illustré à la Figure 1. L'enveloppe comporte l'adresse de l'expéditeur et celle du destinataire, chacune étant écrite à l'endroit prévu à cet effet. Si l'adresse de destination et le format ne sont pas corrects, la lettre n'est pas remise. Le processus consistant à placer un format de message (la lettre) dans un autre (l'enveloppe) s'appelle « encapsulation ». Une désencapsulation a lieu lorsque le processus est inversé par le destinataire et que la lettre est retirée de l'enveloppe.</p>
+<p></p>
+<p>L'auteur d'une lettre utilise un format convenu pour s'assurer que la lettre est remise, et ensuite comprise par le destinataire. De la même manière, un message qui est envoyé via un réseau informatique suit des règles de format spécifiques en vue de sa livraison et de son traitement. Les messages informatiques sont encapsulés, de la même manière qu'une lettre est placée dans une enveloppe. Chaque message informatique est encapsulé dans un format spécifique, appelé trame, avant d'être transmis sur le réseau. La trame fait office d'enveloppe. Elle fournit l'adresse de la destination souhaitée et celle de l'hôte source, comme le montre la Figure 2.</p>
+<p></p>
+<p>Le format et le contenu de la trame sont déterminés par le type de message envoyé et par le canal sur lequel ce dernier est transmis. Les messages qui ne sont pas correctement formatés ne sont ni livrés ni traités par l'hôte de destination.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

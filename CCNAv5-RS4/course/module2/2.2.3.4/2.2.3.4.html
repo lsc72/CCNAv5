@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.3.4 Cellulaire 3G/4G</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Choix d&#x0027;une technologie WAN</h1>
+        <h2>Infrastructure WAN publique</h2>
+      </div>
+      <div id="content">
+<p>De plus en plus, le service de réseau cellulaire est une autre technologie WAN sans fil utilisée pour connecter des utilisateurs et des emplacements distants là où aucune autre technologie d'accès WAN n'est disponible. De nombreux utilisateurs équipés de smartphones et de tablettes peuvent utiliser le réseau de données cellulaires pour envoyer des courriers électroniques, surfer sur Internet, télécharger des applications et regarder des vidéos. </p>
+<p></p>
+<p>Les téléphones, les tablettes, les ordinateurs portables, et même certains routeurs, peuvent communiquer via Internet grâce à la technologie cellulaire. Ces appareils utilisent les ondes radio pour communiquer via une tour de réseau mobile proche. Chaque appareil est équipé d'une petite antenne radio, et le fournisseur dispose d'une grande antenne en haut d'une tour à proximité de l'appareil. </p>
+<p></p>
+<p>Les termes les plus courants dans ce domaine sont :</p>
+<p>
+<ul>
+<li>
+<b>Sans fil 3G/4G </b>: abréviations utilisées pour l'accès cellulaire de troisième et quatrième génération. Ces technologies permettent l'accès Internet sans fil.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>LTE (Long-Term Evolution) </b>: technologie récente, plus rapide, qui est considérée comme faisant partie de la technologie de quatrième génération (4G).</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

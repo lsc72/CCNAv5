@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.1.1 Familles et catégories des versions du logiciel Cisco IOS </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Gestion des fichiers système IOS</h1>
+        <h2>Conventions d&#x0027;attribution de noms</h2>
+      </div>
+      <div id="content">
+<p>À l'origine simple système d'exploitation monoplate-forme destiné au routage, le logiciel Cisco IOS est devenu un système d'exploitation sophistiqué qui prend en charge un large éventail de fonctionnalités et de technologies telles que voix sur IP, NetFlow et IPsec. Pour mieux répondre aux exigences des différents segments de marché, le logiciel est organisé en familles de version et en catégories.</p>
+<p></p>
+<p>Une famille de versions comprend plusieurs versions du logiciel IOS qui : </p>
+<p>
+<ul>
+<li>Partagent une base de code.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>S'appliquent aux plates-formes matérielles associées.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Se chevauchent pour une prise en charge totale (dès qu'un SE expire, un autre SE est introduit et pris en charge). </li>
+</ul>
+</p>
+<p></p>
+<p>Les exemples de versions IOS dans une famille de versions sont 12.3, 12.4, 15.0 et 15.1. </p>
+<p></p>
+<p>En plus de chaque version logicielle, de nouvelles versions du logiciel sont créées pour implémenter des corrections de bogues et de nouvelles fonctionnalités. Dans IOS, ces versions sont appelées « catégories ».</p>
+<p></p>
+<p>Une catégorie Cisco IOS permet d'introduire dans les versions une base de code commune à un ensemble spécifique de plates-formes et de fonctionnalités. Une catégorie peut contenir plusieurs versions, chaque version représentant un instantané de la base de code de la catégorie au moment de sa sortie. Étant donné que différentes familles de versions logicielles peuvent s'appliquer à différentes plates-formes ou segments de marché, plusieurs catégories peuvent être en cours à tout moment. </p>
+<p></p>
+<p>Ce chapitre examine les catégories des versions IOS 12.4 et 15.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

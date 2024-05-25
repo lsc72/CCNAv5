@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.2.3 Hiérarchie DNS</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Services et protocoles de couche application courants</h1>
+        <h2>Services d&#x0027;adressage IP</h2>
+      </div>
+      <div id="content">
+<p>Le protocole DNS utilise un système hiérarchique pour créer une base de données assurant la résolution des noms. La hiérarchie ressemble à une arborescence inversée dont la racine se situe au sommet et les branches en dessous (cf figure). DNS utilise des noms de domaines pour élaborer sa hiérarchie.</p>
+<p></p>
+<p>La structure d'attribution de noms est divisée en petites zones gérables. Chaque serveur DNS tient à jour un fichier de base de données spécifique et se charge uniquement des mappages entre noms et adresses IP dans cette petite partie de la structure DNS globale. Lorsqu'un serveur DNS reçoit une demande de traduction d'un nom qui n'appartient pas à sa zone DNS, le serveur DNS transfère la requête à un autre serveur DNS se trouvant dans la zone de traduction voulue. </p>
+<p></p>
+<p>
+<b>Remarque</b> : le système de noms de domaine est évolutif, car la conversion des noms d'hôte s'étend à plusieurs serveurs.</p>
+<p></p>
+<p>Les différents domaines de premier niveau représentent le type d'organisation ou le pays d'origine. Voici des exemples de domaines de premier niveau :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>.au : </b>Australie<b></b></li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>.co : </b>Colombie<b></b></li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>.com : </b>entreprise ou industrie</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>.jp : </b>Japon</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>.org : </b>organisme à but non lucratif</li>
+</ul>
+</p>
+<p></p>
+<p>Après les domaines de premier niveau viennent les domaines de second niveau, puis, en dessous, d'autres domaines de niveau inférieur. Chaque nom de domaine constitue un chemin qui descend dans cette arborescence inversée commençant par la racine. Par exemple, comme illustré sur la figure, le serveur DNS racine ne connait pas forcément l'emplacement exact de l'enregistrement du serveur de messagerie mail.cisco.com, mais il conserve un enregistrement pour le domaine .com dans le domaine de premier niveau. De même, les serveurs situés dans le domaine .com ne disposent pas forcément d'un enregistrement pour mail.cisco.com, mais ils disposent d'un enregistrement pour le domaine. Les serveurs du domaine cisco.com disposent d'un enregistrement (plus exactement, d'un enregistrement MX) pour mail.cisco.com.</p>
+<p></p>
+<p>DNS repose sur cette hiérarchie de serveurs décentralisés pour stocker et gérer ces enregistrements de ressources. Les enregistrements de ressources répertorient les noms de domaines que le serveur peut résoudre, ainsi que d'autres serveurs pouvant également traiter des requêtes. Si un serveur spécifique dispose d'enregistrements de ressources qui correspondent à son niveau dans la hiérarchie de domaines, il est qualifié de serveur d'autorité pour ces enregistrements. Par exemple, un serveur de noms dans le domaine cisco.netacad.net ne serait pas un serveur faisant autorité pour l'enregistrement mail.cisco.com, car cet enregistrement est stocké sur un serveur d'un domaine de niveau supérieur, à savoir le serveur de noms du domaine cisco.com.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

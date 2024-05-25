@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.2.2 États des ports et fonctionnement de PVST+</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Types de protocoles STP</h1>
+        <h2>PVST+</h2>
+      </div>
+      <div id="content">
+<p>Le protocole STP facilite la mise en place d'un chemin logique sans boucle sur l'ensemble du domaine de diffusion. L’arbre recouvrant est déterminé au moyen des informations recueillies par l’échange de trames BPDU entre les commutateurs interconnectés. Pour faciliter l’apprentissage de l’arbre recouvrant logique, chaque port d’un commutateur passe par cinq états possibles et trois minuteurs BPDU.</p>
+<p></p>
+<p>L’arbre recouvrant est défini dès la fin de l’initialisation d’un commutateur. Si un port de commutation passe directement d'un état de blocage à un état de réacheminement, sans informations sur la topologie complète durant la transition, le port peut temporairement créer une boucle de données. C'est pourquoi le protocole STP inclut cinq états de port. Cette figure décrit les états de port ci-dessous, qui garantissent qu'aucune boucle ne se forme durant la création de l'arbre recouvrant logique :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Blocage</b> : le port est un port alternatif et ne participe pas au réacheminement des trames. Le port reçoit des trames BPDU pour déterminer l’emplacement et l’ID de racine du commutateur pont racine, ainsi que le rôle que chaque port d’un commutateur doit jouer dans la topologie STP active finale.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Écoute</b> : attend en réponse le chemin vers la racine. Le protocole STP a déterminé que ce port pouvait participer au réacheminement des trames, en fonction des trames BPDU que le commutateur a reçues jusque-là. À ce stade, le port de commutation reçoit non seulement les trames BPDU, mais transmet également ses propres trames BPDU et informe les commutateurs adjacents que le port se prépare à participer à la topologie active.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Apprentissage</b> : apprend les adresses MAC. Le port se prépare à participer à l'acheminement des trames et commence à enrichir la table d’adresses MAC. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Réacheminement</b> : le port est considéré comme faisant partie intégrante de la topologie active. Il réachemine les trames de données, et envoie et reçoit les trames BPDU. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Désactivé</b> : le port de couche 2 ne participe pas à l'arborescence Spanning Tree et ne réachemine aucune trame. L’état désactivé est défini lorsque le port du commutateur est désactivé sur le plan administratif.</li>
+</ul>
+</p>
+<p></p>
+<p>Notez que le nombre de ports présentant les états précités (blocage, écoute, apprentissage ou réacheminement) peut être affiché avec la commande <span class="cmd"><b>show spanning-tree summary</b></span>.</p>
+<p></p>
+<p>Pour chaque VLAN d'un réseau commuté, le protocole PVST+ exécute quatre étapes pour offrir une topologie de réseau logique sans boucle :</p>
+<p></p>
+<p>
+<b>1. Détermination d'un pont racine</b> : seul un commutateur peut jouer le rôle de pont racine (pour un VLAN donné). Le pont racine est le commutateur qui possède l'ID de pont le plus bas. Sur le pont racine, tous les ports sont des ports désignés (il ne compte notamment aucun port racine).</p>
+<p>
+<b>2. Sélection du port racine sur chaque commutateur non-pont racine</b> : le protocole STP établit un port racine pour chaque commutateur non-pont racine. Le port racine est le chemin le plus économique depuis le pont non racine jusqu'au pont racine, indiquant ainsi la direction du meilleur chemin jusqu'au pont racine. Les ports racines sont généralement en état de transmission.</p>
+<p>
+<b>3. Sélection du port désigné pour chaque segment</b> : sur chaque lien, le protocole STP établit un port désigné. Ce port désigné est choisi sur le commutateur présentant le coût de chemin le plus bas vers le pont racine. Les ports désignés sont généralement en état de transmission, transmettant du trafic pour le segment. </p>
+<p>
+<b>4. Les autres ports du réseau commuté sont des ports alternatifs</b> : les ports alternatifs restent normalement en état de blocage, afin de rompre logiquement la topologie de boucle. Lorsqu'un port est en état de blocage, il ne réachemine aucun trafic mais peut tout de même traiter les messages BPDU reçus.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

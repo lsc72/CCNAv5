@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.3.1.4 Routage inter-VLAN au moyen de ports routés</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout; 
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.3.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Commutation de couche 3</h1>
+        <h2>Fonctionnement et configuration de la commutation de couche 3</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Ports routés et ports d'accès sur un commutateur</b>
+</p>
+<p></p>
+<p>Un port routé est un port physique qui fait office d'interface sur un routeur. Contrairement à un port d'accès, un port routé n'est pas associé à un VLAN spécifique. Un port routé se comporte comme une interface de routeur normale. De plus, comme la fonctionnalité de couche 2 a été supprimée, les protocoles de couche 2, tels que STP, ne fonctionnent pas sur une interface routée. Cependant, certains protocoles, tels que LACP et EtherChannel, fonctionnent au niveau de la couche 3.</p>
+<p></p>
+<p>Contrairement aux routeurs Cisco IOS, les ports routés sur un commutateur Cisco IOS ne prennent pas en charge les sous-interfaces.</p>
+<p></p>
+<p>Les ports de routage sont utilisés pour les liaisons point à point. La connexion des routeurs WAN et les périphériques de sécurité sont des exemples d'utilisation des ports routés. Dans un réseau commuté, les ports routés sont principalement configurés entre les commutateurs de la couche cœur de réseau et de la couche de distribution. La figure présente un exemple de ports routés dans le réseau commuté d'un campus.</p>
+<p></p>
+<p>Pour configurer des ports routés, utilisez la commande en mode de configuration d'interface <span class="cmd"><b>no switchport</b></span> sur les ports appropriés. Par exemple, la configuration par défaut des interfaces des commutateurs Catalyst 3560 sont des interfaces de couche 2. Elles doivent donc être configurées manuellement en tant que ports routés. En outre, attribuez-leur une adresse IP et d'autres paramètres de couche 3 si nécessaire. Après avoir attribué l'adresse IP, vérifiez que le routage IP est activé globalement et que les protocoles de routage applicables sont configurés. </p>
+<p></p>
+<p>Voici quelques-uns des avantages des ports routés :</p>
+<p></p>
+<p>
+<ul>
+<li>Un commutateur multicouche peut disposer à la fois d'une interface SVI et de ports routés.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les commutateurs multicouches transmettent le trafic de couche 2 ou de couche 3 au niveau matériel, ce qui permet d'accélérer le routage.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque :</b> les commutateurs de la gamme Catalyst 2960 ne prennent pas en charge les ports routés.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

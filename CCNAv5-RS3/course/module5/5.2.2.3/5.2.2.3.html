@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.2.3 Packet Tracer : dépannage du protocole OSPFv2 à zone unique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résolution des problèmes liés aux mises en œuvre du protocole OSPF à zone unique</h1>
+        <h2>Dépannage des problèmes de routage du protocole OSPFv2 à zone unique</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Contexte/scénario</b>
+</p>
+<p></p>
+<p>Au cours de cet exercice, vous dépannerez des problèmes de routage OSPF à l'aide des commandes <span class="cmd"><b>ping</b></span> et<span class="cmd"><b> show</b></span> en vue d'identifier des erreurs de configuration de réseau. Vous documenterez ensuite les erreurs que vous avez découvertes et vous implémenterez une solution appropriée. Vous vérifierez enfin que la connectivité de bout en bout a été restaurée.</p>
+<p></p>
+<p>
+<a href="../../files/5.2.2.3%20Packet%20Tracer%20-%20Troubleshooting%20Single-Area%20OSPFv2%20Instructions.pdf" target="_blank">Packet Tracer : instructions de dépannage du protocole OSPFv2 à zone unique</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/5.2.2.3%20Packet%20Tracer%20-%20Troubleshooting%20Single-Area%20OSPFv2.pka" target="_blank">Packet Tracer : dépannage du protocole OSPFv2 à zone unique – PKA</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

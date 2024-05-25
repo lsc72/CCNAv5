@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.5.2 Position de l&#x0027;ACL standard</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.5.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement des listes de contrôle d&#x0027;accès IP</h1>
+        <h2>Directives concernant le placement des listes de contrôle d&#x0027;accès</h2>
+      </div>
+      <div id="content">
+<p>Les listes de contrôle d'accès standard permettent uniquement de filtrer le trafic en fonction d'une adresse source. Le principe de base consiste donc à placer la liste de contrôle d'accès standard aussi près que possible du réseau de destination. Cela permet au trafic d'accéder à tous les autres réseaux à l'exception de celui où les paquets sont filtrés. </p>
+<p></p>
+<p>Sur la figure, l'administrateur souhaite empêcher le trafic provenant du réseau 192.168.10.0/24 d'accéder au réseau 192.168.30.0/24. </p>
+<p>Si la liste de contrôle d'accès standard est placée sur l'interface de sortie de R1, cela empêche le trafic sur le réseau 192.168.10.0/24 d'accéder à tous les réseaux accessibles via l'interface Serial 0/0/0 de R1. </p>
+<p></p>
+<p>La figure représente deux interfaces sur R3, sur lesquelles il est possible d'appliquer la liste de contrôle d'accès standard conformément aux instructions de placement de base : </p>
+<p>
+<ul>
+<li>
+<b>Interface S0/0/1 sur R3</b> : l'application d'une liste de contrôle d'accès standard pour empêcher le trafic provenant du réseau 192.168.10.0/24 d'accéder à l'interface S0/0/1 empêche ce trafic d'accéder à 192.168.30.0/24 et à tous les autres réseaux accessibles par R3, y compris le réseau 192.168.31.0/24. L'objectif de la liste de contrôle d'accès étant de filtrer le trafic destiné uniquement au réseau 192.168.30.0/24, aucune liste de contrôle d'accès standard ne doit être appliquée à cette interface.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Interface G0/0 de R3</b> : l'application de la liste de contrôle d'accès standard au trafic sortant de l'interface G0/0 filtre les paquets provenant de 192.168.10.0/24 et destinés à 192.168.30.0/24. Cela n'affecte pas les autres réseaux accessibles par R3. Les paquets provenant de 192.16810.0/24 peuvent toujours accéder au réseau 192.168.31.0/24.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

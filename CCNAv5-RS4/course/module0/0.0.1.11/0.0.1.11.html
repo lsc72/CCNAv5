@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>0.0.1.11 Présentation du cours</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_0.0.1.11_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Connexion de réseaux</h1>
+        <h2>Message destiné aux participants</h2>
+      </div>
+      <div id="content">
+<p>Comme mentionné dans le titre du cours, l'accent est mis sur les technologies WAN et les services réseau requis par les applications convergentes dans un réseau complexe. Dans ce cours, vous comprendrez les critères de sélection des périphériques réseau et les technologies WAN qui satisfont aux exigences du réseau. Le cours se déroulera comme suit : </p>
+<p></p>
+<p>
+<ul>
+<li>Décrire les différentes technologies WAN et leurs avantages</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Décrire les fonctions et les avantages des réseaux privés virtuels (VPN) et du tunneling</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Configurer et dépanner les connexions série</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Configurer et dépanner les connexions haut débit</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Configurer et dépanner les fonctions de tunneling IPSec</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Surveiller les fonctions réseau et assurer la résolution des problèmes avec Syslog, SNMP et NetFlow</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Décrire des architectures réseau :</li>
+</ul>
+</p>
+<p></p>
+<p>À la fin de ce cours, vous pourrez configurer et dépanner les périphériques réseaux, et résoudre les problèmes courants relatifs aux protocoles de liaisons de données. Les étudiants acquerront également les connaissances et les compétences nécessaires à la mise en œuvre des fonctions IPSec et VPN (réseau virtuel privé) dans un réseau complexe.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

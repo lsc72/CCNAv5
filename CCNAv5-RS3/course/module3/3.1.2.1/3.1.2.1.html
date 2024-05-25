@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.2.1 Restrictions d&#x0027;implémentation</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts d&#x0027;agrégation de liaisons</h1>
+        <h2>Fonctionnement des EtherChannel</h2>
+      </div>
+      <div id="content">
+<p>EtherChannel peut être implémenté en regroupant plusieurs ports physiques sur une ou plusieurs liaisons logiques EtherChannel.<b></b></p>
+<p></p>
+<p>
+<b>Remarque </b>: les types d'interface ne peuvent pas être associés, par exemple, Fast Ethernet et Gigabit Ethernet ne peuvent pas être associés dans un même EtherChannel. </p>
+<p></p>
+<p>L'EtherChannel offre une bande passante bidirectionnelle simultanée jusqu'à 800 Mb/s (Fast EtherChannel) ou 8 Gb/s (Gigabit EtherChannel) entre deux commutateurs ou entre un commutateur et un hôte. Actuellement, chaque EtherChannel peut être composé de huit ports Ethernet maximum, configurés pour être compatibles. Le commutateur Cisco IOS peut actuellement prendre en charge six EtherChannel. Cependant, grâce au développement de nouveaux IOS et à l'évolution des plates-formes, certaines cartes et plates-formes peuvent peut-être prendre en charge un nombre accru de ports dans une liaison EtherChannel, ainsi qu'un nombre accru de Gigabit EtherChannels. Le concept est le même quels que soient les vitesses et le nombre de liaisons impliqués. Lorsque vous configurez EtherChannel sur des commutateurs, veillez aux limites et aux spécifications de la plate-forme matérielle.</p>
+<p></p>
+<p>Le but initial d'EtherChannel est d'augmenter les capacités de vitesse de liaisons agrégés entre des commutateurs. Cependant, ce concept fut étendu à mesure de la popularité de la technologie EtherChannel, et désormais, de nombreux serveurs peuvent également prendre en charge l'agrégation de liaisons avec EtherChannel. EtherChannel crée une relation « un à un », c'est-à-dire qu'une liaison EtherChannel relie deux périphériques uniquement. Une liaison EtherChannel peut être créé entre deux commutateurs ou entre un serveur EtherChannel-enabled et un commutateur. Cependant, le trafic ne peut pas être envoyé à deux commutateurs différents par l'intermédiaire de la même liaison EtherChannel.</p>
+<p></p>
+<p>La configuration de chaque port du groupe EtherChannel doit être cohérente sur les deux périphériques. Si les ports physiques sont configurés en tant que trunks d'un côté, les ports physiques de l'autre côté doivent également être configurés en tant que trunks avec le même VLAN natif. En outre, tous les ports de chaque liaison EtherChannel doivent être configurés en tant que ports de couche 2.</p>
+<p></p>
+<p>
+<b>Remarque </b>: les EtherChannel de couche 3 peuvent être configurés sur des commutateurs multicouches Cisco Catalyst tels que le modèle Catalyst 3560. Néanmoins, ce type de commutateurs n'est pas étudié dans ce cours. Un EtherChannel de couche 3 possède une seule adresse IP associée à l'agrégation logique de ports de commutation dans l'EtherChannel.</p>
+<p></p>
+<p>Chaque EtherChannel possède une interface de canal de port logique, représentée dans la figure. Une configuration appliquée à l'interface de canal de port affecte toutes les interfaces physiques attribuées à cette interface. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.2.6 protocole DHCP (Dynamic Host Configuration Protocol)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.2.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Services et protocoles de couche application courants</h1>
+        <h2>Services d&#x0027;adressage IP</h2>
+      </div>
+      <div id="content">
+<p>Le service fourni par le protocole DHCP (Dynamic Host Configuration Protocol) permet aux périphériques d'un réseau d'obtenir d'un serveur DHCP des adresses IP et d'autres informations. Ce service automatise l'attribution des adresses IP, des masques de sous-réseau, de la passerelle et d'autres paramètres de configuration réseau IP. On parle alors d'adressage dynamique. Le contraire de l'adressage dynamique est l'adressage statique. Dans le cas de l'adressage statique, l'administrateur réseau saisit manuellement l'adresse IP sur les hôtes du réseau.</p>
+<p></p>
+<p>Il permet à un hôte d'obtenir une adresse IP dynamiquement lorsqu'il se connecte au réseau. Le serveur DHCP est contacté et une adresse est demandée. Le serveur DHCP choisit une adresse dans une plage d'adresses configurée (nommée pool) et attribue cette adresse à l'hôte pour une durée définie.</p>
+<p></p>
+<p>Sur les réseaux locaux de plus grande taille ou sur les réseaux dont les utilisateurs changent fréquemment, l'adressage par le protocole DHCP est préférable. De nouveaux utilisateurs peuvent arriver avec des ordinateurs portables et avoir besoin d'une connexion, d'autres peuvent avoir de nouveaux postes de travail qui doivent être connectés. Plutôt que de faire attribuer des adresses IP par l'administrateur réseau à chaque station de travail, il est plus efficace que les adresses IP soient attribuées automatiquement à l'aide du protocole DHCP.</p>
+<p></p>
+<p>Les adresses attribuées via le protocole DHCP ne sont pas affectées aux hôtes définitivement, mais uniquement pour une durée spécifique. Si l'hôte est mis hors tension ou retiré du réseau, l'adresse est retournée au pool pour être réutilisée. Ceci est particulièrement utile pour les utilisateurs mobiles qui se connectent et se déconnectent sur le réseau. Les utilisateurs peuvent librement se déplacer d'un endroit à un autre et rétablir des connexions réseau. L'hôte peut obtenir une adresse IP une fois la connexion matérielle établie, via un réseau local filaire ou sans fil.</p>
+<p></p>
+<p>Le protocole DHCP vous permet d'accéder à Internet via des points d'accès sans fil dans des aéroports ou des cafés. Lorsqu'un périphérique sans fil rejoint un point d'accès, le client DHCP du périphérique contacte le serveur DHCP local via une connexion sans fil, et le serveur DHCP attribue une adresse IP au périphérique.</p>
+<p></p>
+<p>Comme l'illustre la figure, divers types de périphériques peuvent être des serveurs DHCP lorsqu'ils exécutent des logiciels de service DHCP. Dans la plupart des réseaux de taille moyenne à grande, le serveur DHCP est généralement un serveur local dédié basé sur un ordinateur. Dans le cas des réseaux domestiques, le serveur DHCP est généralement situé sur le routeur local qui connecte le réseau domestique au FAI. Les hôtes locaux reçoivent les informations d'adresse IP directement du routeur local. Le routeur local reçoit une adresse IP du serveur DHCP chez le FAI.</p>
+<p></p>
+<p>Le protocole DHCP peut représenter un risque pour la sécurité car n'importe quel périphérique connecté au réseau peut recevoir une adresse. Ce risque fait de la sécurité physique un facteur déterminant en faveur de l'adressage dynamique ou manuel. L'adressage dynamique et l'adressage statique ont tous deux leur place dans la conception du réseau. De nombreux réseaux utilisent à la fois le protocole DHCP et l'adressage statique. Le protocole DHCP est utilisé pour les hôtes d'usage général (par exemple, les périphériques d'utilisateur final) et l'adressage dynamique sert aux périphériques réseau tels que les passerelles, les commutateurs, les serveurs et les imprimantes.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

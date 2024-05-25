@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.4.1.3 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.4.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Comme le montre la figure, les petits espaces réseau obtenus lors de la segmentation du réseau sont appelés sous-réseaux. </p>
+<p></p>
+<p>Chaque adresse réseau dispose d'une plage valide d'adresses d'hôte. Tous les équipements reliés au même réseau disposeront d'une adresse IPv4 d'hôte de ce réseau et d'un masque de sous-réseau ou d'un préfixe de réseau commun. Le trafic peut être transféré directement entre les hôtes s'ils se trouvent sur le même sous-réseau. Le trafic ne peut pas être transféré entre les sous-réseaux sans l'intervention d'un routeur. Pour déterminer si le trafic est local ou distant, le routeur utilise le masque de sous-réseau. Le préfixe et le masque de sous-réseau constituent des moyens distincts de représenter la même chose : la partie réseau d'une adresse.</p>
+<p></p>
+<p>Pour créer des sous-réseaux IPv4, on utilise un ou plusieurs bits d'hôte en tant que bits réseau. Deux facteurs très importants qui détermineront le choix du bloc d'adresses IP avec le masque de sous-réseau sont le nombre de sous-réseaux nécessaires et le nombre maximal d'hôtes requis par sous-réseau. Il existe une relation inversée entre le nombre de sous-réseaux et le nombre d'hôtes. Plus les bits empruntés pour créer des sous-réseaux sont nombreux, moins il y a de bits d'hôte disponibles et donc moins il y a d'hôtes par sous-réseau.</p>
+<p></p>
+<p>La formule 2^n (où n est le nombre de bits d'hôte restant) permet de calculer le nombre d'adresses disponibles sur chaque sous-réseau. Cependant, l'adresse réseau et l'adresse de diffusion d'une plage ne sont pas utilisables. Par conséquent, pour calculer le nombre d'adresses utilisables, on utilise la formule 2^n - 2. </p>
+<p></p>
+<p>La segmentation des sous-réseaux, ou l'utilisation des masques de sous-réseau de longueur variable (VLSM), permet d'éviter le gaspillage des adresses.</p>
+<p></p>
+<p>La segmentation en sous-réseaux IPv6 demande une approche différente de celle des sous-réseaux IPv4. Un espace d'adressage IPv6 n'est pas divisé en sous-réseaux pour conserver des adresses, mais pour prendre en charge la conception hiérarchique et logique du réseau. Ainsi, l'approche IPv4 consiste à gérer la pénurie d'adresses, mais la segmentation IPv6 consiste à créer une hiérarchie d'adressage en fonction du nombre de routeurs et de réseaux pris en charge. </p>
+<p></p>
+<p>Une planification méticuleuse est nécessaire pour optimiser l'utilisation de l'espace d'adressage disponible. La taille, l'emplacement, l'utilisation et l'accès sont autant de facteurs déterminants lors de la planification de l'adressage.</p>
+<p></p>
+<p>Après sa mise en œuvre, un réseau IP doit faire l'objet de tests qui vérifient sa connectivité et ses performances.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

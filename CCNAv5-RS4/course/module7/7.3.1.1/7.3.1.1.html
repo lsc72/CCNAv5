@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.1.1 IPsec</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation d’IPsec</h1>
+        <h2>Sécurité de protocole Internet</h2>
+      </div>
+      <div id="content">
+<p>Les VPN IPsec offrent une connectivité à la fois flexible et évolutive. Les connexions de site à site peuvent assurer une connexion à distance fiable, rapide et sécurisée. Avec un VPN IPsec, les informations issues d'un réseau privé sont transportées en toute sécurité sur un réseau public. Cela permet d'obtenir un réseau virtuel au lieu d'utiliser une connexion dédiée de couche 2, comme le montre la figure. Pour rester privé, le trafic est chiffré pour que les données restent confidentielles. </p>
+<p></p>
+<p>Le protocole IPsec est une norme IETF qui définit comment un VPN peut être configuré de manière sécurisée à l'aide du protocole Internet (IP). </p>
+<p></p>
+<p>IPsec est un cadre de standards ouverts qui compose en touts lettres les règles pour des communications sécurisées. Le protocole IPsec n'est lié à aucun algorithme de chiffrement, d'authentification et de sécurité spécifique, ni à aucune technologie d'utilisation de clés. En revanche, le protocole IPsec se base sur des algorithmes existants pour mettre en œuvre des communications sécurisées. Le protocole IPsec autorise l'implémentation d'algorithmes plus récents et plus performants, sans toutefois modifier les normes IPsec existantes. </p>
+<p></p>
+<p>IPsec fonctionne au niveau de la couche réseau, en protégeant et en authentifiant les paquets IP entre les équipements IPsec participants (homologues). IPsec sécurise un chemin entre une paire de passerelles, une paire d’hôtes ou une passerelle et un hôte. En conséquence, le protocole IPsec peut en théorie protéger tout trafic d'applications, car cette protection peut être implémentée de la couche 4 à la couche 7.</p>
+<p></p>
+<p>Toutes les implémentations du protocole IPsec possèdent un en-tête de couche 3 en texte clair, et ce, afin d'éviter tout problème de routage. IPsec fonctionne sur l'ensemble des protocoles de couche 2, tels qu'Ethernet, ATM ou Frame Relay.</p>
+<p></p>
+<p>Les caractéristiques du protocole IPsec peuvent se résumer comme suit :</p>
+<p>
+<ul>
+<li>Le protocole IPsec est un cadre de normes ouvertes qui est indépendant de l'algorithme.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le protocole IPsec permet la confidentialité, l'intégrité et l'authentification de la source des données.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>IPsec agit comme la couche réseau, qui protège et authentifie les paquets IP.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

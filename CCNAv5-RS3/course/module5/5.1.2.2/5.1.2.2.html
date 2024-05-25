@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.2.2 Défis en matière de réseaux à accès multiple</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées du protocole OSPF à zone unique </h1>
+        <h2>OSPF dans les réseaux à accès multiple</h2>
+      </div>
+      <div id="content">
+<p>Les LSA sur les réseaux à accès multiple peuvent présenter deux difficultés pour OSPF :</p>
+<p>
+<ul>
+<li>
+<b>Création de contiguïtés multiples</b> : les réseaux Ethernet pourraient éventuellement interconnecter de nombreux routeurs OSPF via un lien commun. La création de contiguïtés avec chaque routeur est inutile et non souhaitée. Elle se traduirait par un nombre excessif de paquets LSA circulant entre les routeurs du même réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Inondation massive de paquets LSA</b> : les routeurs à état de liens diffusent leurs paquets à état de liens à chaque initialisation du protocole OSPF ou à chaque modification de la topologie. Cette diffusion peut devenir excessive. </li>
+</ul>
+</p>
+<p></p>
+<p>La formule suivante peut être utilisée pour calculer le nombre de contiguïtés requises. Le nombre de contiguïtés requises pour tout nombre de routeurs (indiqué par la lettre <i>n</i>) sur un réseau à accès multiple est le suivant :</p>
+<p></p>
+<p>
+<i>n</i> (<i>n</i> – 1)/2 </p>
+<p></p>
+<p>La Figure 1 illustre une simple topologie à quatre routeurs, tous rattachés au même réseau Ethernet à accès multiple. En l'absence de tout mécanisme pour réduire le nombre de contiguïtés, ces routeurs formeraient ensemble six contiguïtés : 4 x (4 - 1)/2 = 6, comme illustré à la Figure 2. La Figure 3 montre la progression considérable du nombre de contiguïtés à mesure que des routeurs sont ajoutés au réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.3.1.2 Acheminement de messages via les réseaux</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Un même message dans le monde entier</h1>
+        <h2>Faites passer le message !</h2>
+      </div>
+      <div id="content">
+<p>L'explosion massive des applications s'explique principalement par l'intelligence de l'approche par couches du traitement des données à travers un réseau. Plus précisément, le fait de séparer le rôle de la couche application et le rôle du transport des données permet la modification des protocoles de couche application et le développement de nouvelles applications, sans que le développeur ne doivent se soucier des mécanismes de transmission des données sur le réseau. D'autres couches et donc d'autres développeurs s'en chargent.</p>
+<p></p>
+<p>Comme le montre la figure, lorsqu'une application envoie une requête à une application serveur, le message est élaboré par la couche application, mais il passe ensuite par toutes les fonctionnalités des différentes couches du client en vue de son acheminement. Lorsqu'il évolue à travers la pile, chaque couche inférieure encapsule les données avec un en-tête contenant les protocoles de communication de la couche. Ces protocoles, qui sont implémentés sur les hôtes émetteurs et récepteurs, interagissent pour fournir un acheminement de bout en bout des applications sur le réseau.</p>
+<p></p>
+<p>Des protocoles tels que HTTP, par exemple, prennent en charge l'envoi de pages Web vers des périphériques finaux. Maintenant que nous connaissons toutes les couches et leurs rôles, nous pouvons suivre une requête client d'une page Web émise par le serveur Web pour voir le fonctionnement complet et conjoint de ces rôles indépendants.</p>
+<p></p>
+<p>Dans le modèle TCP/IP, le processus de communication complet se compose de six étapes :</p>
+<p></p>
+<p>
+<b>Création des données</b>
+</p>
+<p>La première étape consiste à créer des données au niveau de la couche application du périphérique final source d'origine. Une fois que la requête du client Web, appelée HTTP GET, est établie, ces données sont ensuite codées, compressées et chiffrées si nécessaire. Cette étape relève du protocole de la couche application du modèle TCP/IP, mais elle comprend la fonctionnalité décrite par les couches application, présentation et session du modèle OSI. La couche application transmet ces données sous forme de flux vers la couche transport.</p>
+<p></p>
+<p>
+<b>Segmentation et encapsulation initiale</b>
+</p>
+<p>L'étape suivante consiste à segmenter et encapsuler les données lorsqu'elles traversent la pile de protocoles. Au niveau de la couche transport, le message HTTP GET sera fractionné en blocs plus petits et plus faciles à gérer et un en-tête de la couche transport sera ajouté à chacun d'eux. Des indicateurs relatifs au réassemblage du message se trouvent à l'intérieur de cet en-tête, tout comme un identifiant, le numéro de port 80. Il sert à indiquer au serveur de destination que le message est destiné à son application de serveur Web. Un port source généré de manière aléatoire est également ajouté pour garantir que le client peut suivre les réponses et les transmettre à l'application cliente appropriée. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

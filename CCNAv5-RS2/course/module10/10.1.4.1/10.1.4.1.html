@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.1.4.1 Tâches de dépannage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.1.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 4</h1>
+        <h2>Dépannage de DHCPv4</h2>
+      </div>
+      <div id="content">
+<p>Des problèmes liés à DHCPv4 peuvent survenir pour une multitude de raisons, notamment des défaillances logicielles de systèmes d'exploitation, de pilotes de carte réseau ou d'agents de relais DHCP, mais le plus souvent, il s'agit de problèmes de configuration. En raison du nombre de points susceptibles de poser problème, il convient d'adopter une approche méthodique, comme le montre la figure.</p>
+<p></p>
+<p>
+<b>1re tâche de dépannage : résoudre les conflits d'adresses IPv4</b>
+</p>
+<p></p>
+<p>Un bail d'adresse IPv4 peut expirer alors qu'un client est toujours connecté au réseau. Si le client ne renouvelle pas le bail, le serveur DHCPv4 peut réattribuer cette adresse IPv4 à un autre client. Lorsque le client redémarre, il demande une adresse IPv4. Si le serveur DHCPv4 ne répond pas rapidement, le client utilise la dernière adresse IPv4. Deux clients utilisent alors la même adresse IPv4, ce qui crée un conflit.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>show ip dhcp conflict</b></span> affiche tous les conflits d'adresses enregistrés par le serveur DHCPv4. Le serveur utilise la commande <span class="cmd"><b>ping</b></span> pour détecter les clients. Le client utilise le protocole ARP (Address Resolution Protocol) pour détecter les conflits. Si un conflit d'adresse est détecté, l'adresse est retirée du pool et n'est pas attribuée tant qu'un administrateur n'a pas résolu le conflit. </p>
+<p></p>
+<p>Ce résultat affiche les adresses IP en conflit avec le serveur DHCP. Il indique la méthode et l'heure de détection pour les adresses IP en conflit que le serveur DHCP a proposées.</p>
+<p></p>
+<p>
+<span class="cmd">R1# </span>
+<span class="cmd">
+<b>show ip dhcp conflict</b>
+</span>
+</p>
+<p>
+<span class="cmd">IP address Detection Method Detection time</span>
+</p>
+<p>
+<span class="cmd">192.168.10.32 Ping Feb 16 2013 12:28 PM</span>
+</p>
+<p>
+<span class="cmd">192.168.10.64 Gratuitous ARP Feb 23 2013 08:12 AM</span>
+</p>
+<p></p>
+<p>
+<b>2e tâche de dépannage : vérifier la connectivité physique</b>
+</p>
+<p></p>
+<p>D'abord, utilisez la commande <span class="cmd"><b>show interfaces </b></span><span class="cmd"><i>interface</i></span> pour vérifier que l'interface du routeur servant de passerelle par défaut pour le client est opérationnelle. Si l'état de l'interface n'est pas actif, le port n'achemine pas le trafic, y compris les requêtes du client DHCP. </p>
+<p></p>
+<p>
+<b>3e tâche de dépannage : tester la connectivité à l'aide d'une adresse IP statique</b>
+</p>
+<p></p>
+<p>Lorsque vous essayez de résoudre un problème de DHCPv4, vérifiez la connectivité du réseau en configurant des informations d'adresse statique IPv4 sur un poste de travail client. Si la station de travail ne peut pas atteindre les ressources réseau avec une adresse IPv4 configurée de façon statique, la cause première du problème n'est pas le protocole DHCPv4. Le dépannage de la connectivité du réseau est alors nécessaire.</p>
+<p></p>
+<p>
+<b>4e tâche de dépannage : vérifier la configuration du port du commutateur</b>
+</p>
+<p></p>
+<p>Si le client DHCPv4 ne parvient pas à obtenir une adresse IPv4 du serveur DHCPv4 au démarrage, essayez d'obtenir une adresse IPv4 auprès du serveur DHCPv4 en forçant manuellement le client à envoyer une requête DHCPv4.</p>
+<p></p>
+<p>
+<b>Remarque</b> : si un commutateur se trouve entre le client et le serveur DHCPv4 et que le client ne parvient pas à obtenir la configuration DHCP, il peut s'agir de problèmes de configuration du port du commutateur. Les causes peuvent inclure des problèmes liés au trunking et aux canaux, à STP et à RSTP. Les configurations PortFast et de ports de périphérie permettent de résoudre les problèmes les plus courants des clients DHCPv4, qui surviennent lors de l'installation initiale d'un commutateur Cisco. </p>
+<p></p>
+<p>
+<b>5e tâche de dépannage : Tester le fonctionnement de DHCPv4 sur le même sous-réseau ou réseau local virtuel</b>
+</p>
+<p></p>
+<p>Il est important de déterminer si DHCPv4 fonctionne correctement lorsque le client se trouve sur le même sous-réseau ou réseau local virtuel que le serveur DHCPv4. Si DHCPv4 fonctionne correctement dans ces situations, alors le problème peut provenir de l'agent de relais DHCP. Si le problème persiste lorsque vous testez DHCPv4 sur le même sous-réseau ou réseau local virtuel que le serveur DHCPv4, le problème peut provenir du serveur DHCPv4 en soi.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

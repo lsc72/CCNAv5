@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.4.1 Utilisation de la bande passante par le protocole EIGRP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations EIGRP avancées</h1>
+        <h2>Réglage précis des interfaces EIGRP</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Bande passante EIGRP pour IPv4</b>
+</p>
+<p></p>
+<p>Par défaut, le protocole EIGRP n'utilise que 50 % maximum de la bande passante d'une interface pour les informations EIGRP. Cela permet au processus EIGRP de ne pas surcharger une liaison en ne laissant pas suffisamment de bande passante pour le routage du trafic normal. </p>
+<p></p>
+<p>La commande <span class="cmd"><b>ip bandwidth-percent eigrp</b></span> peut être utilisée pour configurer le pourcentage de bande passante pouvant être utilisé par le protocole EIGRP sur une interface. </p>
+<p></p>
+<p>
+<span class="cmd">Router(config-if)# </span>
+<span class="cmd">
+<b>ip bandwidth-percent eigrp</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>as-number percent</i>
+</span>
+</p>
+<p></p>
+<p>À la Figure 1, R1 et R2 partagent un lien très lent de 64 kb/s. La configuration permettant de limiter la quantité de bande passante utilisée par le protocole EIGRP est présentée à la Figure 2. La commande<span class="cmd"><b> ip bandwidth-percent eigrp </b></span>utilise la quantité de bande passante configurée (ou la bande passante par défaut) lors du calcul du pourcentage utilisable par EIGRP. Dans cet exemple, le protocole EIGRP est limité à moins de 40 % de la bande passante du lien. Par conséquent, le protocole EIGRP n'utilise jamais plus de 32 kb/s de la bande passante du lien pour le trafic des paquets EIGRP.</p>
+<p></p>
+<p>Pour restaurer la valeur par défaut, utilisez la forme <span class="cmd"><b>no</b></span> de cette commande.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 3 pour limiter la bande passante utilisée par EIGRP entre R2 et R3, jusqu'à 75 % de la bande passante du lien.</p>
+<p></p>
+<p>
+<b>Bande passante EIGRP pour IPv6</b>
+</p>
+<p></p>
+<p>Pour configurer le pourcentage de bande passante pouvant être utilisé par le protocole EIGRP pour IPv6 sur une interface, exécutez la commande <span class="cmd"><b>ipv6 bandwidth-percent eigrp</b></span> en mode de configuration d'interface. Pour restaurer la valeur par défaut, utilisez la forme <span class="cmd"><b>no</b></span> de cette commande.</p>
+<p></p>
+<p>
+<span class="cmd">Router(config-if)# </span>
+<span class="cmd">
+<b>ipv6 bandwidth-percent eigrp</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>as-number percent</i>
+</span>
+</p>
+<p></p>
+<p>La Figure 4 montre la configuration des interfaces entre R1 et R2 pour limiter la bande passante utilisée par le protocole EIGRP pour IPv6. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

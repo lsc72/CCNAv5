@@ -1,0 +1,36 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Vérification de la table de routage IPv6 de R1 
+ </b>]]></text>
+</component>
+<component id="ID_s2_title">
+  <text><![CDATA[<b>Vérification de la table de routage IPv6 de R2 et R3  </b>]]></text> 
+  </component>
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+	
+	<component id="ID_SC2" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b> *** </b><font size='10' face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>Vérifiez la table de routage IPv6 sur R2 en affichant uniquement les routes OSPF.  </b></font>]]></existingcommands>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ipv6 route ospf]]></correctresponse>
+		<deviceresponse><![CDATA[<font size='8' face="Courier New">IPv6 Routing Table - default - 10 entries <br>Codes: C - Connected, L - Local, S - Static, U - Per-user Static route <br>       B - BGP, R - RIP, H - NHRP, I1 - ISIS L1 <br>       I2 - ISIS L2, IA - ISIS interarea, IS - ISIS summary, D - EIGRP <br>       EX - EIGRP external, ND - ND Default, NDp - ND Prefix, DCE - Destination <br>       NDr - Redirect, O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF ext 1 <br>       OE2 - OSPF ext 2, ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2  </font><br>O 2001:DB8:CAFE:1::/64 [110/648] <br>     via FE80::1, Serial0/0/0 <br>O 2001:DB8:CAFE:3::/64 [110/657] <br>     via FE80::3, Serial0/0/1 <br>O 2001:DB8:CAFE:A003::/64 [110/1294] <br>     via FE80::3, Serial0/0/1 <br>R2#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Vous configurez maintenant le routeur R3. Vérifiez la table de routage IPv6 sur R3 en affichant uniquement les routes OSPF.  </b>]]></instruction>
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ipv6 route ospf]]></correctresponse>
+			<deviceresponse><![CDATA[<font size='8' face="Courier New">IPv6 Routing Table - default - 10 entries <br>Codes: C - Connected, L - Local, S - Static, U - Per-user Static route <br>       B - BGP, R - RIP, H - NHRP, I1 - ISIS L1 <br>       I2 - ISIS L2, IA - ISIS interarea, IS - ISIS summary, D - EIGRP <br>       EX - EIGRP external, ND - ND Default, NDp - ND Prefix, DCE - Destination <br>       NDr - Redirect, O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF ext 1 <br>       OE2 - OSPF ext 2, ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2  </font><br>O 2001:DB8:CAFE:1::/64 [110/648] <br>     via FE80::1, Serial0/0/0 <br>O 2001:DB8:CAFE:2::/64 [110/657] <br>     via FE80::2, Serial0/0/1 <br>O 2001:DB8:CAFE:A001::/64 [110/1294] <br>     via FE80::2, Serial0/0/1 <br>     via FE80::1, Serial0/0/0 <br>R3#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"  class="syntaxBottomLine"><b>Vous avez correctement vérifié les tables de routage OSPF IPv6.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+</textcomponents>

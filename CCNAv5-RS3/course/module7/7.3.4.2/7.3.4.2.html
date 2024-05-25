@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.4.2 DUAL : successeur potentiel</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1> Fonctionnement du protocole EIGRP</h1>
+        <h2>Algorithme DUAL et convergence</h2>
+      </div>
+      <div id="content">
+<p>R2 utilise actuellement R3 comme successeur vers 192.168.1.0/24. En outre, R2 répertorie actuellement R1 comme successeur potentiel, comme indiqué à la Figure 1. </p>
+<p></p>
+<p>Le résultat<span class="cmd"><b> show ip eigrp topology </b></span>pour R2 à la Figure 2 vérifie que R3 est le successeur et que R1 est le successeur potentiel du réseau 192.168.1.0/24. Pour comprendre comment DUAL peut utiliser un successeur potentiel lorsque le chemin qui utilise le successeur n'est plus disponible, une défaillance de lien est simulée entre R2 et R3.</p>
+<p></p>
+<p>Avant de simuler la défaillance, la fonction de débogage de DUAL doit être activée à l'aide de la commande<span class="cmd"><b> debug eigrp fsm </b></span>sur R2, comme indiqué à la Figure 3. Une défaillance de lien est simulée à l'aide de la commande<span class="cmd"><b> shutdown </b></span>sur l'interface Serial 0/0/1 de R2. </p>
+<p></p>
+<p>Le résultat<span class="cmd"><b> debug </b></span>affiche l'activité générée par DUAL lors de la désactivation du lien. R2 doit informer tous les voisins EIGRP de la perte du lien et mettre à jour ses tables topologiques et de routage. Cet exemple montre uniquement le résultat <span class="cmd"><b>debug</b></span> sélectionné. Notez, en particulier, que la machine FSM DUAL recherche et trouve un successeur potentiel pour la route dans la table topologique EIGRP. </p>
+<p></p>
+<p>Le successeur potentiel R1 devient alors le successeur et apparaît dans la table de routage comme le nouveau meilleur chemin vers 192.168.1.0/24, comme indiqué à la Figure 4. Avec un successeur potentiel, cette modification de la table de routage s'effectue presque immédiatement.</p>
+<p></p>
+<p>Comme indiqué à la Figure 5, la table topologique de R2 désigne maintenant R1 comme successeur et il n'y a aucun nouveau successeur potentiel. Si le lien entre R2 et R3 est réactivé, R3 redevient le successeur et R1 le successeur potentiel.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.2.2 Adresses link-local</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv3 à zone unique</h1>
+        <h2>Configuration du OSPFv3</h2>
+      </div>
+      <div id="content">
+<p>Dans la figure, le résultat de la commande <span class="cmd"><b>show ipv6 interface brief</b></span> confirme que les adresses globales IPv6 correctes ont été configurées et que les interfaces sont activées. En outre, notez que chaque interface a automatiquement généré une adresse link-local, comme indiqué dans la figure. </p>
+<p></p>
+<p>Les adresses link-local sont créées automatiquement lorsqu'une adresse de monodiffusion globale IPv6 est attribuée à l'interface. Les adresses de monodiffusion globales ne sont pas obligatoires sur une interface ; en revanche, les adresses link-local IPv6 le sont.</p>
+<p></p>
+<p>Sauf s'ils ont été configurés manuellement, les routeurs Cisco créent l'adresse link-local au moyen du préfixe FE80::/10 et du processus EUI-64. EUI-64 consiste à utiliser l'adresse MAC Ethernet 48-bit, à insérer FFFE au milieu et à manipuler le septième bit. Pour les interfaces série, Cisco utilise l'adresse MAC d'une interface Ethernet. Notez que dans la figure les trois interfaces utilisent la même adresse link-local.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

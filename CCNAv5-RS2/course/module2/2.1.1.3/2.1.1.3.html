@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.1.3 LED du commutateur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de base d&#x0027;un commutateur</h1>
+        <h2>Configuration d&#x0027;un commutateur avec les paramètres d&#x0027;origine</h2>
+      </div>
+      <div id="content">
+<p>Les commutateurs Cisco Catalyst ont plusieurs témoins lumineux LED. Vous pouvez utiliser les LED du commutateur pour surveiller rapidement l'activité et les performances du commutateur. En fonction du modèle et des fonctionnalités des commutateurs, les LED et leur emplacement sur le panneau avant peuvent varier.</p>
+<p></p>
+<p>La figure illustre les LED et le bouton Mode d'un commutateur Cisco Catalyst 2960. Le bouton Mode permet d'afficher alternativement l'état, le mode de bidirectionnalité et la vitesse des ports, ainsi que le PoE (Power Over Ethernet, si pris en charge) avec les LED. Cette rubrique décrit la fonction des indicateurs LED, ainsi que leur code couleur :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>LED système : </b>indique si le système est bien alimenté et s'il fonctionne correctement. Si la LED est éteinte, cela signifie que le système est hors tension. Si la LED est verte, le système fonctionne normalement. Si la LED est orange, le système est sous tension mais ne fonctionne pas correctement.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>LED système d'alimentation redondante (RPS) : affiche</b> l'état du système RPS. Si la LED est éteinte, le système RPS est éteint ou n'est pas correctement connecté. Si la LED est verte, le système RPS est connecté et prêt à fournir l'alimentation de secours. Si la LED est verte et clignote, le système RPS est connecté mais n'est pas disponible parce qu'il alimente un autre périphérique. Si la LED est orange, le système RPS est en veille ou en erreur. Si la LED est orange et clignote, l'alimentation interne du commutateur a rencontré une erreur et le système RPS a pris le relais de l'alimentation.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>LED état port : </b>indique que le mode état de port est sélectionné lorsque la LED est verte et clignote. Il s'agit du mode par défaut. Lorsque cette option est sélectionnée, les LED du port affichent des couleurs de différentes significations. Si la LED est éteinte, aucune liaison n'est établie ou le port a été arrêté administrativement. Si la LED est verte, une liaison est établie. Si la LED est verte et clignote, la liaison est active et le port envoie ou reçoit des données. Si la LED est verte, puis orange, une panne au niveau de la liaison est présente. Si la LED est orange, le port est bloqué pour s'assurer que le domaine de redirection ne présente pas de bouclage et ne redirige pas de données (en général, les ports restent à cet état au cours des 30 premières secondes suivant leur activation). Si la LED est orange et clignote, le port est bloqué pour éviter tout bouclage dans le domaine de redirection.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>LED de bidirectionnalité du port</b> : indique que le mode de bidirectionnalité du port est sélectionné lorsque la LED est verte. Lorsque ce mode est sélectionné, les LED éteintes indiquent les ports en mode bidirectionnel non simultané. Si la LED du port est verte, le port est en mode bidirectionnel simultané.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>LED de vitesse de port</b> : indique que le mode vitesse de port est sélectionné. Lorsque cette option est sélectionnée, les LED du port affichent des couleurs de différentes significations. Si la LED est éteinte, le port fonctionne à 10 Mbit/s. Si la LED est verte, le port fonctionne à 100 Mbit/s. Si la LED est verte et clignote, le port fonctionne à 1 000 Mbit/s.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>LED de mode PoE (Power over Ethernet)</b> : si le mode POE est pris en charge, une LED de mode PoE est présente. Si la LED est éteinte, le mode PoE n'est pas sélectionné et aucun port n'est privé de courant ou ne présente d'erreur. Si la LED est orange et clignote, le mode PoE n'est pas sélectionné mais au moins un port est privé de courant ou présente une erreur relative au PoE. Si la LED est verte, le mode PoE est sélectionné et les LED de port présentent différentes couleurs, dont la signification varie. Si la LED de port est éteinte, le mode PoE est désactivé. Si la LED de port est verte, le mode PoE est activé. Si la LED de port alterne entre le vert et l'orange, le mode PoE est refusé car l'alimentation du périphérique entraînerait un dépassement de la capacité électrique du commutateur. Si la LED est orange et clignote, le mode PoE est désactivé en raison d'une erreur. Si la LED est orange, le mode PoE a été désactivé pour le port. </li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

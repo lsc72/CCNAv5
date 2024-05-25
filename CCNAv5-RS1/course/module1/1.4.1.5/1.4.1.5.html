@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.4.1.5 Cloud computing</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.4.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Évolution de l&#x0027;environnement réseau</h1>
+        <h2>Tendances relatives au réseau</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Cloud computing</b>
+</p>
+<p></p>
+<p>Le cloud computing consiste à utiliser des ressources informatiques (matérielles et logicielles) sous forme de service sur un réseau. Une société utilise le matériel et les logiciels dans le cloud et des frais de service lui sont imputés.</p>
+<p></p>
+<p>Les ordinateurs locaux n'ont plus à effectuer de tâches complexes lorsqu'il s'agit d'exécuter des applications réseau. Les ordinateurs en réseau qui constituent le cloud s'en chargent. Le matériel et les logiciels requis par l'utilisateur sont réduits. L'ordinateur de l'utilisateur doit interagir avec le cloud grâce à un logiciel, qui peut être un navigateur Web, et le réseau du cloud se charge du reste.</p>
+<p></p>
+<p>Le cloud computing est également une tendance globale qui fait évoluer l'accès aux données et leur stockage. Le terme « cloud computing » fait référence à tout service disponible en temps réel sur Internet, impliquant un paiement sous forme d'abonnement ou en fonction de l'utilisation. Le cloud computing nous permet de stocker des fichiers personnels, voire de sauvegarder tout le contenu d'un disque dur sur des serveurs via Internet. Des applications telles que le traitement de texte et la retouche photo peuvent être accessibles via le cloud. </p>
+<p></p>
+<p>Pour les entreprises, le cloud computing offre de nouvelles fonctionnalités sans nécessiter d'investissement dans une nouvelle infrastructure, une nouvelle formation du personnel ou de nouveaux logiciels. Ces services sont disponibles à la demande et sont fournis à moindre coût à n'importe quel périphérique, partout dans le monde, sans compromettre la sécurité ou les fonctionnalités. </p>
+<p></p>
+<p>Le terme « cloud computing » fait en fait référence à l'informatique sur le Web. Les opérations bancaires en ligne, les magasins en ligne et les sites de téléchargement de musique sont des exemples courants de cloud computing. Les utilisateurs accèdent aux applications du cloud via un navigateur Web. Aucun logiciel supplémentaire n'est nécessaire sur leurs ordinateurs. Cela permet à de nombreux types de périphérique d'accéder au cloud.</p>
+<p></p>
+<p>Le cloud computing peut offrir les avantages suivants :</p>
+<p>
+<ul>
+<li>
+<b>Flexibilité organisationnelle</b> – les utilisateurs peuvent accéder aux informations à tout moment et partout via un navigateur Web. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Réactivité et rapidité de déploiement</b> – le service informatique peut se concentrer sur la fourniture d'outils pour extraire, analyser et partager les informations provenant de bases de données, de fichiers, et de données utilisateur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Coûts d'infrastructure réduits</b> – l'infrastructure technologique, précédemment sur site, est gérée par le fournisseur de services cloud : les coûts liés au matériel et aux applications sont nuls. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Recadrage des ressources informatiques</b> – l'argent économisé sur le matériel et les applications peut être attribué à d'autres secteurs.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Création de nouveaux business models</b> – les applications et les ressources sont facilement accessibles. Les entreprises peuvent donc réagir rapidement aux besoins des clients. Elles peuvent ainsi développer des stratégies pour promouvoir l'innovation tout en pénétrant de nouveaux marchés.</li>
+</ul>
+</p>
+<p></p>
+<p>Il existe quatre types principaux de cloud, comme illustré à la Figure 2. Cliquez sur chaque type de cloud pour obtenir des informations supplémentaires.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

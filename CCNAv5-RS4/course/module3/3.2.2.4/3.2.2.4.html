@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.2.4 Structure de trame PPP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement de PPP</h1>
+        <h2>LCP et NCP</h2>
+      </div>
+      <div id="content">
+<p>Une trame PPP se compose de six champs. Les descriptions suivantes résument les champs de trame PPP illustrés dans la figure : </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Indicateur</b> : octet unique qui indique le début ou la fin d'une trame. L'indicateur est constitué de la séquence binaire 01111110. Dans les trames PPP successives, un seul caractère d'indicateur est utilisé.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse</b> : un seul octet qui contient la séquence binaire 11111111, à savoir l'adresse de diffusion standard. PPP n'attribue pas d'adresses de stations individuelles. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Contrôle </b>: octet unique composé de la séquence binaire 00000011, qui appelle la transmission des données utilisateur dans une trame non séquencée. Ceci offre un service de liaison sans connexion qui nécessite l'établissement de liaisons de données ou de stations de liaison. Sur une liaison point à point, il n'est pas nécessaire de spécifier l'adresse du nœud de destination. Ainsi, pour le protocole PPP, le champ d'adresse est défini sur 0xFF, l'adresse de diffusion. Si les deux protocoles PPP s'accordent pour effectuer la compression du champ d'adresse et de contrôle au cours de la négociation LCP, le champ Adresse n'est pas inclus.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Protocole </b>: deux octets qui identifient le protocole encapsulé dans le champ de données de la trame. Le champ protocole de 2 octets identifie le protocole des données utiles du protocole PPP. Si les deux protocoles PPP s'accordent pour effectuer la compression du champ de protocole cours de la négociation LCP, le champ Protocole comporte un octet pour l'identification de protocole dans la plage 0x00-00 à 0x00-FF. Les valeurs les plus à jour du champ de protocole sont spécifiées dans les requêtes pour commentaires les plus à jour des numéros assignés. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Données </b>: zéro ou plusieurs octets contenant le datagramme du protocole précisé dans le champ de protocole. La fin du champ d'informations est indiquée en retrouvant la séquence d'indicateur de fin et en octroyant 2 octets pour le champ FCS. La longueur maximale par défaut du champ d'informations est de 1500 octets. En vertu d'un accord préalable, les mises en œuvre PPP adoptées peuvent utiliser d'autres valeurs pour la longueur maximale du champ d'informations. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Séquence de contrôle de trame (FCS) </b>: normalement, 16 bits (2 octets). En vertu d'un accord préalable, les mises en œuvre PPP adoptées peuvent utiliser une séquence de contrôle de trame 32 bits (4 octets) pour une détection améliorée des erreurs. Si le calcul du FCS par le destinataire ne correspond pas au FCS de la trame de protocole PPP, la trame PPP est rejetée.</li>
+</ul>
+</p>
+<p></p>
+<p>Les LCP peuvent négocier des modifications dans la structure de trame standard PPP. Cependant, les trames modifiées peuvent toujours être distinguées des trames standard.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

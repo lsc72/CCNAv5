@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.2.10 Segmentation TCP et UDP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.2.10_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole de couche Transport</h1>
+        <h2>Présentation des protocoles TCP et UDP</h2>
+      </div>
+      <div id="content">
+<p>Dans un chapitre précédent, nous vous avons expliqué qu'une unité de données de protocole (PDU) est élaborée en faisant transiter les données d'une application par diverses couches afin de créer une PDU qui est ensuite transmise sur le support. Une fois les données parvenues sur l'hôte de destination, le processus est inversé jusqu'à ce que les données puissent être communiquées à l'application.</p>
+<p></p>
+<p>Certaines applications transmettent de très importants volumes de données pouvant parfois atteindre plusieurs gigaoctets. Transmettre l'ensemble de ces données en un envoi massif serait peu pratique car aucun autre trafic ne pourrait être transmis sur le réseau pendant l'envoi de ces données. De plus, l'envoi d'une grosse quantité de données peut prendre de plusieurs minutes à plusieurs heures. En outre, en cas d'erreurs, l'ensemble du fichier de données serait perdu ou devrait être renvoyé. La mémoire tampon des périphériques réseau ne serait pas suffisante pour stocker autant de données pendant leur transmission ou leur réception. La limite varie selon la technologie réseau employée et le support physique particulier qui est utilisé.</p>
+<p></p>
+<p>Diviser les données d'application en blocs permet de s'assurer que les données sont transmises en tenant compte des limites du support et que les données provenant d'applications différentes peuvent faire l'objet d'un multiplexage sur le support.</p>
+<p></p>
+<p>
+<b>Les protocoles TCP et UDP traitent différemment la segmentation.</b>
+</p>
+<p></p>
+<p>Comme l'illustre la figure, chaque en-tête de segment TCP contient un numéro d'ordre permettant aux fonctions de la couche transport sur l'hôte de destination de réassembler les segments dans l'ordre dans lequel ils ont été transmis. L'application de destination peut ainsi disposer des données sous la forme exacte voulue par l'expéditeur.</p>
+<p></p>
+<p>Bien que les services utilisant le protocole UDP effectuent également un suivi des conversations entre les applications, ils ne prêtent pas attention à l'ordre dans lequel les informations ont été transmises ni au maintien de la connexion. Un en-tête UDP ne contient pas de numéro d'ordre. La conception du protocole UDP est plus simple et produit moins de surcharge que le protocole TCP, de sorte que le transfert de données est plus rapide. </p>
+<p></p>
+<p>Il se peut que les informations arrivent dans un ordre différent de celui dans lequel elles ont été transmises car les différents paquets peuvent emprunter des chemins différents sur le réseau. Les applications qui utilisent le protocole UDP doivent tolérer le fait que les données peuvent arriver dans un ordre différent de celui dans lequel elles ont été envoyées.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

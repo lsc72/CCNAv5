@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.6 Propagation et processus BPDU</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts du mode Spanning Tree</h1>
+        <h2>Fonctionnement du protocole STP</h2>
+      </div>
+      <div id="content">
+<p>Chaque commutateur du domaine de diffusion part de l'hypothèse initiale qu'il est le pont racine d'une instance Spanning Tree ; les trames BPDU envoyées contiennent donc l'ID de pont du commutateur local en tant qu'ID de racine. Par défaut, les trames BPDU sont envoyées toutes les deux secondes après l'amorçage du commutateur ; c'est-à-dire que la valeur par défaut du minuteur Hello spécifiée dans la trame BPDU est de deux secondes. Chaque commutateur met à jour les informations locales concernant son ID de pont, l’ID de racine et le coût du chemin vers la racine.</p>
+<p></p>
+<p>Lorsque les commutateurs adjacents reçoivent une trame BPDU, ils comparent l'ID de racine de cette trame BPDU à l'ID de racine local. Si l'ID de racine de la trame BPDU est inférieur à l'ID de racine local, le commutateur met à jour ce dernier et l'ID de ses messages BPDU. Ces messages indiqueront désormais le nouveau pont racine du réseau. La distance avec le pont racine est également indiquée par la mise à jour du coût de chemin. Par exemple, si la trame BPDU a été reçue sur un port de commutation Fast Ethernet, le coût de chemin augmentera de 19. Si l'ID de racine local est inférieur à l'ID de racine reçu dans la trame BPDU, la trame BPDU est mise à l'écart.</p>
+<p></p>
+<p>Une fois qu’un ID de racine a été mis à jour pour identifier un nouveau pont racine, toutes les trames BPDU suivantes envoyées à partir de ce commutateur contiennent le nouvel ID de racine et le coût de chemin mis à jour. Ainsi, tous les autres commutateurs adjacents peuvent systématiquement voir l’ID de racine le plus faible identifié. Au fur et à mesure que les trames BPDU circulent entre d’autres commutateurs adjacents, le coût du chemin est continuellement mis à jour pour indiquer le coût du chemin total vers le pont racine. Chaque commutateur inclus dans l’arbre recouvrant utilise ses coûts de chemins pour identifier le meilleur chemin possible vers le pont racine.</p>
+<p>Le déroulement du processus des trames BPDU est résumé ci-dessous :</p>
+<p></p>
+<p>
+<b>Remarque </b>: la priorité est le principal facteur pris en compte lors de la détermination d'un pont racine. Si les priorités sont identiques sur tous les commutateurs, le périphérique présentant l'adresse MAC la plus basse deviendra pont racine.</p>
+<p></p>
+<p>1. Initialement, chaque commutateur s'identifie en tant que pont racine. S2 réachemine les trames BPDU sur tous ses ports. (Figure 1)</p>
+<p></p>
+<p>2. Lorsque S3 reçoit une trame BPDU en provenance du commutateur S2, S3 compare son ID de racine avec celui de la trame BPDU reçue. Les priorités étant identiques, le commutateur doit examiner la partie correspondant à l'adresse MAC pour savoir quelle adresse MAC présente la valeur la plus faible. S2 ayant une valeur d'adresse MAC inférieure, S3 met à jour son ID de racine avec l'ID de racine de S2. À ce moment, S3 considère S2 comme étant le pont racine. (Figure 2)</p>
+<p></p>
+<p>3. Lorsque S1 compare son ID de racine à celui figurant dans la trame BPDU reçue, il identifie l'ID de racine local comme étant la valeur la plus basse et met à l'écart la trame BPDU envoyée par S2. (Figure 3)</p>
+<p></p>
+<p>4. Lorsque S3 envoie ses trames BPDU, l'ID de racine contenu dans chaque trame BPDU est celui de S2. (Figure 4)</p>
+<p></p>
+<p>5. Lorsque le commutateur Comm2 reçoit la trame BPDU, il la rejette après avoir vérifié que l’ID de racine contenu dans la trame BPDU correspond à son ID de racine local. (Figure 5)</p>
+<p></p>
+<p>6. Étant donné que le commutateur Comm1 présente une priorité plus faible dans son ID de racine, il rejette la trame BPDU reçue du commutateur Comm3. (Figure 6)</p>
+<p></p>
+<p>7. Le commutateur Comm1 envoie ses trames BPDU. (Figure 7)</p>
+<p></p>
+<p>8. S3 identifie l'ID de racine de la trame BPDU comme ayant une valeur inférieure ; par conséquent, il met à jour son propre ID de racine afin d'indiquer que S1 est désormais le pont racine. (Figure 8)</p>
+<p></p>
+<p>9. S2 identifie l'ID de racine de la trame BPDU comme ayant une valeur inférieure ; par conséquent, il met à jour son propre ID de racine afin d'indiquer que S1 est désormais le pont racine. (Figure 9)</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Protocole EIGRP pour la topologie IPv4</b>]]></text>
+</component>
+
+<component id="ID_s1_txt01">
+<text><![CDATA[<b>Domaine de routage EIGRP</b>]]></text>
+</component>
+<component id="ID_s1_txt02">
+<text><![CDATA[Internet]]></text>
+</component>
+<component id="ID_s2_title">
+  <text><![CDATA[<b>Configuration de l'authentification MD5 EIGRP sur R1</b>]]></text> 
+  </component>
+<component id="ID_s3_title">
+  <text><![CDATA[<b>Configuration de l'authentification MD5 EIGRP sur R2</b>]]></text> 
+  </component>
+  <component id="ID_s3_txt01">
+  <text><![CDATA[<b>Configuration de l'authentification MD5 EIGRP sur R2</b>]]></text> 
+  </component>
+<component id="ID_s4_title">
+  <text><![CDATA[<b>Configuration de l'authentification EIGRP sur R3</b>]]></text> 
+  </component>
+  
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+
+  <component id="ID_s5_title">
+  <text><![CDATA[<b>Configuration du protocole EIGRP pour l'authentification MD5 IPv6 sur R1</b>]]></text> 
+  </component>
+  	<component id="ID_SC4" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b>***</b><font face="Arial" color="#0000FF">Vous devez saisir la commande exacte et complète.</font><b>***</b> ]]></feedback>		
+		<existingcommands><![CDATA[<font  face="Arial"><b>Configurez les interfaces série de R3 pour l'authentification EIGRP&nbsp;; revenez au mode de configuration globale après chaque section de configuration. Effectuez les tâches dans l'ordre suivant&nbsp;:<ul><li> Configurez la chaîne de clés EIGRP_KEY avec la chaîne clé cisco123 <li> Configurez l'interface Serial&nbsp;0/0/0 pour utiliser l'authentification MD5 <li> Configurez l'interface Serial&nbsp;0/0/0 pour utiliser la chaîne de clés EIGRP_KEY <li> Configurez l'interface Serial&nbsp;0/0/1 pour utiliser l'authentification MD5 <li> Configurez l'interface Serial&nbsp;0/0/1 pour utiliser la chaîne de clés EIGRP_KEY</ul></b></font>]]></existingcommands>
+		<command  prompt="R3(config)# ">
+		    <correctresponse><![CDATA[key chain EIGRP_KEY]]></correctresponse>
+		</command>
+		<command  prompt="R3(config-keychain)# ">
+		    <correctresponse><![CDATA[key 1]]></correctresponse>
+		</command>
+		<command  prompt="R3(config-keychain-key)# ">
+		    <correctresponse><![CDATA[key-string cisco123]]></correctresponse>
+		</command>
+		<command  prompt="R3(config-keychain-key)# ">
+		    <correctresponse><![CDATA[exit]]></correctresponse>
+		</command>
+		<command  prompt="R3(config-keychain)# ">
+		    <correctresponse><![CDATA[exit]]></correctresponse>
+		</command>
+		<command  prompt="R3(config)# ">
+		    <correctresponse><![CDATA[interface serial 0/0/0]]></correctresponse>
+		</command>
+		<command  prompt="R3(config-if)# ">
+		    <correctresponse><![CDATA[ip authentication mode eigrp 1 md5]]></correctresponse>
+		</command>
+		<command  prompt="R3(config-if)# ">
+		    <correctresponse><![CDATA[ip authentication key-chain eigrp 1 EIGRP_KEY]]></correctresponse>
+		</command>
+		<command  prompt="R3(config-if)# ">
+		    <correctresponse><![CDATA[exit]]></correctresponse>
+		</command>
+		<command  prompt="R3(config)# ">
+		    <correctresponse><![CDATA[interface serial 0/0/1]]></correctresponse>
+		</command>
+		<command  prompt="R3(config-if)# ">
+		    <correctresponse><![CDATA[ip authentication mode eigrp 1 md5]]></correctresponse>
+		</command>
+		<command  prompt="R3(config-if)# ">
+		    <correctresponse><![CDATA[ip authentication key-chain eigrp 1 EIGRP_KEY]]></correctresponse>
+			<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez correctement configuré l'authentification IPv4 pour le protocole EIGRP.</b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+</textcomponents>

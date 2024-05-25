@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.1.3 Affectation de ports à des VLAN</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentations de VLAN</h1>
+        <h2>Affectation de VLAN</h2>
+      </div>
+      <div id="content">
+<p>Après la création d'un VLAN, l'étape suivante consiste à lui attribuer des ports. Un port d'accès peut appartenir à un seul VLAN à la fois. La seule exception à cette règle consiste en un port connecté à un téléphone IP. Dans ce cas, deux VLAN sont associés au port : un pour la voix et l'autre pour les données.</p>
+<p></p>
+<p>La Figure 1 présente la syntaxe permettant de définir un port d'accès et de l'affecter à un VLAN. La commande <span class="cmd"><b>switchport mode access</b></span> est facultative, mais vivement recommandée comme meilleure pratique de sécurité. Avec cette commande, l'interface passe en mode d'accès permanent.</p>
+<p></p>
+<p>
+<b>Remarque </b>: utilisez la commande <span class="cmd"><b>interface range</b></span> pour configurer simultanément plusieurs interfaces. </p>
+<p></p>
+<p>Dans l'exemple de la Figure 2, le VLAN 20 est affecté au port F0/18 du commutateur S1 ; par conséquent, l'ordinateur « étudiant » (PC2) se trouve dans le VLAN 20. Lorsque le VLAN 20 est configuré sur d'autres commutateurs, l'administrateur réseau sait qu'il doit configurer les autres ordinateurs des étudiants dans le même sous-réseau que le PC2 (172.17.20.0/24).</p>
+<p></p>
+<p>Servez-vous du contrôleur de syntaxe de la Figure 3 pour attribuer un VLAN et utilisez la commande <span class="cmd"><b>show vlan brief</b></span> pour afficher le contenu du fichier vlan.dat. </p>
+<p></p>
+<p>La commande <span class="cmd"><b>switchport access vlan</b></span> force la création d'un VLAN s'il n'existe pas déjà sur le commutateur. Par exemple, le VLAN 30 n'est pas présent dans le résultat de la commande <span class="cmd"><b>show vlan brief</b></span> du commutateur. Si la commande <span class="cmd"><b>switchport access vlan 30</b></span> est saisie sur n'importe quelle interface sans configuration précédente, le commutateur affiche les éléments suivants :</p>
+<p></p>
+<p>
+<span class="cmd">% Access VLAN does not exist. Creating vlan 30</span>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

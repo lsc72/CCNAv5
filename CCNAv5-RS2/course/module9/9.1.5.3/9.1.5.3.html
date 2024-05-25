@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.5.3 Emplacement de la liste de contrôle d&#x0027;accès étendue</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.5.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement des listes de contrôle d&#x0027;accès IP</h1>
+        <h2>Directives concernant le placement des listes de contrôle d&#x0027;accès</h2>
+      </div>
+      <div id="content">
+<p>Comme les listes de contrôle d'accès standard, les listes de contrôle d'accès étendues peuvent filtrer le trafic en fonction de l'adresse source. Cependant, une liste de contrôle d'accès étendue peut également filtrer le trafic en fonction de l'adresse de destination, du protocole et du numéro de port. Cela offre aux administrateurs réseau davantage de flexibilité au niveau du type de trafic pouvant être filtré et de la position de la liste. La règle de base pour le placement des listes de contrôle d'accès étendues consiste à les placer aussi près que possible de la source. Cela empêche le trafic indésirable d'être envoyé sur plusieurs réseaux pour être finalement refusé lorsqu'il atteint sa destination.</p>
+<p></p>
+<p>Les administrateurs réseau peuvent placer des listes de contrôle d'accès uniquement sur les périphériques qu'ils contrôlent. Par conséquent, cet emplacement doit être déterminé par la portée du contrôle dont dispose l'administrateur réseau. Sur la figure, l'administrateur de la société A, qui comprend les réseaux 192.168.10.0/24 et 192.168.11.0/24 (appelés .10 et .11 dans cet exemple), souhaite contrôler le trafic vers la société B. En particulier, l'administrateur souhaite refuser le trafic Telnet et FTP provenant du réseau .11 vers le réseau 192.168.30.0/24 (.30, dans cet exemple) de la société B. Dans un même temps, le reste du trafic provenant du réseau .11 doit être autorisé à quitter la société A sans aucune restriction.</p>
+<p></p>
+<p>Il existe plusieurs façons d'atteindre ces objectifs. Une liste de contrôle d'accès étendue placée sur R3 et bloquant le trafic Telnet et FTP provenant du réseau .11 serait une solution, mais l'administrateur ne contrôle pas R3. En outre, cette solution autorise le passage du trafic indésirable sur l'ensemble du réseau avant de le bloquer lorsqu'il arrive à destination. Cette situation affecte les performances réseau globales. </p>
+<p></p>
+<p>Il est plus judicieux de placer une liste de contrôle d'accès étendue sur R1, qui spécifie les adresses source et de destination (réseaux .11 et .30, respectivement) et applique la règle « Le trafic Telnet et FTP provenant du réseau .11 n'est pas autorisé à accéder au réseau .30 ». La figure montre deux interfaces de R1 sur lesquelles il est possible d'appliquer la liste de contrôle d'accès étendue : </p>
+<p>
+<ul>
+<li>
+<b>Interface S0/0/0 de R1 (sortante)</b> : il est possible d'appliquer une liste de contrôle d'accès étendue sortante sur l'interface S0/0/0. Étant donné que la liste de contrôle d'accès étendue peut examiner les adresses source et de destination, seuls les paquets FTP et Telnet provenant de 192.168.11.0/24 seront refusés. Le reste du trafic provenant de 192.168.11.0/24 et des autres réseaux sera acheminé par R1. L'inconvénient de cette position de la liste de contrôle d'accès étendue sur l'interface est que tout le trafic sortant de S0/0/0 doit être traité par la liste de contrôle d'accès, y compris les paquets provenant de 192.168.10.0/24.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Interface G0/1 de R1 (entrante)</b> : l'application d'une liste contrôle d'accès étendue au trafic entrant dans l'interface G0/1 signifie que seuls les paquets provenant du réseau 192.168.11.0/24 sont soumis à la liste de contrôle sur R1. Puisque le filtre doit être limité aux seuls paquets quittant le réseau 192.168.11.0/24, l'application de la liste de contrôle d'accès étendue à G0/1 constitue la meilleure solution.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

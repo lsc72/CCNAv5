@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.2.1 Routes récapitulatives manuelles</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations EIGRP avancées</h1>
+        <h2>Résumé manuel</h2>
+      </div>
+      <div id="content">
+<p>EIGRP peut être configuré pour résumer les routes, que la fonction de récapitulatif automatique (<span class="cmd"><b>auto-summary</b></span>) soit activée ou non. EIGRP étant un protocole de routage sans classe qui inclut le masque de sous-réseau dans les mises à jour de routage, le résumé manuel peut inclure des routes de super-réseau. Souvenez-vous qu’un super-réseau est un ensemble de plusieurs adresses de réseau principal par classe.</p>
+<p></p>
+<p>À la Figure 1, deux autres réseaux sont ajoutés aux routeurs R3 à l'aide des interfaces de bouclage : 192.168.2.0/24 et 192.168.3.0/24. Bien que les interfaces de bouclage soient des interfaces virtuelles, elles permettent de représenter les réseaux physiques dans cet exemple.</p>
+<p></p>
+<p>La Figure 2 présente les commandes sur R3 servant à configurer les deux interfaces de bouclage et à activer le protocole EIGRP sur les deux interfaces. </p>
+<p></p>
+<p>Pour vérifier que R3 a envoyé les paquets de mise à jour EIGRP à R1 et R2, les tables de routage sont examinées sur les deux routeurs. </p>
+<p></p>
+<p>À la Figure 3, seules les routes pertinentes sont affichées. Les tables de routage R1 et R2 présentent les autres réseaux supplémentaires dans leurs tables de routage : 192.168.2.0/24 et 192.168.3.0/24. Au lieu d'envoyer trois réseaux séparés, R3 peut récapituler les réseaux 192.168.1.0/24, 192.168.2.0/24 et 192.168.3.0/24 en une seule route.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

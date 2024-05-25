@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.3.2 Réassemblage de datagrammes UDP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>TCP et UDP</h1>
+        <h2>Communication UDP</h2>
+      </div>
+      <div id="content">
+<p>Comme le protocole UDP n'est pas orienté connexion, les sessions ne sont pas établies avant que la communication n'ait lieu comme c'est le cas avec le protocole TCP. On dit que le protocole UDP est basé sur les transactions : en d'autres termes, quand une application doit envoyer des données, elle les envoie tout simplement.</p>
+<p></p>
+<p>De nombreuses applications utilisant le protocole UDP envoient de petites quantités de données pouvant tenir dans un seul segment. Cependant, certaines applications envoient des volumes de données plus importants qui doivent être découpés en plusieurs segments. L'unité de données de protocole UDP est appelée un datagramme, bien que les termes segment et datagramme soient parfois utilisés indifféremment pour décrire une unité de données de protocole de la couche transport.</p>
+<p></p>
+<p>Quand plusieurs datagrammes sont envoyés vers une destination, ils peuvent emprunter des chemins différents et arriver dans le désordre. Le protocole UDP n'effectue pas de suivi des numéros d'ordre comme le fait le protocole TCP. Le protocole UDP ne peut pas réassembler les datagrammes dans leur ordre de transmission, comme illustré dans la figure. </p>
+<p></p>
+<p>Le protocole UDP se contente donc de réassembler les données dans l'ordre dans lequel elles ont été reçues, puis de les transmettre à l'application. Si l'ordre des données est important pour l'application, cette dernière doit identifier l'ordre correct et déterminer le mode de traitement des données.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide type="MBAR">
+		
+		<slide>
+			<element type="TEXT" subType="TABLE" compId="ID_s1_table01" x="5" y="47" width="430.15" height="246.1"/>
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title" />
+ 		</slide>
+	<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title" />		
+			<element type="IMAGE" src="3.2.2.1_B.jpg" x="5" y="0" width="470" height="400"/>
+			<element type="TEXT" compId="ID_s2_txt01" width="104" x="5" y="175.05" align="left" expand="down"  bgColor="#DAE17A" corner="5" border="2"/>
+			<element type="TEXT" compId="ID_s2_txt02" width="104" x="5" y="248.95" align="left" expand="down"  bgColor="#C1ABD1" corner="5" border="2"/>
+			<element type="TEXT" compId="ID_s2_txt03" width="104" x="5" y="322.85" align="left" expand="down"  bgColor="#B5D9B3" corner="5" border="2"/>
+			<element type="TEXT" compId="ID_s2_txt04" width="94" x="330" y="206" align="left" expand="right" />
+			<element type="TEXT" text="F0/1" width="26.15" x="333.85" y="177.75" align="center" />
+			<element type="TEXT" text="F0/1" width="26.15" x="289.85" y="238.75" align="center"/>
+			
+			<element type="ROUTER" textId="ID_s2_txt001" x="3.45" y="47" width="330" height="80"/>
+		</slide>
+		
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title" />
+			<element type="ROUTER" textId="ID_s3_txt01" x="3.45" y="47" width="431" height="91.4"/>
+		</slide>	
+		
+		
+</slide>
+
+<text id="ID_s2_txt001"><![CDATA[<table width="294" border="0" cellspacing="0" cellpadding="0"> <tr> <td>VLAN&nbsp;10 - Personnel- 172.17.10.0/24</td> </tr> <tr> <td>VLAN&nbsp;20 - Étudiants - 172.17.20.0/24</td> </tr> <tr> <td>VLAN&nbsp;30 - Invité (par défaut) - 172.17.30.0/24</td> </tr> <tr> <td>VLAN&nbsp;99 - Gestion et natif - 172.17.99.0/24</td> </tr></table>]]></text>
+
+	<text id="ID_s3_txt01"><![CDATA[<table width="400" border="0" cellspacing="0" cellpadding="0"> <tr> <td>S1(config)#<strong> interface FastEthernet0/1</strong></td> </tr> <tr> <td>S1(config-if)# <strong>switchport mode trunk</strong></td> </tr> <tr> <td>S1(config-if)# <strong>switchport trunk native vlan 99</strong></td> </tr> <tr> <td>S1(config-if)# <strong>switchport trunk allowed vlan 10,20,30</strong></td> </tr> <tr> <td>S1(config-if)# <strong>end</strong></td> </tr></table>]]></text>
+
+</data>

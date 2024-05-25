@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.2.8 Packet Tracer : résoudre les problèmes d&#x0027;adressage IPv4 et IPv6</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.2.8_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Vérification de la connectivité</h1>
+        <h2>Test et vérification</h2>
+      </div>
+      <div id="content">
+<p>Vous êtes technicien réseau et travaillez pour une entreprise qui a décidé de migrer de IPv4 vers IPv6. Au cours de la période intermédiaire, les deux protocoles doivent être pris en charge (double pile). Trois collègues ont fait part de certains problèmes au centre d'assistance et ont bénéficié d'un peu d'aide. Le centre d'assistance vous a attribué le dossier, car vous êtes un technicien d'assistance de niveau 2.</p>
+<p></p>
+<p>
+<a href="../../files/8.3.2.8%20Packet%20Tracer%20-%20Troubleshooting%20IPv4%20and%20IPv6%20Addressing%20Instructions.pdf" target="_blank">Packet Tracer - Résoudre les problèmes d'adressage IPv4 et IPv6 : instructions</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/8.3.2.8%20Packet%20Tracer%20-%20Troubleshooting%20IPv4%20and%20IPv6%20Addressing.pka" target="_blank">Packet Tracer - Résoudre les problèmes d'adressage IPv4 et IPv6 : PKA</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

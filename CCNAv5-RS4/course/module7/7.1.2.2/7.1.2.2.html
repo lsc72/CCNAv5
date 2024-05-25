@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.2.2 VPN d&#x0027;accès à distance</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Réseaux privés virtuels (VPN)</h1>
+        <h2>Types de réseau privé virtuel</h2>
+      </div>
+      <div id="content">
+<p>
+<b>VPN d'accès à distance</b>
+</p>
+<p>Lorsqu'un VPN de site à site est utilisé pour la connexion de réseaux entiers, un VPN d'accès à distance prend en charge les besoins en matière de télétravailleurs, d'utilisateurs mobiles, d'extranet et de trafic entre les consommateurs et les entreprises. Un VPN d'accès à distance est créé lorsque les informations sur le VPN ne sont pas configurées de manière statique, mais qu'elles permettent au contraire des modifications dynamiques. Ce VPN d'accès à distance peut également être activé et désactivé. Les VPN d'accès à distance prennent en charge une architecture client-serveur, dans laquelle le client VPN (hôte distant) obtient un accès sécurisé au réseau de l'entreprise par l'intermédiaire d'un périphérique de serveur VPN à la périphérie du réseau.</p>
+<p></p>
+<p>Les VPN d'accès à distance sont utilisés pour la connexion d'hôtes individuels devant accéder en toute sécurité au réseau de leur entreprise via Internet. La connectivité Internet utilisée par les télétravailleurs est généralement une connexion haut débit, DSL, sans fil ou par câble, comme le montre la figure. </p>
+<p></p>
+<p>Il se peut qu'un logiciel client VPN doive être installé sur le périphérique final de l'utilisateur mobile, par exemple le logiciel Cisco AnyConnect Secure Mobility Client sur chaque hôte. Lorsque l'hôte tente d'envoyer du trafic, le logiciel Cisco AnyConnect VPN Client encapsule et chiffre ce trafic. Les données chiffrées sont ensuite envoyées via Internet vers la passerelle VPN située à la périphérie du réseau cible. Dès réception, la passerelle de VPN adopte le même comportement que pour des VPN site à site.</p>
+<p></p>
+<p>
+<b>Remarque</b> : le logiciel Cisco AnyConnect Secure Mobility Client est basé sur les outils précédents Cisco AnyConnect VPN Client et Cisco VPN Client, et permet d'améliorer l'expérience VPN des utilisateurs sur un plus grand nombre de périphériques mobiles et de smartphones. Ce client prend en charge IPv6.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

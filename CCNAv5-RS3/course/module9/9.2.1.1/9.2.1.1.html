@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.1.1 Présentation de l&#x0027;obtention des licences</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Licences IOS</h1>
+        <h2>Licences logicielles </h2>
+      </div>
+      <div id="content">
+<p>À partir de la version 15.0 du logiciel Cisco IOS, Cisco a modifié le processus d'activation de nouvelles technologies dans l'ensemble des fonctionnalités de Cisco IOS. La version du logiciel Cisco IOS 15.0 intègre des ensembles de fonctionnalités multiplates-formes qui permettent de simplifier le processus de sélection d'image en fournissant des fonctions similaires sur l'ensemble des frontières des plates-formes. Chaque périphérique est livré avec la même image universelle. Les packages technologiques sont activés dans l'image universelle à l'aide des clés de licence Cisco Software Activation. La fonctionnalité Cisco IOS Software Activation permet à l'utilisateur d'activer les fonctionnalités sous licence et d'enregistrer les licences. Il s'agit d'un ensemble de processus et de composants servant à activer les ensembles de fonctionnalités du logiciel Cisco IOS en obtenant et en validant les licences logicielles Cisco. </p>
+<p></p>
+<p>La Figure 1 montre les packages technologiques disponibles :</p>
+<p>
+<ul>
+<li>IP Base</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Données</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Communications unifiées (UC) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Sécurité (SEC)</li>
+</ul>
+</p>
+<p></p>
+<p>Cliquez sur les boutons de la Figure 2 pour en savoir plus sur les packages technologiques.</p>
+<p></p>
+<p>
+<b>Remarque </b>: la licence IP Base est indispensable à l'installation des licences Données, Sécurité et Communications unifiées. Pour les plates-formes de routage antérieures pouvant prendre en charge la version du logiciel Cisco IOS 15.0, aucune image universelle n'est disponible. Il est nécessaire de télécharger une image distincte contenant les fonctionnalités souhaitées.</p>
+<p></p>
+<p>
+<b>Licences de package technologique</b>
+</p>
+<p></p>
+<p>Les licences de packages technologiques sont prises en charge sur les plates-formes Cisco ISR G2 (routeurs des gammes Cisco 1900, 2900 et 3900). L'image universelle Cisco IOS contient tous les packages et fonctionnalités d'une image. Chaque package correspond à un groupe de fonctionnalités propres à une technologie. Plusieurs licences de packages technologiques peuvent être activées sur les plates-formes ISR des gammes Cisco 1900, 2900 et 3900.</p>
+<p></p>
+<p>
+<b>Remarque </b>: utilisez la commande<span class="cmd"><b> show license feature </b></span>pour afficher les licences de packages technologiques et les licences de fonctionnalités prises en charge sur le routeur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

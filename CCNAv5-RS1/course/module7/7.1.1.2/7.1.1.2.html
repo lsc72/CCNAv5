@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.1.2 Rôle de la couche transport (suite)</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole de couche Transport</h1>
+        <h2>Transport des données</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Suivi des conversations individuelles</b>
+</p>
+<p></p>
+<p>Au niveau de la couche transport, chaque ensemble de données transitant entre une application source et une application de destination est appelé une conversation (Figure 1). Un hôte peut héberger plusieurs applications qui communiquent sur le réseau simultanément. Chacune de ces applications communique avec une ou plusieurs applications sur un ou plusieurs hôtes distants. La couche transport est chargée de garantir ces multiples conversations et d'en effectuer le suivi.</p>
+<p></p>
+<p>
+<b>Segmentation des données et reconstitution des segments</b>
+</p>
+<p></p>
+<p>Les données doivent être préparées à être envoyées sur le support sous forme de blocs faciles à gérer. La plupart des réseaux limitent la quantité de données pouvant être incluses dans un paquet. Les protocoles de couche transport disposent de services qui segmentent les données d'application en blocs de données de taille appropriée (Figure 2). Il s'agit notamment de l'encapsulation devant s'appliquer à chaque bloc de données. Un en-tête, utilisé pour la réorganisation, est ajouté à chaque bloc de données. Cet en-tête est utilisé pour suivre le flux de données.</p>
+<p></p>
+<p>Au niveau du destinataire, la couche transport doit pouvoir reconstituer un flux de données complet utile pour la couche application à partir des blocs de données. Les protocoles intervenant au niveau de la couche transport gèrent la façon dont les informations d'en-tête de la couche transport sont utilisées pour réassembler les blocs de données en flux qui seront transmis à la couche application.</p>
+<p></p>
+<p>
+<b>Identification des applications </b>
+</p>
+<p></p>
+<p>De nombreux services ou applications peuvent s'exécuter sur chaque hôte du réseau. Pour que les flux de données atteignent les applications auxquelles ils sont destinés, la couche transport doit identifier l'application cible (Figure 3). Pour cela, la couche transport affecte un identificateur à chaque application. Cet identificateur est appelé numéro de port. Chaque processus logiciel ayant besoin d'accéder au réseau se voit affecter un numéro de port unique sur son hôte. La couche transport utilise des ports pour identifier l'application ou le service.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

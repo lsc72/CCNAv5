@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.4.1.2 Packet Tracer : projet d&#x0027;intégration des compétences</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.4.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Vous êtes le nouveau technicien responsable du LAN. L'administrateur réseau vous demande de démontrer votre capacité à configurer un petit réseau local. Vos tâches comprennent la configuration des paramètres initiaux sur deux commutateurs à l'aide de Cisco IOS et la configuration des paramètres d'adresse IP sur les périphériques hôtes afin de fournir une connectivité de bout en bout. Vous devez utiliser deux commutateurs et deux hôtes/PC sur un réseau câblé et sous tension.</p>
+<p></p>
+<p>
+<a href="../../files/2.4.1.2%20Packet%20Tracer%20-%20Skills%20Integration%20Challenge%20Instructions.pdf" target="_blank">Packet Tracer – Instructions de l'exercice d'intégration des compétences</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/2.4.1.2%20Packet%20Tracer%20-%20Skills%20Integration%20Challenge.pka" target="_blank">Packet Tracer – Exercice d'intégration des compétences – PKA</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

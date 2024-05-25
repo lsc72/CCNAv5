@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.1.2 Options de tronçon suivant</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration des routes statiques et par défaut</h1>
+        <h2>Configuration des routes statiques IPv4</h2>
+      </div>
+      <div id="content">
+<p>Dans cet exemple, les Figures 1 à 3 affichent les tables de routage de R1, R2 et R3. Remarquez que chaque routeur comprend des entrées uniquement pour les réseaux directement connectés et les adresses locales associées. Aucun des routeurs n'a connaissance des réseaux au-delà de leurs interfaces connectées directement.</p>
+<p></p>
+<p>Par exemple, R1 n'a pas connaissance des réseaux :</p>
+<p>
+<ul>
+<li>172.16.1.0/24 : le réseau local sur R2</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>192.168.1.0/24 : le réseau série entre R2 et R3</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>192.168.2.0/24 : le réseau local sur R3</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 4 illustre une requête ping réussie de R1 vers R2. La Figure 5 illustre une requête ping non réussie vers le réseau local R3. La raison en est que R1 n'a pas d'entrée dans sa table de routage pour le réseau local R3.</p>
+<p></p>
+<p>Le tronçon suivant peut être identifié par une adresse IP, une interface de sortie, ou les deux. La manière dont la destination est spécifiée crée un des trois types de route suivants : </p>
+<p>
+<ul>
+<li>
+<b>Route de tronçon suivant </b>: seule l'adresse IP du tronçon suivant est spécifiée.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Route statique connectée directement </b>: seule l'interface de sortie du routeur est spécifiée.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Route statique entièrement spécifiée </b>: l'adresse IP de tronçon suivant et l'interface de sortie sont spécifiées.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

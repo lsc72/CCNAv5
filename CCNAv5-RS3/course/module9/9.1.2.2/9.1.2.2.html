@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.2.2 Création de sauvegarde d&#x0027;image Cisco IOS</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Gestion des fichiers système IOS</h1>
+        <h2>Gestion des images logicielles Cisco IOS</h2>
+      </div>
+      <div id="content">
+<p>Pour gérer les opérations réseau avec un temps d'indisponibilité minimum, il est nécessaire de mettre en place des procédures de sauvegarde des images Cisco IOS. Ainsi, l'administrateur réseau peut rapidement copier une image sur un routeur en cas d'image corrompue ou effacée.</p>
+<p></p>
+<p>À la Figure 1, l'administrateur réseau souhaite créer une sauvegarde du fichier d'image en cours sur le routeur (c1900-universalk9-mz.SPA.152-4.M3.bin) vers le serveur TFTP à l'adresse 172.16.1.100.</p>
+<p></p>
+<p>Pour créer une sauvegarde de l'image Cisco IOS vers un serveur TFTP, procédez comme suit :</p>
+<p></p>
+<p>
+<b>Étape 1. </b>Vérifiez la présence d'un accès au serveur TFTP du réseau. Envoyez une requête ping au serveur TFTP pour tester la connectivité, comme indiqué à la Figure 2.</p>
+<p></p>
+<p>
+<b>Étape 2. </b>Vérifiez que le serveur TFTP possède un espace disque suffisant pour accueillir l'image du logiciel Cisco IOS. Utilisez la commande<span class="cmd"><b> show flash0: </b></span>sur le routeur pour déterminer la taille du fichier d'image Cisco IOS. Dans l'exemple, la taille du fichier est de 68 831 808 octets.</p>
+<p></p>
+<p>
+<b>Étape 3. </b>Copiez l'image sur le serveur TFTP à l'aide de la commande<span class="cmd"><b> copy </b></span><span class="cmd"><i>source-url destination-url</i></span>, comme indiqué à la Figure 3.</p>
+<p></p>
+<p>Une fois la commande exécutée à l'aide des URL source et de destination spécifiées, l'utilisateur est invité à indiquer le nom du fichier source, l'adresse IP de l'hôte distant et le nom du fichier de destination. Le transfert commence.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 4 sur R2 pour copier l'image IOS vers un serveur TFTP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

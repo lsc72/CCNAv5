@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.1.2 Annonce des réseaux</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage RIP et RIPng</h1>
+        <h2>Configuration du protocole RIP</h2>
+      </div>
+      <div id="content">
+<p>Lorsque vous passez en mode de configuration du routeur RIP, le routeur est chargé d'exécuter le protocole RIP. Toutefois, le routeur doit encore savoir quelles interfaces locales il doit utiliser pour communiquer avec d'autres routeurs et quels réseaux connectés localement il doit annoncer à ces routeurs. </p>
+<p></p>
+<p>Pour activer le routage RIP pour un réseau, utilisez la commande du mode de configuration de routeur <span class="cmd"><b>network</b></span><span class="cmd"><i> network-address</i></span>. Entrez l'adresse réseau par classe de chaque réseau connecté directement. Cette commande :</p>
+<p>
+<ul>
+<li>Active le protocole RIP sur toutes les interfaces qui appartiennent à un réseau spécifique. Les interfaces associées envoient et reçoivent désormais les mises à jour RIP. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Annonce le réseau spécifié dans les mises à jour de routage RIP envoyées aux autres routeurs toutes les 30 secondes. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque :</b> si une adresse de sous-réseau est entrée, l'IOS la convertit automatiquement en adresse réseau par classe. N'oubliez pas que le protocole RIPv1 est un protocole de routage par classe pour IPv4. Par exemple, la commande <span class="cmd"><b>network 192.168.1.32</b></span> serait automatiquement convertie en <span class="cmd"><b>network 192.168.1.0</b></span> dans le fichier de configuration en cours. L'IOS n'affiche pas de message d'erreur, mais à la place il corrige l'entrée et entre l'adresse réseau par classe. </p>
+<p></p>
+<p>Dans la Figure 1, la commande <span class="cmd"><b>network</b></span> permet d'annoncer les réseaux connectés directement de R1. </p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe dans la Figure 2 pour configurer R2 et R3 de manière similaire.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

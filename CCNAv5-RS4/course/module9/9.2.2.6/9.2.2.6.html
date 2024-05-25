@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.2.6 Dépannage de la couche application</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.2.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Symptômes et causes du dépannage réseau</h2>
+      </div>
+      <div id="content">
+<p>La plupart des protocoles de couche Application fournissent des services utilisateur. Les protocoles de couche Application sont généralement utilisés pour la gestion du réseau, le transfert de fichiers, les services de fichiers distribués, l'émulation de terminal et l'e-mail. De nouveaux services utilisateur sont souvent ajoutés, comme les VPN et le protocole VoIP. </p>
+<p></p>
+<p>La figure illustre les protocoles de couche Application TCP/IP les plus connus et les plus souvent mis en œuvre, à savoir : </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>SSH/Telnet</b> : permet aux utilisateurs d'établir des connexions de session de terminal avec des hôtes distants.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>HTTP</b> : prend en charge l'échange de texte, de graphiques, de sons, de vidéos et d'autres fichiers multimédias sur le Web.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>FTP</b> : effectue des transferts de fichiers interactifs entre des hôtes.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>TFTP</b> : effectue des transferts de fichiers interactifs de base, généralement entre des hôtes et des périphériques réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>SMTP</b> : prend en charge des services de livraison de messages de base.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>POP</b> : permet la connexion à des serveurs de messagerie ainsi que le téléchargement de messages électroniques.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>SNMP (Simple Network Management Protocol)</b> : collecte des informations de gestion à partir de périphériques réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>DNS</b> : mappe les adresses IP avec les noms attribués aux périphériques réseau. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>NFS (Network File System)</b> : permet aux ordinateurs de monter des lecteurs sur des hôtes distants et de les faire fonctionner comme s'il s'agissait de lecteurs locaux. Développé à l'origine par Sun Microsystems, ce protocole s'allie à deux autres protocoles de couche Application, à savoir les protocoles XDR (eXternal Data Representation) et RPC (Remote-Procedure Call), pour permettre un accès transparent aux ressources réseau distantes.</li>
+</ul>
+</p>
+<p></p>
+<p>Les types de symptômes et de causes dépendent de l'application réelle elle-même. </p>
+<p></p>
+<p>Les problèmes liés à la couche application empêchent la fourniture de services aux applications. Un problème au niveau de la couche application peut conduire à des ressources inaccessibles ou inutilisables, même si les couches physique, liaison de données, réseau et transport fonctionnent correctement. Il se peut que la connectivité réseau soit complète, mais l'application ne peut tout simplement pas fournir de données.</p>
+<p></p>
+<p>Un autre type de problème de couche application se produit lorsque les couches physique, liaison de données, réseau et transport fonctionnent correctement, mais que le transfert de données et les requêtes de services réseau à partir d'un service réseau ou d'une application unique ne correspondent pas aux attentes normales d'un utilisateur.</p>
+<p></p>
+<p>Un problème de couche application peut avoir comme conséquence que les utilisateurs se plaignent de la lenteur inhabituelle du réseau ou d'une application spécifique lors du transfert de données ou de la demande de services réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

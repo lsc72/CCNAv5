@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.0.1.1 Introduction</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>EIGRP</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>Le protocole EIGRP (Enhanced Interior Gateway Routing Protocol) est un protocole de routage à vecteur de distance avancé développé par Cisco Systems. Comme son nom l'indique, le protocole EIGRP est une version améliorée d'un autre protocole de routage Cisco, IGRP (Interior Gateway Routing Protocol). IGRP est un ancien protocole de routage à vecteur de distance, sans classe, devenu obsolète depuis IOS 12.3. </p>
+<p></p>
+<p>Le protocole EIGRP est un protocole de routage à vecteur de distance qui comprend des fonctions disponibles dans les protocoles de routage à état de liens. Ce protocole convient à de nombreux supports et topologies différents. Dans un réseau bien conçu, le protocole EIGRP peut mettre à l'échelle pour inclure plusieurs topologies et peut fournir des temps de convergence extrêmement rapides avec un trafic réseau minimal. </p>
+<p></p>
+<p>Ce chapitre présente le protocole EIGRP et indique les commandes de configuration de base requises pour l'activer sur un routeur Cisco IOS. Il décrit également le fonctionnement du protocole de routage et fournit de plus amples détails sur la façon dont le protocole EIGRP détermine le meilleur chemin. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.3.9 Étape 7 : vérification des listes de contrôle d&#x0027;accès</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.3.9_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Dépannage de la connectivité IP</h2>
+      </div>
+      <div id="content">
+<p>Il se peut que des listes de contrôle d'accès soient configurées sur les routeurs, qui empêchent aux protocoles de traverser l'interface dans la direction d'entrée ou de sortie.</p>
+<p></p>
+<p>Utilisez la commande <span class="cmd"><b>show ip access-lists</b></span> pour afficher le contenu de l'ensemble des listes de contrôle d'accès IPv4 et la commande <span class="cmd"><b>show ipv6 access-list</b></span> pour afficher le contenu de l'ensemble des listes de contrôle d'accès IPv6 configurées sur un routeur. Une liste de contrôle d'accès spécifique peut être affichée en entrant le nom ou le numéro de la liste de contrôle d'accès concernée en guise d'option de cette commande. Les commandes <span class="cmd"><b>show ip interfaces</b></span> et <span class="cmd"><b>show ipv6 interfaces</b></span> affichent des informations sur les interfaces IPv4 et IPv6 qui indiquent si des listes de contrôle d'accès IP sont définies sur l'interface.</p>
+<p></p>
+<p>
+<b>Exemple de dépannage</b>
+</p>
+<p>Afin de lutter contre les attaques par mystification, l'administrateur réseau a décidé d'implémenter une liste de contrôle d'accès empêchant les périphériques dont l'adresse réseau source est égale à 172.16.1.0/24 d'entrer dans l'interface S0/0/1 entrante sur R3, comme le montre la Figure 1. Le reste du trafic IP doit être autorisé.</p>
+<p></p>
+<p>Toutefois, peu après l'implémentation de la liste de contrôle d'accès, les utilisateurs du réseau 10.1.10.0/24 n'ont pas pu se connecter aux périphériques présents sur le réseau 172.16.1.0/24, par exemple SRV1. La commande <span class="cmd"><b>show ip access-lists</b></span> montre que la liste de contrôle d'accès est configurée correctement, comme l'indique la Figure 2. Cependant, la commande <span class="cmd"><b>show ip interfaces serial 0/0/1</b></span> révèle que la liste de contrôle d'accès n'a jamais été appliquée à l'interface d'entrée sur s0/0/1. Un examen approfondi révèle que la liste de contrôle d'accès a été accidentellement appliquée à l'interface G0/0, bloquant ainsi la totalité du trafic sortant du réseau 172.16.1.0/24. </p>
+<p></p>
+<p>Après le placement correct de la liste de contrôle d'accès IPv4 sur l'interface d'entrée s0/0/1, comme indiqué à la Figure 3, les périphériques sont capables de se connecter avec succès au serveur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

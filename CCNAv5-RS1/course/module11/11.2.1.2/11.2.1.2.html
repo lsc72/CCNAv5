@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.2.1.2 Sécurité physique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Garantie de la sécurité du réseau</h1>
+        <h2>Évaluation de la sécurité des périphériques réseau</h2>
+      </div>
+      <div id="content">
+<p>Lorsque vous pensez à la sécurité du réseau ou même à la sécurité des ordinateurs, vous vous représentez peut-être des pirates qui exploitent des vulnérabilités logicielles. Pourtant, la sécurité physique des périphériques peut présenter les mêmes failles, comme le montre la figure. Un pirate peut empêcher l'utilisation de ressources réseau si celles-ci sont physiquement compromises.</p>
+<p></p>
+<p>Les quatre catégories de menaces physiques sont les suivantes :</p>
+<p>
+<ul>
+<li>
+<b>Menaces matérielles</b> : dommages physiques aux serveurs, routeurs, commutateurs, installations de câblage et postes de travail.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Menaces environnementales</b> : dues aux températures ou aux taux d'humidité extrêmes.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Menaces électriques</b> : pointes de tension, tension d'alimentation insuffisante (chutes de tension), alimentation non contrôlée (bruit) et coupure totale de l'alimentation.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Menaces liées à la maintenance</b> : mauvaise manipulation des composants électroniques principaux (décharges électrostatiques), absence de pièces de rechange essentielles, câblage de mauvaise qualité et étiquetage peu efficace.</li>
+</ul>
+</p>
+<p></p>
+<p>Certains de ces problèmes doivent être traités par une stratégie d'entreprise. D'autres dépendent d'une bonne gestion au sein de l'organisation. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

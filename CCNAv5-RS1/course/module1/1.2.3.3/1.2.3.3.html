@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.3.3 Travaux pratiques – Services de réseau convergent</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>LAN, WAN et Internet</h1>
+        <h2>Internet</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Au cours de ce TP, vous aborderez les points suivants :</b>
+</p>
+<p>
+<ul>
+<li>1re partie : Vérifier ses connaissances relatives à la convergence </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>2e partie : Rechercher les FAI proposant des services convergents </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>3e partie : Rechercher les FAI locaux proposant des services convergents </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>4e partie : Choisir le meilleur FAI local proposant des services convergents </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>5e partie : Rechercher les entreprises locales ou les institutions publiques utilisant les technologies de convergence</li>
+</ul>
+</p>
+<p></p>
+<p>
+<a href="../../files/1.2.3.3%20Lab%20-%20Researching%20Converged%20Network%20Services.pdf" target="_blank">Travaux pratiques – Services de réseau convergent</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

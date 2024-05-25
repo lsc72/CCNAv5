@@ -1,0 +1,49 @@
+﻿<textcomponents>
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Vérification des interfaces OSPFv3 de R1  </b>]]></text>
+	</component>
+	<component id="ID_s2_title">
+		<text><![CDATA[<b>Vérification des interfaces OSPFv3 sur R2 et R3  </b>]]></text>
+	</component>
+
+
+	<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+
+	<component id="ID_SC2" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b> *** </b><font  face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font  face="Arial"><b>Vérifiez les paramètres d'interface OSPFv3 pour R2 au moyen du format bref.  </b></font>]]></existingcommands>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ipv6 ospf interface brief]]></correctresponse>
+		<deviceresponse><![CDATA[<code>Interface  <span class="nospace"> </span>PID   Area          Intf ID    Cost  State Nbrs F/C <br>Se0/0/1      10    0             7          647   P2P   1/1 <br>Se0/0/0      10    0             6          647   P2P   1/1 <br>Gi0/0        10    0             3          10    DR    0/0 <br>R2#</code>]]></deviceresponse>
+			<instruction><![CDATA[<code><font  face="Arial"><b>Affichez les informations complètes de l'interface OSPFv3 pour serial0/0/1.  </b></code>]]></instruction>
+		</command>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ipv6 ospf interface serial0/0/1]]></correctresponse>
+		<deviceresponse><![CDATA[<code>Serial0/0/1 is up, line protocol is up <br>  Link Local Address FE80::2, Interface ID 7 <br>  Area 0, Process ID 10, Instance ID 0, Router ID 2.2.2.2 <br>  Network Type POINT_TO_POINT, Cost: 647 <br>  Transmit Delay is 1 sec, State POINT_TO_POINT <br>  Timer intervals configured, Hello 10, Dead 40, Wait 40, <br>  Retransmit 5 <br>  Hello due in 00:00:01 <br>  Graceful restart helper support enabled <br>  Index 1/3/3, flood queue length 0 <br>  Next 0x0(0)/0x0(0)/0x0(0) <br>  Last flood scan length is 2, maximum is 4 <br>  Last flood scan time is 0 msec, maximum is 0 msec <br>  Neighbor Count is 1, Adjacent neighbor count is 1 <br>    Adjacent with neighbor 3.3.3.3 <br>  Suppress hello for 0 neighbor(s) <br>R2#</code>]]></deviceresponse>
+			<instruction><![CDATA[<font  face="Arial"><b>Vous configurez maintenant le routeur R3. Vérifiez les paramètres d'interface OSPFv3 pour R3 au moyen du format bref.  </b>]]></instruction>
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ipv6 ospf interface brief]]></correctresponse>
+			<deviceresponse><![CDATA[<code>Interface  <span class="nospace"> </span>PID   Area          Intf ID    Cost  State Nbrs F/C <br>Se0/0/1      10    0             7          647   P2P   1/1 <br>Se0/0/0      10    0             6          647   P2P   1/1 <br>Gi0/0        10    0             3          10    DR    0/0 <br>R3#</code>]]></deviceresponse>
+			<instruction><![CDATA[<code><font  face="Arial"><b>Affichez les informations complètes de l'interface OSPFv3 pour serial0/0/0.  </b></code>]]></instruction>
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ipv6 ospf interface serial0/0/0]]></correctresponse>
+			<deviceresponse><![CDATA[<code>Serial0/0/0 is up, line protocol is up <br>  Link Local Address FE80::3, Interface ID 6 <br>  Area 0, Process ID 10, Instance ID 0, Router ID 3.3.3.3 <br>  Network Type POINT_TO_POINT, Cost: 647 <br>  Transmit Delay is 1 sec, State POINT_TO_POINT <br>  Timer intervals configured, Hello 10, Dead 40, Wait 40, <br>  Retransmit 5    <br>  Hello due in 00:00:06 <br>  Graceful restart helper support enabled <br>  Index 1/2/2, flood queue length 0 <br>  Next 0x0(0)/0x0(0)/0x0(0) <br>  Last flood scan length is 2, maximum is 4 <br>  Last flood scan time is 0 msec, maximum is 0 msec <br>  Neighbor Count is 1, Adjacent neighbor count is 1 <br>    Adjacent with neighbor 1.1.1.1 <br>  Suppress hello for 0 neighbor(s) <br>R3#</code>]]></deviceresponse>
+			<instruction><![CDATA[<font  face="Arial" class="syntaxBottomLine"><b>Vous avez correctement vérifié les interfaces OSPFv3.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+	
+
+</textcomponents>

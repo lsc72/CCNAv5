@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.1.4 Routage inter-VLAN des commutateurs multicouches</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout; 
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du routage inter-VLAN</h1>
+        <h2>Fonctionnement du routage inter-VLAN</h2>
+      </div>
+      <div id="content">
+<p>L'implémentation de la méthode de routage inter-VLAN router-on-a-stick ne requiert qu'une seule interface physique sur un routeur et une interface sur un commutateur, ce qui simplifie le câblage du routeur. Cependant, dans d'autres mises en œuvre, un routeur dédié n'est pas nécessaire.</p>
+<p></p>
+<p>Les commutateurs multicouches peuvent effectuer des fonctions de couche 2 et 3, ce qui évite aux routeurs dédiés d'effectuer du routage de base sur un réseau. Les commutateurs multicouches prennent en charge le routage dynamique et le routage inter-VLAN.</p>
+<p></p>
+<p>Dans la figure, cliquez sur le bouton Lecture pour voir une animation illustrant comment se produit le routage inter-VLAN basé sur des commutateurs. </p>
+<p></p>
+<p>Observez l'animation :</p>
+<p></p>
+<p>1. Le PC1 sur le VLAN 10 communique avec le PC3 sur le VLAN 30 via le commutateur S1 à l'aide d'interfaces VLAN configurées pour chaque VLAN.</p>
+<p></p>
+<p>2. Le PC1 envoie son trafic de monodiffusion au commutateur S2.</p>
+<p></p>
+<p>3. Le commutateur S2 marque le trafic de monodiffusion comme provenant du VLAN 10 en le transmettant par sa liaison trunk au commutateur S1.</p>
+<p></p>
+<p>4. Le commutateur S1 supprime l'étiquette VLAN et transmet le trafic de monodiffusion à l'interface VLAN 10.</p>
+<p></p>
+<p>5. Le commutateur S1 achemine le trafic de monodiffusion vers son interface VLAN 30.</p>
+<p></p>
+<p>6. Le commutateur S1 marque alors à nouveau le trafic de monodiffusion avec le VLAN 30 et le retransmet par sa liaison trunk au commutateur S2.</p>
+<p></p>
+<p>7. Le commutateur S2 supprime l'étiquette VLAN de la trame de monodiffusion et transfère la trame au PC3 sur le port F0/6.</p>
+<p></p>
+<p>Pour permettre à un commutateur multicouche d'exécuter des fonctions de routage, il faut activer le routage IP.</p>
+<p>La commutation multicouche est la mise en œuvre du routage inter-VLAN la plus évolutive, car les routeurs disposent d'un nombre limité de ports disponibles pour se connecter aux réseaux. En outre, les interfaces configurées en tant que ligne trunk n'autorisent que de petites quantités de trafic à la fois.</p>
+<p></p>
+<p>Avec un commutateur multicouche, le trafic est acheminé en interne vers le périphérique de commutation, ce qui signifie que les paquets ne sont pas filtrés sur une ligne trunk unique pour obtenir de nouvelles informations d'étiquetage VLAN. Cependant, un commutateur multicouche ne remplace pas complètement les fonctionnalités d'un routeur. Les routeurs prennent en charge un nombre important de fonctionnalités supplémentaires, telles que la possibilité d'implémenter des contrôles de sécurité plus stricts. En revanche, un commutateur multicouche peut être considéré comme un périphérique de couche 2 mis à niveau pour permettre le routage. </p>
+<p></p>
+<p>
+<b>Remarque</b> : <b></b>dans ce cours, la configuration du routage inter-VLAN sur un commutateur se limite à configurer des routes statiques sur un commutateur 2960, ce qui est la seule fonctionnalité de routage prise en charge sur les commutateurs 2960. Le commutateur 2960 prend en charge jusqu'à 16 routes statiques (y compris les routes configurées par les utilisateurs et la route par défaut) ainsi que toutes les routes connectées directement et les routes par défaut pour l'interface de gestion. Le commutateur 2960 peut disposer d'une adresse IP attribuée à chaque interface virtuelle du commutateur (SVI). Complets et relativement abordables, les commutateurs multicouches Cisco Catalyst 3560 prennent en charge les protocoles de routage EIGRP, OSPF et BGP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

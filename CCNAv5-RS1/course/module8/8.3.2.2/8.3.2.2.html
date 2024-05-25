@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.2.2 Ping - Tester la connectivité au réseau local</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Vérification de la connectivité</h1>
+        <h2>Test et vérification</h2>
+      </div>
+      <div id="content">
+<p>Vous pouvez également utiliser la commande ping pour tester la capacité d'un hôte à communiquer sur le réseau local. Cela consiste généralement à envoyer une requête ping à l'adresse IP de la passerelle de l'hôte. Une requête ping à la passerelle indique que l'hôte et l'interface du routeur qui sert de passerelle sont fonctionnels (ou non) sur le réseau local. </p>
+<p></p>
+<p>Pour ce test, l'adresse de la passerelle est souvent utilisée car le routeur est, en principe, toujours fonctionnel. Si l'adresse de la passerelle ne répond pas, une requête ping peut être envoyée à l'adresse IP d'un autre hôte sur le réseau local connu pour fonctionner. </p>
+<p></p>
+<p>Si une réponse est obtenue, soit de la passerelle, soit d'un autre hôte, cela signifie que les hôtes locaux peuvent communiquer sans problème sur le réseau local. Si la passerelle ne répond pas mais qu'un autre hôte répond, cela peut être révélateur d'un problème sur l'interface du routeur qui sert de passerelle. </p>
+<p></p>
+<p>Il se peut qu'une adresse de passerelle incorrecte ait été configurée sur l'hôte. Peut-être que l'interface du routeur est fonctionnelle, mais qu'une règle de sécurité en vigueur l'empêche de traiter des requêtes ping ou d'y répondre. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

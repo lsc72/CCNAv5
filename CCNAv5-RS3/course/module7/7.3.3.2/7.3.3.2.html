@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.3.2 Présentation de l&#x0027;algorithme DUAL</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1> Fonctionnement du protocole EIGRP</h1>
+        <h2>Algorithme DUAL et table topologique</h2>
+      </div>
+      <div id="content">
+<p>Le protocole EIGRP utilise l'algorithme de convergence DUAL. La convergence est essentielle dans un réseau pour éviter les boucles de routage. </p>
+<p></p>
+<p>Les boucles de routage, même temporaires, peuvent nuire aux performances réseau. Les protocoles de routage à vecteur de distance, tels que le protocole RIP, empêchent les boucles de routage avec des minuteurs de mise hors service et un découpage d'horizon. Bien que le protocole EIGRP utilise ces deux techniques, il les utilise un peu différemment, le principal moyen d’éviter les boucles de routage étant l’algorithme DUAL. </p>
+<p></p>
+<p>Cliquez sur le bouton Lecture de la figure pour visualiser le fonctionnement de base de DUAL.</p>
+<p></p>
+<p>L'algorithme DUAL permet d'éliminer les boucles à chaque instance lors d'un calcul de route. Cela permet à tous les routeurs concernés par une modification de topologie de se synchroniser simultanément. Les routeurs qui ne sont pas affectés par le changement de topologie ne sont pas impliqués dans le nouveau calcul. Cette méthode fournit au protocole EIGRP des temps de convergence plus rapides que ceux des autres protocoles de routage à vecteur de distance.</p>
+<p></p>
+<p>Le processus décisionnel des calculs de route s'effectue à l'aide de Finite State Machine (FSM) DUAL. Il s'agit d'un modèle de workflow, ressemblant à un organigramme composé des éléments suivants :</p>
+<p>
+<ul>
+<li>Un nombre limité d'étapes (états)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Transitions entre ces étapes</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Opérations </li>
+</ul>
+</p>
+<p></p>
+<p>FSM DUAL suit toutes les routes et utilise la métrique EIGRP pour choisir des chemins sans boucle efficaces et identifier les routes avec le chemin à moindre coût à insérer dans la table de routage. </p>
+<p></p>
+<p>Le nouveau calcul de l'algorithme DUAL peut exiger un temps processeur important. Le protocole EIGRP évite autant que possible tout nouveau calcul en gérant une liste de routes de sauvegarde que DUAL a déjà évaluées comme sans boucle. Si la route principale de la table de routage est mise hors service, la meilleure route de sauvegarde est immédiatement ajoutée à la table de routage.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

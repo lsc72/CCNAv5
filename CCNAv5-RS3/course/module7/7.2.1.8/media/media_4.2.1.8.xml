@@ -1,0 +1,66 @@
+﻿<textcomponents> <!--Slide 1-->
+<component id="ID_s1_title">
+<text><![CDATA[<b>Protocole EIGRP pour la topologie IPv4</b>]]></text>
+</component>
+
+<component id="ID_s1_txt01">
+<text><![CDATA[EIGRP<br/>Hello]]></text>
+</component>
+
+<component id="ID_s1_txt02">
+<text><![CDATA[Internet]]></text> 
+</component>
+
+<component id="ID_s1_txt03">
+<text><![CDATA[EIGRP<br/>Hello]]></text> 
+</component>
+
+<component id="ID_s1_txt04">
+<text><![CDATA[EIGRP<br/>Hello]]></text> 
+</component> <!--Slide 2-->
+<component id="ID_s2_title">
+<text><![CDATA[<b>Configuration des interfaces passives avec le protocole EIGRP pour IPv4</b>]]></text>
+</component> <!--Slide 3-->
+<component id="ID_s3_title">
+<text><![CDATA[<b>Vérification de l'interface passive avec le protocole EIGRP pour IPv4</b>]]></text>
+</component>
+
+<component id="ID_s3_txt01">
+<text><![CDATA[&lt;résultat omis&gt;]]></text>
+</component> <!--Slide 4-->
+<component id="ID_s4_title">
+<text><![CDATA[<b>Interface passive EIGRP</b>]]></text>
+</component> 
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+<component id="ID_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b>***</b><font size='10' face="Arial" color="#0000FF" class="font10px">Vous devez saisir la commande exacte et complète.</font><b>***</b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font size='10' face="Arial" class="font10px"><b>Configurez R2 pour supprimer les paquets Hello EIGRP sur son interface GigabitEthernet 0/0 tout en annonçant ce réseau dans les mises à jours EIGRP. <br>Effectuez les tâches dans l'ordre suivant&nbsp;:<ul><li>Saisissez le mode de configuration du routeur en utilisant AS 1.<li>Configurez l'interface passive. <li>Revenir au mode d’exécution privilégié. <li>Vérifiez l'interface passive en examinant les informations de protocole.</b></font>]]></existingcommands>
+		<command prompt="R2(config)#">
+		    <correctresponse><![CDATA[router eigrp 1]]></correctresponse>
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[passive-interface gigabitethernet 0/0]]></correctresponse>
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+		</command>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ip protocols]]></correctresponse>
+				<deviceresponse><![CDATA[*** IP Routing is NSF aware *** <br> <br>Routing Protocol is "eigrp 1" <br>  Outgoing update filter list for all interfaces is not set <br>  Incoming update filter list for all interfaces is not set <br>  Default networks flagged in outgoing updates <br>  Default networks accepted from incoming updates <br>  Redistributing: static <br>  EIGRP-IPv4 Protocol for AS(1) <br>    Metric weight K1=1, K2=0, K3=1, K4=0, K5=0 <br>    NSF-aware route hold timer is 240 <br>    Router-ID: 2.2.2.2 <br>    Topology : 0 (base) <br>      Active Timer: 3 min <br>      Distance: internal 90 external 170 <br>      Maximum path: 4 <br>      Maximum hopcount 100 <br>      Maximum metric variance 1 <br> <br>  Automatic Summarization: disabled <br>  Maximum path: 4 <br>  Routing for Networks: <br>    172.16.0.0 <br>    192.168.10.8/30 <br>  Passive Interface(s): <br>    GigabitEthernet0/0 <br>  Routing Information Sources: <br>    Gateway         Distance      Last Update <br>    192.168.10.10         90      02:14:28 <br>    172.16.3.1            90      02:14:28 <br>  Distance: internal 90 external 170 <br> <br>R2#]]></deviceresponse> 
+			<instruction><![CDATA[<font size='10' face="Arial"  class="syntaxBottomLine"><b>Vous avez correctement configuré l'interface passive EIGRP.</b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+</textcomponents>

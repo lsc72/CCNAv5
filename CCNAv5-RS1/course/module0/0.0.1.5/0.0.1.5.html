@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>0.0.1.5 La pratique mène à la maîtrise</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_0.0.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Bienvenue dans le cours Présentation des réseaux</h1>
+        <h2>Message destiné aux participants</h2>
+      </div>
+      <div id="content">
+<p>Dans une leçon classique, après avoir étudié un sujet pour la première fois, vous vérifierez votre compréhension grâce à des contenus interactifs. Par exemple, si vous devez apprendre de nouvelles commandes, vous les utiliserez tout d'abord avec le contrôleur de syntaxe avant de configurer ou de dépanner un réseau dans Packet Tracer, l'outil de simulation de réseau de Networking Academy. Ensuite, vous effectuerez des activités pratiques sur le matériel de votre salle de classe ou à distance via Internet. </p>
+<p></p>
+<p>Packet Tracer peut également être utilisé pour vous entraîner à tout moment, grâce à la création de vos propres activités. Vous pouvez aussi vérifier vos compétences avec les autres participants dans le cadre de jeux à plusieurs. Les travaux pratiques d'intégration des compétences et les évaluations de compétences de Packet Tracer fournissent des commentaires élaborés sur les compétences à assimiler et vous permettent de vous préparer aux examens finaux, de chapitre ou de contrôle.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

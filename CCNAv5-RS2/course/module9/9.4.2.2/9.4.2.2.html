@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.4.2.2 Dépannage des erreurs de liste de contrôle d&#x0027;accès courantes, exemple 2</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.4.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage des listes de contrôle d&#x0027;accès</h1>
+        <h2>Erreurs de listes de contrôle d&#x0027;accès courantes </h2>
+      </div>
+      <div id="content">
+<p>
+<b>2e exemple d'erreur</b>
+</p>
+<p></p>
+<p>Sur la figure, le réseau 192.168.10.0/24 ne peut pas utiliser TFTP pour se connecter au réseau 192.168.30.0/24. </p>
+<p></p>
+<p>
+<b>Solution</b> : le réseau 192.168.10.0/24 ne peut pas utiliser TFTP pour se connecter au réseau 192.168.30.0/24, car TFTP utilise le protocole de transport UDP. L'instruction 30 dans la liste de contrôle d'accès 120 autorise tout autre trafic TCP. Cependant, étant donné que TFTP utilise le protocole UDP et non TCP, il est implicitement refusé. Souvenez-vous que l'instruction de refus global implicite n'apparaît pas dans le résultat de la commande <span class="cmd"><b>show access-lists</b></span> et donc que les correspondances ne sont pas indiquées.</p>
+<p></p>
+<p>L'instruction 30 devrait être <span class="cmd"><b>ip any any</b></span>.</p>
+<p></p>
+<p>Cette liste de contrôle d'accès fonctionne, qu'elle soit appliquée à l'interface G0/0 (routeur R1), S0/0/1 (routeur R3) ou S0/0/0 (routeur R2) dans la direction entrante. Néanmoins, conformément à la règle voulant que les listes de contrôle d'accès étendues soient placées le plus près possible de la source, la meilleure solution est de la placer sur l'interface G0/0 (routeur R1) dans la direction entrante. Ainsi, tout trafic indésirable y est filtré sans traverser l'infrastructure réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

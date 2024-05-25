@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.1 Circuits virtuels (VC)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation du protocole Frame Relay</h1>
+        <h2>Fonctionnement de la technologie Frame Relay</h2>
+      </div>
+      <div id="content">
+<p>La connexion entre deux ETTD via un réseau Frame Relay est un circuit virtuel. De tels circuits sont virtuels du fait qu'il n'existe aucune liaison électrique directe entre leurs extrémités. La connexion est dite logique et les données circulent d'une extrémité à l'autre sans circuit électrique les reliant directement. Avec les circuits virtuels, Frame Relay partage la bande passante entre plusieurs utilisateurs, et chaque site peut communiquer avec un des autres sites sans avoir à utiliser plusieurs lignes physiques dédiées.</p>
+<p></p>
+<p>Les circuits virtuels peuvent s'établir de deux manières :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Circuits virtuels commutés (SVC, Switched Virtual circuits) </b>: établis de façon dynamique par l'envoi de messages de signal au réseau (CALL SETUP, DATA TRANSFER, IDLE, CALL TERMINATION).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Circuits virtuels permanents (PVC, Permanent Virtual Circuits) : </b>préconfigurés par l'opérateur, une fois mis en place, ils ne fonctionnent qu'en mode DATA TRANSFER ou IDLE. Notez que dans certaines publications, les circuits virtuels permanents sont appelés circuits virtuels privés.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: les circuits virtuels permanents sont plus souvent utilisés que les circuits virtuels commutés.</p>
+<p></p>
+<p>Cliquez sur Lecture dans la Figure 1 pour voir une animation sur le circuit virtuel entre le nœud émetteur et le nœud récepteur. Ce circuit suit le chemin A, B, C et D. Frame Relay crée un circuit virtuel en établissant la correspondance entre ports d'entrée et ports de sortie dans la mémoire de chaque commutateur. Les commutateurs sont ainsi reliés les uns aux autres jusqu'à ce qu'ils forment un chemin continu d'une extrémité à l'autre du circuit. Un circuit virtuel peut passer par un certain nombre de périphériques intermédiaires (commutateurs) dans le réseau Frame Relay.</p>
+<p></p>
+<p>Les circuits virtuels offrent un chemin pour la communication bidirectionnelle d'un périphérique à un autre. Les circuits virtuels sont identifiés par les DLCI, comme illustré à la Figure 2. Les valeurs DLCI sont généralement attribuées par le fournisseur de services Frame Relay. Les DLCI Frame Relay ont une signification locale. En d'autres termes, ces valeurs ne sont pas uniques dans le réseau étendu Frame Relay. Un indicateur DLCI identifie un circuit virtuel sur un équipement situé à une extrémité. Au-delà de la liaison, ce DLCI n'a aucune signification. Deux périphériques connectés par un circuit virtuel peuvent utiliser une valeur DLCI différente pour faire référence à la même connexion.</p>
+<p></p>
+<p>Le DLCI de niveau local est la méthode d'adressage principal, car la même adresse peut être utilisée dans différents endroits, tout en faisant référence à des connexions différentes. L'adressage local permet d'éviter l'épuisement des DLCI au fur et à mesure de la croissance du réseau.</p>
+<p></p>
+<p>Cliquez sur Lecture dans la Figure 3. Il s'agit du même réseau que celui présenté dans l'illustration précédente, mais cette fois-ci, lorsque la trame se déplace sur le réseau, Frame Relay attribue un DLCI à chaque circuit virtuel. Le DLCI est stocké dans le champ d'adresse de chaque trame transmise pour indiquer comment elle doit être acheminée. C'est le fournisseur de services Frame Relay qui attribue les identificateurs DLCI. Normalement, les DLCI de 0 à 15 et de 1008 à 1023 sont réservés. Ainsi les fournisseurs de services attribuent généralement les DLCI de 16 à 1007. </p>
+<p></p>
+<p>Dans cet exemple, la trame utilise le DLCI 102. Elle quitte le routeur (R1) par le Port 0 sur le circuit virtuel 102. Au niveau du commutateur A, la trame sort du Port 1 sur le circuit virtuel 432. Ce processus de mise en correspondance entre les circuits virtuels et les ports se poursuit sur le WAN, jusqu'à ce que la trame arrive à destination sur le DLCI 201. L'identificateur DLCI est stocké dans le champ d'adresse de chaque trame transmise.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

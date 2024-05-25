@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.3.4 Contrôle de flux Frame Relay</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation du protocole Frame Relay</h1>
+        <h2>Concepts avancés du protocole Frame Relay</h2>
+      </div>
+      <div id="content">
+<p>Frame Relay réduit la surcharge réseau à l'aide de mécanismes de notification d'encombrement simples plutôt qu'explicites, pour contrôler le flux sur chaque circuit virtuel. Ces mécanismes de notification d'encombrement sont le FECN (Forward Explicit Congestion Notification) et le BECN (Backward Explicit Congestion Notification). </p>
+<p></p>
+<p>Afin de mieux comprendre ces mécanismes, la Figure 1 présente une trame Frame Relay standard. Les notifications explicites d'encombrement à la source ou au destinataire sont contrôlées par un seul bit dans l'en-tête de trame. Le routeur peut ainsi détecter un encombrement et arrêter la transmission jusqu'à ce que la situation normale soit rétablie. Lorsque le DCE définit le bit BECN à 1, il avertit les périphériques en direction de la source (en amont) que le réseau est encombré. Lorsque le DCE définit le bit FECN à 1, il avertit les périphériques en direction de la destination (en aval) que le réseau est encombré. </p>
+<p></p>
+<p>L'en-tête de trame contient également le bit DE, qui identifie le trafic de moindre importance qui peut être abandonné en cas d'encombrement. Les périphériques ETTD peuvent fixer la valeur du bit DE à 1 pour indiquer qu'une trame a moins d'importance que les autres trames. Lorsque le réseau est encombré, les périphériques ETCD commencent par abandonner les trames dont le bit DE vaut 1. Ceci réduit le risque que des données critiques soient perdues lors des périodes d'encombrement.</p>
+<p></p>
+<p>En période d'encombrement, le commutateur Frame Relay du fournisseur de services applique les règles suivantes à chaque trame entrante, selon que le débit de données garanti est dépassé ou non :</p>
+<p></p>
+<p>
+<ul>
+<li>Si la trame entrante ne dépasse pas le Bc, elle est transmise.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Si la trame entrante dépasse le Bc, elle est marquée comme DE. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Si la trame entrante dépasse le Bc et le Be, elle est rejetée. </li>
+</ul>
+</p>
+<p></p>
+<p>Cliquez sur le bouton Lecture dans l'animation de la Figure 2 pour voir comment FECN et BECN sont utilisés.</p>
+<p></p>
+<p>Les trames qui arrivent au commutateur sont d'abord mises dans une file d'attente ou dans une mémoire tampon avant d'être transférées. Comme avec tous les systèmes de file d'attente, il se peut qu'une accumulation excessive de trames se produise au niveau du commutateur. Ceci provoque des retards, qui entraînent des retransmissions inutiles se produisant lorsque les protocoles de niveau supérieur ne reçoivent pas de confirmation en temps voulu. Dans les cas les plus graves, cela peut provoquer une chute importante du débit du réseau. Pour éviter ce problème, Frame Relay intègre une fonction de contrôle de flux. </p>
+<p></p>
+<p>L'animation présente un commutateur avec une file d'attente qui se remplit. Pour diminuer le flux de trames dans la file d'attente, le commutateur signale le problème aux ETTD à l'aide des bits de notification explicite d'encombrement figurant dans le champ d'adresse de la trame. </p>
+<p></p>
+<p>
+<ul>
+<li>Le bit FECN, représenté par un F, est défini sur toutes les trames que le commutateur reçoit sur la liaison encombrée. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le bit BECN, représenté par un B, est défini sur toutes les trames que le commutateur envoie sur la liaison encombrée. </li>
+</ul>
+</p>
+<p></p>
+<p>Les ETTD qui reçoivent des trames dont les bits ECN sont définis doivent essayer de réduire le flux de trames jusqu'à ce que l'encombrement soit résorbé. Si l'encombrement se produit sur une agrégation interne, les ETTD peuvent recevoir une notification, même s'ils ne sont pas à l'origine de l'encombrement.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

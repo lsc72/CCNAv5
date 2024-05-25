@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.3.3 Sans fil</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Choix d&#x0027;une technologie WAN</h1>
+        <h2>Infrastructure WAN publique</h2>
+      </div>
+      <div id="content">
+<p>La technologie sans fil utilise le spectre radio disponible pour envoyer et recevoir des données. Le spectre sans licence est accessible à toutes les personnes disposant d'un routeur sans fil et d'un appareil équipé de la technologie sans fil. </p>
+<p></p>
+<p>Jusqu'à une date récente, une des limitations de l'accès sans fil était la portée (en général moins de 30 mètres) du routeur sans fil ou du modem sans fil avec connexion câblée à Internet. De nouveaux développements de la technologie sans fil haut débit viennent changer cette situation :</p>
+<p>
+<ul>
+<li>
+<b>Wi-Fi municipal </b>: de nombreuses villes ont commencé à mettre en place un réseau sans fil municipal. Certains de ces réseaux fournissent un accès Internet à haut débit, gratuitement ou pour un montant largement inférieur aux autres services haut débit. D'autres réseaux sont destinés à l'usage de la ville uniquement, notamment aux services de police ou de pompiers et autres employés municipaux, pour gérer certains aspects de leur travail quotidien à distance. Pour se connecter à un Wi-Fi municipal, l'abonné a généralement besoin d'un modem sans fil, qui comporte une antenne radio directionnelle plus puissante que les cartes sans fil classiques. La plupart des fournisseurs de services proposent l'équipement nécessaire gratuitement ou moyennant des frais, comme avec les modems DSL ou câble.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>WiMAX </b>: Worldwide Interoperability for Microwave Access (WiMAX) est une toute nouvelle technologie. Elle est encadrée par la norme IEEE 802.16. La technologie WiMAX fournit un service à haut débit avec accès sans fil et offre une couverture étendue, similaire à celle du réseau de téléphonie mobile, plutôt que via de petits points d'accès Wi-Fi. WiMAX fonctionne de façon similaire au Wi-Fi, mais à des vitesses supérieures, sur des distances plus importantes et pour un plus grand nombre d'utilisateurs. Elle utilise des tours WiMAX similaires aux tours de téléphones portables. Pour accéder au réseau WiMAX, les abonnés doivent souscrire un abonnement auprès d'un FAI qui dispose d'une tour WiMAX à moins de 50 km d'où ils se trouvent. Ils ont également besoin d'un récepteur WiMAX et d'un code de chiffrement spécial pour accéder à la station de base. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Internet par satellite </b>: utilisé en général dans les zones rurales où le câble et le DSL ne sont pas disponibles. VSAT permet la communication de données bidirectionnelle (chargement et téléchargement). La vitesse de chargement représente environ 1/10e de la vitesse de téléchargement qui est de 500 kbit/s. Les connexions câble et DSL présentent des vitesses de chargement plus élevées, mais les systèmes par satellite sont dix fois plus rapides qu'un modem analogique. Pour accéder à des services Internet par satellite, les abonnés doivent posséder une antenne parabolique, deux modems (liaison montante et liaison descendante) et des câbles coaxiaux reliant l'antenne au modem.</li>
+</ul>
+</p>
+<p></p>
+<p>La figure présente un exemple de réseau WiMAX.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

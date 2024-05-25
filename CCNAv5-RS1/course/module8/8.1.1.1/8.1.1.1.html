@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.1.1 Notation binaire</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Structure de l&#x0027;adresse IPv4</h2>
+      </div>
+      <div id="content">
+<p>Pour comprendre le fonctionnement des périphériques réseau, il convient d'aborder les adresses et les autres données de la même manière que les périphériques, c'est-à-dire en notation binaire. La notation binaire est une représentation d'informations qui n'utilise que des 1 et des 0. Les ordinateurs communiquent à l'aide de données binaires. Les données binaires peuvent être utilisées pour représenter de nombreux types de données. Par exemple, lorsque vous tapez sur un clavier, les lettres apparaissent à l'écran dans un format que vous pouvez lire et comprendre. Cependant, l'ordinateur convertit chaque lettre en une série de chiffres binaires pour le stockage et le transport. Pour effectuer cette conversion, l'ordinateur utilise le code ASCII (American Standard Code for Information Interchange). </p>
+<p></p>
+<p>Selon l'ASCII, la lettre « A » est représentée sous forme binaire par 01000001, alors que la lettre « a » est représentée sous forme binaire par 01100001. Utilisez le convertisseur ASCII de la Figure 1 pour convertir des caractères ASCII en binaire.</p>
+<p></p>
+<p>Il n'est généralement pas nécessaire de connaître la conversion binaire des lettres, mais il est très important de comprendre l'utilisation du format binaire pour l'adressage IP. Chaque périphérique d'un réseau doit être identifié par une adresse binaire unique. Dans les réseaux IPv4, cette adresse est représentée par une chaîne de 32 bits (composée de 1 et de 0). Au niveau de la couche réseau, les paquets incluent ces informations d'identification uniques pour les systèmes source et de destination. Par conséquent, dans un réseau IPv4, chaque paquet inclut une adresse source de 32 bits et une adresse de destination de 32 bits dans l'en-tête de couche 3. </p>
+<p></p>
+<p>Pour la plupart des utilisateurs, il est difficile d'interpréter une chaîne de 32 bits et il est encore plus difficile de la mémoriser. Par conséquent, nous représentons les adresses IPv4 au format décimal à point et non au format binaire. De ce fait, nous traitons chaque octet en tant que nombre décimal compris dans une plage de 0 à 255. Pour comprendre ce processus, il est nécessaire d'avoir certaines compétences en matière de conversion de nombres binaires en nombres décimaux.</p>
+<p></p>
+<p>
+<b>Numération pondérée</b>
+</p>
+<p>Pour maîtriser la conversion entre les nombres binaires et décimaux, il convient de comprendre ce qu'est le système de numérotation appelé numération pondérée. En numération pondérée, un caractère peut représenter différentes valeurs selon la position qu'il occupe.   Dans le système décimal, la base est 10. Dans le système binaire, nous utilisons la base 2.   Plus précisément, la valeur qu'un chiffre représente est le chiffre multiplié par la base élevé à la puissance correspondant à sa position. Quelques exemples nous permettront de mieux comprendre le fonctionnement de ce système.</p>
+<p></p>
+<p>Pour le nombre décimal 192, la valeur que le chiffre 1 représente est 1*10^2 (1 fois 10 à la puissance 2). Le 1 se trouve dans la position appelée « centaine ». La numération pondérée fait référence à cette position comme étant la position base^2 puisque la base est 10 et la puissance 2. Le chiffre 9 représente 9*10^1 (9 fois 10 puissance 1). La numération pondérée du nombre décimal 192 est illustrée à la Figure 2.</p>
+<p></p>
+<p>Avec la numération pondérée en base 10, 192 représente : </p>
+<p></p>
+<p>192 = (1 * 10^2) + (9 * 10^1) + (2 * 10^0) </p>
+<p></p>
+<p>ou </p>
+<p></p>
+<p>192 = (1 * 100) + (9 * 10) + (2 * 1)</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

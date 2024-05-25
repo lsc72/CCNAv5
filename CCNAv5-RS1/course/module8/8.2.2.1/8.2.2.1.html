@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.2.1 Système de notation hexadécimale</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Les adresses réseau IPv6</h1>
+        <h2>Adressage IPv6</h2>
+      </div>
+      <div id="content">
+<p>Contrairement aux adresses IPv4 qui sont exprimées en notation décimale à point, les adresses IPv6 sont représentées à l'aide de valeurs hexadécimales. Vous avez déjà vu le format hexadécimal dans le volet Packet Byte de Wireshark. Dans Wireshark, le format hexadécimal est utilisé pour représenter les valeurs binaires des trames et des paquets. Le système hexadécimal est également utilisé pour représenter les adresses MAC Ethernet.</p>
+<p></p>
+<p>
+<b>Numérotation hexadécimale</b>
+</p>
+<p>Ce type de numérotation est un moyen pratique de représenter des valeurs binaires. Le système de numérotation décimale est en base dix, le système binaire en base deux et le système hexadécimal est en base seize.</p>
+<p></p>
+<p>Le système de numération en base 16 utilise les chiffres 0 à 9 et les lettres A à F. La Figure 1 montre les équivalents binaires et décimaux, ainsi que les valeurs hexadécimales. Il existe 16 combinaisons uniques de quatre bits, de 0000 à 1111. Le système hexadécimal à 16 caractères est le système de numération idéal, car quatre bits peuvent être représentés par une valeur hexadécimale unique. </p>
+<p></p>
+<p>
+<b>Comprendre le format binaire</b>
+</p>
+<p>Sachant que 8  bits (un octet) est un regroupement binaire courant, la plage binaire de 00000000 à 11111111 correspond, dans le format hexadécimal, à la plage de 00 à FF. Les zéros de gauche peuvent être affichés pour compléter la représentation de 8 bits. Par exemple, la valeur binaire 0000 1010 correspond à 0A au format hexadécimal.</p>
+<p></p>
+<p>
+<b>Représentation de valeurs hexadécimales</b>
+</p>
+<p></p>
+<p>
+<b>Remarque</b> : il est important de distinguer les valeurs hexadécimales des valeurs décimales en ce qui concerne les caractères 0 à 9.</p>
+<p></p>
+<p>Le système hexadécimal est généralement représenté à l'écrit par la valeur concernée précédée par 0x (par exemple, 0x73) ou suivie de l'indice 16. Moins souvent, une valeur peut être suivie d'un H, par exemple 73H. Toutefois, dans la mesure où le texte sous forme d'exposant n'est pas reconnu dans les environnements de ligne de commande ou de programmation, la représentation technique hexadécimale est précédée d'un 0x. Par conséquent, les exemples ci-dessus doivent correspondre respectivement à 0x0A et 0x73.</p>
+<p></p>
+<p>
+<b>Conversions hexadécimales</b>
+</p>
+<p></p>
+<p>Les conversions numériques entre des valeurs décimales et hexadécimales sont très simples, bien que la division ou la multiplication par  16 ne soit pas toujours très commode. </p>
+<p></p>
+<p>Avec un peu de pratique, il est possible de reconnaître les configurations binaires qui correspondent aux valeurs décimales et hexadécimales. La figure 2 illustre ces configurations pour des valeurs de 8 bits données.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

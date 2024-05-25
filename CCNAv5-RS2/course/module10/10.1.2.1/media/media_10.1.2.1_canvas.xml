@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<data>		
+		<slide type="MBAR">	
+		
+	<slide>	
+		<element type="TEXT" subType="TITLE" compId="ID_s1_title" />
+		<element type="IMAGE" src="10.1.2.1.jpg" x="0" y="0" width="470" height="400"/>
+		<element type="TEXT" id="ID_static_1" text="192.168.10.0/24" x="16" y="195.45" width="83.5" align="left" />
+		<element type="TEXT" id="ID_static_2" text="192.168.11.0/24" x="170.95" y="195.45" width="83.5" align="left" />
+		<element type="TEXT" id="ID_static_3" text="192.168.11.5" x="213.95" y="364.15" width="68.25" align="left" />
+		<element type="TEXT" id="ID_static_4" text="192.168.30.0/24" x="292.95" y="195.45" width="83.5" align="left" />
+		<element type="TEXT" id="ID_static_5" text="S0/0/0" x="214.95" y="59.15" width="35.95" align="left" />
+		<element type="TEXT" id="ID_static_6" text="S0/0/1" x="300.95" y="58.15" width="35.95" align="left" />
+		<element type="TEXT" id="ID_static_7" text="S0/0/0" x="158" y="86.15" width="35.95" align="left" />
+		<element type="TEXT" id="ID_static_8" text="10.1.1.1/30" x="195.95" y="105.15" width="59.1" align="left" />
+		<element type="TEXT" id="ID_static_9" text="G0/0 .1" x="109" y="129.15" width="28" align="right" />
+		<element type="TEXT" id="ID_static_10" text="G0/1 .1" x="172.95" y="136.15" width="28" align="left" />
+		<element type="TEXT" id="ID_static_11" text="S0/0/1" x="361.95" y="86.15" width="35.95" align="left" />
+		<element type="TEXT" id="ID_static_12" text="G0/0" x="381.95" y="137.15" width="28" align="left" />
+		<element type="TEXT" compId="ID_s1_txt01" x="3" y="109" width="141.7" expand="up" align="right" />
+		<element type="TEXT" compId="ID_s1_txt02" x="262" y="330" width="69.35" expand="up+down" align="left" />
+	</slide>			
+	
+	<slide>	
+		<element type="TEXT" subType="TITLE" compId="ID_s2_title" />
+		<element type="ROUTER" textId="ID_router_txt1" x="4" y="47" width="433" height="50" />
+		<element type="ROUTER" textId="ID_router_txt2" x="4" y="114" width="433" height="50" />	
+	</slide>
+	
+	<slide>	
+		<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>	
+		<element type="ROUTER" textId="ID_router_txt3" x="4" y="47" width="433" height="50" />
+		<element type="ROUTER" textId="ID_router_txt4" x="4" y="114" width="433" height="50" />	
+	</slide>
+	
+	<slide>	
+		<element type="TEXT" subType="TITLE" compId="ID_s4_title" />
+		<element type="TEXT" compId="ID_S4_table1" x="5" y="47" width="430" height="50" />
+		<element type="TEXT" compId="ID_S4_table2" x="5" y="153" width="413" height="50" />	
+	</slide>
+	
+	<slide>	
+		<element type="TEXT" subType="TITLE" compId="ID_s5_title" />	
+		<element type="ROUTER" textId="ID_router_txt5" x="4" y="47" width="433" height="151" />
+	</slide>
+	
+	<slide>	
+		<element type="TEXT" subType="TITLE" compId="ID_s6_title" />	
+		
+		<element type="ACTIVITY" subType="SYNTAX" compId="ID_s6_SC5" x="12.5" y="25" width="420" height="367" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+	</slide>
+			
+		</slide>	
+		
+		
+		<text id="ID_router_txt1"><![CDATA[<pre>R1(config)# <b>ip dhcp excluded-address low-address [high-address] </b></pre>
+		]]>
+		</text>
+		
+		<text id="ID_router_txt2"><![CDATA[<pre>R1(config)# <b>ip dhcp excluded-address 192.168.10.1 192.168.10.9 </b>
+R1(config)# <b>ip dhcp excluded-address 192.168.10.254 </b></pre>
+		]]>
+		</text>
+		
+		<text id="ID_router_txt3"><![CDATA[<pre>R1(config)# <b>ip dhcp pool pool-name </b>
+R1(dhcp-config)#</pre>
+		]]>
+		</text>
+		
+		<text id="ID_router_txt4"><![CDATA[<pre>R1(config)# <b>ip dhcp pool LAN-POOL-1 </b>
+R1(dhcp-config)#</pre>
+		]]>
+		</text>
+		
+<text id="ID_router_txt5"><![CDATA[<pre>R1(config)# <b>ip dhcp excluded-address 192.168.10.1 192.168.10.9 </b>
+R1(config)# <b>ip dhcp excluded-address 192.168.10.254 </b>          
+R1(config)# <b>ip dhcp pool LAN-POOL-1 </b>
+R1(dhcp-config)# <b>network 192.168.10.0 255.255.255.0 </b>
+R1(dhcp-config)# <b>default-router 192.168.10.1 </b>
+R1(dhcp-config)# <b>dns-server 192.168.11.5 </b>
+R1(dhcp-config)# <b>domain-name example.com </b>
+R1(dhcp-config)# <b>end </b>
+R1# 
+</pre>
+		]]>
+		</text>
+
+
+
+
+
+		
+	</data>

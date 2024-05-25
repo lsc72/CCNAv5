@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.2.1 Procédures générales de dépannage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage avec une approche systématique</h1>
+        <h2>Procédure de dépannage</h2>
+      </div>
+      <div id="content">
+<p>Les tâches de dépannage occupent une grande partie du temps des administrateurs réseau et du personnel d'assistance. L'utilisation de techniques de dépannage efficaces permet de diminuer le temps de dépannage global dans un environnement de production. Le processus de dépannage se compose de trois étapes principales : </p>
+<p></p>
+<p>
+<b>Étape 1. Collecte de symptômes</b> : le dépannage commence par la collecte et la documentation des symptômes du réseau, des systèmes finaux et des utilisateurs. L’administrateur réseau détermine également les composants du réseau qui ont été affectés et compare la nouvelle fonctionnalité du réseau avec la ligne de base. Les symptômes peuvent prendre différentes formes, notamment des alertes d’un système de gestion du réseau, des messages de la console et des plaintes des utilisateurs. Lors de la collecte de symptômes, il est important que l'administrateur réseau pose des questions et analyse le problème afin de diminuer le nombre de possibilités. Par exemple, le problème se limite-t-il à un seul périphérique, à un groupe de périphériques ou à un sous-ensemble complet du réseau ?</p>
+<p></p>
+<p>
+<b>Étape 2. Isolation du problème</b> : l'isolation du problème est le processus consistant à éliminer des variables jusqu'à ce qu'un problème unique ou un ensemble de problèmes apparentés ait été identifié en tant que cause. Pour ce faire, l’administrateur réseau analyse les caractéristiques des problèmes au niveau des couches logiques du réseau afin de pouvoir sélectionner la cause la plus probable. À ce stade, l'administrateur réseau peut collecter et documenter un plus grand nombre de symptômes, en fonction des caractéristiques qui ont été identifiées.</p>
+<p></p>
+<p>
+<b>Étape 3. Implémentation d'une action corrective</b> : après avoir identifié la cause du problème, l'administrateur réseau s'efforce de le résoudre en implémentant, en testant et en documentant les solutions possibles. Une fois le problème identifié et une solution trouvée, l'administrateur réseau peut décider si cette solution peut être implémentée immédiatement ou reportée à plus tard. Cela dépend en effet de l'impact des modifications nécessaires sur les utilisateurs et le réseau. La gravité du problème doit être mise en rapport avec l'impact de sa solution. Par exemple, si un serveur ou un routeur critique doit être mis hors connexion pendant un laps de temps relativement long, il peut être préférable d'attendre la fin de la journée de travail avant d'implémenter la résolution du problème. Parfois, une solution provisoire peut être mise en œuvre en attendant la résolution réelle du problème. Cela fait typiquement partie des procédures de contrôle des modifications d'un réseau.</p>
+<p></p>
+<p>Si l'action corrective crée un autre problème ou ne permet pas de résoudre le problème initial, la solution tentée est documentée, les modifications sont supprimées et l'administrateur réseau recommence à collecter des symptômes et à essayer d'isoler le problème.</p>
+<p></p>
+<p>Ces différentes étapes ne s'excluent pas mutuellement. En effet, l’administrateur peut à tout moment être amené à revenir à l’une des étapes précédentes. Par exemple, il se peut que l'administrateur réseau doive collecter un plus grand nombre de symptômes lors de l'isolation d'un problème. De plus, un autre problème a pu être créé lors de la tentative de correction d'un problème. Dans ce cas, supprimez les modifications et recommencez le dépannage. </p>
+<p></p>
+<p>Une stratégie de dépannage, incluant notamment les procédures de contrôle des modifications, doit être établie pour chaque étape. Cette stratégie permet de définir le mode d’action pour chaque étape. Une partie de cette stratégie doit inclure la documentation de toute information importante. </p>
+<p></p>
+<p>
+<b>Remarque</b> : une fois le problème résolu, il est important de le faire savoir aux utilisateurs ainsi qu'à toute personne impliquée dans le processus de dépannage. Il en va de même pour les autres membres de l'équipe informatique. La documentation adéquate de la cause et de la résolution du problème permettra aux autres techniciens d'assistance d'éviter la répétition de problèmes similaires à l'avenir.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

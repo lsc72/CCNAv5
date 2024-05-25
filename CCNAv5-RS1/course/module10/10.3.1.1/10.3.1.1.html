@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.3.1.1 L&#x0027;Internet des objets</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Un même message dans le monde entier</h1>
+        <h2>Faites passer le message !</h2>
+      </div>
+      <div id="content">
+<p>La couche application accède directement aux processus sous-jacents qui gèrent et permettent la communication à travers le réseau. Cette couche sert de source et de destination aux communications via les réseaux de données, quel que soit le type de réseau de données utilisé. En fait, l'évolution des réseaux à un impact direct sur le type d'applications développées.</p>
+<p></p>
+<p>Des tendances telles que le BYOD (Bring Your Own Device), l'accès en tout lieu, la virtualisation et les connexions machine à machine (m2m) ont ouvert la voie à une nouvelle génération d'applications. On estime qu'environ 50 milliards de périphériques seront connectés d'ici 2020. Rien qu'en 2010, plus de 350 000 applications téléchargées plus de trois millions de fois ont été développées. Tout cela donne lieu à un univers de connexions intuitives entre les personnes, les processus, les données et les objets sur le réseau. </p>
+<p></p>
+<p>L'utilisation de « Smart Tags » et d'une connectivité avancée pour numériser les produits non intelligents (des vélos et des bouteilles aux réfrigérateurs et aux voitures) et les connecter à Internet offrira aux particuliers et aux entreprises des possibilités d'interaction nouvelles et presque impensables. Les objets pourront collecter et recevoir des informations, et les envoyer aux utilisateurs et à d'autres objets connectés. Comme le montre la figure, cette nouvelle ère du développement d'Internet est appelée l'Internet des objets.</p>
+<p></p>
+<p>Aujourd'hui, plus de 100 millions de distributeurs automatiques, de véhicules, de détecteurs de fumée et d'autres périphériques partagent déjà des informations de manière automatisée. Les analystes du marché de la société <a href="http://www.berginsight.com/" target="_blank">Berg Insight</a> estiment que ce chiffre s'élèvera à 360 millions d'ici 2016. Actuellement, les photocopieurs dotés d'un module machine à machine peuvent commander du tonner et du papier automatiquement ou encore avertir les techniciens lors d'une panne en précisant même les pièces à apporter.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

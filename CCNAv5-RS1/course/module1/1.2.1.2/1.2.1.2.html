@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.1.2 Périphériques finaux</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>LAN, WAN et Internet</h1>
+        <h2>Composants d&#x0027;un réseau</h2>
+      </div>
+      <div id="content">
+<p>Les périphériques réseau auxquels les gens sont le plus habitués sont appelés périphériques finaux, ou hôtes. Ces périphériques forment l'interface entre les utilisateurs et le réseau de communication sous-jacent.</p>
+<p></p>
+<p>Voici quelques exemples de périphériques finaux :</p>
+<p>
+<ul>
+<li>Ordinateurs (stations de travail, ordinateurs portables, serveurs de fichiers, serveurs Web)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Imprimantes réseau</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Téléphones VoIP</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Terminal TelePresence</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Caméras de surveillance</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Appareils mobiles (tels que les smartphones, tablettes, PDA, les lecteurs de cartes bancaires et les scanners de codes-barres sans fil)</li>
+</ul>
+</p>
+<p></p>
+<p>Un périphérique hôte est la source ou la destination d'un message transmis sur le réseau, comme illustré dans l'animation. Pour qu'il soit possible de faire une distinction entre les hôtes, chaque hôte situé sur un réseau est identifié par une adresse. Lorsqu'un hôte démarre une communication, il utilise l'adresse de l'hôte de destination pour indiquer où le message doit être envoyé.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.4 Commutation de circuits</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation des technologies WAN</h1>
+        <h2>Opérations WAN</h2>
+      </div>
+      <div id="content">
+<p>Le réseau à commutation de circuits établit un circuit dédié (ou canal) entre les nœuds et les terminaux, avant que les utilisateurs ne puissent communiquer. Plus spécifiquement, la commutation de circuits établit de façon dynamique une connexion virtuelle dédiée pour la voix ou les données entre un expéditeur et un destinataire. Avant que la communication ne soit établie, il est nécessaire d'établir la connexion via le réseau du fournisseur de services. </p>
+<p></p>
+<p>Par exemple, lorsque l'abonné passe un coup de téléphone, le numéro composé est utilisé pour configurer les commutateurs des centrales sur l'itinéraire de l'appel, afin que soit formé un circuit continu de l'appelant vers son destinataire. Du fait de l'opération de commutation utilisée pour établir le circuit, le système téléphonique prend le nom de réseau à commutation de circuits. Si les téléphones sont remplacés par des modems, le circuit commuté peut également transporter des données informatiques. </p>
+<p></p>
+<p>Si le circuit transporte des données informatiques, cette capacité fixe peut ne pas être suffisante. Par exemple, si le circuit sert à accéder à Internet, une activité intense a lieu sur le circuit pendant le transfert d'une page Web. Elle peut être suivie par aucune activité pendant que l'utilisateur lit la page, puis une autre rafale d'activité pendant que la page suivante est transférée. Cette variation d'utilisation entre tout ou rien est typique du trafic réseau informatique. Comme l'abonné est le seul utilisateur de l'allocation de capacité fixe, les circuits commutés sont assez coûteux pour le transfert de données.</p>
+<p></p>
+<p>Les deux types les plus courants de technologies WAN à commutation de circuits sont le réseau téléphonique public commuté (RTPC) et le réseau numérique à intégration de services (RNIS). </p>
+<p></p>
+<p>Cliquez sur le bouton Lecture de la figure pour visualiser la commutation des circuits.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

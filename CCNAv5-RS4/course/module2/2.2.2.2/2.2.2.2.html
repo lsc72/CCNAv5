@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.2.2 Liaison commutée</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Choix d&#x0027;une technologie WAN</h1>
+        <h2>Infrastructures WAN privées</h2>
+      </div>
+      <div id="content">
+<p>L'accès WAN commuté peut être nécessaire quand aucune autre technologie WAN n'est disponible. Par exemple, un site distant peut utiliser une ligne téléphonique analogique et un modem pour établir des connexions commutées dédiées à faible capacité. L'accès commuté convient aux situations dans lesquelles les transferts de données sont intermittents, et ne concernent que de faibles volumes.</p>
+<p></p>
+<p>La téléphonie traditionnelle utilise un câble cuivre, appelé boucle locale, pour connecter le combiné téléphonique au réseau. Le signal sur la boucle locale est un signal électronique variable qui est la traduction de la voix de l'abonné en signal analogique.</p>
+<p></p>
+<p>Les boucles locales classiques peuvent transporter des données informatiques binaires sur le réseau téléphonique à l'aide d'un modem. Le modem module les données binaires et les convertit en signal analogique au départ, puis démodule le signal analogique et le reconvertit en données binaires à l'arrivée. Les caractéristiques physiques de la boucle locale et sa connexion au réseau téléphonique public commuté (RTPC) limitent le débit du signal à moins de 56 kbit/s. </p>
+<p></p>
+<p>Pour les petites entreprises, cette vitesse de connexion limitée est suffisante pour la transmission de chiffres de vente, de listes de tarifs, de rapports simples ou de courrier électronique. Il est possible de tirer parti des tarifs d'heures creuses en transférant les fichiers volumineux ou les sauvegardes la nuit ou le week-end. Les tarifs varient selon la distance, l'heure et la durée de l'appel.</p>
+<p></p>
+<p>Les avantages des modems et des lignes analogiques sont leur simplicité, leur disponibilité et leur faible coût de mise en œuvre. Les inconvénients en sont les faibles débits et un temps de connexion relativement long. Le circuit dédié présente peu de délai ou de gigue pour le trafic point à point, mais le trafic vocal ou vidéo ne fonctionne pas correctement à ces faibles débits binaires.</p>
+<p></p>
+<p>
+<b>Remarque </b>: bien que très peu d'entreprises prennent en charge l'accès commuté, il reste une solution viable pour les zones isolées dans lesquelles les options d'accès WAN sont limitées.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+﻿<textcomponents> <!--Slide 1-->
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Fonction d'historique de commande</b>]]></text>
+	</component> <!--Slide 2-->
+	<component id="ID_s2_title">
+		<text><![CDATA[<b>Fonction d'historique de commande</b>]]></text>
+	</component>
+	
+	<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+	
+	<component id="ID_s2_SC5" fontFace='Courier New' fontSize="10">
+		<text></text>		
+		<feedback id="fb"><![CDATA[<b> *** </b><font face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b>]]></feedback>		
+		<existingcommands><![CDATA[<font  face="Arial"><b>Entrez la commande permettant de définir le nombre de lignes à 200 dans l'historique de commande.  </b></font>]]></existingcommands>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[terminal history size 200]]></correctresponse>
+		    <instruction><![CDATA[<font face="Arial"><b>Entrez la commande permettant d'afficher l'historique de commande.  </b></font>]]></instruction>
+			</command>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[show history]]></correctresponse>
+			<deviceresponse><![CDATA[<font>  <code> show ip interface brief <br>  show interface g0/0 <br>  show ip interface g0/1 <br>  show ip route <br>  show ip route 209.165.200.224 <br>  show running-config interface s0/0/0 <br>  terminal history size 200 <br>  show history <br>R1#</font>]]></deviceresponse>
+			<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez correctement défini et affiché l'historique de commande.  </b></code></font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+</textcomponents>

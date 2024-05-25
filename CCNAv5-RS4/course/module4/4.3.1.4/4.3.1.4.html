@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.1.4 Vérification du fonctionnement de Frame Relay : ARP inverse</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage de la connectivité</h1>
+        <h2>Dépannage du protocole Frame Relay</h2>
+      </div>
+      <div id="content">
+<p>Pour supprimer des mappages Frame Relay créés de façon dynamique avec le protocole ARP inverse, utilisez la commande <span class="cmd"><b>clear frame-relay inarp</b></span>, comme illustré à la Figure 1. </p>
+<p></p>
+<p>La tâche finale est de confirmer si la commande <span class="cmd"><b>frame-relay inverse-arp</b></span> a permis de convertir une adresse IPv4 distante en DLCI local. Utilisez la commande <span class="cmd"><b>show frame-relay map</b></span> pour afficher les entrées de mappage actuelles, ainsi que des informations sur les connexions. La Figure 2 présente le résultat du routeur R3 avec une configuration Frame Relay précédente sur l'interface physique, sans utilisation de sous-interfaces. Le protocole ARP inverse est activé par défaut pour IPv4. Frame Relay pour IPv6 utilise le protocole IND (Inverse Neighbor Discovery) pour obtenir une adresse IPv6 de couche 3 de la part d'un DLCI de couche 2.</p>
+<p></p>
+<p>La sortie présente les informations suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>10.1.1.9</b> est l'adresse IPv4 du routeur distant, découverte de façon dynamique via le processus ARP inverse. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>302</b> est la valeur décimale du numéro DLCI local. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>0x12E</b> est la conversion hexadécimale du numéro DLCI, 0x12E = 302 en décimal. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>0x48E0</b> est la valeur qui apparaît sur le câble, du fait de la répartition des bits DLCI dans le champ d'adresse de la trame Frame Relay. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>La diffusion/multidiffusion</b> est activée sur le circuit virtuel permanent. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le type de LMI est <b>cisco</b>.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>L'état du circuit virtuel permanent est <b>active</b> (actif). </li>
+</ul>
+</p>
+<p></p>
+<p>Lorsqu'une demande de protocole ARP inverse est faite, le routeur met à jour se table de mappage avec trois états de connexion LMI possibles. Ces états sont les suivants : </p>
+<p>
+<ul>
+<li>
+<b>ACTIVE (actif) </b>: indique que le circuit de bout en bout (ETTD à ETTD) fonctionne. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>INACTIVE (inactif) </b>: indique que la connexion au commutateur fonctionne (ETTD au DCE), sans ETTD détecté de l'autre côté du circuit virtuel permanent. Ceci peut se produire en cas de configuration incorrecte sur le commutateur. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>DELETED </b>: indique que l'ETTD est configuré pour un DLCI que le commutateur ne reconnaît pas comme étant valide pour cette interface.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.1.5 Cœur de réseau, distribution, accès</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Conception d&#x0027;un réseau local</h1>
+        <h2>Réseaux convergents</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Couche d'accès</b>
+</p>
+<p></p>
+<p>La couche d'accès constitue la périphérie du réseau, où le trafic entre dans le réseau de campus et en sort. Traditionnellement, un commutateur de couche d'accès a pour fonction principale de fournir à l'utilisateur un accès au réseau. Les commutateurs de couche d'accès se connectent aux commutateurs de la couche de distribution. Ceux-ci implémentent des technologies de fondation de réseau telles que le routage, la qualité de service et la sécurité.</p>
+<p></p>
+<p>Pour répondre à la demande des applications réseau et des utilisateurs finaux, les plates-formes de commutation de nouvelle génération fournissent désormais des services plus convergents, mieux intégrés et plus intelligents à différents points de terminaison situés à la périphérie du réseau. L'introduction d'intelligence dans les commutateurs de la couche d'accès permet aux applications de s'exécuter sur le réseau avec plus d'efficacité et de sécurité.</p>
+<p></p>
+<p>
+<b>Couche de distribution</b>
+</p>
+<p></p>
+<p>La couche de distribution établit l'interface entre la couche d'accès et la couche cœur de réseau pour fournir de nombreuses fonctions importantes, notamment :</p>
+<p></p>
+<p>
+<ul>
+<li>Regroupement de réseaux étendus d'armoires de câblage</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Regroupement des domaines de diffusion de couche 2 et des limites de routage de couche 3</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Fonctions intelligentes de commutation, de routage et de règles d'accès au réseau, pour l'accès au reste du réseau</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Haute disponibilité pour l'utilisateur final et chemins à coût égal vers le cœur de réseau au moyen de commutateurs redondants dans la couche de distribution</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Services différenciés, pour différentes classes d'applications de services à la périphérie du réseau</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Couche cœur de réseau</b>
+</p>
+<p></p>
+<p>La couche cœur de réseau sert de réseau fédérateur. Elle connecte plusieurs couches du réseau de campus. La couche cœur de réseau sert d'agrégateur pour tous les autres blocs de campus et joint le campus au reste du réseau. La couche cœur de réseau a pour objectif principal d'assurer l'isolation des défaillances et la connectivité haut débit du réseau fédérateur.</p>
+<p></p>
+<p>La Figure 1 illustre un réseau de campus conçu sur trois niveaux où les couches d'accès, de distribution et de cœur de réseau sont distinctes. Pour mettre en place une disposition de câbles simplifiée, évolutive, rentable et efficace, il est recommandé d'établir une topologie de réseau physique en étoile étendue, depuis un bâtiment centralisé vers tous les autres bâtiments du campus.</p>
+<p></p>
+<p>Dans certains cas, en l'absence de restrictions physiques ou d'exigences d'évolutivité du réseau, il est inutile de séparer la couche de distribution et la couche cœur de réseau. Sur les sites comptant un seul bâtiment ou un nombre relativement réduit d'utilisateurs accédant au réseau, il n'est pas forcément nécessaire de séparer la couche cœur de réseau et la couche de distribution. Dans ce cas, il est recommandé d'adopter une configuration alternative à deux niveaux, également connue sous le nom de conception réseau principale réduite.</p>
+<p></p>
+<p>La Figure 2 présente un exemple de conception d'un réseau de campus à deux niveaux, où les couches de distribution et cœur de réseau sont regroupées en une seule couche.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

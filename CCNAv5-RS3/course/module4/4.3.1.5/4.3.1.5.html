@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.1.5 Attaque Man-in-the-Middle </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité LAN sans fil</h1>
+        <h2>Menaces WLAN</h2>
+      </div>
+      <div id="content">
+<p>L'une des attaques les plus sophistiquées qu'un utilisateur malveillant peut lancer est appelée attaque Man-in-the-Middle (MITM). Il existe plusieurs méthodes pour créer une attaque MITM. </p>
+<p></p>
+<p>L'une des formes les plus populaires de l'attaque MITM sans fil est appelée « hameçonnage au point d'accès » : le pirate introduit un point d'accès non autorisé et le configure avec le même identifiant SSID qu'un point d'accès légitime. Les lieux offrant une connexion Wi-Fi gratuite, tels que les aéroports, les cafés et les restaurants, sont de véritables foyers d'infection pour ce type d'attaque en raison du mode d'authentification ouvert. </p>
+<p></p>
+<p>Les clients sans fil qui se connectent se retrouvent face à deux points d'accès offrant une connectivité sans fil. Les clients placés à proximité du point d'accès non autorisé détectent un signal plus fort ; il est donc plus vraisemblable qu'ils s'y connectent. Le trafic utilisateur est désormais envoyé au point d'accès non autorisé, qui à son tour capture les données et les transmet au point d'accès légitime. Le trafic de retour en provenance du point d'accès légitime est envoyé au point d'accès non autorisé, capturé, puis réacheminé vers la station à son insu. Le pirate peut dérober le mot de passe de l'utilisateur et ses informations personnelles, accéder au réseau et compromettre la sécurité du système de l'utilisateur.</p>
+<p></p>
+<p>Par exemple, à la Figure 1, un utilisateur malveillant se trouve dans le café « Bob's Latte » et souhaite capturer le trafic à l'insu des clients sans fil. Le pirate lance son logiciel, qui permet à son ordinateur portable de se transformer en point d'accès fictif avec le SSID et le canal d'un routeur sans fil légitime. </p>
+<p></p>
+<p>À la Figure 2, un utilisateur voit à sa disposition deux connexions sans fil, mais choisit celle du point d'accès usurpé et s'y associe. Le pirate capture les données de l'utilisateur et les réachemine vers le point d'accès légitime, qui oriente alors le trafic vers le point d'accès usurpé. Le point d'accès fictif capture le trafic de retour et réachemine les informations vers l'utilisateur sans méfiance.</p>
+<p></p>
+<p>La capacité à mettre en échec une attaque MITM dépend de la sophistication de l'infrastructure WLAN et de la vigilance de l'activité de surveillance du réseau. Le processus commence par l'identification des périphériques légitimes sur le WLAN. Pour ce faire, les utilisateurs doivent être authentifiés. Une fois tous les périphériques légitimes connus, il est possible de surveiller le réseau en recherchant tout périphérique ou trafic anormal. </p>
+<p></p>
+<p>Les réseaux locaux sans fil d’entreprise dotés de périphériques WLAN de pointe procurent aux administrateurs des outils qui, ensemble, font office de système de protection contre les intrusions sur réseau local sans fil. Ces outils incluent des scanners qui identifient les points d'accès non autorisés et les réseaux ad hoc, et une fonction RRM (Radio Resource Management), qui surveille la bande RF à la recherche d'une activité et d'une charge de point d'accès. Un point d'accès plus occupé que la normale doit alerter l'administrateur d'un possible trafic non autorisé. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

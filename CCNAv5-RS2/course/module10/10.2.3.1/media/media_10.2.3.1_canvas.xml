@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+<slide type="MBAR">
+	<slide>
+	<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+	<element type="ROUTER" textId="ID_static_1" x="5" y="63.1" width="430" height="47.1" />
+	<element type="ROUTER" textId="ID_router_txt1" x="5" y="139.2" width="430" height="55.45" />
+	<element type="ROUTER" textId="ID_router_txt2" x="5" y="216.5" width="430" height="94.75" />	
+	<element type="ROUTER" textId="ID_router_txt3" x="5" y="332.3" width="430" height="64.9" />	
+	<element type="TEXT" compId="ID_txt01" x="5" y="45" width="433.1" expand="up" align="left" />
+	<element type="TEXT" compId="ID_txt02" x="5" y="120" width="433.1" expand="up" align="left" />
+	<element type="TEXT" compId="ID_txt03" x="5" y="200" width="433.1" expand="up" align="left" />
+	<element type="TEXT" compId="ID_txt04" x="5" y="314" width="433.1" expand="up" align="left" />	
+	</slide>	
+	
+	<slide>
+	<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+	<element type="IMAGE" src="10_2_3_1.png" x="0" y="0" width="470" height="400" />
+	<element type="ROUTER" textId="ID_router_txt4" x="5" y="149.7" width="430" height="183.55" />	
+	<element type="TEXT" compId="ID_txt06" x="317" y="97" width="114.5" expand="down" align="center" class="font11px" />
+	<element type="TEXT" compId="ID_txt05" x="1" y="97" width="154.6" expand="down" align="center" class="font11px" />
+	<element type="TEXT" id="ID_static_2" text="G0/1" x="86" y="77" align="center" width="22.2" />
+	<element type="TEXT" id="ID_static_3" text="G0/1" x="322" y="77" align="center" width="22.2" />	
+	</slide>
+</slide>
+	<text id="ID_static_1"><![CDATA[<pre>Router(config)# <b>ipv6 unicast-routing</b></pre>]]></text>
+	<text id="ID_router_txt1"><![CDATA[<pre>Router(config)# <b>ipv6 dhcp pool</b> <i>pool-name</i>
+Router(config-dhcp)#</pre>]]></text>
+	<text id="ID_router_txt2"><![CDATA[<pre>Router(config-dhcp)# <b>address prefix </b><span class="new1"><i>ipv6-prefix</i></span> [<b>lifetime</b>
+                       {<span class="new1"><i>valid-lifetime preferred-lifetime</i></span>
+                       | <b>infinite</b>}]         
+Router(config-dhcp)# <span class="new"><b>dns-server</b></span><span class="new1"> dns-server-address</span>
+Router(config-dhcp)# <span class="new"><b>domain-name</b></span><span class="new1"> domain-name</span></pre>]]></text>
+	<text id="ID_router_txt3"><![CDATA[<pre>Router(config)# <b>interface</b> <span class="new1">type number</span>
+Router(config-if)# <b>ipv6 dhcp server</b> <span class="new1">pool-name</span>
+Router(config-if)# <b>ipv6 nd managed-config-flag</b></pre>]]></text>
+	<text id="ID_router_txt4"><![CDATA[<pre>R1(config)# <b>ipv6 unicast-routing</b>
+R1(config)# <b>ipv6 dhcp pool IPV6-STATEFUL</b>
+R1(config-dhcp)# <b>address prefix 2001:DB8:CAFE:1::/64</b>
+                   <b>lifetime infinite</b>
+R1(config-dhcp)# <b>dns-server 2001:db8:cafe:aaaa::5</b>
+R1(config-dhcp)# <b>domain-name example.com</b>
+R1(config-dhcp)# <b>exit</b>
+R1(config)# <b>interface g0/1</b>
+R1(config-if)# <b>ipv6 address 2001:db8:cafe:1::1/64</b>
+R1(config-if)# <b>ipv6 dhcp server IPV6-STATEFUL</b>
+R1(config-if)# <b>ipv6 nd managed-config-flag</b>
+</pre>]]></text>
+</data>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		
+		<slide>
+			<element type="IMAGE" src="8.2.2.5.jpg" x="0" y="0" width="470" height="400"/>
+			
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title" />
+			<element type="TEXT" compId="ID_s1_txt01" width="103.2" x="17" y="78.05" align="left" expand="up" />
+			<element type="TEXT" compId="ID_s1_txt02" width="115.75" x="107" y="78.05" align="left" expand="up" />
+			<element type="TEXT" compId="ID_s1_txt03" width="106.65" x="325.35" y="75.65" align="center" expand="up" />
+			<element type="TEXT" compId="ID_s1_txt04" width="186.8" x="117.9" y="173.05" align="center" expand="left+right" color="#F68026" />
+			<element type="TEXT" compId="ID_s1_txt05" width="103.2" x="17" y="198.05" align="left" expand="up" />
+			<element type="TEXT" compId="ID_s1_txt06" width="29.8" x="174.1" y="353.8" align="center" expand="left+right" />
+			<element type="TEXT" text="10.1.1.0" width="105.7" x="3.3" y="106.35" align="center" bold="1" />			
+			<element type="TEXT" text="10.1.2.0" width="105.7" x="3.3" y="141.35" align="center" bold="1" />
+			<element type="TEXT" textId="staticTxt1" x="104.3" y="106.35" width="311.65" align="right" bold="1" />
+			<element type="TEXT" textId="staticTxt2" x="104.3" y="141.35" width="311.65" align="right" bold="1" />
+			<element type="TEXT" text="10.1.1.0" width="105.7" x="3.3" y="235.35" align="center" bold="1" />
+			<element type="TEXT" text="255.255.252.0" width="86.7" x="16.3" y="252.35" align="center" bold="1" />
+			<element type="TEXT" textId="staticTxt3" x="104.3" y="234.35" width="311.65" align="right" bold="1" />
+			<element type="TEXT" textId="staticTxt4" x="104.3" y="252.35" width="311.65" align="right" bold="1" />
+			<element type="TEXT" textId="staticTxt5" x="122.3" y="353.35" width="211.65" align="right" bold="1" />
+			<element type="TEXT" text="/22" width="19.4" x="313.4" y="315.85" align="center" bold="1" />	
+		</slide>
+		
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title" />
+			<element type="ROUTER" textId="ID_s1_01" x="6.55" y="79" width="428.05" height="79.4"/>
+		</slide>
+		<slide>	
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title" />		
+			<element type="ROUTER" textId="ID_s2_01" x="6.55" y="79.75" width="428.05" height="250.4"/>
+		</slide>	
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s4_title" />
+			<element type="ROUTER" textId="ID_s3_01" x="6.55" y="100.75" width="428.05" height="208.4"/>
+		</slide>
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s5_title" />
+		    <element type="ACTIVITY" subType="SYNTAX" compId="ID_SC5" x="1" y="23.45" width="437.1" height="367" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+		</slide>	
+			
+	</slide>
+	
+<text id="ID_s1_01"><![CDATA[
+<table width="400" border="0" cellspacing="0" cellpadding="0"> <tr> <td>R1(config)# <strong>router ospf 10</strong></td> </tr> <tr> <td>R1(config-router)# <strong>area 1 range 10.1.0.0 255.255.252.0</strong></td> </tr> <tr> <td>R1(config-router)# </td> </tr></table>
+]]></text>
+
+<text id="ID_s2_01"><![CDATA[
+	<table width="410" border="0" cellspacing="0" cellpadding="0"> <tr> <td colspan="3">R1# <strong>show ip route ospf | begin Gateway </strong></td> </tr> <tr> <td colspan="3">Gateway of last resort is not set</td> </tr> <tr> <td>&nbsp;</td> <td colspan="2">&nbsp;</td> </tr> <tr> <td width="46">&nbsp;</td> <td colspan="2">10.0.0.0/8 is variably subnetted, 6 subnets, 3 masks</td> </tr> <tr> <td bgcolor="#FACCA8">0</td> <td width="22" bgcolor="#FACCA8">&nbsp;</td> <td width="332" bgcolor="#FACCA8">10.1.0.0/22 is a summary, 00:00:09, Null0</td> </tr> <tr> <td>0</td> <td>&nbsp;</td> <td>10.2.1.0/24 [110/648] via 192.168.10.2, 00:00:09,Serial0/0/0</td> </tr> <tr> <td>O IA</td> <td colspan="2">192.168.1.0/24 [110/1295] via 192.168.10.2, 00:00:09,Serial0/0/0</td></tr><tr> <td>O IA</td> <td colspan="2">192.168.2.0/24 [110/1295] via 192.168.10.2, 00:00:09,Serial0/0/0</td></tr><tr> <td>&nbsp;</td> <td colspan="2">192.168.10.0/24 is variably subnetted, 3 subnets, 2 masks</td> </tr> <tr> <td>&nbsp;</td> <td>&nbsp;</td> <td>192.168.10.4/30 [110/1294] via 192.168.10.2,00:00:09, Serial0/0/0</td> </tr> <tr> <td colspan="3">R1#</td> </tr></table>
+]]></text>
+
+<text id="ID_s3_01"><![CDATA[
+	<table width="410" border="0" cellspacing="0" cellpadding="0"> <tr> <td colspan="3">R3# <strong>show ip route ospf | begin Gateway</strong></td> </tr> <tr> <td colspan="3">Gateway of last resort is not set</td> </tr> <tr> <td>&nbsp;</td> <td colspan="2">&nbsp;</td> </tr> <tr> <td width="46">&nbsp;</td> <td colspan="2">10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks</td> </tr> <tr> <td bgcolor="#FACCA8">O IA</td> <td width="22" bgcolor="#FACCA8">&nbsp;</td> <td width="332" bgcolor="#FACCA8">10.1.0.0/22 [110/1295] via 192.168.10.5, 00:00:06,Serial0/0/1</td> </tr> <tr> <td>0</td> <td>&nbsp;</td> <td>10.2.1.0/24 [110/648] via 192.168.10.5, 00:29:23,Serial0/0/1</td> </tr> <tr> <td>&nbsp;</td> <td colspan="2">192.168.10.0/24 is variably subnetted, 3 subnets, 2 masks</td> </tr> <tr> <td>0</td> <td>&nbsp;</td> <td>192.168.10.0/30 [110/1294] via 192.168.10.5,00:29:23, </td> </tr> <tr> <td colspan="3">Serial0/0/1</td> </tr> <tr> <td colspan="3">R3#</td> </tr></table>
+]]></text>
+
+
+<text id="staticTxt1"><![CDATA[<span class="purple_text">00001010.00000001.000000</span><span class="orange_text">01</span>.00000000]]></text>
+<text id="staticTxt2"><![CDATA[<span class="purple_text">00001010.00000001.000000</span><span class="orange_text">10</span>.00000000]]></text>
+<text id="staticTxt3"><![CDATA[<span class="purple_text">00001010.00000001.000000</span>00.00000000]]></text>
+<text id="staticTxt4"><![CDATA[<span class="purple_text spacer">11111111.11111111.111111</span>00.00000000]]></text>
+<text id="staticTxt5"><![CDATA[<span class="left_text">10.1.0.0/2</span>      <span class="right_text">10.1.0.0 &nbsp;&nbsp; 255.255.252.0</span>]]></text>
+
+</data>

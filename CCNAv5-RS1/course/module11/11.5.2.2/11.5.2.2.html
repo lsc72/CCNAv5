@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.5.2.2 Activation de la connectivité sans fil</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.5.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Services de routage intégrés</h1>
+        <h2>Configuration du routeur intégré</h2>
+      </div>
+      <div id="content">
+<p>Pour activer la connectivité sans fil, le mode sans fil, le SSID, le canal de transmission et un dispositif de chiffrement doivent être configurés.</p>
+<p></p>
+<p>Tout d'abord, sélectionnez le mode sans fil voulu, comme le montre la figure. Chaque mode ou norme sans fil est associé à une certaine surcharge. Si tous les périphériques du réseau utilisent la même norme, le fait de sélectionner le mode associé à cette norme limite la surcharge occasionnée. Cela permet également de renforcer la sécurité dans la mesure où les périphériques utilisant des normes différentes ne seront pas autorisés à se connecter. Toutefois, si des périphériques utilisant des normes différentes doivent accéder au réseau, il convient de choisir le mode mixte. Les performances du réseau seront diminuées en raison de la surcharge induite par la prise en charge de tous les modes. </p>
+<p></p>
+<p>Ensuite, définissez le SSID. Tous les périphériques qui souhaitent participer au réseau local sans fil doivent utiliser le même SSID. Pour des raisons de sécurité, le SSID par défaut doit être modifié. Pour faciliter la détection du réseau étendu par les clients, le SSID est diffusé par défaut. Il est toutefois possible de désactiver la fonction de diffusion du SSID. Si le SSID n'est pas diffusé, cette valeur devra être configurée manuellement sur les clients sans fil.</p>
+<p></p>
+<p>Le choix du canal de transmission du routeur intégré doit être effectué par rapport aux autres réseaux sans fil à proximité.</p>
+<p>Les réseaux sans fil adjacents doivent faire appel à des canaux indépendants (qui ne se chevauchent pas) pour optimiser le débit. La plupart des points d'accès proposent désormais plusieurs canaux pour permettre au routeur de détecter automatiquement le canal le moins encombré.</p>
+<p></p>
+<p>Enfin, sélectionnez le mécanisme de chiffrement de votre choix et saisissez une clé ou une phrase secrète.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

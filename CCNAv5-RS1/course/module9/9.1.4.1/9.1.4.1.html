@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.4.1 Segmenter le réseau en sous-réseaux en fonction des besoins des hôtes </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmenter un réseau IPv4 en sous-réseaux</h1>
+        <h2>Déterminer le masque de sous-réseau</h2>
+      </div>
+      <div id="content">
+<p>Le choix du nombre de bits d'hôte à emprunter pour créer des sous-réseaux constitue une décision de planification importante. Deux critères doivent être pris en compte lors de la planification des sous-réseaux : le nombre d'adresses d'hôte requises sur chaque réseau et le nombre de sous-réseaux nécessaires. L'animation montre les sous-réseaux possibles pour le réseau 192.168.1.0. Le choix du nombre de bits pour l'ID de sous-réseau affecte à la fois le nombre de sous-réseaux possibles et le nombre d'adresses d'hôte que chaque sous-réseau peut contenir.</p>
+<p></p>
+<p>Observez la relation inverse entre le nombre de sous-réseaux et le nombre d'hôtes. Plus les bits empruntés pour créer des sous-réseaux sont nombreux, moins il y a de bits d'hôte disponibles et donc moins il y a d'hôtes par sous-réseau. Si le réseau requiert davantage d'adresses d'hôte, plus de bits d'hôte sont nécessaires, ce qui réduit le nombre de sous-réseaux.</p>
+<p></p>
+<p>
+<b>Nombre d'hôtes</b>
+</p>
+<p></p>
+<p>Lorsque vous empruntez des bits pour créer plusieurs sous-réseaux, vous devez laisser suffisamment de bits d'hôte pour le plus grand sous-réseau. Le nombre d'adresses d'hôte nécessaires dans le plus grand sous-réseau déterminera le nombre de bits qui doivent rester dans la partie hôte. La formule 2^n (où n est le nombre de bits d'hôte restant) permet de calculer le nombre d'adresses disponibles sur chaque sous-réseau. Souvenez-vous que 2 de ces adresses ne peuvent pas être utilisées. Le nombre d'adresses disponibles correspond donc à 2^n - 2. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

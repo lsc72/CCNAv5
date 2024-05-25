@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.2.3 Réduction de l&#x0027;encombrement du réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>L&#x0027;environnement commuté</h1>
+        <h2>Domaines de commutation</h2>
+      </div>
+      <div id="content">
+<p>Grâce à leurs caractéristiques spéciales, les commutateurs LAN peuvent réduire efficacement l'encombrement d'un réseau. Tout d'abord, ils permettent la segmentation d'un LAN en domaines de collision distincts. Chaque port du commutateur représente un domaine de collision séparé et fournit la bande passante maximale aux périphériques connectés à ce port. Ensuite, ils permettent une communication bidirectionnelle simultanée entre les périphériques. Une connexion bidirectionnelle simultanée peut transporter simultanément des signaux transmis et reçus. Les connexions bidirectionnelles simultanées ont considérablement amélioré les performances réseau des LAN et sont nécessaires pour les vitesses Ethernet à partir de 1 Gbit/s.</p>
+<p></p>
+<p>Les commutateurs interconnectent les segments du réseau local (domaines de collision), utilisent une table d'adresses MAC pour déterminer le segment auquel la trame doit être envoyée et peuvent réduire ou éliminer complètement les collisions. Voici certaines caractéristiques importantes des commutateurs qui contribuent à réduire l'encombrement d'un réseau :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Densité de ports élevée</b> : les commutateurs possèdent une grande densité de ports. Souvent, des commutateurs à 24 et à 48 ports occupent seulement 1 unité de rack (1,75 cm) en hauteur et ils fonctionnent à des vitesses de 100 Mbit/s, 1 Gbit/s et 10 Gbit/s. Les grands commutateurs d'entreprise peuvent prendre en charge plusieurs centaines de ports.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Tampons de trames étendus</b> : l'enregistrement de plusieurs trames avant de commencer à les abandonner est particulièrement utile en présence de ports encombrés vers des serveurs ou d'autres parties du réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Vitesse des ports</b> : un commutateur, selon son coût, peut prendre en charge plusieurs combinaisons de vitesses. Les ports de 100 Mbit/s et de 1 ou 10 Gbit/s sont courants (une vitesse de 100 Gbit/s est également possible).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Commutation interne rapide</b> : les possibilités internes de transfert rapide permettent de hautes performances. L'utilisation d'un bus interne rapide ou d'une mémoire partagée améliore les performances globales du commutateur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Faible coût par port</b> : les commutateurs offrent une densité de ports élevée à moindre coût. Les commutateurs LAN peuvent donc prendre en charge des réseaux conçus pour desservir moins d'utilisateurs par segment, ce qui augmente la bande passante moyenne disponible par utilisateur.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

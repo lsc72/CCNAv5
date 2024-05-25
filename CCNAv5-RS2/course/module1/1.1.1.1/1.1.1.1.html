@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.1.1 Complexité croissante des réseaux</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Conception d&#x0027;un réseau local</h1>
+        <h2>Réseaux convergents</h2>
+      </div>
+      <div id="content">
+<p>Notre monde numérique change. L'accès à Internet et au réseau d'entreprise n'est plus limité aux bureaux physiques, aux sites géographiques ou aux fuseaux horaires. Dans l'environnement de travail mondialisé d'aujourd'hui, les employés peuvent accéder à des ressources partout dans le monde et les informations doivent être disponibles à tout moment et sur tout périphérique, comme illustré à la Figure 1. Il devient donc nécessaire d'élaborer des réseaux de nouvelle génération : sécurisés, fiables et hautement disponibles.</p>
+<p></p>
+<p>Ces réseaux de nouvelle génération doivent répondre aux attentes actuelles et prendre en charge le matériel moderne, tout en intégrant des plates-formes traditionnelles. La Figure 2 illustre certains anciens périphériques encore couramment utilisés, qui doivent souvent être incorporés à la conception d'un réseau. La Figure 3 illustre certaines plates-formes plus récentes (réseaux convergents) qui facilitent l'accès au réseau à tout instant, en tout lieu et sur tout périphérique.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

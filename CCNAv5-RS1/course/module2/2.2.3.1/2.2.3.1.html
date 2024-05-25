@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.3.1 Fichiers de configuration</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Bases</h1>
+        <h2>Enregistrement des configurations</h2>
+      </div>
+      <div id="content">
+<p>Le fichier de configuration en cours reflète la configuration actuelle appliquée à un périphérique Cisco IOS. Il contient les commandes utilisées pour déterminer comment le périphérique fonctionne sur le réseau, comme indiqué à la Figure 1. Modifier une configuration en cours affecte le fonctionnement d'un périphérique Cisco immédiatement. </p>
+<p></p>
+<p>Le fichier de configuration en cours est stocké dans la mémoire vive du périphérique (RAM). Cela signifie que le fichier de configuration en cours est temporairement actif lorsque le périphérique Cisco fonctionne (sous tension). Cependant, en cas de panne de courant ou de redémarrage du routeur, toutes les modifications de la configuration que vous n'avez pas enregistrées sont perdues.</p>
+<p></p>
+<p>Après avoir apporté des modifications à un fichier de configuration en cours, trois possibilités s'offrent à vous : </p>
+<p></p>
+<p>
+<ul>
+<li>restaurer la configuration d'origine du périphérique ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>supprimer toutes les configurations du périphérique ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>adopter la configuration modifiée comme nouvelle configuration initiale. </li>
+</ul>
+</p>
+<p></p>
+<p>Le fichier de configuration initiale reflète la configuration utilisée par le périphérique lors du redémarrage. Le fichier de configuration initiale est stocké dans la mémoire vive non volatile. Lorsqu'un périphérique réseau est configuré et que la configuration en cours est modifiée, il est important d'enregistrer ces modifications dans le fichier de configuration initiale. Ainsi, vous ne risquez pas de perdre des modifications à la suite d'une panne de courant ou d'un redémarrage intentionnel. </p>
+<p></p>
+<p>Avant de pérenniser une configuration modifiée, utilisez les commandes <span class="cmd"><b>show</b></span> adéquates pour vérifier le fonctionnement du périphérique. Comme le montre la figure, vous pouvez entrer la commande <span class="cmd"><b>show running-config</b></span> pour afficher le contenu d'un fichier de configuration en cours. Après avoir vérifié que les modifications sont correctes, utilisez la commande <span class="cmd"><b>copy running-config startup-config</b></span> à l'invite du mode d'exécution privilégié. La commande permettant d'enregistrer la configuration en cours dans le fichier de configuration initiale est la suivante :</p>
+<p></p>
+<p>
+<span class="cmd">Switch#</span>
+<span class="cmd">
+<b>copy running-config startup-config</b>
+</span>
+</p>
+<p></p>
+<p>Après avoir été exécuté, le fichier de configuration en cours met à jour le fichier de configuration initiale.</p>
+<p></p>
+<p>Si les modifications apportées à la configuration en cours n'ont pas l'effet souhaité, il peut s'avérer nécessaire de revenir à la configuration antérieure du périphérique. Dans l'hypothèse où vous n'avez pas recouvert la configuration initiale avec les modifications, vous pouvez remplacer la configuration en cours par la configuration initiale. Le meilleur moyen de le faire consiste à redémarrer le périphérique en entrant la commande <span class="cmd"><b>reload</b></span> en mode d'exécution privilégié. </p>
+<p></p>
+<p>Quand il reçoit une commande de rechargement, IOS vérifie si la configuration en cours comporte des modifications qui n'ont pas été enregistrées dans la configuration initiale. Dans l'affirmative, IOS affiche une invite vous demandant s'il doit enregistrer les modifications. Pour abandonner les modifications, entrez <span class="cmd"><b>n</b></span> ou <span class="cmd"><b>no</b></span>.</p>
+<p></p>
+<p>Une autre invite apparaît pour vous permettre de confirmer le rechargement. Pour confirmer, appuyez sur Entrée. Toute autre touche annule la commande.</p>
+<p></p>
+<p>Par exemple :</p>
+<p></p>
+<p>
+<span class="cmd">Switch#</span>
+<span class="cmd">
+<b>reload</b>
+</span>
+</p>
+<p>
+<span class="cmd">System configuration has been modified. Save? [yes/no]: </span>
+<span class="cmd">
+<b>n</b>
+</span>
+</p>
+<p>
+<span class="cmd">Proceed with reload? [confirm]</span>
+</p>
+<p>
+<span class="cmd">*Apr 13 01:34:15.758: %SYS-5-RELOAD: Reload requested by console. Reload Reason:</span>
+</p>
+<p>
+<span class="cmd">Reload Command.</span>
+</p>
+<p>
+<span class="cmd">System Bootstrap, Version 12.3(8r)T8, RELEASE SOFTWARE (fc1)</span>
+</p>
+<p>
+<span class="cmd">Technical Support: http://www.cisco.com/techsupport</span>
+</p>
+<p>
+<span class="cmd">Copyright (c) 2009 by cisco Systems, Inc.</span>
+</p>
+<p>
+<span class="cmd">PLD version 0x10</span>
+</p>
+<p>
+<span class="cmd">GIO ASIC version 0x127</span>
+</p>
+<p>
+<span class="cmd">c1841 processor with 131072 Kbytes of main memory</span>
+</p>
+<p>
+<span class="cmd">Main memory is configured to 64 bit mode with parity disabled</span>
+</p>
+<p></p>
+<p></p>
+<p>Si des modifications indésirables sont enregistrées dans la configuration initiale, il peut s'avérer nécessaire de supprimer toutes les configurations. Pour ce faire, vous devez effacer la configuration initiale et redémarrer le périphérique.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>erase startup-config</b></span> permet de supprimer la configuration initiale. </p>
+<p></p>
+<p>Pour supprimer le fichier de configuration initiale, entrez <span class="cmd"><b>erase NVRAM:startup-config</b></span> ou <span class="cmd"><b>erase startup-config </b></span>à l'invite du mode d'exécution privilégié : </p>
+<p></p>
+<p>
+<span class="cmd">Switch#</span>
+<span class="cmd">
+<b>erase startup-config</b>
+</span>
+</p>
+<p></p>
+<p>Quand vous entrez cette commande, le commutateur vous demande confirmation :</p>
+<p></p>
+<p>
+<span class="cmd">Erasing the nvram filesystem will remove all configuration files! Continue? [confirm]</span>
+</p>
+<p></p>
+<p>Confirm est la réponse par défaut. Pour confirmer la suppression du fichier de configuration initiale, appuyez sur la touche Entrée. Toute autre touche annule la commande.</p>
+<p></p>
+<p>
+<b>Attention :</b> utilisez la commande <span class="cmd"><b>erase</b></span> avec précaution. En effet, erase permet de supprimer tous les fichiers du périphérique. Une utilisation incorrecte peut donc aboutir à effacer IOS lui-même ou un autre fichier important.</p>
+<p></p>
+<p>Sur un commutateur, vous devez également exécuter la commande <span class="cmd"><b>delete vlan.dat </b></span>en plus de la commande <span class="cmd"><b>erase startup-config</b></span>, afin de restaurer la configuration initiale du périphérique par défaut (comparable à une restauration de la configuration d'usine) :</p>
+<p></p>
+<p>
+<span class="cmd">Switch#</span>
+<span class="cmd">
+<b>delete vlan.dat</b>
+</span>
+<span class="cmd"></span>
+</p>
+<p>
+<span class="cmd">Delete filename [vlan.dat]? </span>
+</p>
+<p>
+<span class="cmd">Delete flash:vlan.dat? [confirm]</span>
+</p>
+<p>
+<span class="cmd">Switch#</span>
+<span class="cmd">
+<b>erase startup-config</b>
+</span>
+</p>
+<p>
+<span class="cmd">Erasing the nvram filesystem will remove all configuration files! Continue? [confirm]</span>
+</p>
+<p>
+<span class="cmd">[OK]</span>
+</p>
+<p>
+<span class="cmd">Erase of nvram: complete</span>
+</p>
+<p>
+<span class="cmd">Switch#</span>
+</p>
+<p></p>
+<p>Après la suppression de la configuration initiale de la mémoire vive non volatile (et la suppression du fichier vlan.dat dans le cas d'un commutateur), rechargez le périphérique pour supprimer le fichier de configuration en cours de la mémoire vive. Le périphérique charge alors la configuration initiale par défaut et l'adopte comme configuration en cours.</p>
+<p></p>
+<p>À l'aide de la Figure 2, essayez d'entrer des commandes permettant d'enregistrer la configuration en cours dans la mémoire vive sur la mémoire vive non volatile.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

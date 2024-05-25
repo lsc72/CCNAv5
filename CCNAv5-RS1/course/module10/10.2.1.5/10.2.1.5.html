@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.1.5 SMTP, POP et IMAP (suite)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Services et protocoles de couche application courants</h1>
+        <h2>Protocoles de couche application courants </h2>
+      </div>
+      <div id="content">
+<p>Le protocole SMTP (Simple Mail Transfer Protocol) permet de transférer les e-mails de manière fiable et efficace. Pour que les applications SMTP fonctionnent, le message doit être correctement formaté et les processus SMTP doivent être exécutés à la fois sur le client et sur le serveur.</p>
+<p></p>
+<p>Les formats de message SMTP exigent un en-tête et un corps de message. Si le corps du message peut contenir n'importe quelle quantité de texte, l'en-tête doit contenir une adresse de messagerie de destinataire et une adresse d'expéditeur correctement mises en forme. Toute autre information est facultative dans l'en-tête.</p>
+<p></p>
+<p>Lorsqu'un client envoie un e-mail, le processus SMTP client se connecte à un processus SMTP serveur sur le port réservé 25. Une fois la connexion établie, le client essaie d'envoyer l'e-mail au serveur via la connexion. Lorsque le serveur a reçu le message, il le place sur un compte local si le destinataire est local, ou le dirige à l'aide du même processus de connexion SMTP vers un autre serveur de messagerie qui devra l'acheminer. </p>
+<p></p>
+<p>Le serveur de messagerie de destination peut ne pas être en ligne, ou peut être occupé, lors de l'envoi des messages. Par conséquent, le protocole SMTP met le message en attente pour envoi ultérieur. Régulièrement, le serveur vérifie si des messages se trouvent dans la file d'attente et essaie de les renvoyer. À l'issue d'une durée donnée, si le message n'est toujours pas transmis, il est renvoyé à son expéditeur comme non délivrable.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

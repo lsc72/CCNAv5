@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.1.4 Composants de câblage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Comparaison des solutions haut débit</h1>
+        <h2>Câble</h2>
+      </div>
+      <div id="content">
+<p>La fourniture de services sur un réseau filaire nécessite l'utilisation de différentes fréquences radio. Les fréquences en aval s’échelonnent entre 50 et 860 mégahertz (MHz), alors que les fréquences en amont s’échelonnent entre 5 et 42 mégahertz (MHz). </p>
+<p></p>
+<p>Deux types d’équipement sont nécessaires pour l’envoi de signaux modem digital en aval et en amont sur un système de câblage :</p>
+<p></p>
+<p>
+<ul>
+<li>Système CMTS au niveau de la tête de réseau du câblo-opérateur</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Modem câble chez l'abonné</li>
+</ul>
+</p>
+<p></p>
+<p>Cliquez sur les composants en surbrillance dans la figure pour obtenir des informations supplémentaires sur le mode de contribution de chaque périphérique à la communication.</p>
+<p></p>
+<p>Un système CMTS de tête de réseau communique avec les modems câble situés aux domiciles des abonnés. En fait, la tête de réseau est un routeur avec des bases de données, qui fournit des services Internet aux abonnés par câble. L'architecture est relativement simple, utilisant un réseau mixte optique-coaxial dans lequel la fibre optique remplace le câble coaxial à faible bande passante.</p>
+<p></p>
+<p>Un ensemble de câbles de trunking à fibre optique connecte la tête de réseau aux nœuds où se produit la conversion des signaux optiques en signaux de radiofréquence. La fibre transporte le même contenu haut débit pour les connexions Internet, les services téléphoniques et la lecture vidéo en continu que le câble coaxial. Les câbles coaxiaux proviennent du nœud et transportent les signaux RF vers les abonnés. </p>
+<p></p>
+<p>Un réseau HFC moderne compte généralement de 500 à 2.000 abonnés de données actifs, connectés à un segment de réseau filaire et partageant la bande passante en amont et en aval. La bande passante réelle du service Internet sur une ligne TV par câble (CATV) peut aller jusqu'à 160 Mo/s en aval avec la version la plus récente de DOCSIS et jusqu'à 120 Mo/s en amont. </p>
+<p></p>
+<p>En cas d'encombrement dû à une utilisation intensive, le câblo-opérateur peut ajouter de la bande passante supplémentaire pour les services de données en allouant un canal télévisé supplémentaire pour les données haut débit. En pratique, un tel ajout peut doubler la bande passante en aval disponible aux abonnés. Les opérateurs peuvent également réduire le nombre d’abonnés desservis par chaque segment réseau. Afin de réduire le nombre d'abonnés, le câblo-opérateur poursuit la subdivision du réseau en installant des connexions à fibre optique dans le voisinage.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

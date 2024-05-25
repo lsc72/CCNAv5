@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.2.3 Commande network</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv2 à zone unique</h1>
+        <h2>Configuration d&#x0027;OSPFv2 à zone unique</h2>
+      </div>
+      <div id="content">
+<p>Il existe plusieurs façons d'identifier les interfaces qui participeront au processus de routage OSPFv2.</p>
+<p>La Figure 1 indique les commandes obligatoires pour déterminer quelles interfaces sur R1 participent au processus de routage OSPFv2 pour une zone. Notez l'utilisation de masques génériques afin d'identifier les interfaces respectives en fonction de leur adresse réseau. Comme il s'agit d'un réseau OSPF zone unique, tous les ID de zone sont définis sur 0. </p>
+<p>Une autre solution consiste à activer OSPFv2 au moyen de la commande de mode de configuration de routeur <span class="cmd"><b>network </b></span><span class="cmd"><i>intf-ip-address </i></span><span class="cmd"><b>0.0.0.0 </b></span><span class="cmd"><i>area area-id</i></span>.</p>
+<p>La Figure 2 fournit un exemple de spécification de l'adresse IPv4 avec un masque générique à quatre zéros. La saisie de <span class="cmd"><b>network 172.16.3.1 0.0.0.0 area 0</b></span> sur R1 indique au routeur d'activer l'interface Serial0/0/0 pour le processus de routage. Par conséquent, le processus OSPFv2 annonce sur le réseau qu'il se trouve sur cette interface (172.16.3.0/30).</p>
+<p>L'avantage de la spécification de l'interface est que le calcul du masque générique n'est pas nécessaire. OSPFv2 utilise l'adresse et le masque de sous-réseau de l'interface pour déterminer le réseau à annoncer.</p>
+<p>Certaines versions d'IOS autorisent la saisie du masque de sous-réseau au lieu du masque générique. L'IOS convertit ensuite le masque de sous-réseau au format de masque générique. </p>
+<p>Utilisez le contrôleur de syntaxe dans la Figure 3 pour annoncer les réseaux connectés à R2.</p>
+<p>
+<b>Remarque :</b> pendant que vous complétez le contrôleur de syntaxe, observez les messages d'informations décrivant la contiguïté entre R1 (1.1.1.1) et R2 (2.2.2.2). Le modèle d'adressage IPv4 utilisé pour l'ID de routeur facilite l'identification du voisin.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

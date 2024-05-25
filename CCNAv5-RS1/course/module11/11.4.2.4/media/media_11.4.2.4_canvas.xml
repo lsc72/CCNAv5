@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		<slide>
+			<element type="ROUTER" textId="ID_router_txt1" x="7" y="23" width="426" height="320" size="11"/>
+			<element type="TEXT" compId="ID_txt01" x="252" y="366" width="176.8" expand="left" align="center" class="orangeCallOut" />
+			<element type="IMAGE" x="0" y="0" width="470" height="400" src="media_11.4.2.4.png" />
+		</slide>
+
+
+		<slide>
+			<element type="TEXT" compId="ID_txt02" x="10.5" y="100" width="422" expand="down" align="left" />
+			<element type="ROUTER" textId="ID_router_txt2" x="7" y="30.35" width="426" height="60" size="11"/>
+
+			<element type="TEXT" compId="ID_txt03" x="10.5" y="276" width="422" expand="down" align="left" />
+			<element type="ROUTER" textId="ID_router_txt3" x="7" y="181.35" width="426" height="90" size="11"/>
+
+		</slide>
+
+
+		<slide>
+			<element type="ROUTER" textId="ID_router_txt4" x="7" y="23" width="426" height="350" size="11"/>
+		</slide>
+
+	</slide>
+<text id="ID_router_txt1"><![CDATA[<pre>R1#<b>show file systems</b>
+File Systems:
+
+		Size(b)       Free(b)      Type  Flags  Prefixes
+             -             -    opaque     rw   archive:
+             -             -    opaque     rw   system:
+             -             -    opaque     rw   tmpsys:
+             -             -    opaque     rw   null:
+             -             -   network     rw   tftp:
+*    256487424     184819712      disk     rw   flash0: flash:#
+             -             -      disk     rw   flash1:
+        262136        249270     nvram     rw   nvram:
+             -             -    opaque     wo   syslog:
+             -             -    opaque     rw   xmodem:
+             -             -    opaque     rw   ymodem:
+             -             -   network     rw   rcp:
+             -             -   network     rw   http:
+             -             -   network     rw   ftp:
+             -             -   network     rw   scp:
+             -             -    opaque     ro   tar:
+             -             -   network     rw   https:
+             -             -    opaque     ro   cns:
+    4050042880    3774152704  usbflash     rw   usbflash0:</pre>]]></text>
+
+<text id="ID_router_txt2"><![CDATA[<pre>R1#<b>copy running-config usbflash0</b>:
+Destination filename [running-config]? R1-Config
+5024 bytes copied in 0.736 secs (6826 bytes/sec)</pre>]]></text>
+
+<text id="ID_router_txt3"><![CDATA[<pre>R1#<b>copy running-config usbflash0</b>:
+Destination filename [running-config]? R1-Config
+%Warning:There is a file already existing with this name
+Do you want to over write? [confirm]
+5024 bytes copied in 1.796 secs (2797 bytes/sec)</pre>]]></text>
+
+<text id="ID_router_txt4"><![CDATA[<pre>R1#<b>dir usbflash0:/</b>
+Directory of usbflash0:/
+    1  drw-     0  Oct 15 2010 16:28:30 +00:00  Cisco
+   16  -rw-  5024   Jan 7 2013 20:26:50 +00:00  R1-Config
+ 
+4050042880 bytes total (3774144512 bytes free) 
+R1#<b>more usbflash0:/R1-Config</b>
+!
+! Last configuration change at 20:19:54 UTC Mon Jan 7 2013 by
+admin version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging buffered 51200 warnings
+!
+no aaa new-model
+!
+no ipv6 cef</pre>]]></text>
+
+</data>

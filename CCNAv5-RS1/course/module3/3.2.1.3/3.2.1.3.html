@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.1.3 Interaction des protocoles</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Normes et protocoles réseau</h1>
+        <h2>protocoles</h2>
+      </div>
+      <div id="content">
+<p>L'interaction entre un serveur Web et un client Web constitue un exemple de l'utilisation d'une suite de protocoles dans des communications réseau. Cette interaction utilise plusieurs protocoles et normes dans le processus d'échange d'informations entre ceux-ci. Les différents protocoles fonctionnent entre eux pour garantir que les messages sont reçus et compris par les deux parties. Exemples de tels protocoles :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Protocole d'application</b> : le protocole de transfert hypertexte (Hypertext Transfer Protocol, protocole HTTP) régit la manière dont un serveur Web et un client Web interagissent. Le protocole HTTP décrit le contenu et la mise en forme des requêtes et des réponses échangées entre le client et le serveur. Les logiciels du client et du serveur Web implémentent le protocole HTTP dans le cadre de l'application. Le protocole HTTP dépend d'autres protocoles pour gérer le transport des messages entre le client et le serveur.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Protocole de transport</b> : le protocole de contrôle de transmission (Transmission Control Protocol, TCP) est le protocole de transport qui gère les conversations individuelles entre les serveurs Web et les clients Web. Le protocole TCP divise les messages HTTP en petites parties appelées segments. Ces segments sont envoyés entre les processus du serveur Web et du client exécutés sur l'hôte de destination. Ce protocole est également responsable du contrôle de la taille et du débit d'échange de messages entre le serveur et le client. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Protocole Internet</b> : le protocole IP se charge d'encapsuler en paquets les segments mis en forme par le protocole TCP, de les attribuer aux adresses appropriées et de les remettre à l'hôte de destination en utilisant le meilleur chemin.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Protocoles d'accès au réseau</b> : les protocoles d'accès au réseau décrivent deux fonctions principales, d'une part la communication sur une liaison de données et d'autre part la transmission physique des données sur le support réseau. Les protocoles de gestion de liaison de données prennent les paquets depuis le protocole IP et les formatent pour les transmettre à travers les supports. Les normes et les protocoles des supports physiques régissent la manière dont les signaux sont envoyés, ainsi que leur interprétation par les clients destinataires. Ethernet est un exemple de protocole d'accès au réseau. </li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

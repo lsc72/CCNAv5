@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.1.2 Remplissage dynamique de la table d&#x0027;adresses MAC d&#x0027;un commutateur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>L&#x0027;environnement commuté</h1>
+        <h2>Transfert de trames</h2>
+      </div>
+      <div id="content">
+<p>Les commutateurs utilisent des adresses MAC pour diriger les communications réseau vers la destination, via le port approprié. Un commutateur est constitué de circuits intégrés et du logiciel associé qui contrôle les chemins de données dans le commutateur. Pour qu'un commutateur sache vers quel port transférer une trame, il doit tout d'abord apprendre quels périphériques existent sur chaque port. À mesure que le commutateur découvre la relation entre les ports et les périphériques, il remplit une table appelée table d'adresses MAC ou table CAM (Content Addressable Memory, mémoire adressable par contenu). La mémoire adressable par contenu est un type particulier de mémoire utilisé dans des applications de recherche haut débit.</p>
+<p></p>
+<p>Les commutateurs LAN déterminent comment traiter les trames de données entrantes en gérant la table d'adresses MAC. Un commutateur établit sa table d'adresses MAC en enregistrant l'adresse MAC de chaque périphérique connecté à chacun de ses ports. Le commutateur utilise les informations de la table d'adresses MAC pour envoyer des trames destinées à un périphérique donné au port qui a été attribué à ce périphérique.</p>
+<p></p>
+<p>Un commutateur renseigne la table d'adresses MAC sur la base des adresses MAC source. Lorsqu'un commutateur reçoit une trame entrante avec une adresse MAC de destination qui ne figure pas dans la table d'adresses MAC, il transfère la trame à tous les ports (inondation) sauf au port d'entrée de la trame. Lorsque le périphérique de destination répond, le commutateur ajoute dans la table d'adresses MAC l'adresse MAC source de la trame et le port où la trame a été reçue. Dans les réseaux comportant plusieurs commutateurs interconnectés, la table d'adresses MAC contient plusieurs adresses MAC pour un seul port connecté aux autres commutateurs.</p>
+<p></p>
+<p>Les étapes suivantes décrivent le processus d'élaboration de la table d'adresses MAC :</p>
+<p></p>
+<p>1. Le commutateur reçoit une trame du PC 1 sur le port 1 (Figure 1).</p>
+<p>2. Le commutateur examine l'adresse MAC source et la recherche dans la table d'adresses MAC.</p>
+<p>
+<ul>
+<li>Si cette adresse ne figure pas dans la table d'adresses MAC, il associe l'adresse MAC source du PC 1 au port d'entrée (port 1) dans la table d'adresses MAC (Figure 2).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Si la table d'adresses MAC comporte déjà une entrée pour cette adresse source, il réinitialise le compteur d'obsolescence. En général, une entrée d'adresse MAC est conservée pendant cinq minutes.</li>
+</ul>
+</p>
+<p></p>
+<p>3. Après avoir enregistré les informations d'adresse source, le commutateur examine l'adresse MAC de destination. </p>
+<p>
+<ul>
+<li>Si l'adresse de destination ne figure pas dans la table MAC ou s'il s'agit d'une adresse MAC de diffusion, c'est-à-dire ne comportant que des F, le commutateur transfère la trame à tous les ports, à l'exception du port d'entrée (Figure 3).</li>
+</ul>
+</p>
+<p>4. Le périphérique de destination (PC 3) répond à la trame avec une trame de monodiffusion destinée au PC 1 (Figure 4).</p>
+<p>5. Le commutateur enregistre, dans la table d'adresses, l'adresse MAC source du PC 3 et le numéro de port d'entrée. L'adresse de destination de la trame et le port de sortie qui lui est associé se trouvent dans la table d'adresses MAC (Figure 5).</p>
+<p>6. Le commutateur peut désormais transférer les trames entre ces périphériques source et de destination, sans inondation, car il dispose d'entrées dans la table d'adresses qui identifient les ports associés (Figure 6).</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

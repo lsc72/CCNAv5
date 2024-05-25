@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide>
+		<element type="IMAGE" src="6_2_2_5.jpg" x="0" y="0" width="470" height="400"/>
+		<element type="TEXT" id="ID_static_1" text=".10" x="40" y="21.65" align="center" width="21.15" />
+		<element type="TEXT" id="ID_static_2" text=".10" x="40" y="94.65" align="center" width="21.15" />
+		<element type="TEXT" id="ID_static_3" text=".10" x="403.4" y="22.25" align="center" width="21.15" />
+		<element type="TEXT" id="ID_static_4" text=".1" x="312.3" y="56.95" align="center" width="15.05" />
+		<element type="TEXT" id="ID_static_5" text=".1" x="312.6" y="90.6" align="center" width="15.05" />
+		<element type="TEXT" id="ID_static_6" text="G0/0 .1" x="122.2" y="31.25" align="right" width="30.1" />
+		<element type="TEXT" id="ID_static_7" text=".225 S0/0/0" x="182.5" y="75.35" align="center" width="38.15" />
+		<element type="TEXT" id="ID_static_8" text=".226" x="254.55" y="66.95" align="center" width="27.25" />
+		<element type="TEXT" id="ID_static_9" text=".1 G0/1" x="122.2" y="90.4" align="right" width="30.1" />
+		<element type="TEXT" id="ID_static_10" text=".10" x="403.65" y="93.15" align="center" width="21.15" />
+		<element type="TEXT" id="ID_static_11" text="209.165.200.224/30" x="185.85" y="50.6" align="center" width="104.25" bold="1"/>
+		<element type="TEXT" id="ID_static_12" text="192.168.10.0/24" x="56.6" y="12.1" align="center" width="85.35" bold="1"/>
+		<element type="TEXT" id="ID_static_13" text="192.168.11.0/24" x="53.6" y="125.5" align="center" width="85.35" bold="1"/>
+		<element type="TEXT" id="ID_static_14" text="10.1.1.0/24" x="339.85" y="14.75" align="center" width="60.95" bold="1"/>
+		<element type="TEXT" id="ID_static_15" text="10.1.2.0/24" x="342.85" y="125.25" align="center" width="60.95" bold="1"/>
+		<element type="TEXT" id="ID_static_16" text="64.100.0.1" x="267.1" y="29.65" align="center" width="58.35" />
+		<element type="ROUTER" textId="ID_router_txt1" x="4.85" y="153.8" width="460.25" height="241.35" size="10"/>	
+	</slide>
+	<text id="ID_router_txt1"><![CDATA[<pre>R1# <b>show ip route</b>
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, 
+       B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - 
+       IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+     10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+D       10.1.1.0/24 [90/2170112] <span class="colo"><b>via 209.165.200.226</b></span>, 00:00:05, 
+        Serial0/0/0
+D       10.1.2.0/24 [90/2170112] <span class="colo"><b>via 209.165.200.226</b></span>, 00:00:05, 
+        Serial0/0/0
+     192.168.10.0/24 is variably subnetted, 2 subnets, 3 masks
+C       192.168.10.0/24 is directly connected, GigabitEthernet0/0
+L       192.168.10.1/32 is directly connected, GigabitEthernet0/0
+     192.168.11.0/24 is variably subnetted, 2 subnets, 3 masks
+C       192.168.11.0/24 is directly connected, GigabitEthernet0/1
+L       192.168.11.1/32 is directly connected, GigabitEthernet0/1
+     209.165.200.0/24 is variably subnetted, 2 subnets, 3 masks
+C       209.165.200.224/30 is directly connected, Serial0/0/0
+L       209.165.200.225/32 is directly connected, Serial0/0/0
+R1#</pre>]]>
+		</text>
+</data>

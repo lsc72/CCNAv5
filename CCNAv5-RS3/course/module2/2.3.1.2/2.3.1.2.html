@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.1.2 Configuration et vérification de l&#x0027;ID de pont</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration Spanning Tree (arbre recouvrant)</h1>
+        <h2>Configuration PVST+</h2>
+      </div>
+      <div id="content">
+<p>Lorsqu'un administrateur souhaite définir un commutateur spécifique en tant que pont racine, sa valeur de priorité de pont doit être modifiée de manière à ce qu'elle soit inférieure à la valeur de priorité de tous les autres commutateurs du réseau. Il existe deux méthodes pour configurer la valeur de priorité de pont d'un commutateur Cisco Catalyst.</p>
+<p></p>
+<p>
+<b>Méthode 1</b>
+</p>
+<p>Pour garantir que le commutateur possède la valeur de priorité de pont la plus basse du réseau, servez-vous de la commande <span class="cmd"><b>spanning-tree vlan </b></span><span class="cmd"><i>vlan-id</i></span><span class="cmd"><b> root primary</b></span> en mode de configuration globale. La priorité du commutateur est configurée sur la valeur prédéfinie de 24576 ou sur le multiple le plus élevé de 4096, moins la plus basse valeur de priorité de pont détectée sur le réseau.</p>
+<p></p>
+<p>Pour définir un pont racine alternatif, utilisez la commande de mode de configuration d'interface globale<span class="cmd"><b>spanning-tree vlan </b></span><span class="cmd"><i>vlan-id</i></span><span class="cmd"><b> root secondary</b></span>. Cette commande configure la priorité du commutateur sur la valeur prédéfinie de 28672. Cela permet de garantir que le commutateur alternatif deviendra le pont racine en cas de défaillance du pont racine principal. Ceci suppose que les autres commutateurs du réseau ont une valeur de priorité par défaut de 32768.</p>
+<p></p>
+<p>Dans la Figure 1, S1 a été configuré en tant que pont racine principal à l'aide de la commande <span class="cmd"><b>spanning-tree vlan 1 root primary</b></span> et S2 a été configuré en tant que pont racine secondaire à l'aide de la commande <span class="cmd"><b>spanning-tree vlan 1 root secondary</b></span>.</p>
+<p></p>
+<p>
+<b>Méthode 2</b>
+</p>
+<p>L'autre méthode pour configurer la valeur de priorité de pont consiste à utiliser la commande de mode de configuration d'interface globale<span class="cmd"><b>spanning-tree vlan </b></span><span class="cmd"><i>vlan-id</i></span><span class="cmd"><b> priority </b></span><span class="cmd"><i>value</i></span>. Cette commande offre un contrôle plus fin sur la valeur de priorité de pont. La valeur de priorité est configurée par incréments de 4096, entre 0 et 61440. </p>
+<p></p>
+<p>Dans cet exemple, S3 présente une valeur de priorité de pont de 24576, définie par le biais de la commande <span class="cmd"><b>spanning-tree vlan 1 priority 24576</b></span>.</p>
+<p></p>
+<p>Pour vérifier la priorité de pont d'un commutateur, servez-vous de la commande <span class="cmd"><b>show spanning-tree</b></span>. Dans la Figure 2, la priorité du commutateur a été définie sur 24576. Notez également que le commutateur a été désigné comme pont racine pour l'instance Spanning Tree.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe dans la Figure 3 pour configurer les commutateurs S1, S2 et S3. En utilisant la Méthode 2 décrite précédemment, configurez manuellement S3 en définissant la priorité sur 24576 pour VLAN 1. En appliquant la Méthode 1, configurez S2 en tant que pont racine secondaire pour VLAN 1 et configurez S1 en tant que racine principale pour VLAN 1. Vérifiez la configuration en exécutant la commande <span class="cmd"><b>show spanning-tree</b></span> sur S1.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

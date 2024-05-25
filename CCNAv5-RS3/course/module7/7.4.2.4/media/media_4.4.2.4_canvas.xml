@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+	<data>	
+			<slide type="MBAR">
+				<slide>
+					<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>				
+					<element type="ROUTER" textId="staticTxt" width="432" height="152" x="4.45" y="36.3" />
+					<element type="ROUTER" textId="staticTxt1" width="432" height="179" x="4.45" y="196.3" />
+				</slide>
+				<slide>
+					<element type="TEXT" subType="TITLE" compId="ID_title"/>
+					<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC5" width="437.1" height="367" x="0" y="30" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+				</slide>	
+				<slide>
+				<element type="TEXT" compId="ID_s3_txt01" x="17" y="180" width="389.9" expand="right" align="left" />
+				<element type="ROUTER" textId="ID_router_txt3" x="6.55" y="55" width="428.05" height="267.4" />
+				<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+				</slide>
+			</slide> 
+	<text id="staticTxt"><![CDATA[
+			R1(config)# <b>interface g0/0</b><br/>
+			R1(config-if)# <b>ipv6 eigrp 2</b><br/>
+			R1(config-if)# <b>exit</b><br/>
+			R1(config)# <b>interface s 0/0/0</b><br/>
+			R1(config-if)# <b>ipv6 eigrp 2</b><br/>    
+			R1(config-if)# <b>exit</b><br/>
+			R1(config)# <b>interface s 0/0/1</b><br/>
+			R1(config-if)# <b>ipv6 eigrp 2</b><br/>    
+			R1(config-if)#
+	]]></text>	
+	<text id="staticTxt1"><![CDATA[
+		R2(config)# <b>interface g 0/0</b><br/>
+		R2(config-if)# <b>ipv6 eigrp 2</b><br/>
+		R2(config-if)# <b>exit</b><br/>
+		R2(config)# <b>interface s 0/0/0</b><br/>
+		R2(config-if)# <b>ipv6 eigrp 2 </b><br/>    
+		R2(config-if)# <b>exit</b><br/>
+		%DUAL-5-NBRCHANGE: EIGRP-IPv6 2: Neighbor FE80::1 (Serial0/0/0) is up: new adjacency<br/>
+		R2(config)# <b>interface s 0/0/1</b><br/>
+		R2(config-if)# <b>ipv6 eigrp 2</b><br/>     
+		R2(config-if)#
+
+	]]></text>	
+	<text id="ID_router_txt3"><![CDATA[<pre>R1(config)# <b>ipv6 router eigrp 2</b>
+R1(config-rtr)# <b>passive-interface gigabitethernet 0/0</b>
+R1(config-rtr)# <b>end</b>
+
+R1# <b>show ipv6 protocols</b>
+
+IPv6 Routing Protocol is "eigrp 2"
+EIGRP-IPv6 Protocol for AS(2)
+ 
+
+  Interfaces:
+    Serial0/0/0
+    Serial0/0/1
+<div class="orange" style="width:99.5%;">    GigabitEthernet0/0 (passive)</div>
+  Redistribution:
+    None
+R1#
+</pre>]]></text>
+</data>
+
+	
+		
+
+
+	

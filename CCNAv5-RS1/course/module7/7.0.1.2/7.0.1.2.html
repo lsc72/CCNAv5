@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.0.1.2 Exercice en classe - Nous devons parler - Jeu </title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Couche transport</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Nous devons parler</b>
+</p>
+<p></p>
+<p>
+<b>Remarque :</b> Cet exercice fonctionne mieux avec des groupes de taille moyenne, de 6 à 8 participants par groupe. </p>
+<p></p>
+<p>L'instructeur va chuchoter un message complexe au premier participant du groupe. Par exemple, ce message peut être « Notre examen final aura lieu mardi prochain, le 5 février, à 14 h, dans la salle 1151 ».</p>
+<p>Ce participant devra ensuite chuchoter le message au participant suivant. Chaque groupe suit ce processus jusqu'à ce que tous les membres aient écouté le message. Voici les règles que vous devez suivre :</p>
+<p></p>
+<p>
+<ul>
+<li>Vous ne pouvez chuchoter le message qu'une seule fois à votre voisin. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le message doit continuer à passer d'une personne à une autre et passer par tous les participants. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>L'instructeur doit demander à un participant de chronométrer le temps que le message va prendre pour passer du premier au dernier participant. Il est conseillé de demander au premier ou au dernier participant du groupe de chronométrer le temps de jeu.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le dernier participant prononcera à haute voix le message qu'on lui a transmis.</li>
+</ul>
+</p>
+<p></p>
+<p>L'instructeur redira le message d'origine afin que le groupe puisse le comparer au message prononcé par le dernier participant. </p>
+<p></p>
+<p>
+<a href="../../files/7.0.1.2%20Class%20Activity%20-%20We%20Need%20to%20Talk%20Instructions.pdf" target="_blank">Exercice en classe - Nous devons parler : instructions</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

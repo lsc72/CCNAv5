@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.1.2 Comparaison du protocole EIGRP pour IPv4 et IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole EIGRP pour IPv6</h1>
+        <h2>Protocole EIGRP pour IPv4 versus IPv6</h2>
+      </div>
+      <div id="content">
+<p>Voici une comparaison des principales fonctionnalités des protocoles EIGRP pour IPv4 et EIGRP pour IPv6 :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Routes annoncées </b>: le protocole EIGRP pour IPv4 annonce des réseaux IPv4, tandis que le protocole EIGRP pour IPv6 annonce des préfixes IPv6.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Vecteur de distance </b>: le protocole EIGRP pour IPv4 et le protocole EIGRP pour IPv6 sont des protocoles de routage à vecteur de distance avancés. Les deux protocoles utilisent les mêmes distances administratives.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Technologie de convergence </b>: le protocole EIGRP pour IPv4 et le protocole EIGRP pour IPv6 utilisent l'algorithme DUAL. Les deux protocoles utilisent les mêmes techniques et processus DUAL, notamment le successeur, le successeur potentiel, la distance de faisabilité et la distance annoncée.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Métrique </b>: le protocole EIGRP pour IPv4 et le protocole EIGRP pour IPv6 utilisent tous deux la bande passante, le délai, la fiabilité et la charge pour leur métrique composite. Les deux protocoles de routage utilisent la même métrique composite et utilisent uniquement la bande passante et le délai, par défaut. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Protocole de transport </b>: le protocole de transport fiable (RTP, Reliable Transport Protocol) garantit l'acheminement des paquets EIGRP à tous les voisins pour les deux protocoles, le protocole EIGRP pour IPv4 et le protocole EIGRP pour IPv6.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Messages de mise à jour </b>: le protocole EIGRP pour IPv4 et le protocole EIGRP pour IPv6 envoient des mises à jour incrémentielles en cas de modification de l'état d'une destination. Les termes « partiel » et « limité » sont utilisés dans les deux protocoles pour désigner les mises à jour.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Mécanisme de détection de voisins </b>: le protocole EIGRP pour IPv4 et le protocole EIGRP pour IPv6 utilisent un simple mécanisme Hello pour identifier les routeurs voisins et établir des contiguïtés. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresses source et de destination </b>: le protocole EIGRP pour IPv4 envoie des messages à l'adresse de multidiffusion 224.0.0.10. Ces messages utilisent l'adresse IPv4 source de l'interface sortante. Le protocole EIGRP pour IPv6 envoie ses messages à l'adresse de multidiffusion FF02::A. Les messages EIGRP pour IPv6 sont fournis à l'aide de l'adresse link-local IPv6 de l'interface de sortie.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Authentification </b>: le protocole EIGRP pour IPv4 peut utiliser l'authentification en clair ou l'authentification Message Digest 5 (MD5). Le protocole EIGRP pour IPv6 utilise MD5. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>ID de routeur </b>: le protocole EIGRP pour IPv4 et le protocole EIGRP pour IPv6 utilisent tous deux un nombre 32 bits comme ID de routeur EIGRP. L'ID de routeur 32 bits est représenté par une notation décimale à point et correspond généralement à une adresse IPv4. Si le routeur EIGRP pour IPv6 n'a pas été configuré avec une adresse IPv4, vous devez utiliser la commande<span class="cmd"><b> eigrp router-id</b></span> pour configurer un ID de routeur 32 bits. Le processus de détermination de l'ID de routeur est le même pour le protocole EIGRP pour IPv4 et le protocole EIGRP pour IPv6.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

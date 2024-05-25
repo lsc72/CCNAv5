@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+<slide type="MBAR">
+
+<slide>
+<element type="TEXT" subType="TABLE" compId="ID_s1_table" x="8" y="30" width="427.9" height="370" />
+<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+</slide>
+
+
+<slide>
+<element type="IMAGE" src="11_2_3_1_A.png" x="0" y="0" width="470" height="400" />
+
+<element type="TEXT" id="ID_static_1" text="S0/0/0" x="192.85" y="81.05" align="center" width="39.15" />
+<element type="TEXT" id="ID_static_2" text="S0/1/0" x="283.15" y="84.05" align="center" width="39.15" />
+<element type="TEXT" id="ID_static_3" text="192.168.11.10" x="2" y="155.05" align="center" width="76.85" />
+<element type="TEXT" id="ID_static_4" text="209.165.201.1" x="362" y="31.1" align="center" width="77.7" />
+<element type="TEXT" id="ID_static_5" text="209.165.202.129" x="351.5" y="155.05" align="center" width="89.9" />
+<element type="TEXT" id="ID_static_6" text="192.168.10.10" x="1" y="90.05" align="center" width="76.85" />
+<element type="TEXT" id="ID_static_7" text=".225" x="278" y="102.05" align="center" width="28.25" />
+<element type="TEXT" id="ID_static_8" text="209.165.200.224/27" x="265.8" y="61.7" align="center" width="105.15" />
+<element type="TEXT" compId="ID_s2_txt01" x="151" y="32" width="104.5" expand="up+down" align="center" />
+<element type="TEXT" compId="ID_s2_txt02" x="260" y="32" width="104.5" expand="up+down" align="center" />
+<element type="TEXT" compId="ID_s2_txt04" x="335" y="91" width="76.55" expand="up+down" align="center" />
+<element type="TEXT" compId="ID_s2_txt03" x="328" y="52" width="70.3" expand="left" align="right" />
+<element type="TEXT" compId="ID_s2_txt05" x="328" y="130" width="70.3" expand="left" align="right" />
+
+<element type="ROUTER" textId="ID_static_8" width="434.6" height="200" x="3" y="191.95" size="10"/>
+<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+</slide>
+
+
+<slide>
+<element type="IMAGE" src="11_2_3_1_B.png" x="0" y="0" width="470" height="400" />
+<element type="TEXT" id="ID_static_9" text="S0/0/0" x="178.85" y="77.05" align="center" width="39.15" />
+<element type="TEXT" id="ID_static_10" text="S0/1/0" x="274.15" y="84.05" align="center" width="39.15" />
+<element type="TEXT" id="ID_static_11" text="10.10.10.0/24" x="70" y="58" align="center" width="73.8" />
+<element type="TEXT" id="ID_static_12" text="209.165.200.254" x="348" y="155.05" align="center" width="89.9" />
+<element type="TEXT" id="ID_static_13" text="10.10.10.10" x="1" y="92.05" align="center" width="64.65" />
+<element type="TEXT" id="ID_static_14" text=".225" x="269" y="102.05" align="center" width="28.25" />
+<element type="TEXT" id="ID_static_15" text="209.165.200.224/27" x="255.8" y="60.7" align="center" width="105.15" />
+<element type="TEXT" compId="ID_s3_txt01" x="141" y="28" width="104.5" expand="up+down" align="center" />
+<element type="TEXT" compId="ID_s3_txt02" x="253" y="28" width="104.5" expand="up+down" align="center" />
+<element type="TEXT" compId="ID_s3_txt04" x="336" y="91" width="76.55" expand="up+down" align="center" />
+<element type="ACTIVITY" subType="SYNTAX" compId="ID_s3_SC5" x="2" y="178" width="437.1" height="205.1" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+
+<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+</slide>
+
+</slide>
+
+<text  id="ID_static_8"><![CDATA[<font color="#393536">Define a pool of public IPv4 addresses under the pool name NAT-POOL2.</font><br/><font face="_typewriter">R2(config)# <b>ip nat pool NAT-POOL2 209.165.200.226 209.165.200.240 netmask 255.255.255.224</b></font><br/><br/><font color="#393536">Define which addresses are eligible to be translated.</font><br/><font face="_typewriter">R2(config)#<b> access-list 1 permit 192.168.0.0 0.0.255.255</b></font><br/><br/><font color="#393536">Bind NAT-POOL2 with ACL 1.</font><br/><font face="_typewriter">R2(config)#<b> ip nat inside source list 1 pool NAT-POOL2 overload</b></font><br/><br/><font color="#393536">Identify interface serial 0/0/0 as an inside NAT interface.</font><br/><font face="_typewriter">R2(config)# <b>interface Serial0/0/0</b><br/>R2(config-if)# <b>ip nat inside</b></font><br/><br/><font color="#393536">Identify interface serial 0/1/0 as the outside NAT interface.</font><br/><font face="_typewriter">R2(config)#<b> interface Serial0/1/0</b><br/>R2(config-if)#<b> ip nat outside</b></font>]]></text>
+</data>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.3.3 Exemples de routes IPv6 statiques</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement d&#x0027;un routeur</h1>
+        <h2>Routes apprises de manière statique</h2>
+      </div>
+      <div id="content">
+<p>Comme IPv4, IPv6 prend en charge des routes statiques et des routes statiques par défaut. Elles sont utilisées et configurées comme des routes statiques IPv4. </p>
+<p></p>
+<p>Pour configurer une route statique IPv6 par défaut, utilisez la commande de configuration globale <span class="cmd"><b>ipv6 route ::/0 </b></span><span class="cmd">{</span><span class="cmd"><i>ipv6-address </i></span><span class="cmd">|</span><span class="cmd"><i> interface-type interface-number</i></span>}<span class="cmd"></span>.</p>
+<p></p>
+<p>La Figure 1 décrit la configuration d'une route statique par défaut sur R1 à l'interface Serial 0/0/0. </p>
+<p></p>
+<p>Notez que le résultat, illustré en Figure 2, de la configuration de route statique par défaut a généré une entrée « <span class="cmd">S</span> » dans la table de routage. Le « <span class="cmd">S</span> » signifie que la source de la route est une route statique. Contrairement au cas de la route statique IPv4, aucun astérisque (*) ou aucune passerelle de dernier recours ne sont explicitement identifiés. </p>
+<p></p>
+<p>Comme pour IPv4, les routes statiques sont des routes explicitement configurées pour atteindre un réseau distant donné. Les routes IPv6 statiques sont configurées à l'aide de la commande de configuration globale<span class="cmd"><b> ipv6 route </b></span><span class="cmd"><i>ipv6-prefix</i></span><span class="cmd"><i>/</i></span><span class="cmd"><i>prefix-length</i></span><span class="cmd"></span><span class="cmd">{</span><span class="cmd"><i>ipv6-address</i></span><span class="cmd"><i></i></span><span class="cmd">|</span><span class="cmd"><i></i></span><span class="cmd"><i>interface-type interface-number</i></span><span class="cmd">}</span><span class="cmd"><i></i></span>. </p>
+<p></p>
+<p>L'exemple de la Figure 3 illustre la configuration de deux routes statiques partant de R2 pour atteindre les deux LAN de R1. La route vers le réseau LAN 2001:0DB8:ACAD:2::/64 est configurée avec une interface de sortie, tandis que la route vers le LAN 2001:0DB8:ACAD:1::/64 est configurée avec l'adresse IPv6 de tronçon suivant. L'adresse IPv6 de tronçon suivant peut être une adresse de monodiffusion globale IPv6 ou une adresse link-local.</p>
+<p></p>
+<p>La Figure 4 affiche la table de routage reflétant les nouvelles routes statiques installées.</p>
+<p></p>
+<p>La Figure 5 confirme la connectivité du réseau distant de R1 au LAN 2001:0DB8:ACAD:4::/64 sur R2.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

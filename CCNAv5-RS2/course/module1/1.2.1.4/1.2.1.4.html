@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.1.4 Commutation par « stockage et retransmission »</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>L&#x0027;environnement commuté</h1>
+        <h2>Transfert de trames</h2>
+      </div>
+      <div id="content">
+<p>La commutation par stockage et retransmission présente deux caractéristiques principales qui la distinguent de la commutation cut-through : le contrôle des erreurs et la mise en tampon automatique.</p>
+<p></p>
+<p>
+<b>Contrôle des erreurs</b>
+</p>
+<p></p>
+<p>La commutation par stockage et retransmission contrôle l'absence d'erreurs sur une trame entrante. Comme l'illustre la figure, le commutateur reçoit la trame complète sur le port d'entrée. Le dernier champ du datagramme contient une séquence de contrôle de trame (FCS, frame check sequence), que le commutateur compare avec ses propres calculs de FCS. La FCS est un processus de contrôle des erreurs permettant de vérifier que la trame est exempte d'erreurs physiques et de liaison de données. Si la trame est exempte d'erreurs, le commutateur transfère la trame. Si tel n'est pas le cas, la trame est abandonnée.</p>
+<p></p>
+<p>
+<b>Mise en tampon automatique</b>
+</p>
+<p></p>
+<p>La mise en tampon des ports d'entrée, utilisée par les commutateurs à stockage et retransmission, prend en charge toute combinaison de vitesses Ethernet. Par exemple, le traitement d'une trame arrivant sur un port Ethernet 100 Mbit/s et à transférer sur une interface 1 Gbit/s nécessite la commutation par stockage et retransmission. Dès que les vitesses du port d'entrée et de sortie ne correspondent pas, le commutateur enregistre la trame complète dans une mémoire tampon, calcule le contrôle FCS, puis transmet la trame au port de sortie et l'envoie.</p>
+<p></p>
+<p>La commutation par stockage et retransmission est la méthode de commutation LAN principale de Cisco.</p>
+<p></p>
+<p>Un commutateur à stockage et retransmission abandonne les trames qui ne respectent pas le contrôle FCS. Il ne transmet donc pas les trames non valides. En revanche, un commutateur cut-through risque de transférer des trames non valides car il n'effectue aucun contrôle FCS.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

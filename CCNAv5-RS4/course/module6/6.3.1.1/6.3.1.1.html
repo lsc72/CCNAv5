@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.1.1 Motivation de PPPoE</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de la connectivité xDSL</h1>
+        <h2>Vue d&#x0027;ensemble de PPPoE</h2>
+      </div>
+      <div id="content">
+<p>Outre la compréhension des diverses technologies disponibles pour un accès Internet haut débit, il est également important de connaître le protocole de couche liaison de données sous-jacent utilisé par le FAI pour l'établissement d'une connexion. </p>
+<p></p>
+<p>Un protocole de couche liaison de données fréquemment utilisé par les FAI est le protocole PPP (protocole point à point). Le protocole PPP peut être utilisé sur l'ensemble des liaisons série, y compris celles créées à l'aide de modems analogiques à ligne commutée et de modems RNIS. À ce jour, la liaison entre un utilisateur de ligne commutée et un FAI, utilisant des modems analogiques, utilise généralement le protocole PPP. La Figure 1 illustre une représentation de base de cette connexion commutée analogique avec le protocole PPP. </p>
+<p></p>
+<p>Par ailleurs, les FAI utilisent souvent le protocole PPP en tant que protocole de liaisons de données sur les connexions haut débit. Les raisons en sont multiples. Tout d'abord, le protocole PPP permet d'attribuer des adresses IP aux extrémités distantes d'une liaison PPP. Lorsque le protocole PPP est activé, les FAI peuvent l'utiliser pour attribuer une seule adresse IPv4 publique à chacun de leurs clients. Plus important encore, le protocole PPP prend en charge l'authentification CHAP. Les FAI souhaitent souvent utiliser le protocole CHAP pour authentifier les clients, car il leur permet de contrôler les enregistrements de la gestion des comptes durant l'authentification afin de voir si la facture d'un client a été payée avant de lui permettre de se connecter à Internet.</p>
+<p></p>
+<p>Ces technologies sont apparues sur le marché dans l'ordre suivant, avec des prises en charge variables du protocole PPP :</p>
+<p></p>
+<p>1. Modems analogiques de liaison commutée pouvant utiliser les protocoles PPP et CHAP</p>
+<p>2. Technologie RNIS de liaison commutée pouvant utiliser les protocoles PPP et CHAP</p>
+<p>3. Technologie DSL, qui ne crée pas de liaison point à point et ne prend pas en charge les protocoles PPP et CHAP</p>
+<p></p>
+<p>Les FAI apprécient le protocole PPP en raison de ses fonctionnalités d'authentification, de gestion des comptes et d'administration des liaisons. Les clients apprécient quant à eux la simplicité et la disponibilité de la connexion Ethernet. Toutefois, les liaisons Ethernet ne prennent pas en charge le protocole PPP de manière native. Une solution à ce problème a été trouvée, sous la forme du protocole PPPoE (PPP over Ethernet). Comme indiqué à la Figure 2, le protocole PPPoE permet l'envoi de trames PPP encapsulées dans des trames Ethernet. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

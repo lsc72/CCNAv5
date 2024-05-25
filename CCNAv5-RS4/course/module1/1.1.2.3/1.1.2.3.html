@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.2.3 Couche de distribution</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation de la conception de réseau hiérarchique</h1>
+        <h2>Conception hiérarchique du réseau</h2>
+      </div>
+      <div id="content">
+<p>La couche de distribution regroupe les données reçues à partir des commutateurs de la couche d'accès, avant leur transmission vers la couche cœur de réseau, en vue du routage vers leur destination finale. Dans la figure, la couche de distribution est la limite entre les domaines de couche 2 et le réseau routé de la couche 3. </p>
+<p></p>
+<p>Le périphérique de couche de distribution est le principal point d'attention dans les armoires de répartition. Un routeur ou un commutateur multicouche est utilisé pour segmenter les groupes de travail et isoler les problèmes réseau dans l'environnement de campus.</p>
+<p></p>
+<p>Un commutateur de couche de distribution peut fournir des services en amont pour de nombreux commutateurs de couche d'accès.</p>
+<p></p>
+<p>La couche de distribution peut offrir :</p>
+<p>
+<ul>
+<li>L'agrégation des liaisons LAN ou WAN</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La sécurité basée sur des stratégies sous forme de listes de contrôle d'accès et de filtrage</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les services de routage entre LAN et VLAN, et entre domaines de routage, par exemple EIGRP vers OSPF </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La redondance et l'équilibrage de la charge</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Une limite pour l'agrégation et le résumé des routes configurées sur les interfaces vers la couche cœur de réseau</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La diffusion de contrôle du domaine, car les routeurs et les commutateurs multicouches ne transmettent pas les diffusions. Point de démarcation entre domaines de diffusion</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

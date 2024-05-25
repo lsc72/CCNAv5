@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.1.4 Accès aux supports</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche liaison de données</h1>
+        <h2>Objectif de la couche liaison de données</h2>
+      </div>
+      <div id="content">
+<p>Différentes méthodes de contrôle d'accès au support peuvent être requises au cours d'une même communication. Chaque environnement réseau que les paquets rencontrent alors qu'ils voyagent d'un hôte local à un hôte distant peut présenter différentes caractéristiques. Par exemple, un réseau local Ethernet se compose de plusieurs hôtes qui sont en concurrence pour accéder au support réseau de façon ad hoc. Les liaisons série consistent uniquement en une connexion directe entre deux périphériques via lesquels les données circulent sous forme d'une suite organisée de bits. </p>
+<p></p>
+<p>Les interfaces de routeur encapsulent le paquet dans la trame appropriée et une méthode adéquate de contrôle d'accès au support est utilisée pour accéder à chaque liaison. Un échange de paquets de couche réseau peut impliquer de nombreuses transitions de support et de couche liaison de données. Au niveau de chaque tronçon le long du chemin, un routeur :</p>
+<p>
+<ul>
+<li>Accepte une trame d'un support</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Désencapsule la trame</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Réencapsule le paquet dans une nouvelle trame</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Achemine la nouvelle trame appropriée jusqu'au support de ce segment du réseau physique</li>
+</ul>
+</p>
+<p></p>
+<p>Le routeur présenté dans la figure comporte une interface Ethernet pour se connecter au réseau local et une interface série pour se connecter au réseau étendu. Pour traiter les trames, le routeur utilise des services de couche liaison de données afin de recevoir la trame d'un support, de désencapsuler cette trame dans l'unité de données de protocole de la couche 3, de réencapsuler l'unité de données de protocole dans une nouvelle trame et de placer la trame sur le support de la liaison suivante du réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

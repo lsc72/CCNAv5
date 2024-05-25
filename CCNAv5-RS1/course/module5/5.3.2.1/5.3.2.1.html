@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.3.2.1 Configuration fixe et configuration modulaire</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.3.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Commutateurs LAN</h1>
+        <h2>Fixe ou modulaire</h2>
+      </div>
+      <div id="content">
+<p>Lors de la sélection d'un commutateur, il est important de comprendre les caractéristiques essentielles des options de commutation disponibles. Il est notamment nécessaire de déterminer si des fonctionnalités telles que PoE (Power over Ethernet) sont nécessaires et de définir le débit de transfert préféré. </p>
+<p></p>
+<p>Comme l'illustre la Figure 1, la technologie PoE permet à un commutateur de fournir une alimentation à des périphériques tels que des téléphones IP et certains points d'accès sans fil, par le biais du câblage Ethernet existant. Cela augmente la flexibilité d'installation. </p>
+<p></p>
+<p>Le débit de transfert définit les capacités de traitement d'un commutateur en mesurant la quantité de données pouvant être traitées chaque seconde par le commutateur. Les gammes de produits de commutateur sont classées par débits de transfert. Les commutateurs de couche d'entrée fournissent des débits de transfert inférieurs à ceux des couches d'entreprise. Il existe d'autres critères tels que la capacité d'empilage du périphérique, l'épaisseur du commutateur (exprimée en unités de rack) et la densité des ports, c'est-à-dire le nombre de ports disponibles sur un seul commutateur. La densité des ports d'un appareil peut varier selon qu'il présente une configuration fixe ou modulaire.</p>
+<p></p>
+<p>Ces options caractérisent parfois le type de commutateur. </p>
+<p></p>
+<p>
+<b>Commutateurs de configuration fixe</b>
+</p>
+<p>Les commutateurs de configuration fixe disposent, comme leur nom l'indique, d'une configuration fixe. Cela signifie que vous ne pouvez pas ajouter de fonctionnalités ni d'options supplémentaires au commutateur par rapport à celles d'origine. Le modèle spécifique que vous achetez détermine les fonctionnalités et les options disponibles. Si vous achetez un commutateur fixe gigabit à 24 ports, vous ne pouvez pas rajouter des ports en cas de besoin. En général, il existe différents choix de configuration qui varient selon le nombre et les types de ports inclus.</p>
+<p></p>
+<p>
+<b>Commutateurs modulaires</b>
+</p>
+<p>Les commutateurs modulaires offrent davantage de souplesse dans leur configuration. Les commutateurs modulaires sont en principe livrés avec des châssis de différentes tailles, ce qui permet d'installer plusieurs cartes d'interface modulaires. Ces cartes d'interface contiennent les ports. La carte d'interface s'insère dans le châssis du commutateur, comme les cartes d'extension dans un ordinateur. Plus le châssis est grand, plus il peut contenir de modules. Comme la figure l'indique, vous avez le choix entre plusieurs tailles de châssis. Si vous avez acheté un commutateur modulaire avec une carte d'interface à 24 ports, vous pouvez aisément ajouter une carte d'interface à 24 ports supplémentaire, afin d'obtenir un nombre total de 48 ports.</p>
+<p></p>
+<p>La Figure 2 présente des exemples de commutateurs à configuration fixe, modulaire et empilable.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

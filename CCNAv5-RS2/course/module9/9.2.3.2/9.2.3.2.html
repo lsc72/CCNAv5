@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.3.2 Vérification d&#x0027;une liste de contrôle d&#x0027;accès standard utilisée pour sécuriser un port VTY</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Listes de contrôle d&#x0027;accès IPv4 standard </h1>
+        <h2>Sécurisation des ports VTY à l&#x0027;aide d&#x0027;une liste de contrôle d&#x0027;accès IPv4 standard </h2>
+      </div>
+      <div id="content">
+<p>Une fois que la liste de contrôle d'accès aux lignes VTY est configurée, il est important de vérifier qu'elle fonctionne correctement. La figure illustre deux périphériques tentant de se connecter à R1 via SSH. La liste d'accès 21 a été configurée sur les lignes VTY de R1. PC1 parvient à établir une connexion SSH, tandis que PC2 échoue. Ce comportement est normal, car la liste d'accès configurée permet au réseau 192.168.10.0/24 d'accéder aux lignes VTY, mais refuse tous les autres périphériques.</p>
+<p></p>
+<p>Le résultat de R1 présente l'effet de la commande <span class="cmd"><b>show access-lists</b></span> après les tentatives SSH de PC1 et PC2. La correspondance de la ligne « permit » fait référence à la connexion SSH réussie de PC1. La correspondance à l'instruction « deny » est due à l'échec de la connexion SSH de PC2, un périphérique du réseau 192.168.11.0/24.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

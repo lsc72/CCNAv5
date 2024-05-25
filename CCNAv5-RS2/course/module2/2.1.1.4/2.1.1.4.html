@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.1.4 Préparation à la gestion de commutateur de base</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de base d&#x0027;un commutateur</h1>
+        <h2>Configuration d&#x0027;un commutateur avec les paramètres d&#x0027;origine</h2>
+      </div>
+      <div id="content">
+<p>Pour préparer l'accès à la gestion à distance d'un commutateur, il est nécessaire de configurer une adresse IP et un masque de sous-réseau sur le commutateur. Gardez à l'esprit que pour administrer le commutateur depuis un réseau distant, le commutateur doit être configuré avec une passerelle par défaut. Cette opération est très similaire à la configuration des informations d'adresse IP sur des périphériques hôtes. Dans la figure, l'interface virtuelle du commutateur (SVI) sur S1 doit se voir attribuer une adresse IP. Une interface SVI est une interface virtuelle, et non un port physique du commutateur. </p>
+<p></p>
+<p>Une interface SVI est un concept relatif aux VLAN. Les VLAN sont des groupes logiques numérotés auxquels les ports physiques peuvent être attribués. Les configurations et les paramètres appliqués à un VLAN peuvent également être appliqués aux ports attribués à ce même VLAN. </p>
+<p></p>
+<p>Par défaut, le commutateur est configuré de telle sorte que sa gestion est régie par le VLAN 1. Tous les ports sont assignés à VLAN 1 par défaut. Pour des raisons de sécurité, les meilleures pratiques recommandent d'utiliser un VLAN de gestion autre que le VLAN 1. </p>
+<p></p>
+<p>Notez que ces paramètres IP sont uniquement utilisés pour l'accès à la gestion à distance du commutateur. Les paramètres IP ne permettent pas au commutateur de router des paquets de couche 3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

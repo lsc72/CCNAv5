@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.1.2 Protocole OSPF à zones multiples</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement du protocole OSPF à zones multiples</h1>
+        <h2>Pourquoi choisir le routage OSPF à zones multiples ?</h2>
+      </div>
+      <div id="content">
+<p>Lorsqu'une zone OSPF de grande taille est divisée en zones plus petites, on parle de protocole OSPF à zones multiples. Le protocole OSPF à zones multiples est utile pour les déploiements de réseaux plus importants afin de réduire la charge de traitement et de stockage.</p>
+<p></p>
+<p>Par exemple, chaque fois qu'un routeur reçoit de nouvelles informations relatives à une modification topologique dans la zone, notamment l'ajout, la suppression ou la modification d'un lien, le routeur doit relancer l'algorithme SPF, créer une nouvelle arborescence SPF et mettre à jour la table de routage. L'algorithme SPF est exigeant en temps processeur et le temps qu'il prend pour le calcul dépend de la taille de la zone. Un nombre excessif de routeurs dans une zone rendrait les LSDB très volumineuses et augmenterait la charge sur le processeur. Par conséquent, l'organisation des routeurs en zones partitionne efficacement une base de données potentiellement volumineuse en bases de données plus petites et plus faciles à gérer.</p>
+<p></p>
+<p>Un réseau OSPF à zones multiples nécessite une conception de réseau hiérarchique. La zone principale est appelée zone fédératrice (zone 0) et toutes les autres zones doivent y être reliées. Avec le routage hiérarchique, le routage s'effectue toujours entre les zones (routage interzone), alors que la plupart des opérations de routage fastidieuses, comme le recalcul de la base de données, est conservée dans une zone.</p>
+<p></p>
+<p>Comme illustré à la Figure 1, les options de topologie hiérarchique du protocole OSPF multizone présentent les avantages suivants :</p>
+<p>
+<ul>
+<li>
+<b>Réduction de la taille des tables de routage</b> : réduction du nombre d'entrées dans la table de routage, car les adresses réseau peuvent être récapitulées entre les zones. Par exemple, R1 récapitule les routes de la zone 1 vers la zone 0 et R2 récapitule les routes de la zone 51 vers la zone 0. R1 et R2 propagent également une route statique par défaut vers les zones 1 et 51.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Réduction de la surcharge liée aux mises à jour d'état de liens</b> : réduit les exigences de traitement et de mémoire, car un nombre moins élevé de routeurs échangent des LSA. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Réduction de la fréquence des calculs SPF</b> : recherche l'impact d'une modification topologique au sein d'une zone. Par exemple, l’incidence de la mise à jour du routage est réduite, car l’inondation des LSA cesse à la frontière de la zone.</li>
+</ul>
+</p>
+<p></p>
+<p>À la Figure 2, imaginons qu'un lien est défaillant entre deux routeurs internes de la zone 51. Seuls les routeurs de la zone 51 échangent des LSA et renvoient l'algorithme SPF pour cet événement. R1 ne reçoit pas les LSA en provenance de la zone 51 et ne recalcule pas l'algorithme SPF.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.3.5 Autres organismes de normalisation</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.3.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Normes et protocoles réseau</h1>
+        <h2>Organismes de normalisation</h2>
+      </div>
+      <div id="content">
+<p>Les normes réseau font appel à plusieurs autres organismes de normalisation, dont voici les plus courants :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>L'EIA</b> (Electronic Industries Alliance), anciennement Electronics Industries Association, est une alliance commerciale internationale de normalisation dont le rôle concerne les entreprises d'électronique. L'EIA est connue pour ses normes associées au câblage électrique, aux connecteurs et aux racks 19 pouces utilisés pour monter l'équipement réseau.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>La TIA</b> (Telecommunications Industry Association) est responsable du développement des normes de communication dans un grand nombre de domaines, incluant les équipements radio, les tours cellulaires, les dispositifs de voix sur IP (VoIP) et les communications par satellite. Plusieurs de ses normes sont élaborées en collaboration avec l'EIA.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>L'ITU-T</b> (secteur de la normalisation des télécommunications de l'Union internationale des télécommunications) figure parmi les organismes de normalisation les plus grands et les plus anciens. L'ITU-T définit des normes de compression vidéo, de télévision sur IP (IPTV) et de communication haut débit, telles que la ligne d'abonné numérique (DSL). Par exemple, lorsque vous appelez un correspondant dans un autre pays, les codes de pays de l'ITU sont utilisés pour établir la connexion. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>L'ICANN</b> (Internet Corporation for Assigned Names and Numbers) est une association à but non lucratif basée aux États-Unis qui coordonne l'attribution des adresses IP, la gestion des noms de domaine utilisés par le protocole DNS et les identificateurs de protocole ou numéros de ports utilisés par les protocoles TCP et UDP. L'ICANN crée des politiques et assume la responsabilité totale de ces attributions.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>L'IANA</b> (Internet Assigned Numbers Authority) est une composante de l'ICANN chargée de superviser et de gérer l'affectation des adresses IP, la gestion des noms de domaine et les identificateurs de protocole pour le compte de l'ICANN.</li>
+</ul>
+</p>
+<p></p>
+<p>Le fait de connaître les organismes à l'origine des normes utilisées dans les réseaux vous aidera à mieux comprendre en quoi ces normes assurent un réseau Internet ouvert et non lié à des entreprises. Vous pourrez également découvrir les nouvelles normes à mesure de leur élaboration. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.4.2.1 Récapituler les adresses réseau IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.4.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration des routes récapitulatives et des routes statiques flottantes</h1>
+        <h2>Configuration des routes récapitulatives IPv6</h2>
+      </div>
+      <div id="content">
+<p>Outre le fait que les adresses IPv6 ont une longueur de 128 bits et sont écrites au format hexadécimal, la récapitulation des adresses IPv6 est réellement similaire à celle des adresses IPv4. Il nécessite quelques étapes supplémentaires liées aux adresses IPv6 abrégées et à la conversion hexadécimale.</p>
+<p></p>
+<p>Plusieurs routes IPv6 statiques peuvent être récapitulées en une seule route IPv6 statique si :</p>
+<p>
+<ul>
+<li>Les réseaux de destination sont contigus et peuvent être récapitulés dans une adresse réseau unique. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les multiples routes statiques utilisent toutes la même interface de sortie ou adresse IPv6 de tronçon suivant. </li>
+</ul>
+</p>
+<p></p>
+<p>Examinez le réseau dans la Figure 1. R1 dispose actuellement de quatre routes IPv6 statiques pour atteindre les réseaux 2001:DB8:ACAD:1::/64 à 2001:DB8:ACAD:4::/64.</p>
+<p></p>
+<p>La Figure 2 montre les routes statiques IPv6 installées dans la table de routage IPv6.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

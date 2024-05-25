@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.4 Points d&#x0027;accès sans fil </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts de la technologie sans fil</h1>
+        <h2>Composants de WLAN</h2>
+      </div>
+      <div id="content">
+<p>Les points d'accès peuvent être divisés en deux catégories : les points d'accès autonomes et les points d'accès basés sur un contrôleur.</p>
+<p></p>
+<p>
+<b>Points d'accès autonomes</b>
+</p>
+<p>Les points d'accès autonomes, parfois appelés points d'accès intensifs, sont des périphériques indépendants configurés à l'aide de l'interface en ligne de commande Cisco ou d'une interface graphique utilisateur. Ces points d'accès autonomes sont utiles dans les cas où seule une paire de points d'accès est nécessaire sur l'ensemble du réseau. De manière facultative, plusieurs points d'accès peuvent être contrôlés à l'aide des services de domaine sans fil (WDS, Wireless Domain Services) et gérés via le moteur WLSE (Wireless LAN Solution Engine) CiscoWorks.</p>
+<p></p>
+<p>
+<b>Remarque </b>: un routeur domestique est un point d'accès autonome, car l'ensemble de la configuration de ce point d'accès se trouve sur le périphérique.</p>
+<p></p>
+<p>La Figure 1 illustre le point d'accès autonome d'un petit réseau. Si la demande sans fil augmente, des points d'accès supplémentaires seront requis. Chaque point d'accès fonctionnera alors indépendamment des autres, avec une configuration et une gestion manuelles. </p>
+<p></p>
+<p>
+<b>Points d'accès basés sur un contrôleur</b>
+</p>
+<p>Les points d'accès basés sur un contrôleur sont des périphériques dépendants d'un serveur, qui ne nécessitent aucune configuration initiale. Cisco propose deux solutions basées sur un contrôleur. Les points d'accès basés sur un contrôleur sont utiles dans les cas où de nombreux points d'accès sont nécessaires sur l'ensemble du réseau. Chaque nouveau point d'accès ajouté est automatiquement configuré et géré par un contrôleur WLAN.</p>
+<p></p>
+<p>La Figure 2 présente un point d'accès basé sur un contrôleur, dans un réseau de petite taille. Notez qu'un contrôleur WLAN est désormais nécessaire pour gérer les points d'accès. L'avantage du contrôleur est qu'il peut être utilisé pour gérer un grand nombre de points d'accès.</p>
+<p></p>
+<p>
+<b>Remarque </b>: certains modèles de point d'accès peuvent fonctionner aussi bien en mode autonome que sur la base d'un contrôleur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

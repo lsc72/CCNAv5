@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide type="MBAR"> <!-- Slide 1 -->
+			<slide> <!-- Title -->
+				<element type="TEXT" subType="TITLE" compId="ID_s1_title"/> <!-- Lazy text-->		
+				<element type="TEXT" compId="ID_s1_txt01" width="430" x="5" y="70" align="left" expand="up" />
+				<element type="TEXT" compId="ID_s1_txt02" width="430" x="5" y="220" align="left" expand="up" /> <!-- Router text-->		
+				<element type="ROUTER" textId="ID_r1_txt01" x="3.85" y="94.85" width="433.25" height="74.45" size="10"/>	
+				<element type="ROUTER" textId="ID_r1_txt02" x="3.85" y="239.85" width="433.25" height="74.45" size="10"/>					
+				
+			</slide> <!-- Slide 2 -->
+			<slide>			
+				<element type="TEXT" subType="TITLE" compId="ID_s2_title"/> <!-- Router text-->		
+				<element type="ROUTER" textId="ID_r2_txt01" x="3.85" y="27.1" width="433.25" height="364.8" size="10"/>
+			</slide>
+		
+	
+	</slide> <!-- Router text -->
+	
+		<text id="ID_r1_txt01"><![CDATA[ 		<b>access-list 114 permit tcp 192.168.20.0 0.0.0.255 any <span class="orange">eq 23</span><br /> access-list 114 permit tcp 192.168.20.0 0.0.0.255 any <span class="orange">eq 21</span><br /> access-list 114 permit tcp 192.168.20.0 0.0.0.255 any <span class="orange">eq 20</span><br />  </b>
+		]]></text>
+		
+		<text id="ID_r1_txt02"><![CDATA[ 		<b>access-list 114 permit tcp 192.168.20.0 0.0.0.255 any <span class="orange">eq telnet</span><br /> access-list 114 permit tcp 192.168.20.0 0.0.0.255 any <span class="orange">eq ftp</span><br /> access-list 114 permit tcp 192.168.20.0 0.0.0.255 any <span class="orange">eq ftp-data</span><br />  </b>
+		]]></text>
+		
+		<text id="ID_r2_txt01"><![CDATA[<pre> R1(config)# <b>access-list 101 permit tcp any any eq ? </b>
+   <b><0-65535> </b>    Port number
+   <b>bgp </b>          Border Gateway Protocol (179)
+   <b>chargen </b>      Character generator (19)
+   <b>cmd </b>          Remote commands (rcmd, 514)
+   <b>daytime </b>      Daytime (13)
+   <b>discard </b>      Discard (9)
+   <b>domain </b>       Domain Name Service (53)
+   <b>drip </b>         Dynamic Routing Information Protocol (3949)
+   <b>echo </b>         Echo (7)
+   <b>exec </b>         Exec (rsh, 512)
+   <b>finger </b>       Finger (79)
+   <b>ftp </b>          File Transfer Protocol (21)
+   <b>ftp-data </b>     FTP data connections (20)
+   <b>gopher </b>       Gopher (70)
+   <b>hostname </b>     NIC hostname server (101)
+   <b>ident </b>        Ident Protocol (113)
+   <b>irc </b>          Internet Relay Chat (194)
+   <b>klogin </b>       Kerberos login (543)
+   <b>kshell </b>       Kerberos shell (544)
+   <b>login </b>        Login (rlogin, 513)
+   <b>lpd </b>          Printer service (515)
+   <b>nntp </b>         Network News Transport Protocol (119)
+   <b>pim-auto-rp </b>  PIM Auto-RP (496)
+   <b>pop2 </b>         Post Office Protocol v2 (109)
+   <b>pop3 </b>         Post Office Protocol v3 (110)
+   <b>smtp </b>         Simple Mail Transport Protocol (25)
+   <b>sunrpc </b>       Sun Remote Procedure Call (111)
+   <b>tacacs </b>       TAC Access Control System (49)
+   <b>talk </b>         Talk (517)
+   <b>telnet </b>       Telnet (23)
+   <b>time </b>         Time (37)
+   <b>uucp </b>         Unix-to-Unix Copy Program (540)
+   <b>whois </b>        Nicname (43)
+   <b>www </b>          World Wide Web (HTTP, 80)
+
+ R1(config)# <b>access-list 101 permit tcp any any eq </b> 
+ 
+</pre>
+		]]></text>
+		
+</data>

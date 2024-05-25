@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.2.4 Vérification de la NAT dynamique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de la traduction d&#x0027;adresses réseau (NAT)</h1>
+        <h2>Configuration de la NAT dynamique</h2>
+      </div>
+      <div id="content">
+<p>Le résultat de la commande <span class="cmd"><b>show ip nat translations</b></span>, représenté sur la Figure 1 affiche le détail des deux attributions NAT précédentes. La commande montre toutes les traductions statiques qui ont été configurées ainsi que les éventuelles traductions dynamiques créées par le trafic. </p>
+<p></p>
+<p>Si vous ajoutez le mot-clé <span class="cmd"><b>verbose</b></span>, vous obtiendrez des informations supplémentaires sur chaque traduction, notamment la date de création et la durée d'utilisation d'une entrée. </p>
+<p></p>
+<p>Par défaut, les entrées de traduction expirent au bout de 24 heures, sauf si les compteurs ont été reconfigurés à l'aide de la commande<span class="cmd"><b> ip nat translation timeout </b></span><span class="cmd"><i>timeout-seconds</i></span> en mode de configuration globale.</p>
+<p></p>
+<p>Pour effacer les entrées dynamiques avant l'expiration du délai, utilisez la commande du mode de configuration globale <span class="cmd"><b>clear ip nat translation</b></span> (Figure 2). Il est utile d'effacer les entrées dynamiques lorsque vous testez la configuration NAT. Comme l'indique le tableau, cette commande peut être utilisée avec des mots-clés et des variables pour contrôler la suppression des entrées. Il est possible d'effacer certaines entrées spécifiques afin d'éviter de perturber les sessions actives. Utilisez la commande de configuration globale <span class="cmd"><b>clear ip nat translation *</b></span> pour effacer toutes les traductions de la table. </p>
+<p></p>
+<p>
+<b>Remarque</b> : seules les traductions dynamiques sont effacées de la table. Les traductions statiques ne peuvent pas être effacées de la table de traduction.</p>
+<p></p>
+<p>Sur la figure 3, la commande <span class="cmd"><b>show ip nat statistics</b></span> affiche des informations sur le nombre total de traductions actives, les paramètres de configuration NAT, le nombre d'adresses dans le pool et le nombre d'adresses attribuées.</p>
+<p></p>
+<p>Vous pouvez également utiliser la commande <span class="cmd"><b>show running-config</b></span> et rechercher les commandes NAT, ACL, interface ou pool avec les valeurs correspondantes. Examinez minutieusement ces valeurs et corrigez les erreurs détectées.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

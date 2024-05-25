@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.5.4 Configuration de l&#x0027;authentification MD5 OSPF</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.5.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées du protocole OSPF à zone unique </h1>
+        <h2>OSPF sécurisé</h2>
+      </div>
+      <div id="content">
+<p>Le protocole OSPF prend en charge l'authentification MD5 des protocoles de routage. L'authentification MD5 peut être activée globalement pour toutes les interfaces ou séparément pour chaque interface souhaitée.</p>
+<p></p>
+<p>Pour activer l'authentification MD5 OSPF globalement, exécutez les commandes suivantes :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>ip ospf message-digest-key </b>
+</span>
+<span class="cmd">
+<i>key</i>
+</span>
+<span class="cmd">
+<b> md5 </b>
+</span>
+<span class="cmd">
+<i>password</i>
+</span>
+<span class="cmd">
+<b></b>
+</span>commande de mode de configuration d'interface.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>Zone </b>
+</span>
+<span class="cmd">
+<i>area-id</i>
+</span>
+<span class="cmd">
+<b> authentication message-digest </b>
+</span>en mode de configuration de routeur.</li>
+</ul>
+</p>
+<p></p>
+<p>Cette méthode force l'authentification sur toutes les interfaces utilisant OSPF. Si une interface n'est pas configurée au moyen de la commande<span class="cmd"><b> ip ospf message-digest-key</b></span>, elle ne peut pas établir de contiguïtés avec d'autres voisins OSPF. </p>
+<p></p>
+<p>Pour apporter davantage de flexibilité, l'authentification peut désormais être configurée séparément sur chaque interface. Pour activer l'authentification MD5 par interface, exécutez les commandes suivantes :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>ip ospf message-digest-key </b>
+</span>
+<span class="cmd">
+<i>key</i>
+</span>
+<span class="cmd">
+<b> md5 </b>
+</span>
+<span class="cmd">
+<i>password</i>
+</span>
+<span class="cmd">
+<b></b>
+</span>commande de mode de configuration d'interface.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>ip ospf authentication message-digest </b>
+</span>commande de mode de configuration d'interface.</li>
+</ul>
+</p>
+<p></p>
+<p>Il est possible d'utiliser l'authentification MD5 OSPF globale et par interface sur le même routeur. Cependant, la configuration par interface prime sur la configuration globale. Il est inutile que les mots de passe d'authentification MD5 soient identiques dans toute une zone ; toutefois, ils doivent être identiques entre voisins.</p>
+<p></p>
+<p>Par exemple, imaginez que tous les routeurs de la figure sont convergents à l'aide du protocole OSPF et que le routage fonctionne correctement. L'authentification OSPF est implémentée sur tous les routeurs. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

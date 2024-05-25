@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.1.1 Décisions relatives aux transmissions</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage</h1>
+        <h2>Méthode de routage des hôtes</h2>
+      </div>
+      <div id="content">
+<p>Un autre rôle de la couche réseau est de diriger les paquets entre les hôtes. Un hôte peut envoyer un paquet à :</p>
+<p>
+<ul>
+<li>
+<b>Lui-même</b> – il s'agit d'une adresse IP spécifique, 127.0.0.1, appelée interface de bouclage. Cette adresse de bouclage est automatiquement attribuée à un hôte lorsque la suite de protocoles TCP/IP s'exécute. La capacité d'un hôte à envoyer un paquet à lui-même grâce à la fonctionnalité réseau est utile à des fins de test. Toute adresse IP appartenant au réseau 127.0.0.0/8 se rapporte à l'hôte local.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Un hôte local</b> – il s'agit d'un hôte sur le même réseau que l'hôte émetteur. Les hôtes partagent la même adresse réseau. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Un hôte distant</b> – il s'agit d'un hôte sur un réseau distant. Les hôtes ne partagent pas la même adresse réseau. </li>
+</ul>
+</p>
+<p></p>
+<p>Le fait que le paquet soit destiné à un hôte local ou à un hôte distant est déterminé par la comparaison de la combinaison adresse IP/masque de sous-réseau du périphérique source (expéditeur) à la combinaison adresse IP/masque de sous-réseau du périphérique de destination. </p>
+<p></p>
+<p>Dans un réseau domestique ou d'entreprise, il peut y avoir plusieurs périphériques filaires et sans fil interconnectés par le biais d'un périphérique intermédiaire tel qu'un commutateur LAN et/ou un point d'accès sans fil (WAP). Ce périphérique intermédiaire permet l'interconnexion entre les hôtes locaux sur le réseau local. Les hôtes locaux peuvent se joindre et partager des informations sans nécessiter de périphériques supplémentaires. Si un hôte envoie un paquet à un périphérique appartenant au même réseau IP, le paquet est simplement transféré à l'interface hôte, par le biais du périphérique intermédiaire, directement au périphérique de destination. </p>
+<p></p>
+<p>Naturellement, dans la plupart des situations, nous voulons que nos périphériques soient connectés au-delà du segment de réseau local, à d'autres maisons, à d'autres entreprises et à Internet. Les périphériques se trouvant au-delà du segment de réseau local sont appelés hôtes distants. Lorsqu'un périphérique source envoie un paquet à un périphérique de destination distant, alors l'aide des routeurs et le routage sont nécessaires. Le routage est le processus de détermination du meilleur chemin vers une destination. Le routeur connecté au segment de réseau local est appelé la <b>passerelle par défaut</b>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

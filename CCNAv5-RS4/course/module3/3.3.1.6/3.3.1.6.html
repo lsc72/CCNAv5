@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.1.6 Vérification de la configuration PPP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de PPP</h1>
+        <h2>Configuration de PPP</h2>
+      </div>
+      <div id="content">
+<p>Utilisez la commande <span class="cmd"><b>show interfaces serial</b></span> pour vérifier la configuration de l'encapsulation HDLC ou PPP. Le résultat de la commande dans la Figure 1 présente une configuration PPP. </p>
+<p></p>
+<p>Lorsque vous configurez HDLC, le résultat de la commande <span class="cmd"><b>show interfaces serial</b></span> doit afficher <span class="cmd">encapsulation HDL</span><span class="cmd">C</span>. Lorsque le protocole PPP est configuré, les états LCP et NCP s'affichent également. Notez que les protocoles de contrôle IPCP et IPV6CP des NCP sont ouverts pour IPv4 et IPv6, car R1 et R2 ont été configurés avec les deux adresses IPv4 et IPv6.</p>
+<p></p>
+<p>La Figure 2 résume les commandes utilisées lors de la vérification du protocole PPP. </p>
+<p></p>
+<p>La commande <span class="cmd"><b>show ppp multilink</b></span> vérifie que la multiliaison PPP est activée sur R3, comme illustré à la Figure 3. Le résultat indique l'interface Multilink 1, les noms d'hôte des terminaux locaux et distants, ainsi que les interfaces série affectées au regroupement multiliaison. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

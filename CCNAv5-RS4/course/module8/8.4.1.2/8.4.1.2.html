@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.4.1.2 Résumé</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.4.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p></p>
+<p>Il est possible de synchroniser l'heure sur des périphériques réseau Cisco à l'aide du protocole NTP. </p>
+<p>Les périphériques réseau Cisco peuvent consigner des messages Syslog dans une mémoire tampon interne, la console, une ligne de terminal ou un serveur Syslog externe. Un administrateur réseau peut configurer les types de messages à collecter ainsi que l'endroit où envoyer les messages horodatés.</p>
+<p>Le protocole SNMP se compose de trois éléments, à savoir le gestionnaire, l'agent et la base de données MIB. Le gestionnaire SNMP réside sur le système de gestion de réseau (NMS), tandis que l'agent et la base de données MIB se situent au niveau des périphériques clients. Le gestionnaire SNMP peut interroger les périphériques clients afin de recueillir des informations ou utiliser un message de déroutement (TRAP) indiquant à un client de signaler immédiatement s'il atteint un seuil spécifique. Le protocole SNMP peut également être utilisé pour modifier la configuration d'un périphérique. Le protocole SNMPv3 est la version recommandée, car elle offre plus de sécurité. Le protocole SNMP est un outil de gestion d'accès distant à la fois complet et puissant. Pratiquement chaque élément disponible dans une commande <span class="cmd"><b>show</b></span> l'est également par l'intermédiaire du protocole SNMP.</p>
+<p>Le protocole NetFlow est une technologie Cisco IOS qui est la norme pour la collecte de données opérationnelles IP à partir de réseaux IP. Le protocole NetFlow mesure efficacement quelles ressources réseau sont utilisées et pour quelle raison. Le protocole NetFlow utilise des champs d'en-tête pour pouvoir distinguer des flux de données. Le protocole NetFlow est une technologie de type « push » dans laquelle le périphérique client initie l'envoi de données vers un serveur configuré. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

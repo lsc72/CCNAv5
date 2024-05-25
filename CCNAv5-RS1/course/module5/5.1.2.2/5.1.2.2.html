@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.2.2 Taille d&#x0027;une trame Ethernet</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole Ethernet</h1>
+        <h2>Attributs de trame Ethernet</h2>
+      </div>
+      <div id="content">
+<p>Les normes Ethernet II et IEEE 802.3 définissent une taille de trame minimale de 64 octets et maximale de 1 518 octets. Cela comprenait tous les octets du champ Adresse MAC de destination jusqu'au champ Séquence de contrôle de trame. Les champs Préambule et Délimiteur de début de trame n'étaient pas inclus dans la description de la taille d'une trame. </p>
+<p></p>
+<p>Toute trame inférieure à cette valeur est interprétée comme un fragment de collision ou une trame incomplète et est automatiquement rejetée par les périphériques récepteurs.</p>
+<p></p>
+<p>La norme IEEE 802.3ac, publiée en 1998, a fixé la taille de trame maximale autorisée à 1  522  octets. La taille de trame a évolué de manière à prendre en charge une technologie appelée réseau local virtuel (VLAN). Ces réseaux virtuels, créés dans un réseau commuté, font l'objet d'un autre chapitre du cours. En outre, de nombreuses technologies de qualité de service (QoS) utilisent le champ Priorité utilisateur pour mettre en œuvre différents niveaux de services, notamment la priorité au trafic voix. La figure illustre les champs contenus dans la balise VLAN 802.1Q. </p>
+<p></p>
+<p>Si la taille d'une trame transmise est inférieure à la taille minimale ou supérieure à la taille maximale, le périphérique récepteur abandonne la trame. Les trames abandonnées sont souvent le résultat de collisions ou d'autres signaux rejetés et donc considérées comme non valides.</p>
+<p></p>
+<p>Au niveau de la couche liaison de données, la structure de trame est presque identique. Au niveau de la couche physique, les différentes versions d'Ethernet proposent des méthodes différentes de détection et de placement des données sur les supports.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

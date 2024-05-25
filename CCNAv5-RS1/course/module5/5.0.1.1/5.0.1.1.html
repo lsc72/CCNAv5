@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.0.1.1 Introduction</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Ethernet</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>La couche physique OSI fournit un moyen de transporter sur le support réseau les bits constituant une trame de couche liaison de données. </p>
+<p></p>
+<p>Ethernet est désormais la technologie de réseau local prédominante dans le monde. Ethernet fonctionne au niveau de la couche liaison de données et de la couche physique. Les normes du protocole Ethernet définissent de nombreux aspects de la communication réseau dont le format et la taille des trames, la synchronisation et le codage. Lorsque des messages sont transmis entre hôtes sur un réseau Ethernet, ces derniers formatent les messages dans la structure de la trame spécifiée par les normes. Les trames sont également désignées par le terme PDU (Protocol Data Unit).</p>
+<p></p>
+<p>Puisqu'Ethernet est constitué de normes au niveau de ces couches inférieures, la référence au modèle OSI peut permettre de mieux comprendre le protocole. Le modèle OSI sépare les fonctionnalités d'adressage, de tramage et d'accès aux supports entre la couche liaison de données et les normes de la couche physique des supports. Les normes Ethernet définissent à la fois les protocoles de la couche 2 et les technologies de la couche 1. Bien que les spécifications Ethernet prennent en charge différents supports, bandes passantes et autres variantes de la couche 1 et de la couche 2, le format de trame et le schéma d'adressage de base sont les mêmes pour toutes les formes d'Ethernet. </p>
+<p></p>
+<p>Dans ce chapitre, nous nous intéresserons aux caractéristiques et au fonctionnement d'Ethernet en suivant son évolution depuis la technologie de communication de données, basée sur des supports partagés et sur la restriction de l'accès aux supports jusqu'à la technologie moderne de large bande haut débit, bidirectionnelle simultanée.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.8 Antennes sans fil</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.8_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts de la technologie sans fil</h1>
+        <h2>Composants de WLAN</h2>
+      </div>
+      <div id="content">
+<p>La majorité des solutions de point d'accès professionnelles requièrent l'utilisation d'antennes externes pour obtenir une configuration totalement fonctionnelle. Cisco a donc spécialement conçu des antennes pour une utilisation avec les points d'accès 802.11, adaptées à des conditions de déploiement spécifiques telles que la disposition physique, la distance et l'aspect esthétique. </p>
+<p></p>
+<p>Les points d'accès Cisco Aironet peuvent utiliser les antennes suivantes :</p>
+<p>
+<ul>
+<li>
+<b>Antennes Wi-Fi omnidirectionnelles</b> : les équipements Wi-Fi d'usine utilisent souvent des antennes dipôles basiques, également appelées antennes caoutchouc (« rubber duck »), similaires à celles utilisées sur les talkies-walkies. Ces antennes omnidirectionnelles offrent une couverture à 360 degrés et sont idéales pour les open spaces d'entreprise, les halls, les salles de conférence et les espaces extérieurs.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Antennes Wi-Fi directionnelles</b> : les antennes directionnelles concentrent le signal radio dans une direction donnée. Cela permet d'améliorer la qualité du signal vers et en provenance des points d'accès, dans la direction pointée par l'antenne, offrant un signal plus puissant dans la direction concernée et moins puissant partout ailleurs.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Antennes Yagi</b> : antenne radio directionnelle pouvant être utilisée dans le cadre des réseaux Wi-Fi longue distance. Ces antennes sont généralement utilisées pour étendre la portée des hotspots en extérieur, dans une direction donnée, ou pour atteindre une dépendance. </li>
+</ul>
+</p>
+<p></p>
+<p>La figure ci-contre illustre plusieurs antennes Cisco d'intérieur et d'extérieur. </p>
+<p></p>
+<p>Les périphériques IEEE 802.11n/ac/ad utilisent la technologie MIMO pour améliorer la bande passante disponible. Plus particulièrement, la technologie MIMO utilise plusieurs antennes afin d'échanger davantage de données qu'avec une seule antenne. Il est possible d'utiliser jusqu'à quatre antennes pour améliorer le débit. </p>
+<p></p>
+<p>
+<b>Remarque </b>: les routeurs sans fil ne sont pas tous identiques. Par exemple, les routeurs 802.11n d'entrée de gamme prennent en charge une bande passante de 150 Mb/s à l'aide d'une radio Wi-Fi et d'une antenne, associée à l'unité. Pour obtenir des débits plus élevés, un routeur 802.11n doit utiliser davantage de radios et d'antennes, afin de gérer plus de canaux de données en parallèle. Par exemple, en utilisant deux radios et deux antennes sur un routeur 802.11n, il est possible d'obtenir des débits allant jusqu'à 300 Mb/s, voire 450 et 600 Mb/s avec trois et quatre radios/antennes, respectivement.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

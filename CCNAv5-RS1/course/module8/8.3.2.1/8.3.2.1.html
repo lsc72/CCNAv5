@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.2.1 Ping - Tester la pile locale</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Vérification de la connectivité</h1>
+        <h2>Test et vérification</h2>
+      </div>
+      <div id="content">
+<p>La commande ping est un utilitaire de test qui utilise des messages de requête et de réponse d'écho ICMP pour tester la connectivité entre les hôtes. Le ping fonctionne avec les hôtes IPv4 et IPv6.</p>
+<p></p>
+<p>Pour tester la connectivité à un autre hôte sur un réseau, une requête d'écho est envoyée à l'adresse d'hôte au moyen de la commande <span class="cmd"><b>ping</b></span>. Si l'hôte à l'adresse spécifiée reçoit une requête d'écho, il répond en envoyant une réponse d'écho. Chaque fois qu'une réponse d'écho est reçue, la commande ping vous informe du temps qui s'écoule entre l'envoi de la requête et la réception de la réponse. Cela peut être utilisé pour mesurer les performances réseau. </p>
+<p></p>
+<p>La commande ping a une valeur de délai d'attente pour la réponse. Si aucune réponse n'est reçue dans ce délai, la commande ping affiche un message indiquant que la réponse n'a pas été reçue. Cela indique généralement qu'il y a un problème, mais cela peut également indiquer que des fonctions de sécurité de blocage des messages ping sont activées sur le réseau.</p>
+<p></p>
+<p>Une fois toutes les requêtes envoyées, l'utilitaire ping présente un sommaire qui inclut le taux de réussite et la durée de transmission moyenne à la destination.</p>
+<p></p>
+<p>
+<b>Envoi d'une requête ping sur le bouclage local</b>
+</p>
+<p>La commande ping s'utilise également dans certaines activités de test et de vérification. C'est le cas par exemple d'un test de la configuration interne IPv4 ou IPv6 sur l'hôte local. Pour réaliser ce test, nous exécutons la commande ping sur l'adresse de bouclage locale 127.0.0.1 pour l'IPv4 (et ::1 pour l'IPv6). Le test de bouclage IPv4 est illustré dans la figure ci-contre.</p>
+<p></p>
+<p>Une réponse provenant de l'adresse 127.0.0.1 pour l'IPv4 ou ::1pour l'IPv6 indique que le protocole IP est correctement installé sur l'hôte. Cette réponse provient de la couche réseau. Toutefois, elle n'est pas une indication que les adresses, les masques ou les passerelles sont correctement configurés. Par ailleurs, elle n'indique rien sur l'état de la couche la plus basse de la pile réseau. Elle teste uniquement la configuration IP via la couche réseau du protocole IP. Si un message d'erreur est généré, cela indique que TCP/IP ne fonctionne pas sur l'hôte.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

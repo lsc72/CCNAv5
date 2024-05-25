@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.1.5 Les routeurs choisissent les meilleurs chemins</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration initiale d&#x0027;un routeur</h1>
+        <h2>Fonctions d&#x0027;un routeur</h2>
+      </div>
+      <div id="content">
+<p>Les principales fonctions d'un routeur sont les suivantes :</p>
+<p>
+<ul>
+<li>Détermine le meilleur chemin pour l'envoi des paquets </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Transférer les paquets vers leur destination</li>
+</ul>
+</p>
+<p></p>
+<p>Le routeur utilise sa table de routage pour déterminer le meilleur chemin à utiliser pour transférer un paquet. Lorsque le routeur reçoit un paquet, il examine l'adresse de destination du paquet et utilise la table de routage pour rechercher le meilleur chemin vers ce réseau. La table de routage contient également l'interface à utiliser pour transmettre des paquets vers chaque réseau connu. Une fois qu'une correspondance a été trouvée, le routeur encapsule le paquet dans la trame liaison de données de l'interface sortante ou de sortie et le paquet est transféré vers sa destination.</p>
+<p></p>
+<p>Il est possible qu'un routeur reçoive un paquet encapsulé dans un type de trame liaison de données et transfère le paquet depuis une interface qui utilise un autre type de trame liaison de données. Par exemple, un routeur peut recevoir un paquet sur une interface Ethernet, mais doit le transférer à partir d'une interface configurée avec le protocole PPP (Point-to-Point Protocol). L'encapsulation de la liaison de données dépend du type d'interface présente sur le routeur et du type de support auquel celui-ci est connecté. Les différentes technologies de liaison de données auxquelles un routeur peut se connecter incluent Ethernet, PPP, Frame Relay, DSL, câble et sans fil (802.11, Bluetooth).</p>
+<p></p>
+<p>L'animation de la figure suit un paquet du PC source à l'ordinateur de destination. Notez que le routeur doit trouver le réseau de destination dans sa table de routage et transférer le paquet vers sa destination. Dans cet exemple, le routeur R1 reçoit le paquet encapsulé dans une trame Ethernet. Après avoir désencapsulé le paquet, R1 utilise l'adresse IP de destination du paquet pour rechercher dans sa table de routage une adresse réseau correspondante. Une fois qu'une adresse réseau de destination est trouvée dans cette table, R1 encapsule le paquet dans une trame PPP et transfère le paquet à R2. R2 effectue un processus similaire.</p>
+<p></p>
+<p>
+<b>Remarque </b>: les routeurs utilisent des routes statiques et des protocoles de routage dynamique pour découvrir des réseaux distants et créer leurs tables de routage.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	  <slide type="MBAR">
+	  <!-- Slide 01 -->
+		<slide>
+			<element type="IMAGE" src="media_5.2.3.3.jpg" x="0" y="0" width="470" height="400"/>			
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+			
+			<element type="TEXT" id="ID_static_1" text="10.10.10.0/24" x="55.4" y="317.95" align="center" width="67" bold="1"/>
+			<element type="TEXT" id="ID_static_2" text="S0/0/1 .10" x="324.5" y="209.65" align="right" width="31.75" />
+			<element type="TEXT" id="ID_static_3" text="10.20.20.0/24" x="319.5" y="317.95" align="center" width="67" bold="1"/>
+			<element type="TEXT" id="ID_static_4" text="172.16.3.0/30" x="94.8" y="163.85" align="center" width="66.75" bold="1"/>
+			<element type="TEXT" id="ID_static_5" text=".9" x="238.75" y="168.2" align="center" width="8.7" />
+			<element type="TEXT" id="ID_static_6" text="S0/0/1" x="215.15" y="154.75" align="center" width="30.25" />
+			<element type="TEXT" id="ID_static_7" text="G0/1 .1" x="62.4" y="283.2" align="right" width="22.2" />
+			<element type="TEXT" id="ID_static_8" text="S0/0/0 .1" x="50.85" y="209.65" align="right" width="31.75" />
+			<element type="TEXT" id="ID_static_9" text="10.0.0.0/8" x="115.5" y="235.05" align="center" width="48.45" color="#F68026" bold="1"/>
+			<element type="TEXT" id="ID_static_10" text="10.0.0.0/8" x="261" y="236.05" align="center" width="48.45" color="#F68026" bold="1" />
+			<element type="TEXT" id="ID_static_11" text="S0/0/0 .2" x="153.85" y="120.95" align="right" width="31.75" />
+			<element type="TEXT" id="ID_static_12" text="192.168.10.8/30" x="286.8" y="167.85" align="center" width="78.95" bold="1"/>
+			<element type="TEXT" id="ID_static_13" text="G0/1 .1" x="326.15" y="282.45" align="right" width="22.2" />
+			<element type="TEXT" compId="ID_s1_txt02" x="149.45" y="194.5" width="62.2" expand="down" align="left" />
+			<element type="TEXT" compId="ID_s1_txt03" x="218.8" y="194.5" width="60.7" expand="down" align="right" />
+			<element type="TEXT" compId="ID_s1_txt01" x="167.5" y="65.85" width="104.5" expand="left+right" align="center" />
+			
+		</slide>
+		
+		<!-- Slide 02 -->
+		<slide>
+		   <element type="TEXT" subType="TITLE" compId="ID_s2_title"/>	
+		   <element type="ROUTER"  textId="router_s2_text1"  x="7"    y="47"   width="428.05" height="90.45" />
+		   <element type="ROUTER"  textId="router_s2_text2" x="7"    y="154.05"   width="428.05" height="90.45" />
+		</slide>
+		
+		<!-- Slide 03 -->
+		<slide>
+		   <element type="TEXT" subType="TITLE" compId="ID_s3_title"/>	
+		   <element type="ROUTER"  textId="router_s3_text1"  x="7" y="47"   width="428.05" height="140.45" />
+		   <element type="TEXT"  compId="ID_s3_txt01" x="15"  y="72"   width="104" expand="right"/>
+		</slide>
+		
+		<!-- Slide 04 -->
+		<slide>
+		   <element type="TEXT" subType="TITLE" compId="ID_s4_title"/>	
+		   <element type="ROUTER"  textId="router_s4_text1"  x="7" y="47"   width="428.05" height="165.45" />
+		   <element type="TEXT"  compId="ID_s4_txt01" x="15"  y="180.85"    expand="right" width="104" />
+		   
+		   <element type="ROUTER"  textId="router_s4_text2"  x="7" y="228"   width="428.05" height="165.45" />
+		   <element type="TEXT"  compId="ID_s4_txt02" x="15"  y="362.95"   expand="right"  width="104" />
+		</slide>
+	
+		<!-- Slide 05 -->
+		<slide>
+		   <element type="TEXT" subType="TITLE" compId="ID_s5_title"/>	
+		   <element type="ROUTER"  textId="router_s5_text1"  x="7" y="47"   width="428.05" height="144.45" />
+		   <element type="TEXT"  compId="ID_s5_txt01" x="15"  y="75"  expand="right" width="104" />
+		</slide>
+	  </slide>
+
+	  <text id="router_s2_text1"><![CDATA[<code>R1(config)# <b>router eigrp 1</b>
+R1(config-router)# <b>network 10.0.0.0</b>
+R1(config-router)# <b>network 172.16.0.0</b>
+R1(config-router)<span class="red1"># <b>auto-summary</b></span></code>]]></text>
+
+<text id="router_s2_text2"><![CDATA[<code>R3(config)# <b>router eigrp 1</b>
+R3(config-router)# <b>network 10.0.0.0</b>
+R3(config-router)# <b>network 192.168.10.0</b>
+R3(config-router)<span class="red1"># <b>auto-summary</b></span></code>]]></text>
+
+<!-- Slide 03 RO-text-->
+<text id="router_s3_text1"><![CDATA[<code>R2# <b>show ip route</b>
+
+
+      10.0.0.0/8 is subnetted, 1 subnets
+D        10.0.0.0 [90/3014400] <span class="red">via 192.168.10.10</span>, 00:02:06,
+                   Serial0/0/1
+                  [90/3014400] <span class="red">via 172.16.3.1</span>, 00:02:06,
+                   Serial0/0/0</code>]]></text>
+				
+<!-- Slide 04 RO-text-->
+<text id="router_s4_text1"><![CDATA[<code>R1# <b>show ip protocols</b>
+*** IP Routing is NSF aware ***
+
+Routing Protocol is "eigrp 1"
+  
+  Automatic Summarization: enabled
+<span class="red2">    10.0.0.0/8 for Se0/0/0 </span>
+      Summarizing 1 component with <span class="red3">metric 28160</span>
+
+</code>]]></text>
+
+<text id="router_s4_text2"><![CDATA[<code>R3# <b>show ip protocols</b>
+*** IP Routing is NSF aware ***
+
+Routing Protocol is "eigrp 1"
+  
+  Automatic Summarization: enabled
+<span class="red2">    10.0.0.0/8 for Se0/0/1</span>
+      Summarizing 1 component with <span class="red3">metric 28160</span>
+</code>]]></text>
+
+<!-- Slide 05 RO-text-->
+<text id="router_s5_text1"><![CDATA[<code>R2# <b>show ip route</b>
+
+
+ 10.0.0.0/24 is subnetted, 2 subnets
+D   <span class="red">10.10.10.0</span> [90/3014400] via 172.16.3.1, 00:00:27,
+                Serial0/0/0
+D   <span class="red">10.20.20.0</span> [90/3014400] via 192.168.10.10, 00:00:11,
+                Serial0/0/1</code>]]></text>
+</data>
+

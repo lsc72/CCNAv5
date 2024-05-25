@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+	<!-- slide 01-->
+	<slide>
+		<element type="IMAGE" src="6_4_3_2.jpg" width="470" height="400" x="0" y="0" />
+		<element type="TEXT" compId="ID_txt01" x="6.4" y="394.95" width="429.1" expand="up" align="left" />
+		<element type="TEXT" compId="ID_txt02" width="104" x="223.35" y="45.85" expand="right" align="left" size="10"/>
+		<element type="TEXT" compId="ID_txt03" width="104" x="223.35" y="154.85" expand="right" align="left" size="10"/>
+		<element type="TEXT" compId="ID_txt04" width="104" x="225.35" y="152.85" expand="right" align="left" size="10"/>
+		<element type="TEXT" id="ID_static_5" text=".11" x="52.95" y="301.15" align="center" width="22.55" />
+		<element type="TEXT" id="ID_static_6" text=".50" x="139.7" y="280.45" align="center" width="22.55" />
+		<element type="TEXT" id="ID_static_8" text=".1 G0/0" x="162.05" y="252.45" align="right" width="30.8" />
+		<element type="TEXT" id="ID_static_9" text=".1 G0/1" x="245.55" y="252.45" align="left" width="30.8" />
+		<element type="TEXT" id="ID_static_11" text="192.168.11.0/24" x="237.4" y="236.05" align="center" width="95.7" bold="1"/>
+		<element type="TEXT" id="ID_static_13" text="192.168.10.0/24" x="133.9" y="236.4" align="center" width="95.7" bold="1"/>
+		<element type="TEXT" id="ID_static_12" text=".10" x="52.95" y="214.15" align="center" width="22.55" />
+		<element type="ROUTER" textId="ID_router_txt1" x="215.15" y="2.05" width="216.85" height="177.05" size="10"/>	
+	</slide>
+
+	<!-- slide 02-->
+	<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_SC_title"/>
+		<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC" x="2.5" y="34.45" width="430.1" height="367" resetId = "ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+	</slide>
+	<text id="ID_router_txt1"><![CDATA[<pre>S1# <b>show running-config</b>
+Building configuration...
+!
+<output omitted>
+service password-encryption
+!
+hostname S1
+!
+Interface Vlan1
+<span class="colo"><b>ip address 192.168.10.50</b></span>
+!
+<span class="colo"><b>ip default-gateway 192.168.10.1</b></span>
+<output omitted></pre>]]></text>
+	</slide>
+</data>

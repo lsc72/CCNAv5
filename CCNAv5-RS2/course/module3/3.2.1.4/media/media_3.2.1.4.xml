@@ -1,0 +1,113 @@
+﻿<textcomponents>
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Suppression d'une attribution de VLAN</b>]]></text>
+	</component>
+	
+	<component id="ID_s2_title">
+		<text><![CDATA[<b>Exemple de configuration</b>]]></text>
+	</component>
+	
+	<component id="ID_s3_title">
+		<text><![CDATA[<b>Vérification</b>]]></text>
+	</component>
+	
+	<component id="ID_s3_txt01">
+		<text><![CDATA[&lt;résultat omis&gt;]]></text>
+	</component>
+	<component id="ID_s4_title">
+		<text><![CDATA[<b>Attribution de port au VLAN</b>]]></text>
+	</component>
+	
+	<component id="ID_s5_title">
+		<text><![CDATA[<b>Modification de l'appartenance des ports aux VLAN</b>]]></text>
+	</component>
+	<component id="ID_table">
+		<text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4'>
+		<tr>
+			<td colspan="2" bgcolor='#98D3D1' valign="top"><font color='#1C3635'><b>Commandes IOS de commutateur Cisco</b></font></td>
+		</tr>
+		<tr class="mtable_top">
+			<td colspan='2' bgcolor='#0E6360' class="liner_top"><font size='1' color='#434321'><span style="color:#DAE17A">.</span></font></td>
+		</tr>
+		
+		<tr>		
+			<td  width="205" bgcolor="#EFF8F7" valign="top"><font color='#393536'>Passez en mode de configuration globale.</font></td>
+			<td  width="225" bgcolor="#EFF8F7" valign="top"><font face="_typewriter" color='#393536'>S1#<b class="command">configure terminal</b></font></td>			
+		</tr>
+
+		<tr>		
+			<td  bgcolor="#EFF8F7" valign="top"><font color='#393536'>Supprimez l'attribution VLAN du port.</font></td>
+			<td  bgcolor="#EFF8F7" valign="top"><font face="_typewriter" color='#393536'>S1(config-if)# <b class="command">no switchport access vlan</b></font></td>			
+		</tr>
+		
+		<tr>	
+			<td  bgcolor="#FFFFFF" valign="top"><font color='#393536'>Repassez en mode d'exécution privilégié.</font></td>
+			<td  bgcolor="#FFFFFF" valign="top"><font face="_typewriter" color='#393536'>S1(config-if)# <b class="command">end</b></font></td> 
+		</tr>
+		
+	</table>]]></text>
+	</component>
+	
+<component id="ID_SC" fontFace='Courier New' fontSize="10"  class="font10px">
+		<feedback id="fb"><![CDATA[<b><font size='10'  class="font10px" face="Arial" color="#0000FF">*** Vous devez saisir la commande précisément et en entier. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font>  </b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font size='10' class="font10px" face="Arial"><b>Affichez les informations de brief VLAN.  </b></font>]]></existingcommands>
+		<command prompt="S1#">
+			<correctresponse><![CDATA[show vlan brief]]></correctresponse>
+				<deviceresponse><![CDATA[<font size='8' face="Courier New" class="font8px"><br><pre>VLAN Name                             Status    Ports <br>---- -------------------------------- --------- ------------------------------- <br>1    default                          active    Fa0/1, Fa0/2, Fa0/3, Fa0/4 <br>                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8 <br>                                                Fa0/9, Fa0/10, Fa0/11, Fa0/12 <br>                                                Fa0/13, Fa0/14, Fa0/15, Fa0/16 <br>                                                Fa0/17, Fa0/19, Fa0/20, Fa0/21 <br>                                                Fa0/22, Fa0/23, Fa0/24, Gig1/1 <br>                                                Gig1/2 <br>20   Student                          active    Fa0/18 <br>1002 fddi-default                     active    <br>1003 token-ring-default               active    <br>1004 fddinet-default                  active    <br>1005 trnet-default                    active    <br></pre></font>S1#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' class="font10px" face="Arial"><b>Supprimez f0/18 du VLAN&nbsp;20. Utilisez la forme «&nbsp;do&nbsp;» de la commande «&nbsp;show&nbsp;» pour afficher les informations de brief VLAN après la suppression.</font>]]></instruction>
+		</command>
+		<command prompt="S1#">
+			<correctresponse><![CDATA[configure terminal]]></correctresponse>
+				<deviceresponse><![CDATA[Entrez les commandes de configuration, une par ligne. Terminez par CNTL/Z.]]></deviceresponse>
+		</command>
+		<command prompt="S1(config)#">
+			<correctresponse><![CDATA[interface f0/18]]></correctresponse>
+		</command>	
+		<command prompt="S1(config-if)#">
+			<correctresponse><![CDATA[no switchport access vlan]]></correctresponse>
+		</command>	
+		<command prompt="S1(config-if)#">
+			<correctresponse><![CDATA[do show vlan brief]]></correctresponse>
+				<deviceresponse><![CDATA[<font size='8' class="font8px" face="Courier New"><pre><br>VLAN Name                             Status    Ports <br>---- -------------------------------- --------- ------------------------------- <br>1    default                          active    Fa0/1, Fa0/2, Fa0/3, Fa0/4 <br>                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8 <br>                                                Fa0/9, Fa0/10, Fa0/11, Fa0/12 <br>                                                Fa0/13, Fa0/14, Fa0/15, Fa0/16 <br>                                                Fa0/17, Fa0/19, Fa0/20, Fa0/21 <br>                                                Fa0/22, Fa0/23, Fa0/24, Gig1/1 <br>                                                Gig1/2 <br>20   Student                          active     <br>1002 fddi-default                     active    <br>1003 token-ring-default               active    <br>1004 fddinet-default                  active    <br>1005 trnet-default                    active    </pre></font>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Attribuez f0/11 au VLAN&nbsp;20. Retournez directement au mode d'exécution privilégié lorsque vous avez terminé.  </b></font>]]></instruction>
+		</command>	
+		<command prompt="S1(config-if)#">
+			<correctresponse><![CDATA[interface f0/11]]></correctresponse>
+		</command>	
+		<command prompt="S1(config-if)#">
+			<correctresponse><![CDATA[switchport mode access]]></correctresponse>
+		</command>	
+		<command prompt="S1(config-if)#">
+			<correctresponse><![CDATA[switchport access vlan 20]]></correctresponse>
+		</command>	
+		<command prompt="S1(config-if)#">
+			<correctresponse><![CDATA[end]]></correctresponse>
+				<deviceresponse><![CDATA[S1#<br>*Mar 31, 09:34:24.3434: %SYS-5-CONFIG_I: Configured from console by console<br>S1#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' class="font10px" face="Arial"><b>Affichez les informations de brief VLAN.  </b></font>]]></instruction>
+		</command>
+		<command prompt="S1#">
+			<correctresponse><![CDATA[show vlan brief]]></correctresponse>
+				<deviceresponse><![CDATA[<font size='8' class="font8px" face="Courier New"><pre><br>VLAN Name                             Status    Ports <br>---- -------------------------------- --------- ------------------------------- <br>1    default                          active    Fa0/1, Fa0/2, Fa0/3, Fa0/4 <br>                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8 <br>                                                Fa0/9, Fa0/10, Fa0/11, Fa0/12 <br>                                                Fa0/13, Fa0/14, Fa0/15, Fa0/16 <br>                                                Fa0/17, Fa0/19, Fa0/20, Fa0/21 <br>                                                Fa0/22, Fa0/23, Fa0/24, Gig1/1 <br>                                                Gig1/2 <br>20   Student                          active    Fa0/11 <br>1002 fddi-default                     active    <br>1003 token-ring-default               active    <br>1004 fddinet-default                  active    <br>1005 trnet-default                    active    <br></pre></font>S1#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' class="font10px" face="Arial"><b>Vérifiez l'état du port de commutateur de f0/18.</font>]]></instruction>
+		</command>
+		<command prompt="S1#">
+			<correctresponse><![CDATA[show interfaces f0/18 switchport]]></correctresponse>
+				<deviceresponse><![CDATA[Name: Fa0/18 <br>Switchport: Enabled <br>Administrative Mode: static access <br>Operational Mode: down <br>Administrative Trunking Encapsulation: dot1q <br>Negotiation of Trunking: Off <br>Access Mode VLAN: 1 (default) <br>Trunking Native Mode VLAN: 1 (default)]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' class="font10px" face="Arial"><b>Vous avez correctement modifié l'appartenance des ports aux VLAN.</font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+	
+	
+	
+	<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+</textcomponents>

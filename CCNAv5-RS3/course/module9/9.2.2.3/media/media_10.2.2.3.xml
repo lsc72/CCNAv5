@@ -1,0 +1,40 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Sauvegarde de la licence</b>]]></text>
+</component>
+<component id="ID_s1_txt01">
+  <text><![CDATA[Sauvegarde de la licence]]></text> 
+  </component>
+
+  <component id="ID_s1_txt02">
+     <text><![CDATA[&lt;résultat omis&gt;]]></text>
+     </component>
+
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+
+<component id="ID_SC2" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b>***</b><font  face="Arial" color="#0000FF">Vous devez saisir la commande exacte et complète.</font><b>***</b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font  face="Arial"><b>Procédez comme suit sur le routeur R2&nbsp;:<ul><li>Enregistrez toutes les licences sur flash0:R2_license_files.<li>Vérifiez que le fichier a bien été enregistré sur flash0.</ul></b></font>]]></existingcommands>
+		<command  prompt="R2#">
+		    <correctresponse><![CDATA[license save flash0:R2_license_files]]></correctresponse>
+				<deviceresponse><![CDATA[license lines saved ..... to flash0:R2_license_files]]></deviceresponse> 
+		</command>
+		<command  prompt="R2#">
+		    <correctresponse><![CDATA[show flash0:]]></correctresponse>
+				<deviceresponse><![CDATA[<font Face="Courier New"><pre>-#- --length-- -----date/time------ path <br>1     68831808 Apr 2 2013 21:50:32  +00:00 c1900-universalk9<br/>-mz.SPA.152-4.M3.bin <br>2         1153 Apr 27 2013 01:34:32 +00:00 R2_license_files <br> <br>182398976 bytes available (68832961 bytes used) <br> <br>R2#<pre></font>]]></deviceresponse> 
+			<instruction><![CDATA[<font  face="Arial" class="syntaxBottomLine"><b>Vous avez réussi la sauvegarde de la licence sur R2.</b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+</textcomponents>

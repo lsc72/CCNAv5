@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.0.1.1 Introduction</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Introduction</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>Les réseaux modernes ne cessent d'évoluer pour s'adapter au développement du mode de gestion des activités quotidiennes par les entreprises. Les utilisateurs exigent désormais l'accès aux ressources de l'entreprise en tout lieu et à tout moment. Ces ressources incluent les données traditionnelles, mais aussi la vidéo et la voix. Il existe également un besoin croissant en matière de technologies de collaboration qui permettent le partage en temps réel des ressources entre plusieurs personnes distantes comme si elles se trouvaient au même endroit.</p>
+<p></p>
+<p>Les différents périphériques doivent fonctionner ensemble parfaitement pour fournir une connexion rapide, sécurisée et fiable entre les hôtes. Les commutateurs de réseau LAN fournissent un point de connexion pour les utilisateurs finaux au sein du réseau d'entreprise et sont également principalement responsables du contrôle des informations dans l'environnement LAN. Les routeurs facilitent le déplacement des informations entre les réseaux locaux. En général, ils n'ont pas connaissance des hôtes distincts. Tous les services avancés dépendent de la disponibilité d'une infrastructure robuste de routage et de commutation sur laquelle ils peuvent se fonder. Cette infrastructure doit être soigneusement conçue, déployée et gérée, afin d'assurer la stabilité requise de la plate-forme.</p>
+<p></p>
+<p>Ce chapitre entreprend un examen du flux du trafic dans un réseau moderne. Il examine certains modèles actuels de conception de réseau et la manière dont les commutateurs LAN créent des tables de transfert et utilisent les informations des adresses MAC pour commuter efficacement les données entre les hôtes. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

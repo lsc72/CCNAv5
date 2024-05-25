@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.1.6 Base d&#x0027;informations de gestion (ID d&#x0027;objet)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>SNMP</h1>
+        <h2>Fonctionnement de SNMP</h2>
+      </div>
+      <div id="content">
+<p>La base de données MIB organise les variables de manière hiérarchique. Les variables MIB permettent au logiciel de gestion de surveiller et de contrôler le périphérique réseau. De manière formelle, la base de données MIB définit chaque variable comme étant un ID d'objet (OID). Les ID d'objet (OID) identifient de manière unique les objets gérés au sein de la hiérarchie MIB. La base de données MIB organise les ID d'objet (OID) sur la base de normes RFC au sein d'une hiérarchie d'ID d'objet, généralement affichée sous la forme d'une arborescence.</p>
+<p></p>
+<p>L'arborescence de la base de données MIB de n'importe quel périphérique donné inclut certaines branches avec des variables communes à de nombreux périphériques réseau, ainsi que quelques branches avec des variables spécifiques à ce périphérique ou fournisseur. </p>
+<p></p>
+<p>Les RFC définissent certaines variables publiques courantes. La plupart des périphériques implémentent ces variables MIB. De plus, les fournisseurs d'équipements réseau, tels que Cisco, peuvent définir leurs propres branches privées de l'arborescence afin d'accueillir de nouvelles variables spécifiques pour leurs périphériques. La Figure 1 illustre certaines parties de la structure de la base de données MIB définie par Cisco Systems, Inc. Notez comment l'ID d'objet (OID) peut être décrit en termes de mots ou de nombres afin de pouvoir localiser facilement une variable spécifique dans l'arborescence. Les ID d'objet (OID) appartenant à Cisco, comme le montre la Figure 1, sont numérotés comme suit : .iso (1).org (3).dod (6).internet (1).private (4).enterprises (1).cisco (9). La valeur affichée est 1.3.6.1.4.1.9.</p>
+<p></p>
+<p>Le processeur étant l'une des ressources principales, il doit être mesuré de manière continue. Les statistiques du processeur doivent être compilées sur le système de gestion de réseau (NMS) et portées en graphique. L'examen de l'utilisation du processeur sur une longue période permet à l'administrateur d'établir une estimation de la planification initiale de ce paramètre. Des valeurs seuil peuvent alors être définies par rapport à cette planification initiale. Lorsque la valeur de l'utilisation du processeur dépasse ce seuil, des notifications sont envoyées. Un outil graphique SNMP permet d'interroger périodiquement des agents SNMP, par exemple un routeur, et de porter en graphique les valeurs collectées. La Figure 2 illustre des échantillons de 5 minutes d'utilisation du processeur du routeur sur une période de quelques semaines. </p>
+<p></p>
+<p>Les données sont récupérées par l'intermédiaire de l'utilitaire snmpget, exécuté sur le système de gestion de réseau (NMS). L'utilitaire snmpget permet d'obtenir manuellement des valeurs moyennes du pourcentage d'occupation du processeur. L'utilitaire snmpget nécessite la définition de la version du protocole SNMP, de la communauté correcte, de l'adresse IP du périphérique réseau à interroger et du numéro d'ID d'objet. La Figure 3 illustre l'utilisation de l'outil snmpget gratuit, qui permet de récupérer rapidement des informations à partir de la base de données MIB. </p>
+<p></p>
+<p>La Figure 3 illustre une commande relativement longue et contenant divers paramètres, parmi lesquels : </p>
+<p></p>
+<p>
+<ul>
+<li>
+<span class="cmd">-v2c</span>
+<b></b>- version de SNMP</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">-c</span>
+<span class="cmd">community</span>
+<b></b>- mot de passe SNMP, appelé identifiant de communauté</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">10.250.250.14</span>
+<b></b>- adresse IP du périphérique contrôlé</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">1.3.6.1.4.1.9.2.1.58.0</span>
+<b></b>- OID de la variable MIB</li>
+</ul>
+</p>
+<p></p>
+<p>La dernière ligne indique la réponse. Le résultat montre une version abrégée de la variable MIB. Il indique également la valeur réelle à l'emplacement MIB. Dans ce cas, la moyenne mobile exponentielle de 5 minutes du pourcentage d'occupation du processeur est égale à 11 %. L'utilitaire permet de comprendre le fonctionnement de base du protocole SNMP. Toutefois, l'utilisation de longs noms de variable MIB tels que 1.3.6.1.4.1.9.2.1.58.0 peut s'avérer problématique pour un utilisateur moyen. D'une manière générale, l'équipe des opérations réseau utilise un logiciel de gestion du réseau équipé d'une interface graphique utilisateur facile d'emploi, avec un système d'attribution de nom pour l'ensemble des données MIB transparent pour l'utilisateur.</p>
+<p></p>
+<p>Le <a href="http://tools.cisco.com/Support/SNMP/do/BrowseOID.do?local=en" target="_blank">site Web</a> de l'explorateur d'objets Cisco SNMP permet à un administrateur réseau de rechercher des détails relatifs à un code OID spécifique. La Figure 4 illustre un exemple associé à une modification de configuration sur un commutateur Cisco 2960.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

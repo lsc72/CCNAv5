@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.1.6 Exemples de table de routage d&#x0027;hôte IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage</h1>
+        <h2>Méthode de routage des hôtes</h2>
+      </div>
+      <div id="content">
+<p>Le résultat de la table de route IPv6 varie en termes de titres de colonne et de format en raison de la longueur des adresses IPv6.</p>
+<p></p>
+<p>La section de la table de route IPv6 représente quatre colonnes, qui identifient :</p>
+<p>
+<ul>
+<li>
+<b>Si</b> – répertorie les numéros d'interface de la section Liste des interfaces de la commande <span class="cmd"><b>netstat –r</b></span>. Les numéros d'interface correspondent à l'interface réseau sur l'hôte, y compris les adaptateurs Ethernet, Wi-Fi et Bluetooth.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Métrique</b> – liste le coût de chaque route vers une destination. Les numéros les plus petits indiquent les routes privilégiées.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Destination réseau - </b>affiche la liste des réseaux accessibles.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Passerelle</b> – indique l'adresse utilisée par l'hôte local pour transmettre les paquets à une destination sur un réseau distant. On-link indique que l'hôte est actuellement connecté.</li>
+</ul>
+</p>
+<p></p>
+<p>Par exemple, la figure illustre la section de route IPv6 générée par la commande <span class="cmd"><b>netstat –r</b></span> pour indiquer les destinations réseau suivantes :</p>
+<p>
+<ul>
+<li>
+<b>::/0</b> – équivalent IPv6 de la route locale par défaut. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>::1/128</b> – équivalent de l'adresse de bouclage IPv4. Fournit des services à l'hôte local.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>2001::/32</b> – préfixe de réseau de monodiffusion globale.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>2001:0:9d38:953c:2c30:3071:e718:a926/128</b> – adresse IPv6 de monodiffusion globale de l'ordinateur local. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>fe80::/64</b> – adresse de route réseau de liaison locale. Représente tous les ordinateurs du réseau IPv6 de liaison locale.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>fe80::2c30:3071:e718:a926/128</b> : adresse IPv6 link-local de l'ordinateur local.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>ff00::/8</b> – adresses spéciales de multidiffusion (classe D) équivalant aux adresses IPv4 224.x.x.x. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque :</b> les interfaces IPv6 ont généralement deux adresses IPv6 – une adresse link-local et une adresse de monodiffusion globale. En outre, notez qu'il n'y a pas d'adresse de diffusion en IPv6. Les adresses IPv6 seront décrites plus en détail dans le chapitre suivant. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

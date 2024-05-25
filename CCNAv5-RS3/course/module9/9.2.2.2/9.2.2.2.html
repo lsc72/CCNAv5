@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.2.2 Activation d&#x0027;une licence de droit d&#x0027;utilisation d&#x0027;évaluation</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Licences IOS</h1>
+        <h2>Vérification et gestion de la licence</h2>
+      </div>
+      <div id="content">
+<p>Le processus de licence d'évaluation a subi trois révisions sur les périphériques ISR G2. Dans la dernière révision, qui concerne les versions Cisco IOS 15.0(1)M6, 15.1(1)T4, 15.1(2)T4, 15.1(3)T2 et 15.1(4)M, les licences d'évaluation sont remplacées par des licences de droit d'utilisation d'évaluation au bout de 60 jours. Une licence d'évaluation est valable pendant 60 jours. Après 60 jours, la licence d'évaluation se transforme automatiquement en une licence de droit d'utilisation. Ces licences sont disponibles sur la base de la bonne foi et requièrent l'acceptation du contrat de licence utilisateur final (CLUF, ou EULA en anglais) par le client. Le CLUF s'applique automatiquement à toutes les licences du logiciel Cisco IOS. </p>
+<p></p>
+<p>La commande de mode de configuration globale<span class="cmd"><b> license accept end user agreement</b></span> permet d'accepter le CLUF en une seule fois, pour tous les packages et fonctionnalités du logiciel Cisco IOS. Une fois la commande exécutée et le CLUF accepté, le CLUF s'applique automatiquement à toutes les licences du logiciel Cisco IOS et l'utilisateur n'est pas invité à accepter le CLUF pendant l'installation de la licence.</p>
+<p></p>
+<p>La Figure 1 montre comment configurer l'acceptation du CLUF en une seule fois :</p>
+<p></p>
+<p>
+<span class="cmd">Router(config)# </span>
+<span class="cmd">
+<b>license accept end user agreement</b>
+</span>
+</p>
+<p></p>
+<p>En outre, la Figure 1 présente la commande qui permet d'activer une licence de droit d'utilisation d'évaluation :</p>
+<p></p>
+<p>
+<span class="cmd">Router# </span>
+<span class="cmd">
+<b>license boot module </b>
+</span>
+<span class="cmd">
+<i>module-name</i>
+</span>
+<span class="cmd">
+<b> technology-package </b>
+</span>
+<span class="cmd">
+<i>package-name</i>
+</span>
+</p>
+<p></p>
+<p>Utilisez <span class="cmd"><b>? </b></span>à la place des arguments pour déterminer les noms de modules et packages logiciels pris en charge disponibles sur le routeur. Les noms de packages technologiques pour les plates-formes Cisco ISR G2 sont :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">ipbasek9</span>
+<b></b> : package technologique IP Base</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">securityk9</span>
+<b></b> : package technologique Sécurité </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">datak9</span> : package technologique Données</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">uck9 </span>: package technologique Communications unifiées (non disponible pour la gamme 1900)</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque</b> : un redémarrage à l'aide de la commande <span class="cmd"><b>reload</b></span> est nécessaire pour activer le package logiciel.</p>
+<p></p>
+<p>Les licences d'évaluation sont temporaires et ne permettent pas d'évaluer un ensemble de fonctionnalités sur un nouveau matériel. Les licences temporaires sont limitées à une période d'utilisation spécifique (par exemple, 60 jours).</p>
+<p></p>
+<p>Redémarrez le routeur après l'installation d'une licence à l'aide de la commande<span class="cmd"><b> reload</b></span>. La commande<span class="cmd"><b> show license </b></span>à la Figure 2 vérifie l'installation de la licence.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 3 pour accepter le CLUF et activer une licence de droit d'utilisation d'évaluation pour le package Données sur le routeur 1900.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

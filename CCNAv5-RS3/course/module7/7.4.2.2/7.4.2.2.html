@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.2.2 Configuration d&#x0027;adresses link-local IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole EIGRP pour IPv6</h1>
+        <h2>Configuration du protocole EIGRP pour IPv6</h2>
+      </div>
+      <div id="content">
+<p>Les adresses link-local sont créées automatiquement lorsqu'une adresse de monodiffusion globale IPv6 est attribuée à l'interface. Les adresses de monodiffusion globales ne sont pas obligatoires sur une interface ; en revanche, les adresses link-local IPv6 le sont.</p>
+<p></p>
+<p>Sauf s'ils ont été configurés manuellement, les routeurs Cisco créent l'adresse link-local au moyen du préfixe FE80::/10 et du processus EUI-64, comme indiqué à la Figure 1. EUI-64 consiste à utiliser l'adresse MAC Ethernet 48-bit, à insérer FFFE au milieu et à manipuler le septième bit. Pour les interfaces série, Cisco utilise l'adresse MAC d'une interface Ethernet. Un routeur avec plusieurs interfaces série peut attribuer la même adresse link-local à chaque interface IPv6 puisque les adresses link-local doivent être uniquement locales sur le lien.</p>
+<p></p>
+<p>Il est difficile d'identifier et de mémoriser les adresses link-local créées au moyen du format EUI-64 ou, dans certains cas, les ID d'interface aléatoires. Étant donné que les protocoles de routage IPv6 utilisent des adresses link-local IPv6 pour l'adressage de monodiffusion et les informations d'adresse de tronçon suivant dans la table de routage, il est courant de définir des adresses facilement reconnaissables. Configurer manuellement l'adresse link-local permet de créer une adresse qui est reconnaissable et plus facile à mémoriser.</p>
+<p></p>
+<p>Les adresses link-local peuvent être configurées manuellement avec la même commande de mode de configuration d'interface que celle utilisée pour créer des adresses de monodiffusion globale IPv6, mais avec des paramètres différents :</p>
+<p></p>
+<p>
+<span class="cmd">Router(config-if)# </span>
+<span class="cmd">
+<b>ipv6 address</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>link-local-address</i>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<b>link-local</b>
+</span>
+</p>
+<p></p>
+<p>Une adresse link-local possède un préfixe dans la plage FE80 à FEBF. Lorsqu'une adresse commence par cet hextet (segment de 16 bits), le mot-clé <span class="cmd"><b>link-local</b></span> doit suivre l'adresse. </p>
+<p></p>
+<p>La Figure 2 montre la configuration d'une adresse link-local à l'aide de la commande de mode de configuration d'interface <span class="cmd"><b>ipv6 address</b></span>. L'adresse link-local FE80::1 est utilisée pour être facilement reconnaissable comme appartenant au routeur R1. La même adresse link-local IPv6 est configurée sur toutes les interfaces du routeur R1. L'adresse FE80::1 peut être configurée sur chaque liaison, car elle ne doit être unique que sur cette liaison.</p>
+<p></p>
+<p>Tout comme R1, à la Figure 3, le routeur R2 est configuré avec FE80::2 comme adresse link-local IPv6 sur toutes ses interfaces.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 4 pour configurer FE80::3 comme adresse link-local sur toutes les interfaces de R3.</p>
+<p></p>
+<p>Comme indiqué à la Figure 5, la commande<span class="cmd"><b> show ipv6 interface brief </b></span>sert à vérifier les adresses link-local IPv6 et de monodiffusion globale sur toutes les interfaces. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

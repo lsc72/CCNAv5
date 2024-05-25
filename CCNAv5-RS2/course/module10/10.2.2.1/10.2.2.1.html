@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.2.1 Configuration d&#x0027;un routeur en tant que serveur DHCPv6 sans état</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 6</h1>
+        <h2>DHCPv6 sans état</h2>
+      </div>
+      <div id="content">
+<p>Comme l'illustre la Figure 1, quatre étapes sont nécessaires à la configuration d'un routeur en tant que serveur DHCPv6 :</p>
+<p></p>
+<p>
+<b>Étape 1. Activation du routage IPv6 </b>
+</p>
+<p></p>
+<p>La commande <span class="cmd"><b>ipv6 unicast-routing</b></span> doit être exécutée pour activer le routage IPv6. Cette commande n'est pas nécessaire pour que le routeur agisse comme un serveur DHCPv6 sans état, mais elle est requise pour envoyer des messages RA ICMPv6. </p>
+<p></p>
+<p>
+<b>Étape 2. Configuration d'un pool DHCPv6</b>
+</p>
+<p></p>
+<p>La commande<span class="cmd"><b> ipv6 dhcp pool </b></span><span class="cmd"><i>pool-name </i></span>crée un pool et sélectionne le routeur en mode de configuration DHCPv6, qui est identifié par l'invite <span class="cmd">Router(config-dhcpv6)#</span>.</p>
+<p></p>
+<p>
+<b>Étape 3. Configuration des paramètres du pool</b>
+</p>
+<p></p>
+<p>Lors du processus SLAAC, le client a reçu les informations dont il avait besoin pour créer une adresse de monodiffusion globale IPv6. Le client a également obtenu les informations sur la passerelle par défaut à l'aide de l'adresse IPv6 source du message RA, qui est l'adresse link-local du routeur. Cependant, le serveur DHCPv6 sans état peut être configuré pour fournir d'autres informations qui n'ont pas forcément été incluses dans le message RA, notamment l'adresse du serveur DNS et le nom de domaine.</p>
+<p></p>
+<p>
+<b>Étape 4. Configuration de l'interface DHCPv6</b>
+</p>
+<p></p>
+<p>La commande de mode de configuration d'interface <span class="cmd"><b>ipv6 dhcp server </b></span><span class="cmd"><i>pool-name</i></span> relie le pool DHCPv6 à l'interface. Le routeur répond aux requêtes DHCPv6 sans état sur cette interface avec les informations contenues dans le pool. L'indicateur O doit être modifié pour passer de 0 à 1 à l'aide de la commande d'interface <span class="cmd"><b>ipv6 nd other-config-flag</b></span>. Les messages RA envoyés sur cette interface indiquent que des informations supplémentaires sont disponibles auprès d'un serveur DHCPv6 sans état.</p>
+<p></p>
+<p>
+<b>Exemple de serveur DHCPv6 sans état</b>
+</p>
+<p></p>
+<p>La Figure 2 présente un exemple de configuration d'un routeur en tant que serveur DHCPv6 sans état. Notez que le routeur R3 est affiché en tant que client DHCPv6. R3 est configuré en tant que client pour permettre de vérifier le fonctionnement de DHCPv6 sans état.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

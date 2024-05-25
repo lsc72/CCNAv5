@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.3 Normes de couche physique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche physique</h1>
+        <h2>Objectif de la couche physique</h2>
+      </div>
+      <div id="content">
+<p>Les protocoles et les opérations des couches OSI supérieures sont exécutés dans des logiciels conçus par des développeurs et des ingénieurs informaticiens. Par exemple, les services et les protocoles de la suite TCP/IP sont définis par l'IETF (Internet Engineering Task Force) dans des documents RFC, comme illustré à la Figure 1. </p>
+<p></p>
+<p>La couche physique est constituée de circuits électroniques, de supports et de connecteurs développés par des ingénieurs. Il est par conséquent approprié que les normes régissant ces matériels soient définies par les organisations d'ingénierie électrique et de communications correspondantes. </p>
+<p></p>
+<p>De nombreux organismes internationaux et nationaux, organisations gouvernementales de réglementation et entreprises privées sont impliqués dans l'établissement et la mise à jour des normes de couche physique. Par exemple, les normes relatives au matériel, aux supports, au codage et à la signalisation de la couche physique sont définies et régies par les organismes suivants :</p>
+<p>
+<ul>
+<li>ISO (International Standards Organization) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>TIA/EIA (Telecommunications Industry Association/Electronic Industries Association)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Union Internationale des Télécommunications (UIT) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>ANSI (American National Standards Institute) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Institute of Electrical and Electronics Engineers (IEEE)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Des autorités réglementaires nationales des télécommunications, notamment la FCC (Federal Communication Commission, États-Unis) et l'ETSI (European Telecommunications Standards Institute)</li>
+</ul>
+</p>
+<p></p>
+<p>Il existe également certains groupes régionaux de normalisation du câblage tels que la CSA (Canadian Standards Association), le CENELEC (European Committee for Electrotechnical Standardization) et le JSA/JIS (Japanese Standards Association) qui établissent des spécifications locales.</p>
+<p></p>
+<p>La Figure 2 présente les principaux contributeurs et certaines des normes de couche physique utilisées.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

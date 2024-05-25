@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.1.1 Commandes de dépannage de base du protocole EIGRP </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du protocole EIGRP</h1>
+        <h2>Éléments de dépannage du protocole EIGRP</h2>
+      </div>
+      <div id="content">
+<p>Le protocole EIGRP est couramment utilisé dans les réseaux de grandes entreprises. Les problèmes de dépannage liés à l'échange d'informations de routage constituent une compétence essentielle pour un administrateur réseau. C'est particulièrement vrai pour les administrateurs impliqués dans l'implémentation et la maintenance de grands réseaux d'entreprise routés utilisant le protocole EIGRP comme protocole IGP. Plusieurs commandes sont utiles lors du dépannage d'un réseau EIGRP. </p>
+<p></p>
+<p>La commande<span class="cmd"><b> show ip eigrp neighbors </b></span>vérifie que le routeur reconnaît ses voisins. Le résultat de la Figure 1 indique deux contiguïtés de voisinage EIGRP réussies sur R1.</p>
+<p></p>
+<p>À la Figure 2, la commande<span class="cmd"><b> show ip route </b></span>vérifie que le routeur a appris la route vers un réseau distant via le réseau EIGRP. Le résultat montre que R1 a appris quatre réseaux distants via le protocole EIGRP.</p>
+<p></p>
+<p>La Figure 3 montre le résultat de la commande<span class="cmd"><b> show ip protocols</b></span>. Cette commande vérifie que le protocole EIGRP affiche les valeurs actuellement configurées pour plusieurs propriétés de tout protocole de routage activé.</p>
+<p></p>
+<p>
+<b>Protocole EIGRP pour IPv6</b>
+</p>
+<p></p>
+<p>Des commandes et des critères de dépannage similaires s'appliquent également au protocole EIGRP pour IPv6.</p>
+<p></p>
+<p>Les commandes équivalentes utilisées dans le cadre du protocole EIGRP pour IPv6 sont les suivantes :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">Router# </span>
+<span class="cmd">
+<b>show ipv6 eigrp neighbors</b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">Router# </span>
+<span class="cmd">
+<b>show ipv6 route</b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">Router# </span>
+<span class="cmd">
+<b>show ipv6 protocols</b>
+</span>
+</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

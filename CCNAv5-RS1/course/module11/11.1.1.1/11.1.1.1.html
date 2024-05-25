@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.1.1.1 Topologies de petits réseaux</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Création et développement</h1>
+        <h2>Périphériques d&#x0027;un petit réseau</h2>
+      </div>
+      <div id="content">
+<p>La majorité des entreprises sont des petites entreprises. Il n'est donc pas étonnant que la majorité des réseaux soient de petite taille. </p>
+<p></p>
+<p>Leur conception est généralement simple. Le nombre et les types de périphériques du réseau sont largement réduits par rapport à un réseau plus étendu. Les topologies des réseaux de petite taille exigent généralement un seul routeur et un ou plusieurs commutateurs. Les réseaux de petite taille peuvent également comporter des points d'accès sans fil (éventuellement intégrés au routeur) et des téléphones IP. En terme de connexion à Internet, les réseaux de petite taille comportent généralement une seule connexion de réseau étendu par DSL, le câble ou une connexion Ethernet. </p>
+<p></p>
+<p>La gestion d'un réseau de petite taille exige la plupart des compétences requises pour la gestion d'un réseau de plus grande envergure. La maintenance et le dépannage du matériel existant, ainsi que la sécurisation des périphériques et des informations sur le réseau sont les tâches principales. La gestion d'un réseau de petite taille est confiée soit à un employé de l'entreprise soit à un sous-traitant, selon la taille et le type d'entreprise.</p>
+<p></p>
+<p>Un exemple de réseau classique de petite entreprise est représenté sur la figure. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.0.1.1 Introduction</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Introduction</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>Tous les périphériques qui se connectent à un réseau ont besoin d'une adresse IP unique. Les administrateurs réseau attribuent des adresses IP statiques aux routeurs, aux serveurs, aux imprimantes et aux autres périphériques réseau dont les emplacements (physique et logique) sont peu susceptibles de changer. Il s'agit généralement de périphériques qui fournissent des services aux utilisateurs et aux périphériques sur le réseau. Par conséquent, les adresses qui leur sont affectées doivent rester constantes. Par ailleurs, les adresses statiques permettent aux administrateurs de gérer ces périphériques à distance. Il est plus facile pour eux d'accéder à un périphérique lorsqu'ils peuvent facilement déterminer son adresse IP.</p>
+<p></p>
+<p>Cependant, dans une entreprise, les ordinateurs et les utilisateurs changent souvent d'emplacements physique et logique. Il peut être difficile et fastidieux pour les administrateurs d'attribuer de nouvelles adresses IP chaque fois qu'un employé se déplace. En outre, il peut être compliqué de définir manuellement les paramètres réseau appropriés pour les employés mobiles travaillant à distance. Même pour les clients de bureau, l'attribution manuelle des adresses IP et d'autres informations d'adressage représente une charge administrative, surtout lorsque le réseau prend de l'envergure.</p>
+<p></p>
+<p>L'introduction d'un serveur DHCP (Dynamic Host Configuration Protocol) sur le réseau local simplifie l'affectation des adresses IP aux périphériques mobiles et de bureau. L'utilisation d'un serveur DHCP centralisé permet aux entreprises de gérer toutes les attributions d'adresses IP dynamiques à partir d'un serveur unique. Cette pratique permet d'optimiser la gestion des adresses IP et garantit la cohérence à l'échelle de l'entreprise, y compris dans les filiales. </p>
+<p></p>
+<p>DHCP est disponible à la fois pour IPv4 (DHCPv4) et pour IPv6 (DHCPv6). Ce chapitre présente la fonctionnalité, la configuration et le dépannage de DHCPv4 et de DHCPv6.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

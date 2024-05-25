@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.3.4 Sélection des différents modes IOS</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>IOS Bootcamp</h1>
+        <h2>Navigation à travers IOS</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Basculement entre mode d'exécution utilisateur et mode d'exécution privilégié</b>
+</p>
+<p></p>
+<p>Les commandes <span class="cmd"><b>enable</b></span> et <span class="cmd"><b>disable</b></span> permettent d'aller et venir entre le mode d'exécution utilisateur et le mode d'exécution privilégié de la CLI. </p>
+<p></p>
+<p>Pour accéder au mode d'exécution privilégié, utilisez la commande <span class="cmd"><b>enable</b></span>. Cette commande est la raison pour laquelle le mode d'exécution privilégié est parfois appelé mode actif. </p>
+<p>La syntaxe de la commande <span class="cmd"><b>enable</b></span> est la suivante :</p>
+<p></p>
+<p>
+<span class="cmd">Switch></span>
+<span class="cmd">
+<b>enable</b>
+</span>
+</p>
+<p></p>
+<p>Cette commande est exécutée sans argument ni mot-clé. Après avoir appuyé sur la touche Entrée, l'invite change :</p>
+<p></p>
+<p>
+<span class="cmd">Switch#</span>
+</p>
+<p></p>
+<p>Le symbole # à la fin de l'invite indique que le commutateur est désormais en mode d'exécution privilégié. </p>
+<p></p>
+<p>Si une authentification par mot de passe a été configurée pour le mode d'exécution privilégié, l'IOS vous invite à entrer le mot de passe. </p>
+<p></p>
+<p>Par exemple :</p>
+<p></p>
+<p>
+<span class="cmd">Switch></span>
+<span class="cmd">
+<b>enable</b>
+</span>
+</p>
+<p>
+<span class="cmd">Password:</span>
+</p>
+<p>
+<span class="cmd">Switch#</span>
+</p>
+<p></p>
+<p>La commande <span class="cmd"><b>disable</b></span> permet de repasser du mode d'exécution privilégié au mode d'exécution utilisateur. </p>
+<p></p>
+<p>Par exemple :</p>
+<p></p>
+<p>
+<span class="cmd">Switch#</span>
+<span class="cmd">
+<b>disable</b>
+</span>
+</p>
+<p>
+<span class="cmd">Switch></span>
+</p>
+<p></p>
+<p>Comme l'illustre la figure, les commandes permettant d'accéder au mode d'exécution privilégié et de revenir au mode d'exécution utilisateur sur un routeur Cisco sont identiques à celles utilisées sur un commutateur Cisco.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

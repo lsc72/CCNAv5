@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.1.2 Les messages de sollicitation et d&#x0027;annonce de routeur ICMPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Vérification de la connectivité</h1>
+        <h2>ICMP</h2>
+      </div>
+      <div id="content">
+<p>Les messages d'informations et d'erreur du protocole ICMPv6 sont très similaires aux messages de contrôle et d'erreur mis en œuvre par le protocole ICMPv4. Cependant, l'ICMPv6 offre de nouvelles fonctions et fonctionnalités avancées introuvables dans l'ICMPv4.</p>
+<p></p>
+<p>ICMPv6 inclut quatre nouveaux protocoles dans le cadre du protocole Neighbor Discovery Protocol (ND ou NDP) :</p>
+<p>
+<ul>
+<li>Message de sollicitation de routeur</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Message d'annonce de routeur</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Message de sollicitation de voisin</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Message d'annonce de voisin</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Messages de sollicitation et d'annonce de routeur</b>
+</p>
+<p>Les périphériques IPv6 peuvent être divisés en deux catégories : les routeurs et les hôtes. Les messages de sollicitation de routeur et d'annonce de routeur sont envoyés entre les hôtes et les routeurs. </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Messages de sollicitation de routeur :</b> lorsqu'un hôte est configuré pour obtenir ses informations d'adressage à l'aide de la configuration automatique des adresses sans état (SLAAC), celui-ci envoie un message de sollicitation au routeur. Le message de sollicitation de routeur est envoyé sous forme de message de multidiffusion à tous les routeurs IPv6.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Messages d'annonce de routeur </b>: ces messages sont envoyés par les routeurs pour fournir les informations d'adressage aux hôtes via la SLAAC. Un message d'annonce de routeur peut inclure les informations d'adressage pour l'hôte telles que le préfixe et la longueur de préfixe. Un routeur envoie un message d'annonce de routeur régulièrement ou en réponse à un message de sollicitation. Par défaut, les routeurs Cisco envoient des messages d'annonce de routeur toutes les 200 secondes. Ces messages sont envoyés à l'adresse de multidiffusion à tous les nœuds IPv6. Un hôte utilisant la SLAAC utilise l'adresse link-local du routeur qui a envoyé le message d'annonce de routeur en tant que passerelle par défaut.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

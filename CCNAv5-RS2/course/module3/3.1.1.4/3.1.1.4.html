@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.1.4 VLAN voix</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmentation d&#x0027;un VLAN</h1>
+        <h2>Vue d&#x0027;ensemble des VLAN</h2>
+      </div>
+      <div id="content">
+<p>Un VLAN distinct est nécessaire pour prendre en charge la voix sur IP (VoIP). Le trafic de voix sur IP requiert les éléments suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>bande passante consolidée pour garantir la qualité de la voix ; </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>priorité de transmission par rapport aux autres types de trafic réseau ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>possibilité de routage autour des zones encombrées du réseau ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Délai inférieur à 150 ms sur tout le réseau.</li>
+</ul>
+</p>
+<p></p>
+<p>Pour remplir ces conditions, le réseau entier doit être conçu pour prendre en charge la voix sur IP. Ce cours ne prétend pas expliquer en détail comment configurer un réseau pour prendre en charge la voix sur IP, mais il est utile de récapituler de quelle manière un VLAN voix fonctionne entre un commutateur, un téléphone IP Cisco et un ordinateur.</p>
+<p></p>
+<p>Dans la figure, le VLAN 150 est conçu pour acheminer le trafic vocal. L'ordinateur « étudiant » PC5 est connecté au téléphone IP Cisco et ce dernier est connecté au commutateur S3. L'ordinateur PC5 se trouve dans le VLAN 20 qui est utilisé pour les données des étudiants. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

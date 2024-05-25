@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.4.1 Vérifier les voisins OSPF</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv2 à zone unique</h1>
+        <h2>Vérification du protocole OSPF</h2>
+      </div>
+      <div id="content">
+<p>La Figure 1 illustre la topologie de référence.</p>
+<p></p>
+<p>Utilisez la commande <span class="cmd"><b>show ip ospf neighbor</b></span> pour vérifier qu'une contiguïté est bien établie entre le routeur et ses routeurs voisins. Si l'ID de routeur du routeur voisin ne s'affiche pas, ou qu'il n'affiche pas l'état FULL, les deux routeurs n'ont pas établi de contiguïté OSPF. </p>
+<p></p>
+<p>Lorsque deux routeurs n'établissent pas de contiguïté, les informations d'état de liens ne sont pas échangées. Une LSDB incomplète peut entraîner des erreurs dans les arborescences SPF et les tables de routage. Les routes vers les réseaux de destination peuvent ne pas exister, ou peuvent ne pas être les meilleurs chemins.</p>
+<p></p>
+<p>La Figure 2 illustre la contiguïté des voisins de R1. Pour chaque voisin, cette commande affiche les éléments suivants :</p>
+<p>
+<ul>
+<li>
+<b>Neighbor ID</b> : ID de routeur voisin.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Pri</b> : priorité OSPF de l'interface. Cette valeur est utilisée pour le choix du routeur désigné (DR) et du routeur désigné de secours (BDR).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>State</b> : état OSPF de l'interface. L'état FULL signifie que le routeur et son voisin ont des LSDB OSPF identiques. Sur les réseaux à accès multiple, tels que l'Ethernet, deux routeurs contigus peuvent afficher l'état 2WAY. Le tiret indique qu'aucun DR ou BDR n'est requis en raison du type de réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Dead Time</b> : durée de temps pendant laquelle le routeur attend un paquet Hello OSPF du voisin avant de déclarer le voisin hors service. Cette valeur est réinitialisée lorsque l'interface reçoit un paquet Hello.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Address</b> : adresse IPv4 de l'interface du voisin à laquelle ce routeur est connecté directement.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Interface</b> : interface sur laquelle ce routeur a établi une contiguïté avec son voisin.</li>
+</ul>
+</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe dans la Figure 3 pour vérifier les voisins R2 et R3 au moyen de la commande <span class="cmd"><b>show ip opsf neighbor</b></span>.</p>
+<p>Deux routeurs ne peuvent pas établir une contiguïté OSPF si :</p>
+<p>
+<ul>
+<li>Les masques de sous-réseau ne correspondent pas, plaçant ainsi les routeurs sur des réseaux séparés</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les compteurs OSPF Hello ou les compteurs d'arrêt ne correspondent pas</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les types de réseau OSPF ne correspondent pas</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La commande OSPF <span class="cmd"><b>network</b></span> est manquante ou incorrecte.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.3.1 Meilleures pratiques</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité du commutateur : gestion et implémentation</h1>
+        <h2>Meilleures pratiques de sécurité</h2>
+      </div>
+      <div id="content">
+<p>La défense de votre réseau contre les attaques nécessite vigilance et formation. Les meilleures pratiques de sécurisation du réseau sont les suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>Développez une stratégie de sécurité écrite pour l'organisation.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Arrêtez les services et les ports inutilisés.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Utilisez des mots de passe forts et modifiez-les souvent.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Contrôlez l'accès physique aux périphériques.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Évitez de vous connecter à des sites Web HTTP non sécurisés, préférez les écrans de connexion qui utilisent le protocole HTTPS.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Effectuez des sauvegardes et testez les fichiers enregistrés de façon régulière.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Éduquez les employés à propos des attaques par manipulation psychologique, et développez des stratégies de validation des identités par téléphone, par e-mail, et en personne.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Chiffrez et protégez par mot de passe les données sensibles.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Implémentez des logiciels et des matériels de sécurité, tels que des pare-feu.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Veillez à mettre les logiciels à jour en installant les correctifs de sécurité chaque semaine voire chaque jour, si possible.</li>
+</ul>
+</p>
+<p></p>
+<p>Ces méthodes sont uniquement un point de départ pour la gestion de la sécurité. Les entreprises doivent constamment rester vigilantes pour se défendre contre des menaces en constante évolution. Utilisez les outils de sécurité réseau pour mesurer la vulnérabilité du réseau existant. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

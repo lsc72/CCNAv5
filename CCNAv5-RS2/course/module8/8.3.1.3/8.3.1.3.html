@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.1.3 Différences entre les réseaux OSPFv2 et OSPFv3</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv3 à zone unique</h1>
+        <h2>Comparaison des protocoles OSPFv2 et OSPFv3</h2>
+      </div>
+      <div id="content">
+<p>La figure illustre les différences entre OSPFv2 et OSPFv3 :</p>
+<p>
+<ul>
+<li>
+<b>Annonces</b> - OSPFv2 annonce les routes IPv4, tandis qu'OSPFv3 annonce les routes pour IPv6.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse source</b> - Les messages OSPFv2 proviennent de l'adresse IPv4 de l'interface de sortie. Dans le protocole OSPFv3, les messages OSPF sont fournis à l'aide de l'adresse link-local de l'interface de sortie.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresses de multidiffusion tous les routeurs OSPF</b> - OSPFv2 utilise 224.0.0.5 ; tandis qu'OSPFv3 utilise FF02::5.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse de multidiffusion DR/BDR</b> - OSPFv2 utilise 224.0.0.6 ; tandis qu'OSPFv3 utilise FF02::6.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Annonce des réseaux </b>- OSPFv2 annonce les réseaux au moyen de la commande de configuration de routeur <span class="cmd"><b>network </b></span>; tandis qu'OSPFv3 utilise la commande de configuration d'interface <span class="cmd"><b>ipv6 ospf </b></span><span class="cmd"><i>process-id </i></span><span class="cmd"><b>area </b></span><span class="cmd"><i>area-id</i></span>.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Routage monodiffusion IP </b>- Activé par défaut dans IPv4 ; tandis que la commande de configuration globale <span class="cmd"><b>ipv6 unicast-routing </b></span>doit être configurée.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Authentification</b> - OSPFv2 utilise l'authentification en clair ou l'authentification MD5. OSPFv3 utilise l'authentification IPv6.</li>
+</ul>
+</p>
+<p></p>
+<p></p>
+<p></p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

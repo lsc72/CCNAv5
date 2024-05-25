@@ -1,0 +1,76 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Configuration et vérification de l'ID de pont</b>]]></text>
+</component>
+<component id="ID_s1_txt01">
+  <text><![CDATA[<b>Méthode 1</b>]]></text> 
+</component>
+<component id="ID_s1_txt02">
+  <text><![CDATA[<b>Méthode 1</b>]]></text> 
+</component>
+<component id="ID_s1_txt03">
+  <text><![CDATA[<b>Méthode 2</b>]]></text> 
+</component>
+<component id="ID_s1_txt04">
+  <text><![CDATA[<b>Trunk2</b>]]></text> 
+</component>
+<component id="ID_s1_txt05">
+  <text><![CDATA[<b>Trunk3</b>]]></text> 
+</component>
+<component id="ID_s1_txt06">
+  <text><![CDATA[<b>Trunk1</b>]]></text> 
+</component>
+
+
+
+<component id="ID_s2_title">
+		<text><![CDATA[<b>Configuration et vérification de l'ID de pont</b>]]></text>
+	</component>
+
+<component id="ID_s3_title">
+		<text><![CDATA[<b>Configuration et vérification de l'ID de pont</b>]]></text>
+	</component>
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+<component id="ID_SC5" fontFace='Courier New' fontSize="10" class="font10px">
+		<feedback id="fb"><![CDATA[<b><font size='10' face="Arial" color="#0000FF">***Vous devez entrer la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font></b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font face="Arial"><b>Sur S3, configurez la priorité pour le VLAN 1 sur 24576 et revenez au mode d'exécution privilégié.</b></font>]]></existingcommands>
+		<command prompt="S3(config)#">
+			<correctresponse><![CDATA[spanning-tree vlan 1 priority 24576]]></correctresponse>
+		</command>	
+		<command prompt="S3(config)#">
+			<correctresponse><![CDATA[end]]></correctresponse>
+			<instruction><![CDATA[<font face="Arial"><b>Configurez S2 comme racine secondaire pour le VLAN 1 et revenez au mode d'exécution privilégié.</b></font>]]></instruction>
+		</command>	
+		<command prompt="S2(config)#">
+			<correctresponse><![CDATA[spanning-tree vlan 1 root secondary]]></correctresponse>
+		</command>
+		<command prompt="S2(config)#">
+			<correctresponse><![CDATA[end]]></correctresponse>
+			<instruction><![CDATA[<font face="Arial"><b>Configurez S1 comme racine principale pour le VLAN 1 et revenez au mode d'exécution privilégié.</b></font>]]></instruction>
+		</command>	
+		<command prompt="S1(config)#">
+			<correctresponse><![CDATA[spanning-tree vlan 1 root primary]]></correctresponse>
+		</command>
+		<command prompt="S1(config)#">
+			<correctresponse><![CDATA[end]]></correctresponse>
+			<instruction><![CDATA[<font face="Arial"><b>Affichez l'état Spanning Tree actuel sur S1.</b></font>]]></instruction>
+		</command>
+		<command prompt="S1#">
+			<correctresponse><![CDATA[show spanning-tree]]></correctresponse>
+				<deviceresponse><![CDATA[<font face="Courier New"><br>VLAN0001 <br>  Spanning tree enabled protocol ieee <br>  Root ID    Priority    20481 <br>             Address     000A.0033.0033 <br>             This bridge is the root <br>             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec <br> <br>  Bridge ID  Priority    20481  (priority 20480 sys-id-ext 1) <br>             Address     000A.0033.0033 <br>             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec <br>             Aging Time  15  sec <br> <br>Interface           Role Sts Cost      Prio.Nbr Type <br>------------------- ---- --- --------- -------- --------------- <br>Fa0/1               Desg FWD 4          128.1    P2p <br>Fa0/2               Desg FWD 4          128.2    P2p <br></font>S1#]]></deviceresponse>
+			<instruction><![CDATA[<font face="Arial"><b>Vous avez correctement configuré et vérifié l'ID de pont.</font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+ 
+</textcomponents>

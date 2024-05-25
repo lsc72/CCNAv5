@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.3.6 Fibre ou cuivre</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.3.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Supports réseau</h1>
+        <h2>Fibre optique</h2>
+      </div>
+      <div id="content">
+<p>Les câbles à fibre optique présentent de nombreux avantages par rapport aux câbles en cuivre.</p>
+<p></p>
+<p>Les fibres utilisées dans les supports en fibre optique n'étant pas des conducteurs électriques, le support est à l'abri des interférences électromagnétiques et ne peut pas conduire de courant électrique indésirable suite à des problèmes de mise à la terre. Les fibres optiques étant fines et subissant une perte de signal relativement faible, elles peuvent fonctionner à des longueurs bien supérieures aux supports en cuivre, sans nécessiter de régénération des signaux. Certaines spécifications de couche physique en fibre optique autorisent des distances pouvant atteindre plusieurs kilomètres.</p>
+<p></p>
+<p>Les problèmes de mise en oeuvre de support en fibre optique comprennent :</p>
+<p>
+<ul>
+<li>Un coût plus élevé (généralement) que les supports en cuivre pour la même distance (mais pour une capacité supérieure)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Des compétences et matériel différents pour raccorder et épisser l'infrastructure de câblage</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Une manipulation plus délicate que les supports en cuivre</li>
+</ul>
+</p>
+<p></p>
+<p>Actuellement, dans la plupart des environnements d'entreprise, la fibre optique est utilisée principalement comme câblage du réseau fédérateur pour les connexions point à point de trafic élevé entre des points de distribution de données et pour l'interconnexion des bâtiments des grands complexes. La fibre optique ne conduisant pas l'électricité et subissant une perte de signal inférieure, elle est bien adaptée à ces usages.</p>
+<p></p>
+<p>La figure illustre certaines de ces différences.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide type="MBAR">
+		<element type="TEXT" id="ID_static_1" text=":10" x="37.2" y="48.35" width="22.55" align="left" />
+		<element type="TEXT" id="ID_static_2" text=":10" x="37.2" y="120.35" width="22.55" align="left" />
+		<element type="TEXT" id="ID_static_3" text=":10" x="387.2" y="48.35" width="22.55" align="left" />
+		<element type="TEXT" id="ID_static_4" text=":10" x="387.2" y="120.35" width="22.55" align="left" />
+		<element type="TEXT" id="ID_static_5" text="G0/0 :1" x="110.9" y="65" width="30.8" align="right" size="10" />
+		<element type="TEXT" id="ID_static_6" text="G0/0 :1" x="296" y="67" width="30.8" align="right" size="10" />
+		<element type="TEXT" id="ID_static_7" text=":1 G0/1" x="300" y="111" width="30.8" align="right" size="10" />
+		<element type="TEXT" id="ID_static_8" text=":1 G0/1" x="108" y="115" width="30.8" align="right" size="10"/>
+		<element type="TEXT" id="ID_static_9" text=":1 S0/0/0" x="172.45" y="72.75" width="33.1" align="left" size="10" />
+		<element type="TEXT" id="ID_static_10" text=":2 S0/0/0" x="252" y="72.8" width="33.1" align="right" size="10" />
+		<element type="TEXT" id="ID_static_11" text="2001:0DB8:ACAD:1::/64" x="33.1" y="30.2" width="116.9" align="center" size="10" bold="1" />
+		<element type="TEXT" id="ID_static_12" text="2001:0DB8:ACAD:2::/64" x="23.1" y="146.95" width="116.9" align="center" size="10" bold="1" />
+		<element type="TEXT" id="ID_static_13" text="2001:0DB8:ACAD:3::/64" x="176.35" y="57" width="116.9" align="center" size="10" bold="1" />
+		<element type="TEXT" id="ID_static_14" text="2001:0DB8:ACAD:4::/64" x="305" y="30.2" width="116.9" align="center" size="10" bold="1" />
+		<element type="TEXT" id="ID_static_15" text="2001:0DB8:ACAD:5::/64" x="305.1" y="146.95" width="116.9" align="center" size="10" bold="1" /> <!-- Slide 1 -->
+		  <slide>
+		   <element type="TEXT" subType="TITLE" compId="ID_s1_txt01"/>
+		   <element type="IMAGE" src="1.3.3.3A.jpg" x="0" y="0" width="470" height="400"/>	  
+		   <element type="ROUTER"  textId="router_text1"  x="5.1"    y="173.6"   width="428.3" height="225.35" sixe="10" />
+		  </slide> <!-- Slide 2 -->
+		  <slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_txt01"/>
+			<element type="IMAGE" src="1.3.3.3A.jpg" x="0" y="0" width="470" height="400"/>
+			<element type="ROUTER"  textId="router_text2"  x="5.1"    y="173.6"   width="428.3" height="225.35" size="10" />			
+		  </slide> <!-- Slide 3 -->
+		  <slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_txt01"/>
+  			<element type="IMAGE" src="1.3.3.3B.jpg" x="0" y="0" width="470" height="400"/>
+			<element type="ROUTER"  textId="router_text3"  x="5.1"    y="173.6"   width="428.3" height="225.35" size="10" />			
+		  </slide> <!-- Slide 4 -->
+		  <slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s4_txt01"/>
+			<element type="IMAGE" src="1.3.3.3B.jpg" x="0" y="0" width="470" height="400"/>
+			<element type="ROUTER"  textId="router_text4"  x="5.1"    y="173.6"   width="428.3" height="225.35" size="10" />			
+		  </slide> <!-- Slide 5 -->
+		  <slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s5_txt01"/>
+ 			<element type="IMAGE" src="1.3.3.3A.jpg" x="0" y="0" width="470" height="400"/>
+			<element type="ROUTER"  textId="router_text5" x="5" y="173.6" width="430" height="225.35" size="10" />			
+		  </slide>
+	</slide>
+
+<text id="router_text1"><![CDATA[R1(config)# <b>ipv6 route ::/0 s0/0/0  </b><br/>R1(config)# <b>exit  </b><br/>R1#]]></text>
+
+<text id="router_text2"><![CDATA[  R1# <b>show ipv6 route  </b><br/> IPv6 Routing Table - default - 8 entries<br/> Codes: C - Connected, L - Local, S - Static, <br/>
+       <div style="padding-left:43px">U - Per-user Static route<br/> B - BGP, R - RIP, H - NHRP, I1 - ISIS L1<br/> I2 - ISIS L2, IA - ISIS interarea, IS - ISIS summary, <br/> D - EIGRP<br/> EX - EIGRP external, ND - ND Default, NDp - ND Prefix, <br/> DCE - Destination<br/> NDr - Redirect, O - OSPF Intra, OI - OSPF Inter, <br/> OE1 - OSPF ext 1<br/> OE2 - OSPF ext 2, ON1 - OSPF NSSA ext 1, <br/> ON2 - OSPF NSSA ext 2<br/>
+	  </div>
+<div style="background-color:#FACCA8">S <span>::/0 [1/0]</span><br/> <span style="padding-left:28px ! important">via Serial0/0/0, directly connected</span></div> C <span>2001:0DB8:ACAD:1::/64 [0/0]</span><br/> <span style="padding-left:28px ! important">via GigabitEthernet0/0, directly connected</span><br/> L <span>2001:0DB8:ACAD:1::1/128 [0/0]</span><br/> <span style="padding-left:28px ! important">via GigabitEthernet0/0, receive</span><br/> C <span>2001:0DB8:ACAD:2::/64 [0/0]</span><br/> <span style="padding-left:28px ! important">via GigabitEthernet0/1, directly connected</span><br/> L <span>2001:0DB8:ACAD:2::1/128 [0/0]</span><br/> <span style="padding-left:28px ! important">via GigabitEthernet0/1, receive</span><br/> C <span>2001:0DB8:ACAD:3::/64 [0/0]</span><br/> <span style="padding-left:28px ! important">via Serial0/0/0, directly connected</span><br/> L <span>2001:0DB8:ACAD:3::1/128 [0/0]</span><br/> <span style="padding-left:28px ! important">via Serial0/0/0, receive</span><br/> L <span>FF00::/8 [0/0]</span><br/> <span style="padding-left:28px ! important">via Null0, receive</span>
+]]></text>
+
+<text id="router_text3"><![CDATA[ R2(config)# <b>ipv6 route 2001:0DB8:ACAD:1::/64 2001:0DB8:ACAD:3::1  </b> <br/> R2(config)# <b>ipv6 route 2001:0DB8:ACAD:2::/64 s0/0/0  </b><br/> R2(config)# <b>^Z  </b><br/> R2#
+]]></text>
+
+
+<text id="router_text4"><![CDATA[  R1# <b>show ipv6 route  </b><br/> IPv6 Routing Table - default - 8 entries<br/> Codes: C - Connected, L - Local, S - Static, <br/>
+       <div style="padding-left:43px">U - Per-user Static route<br/> B - BGP, R - RIP, H - NHRP, I1 - ISIS L1<br/> I2 - ISIS L2, IA - ISIS interarea, IS - ISIS summary, <br/> D - EIGRP<br/> EX - EIGRP external, ND - ND Default, NDp - ND Prefix, <br/> DCE - Destination<br/> NDr - Redirect, O - OSPF Intra, OI - OSPF Inter, <br/> OE1 - OSPF ext 1<br/> OE2 - OSPF ext 2, ON1 - OSPF NSSA ext 1, <br/> ON2 - OSPF NSSA ext 2<br/>
+	  </div>
+
+<div style="background-color:#FACCA8"> S <span>2001:0DB8:ACAD:1::/64 [1/0]</span><br/> <span style="padding-left:28px ! important">via 2001:DB8:ACAD:3::1</span><br/> S <span>2001:0DB8:ACAD:2::/64 [1/0]</span><br/> <span style="padding-left:28px ! important">via Serial0/0/0, directly connected</div>  C <span>2001:0DB8:ACAD:3::/64 [0/0]</span><br/> <span style="padding-left:28px ! important">via Serial0/0/0, directly connected</span><br/> L <span>2001:0DB8:ACAD:3::2/128 [0/0]</span><br/> <span style="padding-left:28px ! important">via Serial0/0/0, receive</span><br/> C <span>2001:0DB8:ACAD:4::/64 [0/0]</span><br/> <span style="padding-left:28px ! important">via GigabitEthernet0/0, directly connected</span><br/> L <span>2001:0DB8:ACAD:4::1/128 [0/0]</span><br/> <span style="padding-left:28px ! important">via GigabitEthernet0/0, receive</span><br/> C <span>2001:0DB8:ACAD:5::/64 [0/0]</span><br/> <span style="padding-left:28px ! important">via GigabitEthernet0/1, directly connected</span><br/> L <span>2001:0DB8:ACAD:5::1/128 [0/0]</span><br/> <span style="padding-left:28px ! important">via GigabitEthernet0/1, receive</span><br/> L <span>FF00::/8 [0/0]</span><br/> <span style="padding-left:28px ! important">via Null0, receive</span><br/> R2#
+]]></text>
+
+<text id="router_text5"><![CDATA[ R1# <b>ping 2001:0db8:acad:4::1  </b><br/> Type escape sequence to abort.<br/> Sending 5, 100-byte ICMP Echos to 2001:DB8:ACAD:4::1, timeout is 2 seconds:<br/> !!!!!<br/> Success rate is 100 percent (5/5), round-trip min/avg/max = 12/13/16 ms<br/> R1#
+
+]]></text>
+
+
+</data>

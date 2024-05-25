@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.1.6 Sauvegarde d&#x0027;une configuration</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration LAN sans fil</h1>
+        <h2>Configurer un routeur sans fil</h2>
+      </div>
+      <div id="content">
+<p>Tout comme l'IOS d'un routeur Cisco, la configuration d'un routeur domestique doit être sauvegardée en prévention des défaillances. Si vous conservez la configuration par défaut d'un routeur domestique, il ne sert à rien d'en sauvegarder la configuration. Cependant, si de nombreux outils Smart Wi-Fi ont été personnalisés, il peut être intéressant de le faire. </p>
+<p></p>
+<p>La sauvegarde de la configuration est une procédure très simple sur le routeur sans fil Linksys EA6500 : </p>
+<p></p>
+<p>
+<b>Étape 1.</b> Connectez-vous à la page d'accueil Smart Wi-Fi. Cliquez sur l'icône <b>Troubleshooting</b> (Résolution des problèmes) pour afficher l'écran Troubleshooting Status (Résolution des problèmes/Statut) (Figure 1).</p>
+<p></p>
+<p>
+<b>Étape 2.</b> Cliquez sur l'onglet <b>Diagnostic</b> pour ouvrir la fenêtre Diagnostic Troubleshooting (Résolution des problèmes/Diagnostic) (Figure 2). </p>
+<p></p>
+<p>
+<b>Étape 3.</b> Sous le titre Router configuration (Configuration du routeur), cliquez sur <b>Backup</b> (Sauvegarder) et enregistrez le fichier dans le dossier de votre choix.</p>
+<p></p>
+<p>
+<b>Remarque </b>: pour charger une sauvegarde, cliquez sur <b>Restore</b> (Restaurer), localisez le fichier et lancez le processus de restauration. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

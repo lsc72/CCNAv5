@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.1.2 Configuration de SSH</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité du commutateur : gestion et implémentation</h1>
+        <h2>Accès à distance sécurisé</h2>
+      </div>
+      <div id="content">
+<p>Avant de configurer SSH, le commutateur doit au moins être configuré avec un nom d'hôte unique et avec les paramètres de connectivité réseau adéquats.</p>
+<p></p>
+<p>
+<b>Étape 1. Vérifiez la prise en charge du protocole SSH.</b>
+</p>
+<p></p>
+<p>Utilisez la commande<span class="cmd"><b> show ip ssh </b></span>pour vérifier que le commutateur prend en charge SSH. Si le commutateur n'exécute pas une version du logiciel IOS qui prend en charge les fonctionnalités de cryptographie (chiffrement), cette commande n'est pas reconnue. </p>
+<p></p>
+<p>
+<b>Étape 2. configuration du domaine IP</b>
+</p>
+<p></p>
+<p>Configurez le nom de domaine IP du réseau à l'aide de la commande de mode de configuration globale<span class="cmd"><b> ip domain-name </b></span><span class="cmd"><i>nom-domaine</i></span>. Dans la Figure 1, la valeur pour<span class="cmd"><i> nom-domaine </i></span>est<span class="cmd"><b> cisco.com</b></span>.</p>
+<p></p>
+<p>
+<b>Étape 3. Générez des paires de clés RSA.</b>
+</p>
+<p></p>
+<p>Toutes les versions de l'IOS utilisent par défaut SSH version 2. SSH version 1 a des failles de sécurité connues. Pour configurer SSH version 2, exécutez la commande du mode de configuration globale <span class="cmd"><b>ip ssh version 2</b></span>. La génération d'une paire de clés RSA active automatiquement SSH. Utilisez la commande de mode de configuration globale<span class="cmd"><b> crypto key generate rsa </b></span>pour activer le serveur SSH sur le commutateur et pour générer une paire de clés RSA. Lors de la génération de clés RSA, l'administrateur est invité à saisir une longueur de module. Cisco recommande l'utilisation d'une longueur de module minimale de 1 024 octets (voir l'exemple de configuration sur la Figure 1). Une longueur de module plus importante peut se révéler plus sûre, mais sa création et son utilisation prennent plus de temps.</p>
+<p></p>
+<p>
+<b>Remarque </b>: pour supprimer la paire de clés RSA, utilisez la commande de configuration globale<span class="cmd"><b> crypto key zeroize rsa</b></span>. Une fois la paire de clés RSA supprimée, le serveur SSH est automatiquement désactivé.</p>
+<p></p>
+<p>
+<b>Étape 4. Configurez l'authentification utilisateur.</b>
+</p>
+<p></p>
+<p>Le serveur SSH peut authentifier les utilisateurs localement ou avoir recours à un serveur d'authentification. Pour utiliser la méthode d'authentification locale, créez un nom d'utilisateur et un mot de passe à l'aide de la commande du mode de configuration globale<span class="cmd"><b> username </b></span><span class="cmd"><i>username</i></span><span class="cmd"><b> secret </b></span><span class="cmd"><i>password</i></span>. Dans cet exemple, l'utilisateur<span class="cmd"><b> admin </b></span>se voit attribuer le mot de passe<span class="cmd"><b> ccna</b></span>.</p>
+<p></p>
+<p>
+<b>Étape 5. Configurez les lignes vty.</b>
+</p>
+<p></p>
+<p>Activez le protocole SSH sur les lignes vty à l'aide de la commande de mode de configuration de ligne<span class="cmd"><b> transport input ssh</b></span>. Le commutateur Cisco Catalyst 2960 intègre des lignes vty allant de 0 à 15. Cette configuration permet d'interdire toute connexion autre que SSH (par exemple Telnet). Seules les connexions SSH sont ainsi autorisées sur le commutateur. Utilisez la commande de mode de configuration globale<span class="cmd"><b> line vty, </b></span>puis la commande de mode de configuration de ligne<span class="cmd"><b> login local </b></span>pour exiger l'authentification locale des connexions SSH provenant d'une base de données de noms d'utilisateur locale.</p>
+<p></p>
+<p>
+<b>Étape 6. Activez SSH version 2.</b>
+</p>
+<p></p>
+<p>Par défaut, SSH prend en charge les versions 1 et 2. Cette double prise en charge se voit dans les résultats de la commande<span class="cmd"><b> show ip ssh (</b></span>prise en charge de la version 1.99). La version 1 a des vulnérabilités connues. Par conséquent, il est préférable d'activer uniquement la version 2. Activez cette version de SSH avec la commande de configuration globale <span class="cmd"><b>ip ssh version 2</b></span>.</p>
+<p></p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 2 pour configurer SSH sur le commutateur S1.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

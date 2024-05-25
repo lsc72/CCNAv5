@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+
+	<!--Slide 01-->
+		<slide>
+			<element type="IMAGE" src="5.2.2.2.jpg" x="0" y="0" width="470" height="400"/>
+			<element type="ROUTER" textId="ID_router_txt1" x="5.45" y="32.55" width="431" height="290" />
+			<text id="ID_router_txt1"><![CDATA[<pre>S1# <b>show etherchannel summary</b>
+Flags:  <span class = "orange">D - down</span>        P - bundled in port-channel 
+        I - stand-alone s - suspended 
+        H - Hot-standby (LACP only)
+        R - Layer3      S - Layer2 
+        U - in use      f - failed to allocate aggregator 
+		
+        M - not in use, minimum links not met 
+        u - unsuitable for bundling
+        w - waiting to be aggregated 
+        d - default port
+		
+		
+Number of channel-groups in use: 1
+Number of aggregators:           1 
+
+Group  Port-channel  Protocol    Ports
+------+-------------+-----------+------------------------- 
+<span class = "orange">1      Po1(SD)          -        Fa0/1(D)    Fa0/2(D)     </span> </pre>]]></text>
+			<element type="TEXT" compId="ID_s1_txt01" x="86" y="333" width="104.5" expand="right" align="left" />
+			<element type="TEXT" compId="ID_s1_txt02" x="86" y="372" width="104.5" expand="right" align="left" />
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+		</slide>
+
+	<!--Slide 02-->
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+			<element type="ROUTER" textId="ID_router_txt2" x="5.45" y="38.55" width="431" height="356.05" size="11" />
+			<text id="ID_router_txt2"><![CDATA[<pre>S1# <b>show run | begin interface port-channel</b>
+interface Port-channel1
+ switchport mode trunk
+!
+interface FastEthernet0/1
+ switchport mode trunk
+<span class = "orange"> channel-group 1 mode on                                </span>
+!
+interface FastEthernet0/2
+ switchport mode trunk
+<span class = "orange"> channel-group 1 mode on                                </span>
+!<span id="ID_s2_txt01"></span>
+S2# <b>show run | begin interface port-channel</b>
+interface Port-channel1
+ switchport mode trunk
+!
+interface FastEthernet0/1
+ switchport mode trunk
+<span class = "orange"> channel-group 1 mode desirable                         </span>
+!
+interface FastEthernet0/2
+ switchport mode trunk
+<span class = "orange"> channel-group 1 mode desirable                         </span>
+!<span id="ID_s2_txt02"></span>
+</pre>]]></text>
+		</slide>
+		
+		<!--Slide 03-->
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+			<element type="ROUTER" textId="ID_router_txt3" x="1.45" y="38.55" width="435" height="358.05" size="11" />
+			<text id="ID_router_txt3"><![CDATA[<pre>S1(config)# <b>no interface port-channel 1</b>
+S1(config)# <b>interface range f0/1 - 2</b>
+S1(config-if-range)# <b>channel-group 1 mode desirable</b>
+Creating a port-channel interface Port-channel 1
+
+S1(config-if-range)# <b>no shutdown</b>
+S1(config-if-range)# <b>interface port-channel 1</b>
+S1(config-if)# <b>switchport mode trunk</b>
+S1(config-if)# <b>end</b>
+S1# <b>show etherchannel summary</b>
+Flags:  D - down        P - bundled in port-channel
+        I - stand-alone s - suspended
+        H - Hot-standby (LACP only)
+        R - Layer3      S - Layer2
+        U - in use      f - failed to allocate aggregator
+
+        M - not in use, minimum links not met
+        u - unsuitable for bundling
+        w - waiting to be aggregated
+        d - default port
+
+
+Number of channel-groups in use: 1
+Number of aggregators:           1
+
+Group  Port-channel  Protocol    Ports
+------+-------------+-----------+-----------------------
+<span class = "orange">1      Po1(SU)         PAgP      Fa0/1(P)    Fa0/2(P)    </span>
+
+</pre>]]></text>
+		</slide>
+
+
+	</slide>
+</data>
+
+

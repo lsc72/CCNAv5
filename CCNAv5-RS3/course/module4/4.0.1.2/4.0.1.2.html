@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.0.1.2 Exercice en classe : rendre mon réseau sans fil</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Introduction</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Rendre mon réseau sans fil</b>
+</p>
+<p></p>
+<p>En tant qu'administrateur réseau de votre PME, vous réalisez que votre réseau sans fil doit être mis à jour, à la fois à l'intérieur et à l'extérieur de votre bâtiment. Par conséquent, vous décidez de rechercher comment d'autres entreprises, écoles et organisations configurent leurs WLAN afin de garantir un meilleur accès à leurs employés et clients.</p>
+<p></p>
+<p>Pour effectuer des recherches sur ce sujet, visitez le site Web « <a href="http://www.cisco.com/en/US/products/hw/wireless/products_category_customer_case_studies.html" target="_blank">Customer Case Studies and Research</a> » (Études de cas client et recherche) pour voir comment d'autres entreprises utilisent la technologie sans fil. Après avoir regardé quelques vidéos et lu quelques études de cas au format PDF, vous décidez d'en sélectionner deux afin de montrer à votre directeur général comment il est possible de prendre en charge une mise à niveau vers une solution sans fils plus robuste pour votre entreprise.</p>
+<p></p>
+<p>Pour effectuer cet exercice de modélisation de classe, ouvrez le PDF d'accompagnement pour en savoir plus sur la marche à suivre.</p>
+<p></p>
+<p>
+<a href="../../files/4.0.1.2%20Make%20Mine%20Wireless%20Instructions.pdf" target="_blank">Exercice en classe : rendre mon réseau sans fil</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

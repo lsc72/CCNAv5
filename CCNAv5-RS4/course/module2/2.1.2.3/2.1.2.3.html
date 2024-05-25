@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.3 Équipements du réseau étendu</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation des technologies WAN</h1>
+        <h2>Opérations WAN</h2>
+      </div>
+      <div id="content">
+<p>De nombreux types de périphériques sont spécifiques au WAN, par exemple :</p>
+<p>
+<ul>
+<li>
+<b>Modem commuté </b>: considéré comme un héritage de la technologie WAN, le modem voix convertit (ou module) le signal numérique produit par un ordinateur en fréquences vocales qui peuvent être transmises sur les lignes analogiques du réseau téléphonique public. De l'autre côté, un autre modèle reconvertit le son en un signal numérique (démodule) transmis à un ordinateur ou une connexion réseau. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Serveur d'accès </b>: il concentre les communications utilisateur entrantes et sortantes d'un modem commuté. Considéré comme une technologie héritée, le serveur d'accès peut comporter un mélange d'interfaces analogique et numérique, et prendre en charge plusieurs centaines d'utilisateurs simultanés.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Modem haut débit </b>: type de modem digital utilisé avec les services Internet DSL ou câble à grande vitesse. Ils fonctionnent tous les deux de façon similaire au modem voix, mais ils utilisent des fréquences et des vitesses de transmission à plus haut débit.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>CSU-DSU </b>: les lignes louées numériques nécessitent une CSU et une DSU. La CSU/DSU peut-être un périphérique distinct, par exemple un moteur ou une interface sur un routeur. L'unité CSU fournit la terminaison pour le signal numérique et garantit l'intégrité de la connexion grâce à la correction des erreurs et la surveillance de ligne. L'unité DSU convertit les trames de ligne en trames que le LAN peut interpréter, et vice versa.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Commutateur WAN </b>: périphérique interréseaux à ports multiples utilisé dans les réseaux de fournisseur de services. Ces périphériques assurent la commutation du trafic, par exemple Frame Relay ou ATM. Ils fonctionnent sur la couche 2. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Routeur </b>: fournit l'interconnexion et les ports d'interfaces d'accès au WAN utilisés pour relier un réseau local au réseau du fournisseur d'accès Internet. Ces interfaces peuvent être des connexions en série, Ethernet ou d'autres interfaces WAN. Pour certains types d'interface WAN, un périphérique externe, par exemple un DSU/CSU ou un modem (analogique, câble ou DSL), est nécessaire afin de connecter le routeur au fournisseur de services local. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Routeur central/commutateur multicouches </b>: le routeur ou le commutateur qui se trouve au milieu ou dans le réseau fédérateur du WAN, plutôt qu'à sa périphérie. Pour remplir ce rôle, le routeur ou le commutateur multicouche doit pouvoir prendre en charge les nombreuses interfaces de télécommunications à grande vitesse utilisées dans le cœur du WAN. Il doit aussi pouvoir transférer les paquets IP à vitesse maximale sur toutes ces interfaces. Le routeur ou le commutateur multicouche doit aussi prendre en charge les protocoles de routage utilisés dans le cœur.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: la liste qui précède n'est pas exhaustive et d'autres périphériques peuvent être nécessaires, en fonction de la technologie d'accès WAN choisie.</p>
+<p></p>
+<p>Les technologies WAN sont soit à commutation de circuits, soit à commutation de paquets. Le type de périphérique WAN utilisé dépend de la technologie appliquée.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.2.2 Création d&#x0027;Internet et développement de la suite de protocoles TCP/IP </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Normes et protocoles réseau</h1>
+        <h2>Suites de protocoles</h2>
+      </div>
+      <div id="content">
+<p>La suite IP est une suite de protocoles nécessaire pour transmettre et recevoir des informations via Internet. Elle est plus connue sous le nom de TCP/IP, car les deux premiers protocoles réseau définis pour cette norme étaient TCP et IP. La suite TCP/IP basée sur des normes ouvertes a remplacé d'autres suites de protocoles propriétaires, telles qu'AppleTalk d'Apple et IPX/SPX (Internetwork Packet Exchange/sequenced Packet Exchange) de Novell.</p>
+<p></p>
+<p>Le premier réseau à commutation de paquets, prédécesseur de l'Internet actuel, était l'ARPANET (Advanced Research Projects Agency Network), né en 1969 de la connexion d'ordinateurs centraux situés sur quatre sites différents. L'ARPANET a été financé par le département de la défense américain et était destiné aux universités et aux laboratoires de recherche. Le sous-traitant BBN (Bolt, Beranek et Newman) a réalisé une grande partie du développement initial de l'ARPANET, notamment en créant le premier routeur alors appelé processeur de message d'interface (IMP).</p>
+<p></p>
+<p>En 1973, Robert Kahn et Vinton Cerf ont commencé leurs travaux sur le protocole TCP afin de développer la nouvelle génération de l'ARPANET. Le protocole TCP devait remplacer le programme de contrôle du réseau (NCP) alors utilisé par l'ARPANET. En 1978, le protocole TCP a été divisé en deux protocoles : TCP et IP. D'autres protocoles ont ensuite été ajoutés à la suite de protocoles TCP/IP, notamment Telnet, FTP et DNS.</p>
+<p></p>
+<p>Cliquez sur la chronologie de la figure pour afficher les détails relatifs au développement d'autres protocoles et applications réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

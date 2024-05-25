@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	
+	  <slide>		   
+	   <element type="ROUTER" textId="router_text" x="3" y="45" width="460" height="320"/>
+	   
+	   <element type="TEXT" compId="ID_txt01" x="361.65" y="95.85" width="100" align="center" expand="down" class="orangeCallOut"/>
+	  </slide>
+
+<text id="router_text" ><![CDATA[<code>R1# <b>show access-lists</b>
+Extended IP access list BROWSING
+    10 permit tcp any 192.168.10.0 0.0.0.255 established
+Extended IP access list SURFING
+    10 permit tcp <span class="orange">192.168.11.0</span> 0.0.0.255 any eq www
+    20 permit tcp 192.168.10.0 0.0.0.255 any eq 443
+R1#
+R1# <b>configure terminal</b>
+R1(config)# <b>ip access-list extended SURFING</b>
+R1(config-ext-nacl)# <b>no 10</b>
+R1(config-ext-nacl)# <b>10 permit tcp 192.168.10.0 0.0.0.255 any eq
+www</b>
+R1(config-ext-nacl)# <b>end</b>
+R1#
+R1# <b>show access-lists</b>
+Extended IP access list BROWSING
+    10 permit tcp any 192.168.10.0 0.0.0.255 established
+Extended IP access list SURFING
+    10 permit tcp 192.168.10.0 0.0.0.255 any eq www
+    20 permit tcp 192.168.10.0 0.0.0.255 any eq 443
+</code>]]></text>
+		
+
+</data>

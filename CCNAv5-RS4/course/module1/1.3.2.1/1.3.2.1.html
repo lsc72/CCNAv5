@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.3.2.1 Réseaux sans frontières Cisco</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.3.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Évolution des architectures réseau</h1>
+        <h2>Architectures réseau émergentes</h2>
+      </div>
+      <div id="content">
+<p>L'architecture de réseau sans frontières de Cisco est une solution réseau qui permet aux entreprises et aux individus de se connecter de façon sûre, fiable et transparente au réseau d'entreprise dans un environnement BYOD. Il est basé sur des périphériques d'optimisation de la sécurité et des applications, ainsi que des éléments câblés ou sans fil qui assurent le routage ou la commutation afin de répondre aux défis posés par le fonctionnement de l'entreprise et les fluctuations des modèles commerciaux. </p>
+<p></p>
+<p>Il ne s'agit pas d'une solution statique, mais d'une solution évolutive afin d'aider les départements informatiques à mettre en place une expérience utilisateur sécurisée, fiable et transparente dans un monde dont les limites bougent sans cesse.</p>
+<p></p>
+<p>Il permet de concevoir et de déployer les stratégies et les systèmes informatiques de façon efficace sur tous les appareils des utilisateurs finaux qui nécessitent une connexion au réseau. Ainsi, il offre un accès sécurisé, fiable et transparent depuis de nombreux emplacements, depuis de nombreux appareils, à des ressources et des applications pouvant se trouver n'importe où.</p>
+<p></p>
+<p>Plus particulièrement, l'architecture réseau sans frontière de Cisco offre deux types de services :</p>
+<p>
+<ul>
+<li>
+<b>Services utilisateurs sans frontières </b>: comme illustré à la Figure 1, les services utilisateurs sans frontières connectent les différents périphériques afin d'offrir l'accès aux services réseau. Les périphériques qui peuvent se connecter au réseau sans frontières sont par exemple les PC, les tablettes et les smartphones. Il lève les barrières liées au lieu et à l'appareil, offrant un accès unifié aux périphériques câblés ou sans fil. Les services de terminal/d'utilisateur définissent l'expérience utilisateur et offrent tous les gages de performances sécurisées, fiables et transparentes sur une large gamme de périphériques et d'environnements, comme illustré dans la figure. Par exemple, la plupart des smartphones et des tablettes peuvent télécharger et utiliser Cisco AnyConnect. Ce logiciel permet à l'appareil d'établir une connexion reposant sur des stratégies, sécurisée et permanente, qui offre une expérience transparente à l'utilisateur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Services de réseaux sans frontières </b>: comme illustré à la Figure 2, les services de réseaux sans frontières unifient l'approche de la fourniture sécurisée d'applications aux utilisateurs dans un environnement fortement distribué. Ils connectent de façon sûre les utilisateurs internes et les utilisateurs distants et permettent l'accès aux ressources réseau. L'élément crucial de l'évolutivité de l'accès sécurisé est l'architecture reposant sur des stratégies, qui permet au service informatique de mettre en place un contrôle d'accès centralisé.</li>
+</ul>
+</p>
+<p></p>
+<p>L'architecture de réseau sans frontières sous-tend un réseau hautement sécurisé et hautement performant, accessible par un grand nombre de périphériques. Il doit être suffisamment flexible pour pouvoir évoluer pour suivre la croissance de l'entreprise, BYOD, mobilité et cloud inclus, et doit pouvoir prendre en charge les exigences grandissantes liées à la voix et à la vidéo.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.1.1 Fonctionnement des SSH</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité du commutateur : gestion et implémentation</h1>
+        <h2>Accès à distance sécurisé</h2>
+      </div>
+      <div id="content">
+<p>Secure Shell (SSH) est un protocole qui permet d'établir une connexion sécurisée (chiffrée) pour la gestion des périphériques distants. SSH doit remplacer Telnet pour les connexions de gestion. Telnet est un protocole plus ancien qui utilise un mode de transmission en texte clair non sécurisé des informations d'identification (nom d'utilisateur et mot de passe) et des données entre les périphériques qui communiquent. SSH permet de sécuriser les connexions distantes grâce à une méthode de chiffrement fort pour l'authentification des périphériques (nom d'utilisateur et mot de passe), mais également pour la transmission des données entre les périphériques de communication. SSH est attribué au port TCP 22. Telnet est attribué au port TCP 23. </p>
+<p></p>
+<p>Dans la Figure 1, un pirate peut surveiller des paquets à l'aide de Wireshark. Un flux Telnet peut être ciblé afin de capturer le nom d'utilisateur et mot de passe.</p>
+<p></p>
+<p>Dans la Figure 2, le pirate peut capturer le nom d'utilisateur et mot de passe de l'administrateur à partir de la session Telnet en texte clair.</p>
+<p></p>
+<p>La Figure 3 présente une session SSH vue depuis Wireshark. Le pirate peut suivre la session à l'aide de l'adresse IP du périphérique administrateur.</p>
+<p></p>
+<p>Cependant, dans la Figure 4, le nom d'utilisateur et mot de passe sont chiffrés.</p>
+<p></p>
+<p>Pour activer SSH sur un commutateur Cisco Catalyst 2960, le commutateur doit utiliser une version du logiciel IOS qui prend en charge les fonctionnalités de cryptographie (chiffrement). Dans la Figure 5, exécutez la commande <span class="cmd"><b>show version</b></span> sur le commutateur pour afficher la version du logiciel IOS exécutée par le commutateur, ainsi que le nom du fichier IOS dans lequel figure la combinaison « k9 », indiquant la prise en charge des fonctionnalités de cryptographie (chiffrement).</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

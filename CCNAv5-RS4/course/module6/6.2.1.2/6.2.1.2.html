@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.1.2 Câble et spectre électromagnétique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Comparaison des solutions haut débit</h1>
+        <h2>Câble</h2>
+      </div>
+      <div id="content">
+<p>Le spectre électromagnétique englobe une large gamme de fréquences. </p>
+<p></p>
+<p>La fréquence désigne le taux des cycles de courant ou de tension. La fréquence est égale au nombre d'ondes par seconde. La longueur d'onde est la distance entre le pic d'une onde et le pic de l'onde suivante. La longueur d'onde est égale à la vitesse de propagation du signal électromagnétique divisée par sa fréquence en cycles par seconde. </p>
+<p></p>
+<p>Les ondes radio, souvent appelées ondes RF, représentent une partie du spectre électromagnétique, comprise entre 1 kHz et 1 THz, comme indiqué dans la figure. Lorsque les utilisateurs règlent leur radio ou leur télévision afin d'y sélectionner différents canaux ou chaînes, ils balaient en fait les différentes fréquences électromagnétiques du spectre RF. Le même principe s'applique au système de câblage.</p>
+<p></p>
+<p>L'industrie de la télévision par câble utilise une portion du spectre électromagnétique RF. Plusieurs fréquences prennent en charge les canaux et les données télévisés dans le câble. Au domicile de l'abonné, les équipements tels que les téléviseurs, les lecteurs Blu-ray, les DVR et les boîtiers HDTV fonctionnent à certaines fréquences qui permettent à l'utilisateur d'afficher le canal ou d'utiliser un modem câble pour obtenir un accès Internet haut débit.</p>
+<p></p>
+<p>Un réseau filaire est capable de transmettre des signaux sur le câble dans l'une ou l'autre direction, et ce, de manière simultanée. Les étendues de fréquences suivantes sont utilisées :</p>
+<p>
+<ul>
+<li>
+<b>En aval </b>: direction de transmission des signaux RF, comme des chaînes de télévision ou des données, à partir de la source (tête de réseau) vers la destination (abonnés). La transmission de la source à la destination est appelée voie descendante. Les fréquences en aval s'échelonnent entre 50 et 860 MHz.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>En amont </b>: direction de transmission des signaux RF à partir des abonnés vers la tête de réseau. Les fréquences en amont s’échelonnent entre 5 et 42 mégahertz (MHz).</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

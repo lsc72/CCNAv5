@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.1.5 Commandes de multiliaison PPP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de PPP</h1>
+        <h2>Configuration de PPP</h2>
+      </div>
+      <div id="content">
+<p>Le protocole PPP multiliaison (aussi appelé MP, MPPP, MLP ou Multiliaison) permet de répartir le trafic sur plusieurs liaisons WAN physiques. Le protocole PPP multiliaison assure aussi la fragmentation et le réassemblage des paquets, le séquençage, l'interopérabilité entre fournisseurs et l'équilibrage de la charge de travail sur le trafic entrant et sortant. </p>
+<p></p>
+<p>MPPP fragmente les paquets et les envoie simultanément sur plusieurs liaisons point à point à la même adresse distante. Les liaisons physiques multiples sont activées en réponse à un seuil de charge défini par l'utilisateur. MPPP peut mesurer la charge du trafic entrant ou du trafic sortant, mais ne peut pas mesurer la charge combinée du trafic entrant et sortant.</p>
+<p></p>
+<p>La configuration de MPPP se fait en deux étapes, comme illustré à la figure. </p>
+<p></p>
+<p>
+<b>Étape 1. </b> Créez un regroupement multiliaison. </p>
+<p></p>
+<p>
+<ul>
+<li>La commande <span class="cmd"><b>interface multilink </b></span><span class="cmd"><i>number</i></span> crée l'interface multiliaison. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>En mode de configuration d'interface, l'adresse IP est attribuée à l'interface multiliaison. Dans cet exemple, les adresses IPv4 et IPv6 sont configurées sur les routeurs R3 et R4.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>L'interface est activée pour PPP multiliaison. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Un numéro de groupe multiliaison est attribué à l'interface. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Étape 2. </b> Attribuez des interfaces au regroupement multiliaison. </p>
+<p></p>
+<p>Chaque interface faisant partie du groupe multiliaison :</p>
+<p>
+<ul>
+<li>est activée pour l'encapsulation PPP ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>est activée pour PPP multiliaison ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>est liée au regroupement multiliaison à l'aide du numéro de groupe multiliaison configuré à l'étape 1.</li>
+</ul>
+</p>
+<p></p>
+<p></p>
+<p>Pour désactiver la multiliaison PPP, utilisez la commande <span class="cmd"><b>no ppp multilink</b></span>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

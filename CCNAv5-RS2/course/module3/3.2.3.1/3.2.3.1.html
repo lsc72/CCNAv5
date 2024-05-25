@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.3.1 Présentation de DTP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentations de VLAN</h1>
+        <h2>Protocole DTP</h2>
+      </div>
+      <div id="content">
+<p>Les interfaces de trunk Ethernet prennent en charge différents modes trunking. Une interface peut être configurée pour le trunking ou le non-trunking, ou pour négocier un trunking avec l'interface voisine. La négociation de trunk est gérée par le protocole DTP (Dynamic Trunking Protocol) qui fonctionne uniquement de point à point, entre les périphériques réseau.</p>
+<p></p>
+<p>Le protocole DTP est un protocole propriétaire Cisco automatiquement activé sur les commutateurs Catalyst 2960 et Catalyst 3560. Il n'est pas pris en charge par les commutateurs d'autres fournisseurs. Il gère la négociation de trunk uniquement si le port du commutateur voisin est configuré dans un mode trunk qui prend en charge ce protocole.</p>
+<p></p>
+<p>
+<b>Attention </b>: certains périphériques interréseau risquent de transmettre des trames DTP de manière incorrecte, ce qui peut entraîner des erreurs de configuration. Pour éviter cela, désactivez le protocole DTP sur les interfaces du commutateur Cisco connecté aux périphériques qui ne le prennent pas en charge.</p>
+<p></p>
+<p>La configuration par défaut du protocole DTP pour les commutateurs Cisco Catalyst 2960 et 3560 est dynamique automatique, comme indiqué en Figure 1 sur l'interface F0/3 des commutateurs S1 et S3. </p>
+<p></p>
+<p>Pour activer le trunking d'un commutateur Cisco à un périphérique qui ne prend pas en charge le protocole DTP, utilisez les commandes du mode de configuration d'interface <span class="cmd"><b>switchport mode trunk</b></span> et <span class="cmd"><b>switchport nonegotiate</b></span>. L'interface devient alors un trunk, mais ne génère pas de trames DTP.</p>
+<p></p>
+<p>Dans la Figure 2, la liaison entre les commutateurs S1 et S2 devient un trunk, car les ports F0/1 des commutateurs S1 et S2 sont configurés pour ignorer toutes les annonces DTP et pour passer et rester en mode port trunk. Les ports F0/3 des commutateurs S1 et S3 sont définis sur dynamique automatique, de sorte que la négociation aboutit au mode actif. Cela crée une liaison trunk inactive. Lorsque vous configurez un port pour qu'il fonctionne en mode trunk, utilisez la commande <span class="cmd"><b>switchport mode trunk</b></span>. Il n'y a aucune ambiguïté quant à l'état du trunk : il est toujours actif. Avec cette configuration, il est facile de se souvenir de l'état des ports trunk : si le port est censé être un trunk, le mode est défini sur trunk.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.2.7 Travaux pratiques – Utilisation de la calculatrice Windows pour les adresses réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.2.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Masque de sous-réseau IPv4</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Au cours de ce TP, vous aborderez les points suivants :</b>
+</p>
+<p></p>
+<p>
+<ul>
+<li>1re partie : Accéder à la calculatrice Windows </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>2e partie : Convertir des valeurs de différents systèmes </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>3e partie : Convertir des adresses et masques de sous-réseau IPv4 d'hôte en binaire </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>4e partie : Déterminer le nombre d'hôtes dans un réseau grâce aux puissances de 2 </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>5e partie : Convertir des adresses MAC et des adresses  IPv6 en binaire</li>
+</ul>
+</p>
+<p></p>
+<p>
+<a href="../../files/8.1.2.7%20Lab%20-%20Using%20the%20Windows%20Calculator%20with%20Network%20Addresses.pdf" target="_blank">Travaux pratiques – Utilisation de la calculatrice Windows pour les adresses réseau</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

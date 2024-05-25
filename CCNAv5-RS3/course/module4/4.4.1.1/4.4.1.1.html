@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.1.1 Configuration d&#x0027;un routeur sans fil </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration LAN sans fil</h1>
+        <h2>Configurer un routeur sans fil</h2>
+      </div>
+      <div id="content">
+<p>Les routeurs sans fil modernes offrent une grande variété de fonctionnalités et la plupart d'entre eux sont conçus pour être fonctionnels dès le début, avec les simples paramètres par défaut. Il est toutefois recommandé de modifier la configuration initiale par défaut afin de l'adapter à chaque situation. </p>
+<p></p>
+<p>Les routeurs domestiques sans fils sont configurés via une interface graphique utilisateur Web.</p>
+<p></p>
+<p>Quand il s’agit de mettre en oeuvre un réseau sans fil, ou tout autre réseau élémentaire, la méthode de base consiste à configurer et à tester par touches successives. Par exemple, avant d'implémenter des périphériques sans fil, vérifiez que le réseau filaire existant est opérationnel et que les hôtes filaires peuvent accéder aux services Internet. </p>
+<p></p>
+<p>Une fois la fonctionnalité du réseau filaire confirmée, le plan d'implémentation suivant peut être appliqué :</p>
+<p>
+<b>Étape 1.</b> Démarrez le processus d'implémentation WLAN avec un point d'accès et un client sans fil uniques, sans activer la sécurité sans fil. </p>
+<p>
+<b>Étape 2.</b> Vérifiez que le client a reçu une adresse IP DHCP et peut envoyer une requête ping au routeur filaire local par défaut, puis se connecter au réseau Internet externe. </p>
+<p>
+<b>Étape 3.</b> Configurez la sécurité sans fil avec l'option WPA2/WPA Mixed Personal (WPA2/WPA mixte particulier). N'utilisez jamais la technologie WEP, sauf si aucune autre option n'est disponible.</p>
+<p>
+<b>Étape 4.</b> Sauvegardez la configuration.</p>
+<p></p>
+<p>Avant d'installer un routeur sans fil, tenez compte des paramètres suivants :</p>
+<p>
+<ul>
+<li>
+<b> SSID Name (Nom SSID)</b> : nom du réseau WLAN.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Network Password (Mot de passe de réseau), si nécessaire</b> : lorsque vous y êtes invité, ce mot de passe doit être saisi pour l'association et l'accès au SSID.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Router Password (Mot de passe du routeur)</b> : mot de passe du routeur de gestion équivalent au mot de passe<span class="cmd"><b> enable secret</b></span> du mode d'exécution privilégié.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Guest Network SSID Name (Nom SSID du réseau invité)</b> : pour des raisons de sécurité, les invités peuvent être isolés avec un SSID différent.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Guest Network Password (Mot de passe du réseau invité)</b> : mot de passe permettant d'accéder au réseau SSID invité.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Linksys Smart Wi-Fi Username (Nom d'utilisateur Linksys Smart Wi-Fi)</b> : compte Internet nécessaire pour accéder au routeur à distance, depuis Internet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Linksys Smart Wi-Fi Password (Mot de passe Linksys Smart Wi-Fi)</b> : mot de passe nécessaire pour accéder au routeur à distance.</li>
+</ul>
+</p>
+<p></p>
+<p>Le tableau présenté dans la figure ci-contre donne des exemples de paramètres utilisés pour configurer le routeur sans fil Linksys EA6500. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

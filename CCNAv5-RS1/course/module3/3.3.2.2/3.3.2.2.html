@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.2.2 Communication avec un périphérique sur le même réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Déplacement des données sur le réseau</h1>
+        <h2>Accès aux ressources locales</h2>
+      </div>
+      <div id="content">
+<p>Pour comprendre à quels éléments tient la réussite des communications dans le réseau, il est important de comprendre les rôles des adresses de couche réseau et des adresses de liaison de données lorsqu'un périphérique communique avec un autre sur le même réseau. Dans cet exemple, nous avons un ordinateur client (PC1) communiquant avec un serveur de fichiers (serveur FTP) sur le même réseau IP.</p>
+<p></p>
+<p>
+<b>Adresses réseau</b>
+</p>
+<p></p>
+<p>Les adresses de couche réseau ou adresses IP indiquent le réseau et l'adresse de l'hôte de la source et de la destination. La partie réseau de l'adresse est la même, seule la partie hôte ou périphérique de l'adresse diffère.</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Adresse IP source</b> : adresse IP du périphérique expéditeur, l'ordinateur client PC1 : 192.168.1.110.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse IP de destination</b> : adresse IP du périphérique récepteur, le serveur FTP : 192.168.1.9.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Adresses de liaison de données</b>
+</p>
+<p></p>
+<p>Lorsque l'expéditeur et le récepteur du paquet IP se trouvent sur le même réseau, la trame de liaison de données est envoyée directement au périphérique récepteur. Sur un réseau Ethernet, les adresses de liaison de données sont appelées adresses MAC Ethernet. Les adresses MAC sont des adresses formées de 48 bits qui sont physiquement intégrées à la carte réseau Ethernet. L'adresse MAC est également appelée « adresse physique » ou « adresse rémanente ».</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Adresse MAC source</b> : il s'agit de l'adresse de liaison de données ou adresse MAC Ethernet du périphérique qui envoie le paquet IP, c'est-à-dire PC1. L'adresse MAC de la carte réseau Ethernet de PC1 est AA-AA-AA-AA-AA-AA.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse MAC de destination</b> : lorsque le périphérique récepteur se trouve sur le même réseau que le périphérique expéditeur, il s'agit de l'adresse de liaison de données du périphérique récepteur. Dans cet exemple, l'adresse MAC de destination est l'adresse MAC du serveur FTP : CC-CC-CC-CC-CC-CC.</li>
+</ul>
+</p>
+<p></p>
+<p>Les adresses source et de destination sont ajoutées à la trame Ethernet. La trame contenant le paquet IP encapsulé peut maintenant être transmise par PC1 directement au serveur FTP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.3.2 Client sans fil non connecté </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration LAN sans fil</h1>
+        <h2>Dépannage des problèmes liés à la fonction WLAN</h2>
+      </div>
+      <div id="content">
+<p>Lorsque vous dépannez un WLAN, il est recommandé d'appliquer un processus d'élimination. </p>
+<p></p>
+<p>Dans cette figure, un client sans fil ne parvient pas à se connecter au WLAN. En l’absence de connectivité, vérifiez les points suivants :</p>
+<p>
+<ul>
+<li>Confirmez la configuration du réseau sur le PC à l'aide de la commande <span class="cmd"><b>ipconfig</b></span>. Vérifiez que le PC a reçu une adresse IP via le protocole DHCP ou qu’il est configuré avec une adresse IP statique.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Vérifiez que le périphérique peut se connecter au réseau filaire. Connectez le périphérique au LAN filaire et envoyez une requête <span class="cmd"><b>ping</b></span> à une adresse IP connue.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Si nécessaire, redémarrez les pilotes pour le client. Vous serez peut-être amené à essayer une autre carte réseau sans fil. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Si la carte réseau sans fil du client fonctionne, vérifiez le mode de sécurité et les paramètres de chiffrement du client. Si les paramètres de sécurité ne correspondent pas, le client ne peut accéder au WLAN.</li>
+</ul>
+</p>
+<p></p>
+<p>Si le PC est opérationnel mais la connexion sans fil peu performante, vérifiez les éléments suivants :</p>
+<p>
+<ul>
+<li>À quelle distance se trouve le PC d'un point d'accès ? Le PC se situe-t-il en dehors de la zone de couverture prévue (BSA) ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Vérifiez les paramètres de canal sur le client sans fil. Le logiciel client doit normalement détecter le canal approprié si le SSID est correct.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Vérifiez la présence d'autres appareils dans la zone, risquant d'interférer avec la bande 2,4 GHz. Il peut s'agir d'un téléphone sans fil, d'un babyphone, d'un four à micro-ondes, d'un système de sécurité sans fil, voire d'un point d'accès non autorisé. Les données provenant de ces appareils peuvent causer des interférences au niveau du WLAN et des problèmes de connexion intermittents entre le client sans fil et le point d'accès.</li>
+</ul>
+</p>
+<p></p>
+<p>Ensuite, assurez-vous que tous les périphériques sont bien à leur place. Envisagez l’existence d’un problème de sécurité physique. Les périphériques sont-ils tous correctement alimentés et sous tension ?</p>
+<p></p>
+<p>Enfin, inspectez les liens entre les périphériques filaires, en recherchant des éventuels connecteurs ou câbles endommagés ou manquants. Si l'infrastructure physique est bien en place, vérifiez le LAN filaire en envoyant une requête ping aux périphériques, y compris au point d'accès. Si la connectivité est toujours problématique à cet endroit, il peut y avoir un défaut au niveau du point d'accès ou de sa configuration.</p>
+<p></p>
+<p>Une fois le PC de l'utilisateur éliminé comme source du problème et le statut physique des périphériques confirmé, commencez à étudier les performances du point d'accès. Vérifiez l'état de l'alimentation du point d'accès.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

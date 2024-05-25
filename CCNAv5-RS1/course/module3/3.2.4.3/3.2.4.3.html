@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.4.3 Le modèle de référence TCP/IP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.4.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Normes et protocoles réseau</h1>
+        <h2>Modèles de référence</h2>
+      </div>
+      <div id="content">
+<p>Le modèle de protocole TCP/IP pour les communications interréseau fut créé au début des années 1970 et est appelé modèle Internet. Comme l'illustre la figure, il définit quatre catégories de fonctions qui doivent intervenir pour que les communications aboutissent. L'architecture de la suite de protocoles TCP/IP suit la structure de ce modèle. Pour cette raison, le modèle Internet est généralement appelé modèle TCP/IP.</p>
+<p></p>
+<p>La plupart des modèles de protocole décrivent une pile de protocoles spécifique au fournisseur. Cependant, comme le modèle TCP/IP est une norme ouverte, aucune entreprise ne contrôle la définition du modèle. Les définitions de la norme et des protocoles TCP/IP sont traitées dans un forum public et définies dans un ensemble de documents RFC disponible au public. Les documents RFC contiennent les spécifications formelles des protocoles de communication de données ainsi que des ressources qui décrivent l'utilisation des protocoles. </p>
+<p></p>
+<p>Ils contiennent également des documents techniques et organisationnels concernant Internet, y compris les spécifications techniques et les documents relatifs aux politiques élaborés par l'IETF.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

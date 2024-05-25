@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.4.1.4 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.4.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Les principes d'ingénierie structurée à la base d'une bonne conception de réseaux sont la hiérarchie, la modularité, la résilience et la flexibilité.</p>
+<p></p>
+<p>Une conception de réseau typique de LAN hiérarchique comprend la couche d'accès, la couche de distribution et la couche cœur de réseau. Dans les plus petits réseaux d'entreprise, la mise en œuvre d'une hiérarchie en couches confondues, avec les fonctions de la couche de distribution et de la couche cœur sur un seul périphérique, peut s'avérer plus pratique. L'évolutivité, la redondance, les performances et la simplicité de maintenance sont les principaux avantages du réseau hiérarchique.</p>
+<p></p>
+<p>La conception modulaire séparant les fonctions du réseau offre plus de flexibilité et simplifie la mise en œuvre et la gestion. Les blocs de module de base connectés par le cœur sont le bloc de distribution d'accès, le bloc service, le data center et la périphérie d'entreprise. Les modules Architecture d'entreprise Cisco sont utilisés pour simplifier la conception de grands réseaux évolutifs. Les principaux modules sont Campus d'entreprise, Périphérie d'entreprise, Périphérie de fournisseur de services, Data center d'entreprise, Filiale d'entreprise et Télétravailleur d'entreprise. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

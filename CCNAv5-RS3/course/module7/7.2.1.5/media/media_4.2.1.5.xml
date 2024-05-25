@@ -1,0 +1,43 @@
+﻿<textcomponents>
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Configuration de l'ID de routeur sur R1 et R2</b>]]></text>
+	</component>
+	<component id="ID_s2_title">
+		<text><![CDATA[<b>Vérification de l'ID de routeur sur R1</b>]]></text>
+	</component>
+	<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+	<component id="ID_s3_title"> <!-- If there is not topology, the Title goes in the <text> tag -->
+		<text><![CDATA[<b>Configuration de l'ID de routeur EIGRP</b>]]></text>		
+	</component>
+	<component id="ID_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b>***</b><font face="Arial" color="#0000FF">Vous devez saisir la commande exacte et complète.</font><b>***</b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font face="Arial"><b>Saisissez le mode de configuration du routeur EIGRP en utilisant 1 comme numéro de système autonome.</b></font>]]></existingcommands>
+		<command prompt="R3(config)#">
+		    <correctresponse><![CDATA[router eigrp 1]]></correctresponse>
+			<instruction><![CDATA[<font face="Arial"><b>Configurez l'ID de routeur EIGRP 3.3.3.3 et repassez en mode d'exécution privilégié.</b>]]></instruction>			
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[eigrp router-id 3.3.3.3]]></correctresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+			<instruction><![CDATA[<font face="Arial"><b>Utilisez la commande show appropriée pour afficher les paramètres EIGRP, y compris l'ID de routeur.</b>]]></instruction>			
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip protocols]]></correctresponse>
+			<deviceresponse><![CDATA[*** IP Routing is NSF aware *** <br>Routing Protocol is "eigrp 1" <br>&lt;résultat omis&gt; <br>  EIGRP-IPv4 Protocol for AS(1) <br>    Metric weight K1=1, K2=0, K3=1, K4=0, K5=0 <br>    NSF-aware route hold timer is 240 <br>    Router-ID: 3.3.3.3 <br>    Topology : 0 (base) <br>      Active Timer: 3 min <br>      Distance: internal 90 external 170 <br>&lt;résultat omis&gt;]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez correctement configuré l'ID de routeur EIGRP.</b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+</textcomponents>

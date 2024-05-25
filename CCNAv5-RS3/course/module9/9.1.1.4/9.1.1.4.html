@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.1.4 Modèle de package d&#x0027;image système Cisco IOS 12.4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Gestion des fichiers système IOS</h1>
+        <h2>Conventions d&#x0027;attribution de noms</h2>
+      </div>
+      <div id="content">
+<p>Avant la version du logiciel Cisco IOS 15.0, le modèle de package Cisco IOS comprenait huit packages pour les routeurs Cisco, comme indiqué dans la figure. Ce modèle de package a été lancé avec la catégorie principale du logiciel Cisco IOS 12.3, puis utilisé dans d'autres catégories. Le modèle de package d'image comprend huit images IOS, dont trois considérées comme des packages premium.</p>
+<p></p>
+<p>Les cinq packages non premium sont :</p>
+<p>
+<ul>
+<li>
+<b>IP Base </b>: IP Base est l'image du logiciel Cisco IOS d'entrée de gamme</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>IP Voice </b>: Voix et données convergentes, voix sur IP, VoFR et téléphonie IP</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Advanced Security </b>: fonctionnalités de sécurité et de réseau privé virtuel, incluant pare-feu Cisco IOS, système IDS/système de protection contre les intrusions, IPsec, 3DES et réseau privé virtuel</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>SP (Service Provider) Services </b>: ajoute SSH/SSL, ATM, VoATM et MPLS à IP Voice</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Enterprise Base </b>: protocoles d'entreprise : prise en charge d'Appletalk, IPX et IBM</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: à partir de la famille de versions du logiciel Cisco IOS 12.4, SSH est disponible dans toutes les images.</p>
+<p></p>
+<p>Trois autres packages premium offrent d'autres combinaisons de fonctionnalités logicielles IOS qui répondent à des exigences réseau plus complexes. Toutes les fonctionnalités sont combinées dans le package Advanced Enterprise Services. Ce package intègre la prise en charge de tous les protocoles de routage avec les fonctions de voix, de sécurité et de réseau privé virtuel :</p>
+<p>
+<ul>
+<li>
+<b>Advanced Enterprise Services </b>: fonctionnalités complètes du logiciel Cisco IOS</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Enterprise Services </b>: Enterprise Base et Service Provider Services</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Advanced IP Services </b>: Advanced Security, Service Provider Services et prise en charge d'IPv6</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: Cisco Feature Navigator est un outil qui permet de trouver le système d'exploitation Cisco approprié en fonction des fonctionnalités et technologies requises.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.2.3 Paquets de mise à jour et de reçu EIGRP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Caractéristiques du protocole EIGRP</h1>
+        <h2>Types de paquets EIGRP</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Paquets de mise à jour EIGRP</b>
+</p>
+<p>Le protocole EIGRP envoie des paquets de mise à jour pour propager les informations de routage. Les paquets de mises à jour sont transmis uniquement en cas de nécessité. Les mises à jour EIGRP contiennent uniquement les informations de routage nécessaires et ne sont envoyées qu’aux routeurs concernés. </p>
+<p></p>
+<p>Contrairement au protocole RIP, le protocole EIGRP (un autre protocole de routage à vecteur de distance) n'envoie pas de mises à jour régulières et les entrées de route ne peuvent pas devenir obsolètes. En revanche, le protocole EIGRP envoie des mises à jour incrémentielles uniquement lorsque l'état d'une destination change, par exemple lorsqu'un nouveau réseau devient disponible, lorsqu'un réseau actuel devient indisponible ou en cas de modification de la métrique de routage d'un réseau. </p>
+<p></p>
+<p>Le protocole EIGRP utilise les termes « <i>partiel</i> » et « <i>limité</i> » pour désigner ses mises à jour. Le terme partiel signifie que la mise à jour ne contient que les informations concernant les modifications de route. Le terme « limité » désigne la propagation des mises à jour partielles qui sont envoyées uniquement aux routeurs affectés par les modifications. </p>
+<p></p>
+<p>En envoyant uniquement les informations de routage requises aux routeurs qui en ont besoin, le protocole EIGRP réduit la bande passante nécessaire pour envoyer les mises à jour EIGRP.</p>
+<p></p>
+<p>Les paquets de mise à jour EIGRP utilisent un mode d'acheminement fiable, ce qui signifie que le routeur expéditeur exige un reçu. Ils sont envoyés en multidiffusion lorsqu’ils concernent plusieurs routeurs, ou en monodiffusion lorsqu’ils ne concernent qu’un seul routeur. Dans cette figure, puisqu’il s’agit de liaisons point à point, les mises à jour sont envoyées en monodiffusion.</p>
+<p></p>
+<p>
+<b>Paquets de reçu EIGRP</b>
+</p>
+<p></p>
+<p>Le protocole EIGRP envoie des paquets de reçu (ACK) dans le cadre d'un acheminement fiable. Un reçu EIGRP est un paquet Hello EIGRP sans données. RTP utilise la livraison fiable pour les paquets de mise à jour, de demande et de réponse EIGRP. Les paquets de reçu EIGRP sont toujours envoyés en monodiffusion non fiable. L'acheminement non fiable est préférable car il évite une boucle infinie de reçus.</p>
+<p></p>
+<p>Dans la figure, R2 a perdu sa connectivité avec le réseau local connecté à son interface Gigabit Ethernet. R2 envoie immédiatement une mise à jour à R1 et R3 pour indiquer la désactivation de la route. R1 et R3 répondent avec un reçu pour informer R2 de la bonne réception de la mise à jour.</p>
+<p>
+<b>Remarque </b>: dans certains documents, le paquet Hello et le reçu sont considérés comme un seul et même type de paquet EIGRP. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.3.3 Protocoles utilisant l&#x0027;état de liens</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage dynamique à état de liens</h1>
+        <h2>Pourquoi utiliser des protocoles de routage à état de liens ?</h2>
+      </div>
+      <div id="content">
+<p>Il n'existe que deux protocoles de routage à état de liens, OSPF et IS-IS.</p>
+<p></p>
+<p>Le protocole OSPF (Open Shortest Path First) est l'implémentation la plus répandue. Il a été conçu par le groupe de travail OSPF de l'IETF (Internet Engineering Task Force). Le développement du protocole OSPF a commencé en 1987 ; il en existe aujourd'hui deux versions :</p>
+<p>
+<ul>
+<li>OSPFv2<b></b>- OSPF pour les réseaux IPv4 (RFC 1247 et RFC 2328)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>OSPFv3<b></b>- OSPF pour les réseaux IPv6 (RFC 2740)</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque :</b> grâce à la fonctionnalité de familles d'adresses OSPFv3, OSPFv3 prend en charge à la fois les protocoles IPv4 et IPv6. </p>
+<p></p>
+<p>Le protocole IS-IS a été conçu par l'Organisation internationale de normalisation (ISO) et est décrit dans la norme ISO 10589. La première version de ce protocole de routage a été développée par la Digital Equipment Corporation (DEC) et est connue sous le nom de DECnet Phase V. Radia Perlman était le concepteur en chef du protocole de routage IS-IS.</p>
+<p></p>
+<p>Il était à l'origine conçu pour l'ensemble de protocoles OSI et non pour TCP/IP. Par la suite, Integrated IS-IS, ou Dual IS-IS, a intégré la prise en charge des réseaux IP. Bien qu'IS-IS soit connu comme le protocole de routage de la plupart des FAI et opérateurs télécom, un nombre croissant de sociétés commencent à l'utiliser.</p>
+<p></p>
+<p>Les protocoles OSPF et IS-IS ont beaucoup de points communs, mais présentent également de nombreuses différences. OSPF et IS-SF ont chacun leurs partisans, qui discutent et débattent des avantages respectifs d'un protocole de routage sur l'autre. Les deux protocoles offrent les fonctions de routage nécessaires. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

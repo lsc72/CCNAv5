@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.1.2 Similitudes entre OSPFv2 à OSPFv3</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv3 à zone unique</h1>
+        <h2>Comparaison des protocoles OSPFv2 et OSPFv3</h2>
+      </div>
+      <div id="content">
+<p>Comme illustré dans la figure, voici les similitudes entre OSPFv2 et OSPFv3 :</p>
+<p>
+<ul>
+<li>
+<b>État de liens</b> - OSPFv2 et OSPFv3 sont tous les deux des protocoles de routage à état de liens sans classe.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Algorithme de routage</b> - OSPFv2 et OSPFv3 utilisent l'algorithme SPF pour prendre des décisions de routage.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Métrique</b> - Les documents RFC pour OSPFv2 et OSPFv3 définissent la métrique en tant que coût d'envoi de paquets via l'interface. OSPFv2 et OSPFv3 peuvent être modifiés en utilisant la commande de mode de configuration de routeur <span class="cmd"><b>auto-cost reference-bandwidth </b></span><span class="cmd"><i>ref-bw </i></span>. La commande influence uniquement la métrique OSPF où elle a été configurée. Par exemple, si la commande a été entrée pour OSPFv3, elle n'affecte pas les métriques de routage OSPFv2.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Zones</b> - Le concept de zones multiples dans OSPFv3 est identique dans OSPFv2. Les zones multiples réduisent les diffusions de paquets à état de liens et offrent une meilleure stabilité avec le domaine OSPF. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Types de paquets OSPF</b> - OSPFv3 utilise les mêmes cinq types de paquets de base qu'OSPFv2 (Hello, DBD, LSR, LSU et LSAck).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Mécanisme de détection de voisins</b> - La machine d'état des voisins, y compris la liste des états et des événements de voisinage OSPF, reste inchangée. OSPFv2 et OSPFv3 utilisent le mécanisme Hello pour en savoir plus sur les routeurs voisins et former des contiguïtés. Cependant, dans OSPFv3, les sous-réseaux correspondants ne doivent pas obligatoirement former des contiguïtés de voisinage. La raison en est que les contiguïtés de voisinage sont formées au moyen d'adresses link-local, et non à partir d'adresses de monodiffusion globales.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Processus de sélection de DR/BDR</b> - Le processus de sélection de routeur désigné (DR)/routeur désigné de secours (BDR) reste inchangé dans OSPFv3.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>ID du routeur</b> - OSPFv2 et OSPFv3 utilisent tous deux un nombre 32 bits pour l'ID de routeur représenté par une notation décimale à point. Il s'agit généralement d'une adresse IPv4. La commande <span class="cmd"><b>router-id</b></span> d'OSPF doit être utilisée pour configurer l'ID de routeur Le processus de détermination de l'ID de routeur 32 bits est identique pour les deux protocoles. Utilisez un ID de routeur configuré explicitement ; sinon, l'adresse IPv4 de bouclage la plus élevée devient l'ID de routeur</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

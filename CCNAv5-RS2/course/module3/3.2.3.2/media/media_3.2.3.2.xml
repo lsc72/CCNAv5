@@ -1,0 +1,92 @@
+﻿<textcomponents>
+
+<component id="ID_s1_title">
+<text><![CDATA[<b>DTP - Modes d'interface négociés  </b>]]></text>
+</component>
+
+<component id="ID_s2_title">
+<text><![CDATA[<b>Vérification du mode DTP  </b>]]></text>
+</component>
+
+<component id="ID_s2_txt02">
+<text><![CDATA[&lt;résultat omis&gt;]]></text>
+</component>
+
+<component id="ID_s3_title">
+<text><![CDATA[<b>Vérification du mode DTP  </b>]]></text>
+</component>
+
+
+<component id="ID_table01">
+<text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000'glow='true' glowcolor='#808080' cellpadding='4' class="mtable">
+
+<tr class="mtable_top">
+		<td colspan='5' bgcolor='#0E6360' class="mtable_top"><font size='2' color='#98D3D1'>.</font></td>
+	</tr>
+
+<tr>
+<td bgcolor='#077A77' valign="top"><font color='#ffffff'><b>  </b></font></td>
+<td bgcolor='#077A77' valign="top" class="mtable"><font color='#ffffff'><b>Dynamique automatique</b></font></td>
+<td bgcolor='#077A77' valign="top" class="mtable"><font color='#ffffff'><b>Dynamique souhaitable</b></font></td>
+<td bgcolor='#077A77' valign="top" class="mtable"><font color='#ffffff'><b>Trunk inconditionnel </b></font></td>
+<td bgcolor='#077A77' valign="top" class="mtable"><font color='#ffffff'><b>Accès</b></font></td>
+</tr>
+
+<tr>
+<td bgcolor='#eff8f7' width='90' valign="top"><font color='#393536'><b>Dynamique automatique</b></font></td>
+<td bgcolor='#eff8f7' valign="top"><font color='#393536'>Accès</font></td>
+<td bgcolor='#eff8f7' valign="top"><font color='#393536'>Trunk inconditionnel</font></td>
+<td bgcolor='#eff8f7' width='90' valign="top"><font color='#393536'>Trunk inconditionnel</font></td>
+<td bgcolor='#eff8f7' valign="top"><font color='#393536'>Accès</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#ffffff' valign="top"><font color='#393536'><b>Dynamique souhaitable</b></font></td>
+<td bgcolor='#ffffff' valign="top"><font color='#393536'>Trunk inconditionnel</font></td>
+<td bgcolor='#ffffff' valign="top"><font color='#393536'>Trunk inconditionnel</font></td>
+<td bgcolor='#ffffff' valign="top"><font color='#393536'>Trunk inconditionnel</font></td>
+<td bgcolor='#ffffff' valign="top"><font color='#393536'>Accès</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#eff8f7' valign="top"><font color='#393536'><b>Trunk inconditionnel</b></font></td>
+<td bgcolor='#eff8f7' valign="top"><font color='#393536'>Trunk inconditionnel</font></td>
+<td bgcolor='#eff8f7' valign="top"><font color='#393536'>Trunk inconditionnel</font></td>
+<td bgcolor='#eff8f7' valign="top"><font color='#393536'>Trunk inconditionnel</font></td>
+<td bgcolor='#eff8f7' valign="top"><font color='#393536'>Connectivité limitée</font></td>
+</tr>
+
+<tr>
+<td bgcolor='#ffffff' valign="top"><font color='#393536'><b>Accès</b></font></td>
+<td bgcolor='#ffffff' valign="top"><font color='#393536'>Accès</font></td>
+<td bgcolor='#ffffff' valign="top"><font color='#393536'>Accès</font></td>
+<td bgcolor='#ffffff' valign="top"><font color='#393536'>Connectivité limitée</font></td>
+<td bgcolor='#ffffff' valign="top"><font color='#393536'>Accès</font></td>
+</tr>
+</table>]]></text> 
+</component>
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+<component id="ID_SC" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font  face="Arial" color="#0000FF">*** Vous devez saisir la commande précisément et en entier. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font>  </b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font  face="Arial"><b>L'interface f0/1 est configurée en tant que trunk. Vérifiez le mode DTP sur l'interface f0/1.  </b></font>]]></existingcommands>
+		<command prompt="S1#">
+			<correctresponse><![CDATA[show dtp interface f0/1]]></correctresponse>
+				<deviceresponse><![CDATA[Informations DTP pour FastEthernet0/1&nbsp;: <br><pre>  TOS/TAS/TNS:                              TRUNK/ON/TRUNK <br>  TOT/TAT/TNT:                              802.1Q/802.1Q/802.1Q <br>  Neighbor address 1:                       0CD996D23F81 <br>  Neighbor address 2:                       000000000000 <br>  Hello timer expiration (sec/state):       12/RUNNING <br>  Access timer expiration (sec/state):      never/STOPPED <br>  Negotiation timer expiration (sec/state): never/STOPPED <br>  Multidrop timer expiration (sec/state):   never/STOPPED <br>  FSM state:                                S6:TRUNK <br>  # times multi & trunk                     0 <br>  Enabled:                                  yes <br>  In STP:                                   no </pre><br><br> Statistiques <br>  ---------- <br>  640&nbsp;paquets reçus (640&nbsp;bons) <br>  0&nbsp;paquet abandonné <br>      0&nbsp;non-négociation, 0&nbsp;mauvaise version, 0&nbsp;non-concordance de domaine, <br>      0&nbsp;élément TLV incorrect, 0&nbsp;TAS incorrect, 0&nbsp;TAT incorrect, 0&nbsp;TOT erroné, 0&nbsp;autre <br>  646&nbsp;paquets émis (646&nbsp;bons) <br>      640&nbsp;natifs, 6&nbsp;ISL d'encapsulation logicielle, 0&nbsp;natif matériel ISL <br>  0&nbsp;erreur de sortie <br>  0&nbsp;délai de trunk <br>  1&nbsp;liaison active, dernière liaison active lundi 1er&nbsp;mars 1993, 00:00:56 <br>  0&nbsp;interruption de liaison]]></deviceresponse>
+			<instruction><![CDATA[<font  face="Arial"><b>Vous avez correctement vérifié le mode DTP.</font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+
+
+</textcomponents>

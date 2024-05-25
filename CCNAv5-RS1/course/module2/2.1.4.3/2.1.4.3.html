@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.4.3 Aide contextuelle</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.4.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>IOS Bootcamp</h1>
+        <h2>Structure des commandes</h2>
+      </div>
+      <div id="content">
+<p>IOS propose plusieurs types d'aide :</p>
+<p></p>
+<p>
+<ul>
+<li>Aide contextuelle</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Contrôle de la syntaxe des commandes</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Touches d'accès rapide et raccourcis</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Aide contextuelle</b>
+</p>
+<p></p>
+<p>L'aide contextuelle fournit la liste des commandes, des mots-clés et des arguments disponibles dans le contexte du mode en vigueur. Pour afficher l'aide contextuelle, saisissez un point d'interrogation <span class="cmd"><b>?</b></span> à une invite. Vous recevez une réponse immédiate sans qu'il soit nécessaire d'appuyer sur la touche Entrée. </p>
+<p></p>
+<p>L'aide contextuelle peut s'utiliser pour obtenir une liste des commandes disponibles. Ceci s'avère utile lorsque vous n'êtes pas sûr du nom d'une commande ou que vous voulez voir si IOS autorise une commande particulière dans un certain mode. </p>
+<p></p>
+<p>Par exemple, pour consulter les commandes disponibles dans le mode d'exécution utilisateur, tapez un point d'interrogation <span class="cmd"><b>?</b></span> à l'invite <span class="cmd">Switch></span>. </p>
+<p></p>
+<p>Vous pouvez aussi utiliser l'aide contextuelle pour afficher une liste des commandes ou des mots-clés débutant par des caractères spécifiques. Si vous entrez un point d'interrogation immédiatement après une suite de caractères (sans espace), IOS affiche la liste des commandes ou des mots-clés disponibles dans ce contexte, qui débutent par les caractères entrés. </p>
+<p></p>
+<p>Par exemple, entrez<span class="cmd"><b> sh?</b></span> pour obtenir la liste des commandes qui commencent par les caractères<span class="cmd"><b> sh</b></span>. </p>
+<p></p>
+<p>Enfin, vous pouvez vous servir de l'aide contextuelle pour déterminer les options, les mots-clés ou les arguments disponibles pour une commande donnée. À la suite d'une commande, entrez un espace suivi d'un<span class="cmd"><b> ?</b></span> pour savoir ce qui peut ou doit être saisi. </p>
+<p></p>
+<p>Comme l'illustre la figure, après avoir tapé la commande<span class="cmd"><b> clock set 19:50:00</b></span>, il est possible de saisir<span class="cmd"><b> ?</b></span> pour connaître les options ou les mots-clés supplémentaires disponibles pour la commande.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

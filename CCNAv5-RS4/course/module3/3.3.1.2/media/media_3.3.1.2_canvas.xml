@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>	 
+<slide> 
+
+<element type="TEXT" subType="TITLE" compId="ID_title"/> 
+<element type="IMAGE" src="3_3_1_2.jpg" x="0" y="0" width="470" height="400" />
+<element type="TEXT" id="ID_static_1" text="S0/0/0" x="87" y="147.8" width="33.5" align="left" />
+<element type="TEXT" id="ID_static_2" text="S0/0/0" x="347" y="147.8" width="33.5" align="left" />
+
+<element type="ROUTER" textId="ID_router_txt1" x="15.05" y="200" width="223" height="110.75" />
+<element type="ROUTER" textId="ID_router_txt2" x="246.05" y="200" width="223" height="110.75" /><!-- -->
+</slide>
+
+<text id="ID_router_txt1"><![CDATA[<pre>hostname R1
+!
+interface Serial 0/0/0
+ ip address 10.0.1.1 255.255.255.252
+ ipv6 address 2001:db8:cafe:1::1/64
+<span class="orange">encapsulation ppp</span>
+</pre>]]></text>
+
+<text id="ID_router_txt2"><![CDATA[<pre>hostname R2
+!
+interface Serial 0/0/0
+ ip address 10.0.1.2 255.255.255.252
+ ipv6 address 2001:db8:cafe:1::2/64
+<span class="orange">encapsulation ppp</span>
+</pre>]]></text>
+ </data>
+

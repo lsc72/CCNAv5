@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.2.1 Décisions de routage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Décisions de routage</h1>
+        <h2>Détermination du chemin</h2>
+      </div>
+      <div id="content">
+<p>La fonction principale d'un routeur est de déterminer le meilleur chemin à utiliser pour envoyer des paquets. Pour déterminer le meilleur chemin, le routeur recherche dans sa table de routage une adresse réseau correspondant à l'adresse IP de destination du paquet.</p>
+<p></p>
+<p>La recherche de la table de routage détermine l'un des trois chemins suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Réseau connecté directement</b> : si l'adresse IP de destination du paquet appartient à un périphérique situé sur un réseau qui est connecté directement à l'une des interfaces du routeur, le paquet est transféré directement au périphérique de destination. Cela signifie que l'adresse IP de destination du paquet est une adresse d'hôte sur le même réseau que l'interface de ce routeur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Réseau distant</b> : si l'adresse IP de destination du paquet appartient à un réseau distant, le paquet est transféré à un autre routeur. Il n'est possible d'accéder aux réseaux distants qu'en transférant les paquets à un autre routeur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>No route determined</b> : si l'adresse IP de destination du paquet n'appartient pas à un réseau connecté ou distant, le routeur détermine s'il existe une passerelle de dernier recours disponible. Une passerelle de dernier recours est définie lorsqu'une route par défaut est configurée sur un routeur. S'il existe une route par défaut, le paquet est transmis à la passerelle de dernier recours. Si le routeur n'a pas de route par défaut, le paquet est rejeté. Si le paquet est rejeté, le routeur envoie un message ICMP d'inaccessibilité à l'adresse IP source du paquet.</li>
+</ul>
+</p>
+<p></p>
+<p>Le diagramme logique de la figure illustre le processus de décision du transfert de paquet du routeur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.3.1 Commande passive interface</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du protocole EIGRP</h1>
+        <h2>Dépannage des problèmes de table de routage EIGRP</h2>
+      </div>
+      <div id="content">
+<p>Il se peut que les tables de route ne présentent pas les routes correctes en raison de la commande<span class="cmd"><b> passive-interface</b></span>. Lorsque le protocole EIGRP est exécuté sur un réseau, la commande<span class="cmd"><b> passive-interface </b></span>arrête les mises à jour de routage entrantes et sortantes. C'est la raison pour laquelle les routeurs ne deviennent pas des voisins.</p>
+<p></p>
+<p>Pour vérifier si l'interface d'un routeur est configurée comme passive, utilisez la commande<span class="cmd"><b> show ip protocols </b></span>en mode d'exécution privilégié. La Figure 1 montre que l'interface GigabitEthernet 0/0 de R2 est configurée comme passive, car ce lien ne contient aucun voisin.</p>
+<p></p>
+<p>En plus d'être configurée sur des interfaces sans voisins, une interface passive peut être activée sur des interfaces à des fins de sécurité. À la Figure 2, notez que l'ombrage du domaine de routage EIGRP est différent des topologies précédentes. Le réseau 209.165.200.224/27 est maintenant inclus dans les mises à jour EIGRP de R2. Toutefois, pour des raisons de sécurité, l'administrateur réseau ne souhaite pas que R2 établisse une contiguïté de voisinage EIGRP avec le routeur FAI.</p>
+<p></p>
+<p>La Figure 3 montre l'ajout de la commande 209.165.200.224/27<span class="cmd"><b> network </b></span>sur R2. R2 annonce maintenant ce réseau aux autres routeurs dans le domaine de routage EIGRP. </p>
+<p></p>
+<p>La commande de mode de configuration du routeur<span class="cmd"><b> passive-interface</b></span> est configurée sur Serial 0/1/0 pour empêcher l'envoi des mises à jour EIGRP de R2 au routeur FAI. La commande<span class="cmd"><b> show ip eigrp neighbors </b></span>sur R2 vérifie que R2 n'a établi aucune contiguïté de voisinage avec le routeur FAI.</p>
+<p></p>
+<p>La Figure 4 montre que R1 possède une route EIGRP vers le réseau 209.165.200.224/27 dans sa table de routage IPv4 (R3 disposera également d'une route EIGRP vers ce réseau dans sa table de routage IPv4). Toutefois, R2 n'a établi aucune contiguïté de voisinage avec le routeur FAI. </p>
+<p></p>
+<p>
+<b>Protocole EIGRP pour IPv6</b>
+</p>
+<p></p>
+<p>Des commandes et des critères de dépannage similaires s'appliquent également au protocole EIGRP pour IPv6.</p>
+<p></p>
+<p>Les commandes équivalentes utilisées dans le cadre du protocole EIGRP pour IPv6 sont les suivantes :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">Router# </span>
+<span class="cmd">
+<b>show ipv6 protocols </b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">Router(config-rtr)# </span>
+<span class="cmd">
+<b>passive-interface </b>
+</span>
+<span class="cmd">
+<i>type number</i>
+</span>
+</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

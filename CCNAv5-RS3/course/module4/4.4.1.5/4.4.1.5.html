@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.1.5 Outils Smart Wi-Fi </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration LAN sans fil</h1>
+        <h2>Configurer un routeur sans fil</h2>
+      </div>
+      <div id="content">
+<p>Comme illustré aux Figures 1 à 6, les outils Smart Wi-Fi proposent différents services complémentaires, notamment :</p>
+<p>
+<ul>
+<li>
+<b>Device List (Liste des périphériques)</b> : indique quels sont les périphériques connectés au WLAN. Le nom et l'icône des périphériques peuvent être personnalisés. Ce service permet également de connecter des périphériques.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Guest Access (Accès invités)</b> : grâce à cet outil, créez un réseau séparé pouvant accueillir jusqu'à 50 invités, tout en protégeant les fichiers du réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Parental Controls (Contrôle parental)</b> : protégez les enfants et les membres de la famille en limitant l'accès aux sites Web potentiellement dangereux. Cet outil est utilisé pour restreindre l'accès Internet sur certains périphériques, contrôler la durée et les jours d'accès à Internet pour les périphériques choisis, bloquer des sites Web particuliers pour certains périphériques, désactiver les restrictions sur l'accès Internet et désactiver la fonction de contrôle parental.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Media Prioritization (Hiérarchisation du support)</b> : hiérarchisez la bande passante pour des périphériques et des applications donnés. Grâce à cet outil, optimisez l'expérience en ligne en hiérarchisant la bande passante sur les applications et les périphériques qui en ont le plus besoin. Cet outil peut être utilisé pour appliquer la fonction Settings (Paramètres) de l'outil de hiérarchisation du support, ajouter de nouvelles applications pour les affecter à une bande passante spécifique et attribuer une bande passante supérieure à une application, un périphérique ou un jeu en ligne, en définissant la priorité de bande passante.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Speed Test (Test de vitesse)</b> : outil utilisé pour tester la vitesse de chargement et de téléchargement du lien Internet. Cet outil est utile pour la planification initiale.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>USB Storage (Stockage USB)</b>
+<b></b> : contrôle l'accès aux fichiers partagés. Configure la manière dont les utilisateurs peuvent accéder aux fichiers partagés. Grâce à cet outil, les utilisateurs peuvent accéder au stockage USB du réseau local, créer des partitions sur un périphérique de stockage USB, configurer les paramètres d'accès aux dossiers, configurer la manière dont les périphériques et les ordinateurs du réseau accèdent au serveur FTP et configurer l'accès à un serveur multimédia.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

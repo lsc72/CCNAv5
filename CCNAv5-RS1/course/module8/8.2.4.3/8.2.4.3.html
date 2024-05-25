@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.4.3 La configuration dynamique d&#x0027;une adresse de monodiffusion globale avec la méthode SLAAC</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.4.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Les adresses réseau IPv6</h1>
+        <h2>Les adresses de monodiffusion globale IPv6</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Configuration automatique des adresses sans état (SLAAC)</b>
+</p>
+<p></p>
+<p>La configuration automatique des adresses sans état (SLAAC) est une méthode permettant à un périphérique d'obtenir son préfixe, la longueur de préfixe, et l'adresse de la passerelle par défaut depuis un <i>routeur IPv6</i>, sans l'intervention d'un serveur DHCPv6. Lorsque la SLAAC est utilisée, les périphériques se basent sur les messages d'annonce de routeur ICMPv6 du routeur local pour obtenir les informations nécessaires.</p>
+<p></p>
+<p>Les routeurs IPv6 envoient régulièrement des messages d'annonce de routeur ICMPv6 à tous les périphériques IPv6 du réseau. Par défaut, les routeurs Cisco envoient des messages d'annonce de routeur toutes les 200 secondes à l'adresse du groupe de multidiffusion à tous les nœuds IPv6. Un périphérique IPv6 du réseau n'a pas à attendre ces messages. Il peut envoyer un message de sollicitation de routeur au routeur, en utilisant l'adresse du groupe de multidiffusion à tous les routeurs IPv6. Lorsqu'un routeur IPv6 reçoit un message de sollicitation, il répond immédiatement en envoyant un message d'annonce de routeur. </p>
+<p></p>
+<p>Même si une interface d'un routeur Cisco peut être configurée avec une adresse IPv6, cela ne fait pas du routeur un « routeur IPv6 ». Un routeur IPv6 est un routeur qui :</p>
+<p>
+<ul>
+<li>transfère les paquets IPv6 entre les réseaux ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>peut être configuré avec des routes IPv6 statiques ou un protocole de routage IPv6 dynamique ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>envoie des messages d'annonce de routeur ICMPv6.</li>
+</ul>
+</p>
+<p></p>
+<p>Le routage IPv6 n'est pas activé par défaut. Pour sélectionner l'IPv6 sur un routeur, la commande de configuration globale <span class="cmd"><b>ipv6 unicast-routing</b></span> doit être utilisée. </p>
+<p></p>
+<p>
+<b>Remarque</b> : les routeurs Cisco sont tous configurés pour l'IPv4 par défaut.</p>
+<p></p>
+<p>Le message d'annonce de routeur ICMPv6 contient le préfixe, la longueur du préfixe et d'autres informations destinées au périphérique IPv6. Le message d'annonce de routeur indique également au périphérique IPv6 comment obtenir ses informations d'adressage. Ce message peut contenir l'une des trois options suivantes, comme illustré à la figure ci-contre : </p>
+<p>
+<ul>
+<li>
+<b>Option 1 – SLAAC uniquement</b> : le périphérique doit utiliser le préfixe, la longueur du préfixe et l'adresse de la passerelle par défaut contenus dans le message d'annonce de routeur. Aucune information n'est acquise auprès d'un serveur DHCPv6.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Option 2 – SLAAC et DHCPv6</b> : le périphérique doit utiliser le préfixe, la longueur du préfixe et l'adresse de la passerelle par défaut contenus dans le message d'annonce de routeur. Il existe d'autres informations à acquérir auprès d'un serveur DHCPv6 telles que l'adresse du serveur DNS. Le périphérique obtient ces informations supplémentaires par le biais du processus de découverte et d'interrogation d'un serveur DHCPv6. On parle alors de DHCPv6 sans état, car le serveur DHCPv6 n'a pas besoin d'attribuer ou de contrôler les allocations d'adresses IPv6, mais doit fournir des informations supplémentaires telles que l'adresse du serveur DNS.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Option 3 – DHCPv6 uniquement</b> : le périphérique ne doit pas utiliser les informations contenues dans le message d'annonce de routeur en tant qu'informations d'adressage. Au lieu de cela, le périphérique utilise le processus de découverte et d'interrogation d'un serveur DHCPv6 pour obtenir toutes ses informations d'adressage. Ces informations incluent une adresse de monodiffusion globale IPv6, la longueur du préfixe, une adresse de passerelle par défaut et les adresses des serveurs DNS. Dans ce cas, le serveur DHCPv6 agit en tant que serveur DHCP avec état, tout comme le DHCP pour l'IPv4. Le serveur DHCPv6 attribue et contrôle les adresses IPv6 afin de ne pas attribuer la même adresse IPv6 à plusieurs périphériques.</li>
+</ul>
+</p>
+<p></p>
+<p>Les routeurs envoient des messages d'annonce de routeur ICMPv6 en utilisant l'adresse link-local comme adresse source IPv6. Les périphériques utilisant SLAAC utilisent l'adresse link-local du routeur comme adresse de passerelle par défaut.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

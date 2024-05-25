@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.4.6 Packet Tracer : analyse des modèles OSI et TCP/IP en action</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.4.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Normes et protocoles réseau</h1>
+        <h2>Modèles de référence</h2>
+      </div>
+      <div id="content">
+<p>Cet exercice de simulation vise à fournir une base pour comprendre la suite de protocoles TCP/IP et sa relation avec le modèle OSI. Le mode Simulation vous permet d'afficher le contenu de données envoyé sur tout le réseau à chaque couche. </p>
+<p>Au fur et à mesure de leur transmission sur le réseau, les données sont divisées en parties plus petites et sont identifiées, afin que ces parties puissent être réassemblées lorsqu'elles arrivent à destination. Chaque partie reçoit un nom spécifique (unité de données de protocole, PDU) et est associée à une couche spécifique des modèles OSI et TCP/IP. Le mode Simulation de Packet Tracer vous permet d'afficher chacune des couches et la PDU associée. Les étapes suivantes guident l'utilisateur tout au long du processus de demande d'une page Web à partir d'un serveur Web, à l'aide du navigateur Web disponible sur un PC client. </p>
+<p>Même si une grande partie des informations affichées seront traitées plus en détail plus loin, c'est l'occasion de découvrir le fonctionnement de Packet Tracer et de pouvoir visualiser le processus d'encapsulation.</p>
+<p></p>
+<p>
+<a href="../../files/3.2.4.6%20Packet%20Tracer%20-%20Investigating%20the%20TCP-IP%20and%20OSI%20Models%20in%20Action%20Instructions.pdf" target="_blank">Instructions de l'exercice Packet Tracer - Analyse des modèles OSI et TCP/IP en action</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/3.2.4.6%20Packet%20Tracer%20-%20Investigating%20the%20TCP-IP%20and%20OSI%20Models%20in%20Action.pka" target="_blank">PKA de l'exercice Packet Tracer - Analyse des modèles OSI et TCP/IP en action</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

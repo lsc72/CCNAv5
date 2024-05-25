@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.2.1 Adresses réseau et adresses de liaison de données</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Déplacement des données sur le réseau</h1>
+        <h2>Accès aux ressources locales</h2>
+      </div>
+      <div id="content">
+<p>Le modèle OSI décrit des processus de codage, de mise en forme, de segmentation et d'encapsulation de données pour la transmission sur le réseau. La couche réseau et la couche liaison de données sont chargées de transmettre les données du périphérique source ou expéditeur au périphérique de destination ou récepteur. Les protocoles de ces deux couches contiennent les adresses source et de destination, mais ils ne les utilisent pas aux mêmes fins.</p>
+<p></p>
+<p>
+<b>Adresse réseau </b>
+</p>
+<p></p>
+<p>Sur la couche réseau ou couche 3, l'adresse logique contient les informations nécessaires à l'acheminement du paquet IP du périphérique source au périphérique de destination. Une adresse IP de couche 3 se compose de deux parties, le préfixe réseau et la partie hôte. Le préfixe réseau est utilisé par les routeurs pour transférer le paquet au réseau approprié. La partie hôte est utilisée par le dernier routeur du chemin pour livrer le paquet au périphérique de destination.</p>
+<p></p>
+<p>Un paquet IP contient deux adresses IP :</p>
+<p>
+<ul>
+<li>
+<b>L'adresse IP source</b> : il s'agit de l'adresse IP du périphérique expéditeur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>L'adresse IP de destination</b> : elle correspond à l'adresse IP du périphérique récepteur. L'adresse IP de destination est utilisée par les routeurs pour transférer un paquet vers sa destination.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Adresse de liaison de données</b>
+</p>
+<p></p>
+<p>Sur la couche liaison de données ou couche 2, l'adresse physique joue un rôle différent. L'objectif de l'adresse de liaison de données est de transmettre la trame liaison de données d'une interface réseau à une autre, sur un même réseau. Pour qu'un paquet IP puisse être envoyé via un réseau câblé ou sans fil, il doit être encapsulé dans une trame de liaison de données qui peut être transmise à travers le support physique, c'est-à-dire le réseau réel. Les réseaux locaux Ethernet et sans fil sont par exemple des réseaux dont les supports physiques sont différents, chacun ayant son propre type de protocole de liaison de données. </p>
+<p></p>
+<p>Le paquet IP est encapsulé dans une trame de liaison de données à remettre au réseau de destination. Les adresses de liaison de données source et de destination sont ajoutées, comme illustré dans la figure :</p>
+<p>
+<ul>
+<li>
+<b>Adresse de liaison de données source</b> : adresse physique du périphérique qui envoie le paquet. Initialement, c'est la carte réseau qui est la source du paquet IP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse de liaison de données de destination </b> : adresse physique de l'interface réseau du routeur du tronçon suivant ou de l'interface réseau du périphérique de destination.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

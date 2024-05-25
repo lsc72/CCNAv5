@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.5.4.2 Entrées connectées directement</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.5.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>La table de routage</h1>
+        <h2>Analyse d&#x0027;une table de routage IPv6</h2>
+      </div>
+      <div id="content">
+<p>La table de routage de R1 est illustrée dans la Figure 1 à l'aide de la commande <span class="cmd"><b>show ipv6 route</b></span>. Bien que les résultats de la commande s'affichent de façon légèrement différente par rapport à la version IPv4, ils contiennent toujours les informations de route appropriées. </p>
+<p></p>
+<p>La Figure 2 met en évidence les entrées du réseau connecté et de la table de routage locale des interfaces connectées directement. Les trois entrées ont été ajoutées lorsque les interfaces ont été configurées et activées. </p>
+<p></p>
+<p>Comme le montre la Figure 3, les entrées de route connectées directement affichent les informations suivantes :</p>
+<p>
+<ul>
+<li>
+<b>Origine de la route</b> : indique comment la route a été apprise. Les interfaces connectées directement ont deux codes sources de route (« C » identifie un réseau connecté directement tandis que « L » indique qu'il s'agit d'une route locale.) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Réseau connecté directement :</b> adresse IPv6 du réseau connecté directement.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Distance administrative</b> : indique la fiabilité de l'origine de la route. L'IPv6 utilise les mêmes distances que l'IPv4. La valeur 0 indique la meilleure source et la plus fiable.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Métrique</b> : indique la valeur attribuée pour atteindre le réseau distant. Les valeurs inférieures indiquent les routes préférées. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Interface de sortie</b> : identifie l'interface de sortie à utiliser lors du transfert de paquets au réseau de destination.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque :</b> les liens série ont des bandes passantes de référence configurées pour observer la façon dont les métriques EIGRP permettent de sélectionner la meilleure route. La bande passante de référence n'est pas une représentation réaliste des réseaux actuels. Elle permet uniquement de fournir une indication visuelle de la vitesse des liens.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.3.1 Passerelle par défaut</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Déplacement des données sur le réseau</h1>
+        <h2>Accès aux ressources distantes</h2>
+      </div>
+      <div id="content">
+<p>La méthode utilisée par un hôte pour envoyer des messages à une destination sur un réseau distant est différente de celle qu'il utilise pour envoyer des messages à une destination sur le même réseau local. Lorsqu'un hôte doit envoyer un message à un autre hôte du même réseau, il transfère directement le message. Un hôte utilisera le protocole ARP pour connaître l'adresse MAC de l'hôte de destination. Il inclut l'adresse IP de destination dans l'en-tête du paquet et encapsule le paquet dans une trame contenant l'adresse MAC de la destination, puis le transfère. </p>
+<p></p>
+<p>Lorsqu'un hôte doit envoyer un message à un réseau distant, il doit utiliser le routeur, également appelé « passerelle par défaut ». La passerelle par défaut est l'adresse IP d'une interface d'un routeur se trouvant sur le même réseau que l'hôte expéditeur. </p>
+<p></p>
+<p>Il est important que l'adresse de la passerelle par défaut soit configurée sur chaque hôte du réseau local. Si aucune adresse de passerelle par défaut n'est configurée dans les paramètres TCP/IP de l'hôte ou si une passerelle par défaut incorrecte est spécifiée, les messages adressés aux hôtes des réseaux distants ne peuvent pas être acheminés. </p>
+<p></p>
+<p>Sur la figure, les hôtes du réseau local utilisent R1 comme passerelle par défaut et son adresse 192.168.1.1 est configurée dans leurs paramètres TCP/IP. Si la destination d'une unité de données de protocole se trouve sur un autre réseau IP, les hôtes envoient les unités de données de protocole à la passerelle par défaut sur le routeur qui devra à son tour les transmettre.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

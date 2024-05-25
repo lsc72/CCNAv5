@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.1.1 Plages VLAN sur les commutateurs Catalyst</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentations de VLAN</h1>
+        <h2>Affectation de VLAN</h2>
+      </div>
+      <div id="content">
+<p>Divers commutateurs Cisco Catalyst prennent en charge des nombres de VLAN différents. Le nombre de VLAN pris en charge est suffisamment élevé pour répondre aux besoins de la plupart des entreprises. Par exemple, les commutateurs de la gamme Catalyst 2960 et 3560 sont compatibles avec plus de 4 000 VLAN. Sur ces commutateurs, les VLAN à plage normale sont numérotés de 1 à 1 005 et les VLAN à plage étendue, de 1 006 à 4 094. La figure illustre les VLAN disponibles sur un commutateur Catalyst 2960 exécutant la version 15.x de Cisco IOS.</p>
+<p></p>
+<p>
+<b>Réseaux locaux virtuels à plage normale</b>
+</p>
+<p></p>
+<p>
+<ul>
+<li>Utilisés dans les réseaux de petites, moyennes et grandes entreprises.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Identifiés par un ID de VLAN compris entre 1 et 1005. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les ID de 1002 à 1005 sont réservés aux VLAN Token Ring et aux VLAN à interface de données distribuées sur fibre (FDDI).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les ID 1 et 1002 à 1005 sont automatiquement créés et ne peuvent pas être supprimés.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les configurations sont stockées dans un fichier de base de données VLAN nommé vlan.dat. Le fichier vlan.dat se trouve dans la mémoire Flash du commutateur. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le protocole VTP (VLAN Trunking Protocol), qui permet de gérer les configurations VLAN entre les commutateurs, peut uniquement découvrir et stocker les VLAN à plage normale.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>VLAN à plage étendue</b>
+</p>
+<p></p>
+<p>
+<ul>
+<li>Permettent aux fournisseurs de services d'étendre leur infrastructure à un plus grand nombre de clients. Certaines multinationales peuvent être suffisamment grandes pour avoir besoin d'une plage étendue d'ID de VLAN.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Sont identifiés par un ID de VLAN compris entre 1006 et 4094.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les configurations ne sont pas écrites dans le fichier vlan.dat.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Prennent en charge moins de fonctionnalités VLAN que les VLAN à plage normale.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Sont par défaut enregistrés dans le fichier de configuration en cours. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le protocole VTP ne prend pas en compte les VLAN à plage étendue.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: 4096 est le nombre maximum de VLAN disponibles sur les commutateurs Catalyst, car il y a 12 bits dans le champ d'ID de VLAN de l'en-tête IEEE 802.1Q.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

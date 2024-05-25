@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.2.2 Problèmes de vérification de la configuration de l&#x0027;adresse IP et du masque de sous-réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout; 
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du routage inter-VLAN</h1>
+        <h2>Problèmes d&#x0027;adressage IP</h2>
+      </div>
+      <div id="content">
+<p>Une adresse IP correspondant au sous-réseau pour lequel elle est connectée doit être affectée à chaque interface ou sous-interface. Une erreur fréquente consiste à mal configurer une adresse IP pour une sous-interface. La Figure 1 illustre le résultat de la commande <span class="cmd"><b>show running-config</b></span>. La zone mise en surbrillance montre que la sous-interface G0/0.10 du routeur R1 possède l'adresse IP 172.17.20.1. Le VLAN de cette sous-interface devrait autoriser le trafic VLAN 10. L'adresse IP a été configurée de manière incorrecte. La commande<span class="cmd"><b> show ip interface </b></span>est utile dans ce paramétrage. La deuxième zone mise en surbrillance indique l'adresse IP incorrecte.</p>
+<p></p>
+<p>Parfois, le problème peut venir d'un périphérique utilisateur final, comme un ordinateur personnel, qui est mal configuré. La Figure 2 présente la configuration IP affichée pour le PC1. L'adresse IP est 172.17.20.21, avec le masque de sous-réseau 255.255.255.0. Mais, dans ce scénario, le PC1 doit se trouver dans le VLAN 10, avec l'adresse 172.17.10.21 et le masque de sous-réseau 255.255.255.0.</p>
+<p></p>
+<p>
+<b>Remarque</b> : bien que faire concorder les ID des sous-interfaces avec les numéros des VLAN facilite la configuration inter-VLAN, cela n'est pas obligatoire. Lors du dépannage des problèmes d'adressage, assurez-vous que la sous-interface est configurée avec l'adresse appropriée pour ce VLAN.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

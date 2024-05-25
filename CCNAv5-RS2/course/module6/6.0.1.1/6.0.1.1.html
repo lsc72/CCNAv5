@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.0.1.1 Introduction</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage statique</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>Au cœur de tous les réseaux de données, le routage fait passer les informations de la source à la destination dans le cadre d'un interréseau. Les routeurs sont les périphériques qui assurent le transfert de paquets d'un réseau vers le réseau suivant.</p>
+<p></p>
+<p>Les routeurs obtiennent des informations sur les réseaux distants, soit dynamiquement, en utilisant des protocoles de routage, soit manuellement, en utilisant des routes statiques. Dans de nombreux cas, les routeurs utilisent une combinaison de protocoles de routage dynamique et de routes statiques. Ce chapitre porte sur le routage statique.</p>
+<p></p>
+<p>Les routes statiques sont très courantes et ne nécessitent pas le même niveau de traitement et de charge que les protocoles de routage dynamique.</p>
+<p></p>
+<p>Dans ce chapitre, des exemples de topologies seront utilisés pour configurer des routes statiques IPv4 et IPv6 et pour proposer des techniques de dépannage. Dans la foulée, plusieurs commandes IOS importantes et le résultat obtenu seront étudiés. Une présentation de la table de routage en utilisant à la fois les deux réseaux connectés directement et les routes statiques sera incluse.</p>
+<p></p>
+<p>Ce chapitre comparera également le routage par classe et les méthodes largement appliquées de routage sans classe. Il portera sur le routage interdomaine sans classe (CIDR) et les méthodes de masque de sous-réseau de longueur variable (VLSM). CIDR et VLSM ont permis de conserver l'espace d'adressage IPv4 à l'aide de la création de sous-réseaux et de techniques de récapitulation.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

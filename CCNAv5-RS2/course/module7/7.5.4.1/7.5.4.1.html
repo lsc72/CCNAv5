@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.5.4.1 Entrées de la table de routage IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.5.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>La table de routage</h1>
+        <h2>Analyse d&#x0027;une table de routage IPv6</h2>
+      </div>
+      <div id="content">
+<p>Les composants de la table de routage IPv6 sont très similaires à ceux de la table de routage IPv4. Par exemple, elle est peuplée au moyen d'interfaces connectées directement, de routes statiques et de routes apprises de manière dynamique. </p>
+<p></p>
+<p>Étant donné que le protocole IPv6 est sans classe par sa conception, toutes les routes sont effectivement des meilleures routes de niveau 1. Il n'y a aucun parent de niveau 1 pour les routes enfant de niveau 2. </p>
+<p></p>
+<p>La topologie illustrée dans la figure est utilisée comme topologie de référence pour cette section. Notez que dans la topologie :</p>
+<p>
+<ul>
+<li>R1, R2 et R3 sont configurés dans une topologie à maillage global. Tous les routeurs ont des chemins redondants vers divers réseaux.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>R2 est le routeur de périphérie et se connecte au FAI ; toutefois, une route statique par défaut n'est pas annoncée.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le protocole EIGRP pour IPv6 a été configuré sur l'ensemble des trois routeurs.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.3.5 Créer 8 sous-réseaux</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.3.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmenter un réseau IPv4 en sous-réseaux</h1>
+        <h2>Segmenter un réseau IPv4 en sous-réseaux</h2>
+      </div>
+      <div id="content">
+<p>À présent, prenons l'exemple d'un interréseau qui nécessite cinq sous-réseaux, comme illustré à la Figure 1.</p>
+<p></p>
+<p>Si on utilise le même bloc d'adresses, 192.168.1.0/24, des bits d'hôte doivent être empruntés pour créer au moins 5 sous-réseaux. En empruntant 2 bits, nous obtiendrions seulement 4 sous-réseaux, comme nous l'avons vu dans l'exemple précédent. Pour obtenir davantage de sous-réseaux, il faut emprunter plus de bits d'hôte. Calculez le nombre de sous-réseaux créés si 3 bits sont empruntés. Utilisez pour cela la formule suivante :</p>
+<p></p>
+<p>2^3 = 8 sous-réseaux</p>
+<p></p>
+<p>Comme le montrent les Figures 2 et 3, en empruntant 3 bits, on obtient 8 sous-réseaux. Lorsque 3 bits sont empruntés, le dernier octet du masque de sous-réseau compte 3 bits de plus (/27). On obtient donc le masque de sous-réseau 255.255.255.224. Tous les périphériques sur ces sous-réseaux utiliseront le masque de sous-réseau 255.255.255.224 (/27).</p>
+<p></p>
+<p>
+<b>Calcul du nombre d'hôtes</b>
+</p>
+<p>Pour calculer le nombre d'hôtes, observez le dernier octet. Après l'emprunt de 3 bits pour le sous-réseau, il reste 5 bits d'hôte.</p>
+<p></p>
+<p>Appliquez la formule pour calculer le nombre d'hôtes :</p>
+<p></p>
+<p>2^5 = 32, mais vous devez retirez 2 pour tous les 0 de la partie hôte de l'adresse réseau et tous les 1 de la partie hôte de l'adresse de diffusion.</p>
+<p></p>
+<p>Les sous-réseaux sont attribués aux segments réseau requis pour la topologie présentée à la Figure 4.</p>
+<p></p>
+<p>Si on utilise le même plan d'adressage, la première adresse d'hôte du sous-réseau est à nouveau attribuée à l'interface du routeur, comme le montre la Figure 5. Les hôtes de chaque sous-réseau utilisent l'adresse de l'interface du routeur comme adresse de passerelle par défaut. </p>
+<p>
+<ul>
+<li>PC1 (192.168.1.2/27) utilise l'adresse 192.168.1.1 comme adresse de passerelle par défaut.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>PC2 (192.168.1.34/27) utilise l'adresse 192.168.1.33 comme adresse de passerelle par défaut.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>PC3 (192.168.1.98/27) utilise l'adresse 192.168.1.97 comme adresse de passerelle par défaut.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>PC4 (192.168.1.130/27) utilise l'adresse 192.168.1.129 comme adresse de passerelle par défaut.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

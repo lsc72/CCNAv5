@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.0.1.2 Exercice – Le chemin le moins emprunté</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Couche réseau</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Le chemin le moins emprunté ?</b>
+</p>
+<p></p>
+<p>Vous avez décidé de rendre visite le weekend à un collègue qui est malade. Vous connaissez son adresse mais vous ne vous êtes jamais rendu dans cette ville auparavant. Au lieu de rechercher l'adresse sur une carte, vous décidez de demander aux résidents de la ville votre chemin après avoir pris le train. Les habitants à qui vous demandez votre route sont très aimables. Cependant, ils ont une particularité. Au lieu de vous indiquer le chemin complet jusqu'à votre destination, ils vous disent « prenez cette route et dès que vous arrivez au prochain carrefour, demandez votre chemin à quelqu'un d'autre. » </p>
+<p></p>
+<p>Intrigué par ces indications, vous suivez ces instructions et arrivez enfin, carrefour après carrefour, route après route, chez votre ami.</p>
+<p></p>
+<p>Répondez aux questions suivantes :</p>
+<p>
+<ul>
+<li>Le fait d'obtenir des instructions sur le chemin complet aurait-il eu un impact significatif sur votre recherche ? </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Aurait-il été plus utile de se renseigner sur l'adresse postale complète ou simplement sur le nom de la rue ? Que se passerait-il si la personne qui vous renseigne ne connaissait pas la rue de destination ou vous indiquait la mauvaise direction ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Supposons qu'en rentrant chez vous, vous demandiez à nouveau aux habitants la route à emprunter. Avez-vous la certitude que le même chemin vous sera indiqué chaque fois que vous souhaitez vous rendre chez votre ami ? Expliquez votre réponse.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Est-il nécessaire d'expliquer l'endroit d'où vous partez lorsque vous demandez des informations sur un chemin à emprunter ?</li>
+</ul>
+</p>
+<p></p>
+<p>
+<a href="../../files/6.0.1.2%20Class%20Activity%20-%20The%20road%20less%20traveled...%20Instructions.pdf" target="_blank">Exercice – Le chemin le moins emprunté ? Instructions</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

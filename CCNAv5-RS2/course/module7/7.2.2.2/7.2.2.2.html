@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.2.2 Protocole EIGRP (Enhanced Interior-Gateway Routing Protocol)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage dynamique à vecteur de distance</h1>
+        <h2>Types de protocoles de routage à vecteur de distance</h2>
+      </div>
+      <div id="content">
+<p>Le protocole IGRP (Interior Gateway Routing Protocol) est le premier protocole de routage IPv4 propriétaire développé par Cisco en 1984. Il utilisait les caractéristiques conceptuelles suivantes :</p>
+<p>
+<ul>
+<li>La bande passante, le délai, la charge et la fiabilité sont utilisés pour créer une métrique composite. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Par défaut, les mises à jour de routage sont diffusées toutes les 90 secondes. </li>
+</ul>
+</p>
+<p></p>
+<p>En 1992, le protocole IGRP a été remplacé par le protocole EIGRP (Enhanced IGRP). Comme le protocole RIPv2, le protocole EIGRP a également introduit la prise en charge de VLSM et de CIDR. Le protocole EIGRP améliore l'efficacité, réduit les mises à jour de routage et prend en charge l'échange sécurisé des messages. </p>
+<p></p>
+<p>La table dans la figure récapitule les différences entre les protocoles IGRP et EIGRP. </p>
+<p></p>
+<p>Le protocole EIGRP a également introduit les fonctionnalités suivantes :</p>
+<p>
+<ul>
+<li>
+<b>Mises à jour déclenchées associées</b> - Il n'envoie pas de mises à jour périodiques. Seules les modifications de la table de routage sont propagées, chaque fois qu'une modification se produit. Cela réduit la charge que le protocole de routage place sur le réseau. Les mises à jour déclenchées associées ont pour conséquence que le protocole EIGRP envoie uniquement aux voisins qui en ont besoin. Moins de bande passante est utilisée, particulièrement sur les grands réseaux avec de nombreuses routes. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Mécanisme de maintien de connexion (Hello)</b> - Un petit message Hello est échangé régulièrement afin de maintenir les contiguïtés avec les routeurs voisins. Cela implique une très faible utilisation des ressources réseau en fonctionnement normal, à la place des mises à jour périodiques. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Gestion d'une table topologique</b> - Gère toutes les routes reçues des voisins (pas seulement les meilleurs chemins) dans une table topologique. L'algorithme DUAL permet d'insérer les routes de secours dans la table topologique EIGRP. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Convergence rapide</b> - Dans la plupart des cas, c'est le protocole IGP qui converge le plus rapidement car il conserve des routes alternatives, permettant une convergence quasiment instantanée. Si une route principale échoue, le routeur peut utiliser l'autre route identifiée. Le basculement vers l'autre route est immédiat et n'implique pas l'interaction avec d'autres routeurs. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Prise en charge du protocole de couche réseau</b> - Le protocole EIGRP utilise des modules dépendants du protocole (PDM), ce qui signifie qu'il s'agit du seul protocole à inclure une prise en charge d'autres protocoles que IPv4 et IPv6, tels que les protocoles anciens IPX et Appletalk. </li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

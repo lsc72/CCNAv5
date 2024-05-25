@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.3.1 Utilisation des modèles en couches pour le dépannage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage avec une approche systématique</h1>
+        <h2>Isolation du problème à l&#x0027;aide des modèles en couches</h2>
+      </div>
+      <div id="content">
+<p>Lorsque tous les symptômes ont été collectés, si aucune solution n'a été identifiée, l'administrateur réseau compare les caractéristiques du problème avec les couches logiques du réseau afin d'isoler et de résoudre le problème. </p>
+<p></p>
+<p>Les modèles de mise en réseau logiques, tels que les modèles OSI et TCP/IP, séparent les fonctionnalités réseau en couches modulaires. Au cours du dépannage, ces modèles en couches peuvent être appliqués au réseau physique afin d'isoler les problèmes réseau. Par exemple, si les symptômes font penser à un problème de connexion physique, le technicien réseau peut concentrer ses efforts sur le dépannage du circuit qui fonctionne au niveau de la couche physique. Si ce circuit fonctionne comme prévu, le technicien examine alors une autre couche susceptible d'être à l'origine du problème.</p>
+<p>
+<b>Modèle de référence OSI</b>
+</p>
+<p>Le modèle de référence OSI offre un langage commun aux administrateurs réseau et est couramment utilisé dans le cadre du dépannage des réseaux. Les problèmes concernent généralement une couche spécifique du modèle OSI.</p>
+<p></p>
+<p>Le modèle de référence OSI décrit comment les informations issues d’une application logicielle d’un ordinateur se déplacent via un support réseau vers une application logicielle d’un autre ordinateur.</p>
+<p></p>
+<p>Les couches supérieures (de 5 à 7) du modèle OSI traitent des problèmes d'applications et ne sont généralement implémentées que dans les logiciels. La couche application est la plus proche de l'utilisateur final. Les processus utilisateur et de couche application interagissent avec les applications logicielles qui contiennent un composant de communications.</p>
+<p></p>
+<p>Les couches inférieures (de 1 à 4) du modèle OSI traitent des problèmes liés au transport de données. Les couches 3 et 4 ne sont généralement mises en œuvre que dans les logiciels. La couche physique (couche 1) et la couche liaison de données (couche 2) sont implémentées à la fois au niveau matériel et au niveau logiciel. La couche physique est celle qui est la plus proche du support réseau physique, comme le câblage réseau, et est responsable du placement effectif des informations sur le support. </p>
+<p></p>
+<p>La Figure 1 illustre quelques périphériques courants ainsi que les couches OSI qui doivent être examinées durant le processus de dépannage de ce périphérique. Notez que les routeurs et les commutateurs multicouches sont indiqués au niveau de la couche 4, à savoir la couche transport. Bien que les routeurs et les commutateurs multicouches prennent généralement leurs décisions de transmission au niveau de la couche 3, les listes de contrôle d'accès de ces périphériques peuvent être utilisées pour prendre des décisions de filtrage à l'aide des informations de couche 4.</p>
+<p></p>
+<p>
+<b>Modèle TCP/IP</b>
+</p>
+<p>Comme pour le modèle de réseau OSI, le modèle de réseau TCP/IP divise également l'architecture réseau en couches modulaires. La Figure 2 illustre le mappage entre le modèle de réseau TCP/IP et les couches du modèle de réseau OSI. Ce mappage étroit permet à la suite de protocoles TCP/IP de communiquer avec succès avec de nombreuses technologies réseau.</p>
+<p></p>
+<p>La couche application de la suite TCP/IP combine en réalité les fonctions des trois couches suivantes du modèle OSI : session, présentation et application. La couche application permet la communication entre des applications, telles que FTP, HTTP et SMTP sur des hôtes distincts.</p>
+<p></p>
+<p>Les fonctions des couches transport de TCP/IP et OSI correspondent directement. La couche transport est responsable de l'échange des segments entre les périphériques situés sur un réseau TCP/IP.</p>
+<p></p>
+<p>La couche Internet de TCP/IP correspond à la couche réseau du modèle OSI. La couche Internet est responsable du placement des messages dans un format fixe, qui permet aux périphériques de les traiter.</p>
+<p></p>
+<p>La couche d’accès réseau TCP/IP correspond aux couches OSI physique et liaison de données. La couche d'accès réseau communique directement avec le support réseau et fournit une interface entre l'architecture du réseau et la couche Internet.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

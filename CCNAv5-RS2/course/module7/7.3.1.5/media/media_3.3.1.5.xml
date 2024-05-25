@@ -1,0 +1,64 @@
+﻿<textcomponents>
+
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Récapitulation automatique avec RIPv2  </b>]]></text>
+	</component>
+	<component id="ID_s2_title">
+	  <text><![CDATA[<b>Désactiver la récapitulation automatique sur R1  </b>]]></text> 
+	</component>
+	<component id="ID_s3_title">
+	  <text><![CDATA[<b>Désactiver la récapitulation automatique sur R2 et R3  </b>]]></text> 
+	</component>
+
+	<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+	<component id="ID_s3_SC5" fontFace='Courier New' fontSize="10"> <!--text><![CDATA[<b>Disabling Automatic Summarization on R2 and R3 </b>]]></text-->		
+		<feedback id="fb"><![CDATA[<b> *** </b><font size='10' face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>Désactivez la récapitulation automatique sur R2 et revenez au mode d'exécution privilégié.  </b></font>]]></existingcommands>
+		<command prompt="R2(config)#">
+		    <correctresponse><![CDATA[router rip]]></correctresponse>
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[no auto-summary]]></correctresponse>
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+			<deviceresponse><![CDATA[R2#<br>*Mar 10 14:16:10,439: %SYS-5-CONFIG_I: Configured from console by console]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Vérifiez les paramètres du protocole RIP sur R2.  </b>]]></instruction>			
+			</command>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ip protocols]]></correctresponse>
+			<deviceresponse><![CDATA[*** IP Routing is NSF aware *** <br> <br>Routing Protocol is "rip" <br>  Outgoing update filter list for all interfaces is not set <br>  Incoming update filter list for all interfaces is not set <br>  Sending updates every 30 seconds, next due in 19 seconds <br>  Invalid after 180 seconds, hold down 180, flushed after 240 <br>  Redistributing: rip <br>  Default version control: send version 2, receive version 2<br/>    Interface            Send  Recv  Triggered RIP  Key-chain<br/>    GigabitEthernet0/0    2     2<br/>    Serial0/0/0           2     2<br/>    Serial0/0/1           2     2<br/>  Automatic network summarization is not in effect<br/>  Maximum path: 4<br/>  Routing for Networks:<br/>    192.168.2.0<br/>    192.168.3.0<br/>    192.168.4.0<br/>  Routing Information Sources:<br/>     Gateway         Distance      Last Update<br/>     192.168.2.1          120      00:00:09<br/>     192.168.4.1          120      00:00:01<br/>  Distance: (default is 120)<br/>R2#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Vous êtes maintenant connecté à R3. Désactivez la récapitulation automatique sur R3 et revenez au mode d'exécution privilégié.  </b>]]></instruction>			
+			</command>
+		<command prompt="R3(config)#">
+		    <correctresponse><![CDATA[router rip]]></correctresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[no auto-summary]]></correctresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+			<deviceresponse><![CDATA[R3#<br>*Mar 10 14:17:06,059: %SYS-5-CONFIG_I: Configured from console by console]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Vérifiez les paramètres du protocole RIP sur R3.  </b>]]></instruction>			
+			</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip protocols]]></correctresponse>
+			<deviceresponse><![CDATA[*** IP Routing is NSF aware *** <br> <br>Routing Protocol is "rip" <br>  Outgoing update filter list for all interfaces is not set <br>  Incoming update filter list for all interfaces is not set <br>  Sending updates every 30 seconds, next due in 11 seconds <br>  Invalid after 180 seconds, hold down 180, flushed after 240 <br>  Redistributing: rip <br>  Default version control: send version 2, receive version 2<br/>  Interface           Send    Recv   Triggered RIP  Key-chain<br/>  GigabitEthernet0/0   2       2<br/>  Serial0/0/1          2       2
+Automatic network summarization is not in effect <br>  Maximum path: 4<br/>Routing for Networks:<br/>  192.168.4.0<br/>  192.168.5.0<br/>Routing Information Sources:<br/>   Gateway         Distance      Last Update<br/>   192.168.4.2          120      00:00:26<br/>Distance: (default is 120)<br/>R3#]]></deviceresponse> 
+			<instruction><![CDATA[<font size='10' face="Arial" class="syntaxBottomLine"><b>Vous avez correctement désactivé la récapitulation automatique sur R2 et R3.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+		
+	</component>
+  
+</textcomponents>

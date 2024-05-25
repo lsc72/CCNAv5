@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.1.4 Étape 2. Obtention d&#x0027;une licence</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Licences IOS</h1>
+        <h2>Licences logicielles </h2>
+      </div>
+      <div id="content">
+<p>
+<b>Étape 2.</b>
+<b>Obtenez une licence.</b>
+</p>
+<p></p>
+<p>L'étape suivante consiste à obtenir la licence, qui est en fait un fichier de licence. Vous pouvez obtenir un fichier de licence, également appelé licence d'activation logicielle, à l'aide de l'une des options suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Cisco License Manager (CLM) </b>: il s'agit d'une application logicielle gratuite disponible sur <a href="http://www.cisco.com/go/clm" target="_blank">http://www.cisco.com/go/clm</a>. Cisco License Manager est une application Cisco autonome qui aide les administrateurs réseau à déployer rapidement plusieurs licences logicielles dans leurs réseaux. Cisco License Manager peut détecter des périphériques réseau, afficher leurs informations de licence, acquérir des licences auprès de Cisco et les déployer. L'application comprend une interface graphique utilisateur qui simplifie l'installation et permet l'acquisition automatique des licences, tout en effectuant plusieurs tâches d'obtention de licences à partir d'un emplacement central. L'application CLM peut être téléchargée gratuitement à partir de Cisco Connection Online (CCO).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Cisco License Registration Portal </b>: il s'agit du portail Web dédié à l'obtention et à l'enregistrement de licences logicielles, disponible sur <a href="http://www.cisco.com/go/license" target="_blank">http://www.cisco.com/go/license</a>.</li>
+</ul>
+</p>
+<p></p>
+<p>Les deux processus exigent un numéro PAK et un identifiant unique de périphérique (UDI). </p>
+<p></p>
+<p>La PAK est fournie à l'achat. </p>
+<p></p>
+<p>L'UDI est une combinaison de l'ID de produit (PID), du numéro de série (SN) et de la version matérielle. Le SN est un numéro à 11 chiffres qui identifie de façon unique un périphérique. Le PID identifie le type de périphérique. Seuls le PID et le SN servent à créer la licence. Cet UDI peut être affiché à l'aide de la commande<span class="cmd"><b> show license udi </b></span>présentée à la Figure 1. Ces informations sont également disponibles sur une étiquette escamotable située sur le périphérique. La Figure 2 présente un exemple d'étiquette escamotable sur un routeur Cisco 1941.</p>
+<p></p>
+<p>Après la saisie des informations appropriées, le client reçoit un e-mail contenant les informations de licence permettant d'installer le fichier de licence. Le fichier de licence est un fichier texte XML doté d'une extension .lic. </p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 3 pour déterminer l'UDI sur le routeur R2.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

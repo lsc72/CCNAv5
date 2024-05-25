@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+	<!-- slide 01-->
+	<slide>
+		<element type="IMAGE" src="5_1_1_5.jpg" x="0" y="0" width="470" height="400"/>
+		<element type="TEXT" id="ID_static_1" text="RID: 2.2.2.2" x="98" y="152.2" align="center" width="70.85" color="#F68026" bold="1"/>
+		<element type="TEXT" id="ID_static_2" text="RID: 1.1.1.1" x="20" y="231.45" align="center" width="70.65" color="#F68026" bold="1"/>
+		<element type="TEXT" id="ID_static_3" text="RID: 3.3.3.3" x="310.5" y="231.45" align="center" width="70.95" color="#F68026" bold="1"/>
+		<element type="TEXT" compId="ID_s1_txt02" x="333" y="121" width="95.75" expand="up+down" align="center" />
+		<element type="TEXT" id="ID_static_4" text="172.16.2.0/24" x="163.8" y="83.95" align="center" width="67" bold="1"/>
+		<element type="TEXT" id="ID_static_5" text="G0/0" x="173.2" y="125.4" align="center" width="23.7" />
+		<element type="TEXT" id="ID_static_6" text=".1" x="203.2" y="125.4" align="center" width="7.15" />
+		<element type="TEXT" id="ID_static_7" text="192.168.10.8/30" x="285" y="203.25" align="center" width="78.95" bold="1"/>
+		<element type="TEXT" id="ID_static_8" text="172.16.3.0/30" x="49.4" y="203.25" align="center" width="66.75" bold="1"/>
+		<element type="TEXT" id="ID_static_9" text="172.16.1.0/24" x="34.45" y="347.5" align="center" width="67" bold="1"/>
+		<element type="TEXT" id="ID_static_10" text="S0/0/0" x="161.8" y="178.9" align="center" width="31.75" />
+		<element type="TEXT" id="ID_static_11" text="S0/0/0" x="97.4" y="248.25" align="center" width="31.75" />
+		<element type="TEXT" id="ID_static_12" text="S0/0/1" x="97.4" y="264.25" align="center" width="30.25" />
+		<element type="TEXT" id="ID_static_13" text=".5" x="98.4" y="284.25" align="center" width="8.75" />
+		<element type="TEXT" id="ID_static_14" text="S0/0/1" x="276.05" y="255.4" align="center" width="30.25" />
+		<element type="TEXT" id="ID_static_15" text="192.168.10.4/30" x="157.3" y="296.4" align="center" width="78.95" bold="1"/>
+		<element type="TEXT" id="ID_static_16" text="G0/0" x="304.95" y="306.65" align="center" width="23.7" />
+		<element type="TEXT" id="ID_static_17" text="192.168.1.0/24" x="299.8" y="347.5" align="center" width="73.1" bold="1"/>
+		<element type="TEXT" id="ID_static_18" text="G0/0" x="42.45" y="307.65" align="center" width="23.7" />
+		<element type="TEXT" id="ID_static_19" text=".1" x="74.25" y="306.65" align="center" width="7.15" />
+		<element type="TEXT" id="ID_static_20" text="S0/0/0" x="267.45" y="278.45" align="center" width="31.75" />
+		<element type="TEXT" id="ID_static_21" text=".10" x="327" y="251.4" align="center" width="14.75" />
+		<element type="TEXT" id="ID_static_22" text=".6" x="291" y="294.65" align="center" width="8.65" />
+		<element type="TEXT" id="ID_static_23" text=".1" x="335.85" y="306.65" align="center" width="7.15" />
+		<element type="TEXT" id="ID_static_24" text="S0/0/1" x="202.8" y="178.9" align="center" width="30.25" />
+		<element type="TEXT" id="ID_static_25" text=".2" x="137" y="178.9" align="center" width="8.6" />
+		<element type="TEXT" id="ID_static_26" text=".9" x="253.8" y="177.9" align="center" width="8.7" />
+		<element type="TEXT" id="ID_static_27" text=".1" x="66.4" y="250.4" align="center" width="7.15" />
+		<element type="TEXT" compId="ID_s1_txt01" x="30" y="56" width="104.5" expand="right" align="left" />
+		<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+	</slide>
+
+	<!-- slide 02-->
+	<slide>
+		<element type="ROUTER" textId="ID_router_txt1" x="5" y="64" width="430" height="236" />
+<text id="ID_router_txt1"><![CDATA[<pre>R1(config)# <b>interface GigabitEthernet0/0</b>
+R1(config-if)# <b>bandwidth 1000000</b> 
+R1(config-if)# <b>exit</b>
+R1(config)# <b>router ospf 10</b>
+R1(config-router)# <b>router-id 1.1.1.1</b>
+R1(config-router)# <b>auto-cost reference-bandwidth 1000</b>
+% OSPF: Reference bandwidth is changed. 
+        Please ensure reference bandwidth is consistent 
+across all routers.
+R1(config-router)# <b>network 172.16.1.0 0.0.0.255 area 0</b>
+R1(config-router)# <b>network 172.16.3.0 0.0.0.3 area 0</b>
+R1(config-router)# <b>network 192.168.10.4 0.0.0.3 area 0</b>
+R1(config-router)#
+R1(config-router)# <b>passive-interface g0/0</b>
+R1(config-router)#</pre>]]></text>
+		<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+	</slide>
+
+	<!-- slide 03-->
+	<slide>
+		<element type="ROUTER" textId="ID_router_txt2" x="5" y="64" width="430" height="236" />
+<text id="ID_router_txt2"><![CDATA[<pre>R2(config)# <b>interface GigabitEthernet0/0</b>
+R2(config-if)# <b>bandwidth 1000000</b>
+R2(config-if)# <b>exit</b>
+R2(config)# <b>router ospf 10</b>
+R2(config-router)# <b>router-id 2.2.2.2</b>
+R2(config-router)# <b>auto-cost reference-bandwidth 1000</b>
+% OSPF: Reference bandwidth is changed. 
+        Please ensure reference bandwidth is consistent 
+across all routers.
+R2(config-router)# <b>network 172.16.2.1 0.0.0.0 area 0</b>
+R2(config-router)# <b>network 172.16.3.2 0.0.0.0 area 0</b>
+R2(config-router)# <b>network 192.168.10.9 0.0.0.0 area 0</b>
+R2(config-router)#
+R2(config-router)# <b>passive-interface g0/0</b>
+R2(config-router)#</pre>]]></text>
+		<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+	</slide>
+
+	<!-- slide 04-->
+	<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s4_title"/>
+		<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC4" x="0.5" y="28.95" width="437.1" height="367" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+	</slide>
+
+	</slide>
+</data>

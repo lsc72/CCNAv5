@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.3.1 Faible surcharge et fiabilité du protocole UDP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>TCP et UDP</h1>
+        <h2>Communication UDP</h2>
+      </div>
+      <div id="content">
+<p>Le protocole UDP est un protocole simple offrant des fonctions de couche transport de base. Il crée beaucoup moins de surcharge que le protocole TCP car il n'est pas orienté connexion et ne propose pas de mécanismes sophistiqués de fiabilité (retransmission, séquençage et contrôle de flux).</p>
+<p></p>
+<p>Cela ne signifie pas que les applications utilisant le protocole UDP ne sont jamais fiables, ni que le protocole UDP n'est pas efficace. Cela signifie simplement que ces fonctions ne sont pas fournies par le protocole de couche transport et qu'elles doivent être implémentées à un autre niveau, le cas échéant.</p>
+<p></p>
+<p>Bien que le volume total de trafic UDP d'un réseau standard soit relativement faible, des protocoles importants de couche application utilisent le protocole UDP, notamment :</p>
+<p>
+<ul>
+<li>Système de noms de domaine (DNS)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>SNMP (Simple Network Management Protocol)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Protocole DHCP (Dynamic Host Configuration Protocol)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Protocole RIP (Routing Information Protocol)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>TFTP (Trivial File Transfer Protocol)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Téléphonie IP ou voix sur IP (VoIP)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Jeux en ligne</li>
+</ul>
+</p>
+<p></p>
+<p>Certaines applications, comme les jeux en ligne ou la VoIP, peuvent tolérer la perte d'une certaine quantité de données. Si ces applications utilisaient le protocole TCP, elles risqueraient d'être confrontées à des retards importants lorsque le protocole TCP détecterait les pertes de données et retransmettrait les données. Ces délais seraient plus préjudiciables à l'application que la perte d'une petite quantité de données. Certaines applications, comme le système DNS, renvoient simplement la requête si aucune réponse n'est reçue. Par conséquent, elles n'ont pas besoin du protocole TCP pour garantir l'acheminement des messages.</p>
+<p></p>
+<p>La faible surcharge qu'engendre le protocole UDP rend celui-ci très intéressant pour de telles applications.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

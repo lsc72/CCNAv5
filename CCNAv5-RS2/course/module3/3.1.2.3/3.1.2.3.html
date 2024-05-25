@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.2.3 Étiquetage des trames Ethernet pour l&#x0027;identification des VLAN</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmentation d&#x0027;un VLAN</h1>
+        <h2>VLAN dans un environnement à commutateurs multiples</h2>
+      </div>
+      <div id="content">
+<p>Les commutateurs de la gamme Catalyst 2960 sont des périphériques de couche 2. Ils utilisent les informations de l'en-tête des trames Ethernet pour transférer les paquets. Ils ne disposent pas de tables de routage. L'en-tête des trames Ethernet standard ne contient pas d'informations sur le VLAN auquel appartiennent les trames. Par conséquent, lorsque celles-ci sont placées sur un trunk, il convient d'ajouter les informations relatives au VLAN dont elles dépendent. Ce processus, appelé étiquetage, s'effectue à l'aide de l'en-tête IEEE 802.1Q, précisé dans la norme IEEE 802.1Q. L'en-tête 802.1Q inclut une étiquette de 4 octets insérée dans l'en-tête d'origine de la trame Ethernet, indiquant le VLAN auquel la trame appartient.</p>
+<p></p>
+<p>Lorsque le commutateur reçoit une trame sur un port configuré en mode d'accès et associé à un VLAN, il insère une étiquette VLAN dans l'en-tête de trame, recalcule la séquence de contrôle de trame, puis envoie la trame étiquetée par un port trunk.</p>
+<p></p>
+<p>
+<b>Détails du champ de l'étiquette VLAN</b>
+</p>
+<p></p>
+<p>L'étiquette VLAN se compose d'un champ Type, d'un champ Priorité, d'un champ CFI (Canonical Format Identifier) et d'un champ d'ID de VLAN :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Type</b> : valeur de 2 octets appelée ID de protocole d'étiquette (TPID). Pour Ethernet, elle est définie sur une valeur hexadécimale 0x8100.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Priorité utilisateur</b> : valeur de 3 bits qui prend en charge l'implémentation de niveaux ou de services.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>CFI (Canonical Format Identifier)</b> : identificateur de 1 bit qui active les trames Token Ring à transmettre sur des liaisons Ethernet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>ID de VLAN (VID)</b> : numéro d'identification VLAN de 12 bits qui prend en charge jusqu'à 4 096 ID de VLAN.</li>
+</ul>
+</p>
+<p></p>
+<p>Une fois que le commutateur a inséré les champs Type et d'informations de contrôle d'étiquette, il recalcule les valeurs de séquence de contrôle de trame et les insère dans la trame.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.3.5 Technologie de réseau privé virtuel</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.3.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Choix d&#x0027;une technologie WAN</h1>
+        <h2>Infrastructure WAN publique</h2>
+      </div>
+      <div id="content">
+<p>Les risques de sécurité apparaissent lorsqu'un télétravailleur ou un employé d'un bureau distant utilise les services haut débit pour accéder au WAN d'entreprise via Internet. Pour remédier à ces problèmes de sécurité, les services haut débit permettent l'utilisation de connexions VPN à un serveur VPN, qui se trouve habituellement sur le site de l'entreprise. </p>
+<p></p>
+<p>Un VPN est une connexion chiffrée entre réseaux privés sur un réseau public, par exemple Internet. Au lieu d'utiliser une connexion de couche 2 dédiée comme une ligne louée, le VPN utilise des connexions virtuelles appelées tunnels VPN, qui passent via Internet depuis le réseau privé de la société vers l'employé ou le site distant. </p>
+<p></p>
+<p>Les avantages d'un VPN sont les suivants :</p>
+<p>
+<ul>
+<li>
+<b>Économies </b>: les VPN permettent aux organisations d'utiliser Internet pour connecter des bureaux et des utilisateurs distants au site principal, éliminant ainsi les liaisons WAN dédiées et les batteries de modems, très coûteuses.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Sécurité </b>: les VPN offrent le plus haut niveau de sécurité grâce au chiffrement et aux protocoles d'authentification avancés qui protègent les données de l'accès non autorisé. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Évolutivité </b>: comme les VPN utilisent l'infrastructure Internet des FAI et des périphériques, l'ajout de nouveaux utilisateurs est simple. Les grandes entreprises peuvent ajouter des volumes importants de capacité sans ajouter d'infrastructure importante.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Compatibilité avec la technologie haut débit </b>: la technologie VPN est prise en charge par les fournisseurs de services haut débit, par exemple via DSL ou câble, donc les travailleurs mobiles peuvent profiter de leur Internet haut débit à la maison pour accéder au réseau d'entreprise. Des connexions pour entreprises et à haut débit peuvent également être une solution rentable pour connecter des bureaux distants.</li>
+</ul>
+</p>
+<p></p>
+<p>Il existe deux types d'accès VPN :</p>
+<p>
+<ul>
+<li>
+<b>VPN site à site </b>: les VPN site à site connectent entre eux des réseaux entiers. Ils peuvent par exemple connecter un réseau de filiale au réseau du siège d'une entreprise, comme illustré à la Figure 1. Chaque site est équipé d'une passerelle VPN, par exemple un routeur, un pare-feu, un concentrateur VPN ou un appareil de sécurité. Dans la figure, une succursale distante utilise un réseau privé virtuel de site à site pour se connecter au siège social. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>VPN d'accès à distance </b>: les VPN d'accès à distance permettent aux hôtes comme les télétravailleurs, les utilisateurs mobiles et les utilisateurs d'extranet d'accéder à un réseau d'entreprise via Internet de façon sécurisée. Chaque hôte (Télétravailleur 1 et Télétravailleur 2) a chargé son logiciel client VPN ou bien utilise un client Web, comme illustré à la Figure 2. </li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

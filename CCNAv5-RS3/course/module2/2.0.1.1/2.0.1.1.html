@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.0.1.1 Introduction</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Redondance LAN</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>La redondance du réseau est essentielle pour garantir la fiabilité de celui-ci. La multiplication des liens physiques entre les périphériques offre des chemins d'accès redondants. Le réseau peut ainsi continuer à fonctionner, même lorsqu'un port ou un lien donné est défaillant. Les liens redondants permettent également de partager la charge du trafic et d'accroître la capacité.</p>
+<p></p>
+<p>Les chemins multiples doivent être gérés de manière à ce qu'aucune boucle de couche 2 ne soit créée. Les meilleurs chemins sont déterminés, puis un chemin alternatif est défini en cas de défaillance du chemin principal. Les protocoles STP (Spanning Tree Protocol) sont utilisés pour gérer la redondance au niveau de la couche 2.</p>
+<p></p>
+<p>Les périphériques redondants, tels que les routeurs ou les commutateurs multicouches, donnent la possibilité au client d'utiliser une passerelle par défaut différente en cas de défaillance de la passerelle principale. Un client peut désormais bénéficier de plusieurs chemins menant à plusieurs passerelles par défaut possibles. Les protocoles de redondance au premier saut sont utilisés pour gérer la manière dont un client est associé à une passerelle par défaut, et pour lui permettre d'utiliser une passerelle alternative en cas de défaillance de la première.</p>
+<p></p>
+<p>Ce chapitre porte sur les protocoles utilisés pour gérer ces modes de redondance. Il présente également quelques-uns des problèmes de redondance qu'il est possible de rencontrer, ainsi que les symptômes associés.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

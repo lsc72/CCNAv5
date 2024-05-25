@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.2.5 ATM</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Choix d&#x0027;une technologie WAN</h1>
+        <h2>Infrastructures WAN privées</h2>
+      </div>
+      <div id="content">
+<p>La technologie ATM (Asynchronous Transfer Mode) peut transférer de la voix, de la vidéo et des données sur des réseaux privés et publics. Elle s'appuie sur une architecture basée sur des cellules, plutôt que sur une architecture basée sur des trames. Les cellules ATM présentent toujours une longueur fixe de 53 octets. La cellule ATM de 53 octets contient un en-tête ATM de 5 octets, suivi de 48 octets de données utiles ATM. Les petites cellules de longueur fixe sont bien adaptées au transport du trafic vocal et vidéo, car ce trafic ne tolère pas les délais. En effet, le trafic vidéo et vocal n'a pas à attendre la fin de la transmission de paquets de données de plus grande taille.</p>
+<p></p>
+<p>La cellule ATM de 53 octets est moins efficace que les trames et paquets de plus grande taille de Frame Relay. Par ailleurs, la cellule ATM comporte au moins 5 octets de surcharge pour chaque ensemble de données utiles de 48 octets. Quand la cellule transporte des paquets de couche réseau segmentés, la surcharge est plus importante, car le commutateur ATM doit être en mesure de regrouper les paquets au niveau de la destination. Une ligne ATM type nécessite un débit supérieur de presque 20 % à celui de Frame Relay pour transporter le même volume de données de couche réseau.</p>
+<p></p>
+<p>La technologie ATM a été conçue pour faciliter l'extension et pour prendre en charge des vitesses de T1/E1 ou OC-12 (622 Mbit/s) et au-delà. </p>
+<p></p>
+<p>ATM propose à la fois des circuits virtuels permanents et des circuits virtuels commutés, même si les circuits virtuels permanents sont plus répandus avec les WAN. Comme pour d'autres technologies partagées, ATM autorise plusieurs circuits virtuels sur une seule connexion de ligne louée vers la périphérie de réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

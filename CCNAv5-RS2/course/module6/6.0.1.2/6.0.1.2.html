@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.0.1.2 Exercice : quelle route emprunter</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage statique</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Exercice :</b>
+<b>quelle route emprunter ?</b>
+</p>
+<p></p>
+<p>Un événement sportif majeur est sur le point de se tenir dans votre ville. Pour y assister, vous vous organisez de sorte à arriver au stade avant le coup d'envoi.</p>
+<p></p>
+<p>Vous avez le choix entre deux routes pour vous rendre au stade : </p>
+<p>
+<ul>
+<li>
+<b>L'autoroute</b> : elle est très facile à suivre et les limitations de vitesse sont relativement élevées. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Une route directe alternative</b> : vous avez trouvé cette route sur une carte de la ville. Selon les conditions, telles que le trafic ou l'encombrement, il s'agit peut-être du meilleur moyen pour arriver au stade à l'heure !</li>
+</ul>
+</p>
+<p></p>
+<p>Discutez de ces options avec un collègue. Choisissez une route de manière à arriver au stade à l'heure pour ne rien manquer de cet événement sportif.</p>
+<p></p>
+<p>Comparez vos préférences au trafic réseau. Quelle route choisiriez-vous pour acheminer des données de communication au sein de votre PME ? Utiliseriez-vous la route la plus rapide et la plus simple ou bien la route alternative, plus directe ? Justifiez votre choix.</p>
+<p></p>
+<p>Remplissez le PDF de cet exercice de modélisation et préparez-vous à justifier vos réponses devant la classe ou un autre groupe.</p>
+<p></p>
+<p>
+<a href="../../files/6.0.1.2%20Which%20Way%20Should%20We%20Go%20Instructions.pdf" target="_blank">Exercice en classe : quelle route emprunter Instructions</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

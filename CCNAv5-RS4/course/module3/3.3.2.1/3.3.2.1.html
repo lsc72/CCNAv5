@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.2.1 Protocoles d&#x0027;authentification PPP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de PPP</h1>
+        <h2>Authentification PPP</h2>
+      </div>
+      <div id="content">
+<p>Le protocole PPP définit un LCP extensible qui permet la négociation d'un protocole d'authentification pour l'authentification de son homologue avant d'autoriser les protocoles de couche réseau à commencer la transmission sur la liaison. RFC 1334 définit deux protocoles d'authentification, PAP et CHAP, comme présenté dans la figure. </p>
+<p></p>
+<p>Le protocole PAP est un processus bidirectionnel simple. Il ne comporte pas de chiffrement. Le nom d'utilisateur et le mot de passe sont envoyés en texte clair. S'ils sont acceptés, la connexion est autorisée. CHAP est plus sécurisé que le protocole PAP. Il implique un échange en trois étapes d'un secret partagé. </p>
+<p></p>
+<p>La phase d'authentification d'une session PPP est facultative. S'il est utilisé, l'homologue est authentifié une fois que le protocole LCP a établi la liaison et choisi le protocole d'authentification. Si elle est utilisée, l'authentification a lieu avant que la phase de configuration du protocole de couche réseau ne commence. </p>
+<p></p>
+<p>Les options d'authentification exigent que la partie appelante de la liaison entre les informations d'authentification. Cela permet de garantir que l'administrateur réseau a autorisé l'utilisateur à passer l'appel. Les routeurs homologues échangent des messages d'authentification.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

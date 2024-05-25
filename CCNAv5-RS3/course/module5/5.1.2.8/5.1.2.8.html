@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.2.8 Priorité OSPF</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.2.8_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées du protocole OSPF à zone unique </h1>
+        <h2>OSPF dans les réseaux à accès multiple</h2>
+      </div>
+      <div id="content">
+<p>Le DR devient le point central de collecte et de distribution des LSA ; ce routeur doit donc bénéficier d'un processeur suffisamment puissant et d'une mémoire suffisamment étendue pour traiter cette charge de travail. Il est possible d'influencer le processus de sélection de DR/BDR par le biais de configurations.</p>
+<p></p>
+<p>Si les priorités des interfaces sont identiques sur tous les routeurs, le routeur dont l'ID est le plus élevé est sélectionné comme DR. Il est possible de configurer l'ID de routeur de façon à influencer la sélection de DR/BDR. Cependant, cette procédure fonctionne uniquement s'il existe un plan strict de définition des ID de chaque routeur. Cela peut être fastidieux sur les grands réseaux. </p>
+<p></p>
+<p>Au lieu de se baser sur l'ID de routeur, il vaut mieux contrôler la sélection au moyen des priorités d'interfaces. La priorité d'interface est une valeur propre à l'interface, ce qui apporte un meilleur contrôle sur un réseau à accès multiple. Cela permet également à un routeur d'être DR dans un réseau et DROther dans un autre. </p>
+<p></p>
+<p>Pour définir la priorité d'une interface, utilisez les commandes suivantes : </p>
+<p></p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>ip ospf priority </b>
+</span>
+<span class="cmd">
+<i>Valeur</i>
+</span>
+<span class="cmd">
+<b></b>
+</span>- commande d'interface OSPFv2</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>ipv6 ospf priority </b>
+</span>
+<span class="cmd">
+<i>Valeur</i>
+</span>
+<span class="cmd">
+<b></b>
+</span>-  commande d'interface OSPFv3</li>
+</ul>
+</p>
+<p></p>
+<p>Le paramètre <span class="cmd"><i>value</i></span> peut comprendre les valeurs ci-dessous :</p>
+<p>
+<ul>
+<li>
+<b>0 </b>-  le routeur ne peut devenir ni DR ni BDR.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>1</b> à <b>255</b> - plus la valeur est élevée, plus il est probable que le routeur devienne le DR ou le BDR sur l'interface.</li>
+</ul>
+</p>
+<p></p>
+<p>Dans la figure, la priorité OSPF est identique pour tous les routeurs, car celle-ci prend la valeur 1 par défaut pour toutes les interfaces de routeurs. L'ID de routeur est donc utilisé pour déterminer le DR (R3) et le BDR (R2). Le remplacement de la priorité d'une interface par une valeur plus élevée pourrait permettre au routeur concerné de devenir un DR ou un BDR lors de la prochaine sélection. </p>
+<p></p>
+<p>Si la priorité d'interface est configurée après l'activation du protocole OSPF, l'administrateur doit désactiver le processus OSPF sur tous les routeurs, puis le réactiver, pour forcer une nouvelle sélection de DR/BDR.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

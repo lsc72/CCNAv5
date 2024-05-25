@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.1.2 Configuration des interfaces</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>La configuration de l&#x0027;agrégation de liaisons</h1>
+        <h2>Configuration du protocole EtherChannel</h2>
+      </div>
+      <div id="content">
+<p>La configuration d'EtherChannel avec LACP est basée sur deux étapes :</p>
+<p></p>
+<p>
+<b>Étape 1.</b> Spécifiez les interfaces qui composent le groupe EtherChannel en utilisant la commande de mode de configuration globale<span class="cmd"><b> interface range </b></span><span class="cmd"><i>interface</i></span>. Le mot-clé<span class="cmd"><b> range </b></span>vous permet de sélectionner plusieurs interfaces et de les configurer toutes ensemble. Il est recommandé de commencer par désactiver ces interfaces, de sorte qu'aucune configuration incomplète n'entraîne d'activité sur la liaison.</p>
+<p></p>
+<p>
+<b>Étape 2. </b>Créez l'interface de canal de port avec la commande<span class="cmd"><b> channel-group </b></span><span class="cmd"><i>identifier</i></span><span class="cmd"><b> mode active </b></span>dans le mode de configuration de la plage d'interface. L'identificateur spécifie un numéro de groupe de canaux. Les mots-clés<span class="cmd"><b> mode active </b></span>l'identifient comme une configuration EtherChannel LACP.</p>
+<p></p>
+<p>
+<b>Remarque </b>: EtherChannel est désactivé par défaut.</p>
+<p></p>
+<p>Dans la Figure 1, FastEthernet0/1 et FastEthernet0/2 sont regroupés dans le canal de port de l'interface EtherChannel 1. </p>
+<p></p>
+<p>Pour modifier les paramètres de couche 2 sur l'interface port-channel, entrez dans le mode de configuration de l'interface port-channel en utilisant la commande interface port-channel, suivie de l'identificateur d'interface. Dans l'exemple, l'EtherChannel est configuré en tant qu'interface trunk avec des VLAN autorisés spécifiés. Le canal de port de l'interface 1, également illustré dans la Figure 1, est configuré en tant que trunk avec les VLAN autorisés 1, 2 et 20.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 2 pour configurer EtherChannel sur le commutateur S1.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

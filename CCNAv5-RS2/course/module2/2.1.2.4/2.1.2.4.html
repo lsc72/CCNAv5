@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.4 Vérification de la configuration des ports de commutateur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de base d&#x0027;un commutateur</h1>
+        <h2>Configuration des ports de commutateur</h2>
+      </div>
+      <div id="content">
+<p>La Figure 1 décrit certaines des options disponibles pour la commande<span class="cmd"><b> show </b></span>et qui peuvent se révéler utiles pour vérifier les fonctionnalités configurables les plus courantes des commutateurs.</p>
+<p></p>
+<p>La Figure 2 présente un échantillon des données obtenues à partir de la commande <span class="cmd"><b>show running-config</b></span>. Utilisez cette commande pour vérifier que le commutateur a été correctement configuré. Comme indiqué dans les résultats de la commande exécutée sur S1, certaines informations clés sont affichées :</p>
+<p></p>
+<p>
+<ul>
+<li>Interface Fast Ethernet 0/18 configurée à l'aide du VLAN 99 de gestion</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>VLAN 99 configuré avec l'adresse IP 172.17.99.11 255.255.255.0</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Passerelle par défaut définie à 172.17.99.1</li>
+</ul>
+</p>
+<p></p>
+<p>La commande<span class="cmd"><b> show interfaces </b></span>est également une commande souvent utilisée. Elle affiche l'état et les statistiques des interfaces réseau d'un commutateur. La commande <span class="cmd"><b>show interfaces</b></span> est souvent utilisée lors de la configuration et du contrôle des périphériques réseau. </p>
+<p></p>
+<p>La Figure 3 présente un échantillon des données obtenues à partir de la commande <span class="cmd"><b>show interfaces fastEthernet 0/18</b></span>. La première ligne de la figure indique que l'interface FastEthernet 0/18 est « up/up », ce qui signifie qu'elle est opérationnelle. Plus bas, le résultat indique que l'interface est en mode bidirectionnel simultané et que la vitesse est de 100 Mbit/s.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

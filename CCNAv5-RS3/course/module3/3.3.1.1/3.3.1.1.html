@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.1.1 Exercice en classe : liaison active</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Liaison active</b>
+</p>
+<p></p>
+<p>De nombreux goulots d'étranglement peuvent survenir sur votre réseau de PME, même si vous avez configuré les VLAN, le protocole STP et les autres options du trafic réseau sur les commutateurs de l'entreprise. </p>
+<p></p>
+<p>Au lieu de maintenir la configuration actuelle des commutateurs, vous souhaitez essayer EtherChannel comme option pour, au minimum, une partie du réseau, afin de voir si cela limite l'encombrement du trafic entre vos commutateurs de couche d'accès et de couche de distribution.</p>
+<p></p>
+<p>Votre entreprise utilise des commutateurs Catalyst 3560 au niveau de la couche de distribution et des commutateurs Catalyst 2960 et 2950 au niveau de la couche d'accès du réseau. Afin de vérifier que ces commutateurs peuvent exécuter EtherChannel, visitez la <a href="http://www.cisco.com/en/US/tech/tk389/tk213/technologies_tech_note09186a0080094646.shtml" target="_blank">configuration système requise pour l'implémentation d'EtherChannel sur des commutateurs Catalyst</a>. Ce site vous permet de collecter des informations supplémentaires en vue de déterminer si EtherChannel est une option intéressante pour le matériel et le réseau actuellement en place.</p>
+<p></p>
+<p>Après avoir effectué des recherches sur les modèles, vous décidez d'utiliser un logiciel de simulation afin de vous exercer à configurer EtherChannel avant de l'implémenter réellement sur votre réseau. Dans le cadre de cette procédure, vous vous assurez que le matériel simulé dans Packet Tracer prendra en charge ces configurations pratiques.</p>
+<p></p>
+<p>
+<a href="../../files/3.3.1.1%20Linking%20%20Up%20Instructions.pdf" target="_blank">Exercice en classe : liaison active</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

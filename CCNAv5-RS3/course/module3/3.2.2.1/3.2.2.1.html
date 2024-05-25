@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.2.1 Vérification de la fonctionnalité EtherChannel</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>La configuration de l&#x0027;agrégation de liaisons</h1>
+        <h2>Vérification et dépannage d&#x0027;un EtherChannel</h2>
+      </div>
+      <div id="content">
+<p>Il existe plusieurs commandes permettant de vérifier une configuration EtherChannel. Tout d'abord, la commande<span class="cmd"><b> show interface port-channel </b></span>affiche l'état général de l'interface de port-channel. Dans la Figure 1, l'interface Port Channel 1 est active.</p>
+<p></p>
+<p>Lorsque plusieurs interfaces de canal de port sont configurées sur le même périphérique, utilisez la commande <span class="cmd"><b>show etherchannel summary</b></span> pour afficher une ligne d'informations unique par canal de port. Dans la Figure 2, le commutateur a un EtherChannel configuré ; le groupe 1 utilise LACP. </p>
+<p></p>
+<p>Le groupement d'interfaces est constitué des interfaces FastEthernet0/1 et FastEthernet0/2. Le groupe est un EtherChannel de couche 2, qui est en fonctionnement, comme indiqué par les lettres SU à côté du numéro de canal de port.</p>
+<p></p>
+<p>Utilisez la commande<span class="cmd"><b> show etherchannel port-channel </b></span>pour afficher des informations concernant une interface port-channel spécifique, comme illustré dans la Figure 3. Dans l'exemple, l'interface Port Channel 1 est constituée de deux interfaces physiques, FastEthernet0/1 et FastEthernet0/2. Elle utilise LACP en mode actif. Elle est correctement connectée à un autre commutateur avec une configuration compatible, c'est pourquoi le canal est indiqué comme étant en fonctionnement.</p>
+<p></p>
+<p>Sur toute interface physique d'une liaison EtherChannel, la commande<span class="cmd"><b> show interfaces etherchannel </b></span>peut fournir des informations sur le rôle de l'interface dans l'EtherChannel, comme illustré dans la Figure 4. L'interface FastEthernet 0/1 fait partie du groupe EtherChannel 1. Le protocole pour cet EtherChannel est LACP.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 5 pour vérifier EtherChannel sur le commutateur S1. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

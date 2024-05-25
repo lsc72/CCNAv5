@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.2.2 Journalisation par défaut</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Syslog</h1>
+        <h2>Configuration de Syslog</h2>
+      </div>
+      <div id="content">
+<p>Par défaut, les routeurs et commutateurs Cisco envoient des messages journaux à la console pour tous les niveaux de gravité. Sur certaines versions de Cisco IOS, le périphérique consigne également les messages dans une mémoire tampon par défaut. Pour activer ces deux paramètres, utilisez les commandes de configuration globale <span class="cmd"><b>logging console</b></span> et <span class="cmd"><b>logging buffered</b></span>, respectivement. </p>
+<p></p>
+<p>La commande <span class="cmd"><b>show logging</b></span> affiche les paramètres de service de journalisation par défaut sur un routeur Cisco, comme le montre la figure. Les premières lignes du résultat affichent des informations relatives au processus de journalisation, tandis que la fin répertorie les messages du journal.</p>
+<p></p>
+<p>La première ligne en surbrillance indique que ce routeur consigne ses messages dans la console et elle contient des messages de débogage. Cela signifie en fait que tous les messages de niveau de débogage, ainsi que l'ensemble des messages de niveau inférieur (par exemple les messages de niveau de notification), sont consignés dans la console. Le résultat indique également que 32 messages de ce type ont été consignés. </p>
+<p></p>
+<p>La deuxième ligne en surbrillance indique que ce routeur consigne ses messages dans une mémoire tampon interne. Ce routeur ayant autorisé la journalisation dans une mémoire tampon interne, la commande <span class="cmd"><b>show logging</b></span> répertorie également les messages qui figurent dans celle-ci. Vous pouvez afficher certains des messages système qui ont été consignés à la fin du résultat.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

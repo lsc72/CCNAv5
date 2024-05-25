@@ -1,0 +1,59 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Configuration de SSH pour la gestion à distance  </b>]]></text>
+</component>
+<component id="ID_s2_title">
+   <text><![CDATA[<b>Configuration du routage&nbsp;SSH  </b>]]></text>
+   </component>
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+   
+<component id="ID_s2_SC01" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font  face="Arial" color="#0000FF">*** Vous devez saisir la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font>  </b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font  face="Arial"><b>Définissez cisco.com comme nom de domaine et générez la clé RSA de 1&nbsp;024&nbsp;bits.  </b></font>]]></existingcommands>
+		<command prompt="S1(config)#">
+			<correctresponse><![CDATA[ip domain-name cisco.com]]></correctresponse>
+		</command>
+		<command prompt="S1(config)#">
+			<correctresponse><![CDATA[crypto key generate rsa]]></correctresponse>
+				<deviceresponse><![CDATA[<font face='Courier New' Size="10" class="font10px">The name for the keys will be: S1.cisco.com <br>Choose the size of the key modulus in the range of 360 to 4096 for your <br>  General Purpose Keys. Choosing a key modulus greater than 512 may take <br>  a few minutes. <br>  </font>]]></deviceresponse>
+		</command>	
+		<command prompt="How many bits in the modulus [512]:">
+			<correctresponse><![CDATA[1024]]></correctresponse>
+				<deviceresponse><![CDATA[<font face='Courier New' Size="10" class="font10px">% Generating 1024 bit RSA keys, keys will be non-exportable...  <br>[OK] (elapsed time was 4 seconds) <br>&nbsp; <br>S1(config)# <br>*Mar 1 02:20:18.529: %SSH-5-ENABLED: SSH 1.99 has been enabled  </font><br>]]></deviceresponse>
+			<instruction><![CDATA[<font  face="Arial"><b>Créez un utilisateur local appelé «&nbsp;admin&nbsp;» dont le mot de passe est «&nbsp;ccna&nbsp;». Paramétrez toutes les lignes pour utiliser SSH et un login local pour les connexions à distance. Quittez le mode de configuration.  </b></font>]]></instruction>
+		</command>
+		<command prompt="S1(config)#">
+			<correctresponse><![CDATA[username admin secret ccna]]></correctresponse>
+		</command>
+		<command prompt="S1(config)#">
+			<correctresponse><![CDATA[line vty 0 15]]></correctresponse>
+		</command>
+		<command prompt="S1(config-line)#">
+			<correctresponse><![CDATA[transport input ssh]]></correctresponse>
+		</command>
+		<command prompt="S1(config-line)#">
+			<correctresponse><![CDATA[login local]]></correctresponse>
+		</command>
+		<command prompt="S1(config-line)#">
+			<correctresponse><![CDATA[end]]></correctresponse>
+				<deviceresponse><![CDATA[S1#<br>%SYS-5-CONFIG_I: Configured from console by console]]></deviceresponse>
+				<instruction><![CDATA[<font size = '10' face="Arial"><b>Configure S1 to use SSH 2.0.</b></font>]]></instruction>
+				</command>
+				<command prompt="S1(config)#">
+				<correctresponse><![CDATA[ip ssh version 2]]></correctresponse>
+				<deviceresponse><![CDATA[S1(config)#]]></deviceresponse>
+			<instruction><![CDATA[<font  face="Arial"><b>Vous avez correctement configuré SSH sur toutes les lignes vty.  </b></font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+</textcomponents>

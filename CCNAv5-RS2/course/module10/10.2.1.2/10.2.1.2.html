@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.1.2 Fonctionnement des SLAAC</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 6</h1>
+        <h2>SLAAC et DHCPv6</h2>
+      </div>
+      <div id="content">
+<p>Pour qu'il puisse envoyer des messages RA, le routeur doit être activé en tant que routeur IPv6. Pour activer le routage IPv6 sur un routeur, utilisez la commande suivante :</p>
+<p></p>
+<p>
+<span class="cmd">Router(config)# </span>
+<span class="cmd">
+<b>ipv6 unicast-routing</b>
+</span>
+</p>
+<p></p>
+<p>1. Dans l'exemple de topologie représenté à la Figure 1, PC1 est configuré pour obtenir automatiquement l'adressage IPv6. Depuis le démarrage, PC1 n'a pas reçu de message RA. Il envoie donc un message RS à l'adresse de multidiffusion à tous les routeurs pour informer le routeur IPv6 local qu'il a besoin d'une annonce de routeur.</p>
+<p></p>
+<p>2. Comme le montre la Figure 2, R1 reçoit le message RS et répond par un message RA. Le préfixe et la longueur de préfixe du réseau sont inclus dans le message RA. Celui-ci est envoyé à l'adresse de multidiffusion à tous les nœuds IPv6, FF02::1, en utilisant l'adresse link-local du routeur comme adresse source IPv6. </p>
+<p></p>
+<p>3. PC1 reçoit le message RA contenant le préfixe et la longueur de préfixe du réseau local. PC1 utilise ces informations pour créer sa propre adresse de monodiffusion globale IPv6. PC1 possède maintenant un préfixe réseau de 64 bits, mais a besoin d'un ID d'interface 64 bits (IID) pour créer une adresse de monodiffusion globale. </p>
+<p></p>
+<p>PC1 peut créer son propre IID unique de deux façons :</p>
+<p>
+<ul>
+<li>
+<b>EUI-64</b> : à l'aide du processus EUI-64, PC1 crée un IID à partir de son adresse MAC de 48 bits.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Génération aléatoire</b> : l'IID de 64 bits peut être un nombre aléatoire généré par le système d'exploitation du client. </li>
+</ul>
+</p>
+<p></p>
+<p>Comme le montre la Figure 3, PC1 peut créer une adresse de monodiffusion globale IPv6 de 128 bits en combinant le préfixe de 64 bits à l'IID de 64 bits. PC1 utilise l'adresse link-local du routeur comme adresse de passerelle IPv6 par défaut.</p>
+<p></p>
+<p>4. Étant donné que SLAAC est un processus sans état, avant que PC1 puisse utiliser cette adresse IPv6 nouvellement créée, il doit vérifier qu'elle est unique. Comme le montre la Figure 4, PC1 envoie un message de sollicitation de voisin ICMPv6 en utilisant sa propre adresse comme adresse IPv6 cible. Si aucun autre périphérique ne répond par un message d'annonce de voisin, alors l'adresse est unique et peut être utilisée par PC1. Si PC1 reçoit une annonce de voisin, cela signifie que l'adresse n'est pas unique et le système d'exploitation doit définir un nouvel ID d'interface à utiliser. </p>
+<p></p>
+<p>Ce processus fait partie de la détection de voisin ICMPv6 et est appelé « détection d'adresses en double » (ou DAD pour Duplicate Address Detection).</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

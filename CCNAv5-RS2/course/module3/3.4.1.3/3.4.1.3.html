@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.4.1.3 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.4.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Ce chapitre a présenté les VLAN. Les VLAN reposent sur des connexions logiques, et non des connexions physiques. Le VLAN est un mécanisme qui permet aux administrateurs réseau de créer des domaines de diffusion logiques capables de s'étendre sur un ou plusieurs commutateurs, quel que soit leur éloignement géographique. Cette fonctionnalité permet de réduire la taille des domaines de diffusion ou d'autoriser des groupes ou des utilisateurs à se regrouper de manière logique sans devoir se trouver physiquement au même endroit.</p>
+<p></p>
+<p>Il existe plusieurs types de VLAN : </p>
+<p>
+<ul>
+<li>VLAN par défaut</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>VLAN de gestion</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>VLAN natif</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>VLAN utilisateur/données</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>VLAN black hole</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>VLAN voix</li>
+</ul>
+</p>
+<p></p>
+<p>Sur un commutateur Cisco, le VLAN 1 est le VLAN Ethernet par défaut, le VLAN natif par défaut et le VLAN de gestion par défaut. Il est recommandé de déplacer les VLAN natif et de gestion vers un autre VLAN distinct, et les ports de commutateur non utilisés vers un VLAN « black hole » pour plus de sécurité.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>switchport access vlan</b></span> permet de créer un VLAN sur un commutateur. Après la création d'un VLAN, l'étape suivante consiste à lui attribuer des ports. La commande <span class="cmd"><b>show vlan brief</b></span> affiche le type d'attribution de VLAN et d'appartenance de tous les ports du commutateur. Chaque VLAN doit correspondre à un sous-réseau IP unique.</p>
+<p></p>
+<p>Utilisez la commande <span class="cmd"><b>show vlan</b></span> pour vérifier que le port appartient au VLAN prévu. Si le port est attribué au mauvais VLAN, utilisez la commande <span class="cmd"><b>switchport access vlan</b></span> pour corriger l'appartenance. Utilisez la commande <span class="cmd"><b>show mac address-table</b></span> pour vérifier que les adresses ont été apprises sur un port spécifique du commutateur et le VLAN auquel le port est attribué.</p>
+<p>Un port sur un commutateur est soit un port d'accès soit un port trunk. Les ports d'accès transportent le trafic d'un VLAN spécifique attribué au port. Un port trunk est par défaut membre de tous les VLAN et achemine par conséquent le trafic de tous les VLAN.</p>
+<p></p>
+<p>Les trunks de VLAN assurent la communication entre commutateurs en acheminant le trafic associé à plusieurs VLAN. L'étiquetage des trames IEEE 802.1Q permet de différencier les trames Ethernet associées à des VLAN distincts lorsqu'elles traversent des liaisons trunk communes. Pour activer les liaisons trunk, utilisez la commande <span class="cmd"><b>switchport mode trunk</b></span>. Utilisez la commande <span class="cmd"><b>show interfaces trunk</b></span> pour vérifier si un trunk est établi entre les commutateurs.</p>
+<p></p>
+<p>La négociation de trunk est gérée par le protocole DTP (Dynamic Trunking Protocol) qui fonctionne uniquement de point à point, entre les périphériques réseau. Le protocole DTP est un protocole propriétaire Cisco automatiquement activé sur les commutateurs Catalyst 2960 et Catalyst 3560.</p>
+<p></p>
+<p>Pour ramener un commutateur à ses réglages d'usine par défaut avec 1 VLAN par défaut, utilisez les commandes<span class="cmd"><b> delete flash:vlan.dat </b></span>et <span class="cmd"><b>erase startup-config</b></span>.</p>
+<p></p>
+<p>Ce chapitre portait également sur la configuration, la vérification et le dépannage des VLAN et des trunks à l'aide de l'interface en ligne de commande Cisco IOS ainsi que sur la sécurité de base et les critères de conception dans le cadre des VLAN.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

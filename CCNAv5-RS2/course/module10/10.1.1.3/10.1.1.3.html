@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.1.1.3 Format du message DHCPv4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.1.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 4</h1>
+        <h2>Fonctionnement de DHCPv4</h2>
+      </div>
+      <div id="content">
+<p>Le format du message DHCPv4 est utilisé pour toutes les transactions DHCPv4. Les messages DHCPv4 sont encapsulés dans le protocole de transport UDP. Ceux envoyés par le client utilisent le port source UDP 68 et le port de destination 67. Les messages DHCPv4 envoyés par le serveur au client utilisent le port source UDP 67 et le port de destination 68. </p>
+<p></p>
+<p>La figure illustre le format d'un message DHCPv4. Les champs sont les suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Code OP (opération)</b> : indique le type de message général. Si la valeur est 1, il s'agit d'un message de requête ; si la valeur est 2, il s'agit d'un message de réponse.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Type de matériel</b> : identifie le type de matériel utilisé sur le réseau. Par exemple, 1 correspond à Ethernet, 15 à un relais de trames et 20 à une ligne série. Il s'agit des mêmes codes utilisés dans les messages ARP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Longueur de l'adresse matérielle</b> : indique la longueur de l'adresse.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Sauts</b> : contrôle le transfert des messages. Défini sur 0 par le client avant la transmission d'une requête.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Identificateur de transaction</b> : utilisé par le client pour mettre en correspondance la demande avec les réponses reçues des serveurs DHCPv4.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Secondes</b> : indique le nombre de secondes qui se sont écoulées depuis le début de la tentative d'acquisition ou de renouvellement d'un bail par un client. Utilisé par les serveurs DHCPv4 pour hiérarchiser les réponses lorsque plusieurs requêtes de client sont en attente. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Indicateurs</b> : utilisés par un client qui ne connaît pas son adresse IPv4 lorsqu'il envoie une requête. Un seul des 16 bits est utilisé, l'indicateur de diffusion. La valeur 1 dans ce champ indique au serveur DHCPv4 ou à l'agent de relais recevant la requête que la réponse doit être envoyée sous forme de diffusion. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse IP du client</b> : champ utilisé par un client pendant le renouvellement de bail lorsque l'adresse du client est valide et utilisable, mais pas au cours du processus d'acquisition d'une adresse. Le client place sa propre adresse IPv4 dans ce champ si et seulement si il dispose d'une adresse IPv4 valide alors qu'il est relié ; sinon, il définit ce champ sur 0. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Votre adresse IP</b> : champ utilisé par le serveur pour attribuer une adresse IPv4 au client.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse IP du serveur</b> : champ utilisé par le serveur pour indiquer l'adresse du serveur que le client doit utiliser pour l'étape suivante du processus d'amorçage. Il ne s'agit pas forcément du serveur envoyant cette réponse. Le serveur émetteur inclut toujours son adresse IPv4 dans un champ spécial appelé l'option Server Identifier DHCPv4. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse IP de la passerelle</b> : achemine les messages DHCPv4 lorsque des agents de relais DHCPv4 sont impliqués. L'adresse de passerelle facilite les communications des requêtes DHCPv4 et les réponses entre le client et un serveur situés sur différents réseaux ou sous-réseaux.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse matérielle du client</b> : spécifie la couche physique du client.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Nom du serveur</b> : champ utilisé par le serveur envoyant un message DHCPOFFER ou DHCPACK. Le serveur peut éventuellement saisir son nom dans ce champ. Il peut s'agir d'un simple surnom ou d'un nom de domaine DNS, tel que serveurdhcp.netacad.net.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Nom du fichier de démarrage</b> : champ facultatif utilisé par un client pour demander un type particulier de fichier de démarrage dans un message DHCPDISCOVER. Utilisé par un serveur dans un message DHCPOFFER pour spécifier un répertoire et un nom de fichier de démarrage.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Options DHCP</b> : comprend les options DHCP, notamment plusieurs paramètres requis pour le fonctionnement de base de DHCP. La longueur de ce champ est variable. Le client et le serveur peuvent utiliser ce champ.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

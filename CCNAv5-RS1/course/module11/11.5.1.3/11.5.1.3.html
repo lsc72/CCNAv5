@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.5.1.3 Fonctionnalités sans fil</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.5.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Services de routage intégrés</h1>
+        <h2>Routeur intégré</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Mode sans fil</b>
+</p>
+<p>Le mode sans fil consiste à définir la norme sans fil IEEE 802.11 qui sera utilisée par le réseau. Quatre amendements ont été apportés à la norme IEEE 802.11 et décrivent différentes caractéristiques des communications sans fil. Il s'agit de 802.11a, 802.11b, 802.11g et 802.11n. La Figure 1 fournit davantage d'informations sur chaque norme. </p>
+<p></p>
+<p>La plupart des routeurs sans fil intégrés prennent en charge les normes 802.11b, 802.11g et 802.11n. Ces trois technologies sont compatibles, mais tous les périphériques du réseau doivent utiliser la même norme. Par exemple, si un routeur 802.11n est relié à un ordinateur portable selon la norme 802.11n, le réseau fonctionne conformément à la norme 802.11n. Ajoutons maintenant une imprimante sans fil 802.11b au réseau. Le routeur et l'ordinateur portable repasseront à la norme 802.11b moins rapide pour toutes les communications. Par conséquent, si des périphériques sans fil d'ancienne génération restent connectés au réseau, l'intégralité du réseau sera ralentie. Il est important de garder cela à l'esprit lorsque vous prenez la décision de garder ou non des périphériques sans fil anciens.</p>
+<p></p>
+<p>
+<b>SSID</b>
+</p>
+<p>De nombreux autres réseaux sans fil peuvent être disponibles dans la zone où vous vous trouvez. Il est important que les périphériques sans fil se connectent au réseau local sans fil approprié. Pour ce faire, un identifiant SSID (Service Set Identifier, identifiant de l'ensemble de services) est utilisé. </p>
+<p></p>
+<p>Le SSID est un nom alphanumérique sensible à la casse attribué à votre réseau sans fil domestique. Le nom peut contenir jusqu'à 32 caractères. Le SSID est utilisé pour indiquer aux périphériques sans fil à quel réseau local sans fil ils appartiennent et avec quels autres périphériques ils peuvent communiquer. Quel que soit le type d'installation WLAN utilisée, tous les périphériques sans fil du réseau local sans fil doivent être configurés avec le même SSID pour pouvoir communiquer entre eux.</p>
+<p></p>
+<p>
+<b>Canal sans fil</b>
+</p>
+<p>Pour créer des canaux, il suffit de diviser en différentes sections le spectre des radiofréquences disponible. Chaque canal peut transmettre une conversation différente. Ce fonctionnement est similaire à celui d'une télévision, où les différentes chaînes sont diffusées via un support unique. Plusieurs points d'accès peuvent fonctionner à proximité les uns des autres, dans la mesure où ils utilisent différents canaux de communication.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

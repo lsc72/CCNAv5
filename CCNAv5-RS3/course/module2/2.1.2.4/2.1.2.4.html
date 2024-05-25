@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.4 Algorithme Spanning Tree : coût de chemin</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts du mode Spanning Tree</h1>
+        <h2>Fonctionnement du protocole STP</h2>
+      </div>
+      <div id="content">
+<p>Lorsque le pont racine a été choisi pour l'instance Spanning Tree, l'algorithme STA lance le processus de détermination des meilleurs chemins possibles vers le pont racine, depuis l'ensemble des destinations du domaine de diffusion. Les informations de chemin sont déterminées par la somme des différents coûts de ports sur le chemin de la destination vers le pont racine. Chaque « destination » est en réalité un port de commutation.</p>
+<p></p>
+<p>Les coûts du port par défaut sont définis par la vitesse de fonctionnement du port. Comme indiqué dans la Figure 1, les ports Ethernet 10 Gb/s ont un coût de 2 ; les ports Ethernet 1 Gb/s ont un coût de 4 ; les ports Fast Ethernet 100 Mb/s ont un coût de 19 ; et les ports Ethernet 10 Mb/s ont un coût de 100. </p>
+<p></p>
+<p>
+<b>Remarque </b>: avec l'arrivée sur le marché de nouvelles technologies Ethernet plus rapides, le coût de chemin des ports peut varier pour s'adapter aux vitesses disponibles. Les chiffres non linéaires indiqués dans ce tableau concernent des améliorations par rapport à l'ancienne norme Ethernet. Les valeurs ont déjà été modifiées pour refléter la norme Ethernet 10 Gb/s. Pour illustrer les changements continus associés aux réseaux haute vitesse, les commutateurs Catalyst 4500 et 6500 prennent en charge une méthode de coût de chemin plus longue ; par exemple, les ports 10 Gb/s ont un coût de chemin de 2 000, les ports 100 Gb/s un coût de 200 et les ports 1 Tb/s un coût de 20.</p>
+<p></p>
+<p>Bien qu’un coût de port par défaut soit associé aux ports des commutateurs, il est possible de configurer le coût des ports. La capacité à configurer des coûts de port individuels donne à l'administrateur la flexibilité nécessaire pour contrôler manuellement les chemins Spanning Tree vers le pont racine.</p>
+<p></p>
+<p>Afin de configurer le coût des ports d'une interface (Figure 2), saisissez la commande <span class="cmd"><b>spanning-tree cost </b></span><span class="cmd"><i>value </i></span>en mode de configuration d'interface. La valeur saisie (value) peut être comprise entre 1 et 200 000 000.</p>
+<p></p>
+<p>Dans cet exemple, le port de commutation F0/1 a été configuré avec un coût de 25 à l'aide de la commande de mode de configuration d'interface<span class="cmd"><b> spanning-tree cost 25</b></span> sur l'interface F0/1.</p>
+<p></p>
+<p>Pour restaurer le coût du port à sa valeur par défaut (19), saisissez la commande de mode de configuration d'interface<span class="cmd"><b> no spanning-tree cost</b></span>.</p>
+<p></p>
+<p>Le coût de chemin est égal à la somme des coûts de tous les ports situés sur le chemin vers le pont racine (Figure 3). Les chemins dont le coût est le plus bas deviennent les chemins préférés et tous les autres chemins redondants sont bloqués. Dans cet exemple, le coût de chemin de S2 au pont racine S1, sur le chemin Path 1, est de 19 (basé sur le coût individuel d'un port tel que défini par l'IEEE), tandis que le coût du chemin Path 2 est de 38. Path 1 ayant un coût de chemin global inférieur vers le pont racine, il sera choisi comme chemin principal. Le protocole STP configure alors le chemin redondant à bloquer pour empêcher la formation d’une boucle.</p>
+<p></p>
+<p>Pour vérifier le coût de chemin et de port vers le pont racine, saisissez la commande <span class="cmd"><b>show spanning-tree</b></span> (Figure 4). Le champ Cost (Coût) situé en haut de la sortie correspond au coût total du chemin vers le pont racine. Cette valeur change en fonction du nombre de ports de commutation à traverser pour accéder au pont racine. Dans la sortie, chaque interface est également identifiée avec un coût de port individuel de 19. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

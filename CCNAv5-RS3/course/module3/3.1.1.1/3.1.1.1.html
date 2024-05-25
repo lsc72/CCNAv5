@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.1.1 Introduction à l&#x0027;agrégation de liaisons</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts d&#x0027;agrégation de liaisons</h1>
+        <h2>Agrégation de liaisons</h2>
+      </div>
+      <div id="content">
+<p>Dans la figure, le trafic provenant de plusieurs liaisons (généralement 100 ou 1000 Mbit/s) est agrégé sur le commutateur d'accès et doit être envoyé aux commutateurs de distribution. En raison de l'agrégation du trafic, des liaisons avec une bande passante plus élevée doivent être disponibles entre les commutateurs d'accès et de distribution.</p>
+<p></p>
+<p>Il peut être possible d'utiliser des liaisons plus rapides, 10 Gbit/s par exemple, pour la liaison entre les commutateurs de couche d'accès et de couche de distribution. Cependant, ajouter des liaisons plus rapides est coûteux. En outre, à mesure que la vitesse augmente sur les liaisons d'accès, même le port le plus rapide possible sur la liaison agrégée n'est plus assez rapide pour agréger le trafic provenant de toutes les liaisons d'accès.</p>
+<p></p>
+<p>Il est également possible de multiplier le nombre de liaisons physiques entre les commutateurs pour augmenter la vitesse globale de la communication entre deux commutateurs. Cependant, par défaut, STP est activé sur les commutateurs. STP bloque les liaisons redondants pour éviter les boucles de routage. </p>
+<p></p>
+<p>Par conséquent, la meilleure solution consiste à implémenter une configuration EtherChannel.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

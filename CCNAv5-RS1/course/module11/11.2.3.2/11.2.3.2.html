@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.2.3.2 Autentification, autorisation et gestion des comptes</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.2.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Garantie de la sécurité du réseau</h1>
+        <h2>La limitation des attaques de réseau</h2>
+      </div>
+      <div id="content">
+<p>Les services de sécurité réseau d'authentification, d'autorisation et de gestion des comptes fournissent la structure principale permettant de mettre en place un contrôle d'accès sur un périphérique réseau. Ces services permettent de contrôler les utilisateurs autorisés à accéder à un réseau (authentification), ce que ces derniers peuvent faire lorsqu'ils sont connectés (autorisation) et les actions qu'ils exécutent lors de l'accès au réseau (gestion des comptes). Les services d'authentification, d'autorisation et de gestion des comptes offrent une évolutivité supérieure à celle des commandes d'authentification AUX, VTY et mode d'exécution privilégiée seules de la console. </p>
+<p></p>
+<p>
+<b>Authentification</b>
+</p>
+<p>Les utilisateurs et les administrateurs doivent prouver leur identité. L'authentification peut être implémentée à l'aide de combinaisons de nom d'utilisateur et de mot de passe, de questions d'authentification, de jetons et d'autres méthodes. Par exemple : « Je suis un utilisateur « étudiant ». Je connais le mot de passe qui prouve que je suis un utilisateur « étudiant ». »</p>
+<p></p>
+<p>Dans un réseau de petite taille, l'authentification locale est souvent utilisée. Dans ce cas, chaque périphérique met à jour sa propre base de données de combinaisons identifiant/mot de passe. Cependant, lorsqu'il existe un certain nombre de comptes d'utilisateur dans une base de données du périphérique local, leur gestion devient complexe. En outre, à mesure que le réseau se développe et davantage de périphériques y sont ajoutés, l'authentification locale devient difficile à maintenir à jour et n'offre pas d'évolutivité. Par exemple, s'il existe 100 périphériques réseau, tous les comptes d'utilisateur doivent être ajoutés sur chacun des 100 périphériques. </p>
+<p></p>
+<p>Dans les réseaux de plus grande envergure, l'authentification externe est une solution plus évolutive. Celle-ci permet à tous les utilisateurs d'être authentifiés par le biais d'un serveur réseau externe. Les deux options les plus utilisées pour l'authentification externe des utilisateurs sont RADIUS et TACACS+ :</p>
+<p>
+<ul>
+<li>RADIUS est une norme ouverte qui utilise peu de ressources de processeur et peu de mémoire. Cette méthode est utilisée par un large éventail de périphériques réseau, tels que des commutateurs, des routeurs et des périphériques sans fil.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>TACACS+ est un mécanisme de sécurité qui active des services d'authentification, d'autorisation et de gestion des comptes modulaires. Il fait appel à un démon TACACS+ exécuté sur un serveur de sécurité.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Autorisation</b>
+</p>
+<p>Une fois que l'utilisateur est authentifié, les services d'autorisation déterminent les ressources auxquelles l'utilisateur peut accéder et les opérations qu'il est autorisé à effectuer. Exemple : « L'utilisateur « étudiant » peut accéder au serveur hôte XYZ via Telnet uniquement. »</p>
+<p></p>
+<p>
+<b>Accounting</b>
+</p>
+<p>Les services de gestion des comptes consignent les actions de l'utilisateur, notamment les ressources auxquelles il accède et pendant combien de temps, et toutes les modifications apportées. Ces services permettent de contrôler la manière dont les ressources réseau sont utilisées. Exemple : « L'utilisateur « étudiant » a accédé au serveur hôte XYZ via Telnet pendant 15 minutes. »</p>
+<p></p>
+<p>Le concept des services d'authentification, d'autorisation et de gestion des comptes est similaire à l'utilisation d'une carte de crédit. La carte de crédit identifie qui est autorisé à l'utiliser, combien cet utilisateur peut dépenser et consigne les achats de l'utilisateur (cf figure).</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.2.1 Le protocole RIP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage dynamique à vecteur de distance</h1>
+        <h2>Types de protocoles de routage à vecteur de distance</h2>
+      </div>
+      <div id="content">
+<p>Le protocole RIP (Routing Information Protocol) était un protocole de routage de première génération pour le protocole IPv4 initialement défini dans le document RFC 1058. Il est facile à configurer, ce qui en fait un bon choix pour les petits réseaux. </p>
+<p></p>
+<p>Les principales caractéristiques du protocole RIPv1 sont les suivantes :</p>
+<p>
+<ul>
+<li>Les mises à jour de routage sont diffusées (255.255.255.255) toutes les 30 secondes. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le nombre de sauts est utilisé comme métrique de sélection d'un chemin. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Un nombre de sauts supérieur à 15 est considéré comme étant infini (trop loin). Le routeur de ce 15e saut ne propagerait pas la mise à jour de routage au routeur suivant. </li>
+</ul>
+</p>
+<p></p>
+<p>En 1993, le protocole RIPv1 a évolué en protocole de routage sans classe connu sous le nom de RIP version 2 (RIPv2). Le protocole RIPv2 a apporté les améliorations suivantes :</p>
+<p>
+<ul>
+<li>
+<b>Protocole de routage sans classe</b> - Prend en charge VLSM et CIDR, car il inclut le masque de sous-réseau dans les mises à jour de routage. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Efficacité accrue</b> - Transmet les mises à jour à l'adresse de multidiffusion 224.0.0.9, au lieu de l'adresse de diffusion 255.255.255.255. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Entrées de routage réduites</b> - Prend en charge la récapitulation de route manuelle sur n'importe quelle interface. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Sécurité</b> - Prend en charge un mécanisme d'authentification visant à sécuriser les mises à jour des tables de routage entre les voisins. </li>
+</ul>
+</p>
+<p></p>
+<p>La table dans la figure récapitule les différences entre les protocoles RIPv1 et RIPv2. </p>
+<p></p>
+<p>Les mises à jour RIP sont encapsulées dans un segment UDP, avec les numéros de ports source et de destination définis sur le port UDP 520. </p>
+<p>En 1997, la version IPv6 du protocole RIP a été publiée. Le protocole RIPng est basé sur le protocole RIPv2. Il est toujours limité à 15 sauts et la distance administrative est de 120. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

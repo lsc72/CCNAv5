@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.2.1 Lignes louées</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Choix d&#x0027;une technologie WAN</h1>
+        <h2>Infrastructures WAN privées</h2>
+      </div>
+      <div id="content">
+<p>Lorsque vous avez besoin de connexions permanentes dédiées, la liaison point à point permet de créer un chemin de communication WAN pré-établi depuis le bureau du client jusqu'au réseau du fournisseur. Les lignes point à point sont généralement louées auprès d'un fournisseur de services. Elles sont appelées lignes louées. </p>
+<p></p>
+<p>Ces lignes louées existent depuis le début des années 50, et portent différents noms, par exemple circuit loué, liaison série, ligne série, liaison point à point et ligne T1/E1 ou T3/E3. Le terme ligne louée fait référence au fait que l'organisation paie tous les mois un certain montant à un fournisseur de services pour utiliser la ligne. Les lignes louées peuvent présenter des capacités variées et leur prix dépend généralement de la bande passante requise ainsi que de la distance entre les deux points de connexion. </p>
+<p></p>
+<p>En Amérique du Nord, les fournisseurs de services utilisent le système T-carrier pour définir les capacités de transmission numérique d'une liaison cuivre en série, alors qu'en Europe, le système E-carrier est utilisé, comme illustré dans la figure. Par exemple, une liaison T1 prend en charge 1,544 Mbit/s, une liaison E1 2,048 Mbit/s, une liaison T3 43,7 Mbit/s et une connexion E3 34,368 Mbit/s. Le débit Optical Carrier est utilisé pour définir la capacité de transmission numérique d'un réseau fibre optique.</p>
+<p></p>
+<p>Les avantages des lignes louées sont les suivants :</p>
+<p>
+<ul>
+<li>
+<b>Simplicité </b>: les liaisons de communication point à point ne nécessitent que peu d'expertise pour leur installation et leur maintenance.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Qualité </b>: les liaisons de communication point à point offrent habituellement une grande qualité de service, si la bande passante est adaptée. L'aspect dédié de la ligne permet d'éviter la latence ou la gigue entre les points d'extrémité. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Disponibilité </b>: la disponibilité constante est essentielle pour certaines applications, comme celles de commerce électronique. Les liaisons de communication point à point offrent une capacité permanente dédiée, nécessaire pour la voix ou la vidéo sur IP.</li>
+</ul>
+</p>
+<p></p>
+<p>Les inconvénients des lignes louées sont les suivants :</p>
+<p>
+<ul>
+<li>
+<b>Coût</b> : les liaisons point à point constituent généralement le type d'accès WAN le plus coûteux. Le coût des liaisons louées peut être important lorsqu'elles servent à connecter plusieurs sites répartis sur de grandes distances. De plus, chaque point d'extrémité nécessite une interface sur le routeur, ce qui augmente également le coût de l'équipement.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Flexibilité limitée</b> : le trafic WAN est souvent variable et les lignes louées possèdent une capacité fixe, de telle sorte que la bande passante de la ligne correspond rarement de manière exacte à ce qui est nécessaire. Toute modification de la ligne louée nécessite généralement une intervention sur site du personnel fournisseur d'accès Internet afin d'ajuster la capacité.</li>
+</ul>
+</p>
+<p></p>
+<p>Le protocole de couche 2 est normalement le protocole HDLC ou le protocole PPP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

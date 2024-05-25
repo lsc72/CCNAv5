@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.3.4 Conséquences des défaillances du mode Spanning Tree</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration Spanning Tree (arbre recouvrant)</h1>
+        <h2>Problèmes liés à la configuration du protocole STP</h2>
+      </div>
+      <div id="content">
+<p>Pour de nombreux protocoles, un dysfonctionnement est synonyme de perte de la fonctionnalité offerte par ce protocole. Par exemple, si le protocole OSPF ne fonctionne plus sur un routeur, la connectivité aux réseaux accessibles via ce routeur peut être perdue. Cela n'affecte généralement pas le reste du réseau OSPF. Si la connectivité au routeur est toujours disponible, il est possible de diagnostiquer le problème et de le résoudre.</p>
+<p></p>
+<p>Avec le protocole STP, il existe deux types de défaillance. Le premier est similaire au problème OSPF précédemment cité ; le protocole STP peut bloquer à tort des ports qui devraient normalement présenter un état de réacheminement. Il est possible que la connectivité soit perdue pour le trafic qui normalement transiterait par le commutateur, mais que le reste du réseau fonctionne normalement. Le second type de défaillance est bien plus problématique, comme illustré dans la Figure 1. Il se produit lorsque le protocole STP place à tort un ou plusieurs ports en état de réacheminement.</p>
+<p></p>
+<p>Souvenez-vous que l'en-tête de trame Ethernet n'inclut pas de champ TTL, ce qui signifie que toute trame entrant dans une boucle de pontage est retransmise indéfiniment par les commutateurs. Les seules exceptions sont les trames ayant une adresse de destination enregistrée dans la table d'adresses MAC des commutateurs. Ces trames sont simplement réacheminées vers le port associé à l'adresse MAC, et n'entrent pas dans une boucle. Cependant, toute trame envoyée en continu par un commutateur entre dans la boucle (Figure 2). Il peut s'agir de trames de diffusion, de multidiffusion et de monodiffusion avec une adresse MAC de destination globalement inconnue.</p>
+<p></p>
+<p>Quels sont les conséquences et les symptômes d'une défaillance STP (Figure 3) ?</p>
+<p></p>
+<p>La charge appliquée sur tous les liens d'un réseau local commuté augmente rapidement, du fait du nombre croissant de trames entrant dans la boucle. Ce problème ne se limite pas aux liens qui forment la boucle, mais affecte également tous les autres liens du domaine commuté car les trames inondent l'ensemble des liens. Lorsque la défaillance STP est limité à un VLAN, seuls les liens de ce VLAN sont affectés. Les commutateurs et les trunks qui ne portent pas le VLAN fonctionnent normalement.</p>
+<p></p>
+<p>Si la défaillance STP a créé une boucle de pontage, le trafic augmente de manière exponentielle. Les commutateurs inondent alors les ports de trames de diffusion. Une copie de chaque trame est créée à chaque fois qu'un commutateur la réachemine.</p>
+<p></p>
+<p>Lorsque le trafic de plan de contrôle commence à entrer dans la boucle (par exemple, Hellos OSPF ou Hellos EIGRP), les périphériques utilisant ces protocoles deviennent vite surchargés. Leurs processeurs approchent une utilisation de 100 %, en tentant de traiter une charge croissante de trafic de plan de contrôle. Dans de nombreux cas, le premier symptôme de cette tempête de diffusion est que les routeurs ou les commutateurs de couche 3 signalent des défaillances de plan de contrôle et fonctionnent à charge de processeur élevée. </p>
+<p></p>
+<p>Les commutateurs subissent de fréquents changements au niveau de la table d'adresses MAC. Si une boucle existe, le commutateur peut observer sur un port une trame présentant une certaine adresse MAC source, puis une autre trame présentant la même adresse MAC source arrivant sur un port différent une fraction de seconde plus tard seulement. Dans un tel cas, le commutateur met à jour sa table d'adresses MAC deux fois, pour la même adresse MAC.</p>
+<p></p>
+<p>Du fait de la combinaison d'une charge très élevée sur l'ensemble des liens et du fonctionnement du processeur à pleine charge, ces périphériques deviennent inaccessibles. Il est alors très difficile de diagnostiquer le problème au moment même où il se produit.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

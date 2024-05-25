@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.1.8 ETTD-DCE</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.1.8_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation des connexions série point à point</h1>
+        <h2>Communications série</h2>
+      </div>
+      <div id="content">
+<p>Pour ce qui est de la connexion au WAN, la connexion série comporte un périphérique ETTD à une extrémité et un périphérique DCE à l'autre extrémité de la connexion. La connexion entre les deux périphériques DCE est assurée par le réseau de transmission du fournisseur de services WAN, comme présenté dans la figure. Dans cet exemple : </p>
+<p></p>
+<p>
+<ul>
+<li>L'équipement d'abonné, généralement un routeur, constitue l'ETTD. Il peut s'agir également d'un terminal, d'un ordinateur, d'une imprimante ou d'un télécopieur s'il se connecte directement au réseau du fournisseur de services. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le DCE, généralement un modem ou une unité CSU/DSU, est l'équipement servant à convertir les données utilisateur de l'ETTD en une forme compatible avec la liaison de transmission du fournisseur de services de réseau étendu. Le signal est reçu par le DCE distant, qui le décode en une séquence de bits. Le DCE distant signale ensuite cette séquence à l'ETTD distant.</li>
+</ul>
+</p>
+<p></p>
+<p>L'EIA (Electronics Industry Association) et le secteur de la normalisation des télécommunications de l'UIT (UIT-T) ont été les organismes les plus actifs dans le développement de normes permettant la communication entre ETTD et DCE. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

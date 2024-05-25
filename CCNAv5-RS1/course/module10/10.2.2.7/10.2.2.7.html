@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.2.7 Fonctionnement du protocole DHCP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.2.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Services et protocoles de couche application courants</h1>
+        <h2>Services d&#x0027;adressage IP</h2>
+      </div>
+      <div id="content">
+<p>Sans le protocole DHCP, les utilisateurs doivent indiquer manuellement l'adresse IP, le masque de sous-réseau et d'autres paramètres réseau pour se connecter au réseau. Le serveur DHCP maintient un pool d'adresses IP et attribue temporairement une adresse à n'importe quel client DHCP lorsque celui-ci est mis sous tension. Les adresses IP étant des adresses dynamiques (temporairement attribuées) et non pas des adresses statiques (définitivement attribuées), les adresses qui ne sont plus utilisées sont automatiquement retournées au pool pour être réattribuées. Comme le montre la figure, lorsqu'un périphérique configuré pour le protocole DHCP démarre ou se connecte au réseau, le client diffuse un message de détection DHCP (DHCPDISCOVER) pour identifier les serveurs DHCP disponibles sur le réseau. Un serveur DHCP répond par un message d'offre DHCP (DHCPOFFER), qui offre un bail au client. Ce message contient l'adresse IP et le masque de sous-réseau à attribuer, l'adresse IP du serveur DNS et l'adresse IP de la passerelle par défaut. L'offre de bail indique également la durée du bail.</p>
+<p></p>
+<p>Le client peut recevoir plusieurs messages DHCPOFFER si le réseau local comporte plusieurs serveurs DHCP. Il doit donc effectuer un choix et envoyer une requête DHCP (DHCPREQUEST) qui identifie explicitement le serveur et l'offre de bail qu'il accepte. Un client peut également choisir de demander une adresse que le serveur lui a déjà attribuée précédemment. </p>
+<p></p>
+<p>En supposant que l'adresse IP demandée par le client ou offerte par le serveur est encore disponible, le serveur renvoie un message DHCP (DHCPACK) confirmant au client que le bail est conclu. Si l'offre n'est plus valide (par exemple en raison du délai d'attente ou si un autre client a pris le bail), le serveur sélectionné répond par un message d'accusé de réception DHCP négatif (DHCPNAK). Si un message DHCPNAK est retourné, le processus de sélection doit recommencer avec la transmission d'un nouveau message DHCPDISCOVER. Lorsque le client a obtenu le bail, celui-ci doit être renouvelé avant son expiration via un autre message DHCPREQUEST.</p>
+<p></p>
+<p>Le serveur DHCP garantit que toutes les adresses IP sont uniques (une adresse IP ne peut pas être attribuée à deux périphériques réseau différents en même temps). Le protocole DHCP permet aux administrateurs réseau de reconfigurer aisément les adresses IP des clients sans devoir apporter de modifications manuelles aux clients. La plupart des fournisseurs d'accès à Internet utilisent le protocole DHCP pour attribuer des adresses à leurs clients ne nécessitant pas d'adresse statique.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

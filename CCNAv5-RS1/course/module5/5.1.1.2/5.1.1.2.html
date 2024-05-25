@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.1.2 Sous-couche MAC</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole Ethernet</h1>
+        <h2>Fonctionnement du protocole Ethernet</h2>
+      </div>
+      <div id="content">
+<p>Comme l'illustre la figure, la sous-couche MAC Ethernet a deux fonctions principales :</p>
+<p></p>
+<p>
+<ul>
+<li>Encapsulation des données</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Contrôle d'accès au support</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Encapsulation des données</b>
+</p>
+<p>L'encapsulation des données consiste à assembler les trames avant de les transmettre et à les désassembler à leur réception. Lorsqu'elle assemble une trame, la couche MAC ajoute un en-tête et une fin à l'unité de données de protocole de la couche réseau. </p>
+<p></p>
+<p>Elle assure trois fonctions de base :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Délimitation des trames</b> : le processus de tramage fournit des délimiteurs importants utilisés pour identifier un groupe de bits qui composent une trame. Ce processus permet la synchronisation entre les noeuds de transmission et ceux de réception.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adressage</b> : l'encapsulation fournit également un adressage pour la couche liaison de données. Chaque en-tête Ethernet ajouté à la trame contient l'adresse physique (MAC) qui permet de remettre celle-ci au nœud de destination.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Détection d'erreur</b> : chaque trame Ethernet contient une fin avec un contrôle de redondance cyclique (CRC, Cyclic Redundancy Check) du contenu des trames. Après réception d'une trame, le noeud récepteur crée un CRC pour le comparer à celui de la trame. Si ces deux calculs de CRC correspondent, cela signifie probablement que la trame a été reçue sans erreur.</li>
+</ul>
+</p>
+<p></p>
+<p>L'utilisation de trames facilite la transmission des bits lors de leur placement sur le support et le regroupement des bits sur le noeud récepteur.</p>
+<p></p>
+<p>
+<b>Contrôle d'accès au support</b>
+</p>
+<p>La deuxième fonction de la sous-couche MAC consiste à contrôler l'accès aux supports. Le contrôle d'accès au support gère le placement des trames sur les supports et leur suppression. Comme son nom l'indique, il contrôle l'accès aux supports. Cette sous-couche communique directement avec la couche physique.</p>
+<p></p>
+<p>La topologie logique sous-jacente d'Ethernet est un bus à accès multiple. Par conséquent, tous les nœuds (périphériques) d'un même segment de réseau doivent partager le support. Ethernet est une méthode réseau avec gestion des conflits. Rappelez-vous qu'une méthode avec gestion des conflits ou méthode non déterministe permet à tous les périphériques de transmettre des données à travers le support partagé chaque fois qu'il doit en envoyer. Cependant, comme lorsque deux personnes essaient de parler en même temps, si plusieurs périphériques essaient de transmettre des données simultanément sur un même support, ces données entrent en collision et deviennent corrompues, et donc inexploitables. C'est pourquoi la technologie Ethernet offre une méthode de contrôle de la manière dont les nœuds partagent l'accès, par l'utilisation de la technologie CSMA (Carrier Sense Multiple Access).</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

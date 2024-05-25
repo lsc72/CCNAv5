@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.2.3 Adresses MAC et IP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Déplacement des données sur le réseau</h1>
+        <h2>Accès aux ressources locales</h2>
+      </div>
+      <div id="content">
+<p>Vous devriez maintenant savoir que pour envoyer des données à un autre hôte situé sur le même réseau local, l'hôte source doit connaître les adresses logique et physique de l'hôte de destination. Une fois ces informations acquises, il peut créer une trame et l'envoyer sur le support réseau. L'hôte source peut obtenir l'adresse IP de destination de différentes manières. Par exemple, il peut l'obtenir en utilisant le système de noms de domaine (DNS) ou il peut connaître l'adresse IP de destination parce qu'elle est indiquée manuellement dans l'application, notamment lorsque l'utilisateur saisit l'adresse IP d'un serveur FTP de destination. Mais comment un hôte détermine-t-il l'adresse MAC Ethernet d'un autre périphérique ?</p>
+<p></p>
+<p>La plupart des applications réseau utilisent l'adresse IP logique de destination pour identifier l'emplacement des hôtes intervenant dans la communication. L'adresse MAC de liaison de données est nécessaire pour acheminer le paquet IP encapsulé dans la trame Ethernet sur tout le réseau, jusqu'à la destination.</p>
+<p></p>
+<p>L'hôte expéditeur utilise un protocole IP appelé « protocole ARP » pour connaître l'adresse MAC d'un hôte sur le même réseau local. L'hôte expéditeur envoie un message de requête ARP à l'ensemble du réseau local. La requête ARP est un message de diffusion qui contient l'adresse IP du périphérique de destination. Chaque périphérique du réseau local examine la requête ARP pour voir si elle contient sa propre adresse IP. Seul le périphérique dont l'adresse IP est présente dans la requête ARP envoie une réponse ARP. Celle-ci contient l'adresse MAC associée à l'adresse IP de la requête ARP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

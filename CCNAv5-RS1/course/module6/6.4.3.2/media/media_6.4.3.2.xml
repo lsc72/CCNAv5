@@ -1,0 +1,68 @@
+﻿<textcomponents>
+
+<!--Slide 1-->
+
+<component id="ID_txt01">
+<text><![CDATA[Si la passerelle par défaut n'était pas configurée sur le périphérique S1, les paquets de réponse de S1 ne pourraient pas contacter l'administrateur à l'adresse 192.168.11.10. L'administrateur ne pourrait pas gérer le périphérique à distance.]]></text>
+</component>
+
+<component id="ID_txt02">
+<text><![CDATA[&lt;résultat omis&gt;]]></text> 
+</component>
+
+<component id="ID_txt03">
+<text><![CDATA[&lt;résultat omis&gt;]]></text> 
+</component>
+
+<!--End Slide 1-->
+
+<!--Slide 2-->
+
+<component id="ID_SC_title">
+<text><![CDATA[<b>Configuration de la passerelle par défaut d'un commutateur</b>]]></text>
+</component>
+
+<!--Syntax Checker Button Text-->
+<component id="ID_sc_reset">
+<text><![CDATA[Réinitialiser]]></text>
+</component>
+
+<component id="ID_sc_showme">
+<text><![CDATA[Démonstration]]></text>
+</component>
+
+<component id="ID_sc_showall">
+<text><![CDATA[Afficher tout]]></text>
+</component>
+<!--End Syntax Checker Button Text-->
+
+<!--Syntax Checker Body Text-->
+<component id="ID_SC" fontFace='Courier New' fontSize="10">
+
+<text></text>		
+
+<feedback id="fb"><![CDATA[<span><font size = '10' face="Arial"><span><b>***</b></span>Vous devez saisir la commande précisément et en entier. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.<span><b>***</b></span></font></span>
+]]></feedback>	
+
+<existingcommands><![CDATA[<font size = '10' face="Arial"><b>Passez en mode de configuration globale et configurez «&nbsp;192.168.10.1&nbsp;» en tant que passerelle par défaut pour le commutateur S1.</b></font>]]></existingcommands> 
+
+<command prompt="S1#" id="cmd1" node="start">
+<correctresponse id="cr1" ignoreCase= 'true'><![CDATA[configure terminal]]></correctresponse>
+<deviceresponse id="dr1"><![CDATA[<dnt>Enter configuration commands, one per line. End with CNTL/Z.</dnt>]]></deviceresponse>
+<instruction id="ins1"><![CDATA[<span></span>]]></instruction> 
+</command> 
+
+<command prompt="S1(config)#" id="cmd2" node="end">
+<correctresponse id="cr2" ignoreCase= 'true'><![CDATA[ip default-gateway 192.168.10.1]]></correctresponse>
+<deviceresponse id="dr2"><![CDATA[S1(config)#]]></deviceresponse>
+<instruction id="last"><![CDATA[<font size = '10' face="Arial"><b>Vous avez correctement configuré la passerelle par défaut sur le périphérique S1.</b></font>]]></instruction> 
+</command> 
+
+<command prompt=""/>
+
+</component>
+<!--End Syntax Checker Body Text-->
+
+<!--End Slide 2-->
+
+</textcomponents>

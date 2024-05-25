@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.1.3 Contrôle d&#x0027;accès au support</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole Ethernet</h1>
+        <h2>Fonctionnement du protocole Ethernet</h2>
+      </div>
+      <div id="content">
+<p>Le processus CSMA détecte d'abord si le support transporte un signal. Si un signal de  porteuse issu d'un autre noeud et circulant sur le support est détecté, alors un autre périphérique est en train de transmettre des données. Lorsque le périphérique qui tente de transmettre des données constate que le support est occupé, il attend et essaie de nouveau au bout d'un court laps de temps. Si aucun signal n'est détecté, le périphérique transmet ses données. Il est possible que le processus CSMA échoue et que deux périphériques transmettent des données en même temps. Ce scénario est nommé collision de données. Dans ce cas, les données envoyées par les deux périphériques sont endommagées et doivent être envoyées de nouveau.</p>
+<p></p>
+<p>Les méthodes de contrôle d'accès aux supports avec gestion des conflits n'ont pas besoin de suivre l'accès au support à tour de rôle. Par conséquent, elles ne surchargent pas le réseau comme les méthodes d'accès contrôlé. Cependant, les systèmes d'accès basé sur le conflit évoluent mal lorsque les supports sont très sollicités. À mesure que l'utilisation des supports s'intensifie et que le nombre de noeuds augmente, il est de moins en moins probable que l'accès aux supports s'effectue sans collision de données. En outre, les mécanismes de récupération nécessaires pour résoudre les erreurs liées à ces collisions de données diminuent encore plus le débit.</p>
+<p></p>
+<p>Comme l'illustre la figure, le processus CSMA est généralement mis en œuvre conjointement avec une méthode de résolution des conflits de support. Les deux méthodes les plus courantes sont : </p>
+<p></p>
+<p>
+<b>CSMA/CD (CSMA/Collision Detection) </b>
+</p>
+<p>Avec la méthode CSMA/CD , le périphérique contrôle le support pour établir si celui-ci comporte un signal de données. Si aucun signal de données n'est détecté, à savoir si le support est libre, le périphérique transmet ses données. Si des signaux sont alors détectés, ce qui indique qu'un autre périphérique était en train de transmettre des données, tous les périphériques arrêtent de transmettre leurs données et réessayent ultérieurement. Les formes traditionnelles d'Ethernet ont été développées pour utiliser cette méthode.</p>
+<p></p>
+<p>L'intégration généralisée des technologies commutées dans les réseaux modernes a largement éliminé la nécessité de mettre en œuvre la méthode CSMA/CD dans les réseaux locaux. Actuellement, la quasi-totalité des connexions filaires entre les périphériques d'un réseau local sont des connexions bidirectionnelles simultanées. C'est-à-dire qu'un périphérique peut envoyer et recevoir des données simultanément. Par conséquent, même si les réseaux Ethernet actuels sont conçus avec la technologie CSMA/CD, avec les périphériques intermédiaires récents, aucune collision ne se produit et les processus CSMA/CD sont devenus inutiles. </p>
+<p></p>
+<p>Toutefois, les collisions doivent toujours être envisagées sur les connexions sans fil des environnements de réseau local. Les périphériques des réseaux locaux sans fil utilisent la méthode CSMA/CA (CSMA/Collision Avoidance).</p>
+<p></p>
+<p>
+<b>CSMA/CA (CSMA/Collision Avoidance)</b>
+</p>
+<p>Avec la méthode CSMA/CA, le périphérique examine le support pour établir si celui-ci comporte un signal de données. Si le support est libre, le périphérique envoie une notification à travers le support pour indiquer son intention de l'utiliser. Le périphérique transmet alors ses données Cette méthode est utilisée par les technologies de réseau sans fil 802.11.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

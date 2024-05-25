@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.4.7 Commande show version</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.4.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>IOS Bootcamp</h1>
+        <h2>Structure des commandes</h2>
+      </div>
+      <div id="content">
+<p>L'une des commandes les plus utilisées sur un commutateur ou un routeur est :</p>
+<p></p>
+<p>
+<span class="cmd">Switch#</span>
+<span class="cmd">
+<b>show version</b>
+</span>
+</p>
+<p></p>
+<p>Cette commande affiche des informations sur la version d'IOS actuelle ainsi que des renseignements sur le matériel et le périphérique. Si vous êtes connecté à un routeur ou à un commutateur à distance, la commande <span class="cmd"><b>show version</b></span> est un excellent moyen de trouver rapidement des informations utiles sur le périphérique auquel vous êtes connecté. Cette commande affiche, entre autres, les informations suivantes  :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Version du logiciel</b> - Version du logiciel IOS (stocké en mémoire Flash) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Version du bootstrap</b> - Version du programme de démarrage (stocké en mémoire ROM de démarrage) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Durée de l'activité du système</b> - Temps écoulé depuis le dernier redémarrage </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Informations sur le redémarrage du système</b> - Méthode de redémarrage (par exemple en cas de cycle d'alimentation ou d'incident) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Nom de l'image du logiciel</b> - Nom du fichier IOS stocké en mémoire Flash </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Type de routeur et type de processeur</b> - Numéro de modèle et type de processeur </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Type et allocation de la mémoire (partagée/principale)</b> - Mémoire vive principale du processeur et mémoire partagée servant de tampon pour les paquets d'E/S </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Fonctionnalités du logiciel</b> - Protocoles/ensembles de fonctionnalités pris en charge </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Interfaces matérielles</b> - Interfaces disponibles sur le périphérique </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Registre de configuration</b> - Définit les spécifications du démarrage, la vitesse de la console et des paramètres connexes</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 1 présente le résultat pour un routeur à services intégrés Cisco 1941, tandis que la Figure 2 présente le résultat pour un commutateur Cisco Catalyst 2960.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

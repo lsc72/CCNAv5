@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.3.2 Instruction réseau manquante</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du protocole EIGRP</h1>
+        <h2>Dépannage des problèmes de table de routage EIGRP</h2>
+      </div>
+      <div id="content">
+<p>La Figure 1 montre que l'interface GigabitEthernet 0/1 de R1 est maintenant configurée avec l'adresse 10.10.10.1/24 et active.</p>
+<p></p>
+<p>R1 et R3 possèdent toujours leur contiguïté de voisinage, mais un test ping du routeur R3 vers une interface G0/1 de R1 sur 10.10.10.1 a échoué. La Figure 2 montre l'échec du test de connectivité entre R3 et le réseau de destination 10.10.10.0/24.</p>
+<p></p>
+<p>À la Figure 3, l'application de la commande<span class="cmd"><b> show ip protocols </b></span>sur le routeur R1 montre que le réseau 10.10.10.0/24 n'est pas annoncé aux voisins EIGRP. </p>
+<p></p>
+<p>Comme indiqué à la Figure 4, le processus EIGRP de R1 est configuré de manière à inclure l'annonce du réseau 10.10.10.0/24.</p>
+<p></p>
+<p>La Figure 5 montre que la table de routage de R3 contient désormais une route pour le réseau 10.10.10.0/24 et l'accessibilité est vérifiée à l'aide d'un test ping sur l'interface GigabitEthernet 0/1 de R1.</p>
+<p></p>
+<p>
+<b>Protocole EIGRP pour IPv6</b>
+</p>
+<p></p>
+<p>Des commandes et des critères de dépannage similaires s'appliquent également au protocole EIGRP pour IPv6.</p>
+<p></p>
+<p>Les commandes équivalentes utilisées dans le cadre du protocole EIGRP pour IPv6 sont les suivantes :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">Router# </span>
+<span class="cmd">
+<b>show ipv6 protocols </b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">Router# </span>
+<span class="cmd">
+<b>show ipv6 route</b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">Router(config-rtr)# </span>
+<span class="cmd">
+<b>Réseau </b>
+</span>
+<span class="cmd">
+<i>ipv6-prefix/prefix-length</i>
+</span>
+</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: une autre forme de route manquante peut entraîner le filtrage des mises à jour de routage entrantes et sortantes. Les listes de contrôle d'accès permettent le filtrage de différents protocoles et peuvent affecter l'échange des messages de protocole de routage qui entraînent l'absence de routes dans la table de routage. La commande<span class="cmd"><b> show ip protocols </b></span>montre si des listes de contrôle d'accès sont appliquées au protocole EIGRP. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

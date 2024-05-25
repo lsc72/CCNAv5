@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.3.2 Gestion intrabande et gestion hors bande</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sélection des périphériques réseau</h1>
+        <h2>Gestion des périphériques</h2>
+      </div>
+      <div id="content">
+<p>Quel que soit le périphérique réseau Cisco IOS implémenté, il existe deux méthodes pour connecter un PC à ce périphérique réseau en vue de tâches de configuration et de surveillance : la gestion hors bande et intrabande, comme illustré par la figure. </p>
+<p></p>
+<p>La gestion hors bande est utilisée pour la configuration initiale ou lorsqu'une connexion réseau n'est pas disponible. Pour effectuer une configuration grâce à la gestion hors bande, les éléments suivants sont requis :</p>
+<p>
+<ul>
+<li>connexion directe à la console ou au port auxiliaire</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>client d'émulation de terminal</li>
+</ul>
+</p>
+<p></p>
+<p>La gestion intrabande est utilisée pour effectuer ou surveiller des changements de configuration sur un périphérique réseau, via une connexion réseau. Pour effectuer une configuration grâce à la gestion intrabande, les éléments suivants sont requis :</p>
+<p>
+<ul>
+<li>au moins une interface réseau sur le périphérique connectée et opérationnelle </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>le protocole Telnet, SSH ou HTTP pour accéder à un périphérique Cisco</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

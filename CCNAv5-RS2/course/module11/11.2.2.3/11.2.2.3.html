@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.2.2.3 Analyse de la NAT dynamique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de la traduction d&#x0027;adresses réseau (NAT)</h1>
+        <h2>Configuration de la NAT dynamique</h2>
+      </div>
+      <div id="content">
+<p>Les figures illustrent le processus de traduction NAT dynamique entre deux clients et le serveur web, en utilisant la configuration précédente :</p>
+<p></p>
+<p>La Figure 1 représente le flux de trafic de l'intérieur vers l'extérieur :</p>
+<p></p>
+<p>1. Les hôtes dont les adresses source IPv4 sont 192.168.10.10 (PC1) et 192.168.11.10 (PC2) envoient des paquets demandant une connexion au serveur à l'adresse IPv4 publique 209.165.200.254.</p>
+<p>2. R2 reçoit le premier paquet de l'hôte 192.168.10.10. Étant donné que ce paquet a été reçu sur une interface configurée en tant qu'interface NAT interne, R2 vérifie la configuration NAT pour déterminer si ce paquet doit être traduit. La liste de contrôle d'accès autorise ce paquet, donc R2 va le traduire. R2 consulte sa table NAT. Puisqu'il n'existe aucune entrée de traduction pour cette adresse IP, R2 détermine que l'adresse source 192.168.10.10 doit être traduite de manière dynamique. R2 sélectionne une adresse globale disponible dans le pool d'adresses dynamiques et crée une entrée de traduction, 209.165.200.226. L'adresse IPv4 source d'origine (192.168.10.10) correspond à l'adresse locale interne et l'adresse traduite est l'adresse globale interne (209.165.200.226) dans la table NAT. </p>
+<p></p>
+<p>Pour le deuxième hôte, 192.168.11.10, R2 répète la procédure, sélectionne la prochaine adresse globale disponible dans le pool d'adresses dynamiques et crée une deuxième entrée de traduction, 209.165.200.227.</p>
+<p></p>
+<p>3. R2 remplace l'adresse source locale interne de PC1, 192.168.10.10, par l'adresse globale interne traduite, 209.165.200.226, et transmet le paquet. Le paquet provenant de PC2 suit le même processus avec l'adresse traduite pour PC2, 209.165.200.227.</p>
+<p></p>
+<p>La Figure 2 représente le flux de trafic de l'extérieur vers l'intérieur :</p>
+<p></p>
+<p>4. Le serveur reçoit le paquet de PC1 et répond à l'aide de l'adresse de destination IPv4 209.165.200.226. Lorsque le serveur reçoit le deuxième paquet, il répond à PC2 en utilisant l'adresse de destination IPv4 209.165.200.227.</p>
+<p>5a. Lorsque R2 reçoit le paquet portant l'adresse IPv4 de destination 209.165.200.226, il effectue une recherche dans la table NAT. Grâce au mappage de la table, R2 retraduit l'adresse en adresse locale interne (192.168.10.10) et transfère le paquet vers PC1. </p>
+<p>5b. Lorsque R2 reçoit le paquet portant l'adresse IPv4 de destination 209.165.200.227, il effectue une recherche dans la table NAT. Grâce au mappage de la table, R2 retraduit l'adresse en adresse locale interne (192.168.11.10) et transfère le paquet vers PC2.</p>
+<p>6. PC1 (192.168.10.10) et PC2 (192.168.11.10) reçoivent les paquets et poursuivent la conversation. Le routeur réalise les étapes 2 à 5 pour chaque paquet. (L'étape 6 n'apparaît pas sur les figures.)</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

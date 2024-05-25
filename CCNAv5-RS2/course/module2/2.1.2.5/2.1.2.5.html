@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.5 Problèmes de couche d&#x0027;accès au réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de base d&#x0027;un commutateur</h1>
+        <h2>Configuration des ports de commutateur</h2>
+      </div>
+      <div id="content">
+<p>Les résultats de la commande<span class="cmd"><b> show interfaces </b></span>peuvent être utilisés pour détecter les problèmes de support courants. L'un des points les plus importants de ce résultat est l'affichage de l'état de la ligne et du protocole de liaison de données. La Figure 1 présente la ligne résumée afin de vérifier l'état d'une interface.</p>
+<p></p>
+<p>Le premier paramètre (FastEthernet0/1 is up) fait référence à la couche matérielle et indique essentiellement si l'interface reçoit le signal « Détection de la porteuse » depuis l'autre extrémité de la connexion. Le second paramètre (line protocol is up) fait référence à la couche de liaison de données et indique si les messages de test d'activité du protocole de couche liaison de données sont en cours de réception.</p>
+<p></p>
+<p>Les résultats de la commande <span class="cmd"><b>show interfaces</b></span> permettent de résoudre des problèmes de la façon suivante :</p>
+<p></p>
+<p>
+<ul>
+<li>Si l'interface est active (up) et que le protocole de ligne est désactivé (down), un problème existe. Il existe peut-être une incohérence dans le type d'encapsulation, l'interface de l'autre côté est peut-être en mode de désactivation des erreurs, ou il peut exister un problème matériel.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Si le protocole de ligne et l'interface sont tous deux désactivés, un câble est débranché ou il existe un autre problème sur l'interface. Par exemple, dans une connexion jumelée, l'autre extrémité de la connexion peut être désactivée sur le plan administratif.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Si l'interface est désactivée sur le plan administratif, cela signifie qu'elle a été désactivée manuellement (la commande <span class="cmd"><b>shutdown</b></span> a été émise) dans la configuration courante.</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 2 présente un exemple de résultat pour la commande<span class="cmd"><b> show interfaces</b></span>. L'exemple présente les compteurs et les statistiques de l'interface FastEthernet0/1.</p>
+<p></p>
+<p>Certaines erreurs enregistrées sur le support ne sont pas suffisamment graves pour entraîner une panne du circuit, mais elles peuvent entraîner une diminution sensible des performances. La Figure 3 illustre certaines de ces erreurs courantes qui peuvent être détectées à l'aide de la commande<span class="cmd"><b> show interfaces</b></span>. </p>
+<p></p>
+<p>Les erreurs en entrée sont la somme de toutes les erreurs contenues dans les datagrammes reçus sur l'interface examinée. Elles comprennent les erreurs suivantes : trames incomplètes, trames géantes, CRC, pas de mémoire tampon, trame, débordement et comptes ignorés. Les erreurs en entrée signalées par la commande<span class="cmd"><b> show interfaces </b></span>sont notamment :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Trames incomplètes</b> : les trames Ethernet dont la longueur est inférieure au minimum autorisé de 64 octets sont appelées trames incomplètes. Un grand nombre de trames incomplètes est souvent lié à un dysfonctionnement de la carte réseau. Leur origine peut être identique à celles des problèmes causant un nombre excessif de collisions.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Trames géantes</b> : les trames Ethernet dont la longueur est supérieure au maximum autorisé sont appelées géantes. Leur origine peut être identique à celles des problèmes causant un nombre excessif de trames incomplètes.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Erreurs CRC</b> : sur les interfaces Ethernet et série, les erreurs CRC indiquent généralement une erreur relative au support ou au câble. Les causes courantes sont les interférences électriques, des connexions lâches ou endommagées, ou l'utilisation d'un type de câble incorrect. Si vous constatez un nombre élevé d'erreurs CRC, la liaison présente un bruit trop important. Vérifiez alors l'état et la longueur du câble. Vous devez également rechercher et éliminer des sources de bruit, si possible.</li>
+</ul>
+</p>
+<p></p>
+<p></p>
+<p>Les erreurs en sortie sont la somme de toutes les erreurs ayant empêché la transmission finale des datagrammes vers l'interface examinée. Les erreurs en sortie signalées par la commande<span class="cmd"><b> show interfaces </b></span>sont notamment :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Collisions</b> : les collisions en mode bidirectionnel non simultané sont tout à fait normales, et vous n'avez pas à vous en inquiéter tant que le fonctionnement en mode bidirectionnel non simultané ne présente pas de dysfonctionnement. Cependant, vous ne devez pas constater de collisions dans un réseau correctement conçu et configuré qui utilise les communications bidirectionnelles simultanées. L'utilisation du mode bidirectionnel simultané est hautement recommandée, sauf si vous disposez d'équipements vieillissants ou existants qui ne peuvent fonctionner qu'en mode bidirectionnel non simultané.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Collisions tardives</b> : une collision tardive désigne une collision se produisant après que 512 octets de la trame (le préambule) ont été transmis. Les collisions tardives sont le plus souvent causées par des longueurs de câble excessives. Une mauvaise configuration du mode bidirectionnel peut également provoquer des collisions tardives. Par exemple, vous pouvez avoir configuré une extrémité de la collision en mode bidirectionnel simultané et l'autre en mode bidirectionnel non simultané. L'interface configurée en mode bidirectionnel non simultané présentera alors des collisions tardives. Dans ce cas, vous devez configurer le même mode de bidirectionnalité aux deux extrémités. Un réseau correctement conçu et configuré ne doit jamais présenter de collisions tardives.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

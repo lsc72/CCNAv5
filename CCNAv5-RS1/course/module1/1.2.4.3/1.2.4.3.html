@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.4.3 Connexion d&#x0027;une entreprise à Internet</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.4.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>LAN, WAN et Internet</h1>
+        <h2>Connexion à Internet</h2>
+      </div>
+      <div id="content">
+<p>Les options de connexion d'une entreprise sont différentes des options disponibles pour les réseaux à domicile. Les entreprises peuvent nécessiter une bande passante plus élevée, une bande passante spécialisée et des services gérés. Les options de connexion disponibles varient en fonction du nombre de fournisseurs d'accès situés à proximité. </p>
+<p></p>
+<p>La figure ci-contre illustre les options de connexion courantes pour les entreprises :</p>
+<p>
+<ul>
+<li>
+<b>Ligne louée spécialisée</b> – connexion dédiée du fournisseur de services sur le site du client. Les lignes louées sont des circuits dédiés qui relient des bureaux distincts pour la transmission de données et/ou de communications vocales privées. Les circuits sont généralement loués sur une base mensuelle ou annuelle, ce qui rend cette solution onéreuse. En Amérique du Nord, les circuits de ligne louée incluent généralement le T1 (1,54 Mbit/s) et le T3 (44,7 Mbit/s), tandis que dans d'autres parties du monde, l'E1 (2 Mbit/s) et l'E3 (34 Mbit/s) sont proposés. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Metro Ethernet</b> – solution généralement fournie par un fournisseur au client par le biais d'une connexion dédiée par câble en cuivre ou par fibre, offrant un débit de 10 Mbit/s à 10 Gbit/s. L'Ethernet over Copper (EoC, Ethernet sur cuivre) est plus économique que le service Ethernet sur fibre optique dans de nombreux cas, est très largement disponible et vous permet d'atteindre des débits de 40 Mbit/s. Cependant, cette solution est limitée en termes de distance. Le service Ethernet sur fibre optique assure les connexions les plus rapides à un prix réduit par mégabit. Malheureusement, il reste encore beaucoup de zones où ce service n'est pas disponible. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>DSL</b> – la DSL est disponible dans divers formats. La SDSL (ligne d'abonné numérique à débit symétrique) est largement utilisée. Cette solution est similaire à une ligne ADSL (ligne d'abonné numérique à débit asymétrique), mais présente les mêmes débits ascendant et descendant. L'ADSL est conçue pour fournir une bande passante dont les débits ascendant et descendant sont différents. Par exemple, un client utilisant un accès Internet peut obtenir des débits descendants allant de 1,5 à 9 Mbit/s et des débits ascendants allant de 16 à 640 kbit/s. Les transmissions ADSL fonctionnent à une distance maximale de 5 488 mètres sur un seul câble à paires torsadées en cuivre.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Satellite</b> – le service par satellite peut fournir une connexion lorsqu'aucune solution par câble n'est disponible. Les paraboles nécessitent une visibilité directe sur le satellite. Les frais liés au matériel et à l'installation peuvent être élevés, et un forfait mensuel est ensuite mis en place. Ces connexions ont tendance à être plus lentes et moins fiables que les connexions terrestres, ce qui les rend moins intéressantes que les autres solutions. </li>
+</ul>
+</p>
+<p></p>
+<p>Le choix de la connexion dépend de l'emplacement géographique et de la disponibilité du fournisseur d'accès.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.4.2.2 Réseau sur courant électrique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.4.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Évolution de l&#x0027;environnement réseau</h1>
+        <h2>Technologies réseau domestiques</h2>
+      </div>
+      <div id="content">
+<p>Le réseau sur courant électrique est une tendance émergente dans le domaine des réseaux domestiques. Il permet d'utiliser le câblage électrique existant pour connecter des périphériques, comme l'illustre la figure. Le concept « pas de nouveaux câbles » repose sur la possibilité de connecter un périphérique au réseau grâce à n'importe quelle prise électrique. Cela permet d'éliminer les coûts d'installation de câbles de données, sans coûts supplémentaires sur la facture d'électricité. Grâce au câblage électrique, le réseau sur courant électrique transmet des informations en envoyant les données sur des fréquences spécifiques, tout comme la technologie utilisée pour la DSL.</p>
+<p></p>
+<p>À l'aide d'un adaptateur HomePlug standard, les périphériques peuvent se connecter au LAN en utilisant n'importe quelle prise de courant. Le réseau sur courant électrique est particulièrement utile lorsque les points d'accès sans fil ne peuvent pas être utilisés ou ne peuvent pas couvrir tous les périphériques d'un domicile. Le réseau sur courant électrique n'est pas conçu pour remplacer les câblages dédiés aux réseaux de données. Cependant, c'est une alternative viable lorsque les câbles ou les communications sans fil du réseau de données ne sont pas utilisables.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

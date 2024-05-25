@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.1.5 Configuration de l&#x0027;accès à la gestion du commutateur de base à l&#x0027;aide d&#x0027;IPv4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de base d&#x0027;un commutateur</h1>
+        <h2>Configuration d&#x0027;un commutateur avec les paramètres d&#x0027;origine</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Étape 1. Configuration de l'interface de gestion</b>
+</p>
+<p></p>
+<p>Une adresse IP et un masque de sous-réseau sont configurés sur l'interface SVI de gestion du commutateur en mode de configuration d'interface du VLAN. Comme illustré à la Figure 1, la commande <span class="cmd"><b>interface vlan 99</b></span> permet de passer en mode de configuration d'interface. La commande <span class="cmd"><b>ip address </b></span>permet de configurer l'adresse IP. La commande<span class="cmd"><b> no shutdown </b></span>permet d'activer l'interface. Dans cet exemple, le VLAN 99 est configuré avec l'adresse IP 172.17.99.11. </p>
+<p></p>
+<p>L'interface SVI du VLAN 99 n'apparaît comme « up/up » qu'une fois le VLAN 99 créé et qu'un périphérique est connecté à un port de commutateur associé au VLAN 99. Pour créer un VLAN avec un vlan_id de 99, et pour l'associer à une interface, exécutez les commandes suivantes : </p>
+<p>
+<span class="cmd">S1(config)#</span>
+<span class="cmd">
+<b> vlan </b>
+</span>
+<span class="cmd">
+<i>vlan_id</i>
+</span>
+</p>
+<p>
+<span class="cmd">S1(config-vlan)#</span>
+<span class="cmd">
+<b> name </b>
+</span>
+<span class="cmd">
+<i>vlan_name</i>
+</span>
+</p>
+<p>
+<span class="cmd">S1(config-vlan)#</span>
+<span class="cmd">
+<b> exit</b>
+</span>
+</p>
+<p>
+<span class="cmd">S1(config)#</span>
+<span class="cmd">
+<b> Interface </b>
+</span>
+<span class="cmd">
+<i>interface_id </i>
+</span>
+<span class="cmd">
+<b></b>
+</span>
+</p>
+<p>
+<span class="cmd">S1(config-if)#</span>
+<span class="cmd">
+<b></b>
+</span>
+<span class="cmd">
+<b>switchport access vlan </b>
+</span>
+<span class="cmd">
+<i>vlan_id</i>
+</span>
+</p>
+<p></p>
+<p>
+<b>Étape 2. Configuration de la passerelle par défaut </b>
+</p>
+<p></p>
+<p>Le commutateur doit être configuré avec une passerelle par défaut s'il doit être géré à distance depuis des réseaux connectés indirectement. La passerelle par défaut est le routeur auquel le commutateur est connecté directement. Le commutateur transmettra à la passerelle par défaut ses paquets IP ayant des adresses IP de destination en dehors du réseau local. Comme illustré à la Figure 2, R1 est la passerelle par défaut pour S1. L'interface sur R1 connectée au commutateur dispose de l'adresse IP 172.17.99.1. Cette adresse est l'adresse de la passerelle par défaut pour S1.</p>
+<p></p>
+<p>Pour configurer la passerelle par défaut du commutateur, utilisez la commande<span class="cmd"><b> ip default-gateway</b></span>. Entrez l'adresse IP de la passerelle par défaut. La passerelle par défaut est l'adresse IP de l'interface du routeur à laquelle le commutateur est connecté. Utilisez la commande <span class="cmd"><b>copy running-config startup-config</b></span> pour sauvegarder votre configuration.</p>
+<p></p>
+<p>
+<b>Étape 3. Vérification de la configuration</b>
+</p>
+<p></p>
+<p>Comme illustré à la Figure 3, la commande<span class="cmd"><b> show ip interface brief </b></span>est utile pour la détermination de l'état des interfaces physique et virtuelle. Les résultats que vous voyez confirment que l'interface du VLAN 99 a été configurée avec une adresse IP et un masque de sous-réseau et qu'elle est opérationnelle.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

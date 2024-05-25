@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.1.1 Séquence de démarrage du commutateur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de base d&#x0027;un commutateur</h1>
+        <h2>Configuration d&#x0027;un commutateur avec les paramètres d&#x0027;origine</h2>
+      </div>
+      <div id="content">
+<p>Dès qu'un commutateur est mis sous tension, il exécute la séquence de démarrage suivante :</p>
+<p></p>
+<p>1. D'abord, le commutateur exécute un programme de Power-On Self Test (POST) stocké dans la mémoire ROM. Le POST contrôle le sous-système du processeur. Il teste le processeur, la mémoire vive dynamique et la partie du périphérique flash qui compose le système de fichiers flash.</p>
+<p>2. Le commutateur exécute ensuite le bootloader. Le bootloader est un petit programme stocké dans la mémoire morte et exécuté immédiatement après la réussite du POST.</p>
+<p>3. Il effectue l'initialisation de bas niveau du processeur. Il initialise les registres du processeur qui contrôlent l'emplacement auquel la mémoire physique est mappée, la quantité de mémoire et sa vitesse. </p>
+<p>4. Le bootloader initialise le système de fichiers flash sur la carte système. </p>
+<p>5. Enfin, il localise et charge une image de logiciel du système d'exploitation IOS par défaut dans la mémoire et transfère le contrôle du commutateur à l'IOS. </p>
+<p></p>
+<p>Le bootloader recherche l'image Cisco IOS sur le commutateur comme suit : le commutateur tente de démarrer automatiquement en utilisant la variable d'environnement BOOT. Si cette variable n'est pas définie, le commutateur tente de télécharger et d'exécuter le premier fichier exécutable trouvé en effectuant une recherche récursive en profondeur d'abord sur l'ensemble du système de fichiers Flash. Dans une recherche en profondeur d'abord sur un répertoire, chaque sous-répertoire fait l'objet d'une recherche complète avant que la recherche dans le répertoire racine ne se poursuive. Sur les commutateurs de la gamme Catalyst 2960, le fichier d'image se trouve normalement dans un répertoire portant le même nom que l'image (à l'exception de l'extension de fichier .bin). </p>
+<p></p>
+<p> Le système d'exploitation IOS initialise ensuite les interfaces à l'aide des commandes Cisco IOS figurant dans le fichier de configuration, startup-config, qui est stocké dans la mémoire NVRAM.</p>
+<p></p>
+<p>Dans la figure, la variable d'environnement BOOT est définie via la commande de mode de configuration globale <span class="cmd"><b>boot system</b></span>. Notez que l'IOS se trouve dans un dossier à part et que le chemin d'accès est spécifié. Utilisez la commande<span class="cmd"><b> show bootvar </b></span>(<span class="cmd"><b>show boot </b></span>dans les versions antérieures du logiciel IOS) pour voir le réglage actuel du fichier de démarrage du logiciel IOS.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

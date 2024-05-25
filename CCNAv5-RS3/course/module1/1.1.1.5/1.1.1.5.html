@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.1.5 Domaines défaillants</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentation d&#x0027;une conception réseau</h1>
+        <h2>Conception hiérarchique du réseau</h2>
+      </div>
+      <div id="content">
+<p>Un réseau bien conçu contrôle le trafic, mais il réduit aussi les dimensions des domaines défaillants. Un domaine défaillant est la zone d'un réseau affectée lorsque des problèmes surviennent au niveau d'un périphérique ou d'un service réseau critique. </p>
+<p></p>
+<p>La fonction du périphérique qui a échoué en premier détermine l'impact d'un domaine défaillant. Par exemple, un commutateur défaillant sur un segment de réseau affecte, en principe, uniquement les hôtes de ce segment. Cependant, si le routeur qui connecte ce segment à d'autres tombe en panne, l'impact sera plus important. </p>
+<p></p>
+<p>L'utilisation de liaisons redondantes et d'équipements haut de gamme fiables réduit les risques de perturbation sur un réseau. Plus les domaines défaillants sont limités, plus l'impact d'une panne sur la productivité d'une entreprise est faible. Ils simplifient également la procédure de dépannage, réduisant ainsi le temps d'indisponibilité pour tous les utilisateurs.</p>
+<p></p>
+<p>Dans la figure, cliquez sur chaque périphérique réseau pour afficher le domaine défaillant associé.</p>
+<p></p>
+<p>
+<b>Réduction des dimensions des domaines défaillants </b>
+</p>
+<p></p>
+<p>Comme l'impact d'une défaillance au niveau de la couche cœur de réseau est potentiellement très étendu, un concepteur de réseau concentre souvent ses efforts sur la prévention des pannes. Ces efforts peuvent augmenter considérablement le coût de l'implémentation d'un réseau. Dans le modèle de conception hiérarchique, il est le plus simple et généralement le moins cher de contrôler les dimensions d'un domaine défaillant au niveau de la couche de distribution. Dans cette couche, les erreurs de réseau peuvent être contenues dans des zones plus réduites, et affecter ainsi moins d'utilisateurs. Lorsque des périphériques de couche 3 sont utilisés dans la couche de distribution, chaque routeur fonctionne comme une passerelle pour un nombre limité d'utilisateurs de la couche d'accès. </p>
+<p></p>
+<p>
+<b>Déploiement de blocs de commutation</b>
+</p>
+<p></p>
+<p>Les routeurs, ou commutateurs multicouches, sont généralement déployés par paires, les commutateurs de couche d'accès étant répartis de manière égale sur chaque routeur. Cette configuration est appelée un bloc de commutation de bâtiment, ou de département. Chaque bloc de commutation est indépendant. Ainsi, lorsqu'un périphérique tombe en panne, l'ensemble du réseau continue à fonctionner normalement. Même en cas de défaillance d'un bloc de commutation complet, le nombre d'utilisateurs finaux affectés reste réduit.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

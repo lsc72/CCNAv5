@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.4.4 L&#x0027;ancien système d&#x0027;adressage par classe</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.4.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Les types d&#x0027;adresses IPv4</h2>
+      </div>
+      <div id="content">
+<p>À l'origine, le RFC 1700, « Assigned Numbers », regroupait les plages monodiffusion selon différentes tailles, appelées des adresses de classe A, B et C. Il établissait également des adresses de classe D (multidiffusion) et de classe E (expérimentales), comme nous l'avons déjà vu. Les classes d'adresses de monodiffusion A, B et C définissaient des réseaux de taille spécifique et des blocs d'adresses spécifiques pour ces réseaux. Une entreprise ou une organisation se voyait attribuer un réseau entier de bloc d'adresses de classe A, B ou C. L'utilisation de l'espace d'adressage s'appelait adressage par classe. </p>
+<p></p>
+<p>
+<b>Blocs d'adresses A</b>
+</p>
+<p>Un bloc d'adresses de classe A a été créé pour prendre en charge les réseaux de très grande taille, comportant plus de 16 millions d'adresses d'hôte. Les adresses IPv4 de classe A utilisaient un préfixe /8 invariable, le premier octet indiquant l'adresse réseau. Les trois octets restants correspondaient aux adresses d'hôte. Toutes les adresses de classe A nécessitaient que le bit de poids fort du premier octet soit un zéro. Cela implique qu'il n'y avait que 128 réseaux de classe A disponibles, de 0.0.0.0/8 à 127.0.0.0/8. Même si les adresses de classe A réservaient la moitié de l'espace d'adressage, elles ne pouvaient être attribuées qu'à 120 entreprises ou organisations, en raison de leur limite de 128 réseaux. </p>
+<p></p>
+<p>
+<b>Blocs d'adresses B</b>
+</p>
+<p>L'espace d'adressage de classe B a été créé pour répondre aux besoins des réseaux de taille moyenne ou de grande taille, comportant jusqu'à 65 000 hôtes. Les adresses IP de classe B utilisaient les deux premiers octets pour indiquer l'adresse réseau. Les deux octets suivants correspondaient aux adresses d'hôte. Comme avec la classe A, l'espace d'adressage pour les classes d'adresses restantes devait être réservé. Pour les adresses de classe B, les deux bits de poids fort du premier octet étaient 10. Cela limitait le bloc d'adresses de classe B de 128.0.0.0/16 à 191.255.0.0/16. La classe B attribuait les adresses plus efficacement que la classe A, car elle répartissait de manière équitable 25 % de l'espace d'adressage IPv4 total sur environ 16 000 réseaux.</p>
+<p></p>
+<p>
+<b>Blocs d'adresses C</b>
+</p>
+<p>L'espace d'adressage de la classe C était le plus disponible des anciennes classes d'adresses. Cet espace d'adressage était réservé aux réseaux de petite taille, comportant 254 hôtes au maximum. Les blocs d'adresses de classe C utilisaient le préfixe /24. Ainsi, un réseau de classe C ne pouvait utiliser que le dernier octet pour les adresses d'hôte, les trois premiers octets correspondant à l'adresse réseau. Les blocs d'adresses de classe C réservaient l'espace d'adressage à l'aide d'une valeur fixe de 110 pour les trois bits de poids fort du premier octet. Cela limitait le bloc d'adresses de classe C de 192.0.0.0/24 à 223.255.255.0/24. Bien qu'il occupait seulement 12,5 % de l'espace d'adressage IPv4, il pouvait attribuer des adresses à 2 millions de réseaux.</p>
+<p></p>
+<p>La Figure 1 montre comment ces classes d'adresses sont divisées.</p>
+<p></p>
+<p>
+<b>Limites de l'adressage par classe</b>
+</p>
+<p>Les besoins de certaines entreprises ou organisations sont couverts par ces trois classes. L'attribution par classe des adresses IP gaspillait souvent de nombreuses adresses, ce qui épuisait la disponibilité des adresses IPv4. Par exemple, une entreprise avec un réseau de 260 hôtes devait se voir attribuer une adresse de classe B avec plus de 65 000 adresses. </p>
+<p></p>
+<p>Bien que ce système par classe ait été abandonné à la fin des années 90, il n'a pas entièrement disparu dans certains des réseaux modernes. Par exemple, lorsque vous attribuez une adresse IPv4 à un ordinateur, le système d'exploitation examine l'adresse en question pour déterminer si elle est de classe A, B ou C. Le système d'exploitation déduit ensuite le préfixe utilisé par cette classe et effectue l'attribution du masque de sous-réseau par défaut. </p>
+<p></p>
+<p>
+<b>Adressage sans classe</b>
+</p>
+<p>Le système utilisé aujourd'hui porte le nom d'adressage sans classe. Son nom formel est le routage CIDR (Classless Inter-Domain Routing, routage interdomaine sans classe). L'attribution par classe d'adresses IPv4 était inefficace, car elle permettait uniquement l'utilisation de longueurs de préfixe /8, /16 ou /24, chacune d'un espace d'adresses distinct. En 1993, l'IETF a créé un nouvel ensemble de normes permettant aux fournisseurs de services d'attribuer des adresses IPv4 sur n'importe quelle limite binaire (longueur de préfixe) au lieu d'utiliser uniquement les classes A, B ou C. </p>
+<p></p>
+<p>L'IETF savait que le CIDR était uniquement une solution temporaire et qu'un nouveau protocole IP devait être développé pour s'adapter à la croissance rapide du nombre d'utilisateurs d'Internet. En 1994, l'IETF a commencé à chercher un successeur à l'IPv4, à savoir le futur protocole IPv6.</p>
+<p></p>
+<p>La Figure 2 illustre les plages d'adresses par classe.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

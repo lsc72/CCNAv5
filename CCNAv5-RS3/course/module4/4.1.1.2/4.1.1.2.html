@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.1.2 Avantages des technologies sans fil </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts de la technologie sans fil</h1>
+        <h2>Introduction à la technologie sans fil</h2>
+      </div>
+      <div id="content">
+<p>La prise en charge de réseaux sans fil offre de nombreux avantages, aussi bien pour les environnements domestiques que professionnels. Ces avantages incluent une flexibilité et une productivité accrues, des coûts réduits et la possibilité de croître et d'évoluer en suivant les fluctuations des besoins. </p>
+<p></p>
+<p>La Figure 1 ci-contre illustre la flexibilité que le sans-fil offre aux employés mobiles.</p>
+<p></p>
+<p>La plupart des entreprises se basent sur des réseaux locaux (LAN) commutés pour le fonctionnement au quotidien au sein des bureaux. Cependant, les employés sont aujourd'hui de plus en plus mobiles et souhaitent avoir accès aux ressources du LAN d'entreprise depuis d'autres lieux que leur bureau. Ils désirent emporter leurs périphériques sans fil dans les réunions, le bureau de leurs collègues, les salles de conférence et même les sites client, et ce en conservant l'accès aux ressources de l'entreprise. La mise en place de réseaux sans fil permet ce type de flexibilité. Au lieu de passer du temps à transporter le matériel de l'entreprise ou à localiser les connexions câblées pour accéder aux ressources réseau, grâce au réseau sans fil, les ressources LAN sont facilement mises à disposition de différents périphériques sans fil. </p>
+<p></p>
+<p>Bien que cela soit difficile à mesurer précisément, l'accès sans fil au réseau offre une productivité accrue et permet au personnel d'être plus détendu. Grâce au réseau sans fil, les employés ont la possibilité de travailler en toute flexibilité, où et quand ils le souhaitent. Ils peuvent répondre aux demandes des clients, qu'ils soient à leur bureau ou en train de dîner en ville. Ils peuvent accéder à leur messagerie électronique et aux autres ressources professionnelles de manière rapide et facile, avec pour conséquence une gestion plus efficace, des résultats améliorés et plus rapides pour les clients, et des profits accrus. </p>
+<p></p>
+<p>La mise en place d'un réseau sans fil peut également réduire les coûts. Dans les entreprises où une infrastructure sans fil est déjà existante, des économies sont réalisées à chaque fois qu'un changement ou un déplacement d'équipement est nécessaire, par exemple lorsqu'un employé change de poste de travail au sein d'un bâtiment, lors de la réorganisation d'équipements ou d'un laboratoire ou lors du déménagement vers des sites projet ou des locaux temporaires. </p>
+<p></p>
+<p>Autre avantage non négligeable d'un réseau sans fil, son adaptabilité face aux fluctuations des besoins et des technologies. L'ajout de nouveaux équipements se fait de manière assez transparente dans le cas d'un réseau sans fil. Prenez l'exemple de la connectivité sans fil d'un particulier. Les utilisateurs peuvent surfer sur Internet depuis la table de la cuisine, le salon ou même dans le jardin ou sur le balcon. Ils peuvent connecter de nouveaux périphériques, par exemple des smartphones et des tablettes, des ordinateurs portables ou des téléviseurs intelligents. </p>
+<p></p>
+<p>Comme illustré à la Figure 2, un routeur domestique sans fil permet à l'utilisateur de se connecter à ces périphériques sans coût supplémentaire et sans avoir à faire courir des câbles partout dans la maison. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

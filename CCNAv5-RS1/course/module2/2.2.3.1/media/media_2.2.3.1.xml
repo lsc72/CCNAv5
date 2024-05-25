@@ -1,0 +1,94 @@
+﻿<textcomponents>
+
+
+<!--Slide 1-->
+<component id="ID_title">
+<text><![CDATA[<b>Enregistrement et suppression de la configuration</b>]]></text>
+</component>
+
+<component id="ID_txt01">
+<text><![CDATA[Présente la totalité de la configuration actuellement active en mémoire vive.]]></text> 
+</component>
+
+<component id="ID_txt02">
+<text><![CDATA[La configuration active peut être copiée vers la mémoire vive non volatile.]]></text> 
+</component>
+
+<component id="ID_txt03">
+<text><![CDATA[&lt;résultat omis&gt;]]></text> 
+</component>
+<!--End Slide 1-->
+
+
+
+<!--Slide 2-->
+
+<!--Syntax Checker Button Text-->
+<component id="ID_sc_reset">
+<text><![CDATA[Réinitialiser]]></text>
+</component>
+
+<component id="ID_sc_showme">
+<text><![CDATA[Démonstration]]></text>
+</component>
+
+<component id="ID_sc_showall">
+<text><![CDATA[Afficher tout]]></text>
+</component>
+<!--End Syntax Checker Button Text-->
+
+
+<!--Syntax Checker Body Text-->
+<component id="ID_SC5" fontFace='Courier New' fontSize="10">
+
+<text></text>		
+
+<feedback id="fb"><![CDATA[<span><font size = '10' face="Arial"><span><b>***</b></span>Vous devez saisir la commande précisément et en entier. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.<span><b>***</b></span></font></span>
+]]></feedback>	
+
+<existingcommands id="ec"><![CDATA[<font size = '10' face="Arial"><b>Entrez la commande permettant d'enregistrer la configuration en cours stockée dans la mémoire vive sur la mémoire vive non volatile.</b></font>]]></existingcommands>
+
+<command prompt="Switch#" id="cmd1" node="start">
+<correctresponse id="cr1"><![CDATA[copy running-config startup-config]]></correctresponse>
+<deviceresponse id="dr1"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins1"><![CDATA[<font size = '10' face="Arial"><b>La configuration dans la mémoire vive et la configuration dans la mémoire vive non volatile sont désormais identiques. Si vous voulez que le commutateur restaure la configuration initiale par défaut, vous devez entrer deux commandes.<br> Tout d'abord, entrez la commande permettant de supprimer le fichier vlan.dat.</b></font>]]></instruction>
+</command>
+
+<command prompt="Switch#" id="cmd2">
+<correctresponse id="cr2"><![CDATA[delete vlan.dat]]></correctresponse>
+<deviceresponse id="dr2"><![CDATA[Delete filename [vlan.dat]? <br>Delete flash:vlan.dat? [confirm]]]></deviceresponse> 								
+<instruction id="ins2"><![CDATA[<font size = '10' face="Arial"><b>Sur un commutateur matériel, l'IOS attend que vous confirmiez le nom du fichier puis la suppression. Entrez ensuite la commande permettant de supprimer la configuration stockée dans la mémoire vive non volatile.</b></font>]]></instruction>
+</command>
+
+<command prompt="Switch#" id="cmd3">
+<correctresponse id="cr3"><![CDATA[erase startup-config]]></correctresponse>
+<deviceresponse id="dr3"><![CDATA[<dnt>Erasing the nvram filesystem will remove all configuration files! Continue? [confirm]<br>[OK]<br>Erase of nvram: complete<br></dnt>]]></deviceresponse> 	
+<instruction id="ins3"><![CDATA[<font size = '10' face="Arial"><b>Sur un commutateur matériel, l'IOS attend que vous confirmiez la commande erase. Vous devez enfin redémarrer le commutateur pour qu'il restaure sa configuration par défaut.</b></font>]]></instruction>
+</command>
+
+<command prompt="Switch#" id="cmd4">
+<correctresponse id="cr4"><![CDATA[reload]]></correctresponse>
+<deviceresponse id="dr4"><![CDATA[Proceed with reload? [confirm]<br>C2960 Boot Loader (C2960-HBOOT-M) Version 12.2(25r)FX, RELEASE SOFTWARE (fc4)<br>Cisco WS-C2960-24TT (RC32300) processor (revision C0) with 21039K bytes of memory.<br>2960-24TT starting...<br><font face="Arial" style="font-family:arial !important;">&lt;résultat omis&gt;</font><br>]]></deviceresponse> 
+<instruction id="ins4"><![CDATA[<font size = '10' face="Arial"><b>Passez en mode d'exécution privilégié et affichez la configuration en cours, stockée dans la mémoire vive non volatile.</b></font>]]></instruction>
+</command>
+
+<command prompt="Switch>" id="cmd5" >
+<correctresponse id="cr5"><![CDATA[enable]]></correctresponse>
+<deviceresponse id="dr5"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins5"><![CDATA[<span></span>]]></instruction>
+</command>
+
+<command prompt="Switch#" id="cmd6" node="end">
+<correctresponse id="cr6"><![CDATA[show startup-config]]></correctresponse>
+<deviceresponse id="dr6"><![CDATA[startup-config is not present<br>Switch#<br>]]></deviceresponse> 
+<instruction id="last"><![CDATA[<font size = '10' face="Arial"><b>Le commutateur a restauré sa configuration initiale par défaut.<br> Vous avez correctement enregistré, puis effacé la configuration du commutateur.</b></font>]]></instruction>
+</command>
+
+<command prompt=""/>
+
+</component>
+<!--End Syntax Checker Body Text-->
+
+<!--End Slide 2-->
+
+</textcomponents>

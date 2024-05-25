@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.1.1 Spécifications du réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation de la conception de réseau hiérarchique</h1>
+        <h2>Conception de campus de réseau d&#x0027;entreprise</h2>
+      </div>
+      <div id="content">
+<p>Dans le domaine de la conception de réseaux, il est utile de classer les réseaux en fonction du nombre de périphériques gérés :</p>
+<p>
+<ul>
+<li>
+<b>Petit réseau </b>: fournit les services pour jusqu'à 200 périphériques.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Réseau moyen </b>: fournit les services de 200 à 1000 périphériques.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Grand réseau </b>: fournit les services au-delà de 1000 périphériques. </li>
+</ul>
+</p>
+<p></p>
+<p>Les conceptions de réseaux varient selon la taille et les besoins des entreprises. Par exemple, les besoins de l'infrastructure réseau d'une petite organisation avec peu de périphériques seront moins complexes que ceux de l'infrastructure d'une grande organisation avec un grand nombre de périphériques et de connexions. </p>
+<p></p>
+<p>Lors de la conception d'un réseau, de nombreuses variables sont à prendre en considération. Prenons l'exemple illustré ici. L'exemple de schéma de topologie de haut niveau présenté ici concerne un réseau de grande entreprise qui se compose d'un site de campus principal qui se connecte à d'autres sites de tailles variables. </p>
+<p></p>
+<p>La conception de réseaux est un secteur en plein développement, et requiert une bonne expérience et de solides connaissances. L'objectif de cette section est de présenter des concepts de réseaux communément utilisés.</p>
+<p></p>
+<p>
+<b>Remarque </b>: Cisco Certified Design Associate (CCDA®) est une certification reconnue dans le secteur pour les ingénieurs, les techniciens et les ingénieurs supports impliqués dans la conception de réseaux. Elle confirme que les utilisateurs certifiés possèdent les compétences requises pour créer des réseaux de campus ou de data centers, ainsi que des réseaux de sécurité, de voix ou des réseaux sans fil.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

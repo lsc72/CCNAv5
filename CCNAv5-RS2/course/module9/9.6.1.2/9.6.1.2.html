@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.6.1.2 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.6.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Par défaut un routeur ne filtre pas le trafic. Le trafic qui entre dans le routeur est routé uniquement en fonction des informations de la table de routage.</p>
+<p></p>
+<p>Le filtrage des paquets contrôle l'accès à un réseau en analysant les paquets entrants et sortants et en les transmettant ou les rejetant selon des critères tels que l'adresse IP source, les adresses IP de destination et le protocole transporté dans le paquet. Un routeur de filtrage de paquets utilise des règles pour déterminer s'il doit autoriser ou refuser le trafic. Un routeur peut également effectuer le filtrage des paquets au niveau de la couche 4, la couche transport. </p>
+<p></p>
+<p>Une liste de contrôle d'accès est un ensemble séquentiel d'instructions d'autorisation ou de refus. La dernière instruction d'une liste de contrôle d'accès est toujours une instruction deny implicite bloquant tout le trafic. Pour empêcher l'instruction deny any implicite à la fin de la liste de contrôle d'accès de bloquer tout le trafic, vous pouvez ajouter l'instruction<span class="cmd"><b> permit ip any any</b></span>.</p>
+<p></p>
+<p>Lorsque le trafic réseau traverse une interface configurée avec une liste de contrôle d'accès, le routeur compare les informations du paquet à chaque entrée, dans l'ordre séquentiel, afin de déterminer si le paquet correspond à l'une des instructions. Si une correspondance est trouvée, le paquet est traité en conséquence.</p>
+<p></p>
+<p>Les listes de contrôle d'accès sont configurées pour s'appliquer au trafic entrant ou sortant. </p>
+<p></p>
+<p>Les listes de contrôle d'accès standard peuvent être utilisées pour autoriser ou refuser le trafic uniquement depuis les adresses IPv4 source. La destination du paquet et les ports concernés ne sont pas évalués. La règle de base pour le placement des listes de contrôle d'accès standard consiste à les placer aussi près que possible de la destination.</p>
+<p></p>
+<p>Les listes de contrôle d'accès étendues filtrent les paquets en fonction de plusieurs attributs : type de protocole, adresse IPv4 source ou de destination et ports source ou de destination. La règle de base pour le placement des listes de contrôle d'accès étendues consiste à les placer aussi près que possible de la source. </p>
+<p></p>
+<p>La commande de configuration globale <span class="cmd"><b>access-list</b></span> identifie les listes de contrôle d'accès standard au moyen d'un nombre compris entre 1 et 99 et les listes de contrôle d'accès étendues au moyen de nombres des plages 100 à 199 et 2 000 à 2 699. Les listes de contrôle d'accès standard et étendues peuvent être nommées. La commande <span class="cmd"><i>name</i></span> <span class="cmd"><b>ip access-list standard</b></span> permet de créer une liste de contrôle d'accès standard nommée, tandis que la commande <span class="cmd"><i>name</i></span> <span class="cmd"><b>ip access-list extended</b></span> permet de créer une liste de contrôle d'accès étendue. Les listes de contrôle d'accès IPv4 incluent l'utilisation de masques génériques.</p>
+<p></p>
+<p>Une fois qu'une liste de contrôle d'accès est configurée, elle est associée à une interface à l'aide de la commande <span class="cmd"><b>ip access-group</b></span> en mode de configuration d'interface. Rappelez-vous de la règle des trois P, une liste de contrôle d'accès par protocole, par direction, par interface. </p>
+<p></p>
+<p>Pour supprimer une liste de contrôle d'accès IP d'une interface, entrez d'abord la commande <span class="cmd"><b>no ip access-group</b></span> sur l'interface, puis la commande globale <span class="cmd"><b>no access-list</b></span> pour supprimer l'ensemble de la liste.</p>
+<p></p>
+<p>Les commandes<span class="cmd"><b> show running-config </b></span>et<span class="cmd"><b> show access-lists </b></span>permettent de vérifier la configuration des listes de contrôle d'accès. La commande <span class="cmd"><b>show ip interface</b></span> permet de vérifier la liste de contrôle d'accès sur l'interface et la direction dans laquelle elle a été appliquée.</p>
+<p></p>
+<p>La commande<span class="cmd"><b> access-class </b></span>configurée en mode de configuration de ligne limite les connexions entrantes et sortantes entre un VTY spécifique et les adresses renseignées dans une liste de contrôle d'accès. </p>
+<p></p>
+<p>Tout comme les listes de contrôle d'accès nommées IPv4, les noms des listes de contrôle d'accès IPv6 sont alphanumériques, sensibles à la casse et doivent être uniques. Contrairement aux listes de contrôle d'accès IPv4, l'option standard ou étendue n'est pas nécessaire. </p>
+<p></p>
+<p>En mode de configuration globale, utilisez la commande <span class="cmd"><i>name</i></span> <span class="cmd"><b>ipv6 access-list</b></span> pour créer une liste de contrôle d'accès IPv6. À la différence des listes de contrôle d'acccèsIPv4, les listes de contrôle d'accès IPv6 n'utilisent pas de masques génériques. Au lieu de cela, la longueur de préfixe est utilisée pour indiquer dans quelle mesure l'adresse IPv6 source ou de destination doit correspondre. </p>
+<p>Une fois qu'une liste de contrôle d'accès IPv6 est configurée, elle est associée à une interface à l'aide de la commande<span class="cmd"><b> ipv6 traffic-filter</b></span>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.0.1.1 Introduction</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Couche application</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>Nous utilisons Internet via le Web lorsque nous regardons des vidéos en continu, jouons à des jeux en ligne, chattons avec des amis, envoyons des e-mails et faisons des achats sur des sites Web. Les applications telles que celles utilisées pour fournir les services décrits offrent une interface humaine avec le réseau sous-jacent. Elles nous permettent d'envoyer et de recevoir des données relativement facilement. Il est généralement possible d'accéder à ces applications et de les utiliser sans savoir comment elles fonctionnent. Cependant, un professionnel des réseaux doit savoir dans quelle mesure une application est capable de formater, de transmettre et d'interpréter les messages envoyés et reçus via le réseau.</p>
+<p></p>
+<p>Grâce à sa structure en couches, le modèle OSI permet de visualiser plus facilement les mécanismes sous-jacents de la communication via le réseau. </p>
+<p></p>
+<p>Dans ce chapitre, nous allons examiner le rôle de la couche application. Nous découvrirons également comment les applications, les services et les protocoles de la couche application permettent une communication fiable via les réseaux de données.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.4.3.2 Solutions de sécurité</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.4.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Évolution de l&#x0027;environnement réseau</h1>
+        <h2>Sécurité du réseau</h2>
+      </div>
+      <div id="content">
+<p>Aucune solution unique ne peut protéger le réseau contre les diverses menaces existantes. Pour cette raison, la sécurité doit être implémentée en plusieurs couches, avec plusieurs solutions de sécurité. Si un composant de sécurité ne parvient pas à identifier et à protéger le réseau, d'autres peuvent alors prendre la relève. </p>
+<p></p>
+<p>La mise en œuvre de la sécurité du réseau domestique est généralement plutôt simple. Les fonctions de sécurité sont généralement mises en place sur les périphériques hôtes de connexion, ainsi qu'au niveau du point d'accès à Internet. Elles peuvent même exploiter les services proposés par le FAI. </p>
+<p></p>
+<p>En revanche, la mise en œuvre de la sécurité du réseau d'une entreprise implique généralement de nombreux composants intégrés dans le réseau afin de contrôler et de filtrer le trafic. Dans l'idéal, tous les composants fonctionnent ensemble, ce qui réduit les opérations de maintenance et renforce la sécurité.</p>
+<p></p>
+<p>Les composants de sécurité réseau d'un réseau domestique ou d'un réseau de petit bureau doivent inclure, au minimum :</p>
+<p>
+<ul>
+<li>
+<b>Un antivirus et un logiciel anti-espion</b> – pour protéger les périphériques des utilisateurs contre les logiciels malveillants.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Un pare-feu</b> – pour bloquer les accès non autorisés au réseau. Il peut s'agir d'un système de pare-feu sur l'hôte qui est mis en œuvre pour empêcher l'accès non autorisé au périphérique hôte, ou d'un service de filtrage sur le routeur de la maison pour empêcher l'accès non autorisé depuis l'extérieur du réseau.</li>
+</ul>
+</p>
+<p></p>
+<p>De plus, les réseaux plus étendus et les réseaux des grandes entreprises ont souvent d'autres exigences relatives à la sécurité :</p>
+<p>
+<ul>
+<li>
+<b>Des systèmes de pare-feu spécialisés</b> – pour fournir des fonctionnalités de pare-feu plus avancées et filtrer un trafic plus important avec plus de précision.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Des listes de contrôle d'accès (ACL)</b> – pour filtrer davantage les accès et le transfert de trafic.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Des systèmes de prévention contre les intrusions</b> – pour identifier des menaces immédiates telles que les attaques zero-day ou zero-hour. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Des réseaux privés virtuels (VPN)</b> – pour fournir un accès sécurisé aux télétravailleurs.</li>
+</ul>
+</p>
+<p></p>
+<p>Les exigences de sécurité réseau doivent prendre en compte l'environnement réseau, ainsi que les différentes applications et les exigences informatiques. Les réseaux domestiques et professionnels doivent être sécurisés, tout en garantissant en permanence la qualité de service attendue. En outre, la solution de sécurité mise en œuvre doit être capable de s'adapter aux nouvelles tendances et à l'évolution du réseau. </p>
+<p></p>
+<p>L'étude des menaces de sécurité réseau et des techniques permettant de limiter les risques nécessite toute d'abord une parfaite compréhension de l'infrastructure de routage et de commutation sous-jacente, qui permet d'organiser les services réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

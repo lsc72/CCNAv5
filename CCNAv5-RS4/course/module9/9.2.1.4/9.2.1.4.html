@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.1.4 Utilisation d&#x0027;un serveur Syslog pour le dépannage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Outils de dépannage</h2>
+      </div>
+      <div id="content">
+<p>Le protocole Syslog est un protocole simple utilisé par un périphérique IP faisant office de client Syslog, afin d'envoyer des messages textuels de journal vers un autre périphérique IP, à savoir le serveur Syslog. Le protocole Syslog est actuellement défini dans la RFC 5424. </p>
+<p></p>
+<p>L'implémentation d'une méthode de journalisation est une partie importante de la sécurité du réseau et du dépannage réseau. Les périphériques Cisco peuvent consigner des informations relatives aux modifications de configuration, aux violations des listes de contrôle d'accès, à l'état des interfaces ainsi qu'à de nombreux autres types d'événements. Les périphériques Cisco peuvent envoyer des messages de journal à diverses installations différentes. Les messages d'événement peuvent être envoyés à un ou plusieurs des éléments suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Console</b> : la journalisation de la console est activée par défaut. Les messages sont consignés sur la console et peuvent être affichés lors de la modification ou du test du routeur ou du commutateur à l'aide d'un logiciel d'émulation de terminal, après l'établissement d'une connexion avec le port de console du routeur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Lignes de terminal</b> : les sessions d'exécution activées peuvent être configurées de manière à recevoir les messages de journal sur n'importe quelle ligne de terminal. Comme pour la journalisation de la console, ce type de journalisation n'est pas stocké par le routeur et n'est par conséquent utile que pour l'utilisateur de cette ligne.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Tampon de journalisation</b>
+<i></i>- Le tampon de journalisation est un outil de dépannage un peu plus utile, car les messages de journal sont stockés en mémoire pendant un certain temps. Toutefois, les messages de journal sont effacés lors du redémarrage du périphérique.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Déroutements SNMP</b> : il est possible de préconfigurer certains seuils sur des routeurs et autres périphériques. Les événements de routeur, tels que le dépassement d'un seuil, peuvent être traités par le routeur et transférés en tant que déroutements SNMP vers un serveur SNMP externe. Les déroutements SNMP constituent une méthode de journalisation de sécurité tout à fait acceptable, mais ils nécessitent la configuration et la maintenance d'un système SNMP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Syslog</b> : les routeurs et commutateurs Cisco peuvent être configurés de manière à transférer les messages de journal vers un service Syslog externe. Ce service peut résider sur un nombre quelconque de serveurs ou de stations de travail, notamment des systèmes exécutant Microsoft Windows ou Linux. Syslog est l'outil de journalisation des messages le plus populaire, car il permet le stockage des messages de routeur sur une longue période, et ce, dans un emplacement centralisé.</li>
+</ul>
+</p>
+<p></p>
+<p>Les messages de journal de Cisco IOS peuvent appartenir à huit niveaux différents, comme le montre la Figure 1. Plus le numéro du niveau est petit, plus le niveau de gravité est élevé. Par défaut, tous les messages appartenant aux niveaux de 0 à 7 sont consignés dans la console. Même si la possibilité d'afficher des journaux sur un serveur Syslog central s'avère utile en cas de dépannage, l'analyse d'une grande quantité de données peut être une tâche fastidieuse. La commande <span class="cmd"><b>logging trap </b></span><span class="cmd"><i>niveau</i></span> permet de limiter le nombre de messages consignés sur le serveur Syslog en fonction de leur gravité. Le niveau est le nom ou le numéro du <span class="cmd"><i>niveau</i></span> de gravité. Seuls les messages dont le niveau de gravité est inférieur ou égal au <span class="cmd"><i>niveau</i></span> spécifié sont consignés.</p>
+<p></p>
+<p>Dans l'exemple de la Figure 2, les messages système du niveau 0 (urgences) à 5 (notifications) sont envoyés au serveur Syslog à l'adresse 209.165.200.225.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

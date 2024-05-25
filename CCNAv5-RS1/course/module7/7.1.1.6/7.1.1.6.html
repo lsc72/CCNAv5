@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.1.6 Protocole UDP</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole de couche Transport</h1>
+        <h2>Transport des données</h2>
+      </div>
+      <div id="content">
+<p>Tandis que les fonctionnalités de fiabilité TCP assurent l'efficacité des communications entre les applications, elles engendrent également une surcharge supplémentaire et des éventuels retards de transmission. Un compromis doit être établi entre la valeur accordée à la fiabilité et la charge qu'elle représente sur le réseau. Imposer une surcharge pour garantir la fiabilité de certaines applications peut réduire l'utilité de l'application et peut même porter préjudice à l'application. Dans ce cas, le protocole UDP représente un meilleur protocole de transport. </p>
+<p></p>
+<p>Le protocole UDP fournit uniquement des fonctions de base permettant d'acheminer des segments de données entre les applications appropriées avec peu de surcharge et de vérification des données. Le protocole UDP est un protocole d'acheminement au mieux. Dans le contexte des réseaux, l'acheminement au mieux est considéré comme n'étant pas fiable car aucun accusé de réception ne confirme que les données sont arrivées à destination. Avec le protocole UDP, aucun processus de couche transport ne signale à l'expéditeur si la transmission a réussi.</p>
+<p></p>
+<p>L'UDP revient à poster une lettre normale, sans accusé de réception. L'expéditeur de la lettre ne sait pas si le destinataire peut recevoir la lettre et le bureau de poste ne doit ni suivre la lettre ni informer l'expéditeur si la lettre n'arrive pas à la destination finale. </p>
+<p></p>
+<p>Cliquez sur le bouton Lecture dans la figure pour voir une animation des segments UDP transmis par l'expéditeur au destinataire. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

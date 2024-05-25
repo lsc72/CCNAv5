@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.1.1.2 Fonctionnement de DHCPv4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 4</h1>
+        <h2>Fonctionnement de DHCPv4</h2>
+      </div>
+      <div id="content">
+<p>Comme le montre la Figure 1, DHCPv4 fonctionne en mode client/serveur. Lorsqu'un client communique avec un serveur DHCPv4, le serveur attribue ou loue une adresse IPv4 à ce client. Le client se connecte au réseau avec cette adresse IP louée jusqu'à l'expiration du bail. Le client doit régulièrement contacter le serveur DHCP pour renouveler le bail. Ce mécanisme de bail permet de s'assurer que les clients qui sont déplacés ou qui sont mis hors tension ne conservent pas des adresses dont ils n'ont plus besoin. Lorsqu'un bail expire, le serveur DHCP renvoie l'adresse au pool où elle peut être réattribuée selon les besoins.</p>
+<p></p>
+<p>
+<b>Émission de bail</b>
+</p>
+<p></p>
+<p>Lorsque le client démarre (ou souhaite se connecter à un réseau), il lance un processus en quatre étapes visant à obtenir un bail. Comme l'illustre la Figure 2, un client lance le processus avec un message de diffusion DHCPDISCOVER indiquant sa propre adresse MAC pour détecter les serveurs DHCPv4 disponibles.</p>
+<p></p>
+<p>
+<b>Détection DHCP (DHCPDISCOVER)</b>
+</p>
+<p>Le message DHCPDISCOVER détecte les serveurs DHCPv4 sur le réseau. Étant donné que le client ne dispose d'aucune information IPv4 valide au démarrage, il utilise des adresses de diffusion de couches 2 et 3 pour communiquer avec le serveur. </p>
+<p></p>
+<p>
+<b>Offre DHCP (DHCPOFFER)</b>
+</p>
+<p>Lorsque le serveur DHCPv4 reçoit un message DHCPDISCOVER, il réserve une adresse IPv4 disponible pour la louer au client. Le serveur crée également une entrée ARP comprenant l'adresse MAC du client demandeur et l'adresse IPv4 louée du client. Comme le montre la Figure 3, le serveur DHCPv4 envoie le message DHCPOFFER de liaison au client demandeur. Le message DHCPOFFER est envoyé en monodiffusion et utilise l'adresse MAC de couche 2 du serveur comme adresse source et l'adresse MAC de couche 2 du client comme destination.</p>
+<p></p>
+<p>
+<b>Requête DHCP (DHCPREQUEST) </b>
+</p>
+<p>Lorsque le client reçoit le message DHCPOFFER du serveur, il renvoie un message DHCPREQUEST, comme le montre la Figure 4. Ce message est utilisé à la fois pour émettre le bail et pour le renouveler. Lorsqu'il est utilisé pour émettre le bail, le message DHCPREQUEST sert d'avis d'acceptation de la liaison au serveur sélectionné pour les paramètres qu'il a proposé et d'avis implicite de refus de tous les autres serveurs qui peuvent avoir fourni au client une offre de liaison.</p>
+<p></p>
+<p>De nombreux réseaux d'entreprise utilisent plusieurs serveurs DHCPv4. Le message DHCPREQUEST est envoyé sous forme de diffusion afin d'informer ce serveur DHCPv4 et tous les autres que l'offre a été acceptée. </p>
+<p></p>
+<p>
+<b>Accusé de réception DHCP (DHCPACK)</b>
+</p>
+<p>Lorsqu'il reçoit le message DHCPREQUEST, le serveur vérifie les informations de bail à l'aide d'une requête ping ICMP envoyée à cette adresse pour s'assurer qu'elle n'est pas encore utilisée. Il crée une entrée ARP pour le bail du client, puis répond par un message de monodiffusion DHCPACK (voir Figure 5). Le message DHCPACK est une copie du message DHCPOFFER ; la seule différence se situe au niveau du champ du type de message. Lorsque le client reçoit le message DHCPACK, il consigne les informations de configuration et lance une recherche ARP sur l'adresse attribuée. Si la requête ARP n'obtient aucune réponse, le client comprend que l'adresse IPv4 est valide et se l'approprie. </p>
+<p></p>
+<p>
+<b>Renouvellement de bail</b>
+</p>
+<p></p>
+<p>
+<b>Requête DHCP (DHCPREQUEST) </b>
+</p>
+<p>Comme le montre la Figure 6, à l'expiration du bail, le client envoie un message DHCPREQUEST directement au serveur DHCPv4 qui a initialement proposé l'adresse IPv4. S'il ne reçoit aucun message DHCPACK dans un certain délai, le client diffuse un autre message DHCPREQUEST afin qu'un des autres serveurs DHCPv4 puisse renouveler le bail.</p>
+<p></p>
+<p>
+<b>Accusé de réception DHCP (DHCPACK)</b>
+</p>
+<p>Après réception du message DHCPREQUEST, le serveur vérifie les informations de bail en renvoyant un message DHCPACK, comme illustré à la Figure 7. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

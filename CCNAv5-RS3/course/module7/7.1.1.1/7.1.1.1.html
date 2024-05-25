@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.1.1 Fonctionnalités du protocole EIGRP </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Caractéristiques du protocole EIGRP</h1>
+        <h2>Fonctionnalités de base du protocole EIGRP</h2>
+      </div>
+      <div id="content">
+<p>Le protocole EIGRP a été initialement lancé en 1992 en tant que protocole propriétaire disponible uniquement sur les périphériques Cisco. En 2013, Cisco a lancé une fonctionnalité de base du protocole EIGRP sous la forme d'une norme ouverte vers IETF en tant que RFC informatif. Ainsi, les autres fournisseurs réseau peuvent désormais implémenter le protocole EIGRP sur leurs équipements pour qu'ils fonctionnent à la fois avec des routeurs Cisco et tiers exécutant ce protocole. Cependant, les fonctionnalités avancées du protocole EIGRP, par exemple l'extrémité EIGRP, requise pour le déploiement DMVPN (Dynamic Multipoint Virtual Private Network), ne seront pas disponibles pour l'IETF. En tant que RFC informatif, Cisco continuera à assurer le contrôle du protocole EIGRP.</p>
+<p></p>
+<p>Le protocole EIGRP comprend à la fois les fonctionnalités des protocoles de routage à état de liens et à vecteur de distance. Toutefois, le protocole EIGRP reste basé sur le principe clé du protocole de routage à vecteur de distance, selon lequel les informations sur le reste du réseau sont acquises par les voisins connectés directement.</p>
+<p></p>
+<p>Le protocole EIGRP est un protocole de routage à vecteur de distance avancé qui comprend des fonctionnalités indisponibles dans d'autres protocoles de routage à vecteur de distance tels que RIP et IGRP. </p>
+<p></p>
+<p>
+<b>Diffusing Update Algorithm </b>
+</p>
+<p>En tant que moteur de calcul du protocole EIGRP, l'algorithme de diffusion de mise à jour DUAL (Diffusing Update Algorithm) se trouve au centre du protocole de routage. DUAL garantit des chemins de secours sans boucle dans tout le domaine de routage. Grâce à DUAL, le protocole EIGRP stocke toutes les routes de sauvegarde disponibles afin de pouvoir s'adapter rapidement à d'autres routes en cas de besoin. </p>
+<p></p>
+<p>
+<b>Établissement des contiguïtés de voisinage</b>
+</p>
+<p>Le protocole EIGRP établit des relations avec les routeurs connectés directement sur lesquels le protocole EIGRP est activé. Les contiguïtés de voisinage servent à suivre l'état de ces voisins.</p>
+<p></p>
+<p>
+<b>Protocole de transport fiable </b>
+</p>
+<p>Le protocole de transport fiable (RTP, Reliable Transport Protocol) est propre au protocole EIGRP et assure l'acheminement des paquets EIGRP aux voisins. Le protocole RTP et le suivi des contiguïtés de voisinage jettent les bases de DUAL. </p>
+<p></p>
+<p>
+<b>Mises à jour partielles et limitées</b>
+</p>
+<p>Le protocole EIGRP utilise les termes « partiel » et « limité » pour désigner ses mises à jour. Contrairement au protocole RIP, le protocole EIGRP n'envoie pas de mises à jour régulières et les entrées de route ne peuvent pas devenir obsolètes. Le terme « partiel » signifie que la mise à jour ne contient que les informations concernant les modifications de route, par exemple un nouveau lien ou un lien devenu indisponible. Le terme « limité » désigne la propagation des mises à jour partielles qui sont envoyées uniquement aux routeurs affectés par les modifications. Cela permet de réduire la bande passante requise pour envoyer les mises à jour du protocole EIGRP.</p>
+<p></p>
+<p>
+<b>Équilibrage de charge à coût égal et inégal</b>
+</p>
+<p>Le protocole EIGRP prend en charge l'équilibrage de charge à coût égal et l'équilibrage de charge à coût inégal, qui permettent aux administrateurs de mieux répartir le flux du trafic vers leurs réseaux. </p>
+<p></p>
+<p>
+<b>Remarque </b>: le terme « protocole de routage hybride » est employé dans certains documents plus anciens pour définir le protocole EIGRP. Il peut cependant porter à confusion car le protocole EIGRP n'est pas une version hybride entre les protocoles de routage à vecteur de distance et à état de liens. Le protocole EIGRP est uniquement un protocole de routage à vecteur de distance ; Cisco n'emploie donc plus ce terme pour désigner ce protocole.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

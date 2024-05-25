@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.1.4 Multiplexage temporel</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation des connexions série point à point</h1>
+        <h2>Communications série</h2>
+      </div>
+      <div id="content">
+<p>Dans le cas d'une ligne louée, bien que le client paie pour des services dédiés et qu'une bande passante dédiée lui soit fournie, l'opérateur utilise des technologies de multiplexage sur le réseau. Le multiplexage est un système dans lequel plusieurs signaux logiques partagent un seul canal physique. TDM (Time-division multiplexing) et STDM (Statistical time-division multiplexing) sont deux types courants de multiplexage.</p>
+<p></p>
+<p>
+<b>TDM</b>
+</p>
+<p></p>
+<p>Bell Laboratories a inventé le TDM pour optimiser le volume de trafic de voix transporté par un support. Avant l'arrivée du multiplexage, chaque appel téléphonique devait disposer de sa propre liaison physique. Cette solution était donc coûteuse et limitée en termes d'évolutivité. TDM divise la bande passante d'une liaison unique en tranches de temps distinctes. TDM transmet un ou plusieurs canaux (flux de données) sur la même liaison en allouant une tranche de temps différente pour la transmission de chaque canal. Ainsi, les canaux utilisent la liaison à tour de rôle. </p>
+<p></p>
+<p>TDM est un concept de couche physique. Il ne s'occupe pas de la nature des informations multiplexées sur le canal de sortie. TDM est indépendant du protocole de couche 2 utilisé par les canaux d'entrée.</p>
+<p></p>
+<p>On peut comparer TDM à la circulation sur une autoroute. Pour assurer la circulation de quatre routes vers une autre ville, les voitures peuvent être envoyées sur une voie si toutes les routes assurent le même service et que la circulation est synchronisée. Si chacune des quatre voies envoie une voiture sur l'autoroute principale toutes les quatre secondes, l'autoroute reçoit les voitures au rythme d'une par seconde. Tant que la vitesse de toutes les automobiles est synchronisée, aucune collision ne se produit. À l'arrivée, le mécanisme inverse se produit et les voitures quittent l'autoroute et empruntent les routes locales selon le même rythme.</p>
+<p></p>
+<p>C'est le principe qu'utilise le multiplexage temporel synchrone pour envoyer des données sur la liaison. TDM augmente la capacité de la liaison de transmission en décomposant le temps en plus petits intervalles égaux, afin que la liaison transporte les bits de plusieurs sources. </p>
+<p></p>
+<p>Dans l'illustration, le multiplexeur (MUX) au niveau de l'émetteur accepte trois signaux distincts. Le multiplexeur fractionne chaque signal en segments. Il place chaque segment dans un seul canal en insérant chaque segment dans une tranche de temps. </p>
+<p></p>
+<p>Le multiplexeur côté destination recompose le flux TDM en trois flux de données séparés en se basant uniquement sur le moment où arrive chaque bit. Une technique appelée entrelacement de bits conserve le nombre et la séquence de bits pour chaque transmission spécifique, de sorte qu'ils puissent être de nouveau assemblés rapidement et efficacement pour reprendre leur format initial à leur arrivée. L'entrelacement de bits effectue les mêmes opérations, mais comme chaque octet se compose de 8 bits, le processus a besoin d'une tranche horaire plus importante.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

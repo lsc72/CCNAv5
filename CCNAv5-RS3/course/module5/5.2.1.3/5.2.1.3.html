@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.1.3 Commandes de dépannage OSPF </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résolution des problèmes liés aux mises en œuvre du protocole OSPF à zone unique</h1>
+        <h2>Éléments de dépannage du protocole OSPF à zone unique</h2>
+      </div>
+      <div id="content">
+<p>Il existe de nombreuses commandes OSPF différentes facilitant le processus de dépannage. Les commandes les plus répandues sont récapitulées ci-dessous.</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip protocols</b>
+</span>
+<b></b>(Figure 1) : utilisée pour vérifier des informations de configuration OSPF essentielles, y compris l'ID de processus OSPF, l'ID de routeur, les réseaux annoncés par le routeur, les voisins desquels le routeur reçoit des mises à jour et la distance administrative par défaut, qui a la valeur 110 pour OSPF.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip ospf neighbor</b>
+</span>
+<b></b> (Figure 2) : utilisée pour vérifier que le routeur a établi une contiguïté avec ses routeurs voisins. Affiche l'ID de routeur, la priorité, l'état OSPF et le minuteur Dead du voisin, l'adresse IP de l'interface du voisin et l'interface par laquelle le voisin est accessible. Si l'ID du routeur voisin ne s'affiche pas, ou si l'état du routeur voisin est différent de FULL ou de 2WAY, les deux routeurs n'ont pas établi de contiguïté OSPF. Lorsque deux routeurs n’établissent pas de contiguïté, les informations d’état de liens ne sont pas échangées. Les bases de données à état de liens incomplètes peuvent entraîner des arborescences SPF et des tables de routage imprécises. Les routes vers les réseaux de destination peuvent ne pas exister, ou peuvent ne pas être les meilleurs chemins.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip ospf interface</b>
+</span>
+<b></b>(Figure 3) : utilisée pour afficher les paramètres OSPF configurés sur une interface, tels que l'ID de processus OSPF auquel est attribuée l'interface, la zone où se trouvent les interfaces, le coût de l'interface et les intervalles des paquets Hello et Dead. L'ajout du nom et du numéro de l'interface à la commande permet d'afficher le résultat pour une interface spécifique.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip ospf</b>
+</span>
+<b></b>(Figure 4) : utilisée pour examiner l'ID de processus OSPF et l'ID de routeur. Cette commande affiche également les informations de zone OSPF, ainsi que la dernière fois où l'algorithme SPF a été calculé. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip route ospf</b>
+</span>
+<b></b>(Figure 5) : utilisée pour afficher uniquement les routes apprises par OSPF dans la table de routage. Le résultat de cette commande indique que R1 a appris quatre réseaux distants via le protocole OSPF.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>clear ip ospf </b>
+</span>
+<span class="cmd">[</span>
+<span class="cmd">
+<i>process-id</i>
+</span>
+<span class="cmd">]</span>
+<span class="cmd">
+<i></i>
+</span>
+<span class="cmd">
+<b>process</b>
+</span>
+<b></b> : utilisée pour réinitialiser les contiguïtés de voisinage OSPFv2.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

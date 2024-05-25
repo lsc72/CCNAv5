@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.2.2 Création d&#x0027;une trame</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche liaison de données</h1>
+        <h2>Structure de trame de couche 2</h2>
+      </div>
+      <div id="content">
+<p>Lorsque les données voyagent sur les supports, elles sont converties en un flux de bits, ou de 1 et de 0. Si un nœud reçoit de longs flux de bits, comment détermine-t-il où commence et où finit une trame, ou quels bits représentent l'adresse ? </p>
+<p></p>
+<p>Le verrouillage de trame divise le flux en regroupements déchiffrables, des informations de contrôle étant insérées dans l'en-tête et dans le code de fin en tant que valeurs situées dans différents champs. Ce format attribue aux signaux physiques une structure pouvant être reçue par les noeuds et décodée en paquets au niveau de la destination.</p>
+<p></p>
+<p>Comme l'illustre la figure, les types de champ de trame générique sont les suivants : </p>
+<p>
+<ul>
+<li>
+<b>Indicateurs de début et de fin de trame</b> : ils sont utilisés par la sous-couche MAC pour identifier les limites de début et de fin de la trame.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adressage</b> : utilisé par la sous-couche MAC pour identifier les nœuds source et de destination.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Type</b> : ce champ permet à la sous-couche LLC d'identifier le protocole de couche 3.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Contrôle</b> : ce champ permet d'identifier les services de contrôle de flux spécifiques. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Données</b> : ce champ contient les données utiles de la trame (c'est-à-dire l'en-tête de paquet, l'en-tête de segment et les données).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Détection d'erreur</b> : inclus après les données pour constituer la fin de trame, ces champs de trame sont utilisés pour la détection des erreurs. </li>
+</ul>
+</p>
+<p></p>
+<p>Tous les protocoles n'incluent pas tous ces champs. Les normes d'un protocole de liaison de données spécifique définissent le format de trame réel. </p>
+<p></p>
+<p>
+<b>Remarque </b>: des exemples de formats de trames sont décrits à la fin de ce chapitre.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

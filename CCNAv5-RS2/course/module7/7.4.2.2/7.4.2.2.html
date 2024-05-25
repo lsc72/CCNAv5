@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.2.2 Lien et état de liens</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage dynamique à état de liens</h1>
+        <h2>Mises à jour d&#x0027;état de liens</h2>
+      </div>
+      <div id="content">
+<p>La première étape du processus de routage à état de liens consiste à faire en sorte que chaque routeur prenne connaissance de ses propres liens et de ses propres réseaux connectés directement. Lorsqu'une interface de routeur est configurée avec une adresse IP et un masque de sous-réseau, elle devient partie intégrante de ce réseau. </p>
+<p></p>
+<p>Consultez la topologie dans la Figure 1. Dans le cadre de cette discussion, supposons que le routeur R1 ait préalablement été configuré et dispose d'une connectivité totale avec tous les voisins. Toutefois, une brève coupure de courant est survenue sur le routeur R1 et ce dernier a dû redémarrer. </p>
+<p></p>
+<p>Pendant le démarrage, R1 charge le fichier de configuration initiale qui a été enregistré. Lorsque les interfaces précédemment configurées deviennent actives, R1 prend connaissance de ses propres réseaux connectés directement. Quels que soient les protocoles de routage utilisés, ces réseaux connectés directement figurent à présent comme entrées dans la table de routage. </p>
+<p></p>
+<p>Comme pour les protocoles à vecteur de distance et les routes statiques, l'interface doit être correctement configurée avec une adresse IPv4 et un masque de sous-réseau, et le lien doit être à l'état actif (up) avant que le protocole de routage à état de liens puisse le détecter. Comme avec les protocoles à vecteur de distance, l'interface doit être incluse dans une des instructions de configuration de routeur <span class="cmd"><b>network</b></span> avant de pouvoir participer au processus d'état de liens. </p>
+<p></p>
+<p>La figure 1 montre R1 lié à quatre réseaux connectés directement : </p>
+<p>
+<ul>
+<li>FastEthernet 0/0 - 10.1.0.0/16 </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Serial 0/0/0 - 10.2.0.0/16 </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Serial 0/0/1 - 10.3.0.0/16 </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Serial 0/1/0 - 10.4.0.0/16 </li>
+</ul>
+</p>
+<p></p>
+<p>Comme l'illustrent les Figures 2 à 5, les informations d'état de liens comprennent :</p>
+<p>
+<ul>
+<li>L'adresse IPv4 et le masque de sous-réseau de l'interface</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le type de réseau, par exemple Ethernet (diffusion) ou lien série point à point</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le coût du lien</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les éventuels routeurs voisins sur ce lien</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque :</b> l'implémentation Cisco du protocole OSPF indique la métrique de routage OSPF comme coût du lien basé sur la bande passante de l'interface de sortie. Pour les besoins de ce chapitre, nous emploierons des valeurs de coût arbitraires pour simplifier la démonstration.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

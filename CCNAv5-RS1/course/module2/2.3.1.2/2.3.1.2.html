@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.1.2 Interfaces et Ports</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Schémas d&#x0027;adressage</h1>
+        <h2>Ports et adresses</h2>
+      </div>
+      <div id="content">
+<p>Les communications réseau dépendent des interfaces des périphériques utilisateur, des interfaces des périphériques réseau et des câbles de connexion. </p>
+<p></p>
+<p>Chaque interface a des caractéristiques, ou des normes, qui la définissent : un câble de connexion à l'interface doit donc être adapté aux normes physiques de l'interface. Ces supports réseau incluent les câbles en cuivre à paires torsadées, les câbles à fibres optiques, les câbles coaxiaux ou la technologie sans fil. Les différents types de supports réseau possèdent divers avantages et fonctionnalités. Tous les supports réseau ne possèdent pas les mêmes caractéristiques et ne conviennent pas pour les mêmes objectifs. Quelques différences entre les supports de transmission :</p>
+<p></p>
+<p>
+<ul>
+<li>la distance sur laquelle les supports peuvent transporter correctement un signal ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>l'environnement dans lequel les supports doivent être installés ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>la quantité de données et le débit de la transmission ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>le coût des supports et de l'installation.</li>
+</ul>
+</p>
+<p></p>
+<p>Chaque liaison à Internet requiert un type de support réseau spécifique, ainsi qu'une technologie réseau particulière. L'Ethernet est la technologie de réseau local (LAN) la plus répandue aujourd'hui. Les ports Ethernet sont présents sur les périphériques des utilisateurs finaux, les commutateurs et d'autres périphériques réseau pouvant se connecter physiquement au réseau à l'aide d'un câble. Pour qu'un câble puisse connecter des périphériques à l'aide d'un port Ethernet, celui-ci doit disposer du connecteur approprié, RJ-45. </p>
+<p></p>
+<p>Les commutateurs Cisco IOS sont équipés de ports physiques pour la connexion, mais intègrent également une ou plusieurs interfaces virtuelles de commutateur (SVI). Ce sont des interfaces virtuelles car il n'existe aucun matériel sur le périphérique associé : une interface SVI est créée au niveau logiciel. L'interface virtuelle est un moyen de gérer à distance un commutateur sur un réseau grâce à l'IPv4. Chaque commutateur dispose d'une interface SVI apparaissant dans la configuration initiale par défaut prête à l'emploi . L'interface SVI par défaut est l'interface VLAN1.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

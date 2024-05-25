@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.2.2 Serveur Cisco Easy VPN et accès à distance</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Accès à distance</h1>
+        <h2>VPN d&#x0027;accès à distance IPsec</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Serveur Cisco Easy VPN</b>
+</p>
+<p></p>
+<p>Le serveur Cisco Easy VPN permet aux employés mobiles et distants utilisant un logiciel client VPN sur leur PC de créer des tunnels IPsec sécurisés afin d'accéder à l'intranet de leur siège social contenant des données et des applications critiques. Il permet aux routeurs Cisco IOS et aux pare-feu Cisco ASA d'agir en tant que périphériques de tête de réseau VPN dans des VPN de site à site ou d'accès à distance. Les périphériques de bureau distant utilisent la fonctionnalité Cisco Easy VPN distant ou l'application cliente VPN Cisco pour se connecter au serveur, qui télécharge ensuite les stratégies de sécurité définies vers le périphérique VPN distant. Cela permet de s'assurer que ces connexions possèdent des stratégies mises à jour avant l'établissement de la connexion. </p>
+<p></p>
+<p>
+<b>Cisco Easy VPN distant</b>
+</p>
+<p></p>
+<p>Cisco Easy VPN distant permet aux routeurs Cisco IOS ou aux clients logiciels d'agir en tant que clients VPN distants. Ces périphériques peuvent recevoir des stratégies de sécurité de la part d'un serveur Cisco Easy VPN, minimisant ainsi la configuration VPN requise au niveau de l'emplacement distant. Cette solution économique est idéale pour les bureaux distants qui ne disposent que d'une assistance informatique limitée ou pour les déploiements importants d'équipements d'abonné (CPE) pour lesquels il n'est pas pratique de configurer plusieurs périphériques distants de manière individuelle.</p>
+<p></p>
+<p>La figure illustre trois périphériques réseau avec la fonctionnalité d'accès à distance Cisco Easy VPN activée, tous trois se connectant à un serveur Cisco Easy VPN pour l'obtention des paramètres de configuration. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

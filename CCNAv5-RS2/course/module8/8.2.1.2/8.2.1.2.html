@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.1.2 Mode de configuration OSPF du routeur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv2 à zone unique</h1>
+        <h2>ID de routeur OSPF</h2>
+      </div>
+      <div id="content">
+<p>La Figure 1 représente la topologie de référence pour cette rubrique. OSPFv2 est activé au moyen de la commande de mode de configuration globale <span class="cmd"><b>router ospf </b></span><span class="cmd"><i>process-id</i></span>. La valeur <span class="cmd"><i>process-id</i></span> est un nombre compris entre 1 et 65 535 choisi par l'administrateur réseau. La valeur <span class="cmd"><i>process-id</i></span> s'applique localement, ce qui signifie qu'il ne doit pas s'agir de la même valeur que sur les autres routeurs OSPF pour pouvoir établir des contiguïtés avec ces voisins. </p>
+<p></p>
+<p>La Figure 2 présente un exemple d'accès au mode de configuration OSPF de routeur sur R1. </p>
+<p></p>
+<p>
+<b>Remarque :</b> la liste de commandes a été modifiée pour afficher uniquement celles qui sont utilisées dans ce chapitre. Pour obtenir une liste complète de commandes, utilisez les contrôleurs de syntaxe dans la Figure 3.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe dans la Figure 3 pour passer en mode de configuration de routeur OSPF sur R2 et pour obtenir la liste des commandes disponibles à l'invite. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

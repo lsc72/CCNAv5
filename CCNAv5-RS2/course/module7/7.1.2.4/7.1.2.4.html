@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.2.4 Tableau de bord de routage dynamique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de routage dynamique</h1>
+        <h2>Comparaison des routages statique et dynamique</h2>
+      </div>
+      <div id="content">
+<p>La table dans la figure illustre les avantages et les inconvénients du routage dynamique. Les protocoles de routage dynamique fonctionnent bien dans n'importe quel type de réseau constitué de plusieurs routeurs. Ils sont évolutifs et déterminent automatiquement les meilleures routes en cas de modification de la topologie. Bien que d'autres éléments interviennent dans la configuration des protocoles de routage dynamique, ces derniers sont plus simples à configurer dans un grand réseau. </p>
+<p></p>
+<p>Il y a des inconvénients au routage dynamique. Le routage dynamique nécessite la connaissance de commandes supplémentaires. Il est également moins sécurisé que le routage statique parce que les interfaces identifiées par le protocole de routage envoient des mises à jour de routage. Les routes empruntées peuvent varier d'un paquet à l'autre. L'algorithme de routage utilise des capacités supplémentaires en matière de processeur, de mémoire vive et de bande passante. </p>
+<p></p>
+<p>Remarquez que le routage dynamique apporte une solution aux inconvénients du routage statique. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

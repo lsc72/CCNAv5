@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.3.2 Analyse NetFlow avec un collecteur NetFlow</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>NetFlow</h1>
+        <h2>Examen des modèles de trafic</h2>
+      </div>
+      <div id="content">
+<p>La société Plixer International a développé le logiciel Scrutinizer NetFlow Analyzer. L'outil Scrutinizer est l'une des nombreuses options de capture et d'analyse de données NetFlow sur un collecteur NetFlow.</p>
+<p></p>
+<p>Rappelez-vous de la configuration de la section précédente :</p>
+<p>
+<ul>
+<li>Adresse IP 192.168.1.1/24 sur G0/1</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Trafic d'entrée et de sortie surveillé pour NetFlow</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Collecteur NetFlow à l'adresse 192.168.1.3/24</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Port de capture UDP NetFlow 2055</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Format d'exportation de la version 5 de NetFlow </li>
+</ul>
+</p>
+<p></p>
+<p>Le logiciel Scrutinizer a été installé sur le collecteur NetFlow à l'adresse 192.168.1.3/24. </p>
+<p></p>
+<p>La Figure 1 affiche l'interface du logiciel au moment de l'ouverture de l'application Scrutinizer. </p>
+<p></p>
+<p>La Figure 2 affiche le résultat d'un clic sur l'onglet Status lorsque l'application est en cours d'exécution. Le logiciel affiche le message suivant : <span class="cmd">Flows detected, please wait while Scrutinizer prepares the initial reports</span>.</p>
+<p></p>
+<p>La Figure 3 affiche l'écran Status au bout de quelques minutes. Le routeur R1 a été configuré avec le nom de domaine cisco.com. </p>
+<p></p>
+<p>La configuration SNMP de la section précédente est toujours active sur R1. Le logiciel Scrutinizer a été configuré avec la communauté SNMP <i>batonaug</i> dans l'onglet <b>Admin Settings</b>. Lorsque vous cliquez sur le lien SNMP à l'adresse R1.cisco.com dans le panneau de gauche, l'affichage de la Figure 4 apparaît. Cette figure illustre une analyse de base du trafic de R1 communiquée au collecteur NetFlow par le biais du protocole SNMPv2c. Le logiciel MRTG (Multi Router Traffic Grapher) est un logiciel gratuit que de nombreux administrateurs réseau utilisent pour l'analyse de base du trafic. L'application Scrutinizer intègre le logiciel MRTG tandis que les graphiques de la Figure 4 sont générés par MRTG. Le graphique du haut reflète le trafic d'entrée et celui du bas le trafic de sortie pour l'interface G0/1 sur R1.</p>
+<p></p>
+<p>Enfin, l'onglet <b>Dashboard</b> de la Figure 5 affiche des données NetFlow réelles relatives aux principaux hôtes et applications. Le logiciel Scrutinizer possède des douzaines de ces gadgets, qui permettent l'affichage de diverses catégorisations des données. Dans la Figure 5, l'hôte supérieur est R1, avec la plus grande quantité de trafic entre R1 et le collecteur NetFlow. L'application supérieure est HTTPS, suivie par SNMP, HTTP, SSH, ICMP et NetBIOS.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

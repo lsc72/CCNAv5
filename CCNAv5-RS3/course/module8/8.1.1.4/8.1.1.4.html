@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.1.4 Vérification de la récapitulation automatique : show ip protocols</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations EIGRP avancées</h1>
+        <h2>Résumé automatique </h2>
+      </div>
+      <div id="content">
+<p>À la Figure 1, notez que le domaine de routage EIGRP comprend trois réseaux par classe :</p>
+<p>
+<ul>
+<li>Réseau de classe B 172.16.0.0/16 comprenant les sous-réseaux 172.16.1.0/24, 172.16.2.0/24 et 172.16.3.0/30</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Réseau de classe C 192.168.10.0/24 comprenant les sous-réseaux 192.168.10.4/30 et 192.168.10.8/30</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Réseau de classe C 192.168.1.0/24 sans sous-réseau</li>
+</ul>
+</p>
+<p></p>
+<p>Le résultat de la commande<span class="cmd"><b> show ip protocols </b></span>pour R1 à la Figure 2 montre que la récapitulation automatique est maintenant activée. Le résultat indique également les réseaux récapitulés et les interfaces correspondantes. Notez que R1 récapitule deux réseaux dans ses mises à jour de routage EIGRP :</p>
+<p>
+<ul>
+<li>192.168.10.0/24 envoyé à partir des interfaces GigabitEthernet 0/0 et Serial 0/0/0 ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>172.16.0.0/16 envoyé à partir de l'interface Serial 0/0/1.</li>
+</ul>
+</p>
+<p></p>
+<p>R1 répertorie les sous-réseaux 192.168.10.4/30 et 192.168.10.8/30 dans sa table de routage IPv4. </p>
+<p></p>
+<p>Comme indiqué à la Figure 3, R1 récapitule les sous-réseaux 192.168.10.4/30 et 192.168.10.8/30. Il réachemine l'adresse récapitulée de 192.168.10.0/24 à ses voisins sur ses interfaces Serial 0/0/0 et GigabitEthernet 0/0. Seul R2 reçoit la mise à jour de routage récapitulée, puisque R1 ne dispose d'aucun voisin EIGRP sur l'interface GigabitEthernet 0/0. </p>
+<p></p>
+<p>Comme indiqué à la Figure 4, R1 répertorie également les sous-réseaux 172.16.1.0/24, 172.16.2.0/24 et 172.16.3.0/30 dans sa table de routage IPv4. R3 sélectionne R1 comme successeur vers 172.16.0.0/16 en raison de sa distance de faisabilité plus courte. L'interface S0/0/0 R3 connectée à R1 utilise une bande passante par défaut de 1 544 kb/s. Le lien R3 vers R2 présente une distance de faisabilité supérieure, car l'interface S0/0/1 R3 a été configurée avec une bande passante inférieure de 1 024 kb/s.</p>
+<p></p>
+<p>Notez que la mise à jour récapitulée 172.16.0.0/16 n'est pas envoyée à partir des interfaces GigabitEthernet 0/0 et Serial 0/0/0 de R1, car ces deux interfaces appartiennent au même réseau de classe B 172.16.0.0/16. R1 envoie la mise à jour de routage non récapitulée 172.16.1.0/24 à R2. Les mises à jour récapitulées sont envoyées uniquement à partir des interfaces sur différents réseaux principaux par classe. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

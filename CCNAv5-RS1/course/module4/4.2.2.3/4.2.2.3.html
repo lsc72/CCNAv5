@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.2.3 Connecteurs UTP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Supports réseau</h1>
+        <h2>Câblage à paires torsadées non blindées (UTP)</h2>
+      </div>
+      <div id="content">
+<p>Le câble UTP est généralement terminé par un connecteur RJ-45 spécifié ISO 8877. Ce connecteur est utilisé pour de nombreuses spécifications de couche physique, dont Ethernet. La norme TIA/EIA 568 décrit la correspondance des codes couleur des fils avec les broches (brochage) pour les câbles Ethernet. </p>
+<p></p>
+<p>La vidéo proposée dans la Figure 1 montre un câble UTP terminé par un connecteur RJ-45. </p>
+<p></p>
+<p>Comme l'illustre la Figure 2, le connecteur RJ-45 est le composant mâle qui pince les fils à l'extrémité du câble. La prise (ou le port) est le composant femelle d'un périphérique réseau, d'une prise murale ou fixée sur une cloison ou d'un tableau de connexions. </p>
+<p></p>
+<p>Chaque fois qu'un câblage en cuivre est raccordé, cela implique le risque de perte de signal et l'introduction de parasites dans le circuit de communication. S'il est mal raccordé, chaque câble constitue une source potentielle de dégradation des performances de la couche physique. Il est essentiel que tous les raccordements de supports en cuivre soient de qualité supérieure pour garantir des performances optimales avec les technologies réseau actuelles et futures. </p>
+<p></p>
+<p>La Figure 3 présente un exemple d'un câble UTP mal raccordé et d'un câble UTP correct.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

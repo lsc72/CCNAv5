@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.1.3 Routage inter-VLAN avec la méthode router-on-a-stick</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout; 
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du routage inter-VLAN</h1>
+        <h2>Fonctionnement du routage inter-VLAN</h2>
+      </div>
+      <div id="content">
+<p>Alors que le routage inter-VLAN existant nécessite plusieurs interfaces physiques à la fois sur le routeur et sur le commutateur, une méthode moderne plus courante permet de l'éviter. En effet, grâce à un logiciel du routeur, il est possible de configurer une interface de routeur en tant que liaison trunk, ce qui signifie qu'une seule interface physique est requise sur le routeur et sur le commutateur pour acheminer les paquets entre plusieurs VLAN.</p>
+<p></p>
+<p>La méthode « router-on-a-stick » est un type de configuration de routeur dans laquelle une seule interface physique achemine le trafic entre plusieurs VLAN d'un réseau. Comme vous pouvez le voir dans la figure, le routeur est connecté au commutateur S1 à l'aide d'une seule connexion réseau physique (un trunk). </p>
+<p>L'interface de routeur est configurée pour fonctionner comme une liaison trunk et elle est connectée à un port de commutateur configuré en mode trunk. Le routeur effectue le routage inter-VLAN en acceptant le trafic étiqueté VLAN sur l'interface trunk provenant du commutateur adjacent. Il procède ensuite au routage en interne entre les VLAN à l'aide de sous-interfaces. Le routeur transfère alors le trafic acheminé, étiqueté VLAN vers le VLAN de destination, depuis la même interface physique utilisée pour recevoir le trafic.</p>
+<p></p>
+<p>Les sous-interfaces sont des interfaces virtuelles basées sur un logiciel, associées à une interface physique unique. Les sous-interfaces sont configurées dans le logiciel sur un routeur et chaque sous-interface est configurée indépendamment avec une adresse IP et une affectation VLAN. Les sous-interfaces sont configurées pour différents sous-réseaux correspondant à leur affectation VLAN afin de faciliter le routage logique. Une fois qu'une décision de routage a été prise en fonction de la destination VLAN, les trames de données sont étiquetées VLAN et renvoyées depuis l'interface physique. </p>
+<p></p>
+<p>Cliquez sur le bouton Lecture dans la figure pour voir une animation illustrant comment un router-on-a-stick effectue sa fonction de routage.</p>
+<p></p>
+<p>Observez l'animation :</p>
+<p></p>
+<p>1. Le PC1 sur le VLAN 10 communique avec le PC3 sur le VLAN 30 via le routeur R1 en utilisant une seule interface de routeur physique.</p>
+<p></p>
+<p>2. Le PC1 envoie son trafic de monodiffusion au commutateur S2.</p>
+<p></p>
+<p>3. Le commutateur S2 marque alors le trafic de monodiffusion comme provenant du VLAN 10 et le transmet par sa liaison trunk au commutateur S1.</p>
+<p></p>
+<p>4. Le commutateur S1 transfère le trafic étiqueté depuis l'autre interface trunk sur le port F0/5 vers l'interface du routeur R1.</p>
+<p></p>
+<p>5. Le routeur R1 accepte le trafic de monodiffusion étiqueté sur le VLAN 10 et l'achemine vers le VLAN 30 en utilisant ses sous-interfaces configurées.</p>
+<p></p>
+<p>6. Le trafic de monodiffusion est étiqueté avec le VLAN 30 lors de son transfert depuis l'interface de routeur vers le commutateur S1.</p>
+<p></p>
+<p>7. Le commutateur S1 transmet le trafic de monodiffusion étiqueté via l'autre liaison trunk au commutateur S2.</p>
+<p></p>
+<p>8. Le commutateur S2 supprime l'étiquette VLAN de la trame de monodiffusion et transfère la trame au PC3 sur le port F0/6.</p>
+<p></p>
+<p>
+<b>Remarque :</b> la méthode router-on-a-stick de routage inter-VLAN ne va pas au-delà de 50 VLAN.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

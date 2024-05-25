@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.1.2 Système binaire</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Structure de l&#x0027;adresse IPv4</h2>
+      </div>
+      <div id="content">
+<p>Pour l'IPv4, les adresses sont des nombres binaires de 32 bits. Cependant, pour une plus grande facilité d'utilisation, les schémas binaires représentant les adresses IPv4 sont exprimés en notation décimale à point. Cela est effectué en séparant tout d'abord tous les octets (8 bits) du schéma binaire de 32 bits par un point. Le nom d'« octet » s'explique par le fait que chaque nombre décimal représente 8 bits.</p>
+<p></p>
+<p>L'adresse binaire</p>
+<p>
+<span class="cmd">11000000 10101000 00001010 00001010</span>
+</p>
+<p></p>
+<p>est exprimée en décimale à point de la manière suivante :</p>
+<p>192.168.10.10</p>
+<p></p>
+<p>Dans la Figure 1, cliquez sur chaque bouton pour voir comment l'adresse binaire de 32 bits est représentée par des octets sous forme de décimales à point.</p>
+<p></p>
+<p>Mais comment sont déterminés les équivalents décimaux réels ?</p>
+<p></p>
+<p>
+<b>Système binaire</b>
+</p>
+<p>Dans le système binaire, la base est 2. Par conséquent, chaque position représente une augmentation de la puissance de 2. Dans les nombres binaires de 8 bits, les positions représentent les quantités suivantes :</p>
+<p></p>
+<p>2^7 2^6 2^5 2^4 2^3 2^2 2^1 2^0</p>
+<p></p>
+<p>128 64 32 16 8 4 2 1</p>
+<p></p>
+<p>Le système de base 2 ne comprend que deux chiffres : 0 et 1. </p>
+<p></p>
+<p>Lorsque nous interprétons un octet dans sa forme décimale, nous obtenons le nombre que les positions représentent si le chiffre est 1 et aucun nombre si le chiffre est 0, comme illustré à la Figure 1. </p>
+<p></p>
+<p>La Figure 2 illustre la représentation binaire du nombre décimal 192. Un 1 dans une certaine position indique que nous ajoutons cette valeur au total. Un 0 signifie que nous n'ajoutons pas cette valeur. Le nombre binaire 11000000 a un 1 en position 2^7 (valeur décimale : 128) et un 1 en position 2^6 (valeur décimale : 64). Les bits restants sont des 0, donc nous n'ajoutons pas les valeurs décimales correspondantes. Le résultat de l'addition 128+64 est 192, l'équivalent décimal de 11000000.</p>
+<p></p>
+<p>Voici deux exemples :</p>
+<p></p>
+<p>
+<b>Exemple 1 : un octet contenant uniquement des 1, 11111111</b>
+</p>
+<p></p>
+<p>Un 1 dans chaque position indique que la valeur de cette position est ajoutée au total. Un octet composé uniquement de 1 implique que les valeurs de chaque position sont incluses dans le total, par conséquent, le total de tous les 1 est égal à 255.</p>
+<p></p>
+<p>128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = 255</p>
+<p></p>
+<p>
+<b>Exemple 2 : un octet contenant uniquement des 0, 00000000 </b>
+</p>
+<p>Un 0 dans chaque position indique que la valeur de cette position n'est pas ajoutée au total. Avec un 0 dans chacune des positions, un total de 0 est obtenu.</p>
+<p></p>
+<p>0 + 0 + 0 + 0 + 0 + 0 + 0 + 0 = 0</p>
+<p></p>
+<p>Une combinaison différente de uns et de zéros donne une valeur décimale différente.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

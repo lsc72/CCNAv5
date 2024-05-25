@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.3.1 Attribution d&#x0027;une adresse IPv4 statique à un hôte</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Adresses IPv4 de monodiffusion, de diffusion et de multidiffusion</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Adresses pour les périphériques d'utilisateurs</b>
+</p>
+<p>Dans la plupart des réseaux de données, l'immense majorité des hôtes sont des périphériques finaux, tels que des ordinateurs, des téléphones IP, des imprimantes, des tablettes et des smartphones. Dans la mesure où ces hôtes représentent le plus grand nombre de périphériques au sein d'un réseau, le plus grand nombre d'adresses doit leur être attribué. Ces hôtes se voient attribuer des adresses IP de la plage d'adresses disponibles dans le réseau. Les adresses IP peuvent être attribuées de manière statique ou de manière dynamique. </p>
+<p></p>
+<p>
+<b>Attribution statique</b>
+</p>
+<p>Avec une attribution statique, l'administrateur réseau doit configurer manuellement les informations réseau relatives à un hôte. La Figure 1 illustre la fenêtre des propriétés de la carte réseau. Pour configurer une adresse IPv4 statique, sélectionnez IPv4 sur l'écran de la carte réseau, puis tapez l'adresse, le masque de sous-réseau et la passerelle par défaut, tous statiques. La Figure 2 présente les informations nécessaires pour une configuration statique : l'adresse IP, le masque de sous-réseau et la passerelle par défaut. </p>
+<p></p>
+<p>Il existe plusieurs avantages à choisir l'adressage statique. Par exemple, il est utile pour les imprimantes, les serveurs et les autres périphériques réseau qui ne changent pas souvent d'emplacement et qui doivent être accessibles pour les clients du réseau en fonction d'une adresse IP fixe. Si les hôtes ont l'habitude d'accéder à un serveur à une adresse IP particulière, cela peut poser des problèmes en cas de modification de cette adresse. De plus, l'attribution statique des informations d'adressage permet de mieux contrôler les ressources réseau. Par exemple, il est possible de créer des filtres d'accès basés sur le trafic vers et à partir d'une adresse IP spécifique. Cependant, l'adressage statique prend du temps car il doit être paramétré sur chaque hôte. </p>
+<p></p>
+<p>Lorsque l'adressage IP statique est utilisé, il convient de tenir à jour une liste exacte des adresses IP attribuées à chaque périphérique. Ces adresses étant permanentes, en principe, elles ne seront pas réutilisées.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

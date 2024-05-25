@@ -1,0 +1,189 @@
+﻿<textcomponents> <!--SCREEN 1-->  
+
+<component id="ID_s1_inst">
+<text><![CDATA[<b>Topologie&nbsp;: configuration des listes de contrôle d'accès standard  </b><br/><br/>Utilisez ce schéma de topologie réseau pour répondre aux besoins des trois scénarios. Vous pouvez revenir à cette topologie si nécessaire. Cliquez sur le bouton&nbsp;2 pour continuer cet exercice.]]></text>
+</component> <!-- SCREEN 2 Drag and Drop -->  
+
+<component id='ID_s2_inst'>
+	<text><![CDATA[<b>Scénario&nbsp;1&nbsp;: configuration de listes de contrôle d'accès standard  </b><br/><br/>Reportez-vous au schéma de la topologie réseau pour répondre aux besoins de ce scénario. Faites glisser les commandes jusqu'aux espaces prévus dans l'ordre correct (de haut en bas) pour configurer et appliquer une liste de contrôle d'accès standard qui contrôlera l'entrée sur le réseau local 192.168.1.0. L'hôte 192.168.3.77 ne doit pas pouvoir accéder à ce réseau local, mais tous les autres hôtes des réseaux 192.168.3.0 et 192.168.4.0 doivent être autorisés à y accéder. Cliquez sur le bouton&nbsp;3 pour continuer cet exercice.]]></text>
+</component>
+
+<component id='ID_s2_target_header'>
+	<text><![CDATA[<b>Commandes de configuration de R1&nbsp;:  </b>]]></text>
+</component>
+
+<component id='ID_s2_drag01'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">ip access-group 44 in</font>]]></text>
+</component>
+
+<component id='ID_s2_drag02'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">ip access-group 44 out</font>]]></text>
+</component>
+
+<component id='ID_s2_drag03'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">access-list 44 permit 192.168.4.0 0.0.0.255</font>]]></text>
+</component>
+
+<component id='ID_s2_drag04'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">interface gi0/0</font>]]></text>
+</component>
+
+<component id='ID_s2_drag05'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">interface gi0/1</font>]]></text>
+</component>
+
+<component id='ID_s2_drag06'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">access-list 44 deny 192.168.3.77 0.0.0.0</font>]]></text>
+</component>
+
+<component id='ID_s2_drag07'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">access-list 44 permit 192.168.3.0 0.0.0.255</font>]]></text>
+</component>
+
+
+<component id='ID_s2_CORRECT_TITLE'>
+	<text><![CDATA[<b>Réponse correcte  </b>]]></text>
+</component>
+
+<component id='ID_s2_CORRECT_BODY'>
+	<text><![CDATA[Vous avez correctement exécuté les commandes de configuration de liste de contrôle d'accès. Cliquez sur le bouton&nbsp;3 pour continuer.]]></text>
+</component>
+
+
+<component id='ID_s2_INCORRECT_TITLE'>
+	<text><![CDATA[<b>Réponse incorrecte  </b>]]></text>
+</component>
+
+<component id='ID_s2_INCORRECT_BODY'>
+	<text><![CDATA[Vous n'avez pas correctement exécuté les commandes de configuration de liste de contrôle d'accès. Cliquez à nouveau sur Réinitialiser.]]></text>
+</component>
+
+<component id='ID_s2_CHECK'>
+	<text><![CDATA[<b>Contrôler  </b>]]></text>
+</component>
+
+<component id='ID_s2_RESET'>
+	<text><![CDATA[<b>Réinitialiser  </b>]]></text>
+</component> <!--SCREEN 3 Drag and Drop -->  
+
+<component id='ID_s3_inst'>
+	<text><![CDATA[<b>Scénario&nbsp;2&nbsp;: configuration de listes de contrôle d'accès standard  </b><br/><br/>Reportez-vous au schéma de la topologie réseau pour répondre aux besoins de ce scénario. Faites glisser les commandes jusqu'aux espaces prévus dans l'ordre correct (de haut en bas) pour configurer et appliquer une liste de contrôle d'accès standard qui contrôlera l'accès à l'hôte 192.168.4.12. L'hôte 192.168.1.66 et tous les hôtes du réseau local 192.168.2.0 doivent être autorisés à y accéder. L'accès à l'hôte 192.168.4.12 doit être refusé pour tous les autres réseaux. Cliquez sur le bouton&nbsp;4 pour continuer cet exercice. 
+]]></text>
+</component>
+
+<component id='ID_s3_target_header'>
+	<text><![CDATA[<b>Commandes de configuration de R2&nbsp;:  </b>]]></text>
+</component>
+
+<component id='ID_s3_drag01'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">access-list 66 permit 192.168.1.66 0.0.0.0</font>]]></text>
+</component>
+
+<component id='ID_s3_drag02'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">access-list 66 permit 192.168.2.0 0.0.0.255</font>]]></text>
+</component>
+
+<component id='ID_s3_drag03'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">access-list 66 deny 192.168.2.0 0.0.0.255</font>]]></text>
+</component>
+
+<component id='ID_s3_drag04'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">interface gi0/1</font>]]></text>
+</component>
+
+<component id='ID_s3_drag05'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">ip access-group 66 out</font>]]></text>
+</component>
+<component id='ID_s3_drag06'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">ip access-group 66 in</font>]]></text>
+</component>
+
+
+<component id='ID_s3_CORRECT_TITLE'>
+	<text><![CDATA[<b>Réponse correcte  </b>]]></text>
+</component>
+
+<component id='ID_s3_CORRECT_BODY'>
+	<text><![CDATA[Vous avez correctement exécuté les commandes de configuration de liste de contrôle d'accès. Cliquez sur le bouton&nbsp;4 pour continuer.]]></text>
+</component>
+
+
+<component id='ID_s3_INCORRECT_TITLE'>
+	<text><![CDATA[<b>Réponse incorrecte  </b>]]></text>
+</component>
+
+<component id='ID_s3_INCORRECT_BODY'>
+	<text><![CDATA[Vous n'avez pas correctement exécuté les commandes de configuration de liste de contrôle d'accès. Cliquez à nouveau sur Réinitialiser.]]></text>
+</component>
+
+<component id='ID_s3_CHECK'>
+	<text><![CDATA[<b>Contrôler  </b>]]></text>
+</component>
+
+<component id='ID_s3_RESET'>
+	<text><![CDATA[<b>Réinitialiser  </b>]]></text>
+</component> <!--SCREEN 4 Drag and Drop -->  
+
+<component id='ID_s4_inst'>
+	<text><![CDATA[<b>Scénario&nbsp;3&nbsp;: configuration de listes de contrôle d'accès standard  </b><br/><br/>Reportez-vous au schéma de la topologie réseau pour répondre aux besoins de ce scénario. Faites glisser les commandes jusqu'aux espaces prévus dans l'ordre correct (de haut en bas) pour configurer et appliquer une liste de contrôle d'accès standard qui contrôlera l'accès aux réseaux locaux 192.168.3.0 et 192.168.4.0. Tous les hôtes du réseau local 192.168.1.0 doivent être autorisés à accéder à ces deux réseaux. Le réseau 192.168.2.0 ne doit pas avoir accès à ces réseaux. 
+]]></text>
+</component>
+
+<component id='ID_s4_target_header'>
+	<text><![CDATA[<b>Commandes de configuration de R2&nbsp;:  </b>]]></text>
+</component>
+
+<component id='ID_s4_drag01'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">access-list 88 permit 192.168.2.0 0.0.0.255</font>]]></text>
+</component>
+
+<component id='ID_s4_drag02'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">ip access-group 88 in</font>]]></text>
+</component>
+
+<component id='ID_s4_drag03'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">access-list 88 deny 192.168.2.0 0.0.0.255</font>]]></text>
+</component>
+
+<component id='ID_s4_drag04'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">interface s0/0/0</font>]]></text>
+</component>
+
+<component id='ID_s4_drag05'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">interface gi0/0</font>]]></text>
+</component>
+<component id='ID_s4_drag06'>
+	<text><![CDATA[<font color="#393536" face="_typewriter">access-list 88 permit 192.168.1.0 0.0.0.255</font>]]></text>
+</component>
+
+
+
+<component id='ID_s4_CORRECT_TITLE'>
+	<text><![CDATA[<b>Réponse correcte  </b>]]></text>
+</component>
+
+<component id='ID_s4_CORRECT_BODY'>
+	<text><![CDATA[Vous avez correctement exécuté les commandes de configuration de liste de contrôle d'accès. ]]></text>
+</component>
+
+
+<component id='ID_s4_INCORRECT_TITLE'>
+	<text><![CDATA[<b>Réponse incorrecte  </b>]]></text>
+</component>
+
+<component id='ID_s4_INCORRECT_BODY'>
+	<text><![CDATA[Vous n'avez pas correctement exécuté les commandes de configuration de liste de contrôle d'accès. Cliquez à nouveau sur Réinitialiser.]]></text>
+</component>
+
+<component id='ID_s4_CHECK'>
+	<text><![CDATA[<b>Contrôler  </b>]]></text>
+</component>
+
+<component id='ID_s4_RESET'>
+	<text><![CDATA[<b>Réinitialiser  </b>]]></text>
+</component>
+
+
+
+
+</textcomponents>

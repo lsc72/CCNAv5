@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.3.1.3 Segmentation en sous-réseaux à partir de l&#x0027;ID d&#x0027;interface</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.3.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Critères de conception à prendre en compte pour les réseaux IPv6</h1>
+        <h2>Segmentation en sous-réseaux d&#x0027;un réseau IPv6</h2>
+      </div>
+      <div id="content">
+<p>Avec IPv6, il est possible d'emprunter des bits à l'ID d'interface pour créer des sous-réseaux IPv6 de la même manière que nous avons emprunté des bits à la partie hôte d'une adresse IPv4. Cette opération vise généralement à améliorer la sécurité en créant moins d'hôtes par sous-réseau et pas nécessairement pour créer des sous-réseaux supplémentaires.</p>
+<p></p>
+<p>Lorsque vous étendez l'ID de sous-réseau en empruntant des bits à l'ID d'interface, il est recommandé d'effectuer la segmentation au niveau d'une limite de quartet. Un quartet correspond à 4 bits ou un caractère hexadécimal. Comme l'illustre la figure, le préfixe de sous-réseau /64 est étendu de 4 bits ou 1 quartet, et devient donc /68. Cela réduit la taille de l'ID d'interface de 4 bits. Il passe donc de 64 à 60 bits.</p>
+<p></p>
+<p>La création de sous-réseaux sur les limites de quartet implique que seuls les masques de sous-réseau alignés sur les quartets sont utilisés. À partir de /64, les masques de sous-réseau alignés sur les quartets sont /68, /72, /76, /80, etc. </p>
+<p></p>
+<p>La segmentation au niveau d'une limite de quartet crée des sous-réseaux au moyen de la valeur hexadécimale supplémentaire. Dans l'exemple, le nouvel ID de sous-réseau comprend les 5 valeurs hexadécimales allant de 00000 à FFFFF. </p>
+<p></p>
+<p>Il est possible d'effectuer la segmentation au sein d'une limite de quartet avec un seul chiffre hexadécimal, mais ce n'est pas recommandé, voire inutile. Le fait de créer des sous-réseaux au sein d'une limite de quartet ne permet pas de déterminer facilement le préfixe à partir de l'ID d'interface Par exemple, si une longueur de préfixe /66 est utilisée, les deux premiers bits feraient partie de l'ID de sous-réseau et les deux bits suivants feraient partie de l'ID d'interface</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

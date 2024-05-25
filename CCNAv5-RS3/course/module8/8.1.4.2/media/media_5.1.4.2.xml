@@ -1,0 +1,74 @@
+﻿<textcomponents>
+
+
+<component id="ID_s1_title">
+	<text><![CDATA[<b>Configuration du protocole EIGRP pour les minuteurs Hello et de mise en attente IPv4</b>]]></text>
+</component>
+
+<component id='ID_s1_table'>
+	<text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4' class="mtable">
+	<tr>
+		<td colspan='4' bgcolor='#98D3D1' valign="top"><font color='#1C3635' style="font-size:10px !important;"><b>Intervalles Hello et temps d'attente par défaut du protocole EIGRP</b></font></td>					
+	</tr>
+	<tr class="liner">
+		<td colspan='4' bgcolor='#0E6360' class="mtable_top"><font size='1' color='#434321'><span style="color:#DAE17A">.</span></font></td>
+	</tr>
+	<tr>
+		<td bgcolor='#077A77' valign="top"  class="mtitle" style="font-size:10px !important;"><font color='#ffffff'><b>Bande passante</b></font></td>
+		<td bgcolor='#077A77' valign="top"  class="mtitle" style="font-size:10px !important;"><font color='#ffffff'><b>Exemple de liaison</b></font></td>
+		<td bgcolor='#077A77' valign="top"  class="mtitle" style="font-size:10px !important;"><font color='#ffffff'><b>Intervalle Hello par défaut</b></font></td>
+		<td bgcolor='#077A77' valign="top"  class="mtitle" style="font-size:10px !important;"><font color='#ffffff'><b>Temps d’attente par défaut</b></font></td>
+	</tr>
+	<tr>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>1,544&nbsp;Mbit/s</font></td>	
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>Relais de trames multipoint</font></td>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>60 secondes</font></td>			
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>180 secondes</font></td>
+	</tr>
+	<tr>
+		<td bgcolor='#FFFFFF' valign="top"><font color='#393536'>Supérieure à 1,544 Mbits/s</font></td>	
+		<td bgcolor='#FFFFFF' valign="top"><font color='#393536'>T1, Ethernet</font></td>
+		<td bgcolor='#FFFFFF' valign="top"><font color='#393536'>5 secondes</font></td>		
+		<td bgcolor='#FFFFFF' valign="top"><font color='#393536'>15 secondes</font></td>
+	</tr>
+	</table>]]></text>
+</component>
+
+<component id="ID_s2_title">
+	<text><![CDATA[<b>Configuration des minuteurs sur R2</b>]]></text>		
+</component>
+
+<component id="ID_sc_reset">
+	<text><![CDATA[Réinitialiser]]></text>
+</component>
+
+<component id="ID_sc_showme">
+	<text><![CDATA[Démonstration]]></text>
+</component>
+
+<component id="ID_sc_showall">
+	<text><![CDATA[Afficher tout]]></text>
+</component>
+
+<component id="ID_s2_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b>***</b><font size='10' face="Arial" color="#0000FF">Vous devez saisir la commande exacte et complète.</font><b>***</b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>Configurez l'interface Serial&nbsp;0/0/0 de R2 afin d'utiliser un intervalle Hello de 50 secondes et un temps d'attente de 150 secondes pour AS&nbsp;1. Effectuez les tâches dans l'ordre suivant&nbsp;:<ul><li>Configurez l'intervalle Hello<li>Configurez le temps d'attente</ul></b></font>]]></existingcommands>
+		<command  prompt="R2(config)#">
+		    <correctresponse><![CDATA[interface serial 0/0/0]]></correctresponse>
+		</command>
+		<command  prompt="R2(config-if)#">
+		    <correctresponse><![CDATA[ip hello-interval eigrp 1 50]]></correctresponse>
+		</command>
+		<command  prompt="R2(config-if)#">
+		    <correctresponse><![CDATA[ip hold-time eigrp 1 150]]></correctresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Vous avez correctement configuré les minuteurs sur R2.</b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+<component id="ID_s3_title">
+	<text><![CDATA[<b>Configuration du protocole EIGRP pour les minuteurs Hello et de mise en attente IPv6</b>]]></text>
+</component>
+	
+</textcomponents>

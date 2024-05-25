@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.1.4 Adresse MAC : identité Ethernet</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole Ethernet</h1>
+        <h2>Fonctionnement du protocole Ethernet</h2>
+      </div>
+      <div id="content">
+<p>Comme nous l'avons vu précédemment, la topologie logique sous-jacente d'Ethernet est un bus à accès multiple. Chaque périphérique réseau est connecté au même support partagé et tous les nœuds reçoivent toutes les trames transmises. La question est donc la suivante : si tous les périphériques reçoivent toutes les trames, comment chaque périphérique peut-il déterminer si elles lui sont destinées sans devoir passer par tout le processus de traitement et de désencapsulation pour accéder à l'adresse IP ? La question devient encore plus problématique dans les grands réseaux dont le volume de trafic est élevé et où un grand nombre de trames sont transférées. </p>
+<p></p>
+<p>Pour éviter la surcharge excessive liée au traitement de chaque trame, un identifiant unique appelé adresse MAC a été créé. Il permet d'identifier les nœuds source et de destination sur un réseau Ethernet. Quel que soit le type de réseau Ethernet utilisé, l'adressage MAC fournit une méthode d'identification des périphériques au niveau inférieur du modèle OSI. Vous vous souvenez sûrement que l'adressage MAC est ajouté dans l'unité de données de protocole de la couche 2. Une adresse MAC Ethernet est une valeur binaire de 48 bits constituée de 12 chiffres hexadécimaux (4 bits par chiffre hexadécimal).</p>
+<p></p>
+<p>
+<b>Structure de l'adresse MAC</b>
+</p>
+<p>Les adresses MAC doivent être uniques au monde. La valeur de l'adresse MAC est un résultat direct des règles mises en application par l'IEEE auprès des revendeurs pour garantir l'attribution d'adresses uniques à chaque périphérique Ethernet, et ce, à l'échelle mondiale. Les règles établies par l'IEEE exigent de chaque revendeur de périphérique Ethernet qu'il s'enregistre auprès de l'IEEE. L'IEEE attribue au constructeur un code de 3 octets (24 bits) appelé OUI (Organizationally Unique Identifier). </p>
+<p></p>
+<p>L'IEEE demande aux constructeurs de respecter deux règles simples représentées sur la figure : </p>
+<p></p>
+<p>
+<ul>
+<li>Toutes les adresses MAC attribuées à une carte réseau ou à un autre périphérique Ethernet doivent utiliser, comme 3 premiers octets, l'identifiant OUI attribué au revendeur correspondant.</li>
+</ul>
+</p>
+<p>Toutes les adresses MAC qui ont le même identifiant OUI doivent recevoir une valeur unique (référence du revendeur ou numéro de série) dans les 3 derniers octets.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

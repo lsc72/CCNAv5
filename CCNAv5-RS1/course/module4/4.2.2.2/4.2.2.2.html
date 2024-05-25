@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.2.2 Normes de câblage UTP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Supports réseau</h1>
+        <h2>Câblage à paires torsadées non blindées (UTP)</h2>
+      </div>
+      <div id="content">
+<p>Le câblage UTP respecte les normes établies conjointement par la TIA et l'EIA. Plus précisément, la norme TIA/EIA-568A, le plus souvent utilisée dans les environnements de câblage LAN, définit le câblage commercial pour les installations de réseau local. Elle définit des éléments tels que  : </p>
+<p>
+<ul>
+<li>Les types de câbles</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les longueurs de câbles </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Connecteurs</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le raccordement des câbles </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les méthodes de test des câbles </li>
+</ul>
+</p>
+<p></p>
+<p>Les caractéristiques électriques du câblage en cuivre sont définies par l'IEEE (Institute of Electrical and Electronics Engineers). L'IEEE classe le câblage UTP suivant ses performances. Les câbles sont placés dans des catégories selon leur capacité à prendre en charge des débits supérieurs de bande passante. Par exemple, un câble de catégorie  5 (Cat5) est généralement utilisé dans les installations FastEthernet 100BASE-TX. Les autres catégories comprennent le câble de catégorie 5 renforcée (Cat5e), la catégorie 6 (Cat6) et la catégorie 6a.</p>
+<p></p>
+<p>Les câbles des catégories supérieures sont conçus pour prendre en charge des débits de données plus élevés. À mesure que de nouvelles technologies Ethernet avec des débits exprimés en gigabits sont mises au point et adoptées, Cat5e constitue désormais le type de câble minimum acceptable, Cat6 étant recommandé pour les installations de nouveaux bâtiments. </p>
+<p></p>
+<p>La figure illustre les différentes catégories de câbles UTP.</p>
+<p></p>
+<p>
+<b>Remarque</b> : certains fabricants produisent des câbles dont les caractéristiques dépassent celles de la catégorie 6a définies par la TIA et l'EIA. Ils parlent alors de catégorie 7. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

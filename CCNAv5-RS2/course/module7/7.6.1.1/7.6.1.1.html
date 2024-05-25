@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.6.1.1 IPv6 : détails, détails…</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.6.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>
+<b>IPv6 : détails, détails…</b>
+</p>
+<p></p>
+<p>Après avoir étudié les concepts présentés dans ce chapitre concernant l'IPv6, vous devriez être en mesure de lire une table de routage facilement et d'interpréter les informations de routage IPv6 qui y sont répertoriées.</p>
+<p></p>
+<p>Avec un partenaire, utilisez le diagramme de la table de routage IPv6 et le fichier PDF fournis pour cet exercice. </p>
+<p></p>
+<p>Répondez aux questions de réflexion. </p>
+<p></p>
+<p>Comparez ensuite vos réponses avec celles d'au moins un autre groupe de la classe.</p>
+<p></p>
+<p>
+<a href="../../files/7.6.1.1%20Class%20Activity%20-%20IPv6%20-%20Details,%20Details...%20Instructions.pdf" target="_blank">Exercice en classe - IPv6 : détails, détails… - Instructions</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

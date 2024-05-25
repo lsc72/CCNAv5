@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.2.4.1 Initiation à la sécurisation des périphériques</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.2.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Garantie de la sécurité du réseau</h1>
+        <h2>Sécurisation des périphériques</h2>
+      </div>
+      <div id="content">
+<p>La sécurité du réseau passe par la protection des périphériques réels, y compris les périphériques finaux et intermédiaires, tels que les périphériques réseau. </p>
+<p></p>
+<p>Lorsqu'un nouveau système d'exploitation est installé sur un périphérique, les paramètres de sécurité sont définis à l'aide des valeurs par défaut. Dans la plupart des cas, le niveau de sécurité correspondant n'est pas suffisant. Sur les routeurs Cisco, la fonction Cisco AutoSecure permet de sécuriser le système, comme décrit sur la figure. Voici quelques étapes simples qu'il convient d'effectuer sur la plupart des systèmes d'exploitation :</p>
+<p>
+<ul>
+<li>Changement immédiat des noms d'utilisateur et des mots de passe par défaut. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Accès aux ressources du système limité strictement aux personnes autorisées à utiliser ces ressources. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Désactivation des services et applications qui ne sont pas nécessaires et désinstallation dans la mesure du possible.</li>
+</ul>
+</p>
+<p></p>
+<p>Les correctifs de sécurité doivent être appliqués à tous les périphériques dès leur mise à disposition. Souvent, les périphériques expédiés par les fabricants ont été entreposés pendant un certain temps et ne disposent pas des correctifs les plus récents. Avant leur mise en œuvre, il est donc important de mettre à jour tous les logiciels et d'installer tous les correctifs de sécurité. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

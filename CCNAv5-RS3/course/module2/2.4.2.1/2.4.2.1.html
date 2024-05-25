@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.4.2.1 Protocoles de redondance au premier saut</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.4.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de redondance au premier saut</h1>
+        <h2>Types de protocoles de redondance au premier saut</h2>
+      </div>
+      <div id="content">
+<p>La liste suivante indique les options disponibles pour les protocoles FHRP (First Hop Redundancy Protocols, protocoles de redondance au premier saut), comme illustré dans la figure ci-contre.</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Protocole HSRP (Hot Standby Router Protocol)</b> : protocole FHRP propriétaire de Cisco, conçu pour permettre le basculement transparent d'un périphérique IPv4 au premier saut. Le protocole HSRP offre une disponibilité de réseau élevée, par le biais d'une redondance de routage au premier saut pour les hôtes IPv4 des réseaux configurés avec une adresse de passerelle par défaut IPv4. Il est utilisé dans un groupe de routeurs pour sélectionner un périphérique actif et un périphérique en veille. Dans un groupe d'interfaces de périphérique, le périphérique actif est celui qui est utilisé pour le routage des paquets ; le périphérique en veille est celui qui prend le relais en cas de défaillance du périphérique actif ou lorsque certaines conditions prédéfinies sont réunies. La fonction du routeur en veille HSRP est de surveiller l'état de fonctionnement du groupe HSRP et de prendre rapidement la responsabilité du réacheminement des paquets lorsque le routeur actif est défaillant.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>HSRP pour IPv6</b> : protocole FHRP propriétaire Cisco offrant la même fonctionnalité que le protocole HSRP, mais dans un environnement IPv6. Un groupe HSRP IPv6 possède une adresse MAC virtuelle dérivée du numéro de groupe HSRP et une adresse link-local IPv6 dérivée de l'adresse MAC virtuelle HSRP. Des annonces de routeur périodiques (RA, Router Advertisement) sont renvoyées pour l'adresse virtuelle link-local HSRP IPv6, lorsque le groupe HSRP est actif. Lorsque le groupe devient inactif, ces RA cessent après l'envoi d'une dernière RA. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Protocole VRRPv2 (Virtual Router Redundancy Protocol version 2)</b> : protocole de sélection non propriétaire qui affecte dynamiquement la responsabilité d'un ou de plusieurs routeurs virtuels aux routeurs VRRP d'un réseau local IPv4. Cela permet à plusieurs routeurs de bénéficier d'un lien à accès multiple pour utiliser la même adresse IPv4 virtuelle. Un routeur VRRP est configuré pour exécuter le protocole VRRP conjointement à un ou plusieurs autres routeurs associés à un LAN. Dans une configuration VRRP, un routeur est choisi comme routeur virtuel principal, les autres servant de routeurs de secours en cas de défaillance de celui-ci.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>VRRPv3</b> : protocole offrant la capacité de prendre en charge les adresses IPv4 et IPv6. Le protocole VRRPv3 fonctionne dans les environnements multifournisseurs ; il est plus évolutif que VRRPv2.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Protocole GLBP (Gateway Load Balancing Protocol)</b> : protocole FHRP propriétaire Cisco qui protège le trafic de données en provenance d'un routeur ou d'un circuit défaillant, tel que HSRP et VRRP, tout en permettant un équilibrage de la charge (également appelé partage de charge) au sein d'un groupe de routeurs redondants.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>GLBP pour IPv6</b> : protocole FHRP propriétaire Cisco offrant la même fonctionnalité que le protocole GLBP, mais dans un environnement IPv6. Le protocole GLBP pour IPv6 offre un routeur de secours automatique pour les hôtes IPv6 configurés avec une passerelle par défaut unique, sur un LAN. Plusieurs routeurs de premier saut se combinent dans le réseau local pour offrir un routeur de premier saut IPv6 virtuel unique, tout en partageant la charge de réacheminement des paquets IPv6.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Protocole IRDP (ICMP Router Discovery Protocol)</b> : solution FHRP héritée spécifiée dans RFC 1256. Le protocole IRDP permet aux hôtes IPv4 de localiser les routeurs offrant une connectivité IPv4 à d'autres réseaux IP (non locaux).</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

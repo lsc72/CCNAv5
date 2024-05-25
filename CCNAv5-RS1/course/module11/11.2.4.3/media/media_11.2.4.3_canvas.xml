@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide>
+		<element type="ROUTER" textId="ID_router_txt1" x="18.4" y="91.7" width="450" height="205" />
+	</slide>
+		<text id="ID_router_txt1"><![CDATA[<pre>Router(config)#<b>service password-encryption</b>
+Router(config)#<b>security password min-length 8</b>
+Router(config)#<b>login block-for 120 attempts 3 within 60</b>
+Router(config)#<b>line vty 0 4</b>
+Router(config-vty)#<b>exec-timeout 10 </b>
+Router(config-vty)#<b>end</b>
+Router#<b>show running-config</b>
+-more-
+!
+line vty 0 4
+ password 7 03095A0F034F38435B49150A1819
+ exec-timeout 10
+ login
+</pre>]]></text>
+</data>

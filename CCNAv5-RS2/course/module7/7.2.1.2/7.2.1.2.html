@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.1.2 Algorithme de vecteur de distance</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage dynamique à vecteur de distance</h1>
+        <h2>Fonctionnement des protocoles de routage à vecteur de distance</h2>
+      </div>
+      <div id="content">
+<p>Au centre du protocole à vecteur de distance, l'algorithme de routage sert à calculer les meilleurs chemins et à envoyer ces informations aux voisins. </p>
+<p></p>
+<p>L'algorithme utilisé pour les protocoles de routage définit les processus suivants :</p>
+<p>
+<ul>
+<li>Mécanisme d'envoi et de réception des informations de routage</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Mécanisme de calcul des meilleurs chemins et d'installation de routes dans la table de routage</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Mécanisme de détection des modifications topologiques et de réaction à celles-ci</li>
+</ul>
+</p>
+<p></p>
+<p>Dans l'animation de la figure, R1 et R2 sont configurés avec le protocole de routage RIP. L'algorithme envoie et reçoit des mises à jour. R1 et R2 recueillent ensuite de nouvelles informations à partir de la mise à jour. Dans le cas présent, chaque routeur découvre un nouveau réseau. L'algorithme de chaque routeur effectue ses calculs indépendamment et met à jour la table de routage en y incluant les nouvelles informations. En cas de panne du réseau local sur R2, l'algorithme construit une mise à jour déclenchée et l'envoie à R1. R1 supprime ensuite le réseau de la table de routage. </p>
+<p></p>
+<p>Les protocoles de routage utilisent des algorithmes différents pour installer des routes dans la table de routage, envoyer des mises à jour aux voisins et déterminer le meilleur chemin Par exemple :</p>
+<p>
+<ul>
+<li>Le protocole RIP utilise l'algorithme Bellman-Ford en tant qu'algorithme de routage. Il est basé sur deux algorithmes développés en 1958 et en 1956 par Richard Bellman et Lester Ford, Jr. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les protocoles IGRP et EIGRP utilisent l'algorithme de routage DUAL (Diffusing Update Algorithm) développé par Dr. J.J. Garcia-Luna-Aceves de SRI International. </li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

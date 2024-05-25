@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.3.1 En-tête de paquet IPv4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche réseau</h1>
+        <h2>Paquet IPv4</h2>
+      </div>
+      <div id="content">
+<p>L'IPv4 est en service depuis 1983, date à laquelle le protocole a été mis en place sur le réseau ARPANET (Advanced Research Projects Agency Network), l'ancêtre d'Internet. Internet repose essentiellement sur l'IPv4, qui est toujours le protocole de couche réseau le plus répandu. </p>
+<p></p>
+<p>Un paquet IPv4 comporte deux parties :</p>
+<p>
+<ul>
+<li>
+<b>En-tête IP</b> – indique les caractéristiques du paquet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Données utiles</b> – contient les informations du segment de couche 4 et les données en elles-mêmes.</li>
+</ul>
+</p>
+<p></p>
+<p>Comme le montre la figure, un en-tête de paquet IPv4 comporte des champs contenant des informations importantes sur le paquet. Ces champs contiennent des nombres binaires, examinés par le processus de couche 3. Les valeurs binaires de chaque champ indiquent divers paramètres du paquet IP.</p>
+<p></p>
+<p>Les champs importants de l'en-tête IPv4 sont les suivants :</p>
+<p>
+<ul>
+<li>
+<b>Version</b> – contient une valeur binaire de 4 bits indiquant la version du paquet IP. Pour les paquets IPv4, ce champ est toujours 0100.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Services différenciés</b> – anciennement appelé champ de type de service, le champ Services différenciés est un champ de 8 bits utilisé pour définir la priorité de chaque paquet. Les 6 premiers bits définissent la valeur DCSP (Differentiated Services Code Point) qui est utilisée par un mécanisme de qualité de service. Les 2 derniers bits identifient la valeur de notification explicite de congestion qui peut être utilisée pour empêcher l'abandon de paquets pendant les périodes d'encombrement du réseau. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Time-to-live (durée de vie, TTL)</b> – contient une valeur binaire de 8 bits utilisée pour limiter la durée de vie d'un paquet. Cette durée est indiquée en secondes mais est généralement appelée « nombre de sauts ». L'expéditeur du paquet définit la valeur de durée de vie initiale et celle-ci diminue de un chaque fois que le paquet est traité par un routeur, ou effectue un saut. Si la valeur du champ TTL (durée de vie) arrive à zéro, le routeur rejette le paquet et envoie un message de dépassement de délai ICMP à l'adresse IP source. La commande <b>traceroute</b> utilise ce champ pour identifier les routeurs utilisés entre la source et la destination. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Protocole</b> – cette valeur binaire de 8 bits indique le type de données utiles transportées par le paquet, ce qui permet à la couche réseau de transmettre les données au protocole de couche supérieure approprié. Les valeurs habituelles sont notamment ICMP (1), TCP (6) et UDP (17).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse IP source</b> – contient une valeur binaire de 32 bits qui représente l'adresse IP source du paquet. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse IP de destination</b> – contient une valeur binaire de 32 bits qui représente l'adresse IP de destination du paquet.</li>
+</ul>
+</p>
+<p></p>
+<p>Les deux champs les plus souvent utilisés sont les adresses IP source et de destination. Ces champs indiquent d'où vient et où va le paquet. Généralement, ces adresses ne changent pas lors du déplacement de la source vers la destination.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

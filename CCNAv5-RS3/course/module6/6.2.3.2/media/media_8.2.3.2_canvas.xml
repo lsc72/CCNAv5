@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR"> 
+	<slide>	
+		<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+		<element type="ROUTER" textId="ID_router_txt1" x="5" y="47" width="430" height="306" />
+ 
+		</slide>
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+			<element type="ROUTER" textId="ID_router_txt2" x="5" y="131" width="430" height="104" />
+			</slide>
+					
+		<slide>		
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title" />
+			  <element type="ACTIVITY" subType="SYNTAX" compId="ID_s3_SC5" x="1.5" y="29.95" width="437.1" height="367" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+		</slide>
+		</slide>
+		
+ 
+			
+<text id="ID_router_txt1"><![CDATA[<pre>R1# <b>show ip protocols</b>
+*** IP Routing is NSF aware ***
+
+Routing Protocol is "ospf 10"
+  Outgoing update filter list for all interfaces is not set
+  Incoming update filter list for all interfaces is not set
+  Router ID 1.1.1.1
+  It is an area border router
+<span class="orange">  Number of areas in this router is 2.</span> 2 normal 0 stub 0 nssa
+  Maximum path: 4
+<span class="orange fullWidth">  Routing for Networks:
+    10.1.1.1 0.0.0.0 area 1
+    10.1.2.1 0.0.0.0 area 1
+    192.168.10.1 0.0.0.0 area 0</span>
+  Routing Information Sources:
+    Gateway         Distance      Last Update
+    3.3.3.3              110      02:20:36
+    2.2.2.2              110      02:20:39
+  Distance: (default is 110)
+
+R1# </pre>]]></text>
+
+<text id="ID_router_txt2"><![CDATA[<table width="100%" border="none" cellpadding="0" cellspacing="0">
+  <tr>
+    <td colspan="8">R1# <b>show ip ospf interface brief</b></td>
+  </tr>
+  <tr>
+    <td>Interface</td>
+    <td>PID</td>
+    <td><span class="orange">Area</span></td>
+    <td>IP Address/Mask</td>
+    <td>Cost</td>
+    <td>State</td>
+    <td>Nbrs</td>
+    <td>F/C</td>
+  </tr>
+  <tr>
+    <td>Se0/0/0</td>
+    <td>10</td>
+    <td>0</td>
+    <td>192.168.10.1/30</td>
+    <td>64</td>
+    <td>P2P</td>
+    <td>1/1</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Gi0/1 </td>
+    <td>10</td>
+    <td>1</td>
+    <td>10.1.2.1/24</td>
+    <td>1</td>
+    <td>DR</td>
+    <td>0/0</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Gi0/0</td>
+    <td>10</td>
+    <td>1</td>
+    <td>10.1.1.1/24 </td>
+    <td>1</td>
+    <td>DR</td>
+    <td>0/0</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="8">R1#</td>
+  </tr>
+</table>]]></text>
+ 
+</data>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.1.2 Résumé</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Une entreprise peut utiliser des lignes privées ou l'infrastructure du réseau public pour les connexions WAN. La connexion d'infrastructure publique peut être une alternative bon marché à la connexion privée entre LAN, pour autant que la sécurité soit aussi prévue.</p>
+<p></p>
+<p>Les normes d'accès WAN fonctionnent sur les couches 1 et 2 du modèle OSI et sont définies et gérées par la TIA/EIA, l'ISO et l'IEEE. Un WAN est soit à commutation de circuits, soit à commutation de paquets.</p>
+<p></p>
+<p>Il existe une terminologie commune qui sert à identifier les composants physiques des connexions WAN et qui du fournisseur du service ou du client est responsable de ces composants. </p>
+<p></p>
+<p>Les réseaux des fournisseurs de services sont complexes et les réseaux fédérateurs du fournisseur de services sont principalement composés de fibres optiques à haute bande passante. Le périphérique utilisé pour l'interconnexion vers le client est spécifique à la technologie WAN mise en place.</p>
+<p></p>
+<p>Les connexions point à point permanentes dédiées sont mises en place avec des lignes louées. L'accès commuté, bien que lent, reste une solution viable pour les zones isolées dans lesquelles les options d'accès WAN sont limitées. Les autres options de connexion privées sont le RNIS, Frame Relay, l'ATM, le WAN Ethernet, le MPLS et le VSAT. </p>
+<p></p>
+<p>Les connexions d'infrastructure publique sont le DSL, le câble, la connexion sans fil et la connexion cellulaire 3G/4G. La sécurité sur les connexions d'infrastructure publique est assurée par l'intermédiaire de réseaux privés virtuels d'accès distant ou de site à site.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

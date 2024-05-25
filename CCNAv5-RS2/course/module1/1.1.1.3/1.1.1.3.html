@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.1.3 Réseaux commutés sans frontières</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Conception d&#x0027;un réseau local</h1>
+        <h2>Réseaux convergents</h2>
+      </div>
+      <div id="content">
+<p>En raison des demandes croissantes des réseaux convergents, un réseau doit être développé au moyen d'une approche architecturale qui inclut de l'intelligence, simplifie les opérations et reste évolutive pour répondre aux besoins ultérieurs. L'architecture de réseau sans frontières de Cisco, présentée à la Figure 1, illustre un développement récent de conception de réseau. </p>
+<p></p>
+<p>L'architecture de réseau sans frontières de Cisco regroupe plusieurs innovations et critères de conception. Elle permet ainsi aux organisations de connecter toute personne, en tout lieu, à tout instant et sur tout périphérique, de façon sécurisée, fiable et transparente. Cette architecture est conçue pour relever des défis informatiques et commerciaux tels que la prise en charge d'un réseau convergent et l'évolution des modes de travail.</p>
+<p></p>
+<p>Le réseau sans frontières de Cisco est fondé sur une infrastructure matérielle et logicielle évolutive et fiable. Il permet à différents éléments, depuis les commutateurs d'accès jusqu'aux points d'accès sans fil, de collaborer pour que les utilisateurs accèdent aux ressources en tout lieu et à tout instant. Il apporte également optimisation, évolutivité et sécurité à la collaboration et à la virtualisation.</p>
+<p></p>
+<p>Dans la Figure 2, visualisez la vidéo pour en savoir davantage sur l'évolution du réseau sans frontières de Cisco. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

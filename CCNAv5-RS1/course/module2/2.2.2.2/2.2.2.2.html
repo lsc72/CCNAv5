@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.2.2 Sécurisation de l&#x0027;accès au mode d&#x0027;exécution privilégié</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Bases</h1>
+        <h2>Limitation de l&#x0027;accès aux configurations de périphérique</h2>
+      </div>
+      <div id="content">
+<p>Pour sécuriser l'accès au mode d'exécution privilégié, utilisez la commande <span class="cmd"><b>enable secret</b></span> <span class="cmd"><i>mot_de_passe</i></span>. Une variante de cette commande, plus ancienne et moins sécurisée, est la commande <span class="cmd"><b>enable password</b></span> <span class="cmd"><i>mot_de_passe</i></span>. Bien que l'une de ces commandes puisse être utilisée pour établir l'authentification avant l'accès au mode d'exécution privilégié (enable), il est recommandé d'utiliser la commande <span class="cmd"><b>enable secret</b></span>. En effet, la commande <span class="cmd"><b>enable secret</b></span> offre une plus grande sécurité dans la mesure où le mot de passe est chiffré. </p>
+<p></p>
+<p>Exemple de commande permettant de définir les mots de passe : </p>
+<p></p>
+<p>
+<span class="cmd">Switch(config)#</span>
+<span class="cmd">
+<b>enable secret class</b>
+</span>
+</p>
+<p></p>
+<p></p>
+<p>La figure illustre le fait qu'un mot de passe n'est pas requis lors de la première utilisation de la commande <span class="cmd"><b>enable</b></span>. Ensuite, la commande<span class="cmd"><b> enable secret class</b></span> est configurée et l'accès au mode d'exécution privilégié est sécurisé. Notez que pour des raisons de sécurité, le mot de passe ne s'affiche pas lorsqu'il est saisi.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.2.1 Méthode CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance) </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement LAN sans fil</h1>
+        <h2>Fonctionnement sans fil</h2>
+      </div>
+      <div id="content">
+<p>Comme nous l'avons expliqué précédemment, la méthode de gestion des conflits de supports permet aux périphériques de déterminer comment et quand accéder au support lorsque le trafic doit être réacheminé sur tout le réseau. Les WLAN IEEE 802.11 utilisent la méthode CSMA/CA avec le protocole MAC. Bien que le nom soit similaire à celui de la méthode CSMA/CD Ethernet, le concept est totalement différent.</p>
+<p></p>
+<p>Les systèmes Wi-Fi sont des configurations bidirectionnelles non simultanées avec support partagé ; par conséquent, les clients sans fil peuvent transmettre et recevoir des données sur le même canal radio. Cela pose un problème, car le client sans fil n'est pas en mode écoute lorsqu'il est en transmission, et ne peut donc pas détecter une éventuelle collision. Pour résoudre ce problème, l'IEEE a mis au point un mécanisme complémentaire d'évitement des collisions, appelé fonction de coordination distribuée (DCF, Distributed Coordination Function). Grâce à la fonction DCF, un client sans fil lance sa transmission uniquement lorsque le canal est libre. Toutes les transmissions sont confirmées. Par conséquent, si le client sans fil ne reçoit pas de reçu, il supposera qu'une collision a eu lieu et relancera la transmission après un délai d'attente aléatoire.</p>
+<p></p>
+<p>Les clients et points d'accès sans fil utilisent les trames de contrôle DPE et PAE pour faciliter le transfert des données utiles. </p>
+<p></p>
+<p>Comme illustré à la Figure 1, lorsqu'un client sans fil envoie des données, il commence par détecter le support afin de déterminer si d'autres périphériques sont en cours de transmission. Si ce n'est pas le cas, il envoie une trame DPE au point d'accès. Cette trame est utilisée pour demander un accès dédié sur le support RF, pour un laps de temps donné. Le point d'accès reçoit la trame et, s'il est disponible, octroie au client sans fil l'accès au support RF en lui envoyant une trame PAE de la même durée. Tous les autres périphériques sans fil observant la trame PAE quittent le support au profit du nœud à l'origine de la transmission.</p>
+<p></p>
+<p>La trame de contrôle PAE indique le laps de temps pendant lequel le nœud de transmission est autorisé à transférer ses données. Les autres clients sans fil mettent toutes leurs transmissions en attente pendant cette durée, au minimum.</p>
+<p></p>
+<p>La Figure 2 présente un diagramme détaillant le processus CSMA/CA.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

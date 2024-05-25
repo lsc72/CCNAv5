@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.2.2 Récapitulation de routes interzones et externes</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du routage OSPF à zones multiples</h1>
+        <h2>Récapitulation des routes OSPF</h2>
+      </div>
+      <div id="content">
+<p>Dans le protocole OSPF, la récapitulation ne peut être configurée que sur des routeurs ABR ou ASBR. Au lieu d'annoncer un grand nombre de réseaux spécifiques, les routeurs ABR et ASBR annoncent une route récapitulative. Les routeurs ABR récapitulent les LSA de type 3 et les routeurs ASBR les LSA de type 5. </p>
+<p></p>
+<p>Par défaut, les LSA récapitulatives (LSA de type 3) et les LSA externes (LSA de type 5) ne contiennent pas de route récapitulative (agrégée) ; par défaut, les LSA récapitulatives ne sont pas récapitulées.</p>
+<p></p>
+<p>Comme illustré aux Figures 1 et 2, la récapitulation de route peut être configurée comme suit :</p>
+<p>
+<ul>
+<li>
+<b>Récapitulation de route interzone</b> : a lieu sur des routeurs ABR et s'applique aux routes issues de chaque zone. Elle ne s'applique pas aux routes externes injectées dans le protocole OSPF via la redistribution. Pour que ce processus soit efficace, les adresses réseau au sein des zones doivent être adjacentes, afin de pouvoir être regroupées en un nombre minimum d'adresses récapitulatives.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Récapitulation de route externe</b> : opération spécifique aux routes externes injectées dans le protocole OSPF par redistribution. À nouveau, il est important de garantir la contiguïté de la plage d'adresses externes à récapituler. En règle générale, seuls des routeurs ASBR récapitulent des routes externes. Comme indiqué à la Figure 2, les routes externes EIGRP sont récapitulées par le routeur ASBR R2 dans une LSA unique, envoyée à R1 et R3. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: la récapitulation de route externe est configurée sur les routeurs ASBR à l'aide de la commande de mode de configuration de routeur <span class="cmd"><b>summary-address </b></span><span class="cmd"><i>address mask</i></span>. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

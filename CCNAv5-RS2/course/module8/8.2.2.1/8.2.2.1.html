@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.2.1 Activation du protocole OSPF sur des interfaces</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv2 à zone unique</h1>
+        <h2>Configuration d&#x0027;OSPFv2 à zone unique</h2>
+      </div>
+      <div id="content">
+<p>La commande <span class="cmd"><b>network</b></span> détermine quelles interfaces participent au processus de routage pour une zone OSPF. Toute interface de routeur qui correspond à l'adresse réseau dans la commande <span class="cmd"><b>network</b></span> est activée pour envoyer et recevoir des paquets OSPF. Par conséquent, l'adresse réseau (ou sous-réseau) de l'interface est incluse dans les mises à jour de routage OSPF.</p>
+<p>La syntaxe de base de la commande  est la suivante : <span class="cmd"><b>network </b></span><span class="cmd"><i>network-address wildcard-mask</i></span><span class="cmd"><b> area </b></span><span class="cmd"><i>area-id</i></span>.</p>
+<p>La syntaxe <span class="cmd"><b>area </b></span><span class="cmd"><i>area-id </i></span>fait référence à la zone OSPF. Lors de la configuration du protocole OSPF à zone unique, la commande <span class="cmd"><b>network</b></span> doit être configurée avec la même valeur <span class="cmd"><i>area-id </i></span>sur tous les routeurs. Bien qu'il soit possible d'utiliser n'importe quel ID de zone, le fait d'utiliser 0 dans un protocole OSPF à zone unique constitue une pratique saine. Cette convention simplifie les choses si le réseau est modifié par la suite pour prendre en charge le protocole OSPF multizone.</p>
+<p>La figure illustre la topologie de référence. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

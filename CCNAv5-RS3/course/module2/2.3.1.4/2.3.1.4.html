@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.1.4 Équilibrage de charge de PVST+</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration Spanning Tree (arbre recouvrant)</h1>
+        <h2>Configuration PVST+</h2>
+      </div>
+      <div id="content">
+<p>La topologie illustrée dans la Figure 1 comprend trois commutateurs reliés par des trunks 802.1Q. Elle compte aussi deux VLAN, le 10 et le 20, agrégés sur ces liens. L'objectif est de configurer S3 en tant que pont racine pour VLAN 20 et S1 comme pont racine pour VLAN 10. Le port F0/3 de S2 est le port de réacheminement pour VLAN 20 et le port de blocage pour VLAN 10. Le port F0/2 de S2 est le port de réacheminement pour VLAN 10 et le port de blocage pour VLAN 20. </p>
+<p></p>
+<p>Outre un pont racine principal, il est également possible d'établir un pont racine secondaire. Il s'agit d'un commutateur qui peut devenir le pont racine d'un VLAN en cas de défaillance du pont racine principal. En supposant que les autres ponts du VLAN conservent leur priorité STP par défaut, ce commutateur devient le pont racine si le pont racine principal tombe en panne. </p>
+<p></p>
+<p>Les étapes de configuration de PVST+ pour cet exemple de topologie sont les suivantes :</p>
+<p></p>
+<p>
+<b>Étape 1.</b> Sélectionnez les commutateurs que vous souhaitez configurer comme ponts racine principal et secondaire pour chaque VLAN. Par exemple, dans la Figure 1, S3 est le pont principal de VLAN 20 et S1 le pont secondaire de VLAN 20.</p>
+<p></p>
+<p>
+<b>Étape 2.</b> Configurez le commutateur en tant que pont principal pour le VLAN à l'aide de la commande <span class="cmd"><b>spanning-tree vlan </b></span><span class="cmd"><i>number</i></span><span class="cmd"><b> root primary</b></span>, comme indiqué dans la Figure 2. </p>
+<p></p>
+<p>
+<b>Étape 3.</b> Configurez le commutateur en tant que pont secondaire pour le VLAN à l'aide de la commande <span class="cmd"><b>spanning-tree vlan </b></span><span class="cmd"><i>number</i></span><span class="cmd"><b> root secondary</b></span>. </p>
+<p></p>
+<p>Une autre méthode pour définir le pont racine consiste à configurer la priorité Spanning Tree de chaque commutateur, en spécifiant la valeur la plus basse, de manière à ce que le commutateur soit sélectionné en tant que pont principal pour le VLAN associé.</p>
+<p></p>
+<p>Notez que, dans la Figure 2, S3 est configuré comme pont racine principal pour VLAN 20 et S1 comme pont racine principal pour VLAN 10. S2 conserve sa priorité STP par défaut.</p>
+<p></p>
+<p>La figure indique également que S3 est configuré en tant que pont racine secondaire pour VLAN 10 et S1 comme pont racine secondaire pour VLAN 20. Cette configuration permet l'équilibrage de la charge Spanning Tree, pour le trafic circulant sur le réseau VLAN 10 via S1 et sur VLAN 20 via S3.</p>
+<p></p>
+<p>Une autre méthode pour définir le pont racine consiste à configurer la priorité Spanning Tree de chaque commutateur, en spécifiant la valeur la plus basse, de manière à ce que le commutateur soit sélectionné en tant que pont principal pour le VLAN associé, comme illustré dans la Figure 3. La priorité du commutateur peut être définie pour n'importe quelle instance Spanning Tree. Ce paramètre affecte les chances d'un commutateur d'être choisi comme pont racine. Plus la valeur est faible, plus il y a de chances que le commutateur soit sélectionné. La plage de priorité est de 0 à 61440, par incréments de 4096. Toutes les autres valeurs seront refusées. Par exemple, 8192 est une priorité valide (4096 x 2). </p>
+<p></p>
+<p>Comme illustré dans la Figure 4, la commande <span class="cmd"><b>show spanning-tree active</b></span> affiche le détail de la configuration Spanning Tree, pour les interfaces actives uniquement. La sortie présentée concerne le commutateur S1 configuré avec PVST+. Différents paramètres de commande Cisco IOS sont associés à la commande <span class="cmd"><b>show spanning-tree</b></span>.</p>
+<p></p>
+<p>Dans la Figure 5, la sortie indique que la priorité pour VLAN 10 est de 4096, soit la plus basse des trois priorités VLAN. </p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 6 pour configurer et vérifier le protocole STP pour S1 et S3. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

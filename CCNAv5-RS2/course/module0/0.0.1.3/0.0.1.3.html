@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>0.0.1.3 Plus que de simples informations</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_0.0.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Bienvenue dans le cours Notions de base sur le routage et la commutation</h1>
+        <h2>Message destiné aux participants</h2>
+      </div>
+      <div id="content">
+<p>L'environnement d'apprentissage NetSpace est une composante essentielle de la satisfaction globale des participants et des instructeurs prenant part au programme Networking Academy. Ce contenu pédagogique en ligne comprend des cours et des supports interactifs associés, des activités de simulation sur Packet Tracer, des travaux pratiques sur équipements réels, des travaux pratiques à effectuer à distance, ainsi que de nombreux types de questionnaire. Tous ces supports fournissent de nombreux commentaires vous permettant d'évaluer votre progression tout au long du cours.</p>
+<p>Le contenu pédagogique englobe une large gamme de technologies qui facilite la manière dont les personnes travaillent, vivent, jouent et apprennent en communiquant avec la voix, la vidéo et d'autres données. Les réseaux et Internet ont un impact différent dans toutes les régions du monde. Bien que nous ayons travaillé avec des instructeurs du monde entier pour créer ce cours, il est important que vous collaboriez avec votre instructeur et les autres participants pour adapter le contenu du cours à votre situation. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

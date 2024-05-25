@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.1.2.1 Applications courantes d&#x0027;un petit réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Création et développement</h1>
+        <h2>Protocoles d&#x0027;un petit réseau</h2>
+      </div>
+      <div id="content">
+<p>L'utilité du réseau dépend des applications qu'il comporte. Comme l'illustre la figure, il existe deux types de programmes ou processus dans la couche application qui permettent d'accéder au réseau : les applications réseau et les services de couche application.</p>
+<p></p>
+<p>
+<b>Applications réseau</b>
+</p>
+<p></p>
+<p>Les applications sont les programmes logiciels qui permettent aux utilisateurs de communiquer sur le réseau. Certaines applications destinées à l'utilisateur final sont orientées réseau, à savoir qu'elles implémentent des protocoles de couche application et sont capables de communiquer directement avec les couches inférieures de la pile de protocoles. Les clients de messagerie et les navigateurs Web sont des exemples de ce type d'application. </p>
+<p></p>
+<p>
+<b>Services de couche application</b>
+</p>
+<p></p>
+<p>D'autres programmes peuvent nécessiter l'assistance des services de couche application (par exemple, le transfert de fichiers ou la mise en file d'attente de tâches d'impression réseau). Bien que transparents pour les employés, ces services sont des programmes qui communiquent avec le réseau et préparent les données à transférer. Différents types de données (texte, graphique ou vidéo) nécessitent différents services réseau qui les préparent correctement à être traitées par les fonctions exécutées sur les couches inférieures du modèle OSI. </p>
+<p></p>
+<p>Chaque application ou service réseau utilise des protocoles qui définissent les normes et les formats de données à utiliser. Sans protocoles, le réseau de données ne disposerait d'aucune méthode commune pour formater et transmettre les données. Pour comprendre le fonctionnement des divers services réseau, il est nécessaire de connaître les protocoles sous-jacents qui régissent ces services.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

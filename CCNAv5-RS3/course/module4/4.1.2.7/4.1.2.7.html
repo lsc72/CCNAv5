@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.7 Solutions pour déploiements sans fil de grande taille - Suite</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts de la technologie sans fil</h1>
+        <h2>Composants de WLAN</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Architecture réseau sans fil unifié Cisco</b>
+</p>
+<p>La solution d'architecture réseau sans fil unifié Cisco, basée sur une conception MAC divisée, contrôle les points d'accès à l'aide d'un contrôleur WLAN (WLC) et peut, en option, être gérée à l'aide des systèmes de contrôle sans fil Cisco WCS (Wireless Control System). Les points d'accès légers communiquent avec le contrôleur WLAN via le protocole LWAPP (Lightweight Access Control Point Protocol). Le contrôleur dispose de toute l'intelligence nécessaire pour la communication et le point d'accès est un « terminal passif » simplement chargé de traiter les paquets. </p>
+<p></p>
+<p>L'architecture réseau sans fil unifié Cisco nécessite les périphériques suivants :</p>
+<p>
+<ul>
+<li>
+<b>Points d'accès légers</b> : les points d'accès sans fil Cisco Aironet 1600, 2600 et 3600 fournissent un accès robuste et fiable au réseau sans fil pour les hôtes.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Contrôleurs pour les PME/PMI</b> : les contrôleurs sans fil de la gamme Cisco 2500, les contrôleurs sans fil virtuels Cisco ou le module contrôleur sans fil Cisco pour Cisco ISR G2 permettent des déploiements WLAN d'entrée de gamme pour les données des petites filiales ou des sites individuels.</li>
+</ul>
+</p>
+<p></p>
+<p>D'autres contrôleurs WLAN de capacité supérieure sont également disponibles. Par exemple, le contrôleur sans fil Cisco 5760 et les contrôleurs de la gamme Cisco 8500 ont été conçus pour gérer, sécuriser et optimiser de manière rentable les performances des réseaux sans fil de grande taille, notamment les déploiements de fournisseurs de services ou de campus à grande échelle.</p>
+<p></p>
+<p>La Figure 1 présente un récapitulatif des points d'accès légers.</p>
+<p></p>
+<p>Cliquez sur chaque composant de la Figure 2 pour obtenir des informations détaillées sur les contrôleurs destinés aux PME/PMI.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

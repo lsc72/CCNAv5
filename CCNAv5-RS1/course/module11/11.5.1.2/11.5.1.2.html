@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.5.1.2 Types de routeur intégré</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.5.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Services de routage intégrés</h1>
+        <h2>Routeur intégré</h2>
+      </div>
+      <div id="content">
+<p>La gamme des routeurs intégrés s'étend des petits périphériques adaptés à des environnements informatiques de particuliers et de petites entreprises aux périphériques plus puissants, qui prennent en charge des succursales de grosses sociétés.</p>
+<p></p>
+<p>Le routeur sans fil Linksys est un exemple de routeur intégré illustré par la figure. Il s'agit d'un routeur intégré de conception simple et n'est généralement pas équipé de composants séparés, ce qui réduit le coût du périphérique. Toutefois, en cas de panne, il est impossible de remplacer uniquement le composant défectueux. De ce fait, les routeurs intégrés créent un point de défaillance unique et ne sont pas optimisés pour toutes les fonctions. </p>
+<p></p>
+<p>Le routeur de services intégré ISR de Cisco est un autre exemple de routeur intégré. La gamme ISR de Cisco est complète et offre des produits conçus aussi bien pour les environnements informatiques de particuliers et de petites entreprises que pour les plus grands réseaux. De nombreux routeurs ISR sont modulables et ont des composants distincts pour chaque fonction, par exemple un commutateur et un routeur. Cela permet d'ajouter, de remplacer et de mettre à niveau les composants séparément.</p>
+<p></p>
+<p>Tous les routeurs intégrés offrent des paramètres de configuration de base, tels que les mots de passe, les adresses IP et les paramètres DHCP. Ceux-ci sont identiques, que le périphérique soit utilisé pour une connexion filaire ou sans fil des hôtes. Cependant, si vous utilisez la fonctionnalité sans fil, des paramètres de configuration supplémentaires sont nécessaires, notamment le réglage du mode sans fil, du SSID et du canal sans fil.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

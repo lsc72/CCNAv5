@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.3.6 Réglage manuel du coût OSPF</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.3.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv2 à zone unique</h1>
+        <h2>Coût OSPF</h2>
+      </div>
+      <div id="content">
+<p>Comme alternative à la définition de la bande passante d'interface par défaut, le coût peut être configuré manuellement sur une interface en utilisant la commande de configuration d'interface<span class="cmd"><b> ip ospf cost </b></span><span class="cmd"><i>value</i></span>. </p>
+<p></p>
+<p>Un avantage de la configuration d'un coût par rapport à la définition de la bande passante d'une interface est que le routeur ne doit pas calculer la métrique lorsque le coût est configuré manuellement. En revanche, lorsque la bande passante de l'interface est configurée, le routeur doit calculer le coût OSPF sur base de la bande passante. La commande <span class="cmd"><b>ip ospf cost</b></span> est très utile dans les environnements avec plusieurs fournisseurs, lorsque des routeurs d'une autre marque que Cisco utilisent une autre métrique que la bande passante pour calculer les coûts OSPF.</p>
+<p></p>
+<p>Les commandes d'interface <span class="cmd"><b>bandwidth</b></span> et <span class="cmd"><b>ip ospf cost</b></span> produisent toutes deux le même résultat : elles fournissent une valeur précise qu'OSPF utilise pour déterminer la meilleure route.</p>
+<p></p>
+<p>Par exemple, dans l'exemple de la Figure 1, la bande passante de l'interface série 0/0/1 est réinitialisée sur la valeur par défaut et le coût OSPF est manuellement défini sur 15 625. Bien que la bande passante des interfaces soit redéfinie sur la valeur par défaut, le coût OSPF est défini comme si la bande passante était toujours calculée.</p>
+<p></p>
+<p>La Figure 2 indique les deux possibilités de modification de coût des liens série dans la topologie. Sur le côté droit de la figure se trouve la commande <span class="cmd"><b>ip ospf cost</b></span> équivalente aux commandes <span class="cmd"><b>bandwidth</b></span> sur la gauche.</p>
+<p></p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

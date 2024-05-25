@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.0.1.1 Introduction</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Couche transport</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>Les réseaux de données et Internet soutiennent le réseau humain en permettant une communication fiable entre les personnes. Nous pouvons, sur un même périphérique, utiliser des services aussi divers que les messageries électroniques, le Web ou les messageries instantanées pour envoyer des messages et recevoir des informations. Grâce aux applications telles que les clients de messagerie, les navigateurs Internet et les clients de messagerie instantanée, nous sommes en mesure d'envoyer et de recevoir des messages et des informations par le biais d'ordinateurs et de réseaux.</p>
+<p></p>
+<p>Les données envoyées par ces applications sont empaquetées, transportées et livrées à l'application voulue sur le périphérique de destination. Les processus décrits dans la couche transport OSI acceptent des données provenant de la couche application et les préparent pour les adresser à la couche réseau. La couche transport <b>prépare</b> les données à transmettre sur le réseau. Un ordinateur source communique avec un ordinateur destinataire pour décider de la méthode de division des données en<b> segments</b>, de la méthode permettant de s'assurer qu'aucun des segments n'est perdu et de la méthode de vérification permettant de savoir si tous les segments sont arrivés. Pour comprendre la couche transport, pensez à un service des expéditions qui prépare une seule commande composée de plusieurs colis à livrer. </p>
+<p></p>
+<p>Ce chapitre est consacré à l'étude du rôle de la couche transport dans le processus d'encapsulation des données d'application en vue de leur utilisation par la couche réseau. La couche transport remplit également les fonctions suivantes : </p>
+<p>
+<ul>
+<li>Elle permet à plusieurs applications, par exemple la messagerie électronique et les réseaux sociaux, de communiquer sur le réseau simultanément, sur un seul périphérique </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Elle vérifie, si cela est nécessaire, que toutes les données sont reçues de façon fiable et dans l'ordre par l'application voulue ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Elle utilise des mécanismes de gestion des erreurs.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Objectifs pédagogiques</b>
+</p>
+<p></p>
+<p>À l'issue de ce chapitre, vous serez en mesure d'effectuer les tâches suivantes :</p>
+<p>
+<ul>
+<li>Expliquer l'utilité de la couche transport.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Définir le rôle de la couche transport en matière de transfert de bout en bout des données entre applications.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Décrire le rôle de deux protocoles de couche transport TCP/IP : TCP et UDP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Citer les principales fonctions de la couche transport, y compris en matière de fiabilité, d'adressage de ports et de segmentation.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Expliquer comment les protocoles TCP et UDP gèrent, chacun, des fonctions clés</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Reconnaître les situations où l'utilisation des protocoles TCP ou UDP s'impose et fournir des exemples d'applications utilisant chacun de ces protocoles</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

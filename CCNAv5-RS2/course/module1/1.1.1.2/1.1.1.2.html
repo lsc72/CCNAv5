@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.1.2 Éléments d&#x0027;un réseau convergent</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Conception d&#x0027;un réseau local</h1>
+        <h2>Réseaux convergents</h2>
+      </div>
+      <div id="content">
+<p>Pour faciliter la collaboration, les réseaux d'entreprise ont recours à des solutions convergentes utilisant des systèmes vocaux, des téléphones IP, des passerelles vocales, la vidéo et la vidéoconférence (Figure 1). Un réseau convergent de collaboration inclut des services de données et, le cas échéant, les fonctionnalités suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Contrôle des appels : traitement des appels téléphoniques</b>, ID des appelants, transfert d'appel, mise en attente et conférence</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Messagerie vocale</b> : messages vocaux </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Mobilité</b> : réception d'appels importants en tout lieu </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Réception automatique</b> : réponse plus rapide aux clients, grâce au routage direct des appels au service ou à la personne concerné</li>
+</ul>
+</p>
+<p></p>
+<p>La transition vers un réseau convergent présente l'avantage majeur de nécessiter l'installation et la gestion d'un seul réseau physique. Cela entraîne des économies considérables, par rapport à l'installation et à la gestion de réseaux distincts pour la voix, la vidéo et les données. Une telle solution de réseau convergent intègre la gestion informatique, si bien que tous les déplacements, ajouts et modifications s'effectuent au moyen d'une interface d'administration intuitive. Une solution de réseau convergent prend également en charge les applications softphone PC, ainsi que la vidéo point à point : les utilisateurs peuvent ainsi bénéficier de communications personnelles avec la même facilité de gestion et d'utilisation qu'un appel vocal. </p>
+<p></p>
+<p>En raison de la convergence des services sur les réseaux, ces derniers ont évolué : d'un simple moyen de transport des données, ils sont devenus une véritable autoroute pour les données, la voix et les images vidéo. Le réseau physique unique sous-jacent doit être conçu et implémenté correctement, afin de traiter avec fiabilité les différents types d'informations qu'il doit acheminer. Une conception structurée est requise pour permettre la gestion de cet environnement complexe.</p>
+<p></p>
+<p>Dans la Figure 2, visualisez la vidéo pour afficher une partie des services de collaboration en action. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

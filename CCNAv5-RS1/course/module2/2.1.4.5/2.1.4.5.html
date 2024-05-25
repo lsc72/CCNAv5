@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.4.5 Touches d&#x0027;accès rapide et raccourcis</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.4.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>IOS Bootcamp</h1>
+        <h2>Structure des commandes</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Touches d'accès rapide et raccourcis</b>
+</p>
+<p></p>
+<p>Dans l'interface CLI, des touches d'accès rapide et des raccourcis facilitent la configuration, la surveillance et le dépannage du système d'exploitation IOS. </p>
+<p></p>
+<p>La figure présente les principaux raccourcis. Les raccourcis suivants méritent des précisions  :</p>
+<p>
+<ul>
+<li>
+<b>Flèche Bas</b> – permet à l'utilisateur de faire défiler les commandes précédentes, de la plus ancienne à la plus récente</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Flèche Haut</b> – permet à l'utilisateur de faire défiler les commandes précédentes, de la plus récente à la plus ancienne</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Tab</b> - termine une commande ou un mot-clé partiellement saisis</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Ctrl + A</b> – place le curseur au début de la ligne</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Ctrl + E</b> – place le curseur à la fin de la ligne</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Ctrl-R</b> - Affiche à nouveau une ligne.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Ctrl + Z</b> – permet de passer du mode de configuration au mode d'exécution utilisateur</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Ctrl + C</b> - quitte le mode de configuration ou annule la commande actuelle</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Ctrl + Maj + 6</b> (avec un clavier QWERTY) - permet à l'utilisateur d'interrompre un processus IOS comme ping ou traceroute. Avec un clavier AZERTY, il faudra utiliser le raccourci Ctrl + Maj + 9.</li>
+</ul>
+</p>
+<p></p>
+<p>Examinons certains de ces raccourcis plus en détail :</p>
+<p></p>
+<p>
+<b>Tabulation</b>
+</p>
+<p>La touche Tab permet de compléter automatiquement une commande ou un paramètre abrégés, si l'abréviation contient suffisamment de lettres pour exclure toute ambiguïté par rapport aux autres commandes ou paramètres disponibles. Après avoir tapé assez de caractères pour identifier la commande ou le mot-clé sans ambiguïté, appuyez sur la touche <b>Tab</b> pour afficher le reste de la commande ou du mot-clé.</p>
+<p></p>
+<p>Cette technique s'avère particulièrement utile pendant votre apprentissage parce qu'elle vous permet de voir en entier le mot servant de commande ou de mot-clé.</p>
+<p></p>
+<p>
+<b>Ctrl + R</b>
+</p>
+<p>Afficher à nouveau la ligne permet d'actualiser la ligne qui vient d'être saisie. Utilisez <b>Ctrl-R</b> pour faire reparaître cette ligne. Par exemple, il peut arriver qu'un message IOS s'affiche dans l'interface CLI juste au moment où vous tapez une ligne. Vous pouvez alors utiliser <b>Ctrl-R</b> pour rappeler votre ligne afin d'éviter de la retaper.</p>
+<p></p>
+<p>Dans l'exemple suivant, un message concernant une interface défaillante interrompt l'entrée d'une commande.</p>
+<p></p>
+<p>
+<span class="cmd">Switch#</span>
+<span class="cmd">
+<b>show mac-</b>
+</span>
+</p>
+<p>
+<span class="cmd">16w4d: %LINK-5-CHANGED: Interface FastEthernet0/10, changed state to down</span>
+</p>
+<p>
+<span class="cmd">16w4d: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/10, changed state to down</span>
+</p>
+<p></p>
+<p>Pour rappeler la ligne que vous étiez en train de taper, utilisez <b>Ctrl + R</b> :</p>
+<p></p>
+<p>
+<span class="cmd">Switch#</span>
+<span class="cmd">
+<b>show mac </b>
+</span>
+</p>
+<p></p>
+<p>
+<b>Ctrl + Z</b>
+</p>
+<p>Quitter le mode de configuration permet de sortir du mode de configuration et de revenir au mode d'exécution privilégié. Du fait de la structure hiérarchique des modes IOS, vous risquez de vous retrouver plusieurs niveaux plus bas lorsque vous quittez un mode. Pour cette raison, au lieu de quitter chaque mode séparément, utilisez le raccourci <b>Ctrl + Z </b>afin de retourner directement à l'invite du mode d'exécution privilégié au plus haut niveau.</p>
+<p></p>
+<p>
+<b>Flèches Haut et Bas</b>
+</p>
+<p>Les touches de commandes précédentes permettent de consulter l'historique des commandes saisies. Comme le logiciel Cisco IOS conserve en mémoire tampon plusieurs commandes et caractères entrés par l'utilisateur, vous pouvez rappeler des entrées antérieures. La mémoire tampon s'avère utile pour saisir à nouveau des commandes sans avoir à les retaper.</p>
+<p></p>
+<p>Il est possible de parcourir les commandes stockées en mémoire tampon à l'aide de combinaisons de touches. Utilisez la flèche <b>Haut</b> (<b>Ctrl + P</b>) pour afficher les commandes entrées antérieurement. Chaque fois que vous appuyez sur cette touche, IOS affiche la commande précédente. À l'inverse, utilisez la flèche <b>Bas</b> (<b>Ctrl + N</b>) pour afficher la commande mémorisée suivante.</p>
+<p></p>
+<p>
+<b>Ctrl + Maj + 6</b>
+</p>
+<p>Appuyer sur la touche Escape permet d'interrompre le processus en cours. Lorsque vous lancez un processus IOS à partir de l'interface en ligne de commande, par exemple ping ou traceroute, la commande s'exécute jusqu'à ce qu'elle se termine ou qu'elle soit interrompue. Pendant ce temps, l'interface en ligne de commande ne répond plus. Pour interrompre l'affichage des résultats et interagir avec la CLI, appuyez sur <b>Ctrl-Maj-6</b> (avec un clavier QWERTY). Avec un clavier AZERTY, il faudra utiliser le raccourci : Ctrl-Maj-9.</p>
+<p></p>
+<p>
+<b>Ctrl + C</b>
+</p>
+<p>Interrompt l'entrée d'une commande et quitte le mode de configuration. Cela est utile si vous entrez une commande qui doit être annulée.</p>
+<p></p>
+<p>
+<b>Commandes ou mots-clés abrégés</b>
+</p>
+<p>Il est possible d'abréger les commandes et les mots-clés jusqu'au nombre minimal de caractères formant un ensemble de caractères unique. Par exemple, vous pouvez abréger la commande <span class="cmd"><b>configure</b></span> en entrant <span class="cmd"><b>conf</b></span> parce que <span class="cmd"><b>configure</b></span> est la seule commande qui commence par <span class="cmd"><b>conf</b></span>. Par contre, l'abréviation <span class="cmd"><b>con</b></span> ne fonctionne pas parce que plusieurs commandes débutent par <span class="cmd"><b>con</b></span>.</p>
+<p></p>
+<p>Vous pouvez aussi abréger les mots-clés. </p>
+<p></p>
+<p>À titre d'exemple, <span class="cmd"><b>show interfaces</b></span> peut s'abréger de la façon suivante :</p>
+<p></p>
+<p>
+<span class="cmd">Switch#</span>
+<span class="cmd">
+<b>show interfaces</b>
+</span>
+</p>
+<p>
+<span class="cmd">Switch#</span>
+<span class="cmd">
+<b>show int</b>
+</span>
+</p>
+<p></p>
+<p>Il est également possible d'abréger la commande et les mots-clés, comme le montre l'exemple suivant :</p>
+<p></p>
+<p>
+<span class="cmd">Switch#</span>
+<span class="cmd">
+<b>sh int</b>
+</span>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

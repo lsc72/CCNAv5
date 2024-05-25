@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide type="MBAR">
+		
+		<slide>
+			<element type="TEXT" subType="TABLE" compId="ID_s1_table" x="4" y="102" width="422" height="295" />
+			<element type="ROUTER" textId="ID_s1_01" x="1" y="4" width="438" height="93"/>
+		</slide>
+	<slide>	
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title" />		
+			<element type="ROUTER" textId="ID_s2_01" x="7.3" y="153.8" width="428.05" height="92.65"/>
+		</slide>	
+		<slide>
+			<element type="IMAGE" src="9_5_2_2.jpg" x="0" y="0" width="470" height="400"/>
+			
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title" />
+			
+			<element type="TEXT" text="2001:DB8:FEED:1::/64" width="119.5" x="40.95" y="71.7" align="center" bold="1"/>	
+			<element type="TEXT" text="2001:DB8:FEED:2::/64" width="119.5" x="290" y="69.7" align="center" bold="1"/>
+			<element type="TEXT" text="2001:DB8:CAFE:10::/64" width="126.2" x="4.1" y="163.2" align="center" bold="1"/>
+			<element type="TEXT" text="2001:DB8:CAFE:11::/64" width="128.2" x="176" y="163.2" align="center" bold="1"/>
+			<element type="TEXT" text="2001:DB8:CAFE:30::/64" width="126.2" x="310.05" y="163.2" align="center" bold="1"/>
+			<element type="TEXT" text="2001:DB8:CAFE:10::10/64" width="123.2" x="1.1" y="280.2" align="center" bold="1"/>	
+			<element type="TEXT" text="2001:DB8:CAFE:11::11/64" width="123.2" x="139" y="280.2" align="center" bold="1"/>
+			<element type="TEXT" text="2001:DB8:CAFE:30::12/64" width="138.4" x="265.9" y="280.2" align="center" bold="1"/>
+			<element type="TEXT" text="S0/0/0" width="35.9" x="167.3" y="55.5" align="center" />	
+			<element type="TEXT" text=":2" width="13.3" x="188.95" y="65.5" align="center" />
+			<element type="TEXT" text="S0/0/1" width="35.9" x="255.05" y="55.5" align="center" />
+			<element type="TEXT" text=":2" width="13.3" x="260.05" y="67" align="center"/>
+			<element type="TEXT" text="S0/0/0" width="35.9" x="131.8" y="87" align="center" />
+			<element type="TEXT" text=":1" width="13.3" x="151.35" y="96.3" align="center" />	
+			<element type="TEXT" text="S0/0/1" width="35.9" x="290.15" y="88" align="center" />
+			<element type="TEXT" text=":1" width="13.3" x="300.1" y="97.3" align="center" />
+			<element type="TEXT" text="G0/0" width="28" x="106.1" y="139.25" align="center"/>
+			<element type="TEXT" text=":1" width="13.3" x="114.15" y="153" align="center" />
+			<element type="TEXT" text="G0/1" width="28" x="173.1" y="139.25" align="center" />
+			<element type="TEXT" text=":1" width="13.3" x="180.45" y="153" align="center" />
+			<element type="TEXT" text="G0/1" width="28" x="314.55" y="144.05" align="center"/>
+			<element type="TEXT" text=":1" width="13.3" x="315.2" y="153.8" align="center" />
+			<element type="ROUTER" textId="ID_s3_01" x="0" y="312.75" width="428.05" height="85.6"/>
+		</slide>	
+			
+	</slide>
+	
+	<text id="ID_s1_01"><![CDATA[
+	<table width="403" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>R1(config)# <strong>ipv6 access-list access-list-name</strong><br/>R1(config-ipv6-acl)# <strong>deny</strong> | <strong>permit</strong> <em>protocol</em> {<em>source-ipv6-prefix/prefix-length  </em>| <strong>any</strong> | <strong>host</strong> <i>source-ipv6-address</i>} [<i>operator</i> [<i>port-number</i>]] {<i>destination-ipv6-prefix/prefix-length  </i>| <strong>any</strong> | <strong>host</strong> <i>destination-ipv6-address</i>} [<i>operator</i> [<i>port-number</i>]] </td>
+  </tr>
+</table>
+]]></text>
+
+<text id="ID_s2_01"><![CDATA[
+	<table width="406" border="0" cellspacing="0" cellpadding="0"> <tr> <td width="255">R1(config)#<strong> ipv6 access-list NO-R3-LAN-ACCESS</strong></td> </tr> <tr> <td>R1(config-ipv6-acl)#<strong> deny ipv6 2001:db8:cafe:30::/64 any</strong></td> </tr> <tr> <td>R1(config-ipv6-acl)# <strong>permit ipv6 any any</strong></td> </tr> <tr> <td>R1(config-ipv6-acl)# <strong>end</strong></td> </tr> <tr> <td>R1#</td> </tr></table>
+]]></text>
+
+<text id="ID_s3_01"><![CDATA[
+	<table width="406" border="0" cellspacing="0" cellpadding="0"> <tr> <td width="255">R1(config)#<strong> ipv6 access-list NO-R3-LAN-ACCESS</strong></td> </tr> <tr> <td>R1(config-ipv6-acl)# <strong>deny ipv6 2001:db8:cafe:30::/64 any</strong></td> </tr> <tr> <td>R1(config-ipv6-acl)# <strong>permit ipv6 any any</strong></td> </tr> <tr> <td>R1(config-ipv6-acl)# <strong>end</strong></td> </tr> <tr> <td>R1#</td> </tr></table>
+]]></text>
+
+
+</data>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.3.5 Présentation de NCP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.3.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement de PPP</h1>
+        <h2>Sessions PPP</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Processus NCP</b>
+</p>
+<p></p>
+<p>Une fois la liaison initiée, le protocole LCP transfère le contrôle au NCP correspondant. </p>
+<p></p>
+<p>Bien que conçu à l'origine pour les paquets IP, le protocole PPP peut transporter des données de plusieurs protocoles de couche réseau, grâce à l'approche modulaire de sa mise en œuvre. Le modèle modulaire de PPP permet au LCP de mettre en place la liaison, puis de transférer les informations du protocole réseau au protocole NCP correspondant. À chaque protocole réseau correspond un protocole NCP, et à chaque protocole NCP correspond une RFC. </p>
+<p></p>
+<p>Il existe des NCP pour IPv4, IPv6, IPX, AppleTalk et bien d'autres encore. Les NCP utilisent le même format de paquet que les LCP.</p>
+<p></p>
+<p>Une fois que le LCP a configuré et authentifié la liaison de base, le NCP correspondant est invoqué pour terminer la configuration du protocole de couche réseau utilisé. Lorsque le protocole NCP a correctement configuré le protocole de couche réseau, le protocole de réseau présente l'état ouvert sur la liaison LCP établie. À ce stade, le protocole PPP peut transporter les paquets de protocole de couche réseau correspondants. </p>
+<p></p>
+<p>
+<b>Exemple IPCP :</b>
+</p>
+<p></p>
+<p>La configuration LCP IPv4, le protocole de couche 3 le plus répandu, est présentée dans la figure comme exemple de fonctionnement de la couche NCP. Une fois que le protocole LCP a établi la liaison, les routeurs échangent les messages IPCP, négociant les options spécifiques au protocole IPv4. Le protocole de contrôle IPCP est responsable de la configuration, de l'activation et de la désactivation des modules IPv4 aux deux extrémités de la liaison. Le protocole IPV6CP est un NCP possédant les responsabilités équivalentes pour IPv6.</p>
+<p></p>
+<p>IPCP négocie deux options :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Compression </b>: permet aux périphériques de négocier un algorithme pour compresser les en-têtes TCP et IP, et économiser la bande passante. La compression d'en-tête TCP/IP Van Jacobson réduit la taille des en-têtes TCP/IP jusqu'à 3 octets. Cela représente une amélioration considérable sur les lignes série lentes, en particulier pour le trafic interactif. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse IPv4 </b>: permet au périphérique demandeur de spécifier une adresse IPv4 à utiliser pour le routage IP sur la liaison PPP ou de demander une adresse IPv4 pour le destinataire. Avant l'arrivée des technologies haut débit comme le DSL et les services de modem câble, les liaisons de réseau commuté utilisaient généralement l'option d'adresse IPv4.</li>
+</ul>
+</p>
+<p></p>
+<p>Une fois le processus NCP terminé, la liaison passe à l'état ouvert et le protocole LCP reprend la main dans la phase de maintenance de la liaison. Le trafic sur la liaison se compose de toutes les combinaisons possibles de paquets LCP, NCP et de protocole de couche réseau. Une fois le transfert des données terminé, le protocole NCP met fin à la liaison de protocole. Le protocole LCP met fin à la connexion PPP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

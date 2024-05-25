@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.1.5 Configuration du protocole OSPF à zone unique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées du protocole OSPF à zone unique </h1>
+        <h2>Routage au sein des couches de distribution et cœur de réseau</h2>
+      </div>
+      <div id="content">
+<p>Ce chapitre porte sur l'ajustement et le dépannage OSPF. Cependant, il convient tout d'abord de revoir une implémentation de base du protocole de routage OSPF.</p>
+<p></p>
+<p>La Figure 1 illustre un exemple de topologie utilisée pour configurer OSPFv2. Les routeurs de la topologie disposent d'une configuration initiale, qui inclut les adresses des interfaces activées. Aucun routage statique ou dynamique n'est actuellement configuré sur l'un des routeurs. Toutes les interfaces des routeurs R1, R2 et R3 (sauf le bouclage sur R2) se trouvent dans la zone fédératrice OSPF. Le routeur du FAI est utilisé comme passerelle du domaine de routage pour accéder à Internet.</p>
+<p></p>
+<p>À la Figure 2, l'interface Gigabit Ethernet 0/0 de R1 est configurée pour refléter sa bande passante réelle de 1 000 000 kbit/s (soit 1 000 000 000 bit/s). Ensuite, dans le mode de configuration de routeur OSPF, l'ID de routeur est attribué, la bande passante de référence est modifiée pour tenir compte des interfaces rapides et les trois réseaux connectés à R1 sont annoncés. Notez l'utilisation d'un masque générique pour identifier les réseaux souhaités.</p>
+<p></p>
+<p>À la Figure 3, l'interface Gigabit Ethernet 0/0 de R2 est également configurée pour refléter sa bande passante réelle, l'ID de routeur est attribué, la bande passante de référence est modifiée pour tenir compte des interfaces rapides et les trois réseaux connectés à R2 sont annoncés. Notez comment l'utilisation d'un masque générique peut être évitée, en identifiant l'interface du routeur réelle avec un masque à quatre zéros. Ainsi, OSPF utilise le masque de sous-réseau attribué à l'interface du routeur en tant que masque de réseau annoncé.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe à la Figure 4 pour modifier la bande passante sur l'interface G0/0 de R3, passer au mode de configuration de routeur OSPF, attribuer l'ID de routeur correct, modifier la bande passante de référence et annoncer les trois réseaux connectés directement, en utilisant les interfaces du routeur et le masque générique à quatre zéros.</p>
+<p></p>
+<p>Remarquez les messages d'information indiquant que R3 a établi une contiguïté de voisinage complète avec R1 avec l'ID de routeur 1.1.1.1 et avec R2 avec l'ID de routeur 2.2.2.2. Le réseau OSPF est désormais convergent.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

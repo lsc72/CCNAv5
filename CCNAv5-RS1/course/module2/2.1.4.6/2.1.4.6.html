@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.4.6 Commandes d&#x0027;analyse d&#x0027;IOS</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.4.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>IOS Bootcamp</h1>
+        <h2>Structure des commandes</h2>
+      </div>
+      <div id="content">
+<p>Pour contrôler et dépanner le réseau, il est nécessaire d'examiner le fonctionnement des périphériques. La commande d'examen de base est la commande <span class="cmd"><b>show</b></span>. </p>
+<p></p>
+<p>Il existe plusieurs variantes de cette commande. À mesure que vous vous familiariserez avec IOS, vous apprendrez à utiliser les commandes <span class="cmd"><b>show</b></span> et à interpréter leurs résultats. Utilisez la commande <span class="cmd"><b>show ?</b></span> pour afficher la liste des commandes disponibles dans un contexte ou un mode donné. </p>
+<p></p>
+<p>Une commande <span class="cmd"><b>show</b></span> type peut fournir des informations sur la configuration, l'utilisation et l'état des pièces d'un commutateur ou d'un routeur Cisco. La figure illustre certaines des commandes IOS standard.</p>
+<p></p>
+<p>Dans ce cours, nous nous concentrons principalement sur les commandes <span class="cmd"><b>show</b></span> de base.</p>
+<p></p>
+<p>Une commande <span class="cmd"><b>show</b></span> très répandue est la commande <span class="cmd"><b>show interfaces</b></span>. Elle affiche des statistiques relatives à toutes les interfaces du périphérique. Pour afficher les statistiques d'une interface spécifique, entrez la commande <span class="cmd"><b>show interfaces</b></span> suivie du type d'interface et du numéro de port/slot. Par exemple :</p>
+<p></p>
+<p>
+<span class="cmd">Switch#</span>
+<span class="cmd">
+<b>show interfaces fastethernet 0/1</b>
+</span>
+</p>
+<p></p>
+<p>Voici d'autres commandes <span class="cmd"><b>show</b></span> fréquemment utilisées par les techniciens réseau :</p>
+<p></p>
+<p>
+<span class="cmd">
+<b>show startup-config - </b>
+</span>affiche la configuration sauvegardée dans la mémoire vive non volatile.<span class="cmd"><b></b></span></p>
+<p>
+<span class="cmd">
+<b>show running-config - </b>
+</span>affiche le contenu du fichier de configuration en cours.</p>
+<p></p>
+<p>
+<b>Commandes disponibles à l'invite More</b>
+</p>
+<p></p>
+<p>Lorsque les résultats d'une commande ne tiennent pas dans un seul écran, l'invite <span class="cmd"><b>--More--</b></span> apparaît en bas de l'écran. Quand l'invite <span class="cmd"><b>--More--</b></span> apparaît, vous pouvez appuyer sur la touche <b>Espace</b> pour afficher la suite des résultats. Pour afficher seulement la ligne suivante, appuyez sur la touche <b>Entrée</b>. Si vous appuyez sur une autre touche, l'affichage des résultats est annulé et vous retournez à l'invite de commandes.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

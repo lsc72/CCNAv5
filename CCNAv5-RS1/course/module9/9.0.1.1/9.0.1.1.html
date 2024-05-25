@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.0.1.1 Introduction</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmenter des réseaux IP en sous-réseaux</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>L'élaboration, la mise en œuvre et la gestion d'un modèle d'adressage IP garantissent un fonctionnement optimal des réseaux. Cela devient d'autant plus important lorsque le nombre de connexions d'hôtes à un réseau augmente. Lorsque vous aurez compris la structure hiérarchique de l'adresse IP et que vous saurez comment modifier cette hiérarchie afin de répondre plus efficacement aux besoins de routage, vous aurez déjà accompli une part essentielle de la planification du schéma d'adressage IP.</p>
+<p></p>
+<p>Dans l'adresse IPv4 initiale, il existe deux niveaux hiérarchiques : un réseau et un hôte. Ces deux niveaux d'adressage permettent de réaliser des regroupements de base qui facilitent l'acheminement des paquets vers un réseau de destination. Un routeur transmet les paquets en fonction de la partie réseau de l'adresse IP. Une fois que le réseau est localisé, la partie hôte de l'adresse permet l'identification du périphérique de destination. </p>
+<p></p>
+<p>Cependant, lorsque les réseaux s'étendent et comptent des centaines, voire des milliers d'hôtes, la hiérarchie à deux niveaux devient insuffisante. </p>
+<p></p>
+<p>Le fait de sous-diviser un réseau permet d'ajouter un niveau hiérarchique, pour obtenir trois niveaux : un réseau, un sous-réseau et un hôte. Le fait d'ajouter un niveau hiérarchique permet de créer des sous-groupes supplémentaires dans un réseau IP, qui facilitent l'acheminement rapide des paquets et le filtrage efficace en réduisant le trafic « local ». </p>
+<p></p>
+<p>Ce chapitre étudie en détail la création et l'attribution des adresses de réseaux et de sous-réseaux IP à l'aide du masque de sous-réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.3.2 Outils et test de sécurité réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité du commutateur : gestion et implémentation</h1>
+        <h2>Meilleures pratiques de sécurité</h2>
+      </div>
+      <div id="content">
+<p>Les outils de sécurité réseau permettent à un administrateur réseau de tester les faiblesses d'un réseau. Certains outils permettent à un administrateur de prendre le rôle d'un pirate. Avec l'un de ces outils, un administrateur peut attaquer un réseau et procéder à un audit des résultats, afin de déterminer les modifications à apporter aux stratégies de sécurité et ainsi réduire les conséquences d'une telle attaque. L'audit de sécurité et les tests de pénétration constituent deux fonctions de base que les outils de sécurité réseau peuvent appliquer.</p>
+<p></p>
+<p>Les tests de la sécurité réseau peuvent être initiés manuellement par l'administrateur. D'autres tests sont hautement automatisés. Quel que soit le type de test, le personnel qui configure et exécute les tests de sécurité doit être particulièrement compétent dans le domaine des réseaux et de la sécurité. Le personnel doit donc faire preuve d'une expertise dans les domaines suivants : </p>
+<p>
+<ul>
+<li>Sécurité du réseau</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Pare-feu</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Systèmes de prévention contre les intrusions</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Systèmes d'exploitation</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Programmation</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Protocoles réseau (tels que TCP/IP)</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Vérification des paramètres du protocole OSPFv3 pour R1  </b>]]></text>
+</component>
+<component id="ID_s2_title">
+  <text><![CDATA[<b>Vérification des paramètres du protocole OSPFv3 pour R2 et R3  </b>]]></text> 
+  </component>
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+
+ <component id="ID_SC2" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b> *** </b><font face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> ]]></feedback>		
+		<existingcommands><![CDATA[<font face="Arial"><b>Vérifiez les paramètres du protocole OSPFv3 pour R2.  </b></font>]]></existingcommands>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ipv6 protocols]]></correctresponse>
+		<deviceresponse><![CDATA[<pre><font face="Courier New">IPv6 Routing Protocol is "connected" <br>IPv6 Routing Protocol is "ND" <br>IPv6 Routing Protocol is "ospf 10" <br>  Router ID 2.2.2.2 <br>  Number of areas: 1 normal, 0 stub, 0 nssa <br>  Interfaces (Area 0): <br>    Serial0/0/1 <br>    Serial0/0/0 <br>    GigabitEthernet0/0 <br>  Redistribution: <br>    None <br>R2#</pre></font>]]></deviceresponse>
+			<instruction><![CDATA[<font face="Arial"><b>Vous configurez maintenant le routeur R3. Vérifiez les paramètres du protocole OSPFv3 pour R3.  </b>]]></instruction>
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ipv6 protocols]]></correctresponse>
+			<deviceresponse><![CDATA[<pre><font Face="Courier New">IPv6 Routing Protocol is "connected" <br>IPv6 Routing Protocol is "ND"<br>IPv6 Routing Protocol is "ospf 10"<br>  Router ID 3.3.3.3<br>  Number of areas: 1 normal, 0 stub, 0 nssa<br>  Interfaces (Area 0):<br>    Serial0/0/1<br>    Serial0/0/0<br>    GigabitEthernet0/0<br>  Redistribution:<br>    None<br>R3#</font></pre>]]></deviceresponse>
+			<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez correctement vérifié les paramètres du protocole OSPFv3.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+</textcomponents>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html class="module-index" dir="ltr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="UTF-8"/>
+    <title>Notions de base sur le routage et la commutation</title>
+    <link rel="stylesheet" type="text/css" href="../common-ext/styles/index.css"/>
+    <script type="text/javascript" src="../common-ext/scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../common-ext/scripts/index.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <div id="header-logo" title="Cisco Systems, Inc. - Cisco Networking Academy"></div>
+      <a id="home-btn" href="../../index.html" title="Accueil">Accueil</a>
+      <h1>Chapitre 8: Protocole OSPF à zone unique <span id="title"></span></h1>
+    </div>
+    <div id="nav">
+      <ul class="sections">
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">8.0 Protocole OSPF à zone unique</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">8.0.1 Protocole OSPF à zone unique</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="8.0.1.1" class="page-title" href="8.0.1.1/8.0.1.1.html" target="frame">8.0.1.1 Introduction</a>
+                </li>
+                <li>
+                  <a data-ident="8.0.1.2" class="page-title" href="8.0.1.2/8.0.1.2.html" target="frame">8.0.1.2 Exercice : les sous-marins peuvent-ils nager ?</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">8.1 Caractéristiques du protocole OSPF</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">8.1.1 Open Shortest Path First</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="8.1.1.1" class="page-title" href="8.1.1.1/8.1.1.1.html" target="frame">8.1.1.1 Évolution du protocole OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="8.1.1.2" class="page-title" href="8.1.1.2/8.1.1.2.html" target="frame">8.1.1.2 Caractéristiques du protocole OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="8.1.1.3" class="page-title" href="8.1.1.3/8.1.1.3.html" target="frame">8.1.1.3 Composants du protocole OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="8.1.1.4" class="page-title" href="8.1.1.4/8.1.1.4.html" target="frame">8.1.1.4 Fonctionnement des états de liens</a>
+                </li>
+                <li>
+                  <a data-ident="8.1.1.5" class="page-title" href="8.1.1.5/8.1.1.5.html" target="frame">8.1.1.5 Protocole OSPF à zone unique et à zones multiples</a>
+                </li>
+                <li>
+                  <a data-ident="8.1.1.6" class="page-title" href="8.1.1.6/8.1.1.6.html" target="frame">8.1.1.6 Exercice : identifier les fonctionnalités et la terminologie OSPF</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">8.1.2 Messages OSPF</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="8.1.2.1" class="page-title" href="8.1.2.1/8.1.2.1.html" target="frame">8.1.2.1 Encapsulation des messages OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="8.1.2.2" class="page-title" href="8.1.2.2/8.1.2.2.html" target="frame">8.1.2.2 Types de paquets OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="8.1.2.3" class="page-title" href="8.1.2.3/8.1.2.3.html" target="frame">8.1.2.3 Paquet Hello</a>
+                </li>
+                <li>
+                  <a data-ident="8.1.2.4" class="page-title" href="8.1.2.4/8.1.2.4.html" target="frame">8.1.2.4 Intervalles des paquets Hello</a>
+                </li>
+                <li>
+                  <a data-ident="8.1.2.5" class="page-title" href="8.1.2.5/8.1.2.5.html" target="frame">8.1.2.5 Mises à jour d&#x0027;état de liens</a>
+                </li>
+                <li>
+                  <a data-ident="8.1.2.6" class="page-title" href="8.1.2.6/8.1.2.6.html" target="frame">8.1.2.6 Exercice : identifier les types de paquets OSPF</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">8.1.3 Fonctionnement d&#x0027;OSPF</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="8.1.3.1" class="page-title" href="8.1.3.1/8.1.3.1.html" target="frame">8.1.3.1 États opérationnels OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="8.1.3.2" class="page-title" href="8.1.3.2/8.1.3.2.html" target="frame">8.1.3.2 Établissement des contiguïtés de voisinage</a>
+                </li>
+                <li>
+                  <a data-ident="8.1.3.3" class="page-title" href="8.1.3.3/8.1.3.3.html" target="frame">8.1.3.3 DR et BDR OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="8.1.3.4" class="page-title" href="8.1.3.4/8.1.3.4.html" target="frame">8.1.3.4 Synchronisation des bases de données OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="8.1.3.5" class="page-title" href="8.1.3.5/8.1.3.5.html" target="frame">8.1.3.5 Exercice : identifier les états OSPF pour l&#x0027;établissement d&#x0027;une contiguïté</a>
+                </li>
+                <li>
+                  <a data-ident="8.1.3.6" class="page-title" href="8.1.3.6/8.1.3.6.html" target="frame">8.1.3.6 Démonstration vidéo : observation des communications via le protocole OSPF</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">8.2 Configuration du protocole OSPFv2 à zone unique</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">8.2.1 ID de routeur OSPF</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="8.2.1.1" class="page-title" href="8.2.1.1/8.2.1.1.html" target="frame">8.2.1.1 Topologie de réseau OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.1.2" class="page-title" href="8.2.1.2/8.2.1.2.html" target="frame">8.2.1.2 Mode de configuration OSPF du routeur</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.1.3" class="page-title" href="8.2.1.3/8.2.1.3.html" target="frame">8.2.1.3 ID de routeur</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.1.4" class="page-title" href="8.2.1.4/8.2.1.4.html" target="frame">8.2.1.4 Configuration d&#x0027;un ID de routeur OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.1.5" class="page-title" href="8.2.1.5/8.2.1.5.html" target="frame">8.2.1.5 Modification d&#x0027;un ID de routeur </a>
+                </li>
+                <li>
+                  <a data-ident="8.2.1.6" class="page-title" href="8.2.1.6/8.2.1.6.html" target="frame">8.2.1.6 Utilisation d&#x0027;une interface de bouclage comme ID de routeur</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">8.2.2 Configuration d&#x0027;OSPFv2 à zone unique</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="8.2.2.1" class="page-title" href="8.2.2.1/8.2.2.1.html" target="frame">8.2.2.1 Activation du protocole OSPF sur des interfaces</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.2.2" class="page-title" href="8.2.2.2/8.2.2.2.html" target="frame">8.2.2.2 Masque générique</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.2.3" class="page-title" href="8.2.2.3/8.2.2.3.html" target="frame">8.2.2.3 Commande network</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.2.4" class="page-title" href="8.2.2.4/8.2.2.4.html" target="frame">8.2.2.4 Interface passive</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.2.5" class="page-title" href="8.2.2.5/8.2.2.5.html" target="frame">8.2.2.5 Configuration des interfaces passives</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.2.6" class="page-title" href="8.2.2.6/8.2.2.6.html" target="frame">8.2.2.6 Exercice : calculer le masque de sous-réseau et le masque générique</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.2.7" class="page-title" href="8.2.2.7/8.2.2.7.html" target="frame">8.2.2.7 Packet Tracer : configuration du protocole OSPFv2 dans une zone unique</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">8.2.3 Coût OSPF</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="8.2.3.1" class="page-title" href="8.2.3.1/8.2.3.1.html" target="frame">8.2.3.1 Métrique OSPF = coût</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.3.2" class="page-title" href="8.2.3.2/8.2.3.2.html" target="frame">8.2.3.2 OSPF cumule les coûts</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.3.3" class="page-title" href="8.2.3.3/8.2.3.3.html" target="frame">8.2.3.3 Réglage de la bande passante de référence</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.3.4" class="page-title" href="8.2.3.4/8.2.3.4.html" target="frame">8.2.3.4 Bandes passantes d&#x0027;interface par défaut</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.3.5" class="page-title" href="8.2.3.5/8.2.3.5.html" target="frame">8.2.3.5 Modification de la bande passante des interfaces</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.3.6" class="page-title" href="8.2.3.6/8.2.3.6.html" target="frame">8.2.3.6 Réglage manuel du coût OSPF</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">8.2.4 Vérification du protocole OSPF</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="8.2.4.1" class="page-title" href="8.2.4.1/8.2.4.1.html" target="frame">8.2.4.1 Vérifier les voisins OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.4.2" class="page-title" href="8.2.4.2/8.2.4.2.html" target="frame">8.2.4.2 Vérifier les paramètres de protocole OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.4.3" class="page-title" href="8.2.4.3/8.2.4.3.html" target="frame">8.2.4.3 Vérifier les informations de processus OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.4.4" class="page-title" href="8.2.4.4/8.2.4.4.html" target="frame">8.2.4.4 Vérifier les paramètres d&#x0027;interface OSPF</a>
+                </li>
+                <li>
+                  <a data-ident="8.2.4.5" class="page-title" href="8.2.4.5/8.2.4.5.html" target="frame">8.2.4.5 Travaux pratiques : configuration d&#x0027;une zone unique OSPFv2 de base </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">8.3 Configuration du protocole OSPFv3 à zone unique</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">8.3.1 Comparaison des protocoles OSPFv2 et OSPFv3</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="8.3.1.1" class="page-title" href="8.3.1.1/8.3.1.1.html" target="frame">8.3.1.1 OSPFv3</a>
+                </li>
+                <li>
+                  <a data-ident="8.3.1.2" class="page-title" href="8.3.1.2/8.3.1.2.html" target="frame">8.3.1.2 Similitudes entre OSPFv2 à OSPFv3</a>
+                </li>
+                <li>
+                  <a data-ident="8.3.1.3" class="page-title" href="8.3.1.3/8.3.1.3.html" target="frame">8.3.1.3 Différences entre les réseaux OSPFv2 et OSPFv3</a>
+                </li>
+                <li>
+                  <a data-ident="8.3.1.4" class="page-title" href="8.3.1.4/8.3.1.4.html" target="frame">8.3.1.4 Adresses link-local</a>
+                </li>
+                <li>
+                  <a data-ident="8.3.1.5" class="page-title" href="8.3.1.5/8.3.1.5.html" target="frame">8.3.1.5 Exercice : comparer OSPFv2 et OSPFv3</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">8.3.2 Configuration du OSPFv3</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="8.3.2.1" class="page-title" href="8.3.2.1/8.3.2.1.html" target="frame">8.3.2.1 Topologie de réseau OSPFv3</a>
+                </li>
+                <li>
+                  <a data-ident="8.3.2.2" class="page-title" href="8.3.2.2/8.3.2.2.html" target="frame">8.3.2.2 Adresses link-local</a>
+                </li>
+                <li>
+                  <a data-ident="8.3.2.3" class="page-title" href="8.3.2.3/8.3.2.3.html" target="frame">8.3.2.3 Attribution des adresses link-local</a>
+                </li>
+                <li>
+                  <a data-ident="8.3.2.4" class="page-title" href="8.3.2.4/8.3.2.4.html" target="frame">8.3.2.4 Configuration de l&#x0027;ID de routeur OSPFv3</a>
+                </li>
+                <li>
+                  <a data-ident="8.3.2.5" class="page-title" href="8.3.2.5/8.3.2.5.html" target="frame">8.3.2.5 Modification d&#x0027;un ID de routeur OSPFv3</a>
+                </li>
+                <li>
+                  <a data-ident="8.3.2.6" class="page-title" href="8.3.2.6/8.3.2.6.html" target="frame">8.3.2.6 Activation du protocole OSPFv3 sur des interfaces</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">8.3.3 Vérification d&#x0027;OSPFv3</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="8.3.3.1" class="page-title" href="8.3.3.1/8.3.3.1.html" target="frame">8.3.3.1 Vérifier les voisins OSPFv3</a>
+                </li>
+                <li>
+                  <a data-ident="8.3.3.2" class="page-title" href="8.3.3.2/8.3.3.2.html" target="frame">8.3.3.2 Vérifier les paramètres de protocole OSPFv3</a>
+                </li>
+                <li>
+                  <a data-ident="8.3.3.3" class="page-title" href="8.3.3.3/8.3.3.3.html" target="frame">8.3.3.3 Vérifier les interfaces OSPFv3</a>
+                </li>
+                <li>
+                  <a data-ident="8.3.3.4" class="page-title" href="8.3.3.4/8.3.3.4.html" target="frame">8.3.3.4 Vérifier la table de routage IPv6.</a>
+                </li>
+                <li>
+                  <a data-ident="8.3.3.5" class="page-title" href="8.3.3.5/8.3.3.5.html" target="frame">8.3.3.5 Packet Tracer : configuration du protocole OSPFv3 de base</a>
+                </li>
+                <li>
+                  <a data-ident="8.3.3.6" class="page-title" href="8.3.3.6/8.3.3.6.html" target="frame">8.3.3.6 Travaux pratiques : configuration du protocole OSPFv3 de base dans une zone unique </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="icon"></span>
+          <span class="section-title">8.4 Résumé</span>
+          <ul class="topics">
+            <li>
+              <span class="icon"></span>
+              <span class="topic-title">8.4.1 Résumé</span>
+              <ul class="pages">
+                <li>
+                  <a data-ident="8.4.1.1" class="page-title" href="8.4.1.1/8.4.1.1.html" target="frame">8.4.1.1 Exercice : découverte pas-à-pas du protocole OSPFv3</a>
+                </li>
+                <li>
+                  <a data-ident="8.4.1.2" class="page-title" href="8.4.1.2/8.4.1.2.html" target="frame">8.4.1.2 Packet Tracer : exercice d&#x0027;intégration des compétences</a>
+                </li>
+                <li>
+                  <a data-ident="8.4.1.3" class="page-title" href="8.4.1.3/8.4.1.3.html" target="frame">8.4.1.3 Résumé</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <ul id="nav-menu" class="contextmenu">
+      <li id="nav-menu-expand">Tout développer</li>
+      <li id="nav-menu-collapse">Tout réduire</li>
+    </ul>
+    <div id="content">
+      <div id="container"></div>
+      <button id="prev-btn" type="button" title="Précédent" disabled><span class="icon">Précédent</span></button>
+      <input id="jump-box" type="text" value=""/>
+      <button id="next-btn" type="button" title="Suivant" disabled><span class="icon">Suivant</span></button>
+      <button id="mini-btn" type="button" title="Basculer"><span class="icon">Basculer</span></button>
+    </div>
+  </body>
+</html>
+

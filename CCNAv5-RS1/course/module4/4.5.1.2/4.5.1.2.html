@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.5.1.2 Résumé</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.5.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>La couche d'accès au réseau TCP/IP correspond à la couche liaison de données OSI (couche 2) et à la couche physique (couche 1). </p>
+<p></p>
+<p>La couche physique OSI fournit un moyen de transporter sur le support réseau les bits constituant une trame de couche liaison de données. Les composants physiques sont les périphériques électroniques, les supports et les connecteurs qui transportent et transmettent les signaux pour représenter les bits. Les composants matériels, tels que les cartes réseau, les interfaces et les connecteurs, les matériaux et les types de câble, sont tous répertoriés dans les normes associées à la couche physique. Les normes de couche physique traitent trois zones fonctionnelles : les composants physiques, la technique de codage de la trame et la méthode de signalisation.</p>
+<p></p>
+<p>Le choix du support joue un rôle essentiel dans les communications réseau. Sans la connexion physique appropriée, qu'elles soient filaires ou sans fil, les communications entre deux périphériques quelconques ne seront pas possibles. </p>
+<p></p>
+<p>La communication filaire se compose de supports en cuivre et de câbles à fibre optique. </p>
+<p>
+<ul>
+<li>Il existe trois types principaux de supports en cuivre utilisés dans les réseaux : les câbles à paires torsadées non blindées (UTP), les câbles à paires torsadées blindées (STP) et les câbles coaxiaux. Le câblage UTP est le support réseau en cuivre le plus courant. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La fibre optique est de plus en plus utilisée pour interconnecter des périphériques réseau d'infrastructure. Elle permet la transmission de données sur de longues distances et à des débits plus élevés qu'avec les autres supports réseau. Contrairement aux fils de cuivre, la fibre optique peut transmettre des signaux qui subissent moins d'atténuation et est entièrement insensible aux perturbations électromagnétiques et radioélectriques. </li>
+</ul>
+</p>
+<p></p>
+<p>Les supports sans fil transportent les signaux électromagnétiques qui représentent les bits des communications de données via des fréquences radio ou micro-ondes. </p>
+<p>Le nombre de périphériques sans fil continue d'augmenter. Par conséquent, la technologie sans fil est devenue le support de choix pour les réseaux domestiques et gagne rapidement du terrain dans les réseaux d'entreprise. </p>
+<p></p>
+<p>La couche liaison de données est responsable de l'échange de trames entre les nœuds via un support un réseau physique. Elle permet aux couches supérieures d'accéder aux supports et contrôle la manière dont les données sont placées et reçues sur les supports. </p>
+<p></p>
+<p>Parmi les différentes mises en œuvre des protocoles de couche liaison de données, il existe différentes méthodes de contrôle d'accès au support. Ces techniques de contrôle d'accès au support indiquent si et comment les noeuds partagent les supports. La méthode de contrôle d'accès au support utilisée dépend de la topologie et du partage de supports. Les topologies de réseaux locaux et étendus peuvent être physiques ou logiques. C'est la topologie logique qui influence le type de trame réseau et de contrôle d'accès au support utilisé. Les réseaux étendus sont généralement interconnectés selon la topologie physique point à point, Hub and Spoke ou maillée. Sur les réseaux locaux à supports partagés, les périphériques finaux peuvent être interconnectés selon des topologies physiques en étoile, en bus, en anneau ou en étoile étendue (hybride).</p>
+<p></p>
+<p>Tous les protocoles de couche liaison de données encapsulent l'unité de données de protocole de couche 3 dans le champ de données de la trame. Cependant, la structure de la trame et les champs contenus dans l'en-tête et dans le code de fin varient selon le protocole. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

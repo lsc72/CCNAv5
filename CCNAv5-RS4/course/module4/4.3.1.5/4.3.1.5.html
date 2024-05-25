@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.1.5 Dépannage de Frame Relay</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage de la connectivité</h1>
+        <h2>Dépannage du protocole Frame Relay</h2>
+      </div>
+      <div id="content">
+<p>Si la procédure de vérification indique que votre configuration Frame Relay ne fonctionne pas correctement, l'étape suivante est le dépannage de la configuration.</p>
+<p></p>
+<p>Utilisez la commande <span class="cmd"><b>debug frame-relay lmi</b></span> pour déterminer si le routeur et le commutateur Frame Relay envoient et reçoivent correctement les paquets LMI. </p>
+<p></p>
+<p>Examinez l'illustration pour voir le résultat d'un échange LMI. </p>
+<p>
+<ul>
+<li>
+<b>out</b> est un message d'état LMI envoyé par le routeur. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>in</b> est un a message reçu du commutateur Frame Relay. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le message d'état LMI complet est de <b>type 0</b>. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>L'échange LMI est de <b>type 1</b>. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>dlci 102, status 0x2</b> indique que le DLCI 102 est actif. </li>
+</ul>
+</p>
+<p></p>
+<p>Les valeurs possibles du champ d'état sont les suivantes : </p>
+<p>
+<ul>
+<li>
+<b>0x0 </b>: le commutateur a programmé le DLCI, mais il est inutilisable. Il est possible que l'autre extrémité du circuit virtuel permanent ne fonctionne pas. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>0x2 </b>: le commutateur Frame Relay dispose du DLCI et tout fonctionne. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>0x4 </b>: le commutateur Frame Relay n'a pas ce DLCI programmé pour le routeur, mais il a été programmé dans le passé. Ceci est peut-être causé par l'inversion des DLCI sur le routeur ou parce que le circuit virtuel permanent a été supprimé par l'opérateur dans le nuage Frame Relay.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

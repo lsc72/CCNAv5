@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.2.1 Spécifications des routeurs</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sélection des périphériques réseau</h1>
+        <h2>Matériel de routage</h2>
+      </div>
+      <div id="content">
+<p>Dans la couche de distribution d'un réseau d'entreprise, le routage est requis. En l'absence de processus de routage, les paquets ne peuvent pas quitter le réseau local.</p>
+<p></p>
+<p>Les routeurs jouent un rôle critique dans les réseaux, car ils relient des sites multiples au sein d'un réseau d'entreprise, fournissent des chemins redondants et connectent des FAI sur Internet. Ils peuvent également faire office de traducteur entre différents types et protocoles de supports. Par exemple, un routeur peut accepter des paquets provenant d'un réseau Ethernet, puis les encapsuler à nouveau pour un transfert sur un réseau série.</p>
+<p></p>
+<p>Les routeurs utilisent la partie du réseau de l'adresse IP de destination pour envoyer des paquets vers la destination appropriée. En cas de rupture de la liaison ou d'encombrement du trafic, ils sélectionnent un chemin alternatif. Tous les hôtes d'un réseau local spécifient dans leur configuration IP l'adresse IP de l'interface du routeur local. Cette interface représente la passerelle par défaut. </p>
+<p></p>
+<p>Les routeurs présentent également d'autres avantages :</p>
+<p></p>
+<p>
+<ul>
+<li>confinement des diffusions </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>connexion à des emplacements distants</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>regroupement logique d'utilisateurs par application ou service</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>sécurité améliorée </li>
+</ul>
+</p>
+<p></p>
+<p>Pour obtenir plus d'informations sur les fonctions des routeurs, cliquez sur chaque zone surlignée dans la figure.</p>
+<p></p>
+<p>Tant pour l'entreprise que pour le FAI, la capacité à effectuer des acheminements efficaces et des récupérations à partir d'échecs de liaison réseau est essentielle pour la livraison de paquets à leur destination.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

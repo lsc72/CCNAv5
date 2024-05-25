@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.3.2 Légende</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Bases</h1>
+        <h2>Enregistrement des configurations</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Sauvegarde des configurations par capture de texte</b>
+</p>
+<p></p>
+<p>Il est possible d'enregistrer des configurations en cours en tant que configurations initiales, mais les fichiers de configuration peuvent également être sauvegardés et archivés sous forme de document texte. Cette procédure permet de s'assurer qu'une copie de travail des fichiers de configuration est disponible en vue d'une modification ou une réutilisation ultérieure.</p>
+<p></p>
+<p>Comme l'illustre la Figure 1, les fichiers de configuration peuvent être stockés et archivés sur un document texte à l'aide de Tera Term. </p>
+<p></p>
+<p>Les étapes sont les suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>Dans le menu File, cliquez sur <b>Log</b>.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Choisissez l'emplacement. Tera Term commence à capturer le texte. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Après avoir démarré la capture, exécutez la commande <span class="cmd"><b>show running-config</b></span> ou <span class="cmd"><b>show startup-config</b></span> à l'invite du mode d'exécution privilégié. Le texte affiché dans la fenêtre du terminal est alors placé dans le fichier choisi.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Une fois la capture terminée, sélectionnez <b>Close</b> dans la fenêtre Tera Term:Log.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li> Affichez le contenu du fichier de sortie pour vérifier qu'il s'agit bien des informations voulues.</li>
+</ul>
+</p>
+<p></p>
+<p>De même, la Figure 2 montre comment les fichiers peuvent être enregistrés et archivés dans un document texte à l'aide de HyperTerminal.</p>
+<p></p>
+<p>
+<b>Restauration des configurations sauvegardées dans un document texte</b>
+</p>
+<p></p>
+<p>Il est possible de copier un fichier de configuration à partir d'un support de stockage vers un périphérique. IOS considère chaque ligne du texte de configuration copié dans le terminal comme une commande et l'exécute. Des modifications du fichier seront probablement nécessaires avant de copier ledit fichier. Il est conseillé de passer du chiffrement des mots de passe à des mots de passe en clair et de supprimer le paramètre, numéro 5 ou 7, qui indique que le mot de passe est chiffré. Le texte ne faisant pas partie de commandes, par exemple les messages IOS ou « --More-- », doit être supprimé. Ce processus est expliqué dans les travaux pratiques. </p>
+<p></p>
+<p>En outre, dans l'interface en ligne de commande, le périphérique doit être en mode de configuration globale, sinon il ne recevra pas les commandes du fichier texte copié.</p>
+<p></p>
+<p>Avec Tera Term, la procédure est la suivante :</p>
+<p></p>
+<p>
+<ul>
+<li>Modifiez le texte pour supprimer les mots ne faisant pas partie des commandes, puis enregistrez le fichier.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Dans le menu <b>File</b>, cliquez sur <b>Send</b>.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Recherchez le fichier à copier sur le périphérique et cliquez sur <b>Open</b>.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Tera Term colle alors le fichier dans le périphérique.</li>
+</ul>
+</p>
+<p></p>
+<p>Le texte contenu dans le fichier est appliqué sous forme de commandes dans l'interface en ligne de commande et devient la configuration en cours du périphérique. Cette méthode s'avère pratique pour configurer manuellement un périphérique.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

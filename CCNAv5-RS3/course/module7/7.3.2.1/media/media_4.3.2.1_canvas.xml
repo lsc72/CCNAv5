@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR"> 
+		<slide>
+		<!-- SLIDE 1 -->
+		<!-- Title -->
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>	
+			
+		<!-- Images -->
+			<element type="IMAGE" src="4_3_2_1.png" x="6" y="34.5" width="430" height="261.95" />
+		
+		<!-- Lazy text -->
+			<element type="TEXT" compId="ID_txt01" x="12" y="102" width="417.05" align="left" expand="up+down" size="10" />
+			<element type="TEXT" compId="ID_txt02" x="12" y="198" width="417.05" align="left" expand="up+down" size="10" />
+			<element type="TEXT" compId="ID_txt03" x="34.1" y="230" width="120.9" align="left" expand="down" size="10" />
+			<element type="TEXT" compId="ID_txt04" x="170.1" y="255" width="219.05" align="left" expand="down" size="10" />
+	
+			
+		<!-- Router text-->		
+			<element type="ROUTER" textId="ID_r1_txt01" x="36" y="336.5" width="379" height="46.9" size="10"/>		
+		</slide>
+		
+		<slide>
+		<!-- SLIDE 2 -->
+		<!-- Title -->
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>	
+			
+		
+		<!-- Router text-->		
+			<element type="ROUTER" textId="ID_r2_txt01" x="18" y="91.75" width="407.2" height="217.9" size="10"/>	
+		</slide>
+		
+		<text id="ID_r1_txt01"><![CDATA[
+		Router(config-router)# <b>metric weights</b><i> tos k1 k2 k3 k4 k5</i><br />
+		]]></text>	
+		
+		<text id="ID_r2_txt01"><![CDATA[<code>R1# <b>show ip protocols</b>
+*** IP Routing is NSF aware ***
+
+Routing Protocol is "eigrp 1"
+  Outgoing update filter list for all interfaces is not set
+  Incoming update filter list for all interfaces is not set
+  Default networks flagged in outgoing updates
+  Default networks accepted from incoming updates
+  EIGRP-IPv4 Protocol for AS(1)
+<span class="red">    Metric weight k1=1, k2=0, k3=1, k4=0, k5=0</span>
+    NSF-aware route hold timer is 240
+    Router-ID: 1.1.1.1<span id="ID_s2_txt01"></span>R1#</code>]]></text>	
+	</slide>		
+</data>

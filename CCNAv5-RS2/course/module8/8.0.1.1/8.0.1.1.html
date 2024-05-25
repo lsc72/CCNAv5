@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.0.1.1 Introduction</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole OSPF à zone unique</h1>
+        <h2>Protocole OSPF à zone unique</h2>
+      </div>
+      <div id="content">
+<p>Le protocole OSPF (Open Shortest Path First) est un protocole de routage à état de liens qui a été développé pour remplacer le protocole de routage à vecteur de distance RIP. Le protocole RIP était un protocole de routage acceptable au tout début des réseaux et d'Internet. Cependant, le fait que protocole RIP se basait uniquement sur le nombre de sauts comme seule métrique pour déterminer la meilleure route est rapidement devenu problématique. L'utilisation du nombre de sauts n'est pas adaptée aux réseaux de grande taille avec plusieurs chemins de vitesses variables. Le protocole OSPF présente des avantages considérables par rapport au protocole RIP car il offre une convergence plus rapide et s'adapte mieux aux réseaux de plus grande taille.</p>
+<p></p>
+<p>OSPF est un protocole de routage sans classe qui utilise le concept de zones pour son évolutivité. Ce chapitre décrit l'implémentation et la configuration de base d'OSPF à zone unique.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

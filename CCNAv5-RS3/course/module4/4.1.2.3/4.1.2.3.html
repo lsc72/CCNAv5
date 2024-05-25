@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.3 Solutions professionnelles sans fil </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts de la technologie sans fil</h1>
+        <h2>Composants de WLAN</h2>
+      </div>
+      <div id="content">
+<p>Les organisations qui fournissent une connectivité sans fil à leurs utilisateurs ont besoin d'une infrastructure WLAN pour proposer des options de connectivité complémentaires. </p>
+<p></p>
+<p>
+<b>Remarque </b>: la norme IEEE 802.11 fait référence au client sans fil sous le nom de station (STA). Dans ce chapitre, le terme « client sans fil » est utilisé pour décrire un périphérique doté de fonctionnalités sans fil.</p>
+<p></p>
+<p>Le réseau de petite entreprise illustré à la Figure 1 est un LAN Ethernet 802.3. Chaque client (PC1 et PC2) est connecté à un commutateur par le biais d'un câble réseau. Ce commutateur est le point d'entrée des clients sur le réseau. Notez que le point d'accès sans fil est également connecté au commutateur. Dans cet exemple, il est possible d'utiliser un point d'accès Cisco WAP4410N AP ou WAP131 AP pour assurer la connectivité du réseau sans fil.</p>
+<p></p>
+<p>Les clients sans fil utilisent leur carte réseau sans fil pour détecter les points d'accès situés à proximité, qui annoncent leur SSID. Ils tentent ensuite de s'associer et de s'authentifier auprès d'un point d'accès, comme illustré à la Figure 2. Une fois l'authentification réussie, les utilisateurs sans fil ont accès aux ressources réseau.</p>
+<p></p>
+<p>
+<b>Remarque </b>: les besoins sans fil d'une petite organisation diffèrent de ceux d'une organisation de grande taille. Les déploiements sans fil à grande échelle nécessitent du matériel sans fil supplémentaire, afin de simplifier l'installation et la gestion du réseau sans fil.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

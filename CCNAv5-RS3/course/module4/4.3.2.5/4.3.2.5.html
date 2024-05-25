@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.2.5 Authentification au sein de l&#x0027;entreprise </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité LAN sans fil</h1>
+        <h2>Sécurisation de WLAN</h2>
+      </div>
+      <div id="content">
+<p>Dans les réseaux présentant des besoins de sécurité très stricts, une authentification ou une identification supplémentaire est requise pour octroyer l'accès aux clients sans fil. Les options du mode de sécurité Enterprise nécessitent l'utilisation d'un serveur RADIUS AAA (Authentication, Authorization, and Accounting).</p>
+<p></p>
+<p>Reportez-vous à l'exemple présenté dans la figure. Notez les nouveaux champs qui s'affichent lors de la sélection d'une version entreprise de la norme WPA ou WPA2. Ces champs sont nécessaires pour fournir au point d'accès les informations requises pour contacter le serveur AAA : </p>
+<p>
+<ul>
+<li>
+<b> RADIUS Server IP address (Adresse IP du serveur RADIUS)</b> : adresse à laquelle le serveur RADIUS est accessible.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> UDP port numbers (Numéros de port UDP)</b> : le port UDP 1812 est officiellement réservé à RADIUS Authentication et le port 1813 à RADIUS Accounting, mais ces options peuvent également fonctionner sur les ports UDP 1645 et 1646.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Shared key (Clé partagée)</b> : utilisée pour authentifier le point d'accès auprès du serveur RADIUS.</li>
+</ul>
+</p>
+<p></p>
+<p>La clé partagée n'est pas un paramètre à configurer sur une STA. Il est obligatoire uniquement sur le point d'accès, pour l'authentification auprès du serveur RADIUS. </p>
+<p></p>
+<p>
+<b>Remarque </b>: aucun champ de mot de passe ne figure dans cette liste, car les procédures réelles d'authentification et d'autorisation de l'utilisateur sont gérées par la norme 802.1X, qui offre une authentification centralisée, basée sur serveur, de l'ensemble des utilisateurs finaux. </p>
+<p></p>
+<p>Le processus de connexion 802.1X utilise le protocole EAP pour communiquer avec le point d'accès et le serveur RADIUS. EAP est un protocole d’authentification de l’accès réseau. Il peut fournir un mécanisme d'authentification sécurisé et négocier une clé privée sécurisée pouvant être utilisée pour une session de chiffrement sans fil via TKIP ou AES.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+	<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+		<element type="ROUTER" textId="ID_s1_txt01" x="6" y="40" width="426" height="342.6"/>
+	</slide>
+	<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s2_title"/> 
+		<element type="ROUTER" textId="ID_s2_txt01" x="6" y="64.4" width="426" height="261.7" size="10"/>
+	</slide>
+	<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s3_title"/> 
+		<element type="ROUTER" textId="ID_s3_txt01" x="6" y="121.1" width="426" height="104.55" size="10"/>
+	</slide>
+	<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s4_title"/> 
+		<element type="ROUTER" textId="ID_s4_txt01" x="6.55" y="37.9" width="426" height="346.3" size="10"/>
+	</slide>
+	<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s5_title"/> 
+		<element type="ROUTER" textId="ID_s5_txt01" x="6.55" y="37.9" width="426" height="346.3" size="10"/>
+	</slide>
+	<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s6_title"/> 
+		<element type="ROUTER" textId="ID_s6_txt01" x="6.55" y="113.05" width="426" height="133.15" size="11"/>
+	</slide>
+	
+	<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s7_title"/> 
+		<element type="ROUTER" textId="ID_s7_txt01" x="6.55" y="97.05" width="426" height="200.05"/>
+	</slide>
+	
+	
+		<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s8_title"/> 
+		<element type="ROUTER" textId="ID_s8_txt01" x="6.55" y="113.05" width="426" height="160"/>
+	</slide>
+	
+	
+	<slide>
+		<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC6" x="10.65" y="36.9" width="420" height="367" resetId="ID_sc4_reset" showMeId="ID_sc4_showme" showAllId="ID_sc4_showall"/>
+	</slide>
+	</slide>
+	
+<text id="ID_s1_txt01"><![CDATA[<pre>R1# <strong>show ip protocols</strong>
+*** IP Routing is NSF aware ***
+
+<span class="orange">Routing Protocol is "ospf 10"</span>
+  Outgoing update filter list for all interfaces is not set
+  Incoming update filter list for all interfaces is not set 
+<span class="orange">  Router ID 1.1.1.1            </span>
+  Number of areas in this router is 1. 1 normal 0 stub 0 nssa
+  Maximum path: 4
+<span class="orange">  Routing for Networks:                      
+    172.16.1.0 0.0.0.255 area 0                  
+    172.16.3.0 0.0.0.3 area 0                               
+    192.168.10.4 0.0.0.3 area 0</span>
+  Routing Information Sources:
+    Gateway         Distance      Last Update
+    3.3.3.3              110      00:01:40
+    2.2.2.2              110      00:17:53    
+<span class="orange">  Distance: (default is 110)</span></pre>]]></text>
+
+<text id="ID_s2_txt01"><![CDATA[
+<pre>R1# <strong>show ip route | begin Gateway</strong>
+Gateway of last resort is not set
+
+    172.16.0.0/16 is variably subnetted, 4 subnets, 3 masks
+C      172.16.1.0/24 is directly connected, GigabitEthernet0/0
+L      172.16.1.1/32 is directly connected, GigabitEthernet0/0
+<span class="orange">C      172.16.3.0/30 is directly connected, Serial0/0/0
+L      172.16.3.1/32 is directly connected, Serial0/0/0</span>
+O   192.168.2.0/24 [110/65] via 172.16.3.2, 00:18:52, Serial0/0/0
+<span class="orange">O   192.168.3.0/24 [110/65] via 192.168.10.6, 00:02:39, Serial0/0/1
+    192.168.10.0/24 is variably subnetted, 2 subnets, 2 masks</span>
+C      192.168.10.4/30 is directly connected, Serial0/0/1
+L      192.168.10.5/32 is directly connected, Serial0/0/1
+    192.168.23.0/30 is subnetted, 1 subnets
+O      192.168.23.0 [110/128] via 192.168.10.6, 00:02:39, Serial0/0/1
+                    [110/128] via 172.16.3.2, 00:18:52, Serial0/0/0
+</pre>
+]]></text>
+
+<text id="ID_s3_txt01"><![CDATA[<pre>R1# <b>show ip ospf neighbor</b>
+
+Neighbor ID   Pri   State     Dead Time   Address       Interface
+<span class="orange">3.3.3.3         0   FULL/ -   00:00:36    192.168.10.6  Serial0/0/1</span>
+2.2.2.2         0   FULL/ -   00:00:37    172.16.3.2    Serial0/0/0</pre>]]></text>
+
+<text id="ID_s4_txt01"><![CDATA[<pre>
+R1# <strong>show interfaces gigabitEthernet 0/0</strong>
+<span class="orange">GigabitEthernet0/0 is up, line protocol is up</span>
+  Hardware is CN Gigabit Ethernet, address is d48c.b5ce.a0c0 
+ (bia d48c.b5ce.a0c0)
+  Description: Link to LAN 1
+<span class="orange">  Internet address is 172.16.1.1/24</span>
+  MTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+<span class="orange">  Encapsulation ARPA, loopback not set</span>
+  Keepalive set (10 sec)
+<span class="orange">  Full Duplex, 100Mbps, media type is RJ45</span>
+  output flow-control is unsupported, input flow-control is 
+unsupported
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input 01:16:14, output 00:00:15, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output
+ drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     3 packets input, 212 bytes, 0 no buffer
+     Received 2 broadcasts (0 IP multicasts)
+     0 runts, 0 giants, 0 throttles 
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     1119 packets output, 112596 bytes, 0 underruns
+     0 output errors, 0 collisions, 1 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     0 lost carrier, 0 no carrier, 0 pause output
+     0 output buffer failures, 0 output buffers swapped out
+     
+</pre>]]></text>
+
+
+
+
+<text id="ID_s5_txt01"><![CDATA[<pre>
+R1# <strong>show ip interface gigabitEthernet 0/0</strong>
+<span class="orange">GigabitEthernet0/0 is up, line protocol is up                
+  Internet address is 172.16.1.1/24                                             </span>                   
+  Broadcast address is 255.255.255.255
+  Address determined by setup command
+  MTU is 1500 bytes
+<span class="orange">  Helper address is not set                                         </span>
+  Directed broadcast forwarding is disabled
+  Multicast reserved groups joined: 224.0.0.5 224.0.0.6
+<span class="orange">  Outgoing access list is not set
+  Inbound  access list is not set                                                 </span>
+  Proxy ARP is enabled
+  Local Proxy ARP is disabled
+  Security level is default
+  Split horizon is enabled
+  ICMP redirects are always sent
+  ICMP unreachables are always sent
+  ICMP mask replies are never sent
+  IP fast switching is enabled
+  IP fast switching on the same interface is disabled
+  IP Flow switching is disabled
+  IP CEF switching is enabled
+  IP CEF switching turbo vector
+  IP multicast fast switching is enabled
+  IP multicast distributed fast switching is disabled
+  IP route-cache flags are Fast, CEF
+  Router Discovery is disabled
+  IP output packet accounting is disabled
+  IP access violation accounting is disabled
+  TCP/IP header compression is disabled
+  RTP/IP header compression is disabled
+  Policy routing is disabled
+  Network address translation is disabled
+  BGP Policy Mapping is disabled
+  Input features: MCI Check
+  IPv4 WCCP Redirect outbound is disabled
+  IPv4 WCCP Redirect inbound is disabled
+  IPv4 WCCP Redirect exclude is disabled
+  
+</pre>]]></text>
+
+<text id="ID_s6_txt01"><![CDATA[
+<pre>
+R1# <strong>show ip interface brief</strong> 
+Interface                  IP-Address      OK? Method Status                Protocol
+Embedded-Service-Engine0/0 unassigned      YES unset  administratively down down    
+<span class = "orange">GigabitEthernet0/0         172.16.1.1      YES manual up                    up      </span>
+GigabitEthernet0/1         unassigned      YES unset  administratively down down    
+<span class = "orange">Serial0/0/0                172.16.3.1      YES manual up                    up      
+Serial0/0/1                192.168.10.5    YES manual up                    up</span></pre>
+]]></text>
+
+
+
+<text id="ID_s7_txt01"><![CDATA[
+<pre>
+R1# <strong>show protocols</strong> 
+Global values:
+<span class = "orange">  Internet Protocol routing is enabled                                       </span>
+Embedded-Service-Engine0/0 is administratively down, line protocol is down
+<span class = "orange">GigabitEthernet0/0 is up, line protocol is up                                </span>
+  Internet address is 172.16.1.1/24
+GigabitEthernet0/1 is administratively down, line protocol is down
+<span class = "orange">Serial0/0/0 is up, line protocol is up                                       </span>
+  Internet address is 172.16.3.1/30
+<span class = "orange">Serial0/0/1 is up, line protocol is up                                       </span>
+  Internet address is 192.168.10.5/30</pre>
+]]></text>
+
+
+
+
+<text id="ID_s8_txt01"><![CDATA[
+<pre>
+R1# <strong>show cdp neighbors</strong> 
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone, 
+                  D - Remote, C - CVTA, M - Two-port Mac Relay 
+
+Device ID     Local Intrfce     Holdtme    Capability  Platform  Port ID
+<span class = "orange">R2            Ser 0/0/0          137            R S I  CISCO1941 Ser 0/0/0
+R3            Ser 0/0/1          178            R S I  CISCO1941 Ser 0/0/0  </span></pre>
+]]></text>
+
+</data>

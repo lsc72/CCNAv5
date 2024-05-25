@@ -1,0 +1,90 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Activation de l'authentification MD5 OSPF globalement sur R1</b>]]></text>
+</component>
+<component id="ID_s2_title">
+  <text><![CDATA[<b>Activation de l'authentification MD5 OSPF sur les interfaces de R1</b>]]></text> 
+  </component>
+<component id="ID_s3_title">
+  <text><![CDATA[<b>Activation de l'authentification MD5 OSPF</b>]]></text> 
+  </component> <!--syntax  checker --> 
+	<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+	<component id="ID_SC3" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b>***</b><font size='10' face="Arial" color="#0000FF">Vous devez saisir la commande exacte et complète.</font><b>***</b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>Utilisez CISCO-123 comme clé MD5 OSPF pour effectuer les étapes suivantes, dans l'ordre&nbsp;:<ul><li>Activez l'authentification MD5 globalement pour la zone ospf&nbsp;0, ID de processus&nbsp;10<li>Configurez la clé MD5 OSPF sur l'interface GigabitEthernet&nbsp;0/0<li>Configurez la clé MD5 OSPF sur l'interface Serial&nbsp;0/0/0<li>Configurez la clé MD5 OSPF sur l'interface Serial&nbsp;0/0/1<li>Repasser en mode d'exécution privilégié</ul></b></font>]]></existingcommands>
+		<command prompt="R2(config)#">
+		    <correctresponse><![CDATA[router ospf 10]]></correctresponse>
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[area 0 authentication message-digest]]></correctresponse>
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[interface GigabitEthernet 0/0]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)#">
+		    <correctresponse><![CDATA[ip ospf message-digest-key 1 md5 CISCO-123]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)#">
+		    <correctresponse><![CDATA[interface Serial 0/0/0]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)#">
+		    <correctresponse><![CDATA[ip ospf message-digest-key 1 md5 CISCO-123]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)#">
+		    <correctresponse><![CDATA[interface Serial 0/0/1]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)#">
+		    <correctresponse><![CDATA[ip ospf message-digest-key 1 md5 CISCO-123]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+			<deviceresponse><![CDATA[R2(config)# <br>*Apr 8 10:26:46.783: %OSPF-5-ADJCHG: Process 10, Nbr 1.1.1.1 on Serial0/0/0 from LOADING to FULL, Loading Done <br>R2(config)# <br>*Apr 8 10:27:16.435: %OSPF-5-ADJCHG: Process 10, Nbr 3.3.3.3 on Serial0/0/1 from FULL to DOWN, Neighbor Down: Dead timer expired <br>R2#]]></deviceresponse> 
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Vous configurez maintenant R3. En utilisant CISCO-123 comme clé MD5 OSPF, configurez la clé et activez l'authentification MD5 OSPF sur chaque interface, dans l'ordre suivant&nbsp;:<ul><li>GigabitEthernet 0/0<li>Serial 0/0/0<li>Serial 0/0/1<li>Repasser en mode d'exécution privilégié</ul></b>]]></instruction>			
+		</command>
+		<command prompt="R3(config)#">
+		    <correctresponse><![CDATA[interface GigabitEthernet 0/0]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[ip ospf message-digest-key 1 md5 CISCO-123]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[ip ospf authentication message-digest]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[interface Serial 0/0/0]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[ip ospf message-digest-key 1 md5 CISCO-123]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[ip ospf authentication message-digest]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[interface Serial 0/0/1]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[ip ospf message-digest-key 1 md5 CISCO-123]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[ip ospf authentication message-digest]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+			<deviceresponse><![CDATA[R3# <br>*Apr 8 10:29:21.859: %OSPF-5-ADJCHG: Process 10, Nbr 2.2.2.2 on Serial0/0/1 from LOADING to FULL, Loading Done <br>R3(config)# <br>*Apr 8 10:29:27.315: %OSPF-5-ADJCHG: Process 10, Nbr 1.1.1.1 on Serial0/0/0 from LOADING to FULL, Loading Done <br>R3#]]></deviceresponse> 
+			<instruction><![CDATA[<font size='10' face="Arial" class="syntaxBottomLine"><b>Vous avez correctement activé l'authentification MD5 OSPF, globalement et par interface.</b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+
+</textcomponents>

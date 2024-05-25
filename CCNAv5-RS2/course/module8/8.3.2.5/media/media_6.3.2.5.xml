@@ -1,0 +1,64 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Vérification de l'ID de routeur  </b>]]></text>
+</component>
+<component id="ID_s2_title">
+<text><![CDATA[<b>Modification de l'ID de routeur sur R1  </b>]]></text>
+</component>
+<component id="ID_s3_title">
+<text><![CDATA[<b>Suppression du processus OSPF  </b>]]></text>
+</component>
+<component id="ID_s4_title">
+<text><![CDATA[<b>Modification de l'ID de routeur  </b>]]></text>
+</component>
+
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+
+	<component id="ID_SC4" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b> *** </b><font  face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font  face="Arial"><b>Affichez l'ID de routeur actuel pour les protocoles IPv6.  </b></font>]]></existingcommands>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[show ipv6 protocols]]></correctresponse>
+			<deviceresponse><![CDATA[<code>IPv6 Routing Protocol is "connected" <br>IPv6 Routing Protocol is "ND" <br>IPv6 Routing Protocol is "ospf 10" <br>  Router ID 10.1.1.1 <br>  Number of areas: 0 normal, 0 stub, 0 nssa <br>  Redistribution: <br>    None <br>R1#</code>]]></deviceresponse>
+			<instruction><![CDATA[<font  face="Arial"><b><ul><li>Définir l'ID de routeur OSPF IPv6 de R1 sur 1.1.1.1<li>Repasser en mode d'exécution privilégié</ul>  </b>]]></instruction>
+		</command>
+		<command prompt="R1(config)#">
+		    <correctresponse><![CDATA[ipv6 router ospf 10]]></correctresponse>
+		</command>
+		<command prompt="R1(config-rtr)#">
+		    <correctresponse><![CDATA[router-id 1.1.1.1]]></correctresponse>
+				<deviceresponse><![CDATA[<font Face="Courier New">Reload or use "clear ipv6 ospf process" command, for this to take effect</font>]]></deviceresponse> 
+		</command>
+		<command prompt="R1(config-rtr)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+						<deviceresponse><![CDATA[<font Face="Courier New">R1#<br>*Mar 25 19:46:09,711: %SYS-5-CONFIG_I: Configured from console by console<br>R1#]]></deviceresponse> 
+			<instruction><![CDATA[<font  face="Arial"><b>Effacez le processus de routage OSPF IPv6 comme indiqué. Vérifiez que les processus OSPF sont effacés en répondant par «&nbsp;y&nbsp;».  </b></font>]]></instruction>			
+		</command>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[clear ipv6 ospf process]]></correctresponse>
+		</command>
+		<command prompt="Reset ALL OSPF processes? [no]: ">
+		    <correctresponse><![CDATA[y]]></correctresponse>
+			<deviceresponse><![CDATA[<font Face="Courier New">R1#<br>00:01:58: %OSPFv3-5-ADJCHG: Process 1, Nbr 2.2.2.2 on Serial0/0/0 from FULL to DOWN, Neighbor Down: Adjacency forced to reset<br>&lt; résultat omis &gt;<br>R1#</font>]]></deviceresponse> 
+			<instruction><![CDATA[<code><font  face="Arial"><b>Vérifiez que l'ID du routeur a changé.  </b></code>]]></instruction>
+		</command>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[show ipv6 protocols]]></correctresponse>
+			<deviceresponse><![CDATA[<code>IPv6 Routing Protocol is "connected" <br>IPv6 Routing Protocol is "ND" <br>IPv6 Routing Protocol is "ospf 10" <br>  Router ID 1.1.1.1 <br>  Number of areas: 0 normal, 0 stub, 0 nssa <br>  Redistribution: <br>    None <br>R1#</code>]]></deviceresponse>
+			<instruction><![CDATA[<font  face="Arial" class="syntaxBottomLine"><b>Vous avez correctement modifié l'ID de routeur&nbsp;OSPF  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+</textcomponents>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+	<data>		
+		<slide>
+			<element type="IMAGE" src="8.2.2.1.jpg" x="0" y="0" width="470" height="400"/>
+			<element type="TEXT" subType="TITLE" compId="ID_title"/>
+<element type="BUBBLE" compId="ID_txt01" x="35" y="50" width="196" height="61" align="left" tailPosition="7" tailFlip="0" />
+
+<element type="TEXT" id="ID_static_1" text="192.168.1.3" x="30.7" y="222.15" align="center" width="61.35" />
+<element type="TEXT" id="ID_static_2" text="192.168.1.1" x="289.05" y="206.05" align="center" width="61.35" />
+<element type="TEXT" compId="ID_txt02" x="139" y="154" width="82.4" expand="left+right" align="center" />
+<element type="ROUTER" textId="ID_router_txt1" x="20" y="255" width="429.95" height="134.15" size="11" />
+<text id="ID_router_txt1"><![CDATA[<pre>
+R1(config)# <b>snmp-server community batonaug ro SNMP_ACL</b>
+R1(config)# <b>snmp-server location NOC_SNMP_MANAGER</b>
+R1(config)# <b>snmp-server contact Wayne World</b>
+R1(config)# <b>snmp-server host 192.168.1.3 version 2c batonaug</b>
+R1(config)# <b>snmp-server enable traps</b>
+R1(config)# <b>ip access-list standard SNMP_ACL</b>
+R1(config-std-nacl)# <b>permit 192.168.1.3</b></pre>]]></text>
+</slide>
+		
+		
+		
+	</data>
+
+
+

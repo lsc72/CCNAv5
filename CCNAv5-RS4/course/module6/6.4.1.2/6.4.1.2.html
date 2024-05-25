@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.4.1.2 Résumé</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.4.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>De nombreuses technologies permettent d'assurer une transmission haut débit, comme la technologie de ligne d'abonné numérique (DSL), la technologie FTTH (fibre optique jusqu'au domicile), les systèmes à câble coaxial, la technologie sans fil et le satellite. Cette transmission nécessite la présence de composants supplémentaires à la fois au domicile de l'abonné et au niveau de l'entreprise.</p>
+<p>La technologie DOCSIS est une norme CableLabs qui permet d'ajouter le transfert de données haut débit à un système TV par câble (CATV) existant. La bande passante du service Internet sur une ligne TV par câble (CATV) peut aller jusqu'à 160 Mo/s en aval avec la version la plus récente de DOCSIS et jusqu'à 120 Mo/s en amont, et ce, simultanément. Cette technologie nécessite l'utilisation d'un système CMTS (Cable Modem Termination System) au niveau de la tête de réseau du câblo-opérateur et d'un modem câble chez l'abonné.</p>
+<p>Les deux types de technologies DSL de base sont les technologies ADSL (ligne d'abonné numérique à débit asymétrique) et SDSL (ligne d'abonné numérique à débit symétrique). Le service ADSL offre à l'utilisateur une bande passante pour le téléchargement vers l'utilisateur supérieure à celle du transfert d'informations dans la direction opposée. Le service SDSL fournit la même capacité dans les deux sens. La technologie DSL est capable de fournir des bandes passantes supérieures à 40 Mbit/s. La technologie DSL nécessite l'utilisation d'un DSLAM au niveau du central téléphonique du fournisseur et d'un émetteur-récepteur, souvent intégré à un routeur situé au domicile du client. </p>
+<p>Les solutions haut débit sans fil incluent le Wi-Fi municipal, la technologie WiMAX, les implémentations cellulaires/mobiles et l'accès Internet par satellite. Les réseaux maillés Wi-Fi municipaux ne sont pas fréquents. Le débit binaire de la technologie WiMAX est limité à 2 Mbit/s par abonné. La couverture des solutions cellulaires/mobiles est parfois limitée et leur bande passante peut représenter un problème. L'accès Internet par satellite est relativement cher et limité, mais il s'agit parfois de la seule solution possible.</p>
+<p>Si plusieurs connexions haut débit sont disponibles à un emplacement spécifique, une analyse coûts/avantages doit être effectuée en vue de déterminer la meilleure solution. Il se peut que la meilleure solution consiste à se connecter à plusieurs fournisseurs de services pour des raisons de redondance et de fiabilité.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.1.3 Flux de réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>NetFlow</h1>
+        <h2>Fonctionnement de NetFlow</h2>
+      </div>
+      <div id="content">
+<p>Le protocole NetFlow répartit les communications TCP/IP en vue de la conservation des enregistrements statistiques à l'aide du concept de flux. Un flux est un écoulement unidirectionnel de paquets entre un système source spécifique et une destination donnée. La figure illustre le concept de flux.</p>
+<p></p>
+<p>En ce qui concerne le protocole NetFlow, qui est bâti sur la suite de protocoles TCP/IP, la source et la destination sont définies par leur adresse IP de couche réseau ainsi que par leurs numéros de port source et de destination de couche transport.</p>
+<p></p>
+<p>Si la technologie NetFlow a connu plusieurs générations offrant des sophistications supplémentaires en matière de définition de flux de trafic, le protocole NetFlow d'origine distinguait les flux à l'aide d'une combinaison de sept champs. Si la valeur de l'un des champs suivants varie entre différents paquets, cela signifie que ces paquets appartiennent à des flux distincts :</p>
+<p>
+<ul>
+<li>Adresse IP source</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Adresse IP de destination</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Numéro du port source</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Numéro du port de destination</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Type de protocole de couche 3</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Marquage TOS (type de service)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Interface logique d'entrée</li>
+</ul>
+</p>
+<p></p>
+<p>Les quatre premiers champs utilisés par NetFlow pour identifier un flux devraient vous être familiers. Les adresses IP source et de destination, avec les ports source et de destination, identifient la connexion entre l'application source et celle de destination. Le type de protocole de couche 3 identifie le type d'en-tête qui suit l'en-tête IP (généralement TCP ou UDP, mais d'autres options incluent ICMP). L'octet ToS de l'en-tête IPv4 contient des informations sur le mode d'application des règles de qualité de service (QS) aux paquets de ce flux.</p>
+<p></p>
+<p>Flexible NetFlow prend en charge plus d'options relatives aux enregistrements de données de flux. Le protocole Flexible NetFlow permet à un administrateur de définir les enregistrements d'un cache de contrôle de flux Flexible NetFlow en spécifiant les champs facultatifs et obligatoires définis par l'utilisateur afin de personnaliser la collecte de données en fonction d'exigences spécifiques. Lors de la définition des enregistrements d'un cache de contrôle de flux Flexible NetFlow, ces enregistrements sont considérés comme étant des enregistrements définis par l'utilisateur. Les valeurs figurant dans des champs facultatifs sont ajoutées aux flux afin de fournir des informations supplémentaires sur le trafic de ces flux. Une modification de la valeur d'un champ facultatif ne crée pas un nouveau flux.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

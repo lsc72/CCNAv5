@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.2.5 Mode de calcul de la métrique EIGRP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1> Fonctionnement du protocole EIGRP</h1>
+        <h2>Métriques</h2>
+      </div>
+      <div id="content">
+<p>Bien que le protocole EIGRP calcule automatiquement la métrique de table de routage servant à choisir le meilleur chemin, il est important que l'administrateur réseau comprenne le mode de détermination de ces métriques.</p>
+<p></p>
+<p>La figure montre la formule de métrique composite utilisée par le protocole EIGRP. À l'aide des valeurs par défaut de K1 et K3, le calcul peut être simplifié à la bande passante la plus lente (ou bande passante minimale), plus la somme de tous les délais. </p>
+<p></p>
+<p>Autrement dit, en examinant les valeurs de bande passante et de délai de toutes les interfaces sortantes sur la route, nous pouvons déterminer la métrique EIGRP comme suit : </p>
+<p>
+<b>Étape 1. </b>Déterminez le lien avec la bande passante la plus lente. Utilisez cette valeur pour calculer la bande passante (10 000 000/bande passante).</p>
+<p>
+<b>Étape 2. </b>Déterminez la valeur de délai de chaque interface sortante vers la destination. Additionnez les valeurs de délai et divisez le résultat par 10 (somme des délais/10). </p>
+<p>
+<b>Étape 3. </b>Additionnez les valeurs calculées de bande passante et de délai et multipliez la somme par 256 pour obtenir la métrique EIGRP.</p>
+<p></p>
+<p>Le résultat de la table de routage pour R2 montre que la route vers 192.168.1.0/24 présente une métrique EIGRP de 3 012 096. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

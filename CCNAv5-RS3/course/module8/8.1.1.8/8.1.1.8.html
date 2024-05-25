@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.1.8 Route récapitulative (suite)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.1.8_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations EIGRP avancées</h1>
+        <h2>Résumé automatique </h2>
+      </div>
+      <div id="content">
+<p>Le protocole EIGRP utilise l'interface Null0 pour empêcher ces types de boucles de routage. La figure illustre un scénario selon lequel une route Null0 empêche la boucle de routage illustrée dans l'exemple précédent :</p>
+<p></p>
+<p>1. Le routeur R1 dispose d'une route par défaut 0.0.0.0/0 passant par le routeur ISP.</p>
+<p>2. Le routeur R1 envoie une mise à jour de routage vers R2 contenant la route par défaut.</p>
+<p>3. Le routeur R2 installe la route par défaut issue de R1 dans sa table de routage IPv4.</p>
+<p>4. La table de routage de R2 contient les sous-réseaux 172.16.1.0/24, 172.16.2.0/24 et 172.16.3.0/24.</p>
+<p>5. R2 installe la route récapitulative 172.16.0.0/16 vers Null0 dans sa table de routage.</p>
+<p>6. Le routeur R2 envoie une mise à jour récapitulative à R1 pour le réseau 172.16.0.0/16.</p>
+<p>7. Le routeur R1 installe la route récapitulative pour 172.16.0.0/16 via R2.</p>
+<p>8. Le routeur R1 reçoit un paquet pour 172.16.4.10. Étant donné que R1 dispose d'une route pour 172.16.0.0/16 via R2, il transfère le paquet à R2.</p>
+<p>9. Le routeur R2 reçoit le paquet avec l'adresse de destination 172.16.4.10 à partir de R1. Le paquet ne correspond à aucun sous-réseau de 172.16.0.0, mais correspond à la route récapitulative 172.16.0.0/16 vers Null0. À l'aide de la route Null0, le paquet est mis à l'écart.</p>
+<p></p>
+<p>Une route récapitulative sur R2 pour 172.16.0.0/16 vers l'interface Null0 met à l'écart tout paquet commençant par 172.16.x.x, mais ne présentant pas de correspondance plus longue avec les sous-réseaux : 172.16.1.0/24, 172.16.2.0/24 et 172.16.3.0/24. </p>
+<p></p>
+<p>Même si R2 comporte une route par défaut de 0.0.0.0/0 dans sa table de routage, la route Null0 est une correspondance plus longue.</p>
+<p></p>
+<p>
+<b>Remarque </b>: la route récapitulative Null0 est supprimée lorsque la récapitulation automatique est désactivée à l'aide de la commande de mode de configuration du routeur<span class="cmd"><b> no auto-summary</b></span>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

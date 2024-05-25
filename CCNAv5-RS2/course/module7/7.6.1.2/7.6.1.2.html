@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.6.1.2 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.6.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Les protocoles de routage dynamique sont utilisés par les routeurs pour faciliter l'échange d'informations de routage entre des routeurs. Rôle des protocoles de routage dynamique : détection des réseaux distants, actualisation des informations de routage, choix du meilleur chemin vers les réseaux de destination et capacité à trouver un autre meilleur chemin si l'actuel n'est plus disponible. Tandis que les protocoles de routage dynamique nécessitent moins de surcharge administrative que le routage statique, il est nécessaire de consacrer une partie des ressources d'un routeur au fonctionnement du protocole, y compris le temps processeur et la bande passante du lien réseau. </p>
+<p></p>
+<p>Les réseaux combinent généralement le routage dynamique et le routage statique. Le routage dynamique est le meilleur choix pour les réseaux de grande taille et le routage statique est idéal pour les réseaux d'extrémité.</p>
+<p></p>
+<p>Les protocoles de routage sont chargés de découvrir les réseaux distants, ainsi que de gérer des informations précises sur le réseau. En cas de modification affectant le routage de la topologie, les protocoles propagent ces informations dans l'ensemble du domaine de routage. Le processus consistant à amener toutes les tables de routage à un même état de cohérence, dans lequel tous les routeurs du même domaine ou de la même zone de routage disposent d'informations complètes et précises sur le réseau, est appelé la convergence. Certains protocoles de routage convergent plus rapidement que d'autres.</p>
+<p></p>
+<p>Les protocoles de routage peuvent être de différentes sortes : par classe ou sans classe, à vecteur de distance ou à état de liens, et protocole IGP ou protocole EGP. </p>
+<p></p>
+<p>Les protocoles à vecteur de distance utilisent les routeurs comme « poteaux indicateurs » le long du chemin, et ceci jusqu'à la destination finale. La seule information dont dispose un routeur à propos d'un réseau distant est la distance ou métrique d'éloignement de ce réseau et le chemin ou l'interface à utiliser pour y accéder. Les protocoles de routage à vecteur de distance ne disposent pas d'une véritable carte de la topologie du réseau. </p>
+<p></p>
+<p>Un routeur configuré avec un protocole de routage à état de liens peut créer un affichage complet ou une topologie complète du réseau en recueillant des informations à partir de tous les autres routeurs.</p>
+<p></p>
+<p>Les protocoles de routage utilisent des métriques pour déterminer le meilleur chemin ou le chemin le plus court pour atteindre un réseau de destination. Les métriques utilisées par les protocoles de routage varient en fonction du protocole. En général, une métrique faible indique un chemin plus approprié. Les métriques peuvent être déterminées par les sauts, la bande passante, le délai, la fiabilité et la charge.</p>
+<p></p>
+<p>Les routeurs découvrent parfois plusieurs routes vers le même réseau par l'intermédiaire de routes statiques et de protocoles de routage dynamique. Lorsqu'un routeur découvre un réseau de destination via plusieurs sources de routage, les routeurs Cisco utilisent la valeur de la distance administrative pour déterminer quelle source utiliser. Chaque protocole de routage dynamique possède une valeur de distance administrative unique, il en va de même pour les routes statiques et les réseaux directement connectés. Plus la valeur de la distance administrative est faible, plus la source de la route est privilégiée. Un réseau connecté directement constitue toujours la source préférée, suivi par les routes statiques, puis par les différents protocoles de routage dynamique.</p>
+<p></p>
+<p>La commande<span class="cmd"><b> show ip protocols </b></span>affiche les paramètres de protocole de routage IPv4 actuellement configurés sur le routeur. Pour le protocole IPv6, utilisez<span class="cmd"><b> show ipv6 protocols</b></span>.</p>
+<p></p>
+<p>Dans les protocoles de routage à état de liens tels que OSPF, un lien désigne une interface de routeur. Les informations relatives à l'état de ces liens sont appelées état de liens. Tous les protocoles de routage à état de liens appliquent l'algorithme de Dijkstra pour calculer le meilleur chemin pour la route. Cet algorithme est en général désigné sous le nom d'algorithme SPF. Cet algorithme utilise le coût total de chaque chemin, de la source à la destination, afin de déterminer le coût total de la route.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.3.6 Topologie en anneau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.3.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Contrôle d&#x0027;accès au support</h1>
+        <h2>Topologies LAN</h2>
+      </div>
+      <div id="content">
+<p>Dans une topologie en anneau logique, chaque nœud reçoit une trame tour à tour. Si la trame n'est pas adressée au noeud, ce dernier la transmet au noeud suivant. Un anneau peut ainsi utiliser une technique de contrôle d'accès au support contrôlé appelée passage de jeton.</p>
+<p></p>
+<p>Les noeuds d'une topologie en anneau logique suppriment la trame de l'anneau, examinent l'adresse et font suivre la trame si elle n'est pas adressée à ce noeud. Dans un anneau, tous les nœuds situés autour de l'anneau (entre les nœuds source et de destination) examinent la trame.</p>
+<p></p>
+<p>Plusieurs techniques de contrôle d'accès au support peuvent être utilisées avec un anneau logique. Cela dépend du niveau de contrôle requis. Par exemple, une seule trame à la fois est généralement véhiculée par le support. Si aucune donnée n'est en cours de transmission, un signal (appelé jeton) peut être placé sur le support et un noeud ne peut placer une trame de données sur le support que s'il dispose du jeton. </p>
+<p></p>
+<p>N'oubliez pas que la couche liaison de données « voit » une topologie en anneau logique. La topologie de câblage physique réelle peut être une autre topologie.</p>
+<p></p>
+<p>Lancez l'animation pour savoir comment les noeuds accèdent aux supports dans une topologie en anneau logique.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

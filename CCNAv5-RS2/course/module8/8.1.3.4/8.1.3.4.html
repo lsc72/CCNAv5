@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.3.4 Synchronisation des bases de données OSPF</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Caractéristiques du protocole OSPF</h1>
+        <h2>Fonctionnement d&#x0027;OSPF</h2>
+      </div>
+      <div id="content">
+<p>Après l'état Two-Way, les routeurs passent aux états de synchronisation de base de données. Tandis que le paquet Hello était utilisé pour établir des contiguïtés de voisinage, les quatre autres types de paquets OSPF sont utilisés au cours du processus d'échange et de synchronisation des LSDB.</p>
+<p></p>
+<p>Dans l'état ExStart, une relation maître/esclave est créée entre chaque routeur et ses routeurs DR et BDR adjacents. Le routeur dont l'ID est le plus élevé fait office de maître pour l'état Exchange. Dans la Figure 1, R2 devient le maître.</p>
+<p></p>
+<p>Dans l'état Exchange, les routeurs maître et esclave échangent un ou plusieurs paquets DBD. Un paquet DBD comprend des informations sur l'en-tête d'entrée LSA qui apparaît dans la LSDB du routeur. Les entrées peuvent concerner un lien ou un réseau. Chaque en-tête d'entrée LSA contient des informations sur le type d'état de liens, l'adresse du routeur expédiant les annonces, le coût du lien et le numéro d'ordre. Le routeur utilise le numéro d'ordre pour déterminer la date des informations d'état de liens reçues.</p>
+<p></p>
+<p>Dans la Figure 2, R2 envoie un paquet DBD à R1. Lorsque R1 reçoit le paquet DBD, il exécute les actions suivantes :</p>
+<p></p>
+<p>1. Il accuse réception du paquet DBD au moyen du paquet LSAck.</p>
+<p>2. R1 envoie ensuite des paquets DBD à R2. </p>
+<p>3. R2 reconnaît R1.</p>
+<p></p>
+<p>R1 compare les informations reçues aux informations dont il dispose dans sa propre LSDB. Si le paquet DBD comprend une entrée d'état de liens plus récente, le routeur passe à l'état Loading.</p>
+<p></p>
+<p>Par exemple, dans la Figure 3, R1 envoie un paquet LSR lié au réseau 172.16.6.0 à R2. R2 répond avec des informations complètes sur 172.16.6.0 dans un paquet LSU. De nouveau, lorsque R1 reçoit un paquet LSU, il envoie un paquet LSAck. R1 ajoute ensuite les nouvelles entrées d'état de liens dans sa LSDB.</p>
+<p></p>
+<p>Une fois que tous les paquets LSR ont été envoyés pour un routeur donné, les routeurs adjacents sont considérés comme étant synchronisés et ayant l'état Full. </p>
+<p></p>
+<p>Tant que les routeurs voisins continuent de recevoir des paquets Hello, le réseau dans les paquets LSA transmis reste dans la base de données topologique. Une fois que les bases de données topologiques sont synchronisées, des mises à jour (paquets LSU) sont envoyées uniquement aux voisins dans les cas suivants :</p>
+<p>
+<ul>
+<li>Une modification est perçue (mises à jour incrémentielles)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Toutes les 30 minutes </li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

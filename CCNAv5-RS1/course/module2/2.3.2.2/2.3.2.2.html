@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.2.2 Configuration manuelle des adresses IP des périphériques finaux</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Schémas d&#x0027;adressage</h1>
+        <h2>Adressage des périphériques</h2>
+      </div>
+      <div id="content">
+<p>Pour qu'un périphérique final puisse communiquer sur le réseau, les informations correctes d'adresse IP doivent lui être attribuées. Tout comme une interface SVI de commutateur, le périphérique final doit disposer d'une adresse IP et d'un masque de sous-réseau. Ces informations sont définies sur les paramètres de l'ordinateur. </p>
+<p></p>
+<p>Tous ces paramètres doivent être configurés sur un périphérique final pour qu'il puisse se connecter correctement au réseau. Ces informations sont configurées dans les paramètres réseau de l'ordinateur. Outre l'adresse IP et le masque de sous-réseau, il est également possible de configurer les informations de passerelle par défaut et de serveur DNS, comme illustré dans la figure. </p>
+<p></p>
+<p>L'adresse de passerelle par défaut est l'adresse IP de l'interface de routeur utilisée pour que le trafic réseau sorte du réseau local. La passerelle par défaut est l'adresse IP qui est souvent attribuée par l'administrateur réseau et est utilisée lorsque le trafic doit être acheminé vers un autre réseau.</p>
+<p></p>
+<p>L'adresse du serveur DNS est l'adresse IP du serveur de noms de domaine (DNS), qui est utilisé pour convertir des adresses IP en adresses Web, par exemple <a href="http://www.cisco.com/" target="_blank">www.cisco.com</a>. Sur Internet, tous les périphériques possèdent une adresse IP. C'est cette adresse qui est utilisée pour les joindre. Cependant, il est plus facile pour les utilisateurs de se souvenir de noms plutôt que de numéros. Par conséquent, les sites Web se voient attribuer des noms pour simplifier ce processus. Le serveur DNS est utilisé pour garantir le mappage entre les adresses IP et les noms de différents périphériques. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

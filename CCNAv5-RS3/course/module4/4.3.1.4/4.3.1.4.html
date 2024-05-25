@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.1.4 Points d’accès non autorisés </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité LAN sans fil</h1>
+        <h2>Menaces WLAN</h2>
+      </div>
+      <div id="content">
+<p>Un point d'accès non autorisé est un point d'accès ou un routeur sans fil :</p>
+<p>
+<ul>
+<li>Qui a été connecté à un réseau d'entreprise sans autorisation explicite et en violation de la stratégie de l'entreprise. Toute personne ayant accès aux locaux peut installer (de manière malveillante ou non) un routeur sans fil bon marché qui peut potentiellement donner accès aux ressources d'un réseau sécurisé.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Qui a été connecté ou activé par un pirate pour capturer les données des clients, par exemple l'adresse MAC (des clients sans fil et filaires), ou encore capturer et déguiser des paquets de données, de manière à obtenir l'accès aux ressources du réseau ou à lancer des attaques Man-in-the-Middle.</li>
+</ul>
+</p>
+<p></p>
+<p>Autre élément à prendre à compte, le degré de facilité à créer un hotspot de réseau personnel. Par exemple, un utilisateur ayant accès au réseau sécurisé autorise son hôte Windows (qui dispose des droits requis) à devenir un point d'accès Wi-Fi. Cette action contourne les mesures de sécurité et permet à d'autres périphériques non autorisés d'accéder aux ressources du réseau, en tant que périphériques partagés. </p>
+<p></p>
+<p>Pour empêcher l'installation de points d'accès non autorisés, les entreprises doivent utiliser un logiciel de surveillance afin de contrôler activement le spectre radio à la recherche de tout point d'accès indésirable. Par exemple, la capture d'écran présentée dans la figure ci-contre, et qui provient du logiciel de gestion du réseau Cisco Prime Infrastructure, montre un plan RF indiquant l'emplacement d'un intrus détecté avec une adresse MAC usurpée. </p>
+<p></p>
+<p>
+<b>Remarque </b>: Cisco Prime est un logiciel de gestion du réseau qui fonctionne avec un autre logiciel de gestion, afin d'offrir une vision globale et un emplacement centralisé pour toutes les informations relatives au réseau. Ce logiciel est généralement déployé dans les grandes organisations. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

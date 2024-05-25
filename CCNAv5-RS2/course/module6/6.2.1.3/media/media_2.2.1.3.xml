@@ -1,0 +1,87 @@
+﻿<textcomponents>
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Configuration des routes statiques de tronçon suivant sur R1  </b>]]></text>
+	</component>
+	<component id="ID_s2_title">
+		<text><![CDATA[<b>Vérification de la table de routage de R1  </b>]]></text> 
+	</component>
+	<component id="ID_s3_title">
+		<text><![CDATA[<b>Configuration des routes statiques de tronçon suivant sur R2  </b>]]></text> 
+	</component>
+	<component id="ID_s4_title">
+		<text><![CDATA[<b>Configuration des routes statiques de tronçon suivant sur R3  </b>]]></text> 
+	</component>
+  
+	<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+	<component id="ID_sc1_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc1_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc1_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+		
+	<component id="ID_SC1" fontFace='Courier New' fontSize="10">
+		<text></text>		
+		<feedback id="fb"><![CDATA[<b> *** </b><font size='10' face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>Configurez une route statique vers le réseau 192.168.2.0/24 en utilisant l'adresse de tronçon suivant 192.168.1.1.  </b></font>]]></existingcommands>
+		<command prompt="R2(config)#">
+		    <correctresponse><![CDATA[ip route 192.168.2.0 255.255.255.0 192.168.1.1]]></correctresponse>
+		    <instruction><![CDATA[<font size='10' face="Arial"><b>Configurez une route statique vers le réseau 172.16.3.0/24 en utilisant l'adresse de tronçon suivant 172.16.2.1.  </b></font>]]></instruction>
+		</command>
+		<command prompt="R2(config)#">
+		    <correctresponse><![CDATA[ip route 172.16.3.0 255.255.255.0 172.16.2.1]]></correctresponse>
+		    <instruction><![CDATA[<font size='10' face="Arial"><b>Quittez le mode de configuration et affichez la table de routage.  </b></font>]]></instruction> 			
+		</command>
+		<command prompt="R2(config)#">
+		    <correctresponse><![CDATA[exit]]></correctresponse>
+		    <deviceresponse><![CDATA[*Feb 21 17:56:16,231: %SYS-5-CONFIG_I: Configured from console by console]]></deviceresponse>
+		</command>
+		<command prompt="R2#">
+			<correctresponse><![CDATA[show ip route]]></correctresponse>
+		    <deviceresponse><![CDATA[<font size = '8' face="Courier New">Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP <br>       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area <br>       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2 <br>       E1 - OSPF external type 1, E2 - OSPF external type 2 <br>       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2 <br>       ia - IS-IS inter area, * - candidate default, U - per-user static route <br>       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP <br>       + - replicated route, % - next hop override <br> <br></font>Gateway of last resort is not set <br> <br>      172.16.0.0/16 is variably subnetted, 5 subnets, 2 masks <br>C        172.16.1.0/24 is directly connected, GigabitEthernet0/0 <br>L        172.16.1.1/32 is directly connected, GigabitEthernet0/0 <br>C        172.16.2.0/24 is directly connected, Serial0/0/0 <br>L        172.16.2.2/32 is directly connected, Serial0/0/0 <br>S        172.16.3.0/24 [1/0] via 172.16.2.1 <br>      192.168.1.0/24 is variably subnetted, 2 subnets, 2 masks <br>C        192.168.1.0/24 is directly connected, Serial0/0/1 <br>L        192.168.1.2/32 is directly connected, Serial0/0/1 <br>S     192.168.2.0/24 [1/0] via 192.168.1.1 <br>R2#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial" class="syntaxBottomLine"><b>Vous avez correctement configuré les routes statiques de tronçon suivant sur R2.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+	
+	
+	<component id="ID_SC2" fontFace='Courier New' fontSize="10">
+		<text></text>		
+		<feedback id="fb"><![CDATA[<b> *** </b><font size='10' face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>Configurez une route statique vers les réseaux 172.16.1.0/24, 172.16.2.0/24, et 172.16.3.0/24 en utilisant l'adresse de tronçon suivant 192.168.1.2.  </b></font>]]></existingcommands>
+		<command prompt="R3(config)#">
+		    <correctresponse><![CDATA[ip route 172.16.1.0 255.255.255.0 192.168.1.2]]></correctresponse>
+		</command>
+		<command prompt="R3(config)#">
+		    <correctresponse><![CDATA[ip route 172.16.2.0 255.255.255.0 192.168.1.2]]></correctresponse>
+		</command>
+		<command prompt="R3(config)#">
+		    <correctresponse><![CDATA[ip route 172.16.3.0 255.255.255.0 192.168.1.2]]></correctresponse>
+		    <instruction><![CDATA[<font size='10' face="Arial"><b>Quittez le mode de configuration et affichez la table de routage.  </b></font>]]></instruction> 			
+		</command>
+		<command prompt="R3(config)#">
+		    <correctresponse><![CDATA[exit]]></correctresponse>
+		    <deviceresponse><![CDATA[<font size='10'>*Feb 21 17:57:13,699: %SYS-5-CONFIG_I: Configured from console by console</font>]]></deviceresponse>
+		</command>
+		<command prompt="R3#">
+			<correctresponse><![CDATA[show ip route]]></correctresponse>
+		    <deviceresponse><![CDATA[<font size='8'>Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP <br>       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area <br>       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2 <br>       E1 - OSPF external type 1, E2 - OSPF external type 2 <br>       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2 <br>       ia - IS-IS inter area, * - candidate default, U - per-user static route <br>       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP <br>       + - replicated route, % - next hop override <br> <br></font>Gateway of last resort is not set <br> <br>      172.16.0.0/24 is subnetted, 3 subnets <br>S        172.16.1.0 [1/0] via 192.168.1.2 <br>S        172.16.2.0 [1/0] via 192.168.1.2 <br>S        172.16.3.0 [1/0] via 192.168.1.2 <br>      192.168.1.0/24 is variably subnetted, 2 subnets, 2 masks <br>C        192.168.1.0/24 is directly connected, Serial0/0/1 <br>L        192.168.1.1/32 is directly connected, Serial0/0/1 <br>      192.168.2.0/24 is variably subnetted, 2 subnets, 2 masks <br>C        192.168.2.0/24 is directly connected, GigabitEthernet0/0 <br>L        192.168.2.1/32 is directly connected, GigabitEthernet0/0 <br>R3#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial" class="syntaxBottomLine"><b>Vous avez correctement configuré les routes statiques de tronçon suivant sur R3.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+</textcomponents>

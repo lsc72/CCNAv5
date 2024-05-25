@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.4.1 Avantage de l&#x0027;utilisation d&#x0027;un modèle en couches</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Normes et protocoles réseau</h1>
+        <h2>Modèles de référence</h2>
+      </div>
+      <div id="content">
+<p>On utilise souvent un modèle sous forme de couches, tel que le modèle TCP/IP pour aider à visualiser l'interaction entre les différents protocoles. Ce modèle illustre le fonctionnement des protocoles intervenant dans chaque couche, ainsi que leur interaction avec les couches supérieures et inférieures.</p>
+<p></p>
+<p>L'utilisation d'un modèle en couches présente certains avantages pour décrire des protocoles et des opérations sur un réseau. L'utilisation d'un modèle en couches :</p>
+<p>
+<ul>
+<li>Aide à la conception d'un protocole, car des protocoles qui fonctionnent à un niveau de couche spécifique disposent d'informations définies à partir desquelles ils agissent, ainsi que d'une interface définie par rapport aux couches supérieures et inférieures. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Il encourage la concurrence, car les produits de différents fournisseurs peuvent fonctionner ensemble. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Il permet d'éviter que des changements technologiques ou fonctionnels dans une couche ne se répercutent sur d'autres couches, supérieures et inférieures. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Il fournit un langage commun pour décrire les fonctions et les fonctionnalités réseau.</li>
+</ul>
+</p>
+<p></p>
+<p>Il existe deux types de modèles de réseau de base : </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Le modèle de protocole</b>, qui suit la structure d'une suite de protocoles donnée. L'ensemble hiérarchique des protocoles associés dans une suite représente généralement toutes les fonctionnalités requises à l'interface entre le réseau humain et le réseau de données. Le modèle TCP/IP est un modèle de protocole, car il décrit les fonctions qui interviennent à chaque couche des protocoles au sein de la suite TCP/IP. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Le modèle de référence</b> assure la cohérence de tous les types de protocoles et services réseau en décrivant les opérations à effectuer à chaque couche, mais n'indique pas leur mise en œuvre. Un modèle de référence n'est pas destiné à être une spécification d'implémentation, ni à fournir un niveau de détail suffisant pour définir précisément les services de l'architecture réseau. Le principal objectif d'un modèle de référence est d'assurer une compréhension plus claire des fonctions et des processus impliqués.</li>
+</ul>
+</p>
+<p></p>
+<p>Le modèle OSI (Open System Interconnection) est le modèle de référence interréseau le plus connu. Il est utilisé pour la conception de réseaux de données, des spécifications d'opérations et la résolution des problèmes. </p>
+<p></p>
+<p>Comme l'illustre la figure, les modèles OSI et TCP/IP sont les principaux modèles utilisés en matière de fonctionnalités réseau. Les concepteurs des protocoles, services ou périphériques réseau peuvent créer leurs propres modèles représentant leurs produits. Enfin, les concepteurs doivent communiquer avec l'industrie en associant leurs produits ou leurs services aux modèles OSI ou TCP/IP ou aux deux.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

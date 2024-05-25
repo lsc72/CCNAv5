@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.2.3 Paramètres d&#x0027;association </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement LAN sans fil</h1>
+        <h2>Fonctionnement sans fil</h2>
+      </div>
+      <div id="content">
+<p>La Figure 1 présente les paramètres sans fil d'un routeur sans fil Linksys EA6500. Les paramètres sans fil communs configurables incluent :</p>
+<p>
+<ul>
+<li>
+<b>SSID</b> : le SSID est un identifiant unique que les clients sans fil utilisent pour faire la distinction entre différents réseaux sans fil proches. Le nom SSID apparaît dans la liste des réseaux sans fil disponibles de chaque client. Suivant la configuration du réseau, plusieurs points d'accès d'un réseau peuvent partager un identifiant SSID. Les noms contiennent généralement 2 à 32 caractères.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Password (Mot de passe)</b> : obligatoire pour que les clients sans fil s'authentifient auprès du point d'accès. Le mot de passe est parfois appelé « clé de sécurité ». Il empêche les pirates et autres utilisateurs indésirables d'accéder au réseau sans fil.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Network mode (Mode réseau)</b> : fait référence aux normes WLAN 802.11a/b/g/n/ac/ad. Les routeurs et les points d'accès sans fil peuvent fonctionner en mode mixte, ce qui signifie qu'ils peuvent utiliser simultanément plusieurs normes.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Security mode (Mode sécurité)</b> : fait référence aux paramètres de sécurité, tels que WEP, WPA et WPA2. Le niveau de sécurité le plus élevé pris en charge est toujours utilisé.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Channel settings (Paramètres des canaux)</b> : fait référence aux bandes de fréquence utilisées pour transmettre les données sans fil. Les routeurs et point d'accès sans fil peuvent choisir la configuration des canaux ou bien celle-ci peut être définie manuellement, en cas d'interférence avec un autre point d'accès ou périphérique sans fil.</li>
+</ul>
+</p>
+<p></p>
+<p>Notez que le module Linksys EA6500 prend en charge les fréquences radio 2,4 GHz et 5 GHz.</p>
+<p></p>
+<p>La Figure 2 présente les options du mode réseau pour la fréquence radio 2,4 GHz. Notez que celui-ci peut prendre en charge uniquement les modes Mixed, Wireless-N Only et Wireless-G Only (Mixte, Réseau sans fil n uniquement et Réseau sans fil g uniquement). Le paramètre Mixed (Mixte) offre davantage de flexibilité, mais il peut également ralentir les communications. Par exemple, si tous les clients sans fil connectés au routeur utilisent 802.11n, ils bénéficient tous des meilleurs débits de données offerts par cette technologie. Si le client sans fil 802.11g s'associe au point d'accès, tous les clients sans fil les plus rapides en concurrence pour accéder au canal doivent attendre que les clients 802.11g le libèrent pour pouvoir lancer leur transmission. Cependant, si tous les clients sans fil prennent en charge 802.11n, il est préférable de sélectionner l'option Wireless-N Only (Réseau sans fil n uniquement) pour améliorer les performances.</p>
+<p></p>
+<p>La Figure 3 présente les options du mode réseau pour la fréquence radio 5 GHz. Notez que ce mode prend également en charge le paramètre Mixed (Mixte), ainsi que les paramètres Wireless-N Only (Réseau sans fil n uniquement) et Wireless-AC Only (Réseau sans fil ac uniquement). </p>
+<p></p>
+<p>Le module Linksys EA6500 ne prend pas en charge 802.11ad.</p>
+<p></p>
+<p>Les options de sécurité répertoriées à la Figure 4 correspondent aux protocoles de sécurité disponibles sur le routeur sans fil Linksys EA6500. Il est conseillé aux utilisateurs domestiques de choisir l'option WPA2/WPA Mixed Personal (WPA2/WPA Mixte particulier), et aux professionnels l'option WPA2/WPA Mixed Enterprise (WPA2/WPA Mixte entreprise). La fréquence radio 5 GHz offre des choix identiques. Le périphérique final sans fil doit également prendre en charge l'option de sécurité sélectionnée.</p>
+<p></p>
+<p>
+<b>Remarque </b>: tous les routeurs et points d'accès sans fil doivent être sécurisés à l'aide des paramètres du niveau le plus élevé possible. Les options None (Aucun) et WEP doivent être évitées et utilisées uniquement dans les situations où la sécurité n'est pas une préoccupation.</p>
+<p></p>
+<p>La Figure 5 présente les paramètres de canal pour la fréquence radio 2,4 GHz. L'option recommandée est Auto ; cependant, un canal spécifique peut être sélectionné si d'autres points d'accès ou périphériques proches risquent d'interférer avec le canal sélectionné par le routeur. Bien que la fréquence radio 5 GHz dispose de l'option Auto, dans cet exemple, un canal (153) et une largeur de canal spécifiques ont été indiqués. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

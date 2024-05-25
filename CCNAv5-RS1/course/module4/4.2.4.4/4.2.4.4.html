@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.4.4 Normes Wi-Fi 802.11</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.4.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Supports réseau</h1>
+        <h2>Supports sans fil</h2>
+      </div>
+      <div id="content">
+<p>Les différentes normes 802.11 ont évolué au fil des années. Exemples de normes :</p>
+<p>
+<ul>
+<li>
+<b>IEEE 802.11a</b> : fonctionne dans la bande de fréquences de 5 GHz et permet des débits allant jusqu'à 54 Mbit/s. Cette norme s'appliquant à des fréquences élevées, elle possède une zone de couverture plus petite et est moins efficace pour pénétrer des structures de bâtiments. Il n'y a pas d'interopérabilité entre les périphériques fonctionnant sous cette norme et les normes 802.11b et 802.11g décrites ci-dessous.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>IEEE 802.11b</b> : fonctionne dans la bande de fréquences de 2,4 GHz et permet des débits allant jusqu'à 11 Mbit/s. Les périphériques mettant en oeuvre cette norme ont une portée plus longue et sont davantage capables de pénétrer les structures de bâtiments que les périphériques basés sur la norme 802.11a.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>IEEE 802.11g : </b>fonctionne dans la bande de fréquences de 2,4 GHz et offre des débits allant jusqu'à 54 Mbit/s. Les périphériques mettant en oeuvre cette norme fonctionnent par conséquent aux mêmes portée et radiofréquence que la norme 802.11b mais avec la bande passante de la norme 802.11a.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>IEEE 802.11n</b> : fonctionne dans les bandes de fréquences 2,4 GHz et 5 GHz. Les débits de données standard attendus vont de 150 Mbit/s à 600 Mbit/s sur une distance maximale de 70 mètres. Cette norme est rétrocompatible avec les périphériques 802.11a/b/g.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>IEEE 802.11ac</b> : fonctionne dans la bande de fréquence de 5 GHz offrant des débits de données de 450 Mbit/s à 1,3 Gbit/s (1 300 Mbit/s). Cette norme est rétrocompatible avec les périphériques 802.11a/n.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>IEEE 802.11ad</b> : également appelée « WiGig ». Cette norme utilise une solution Wi-Fi tribande sur les bandes de fréquences de 2,4 GHz, 5 GHz et 60 GHz et permet des débits théoriques jusqu'à 7 Gbit/s.</li>
+</ul>
+</p>
+<p></p>
+<p>La figure illustre certaines de ces différences.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

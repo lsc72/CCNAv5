@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.4.7 Caractéristiques des protocoles de routage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.4.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de routage dynamique</h1>
+        <h2>Types de protocoles de routage</h2>
+      </div>
+      <div id="content">
+<p>Plusieurs caractéristiques permettent de différencier les protocoles de routage :</p>
+<p>
+<ul>
+<li>
+<b>Vitesse de convergence</b> - La vitesse de convergence définit la rapidité à laquelle les routeurs dans la topologie du réseau parviennent à partager les informations de routage et à disposer d'une base de connaissances cohérente. Plus la convergence est rapide, plus le protocole est recommandé. Des boucles de routage peuvent survenir lorsque des tables de routage incohérentes ne sont pas mises à jour en raison d'une convergence lente dans un réseau changeant. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Évolutivité</b> - L'évolutivité définit la taille maximale d'un réseau en fonction du protocole de routage qui est déployé. Plus le réseau est grand, plus le protocole de routage doit être évolutif. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Par classe ou sans classe (utilisation du VLSM)</b> - Les protocoles de routage par classe n'incluent pas le masque de sous-réseau et ne peuvent pas prendre en charge le VLSM. Les protocoles de routage sans classe incluent le masque de sous-réseau dans les mises à jour. Les protocoles de routage sans classe prennent en charge la technique VLSM et la récapitulation des meilleures routes. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Utilisation des ressources</b> - Inclut les exigences d'un protocole de routage, telles que l'espace mémoire (RAM), l'utilisation du processeur et l'utilisation de la bande passante. Pour des besoins en ressources plus élevés, un matériel plus puissant est nécessaire pour prendre en charge le fonctionnement du protocole de routage en plus des processus de transfert de paquets. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Implémentation et maintenance</b> - L'implémentation et la maintenance font référence aux connaissances qu'un administrateur réseau doit posséder pour implémenter et gérer le réseau en fonction du protocole de routage déployé. </li>
+</ul>
+</p>
+<p></p>
+<p>Le tableau présenté dans la figure récapitule les caractéristiques de chaque protocole de routage. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

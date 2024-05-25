@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.2.1 Connectivité de la couche 3</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du protocole EIGRP</h1>
+        <h2>Dépannage des problèmes de voisinage EIGRP</h2>
+      </div>
+      <div id="content">
+<p>La connectivité de la couche 3 est indispensable pour former une contiguïté de voisinage entre deux routeurs connectés directement. En examinant le résultat de la commande<span class="cmd"><b> show ip interface brief</b></span>, un administrateur réseau peut vérifier que l'état et le protocole de connexion des interfaces sont actifs. Une requête ping envoyée d'un routeur vers un autre, connecté directement, doit confirmer la connectivité IPv4 entre les périphériques. La figure affiche le résultat de la commande<span class="cmd"><b> show ip interface brief</b></span> pour R1. R1 montre la connectivité à R2 et les requêtes ping sont réussies. </p>
+<p></p>
+<p>Si la requête ping échoue, vérifiez le câblage et assurez-vous que les interfaces des périphériques connectés se trouvent sur un sous-réseau commun. Un message de journal précisant que les voisins EIGRP ne se trouvent pas sur un sous-réseau commun (<span class="cmd"> not on common subnet </span>) indique qu'il existe une adresse IPv4 incorrecte sur l'une des deux interfaces voisines EIGRP.</p>
+<p></p>
+<p>
+<b>Protocole EIGRP pour IPv6</b>
+</p>
+<p></p>
+<p>Des commandes et des critères de dépannage similaires s'appliquent également au protocole EIGRP pour IPv6.</p>
+<p></p>
+<p>La commande équivalente utilisée avec le protocole EIGRP pour IPv6 est<span class="cmd"><b> show ipv6 interface brief</b></span>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

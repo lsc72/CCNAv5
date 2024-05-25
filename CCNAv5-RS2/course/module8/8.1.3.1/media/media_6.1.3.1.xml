@@ -1,0 +1,104 @@
+﻿<textcomponents>
+
+<component id="ID_title">
+ <text><![CDATA[<b>Transition entre les différents états OSPF  </b>]]></text>
+</component>
+
+<component id="ID_txt01">
+ <text><![CDATA[État Down]]></text>
+</component>
+
+<component id="ID_txt02">
+ <text><![CDATA[État Init]]></text> 
+</component>
+  
+<component id="ID_txt03">
+  <text><![CDATA[État Two-Way]]></text> 
+</component>
+
+<component id="ID_txt04">
+  <text><![CDATA[État ExStart]]></text> 
+</component>
+
+<component id="ID_txt05">
+  <text><![CDATA[État Exchange]]></text> 
+</component>
+
+<component id="ID_txt06">
+  <text><![CDATA[État Loading]]></text> 
+</component>
+  
+<component id="ID_txt07">
+  <text><![CDATA[État Full]]></text> 
+</component>
+  
+<component id="ID_txt08">
+  <text><![CDATA[Établissement des contiguïtés de voisinage]]></text> 
+</component>
+  
+<component id="ID_txt09">
+  <text><![CDATA[Synchroniser les bases de données&nbsp;OSPF]]></text> 
+</component>
+  
+  
+<component id="ID_btn01_body">
+<text><![CDATA[<textformat blockindent='-14'><ul><li>Aucun paquet&nbsp;Hello reçu = Down.  </li><li>Le routeur envoie des paquets&nbsp;Hello.  </li><li>Transition vers l'état Init.  </li></ul></textformat>]]></text>
+</component>
+
+
+<component id="ID_btn02_body">
+<text><![CDATA[<textformat blockindent='-14'><ul><li>Les paquets&nbsp;Hello sont reçus du voisin.  </li><li>Ils contiennent des ID de routeur du routeur expéditeur.  </li><li>Transition vers l'état Two-Way.  </li></ul></textformat>]]></text>
+</component>
+
+<component id="ID_btn03_body">
+<text><![CDATA[<textformat blockindent='-14'><ul><li>Sur les liaisons Ethernet, choisissez un DR et un BDR.  </li><li>Transition vers l'état ExStart.  </li></ul></textformat>]]></text>
+</component>
+
+<component id="ID_btn04_body">
+<text><![CDATA[<textformat blockindent='-14'><ul><li>Négocier la relation maître/esclave et le numéro d'ordre de paquet&nbsp;DBD.  </li><li>Le maître lance l'échange de paquet&nbsp;DBD.  </li></ul></textformat>]]></text>
+</component>
+
+<component id="ID_btn05_body">
+<text><![CDATA[<textformat blockindent='-14'><ul><li>Les routeurs échangent des paquets&nbsp;DBD.  </li><li>Si des informations supplémentaires relatives au routeur sont requises, alors transition vers Loading&nbsp;; sinon, transition vers Full.  </li></ul></textformat>]]></text>
+</component>
+
+<component id="ID_btn06_body">
+<text>
+<![CDATA[<textformat blockindent='-14'><ul><li>Les paquets LSR et LSU permettent d'obtenir des informations supplémentaires sur les routes.  </li><li>Les routes sont traitées à l'aide de l'algorithme SPF.  </li><li>Transition vers l'état Full.  </li></ul></textformat>]]></text>
+</component>
+
+<component id="ID_btn07_body">
+<text>
+<![CDATA[Les routeurs ont convergé.]]>
+</text>
+</component>
+
+<component id="ID_btn01_header">
+	<text><![CDATA[<b>État Down  </b>]]></text>
+</component>
+
+<component id="ID_btn02_header">
+	<text><![CDATA[<b>État Init  </b>]]></text> 
+ </component>
+ 
+<component id="ID_btn03_header">
+ 	<text><![CDATA[<b>État Two-Way  </b>]]></text> 
+ </component>
+ 
+<component id="ID_btn04_header">
+ 	<text><![CDATA[<b>État ExStart  </b>]]></text> 
+</component>
+
+<component id="ID_btn05_header">
+	<text><![CDATA[<b>État Exchange  </b>]]></text> 
+</component>
+
+<component id="ID_btn06_header">
+	<text><![CDATA[<b>État Loading  </b>]]></text> 
+</component>
+  
+<component id="ID_btn07_header">
+	<text><![CDATA[<b>État Full  </b>]]></text> 
+</component>
+
+</textcomponents>

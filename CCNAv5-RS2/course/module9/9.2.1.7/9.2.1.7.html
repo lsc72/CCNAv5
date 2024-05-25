@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.1.7 Création de listes de contrôle d&#x0027;accès standard nommées</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.1.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Listes de contrôle d&#x0027;accès IPv4 standard </h1>
+        <h2>Configuration des listes de contrôle d&#x0027;accès IPv4 standard</h2>
+      </div>
+      <div id="content">
+<p>Si vous attribuez un nom à une liste de contrôle d'accès, il vous sera plus facile d'en comprendre la fonction. Par exemple, vous pouvez nommer NO_FTP une liste de contrôle d'accès refusant le trafic FTP. Lorsque vous identifiez une liste de contrôle d'accès par un nom plutôt qu'un numéro, le mode de configuration et la syntaxe de commande sont légèrement différents.</p>
+<p></p>
+<p>La Figure 1 décrit les étapes à suivre pour créer une liste de contrôle d'accès standard nommée.</p>
+<p></p>
+<p>
+<b>Étape 1. </b>À partir du mode de configuration globale, utilisez la commande <span class="cmd"><b>ip access-list</b></span> pour créer une liste de contrôle d'accès nommée. Les noms des listes de contrôle d'accès doivent contenir uniquement des caractères alphanumériques, sont sensibles à la casse et doivent être uniques. La commande <span class="cmd"><i>name</i></span> <span class="cmd"><b>ip access-list standard</b></span> permet de créer une liste de contrôle d'accès standard nommée, tandis que la commande <span class="cmd"><i>name</i></span> <span class="cmd"><b>ip access-list extended</b></span> permet de créer une liste de contrôle d'accès étendue. Lorsque vous avez saisi la commande, le routeur est en mode de configuration de listes de contrôle d'accès standard nommées, comme indiqué par l'invite.</p>
+<p></p>
+<p>
+<b>Remarque</b> : les listes de contrôle d'accès numérotées utilisent la commande de configuration globale <span class="cmd"><b>access-list</b></span> alors que les listes de contrôle d'accès IPv4 nommées utilisent la commande <span class="cmd"><b>ip access-list</b></span>.</p>
+<p></p>
+<p>
+<b>Étape 2. </b>En mode de configuration des listes de contrôle d'accès nommées, utilisez les instructions <span class="cmd"><b>permit</b></span> (autoriser) ou<span class="cmd"><b> deny</b></span> (refuser) pour spécifier une ou plusieurs conditions déterminant si un paquet est transféré ou abandonné.</p>
+<p></p>
+<p>
+<b>Étape 3. </b>Appliquez la liste de contrôle d'accès à une interface à l'aide de la commande <span class="cmd"><b>ip access-group</b></span>. Indiquez si la liste de contrôle d'accès doit être appliquée aux paquets lorsqu'ils entrent dans l'interface (<span class="cmd"><b>in</b></span>) ou lorsqu'ils quittent l'interface (<span class="cmd"><b>out</b></span>).</p>
+<p></p>
+<p>La Figure 2 illustre les commandes utilisées pour configurer une liste de contrôle d'accès standard nommée sur l'interface G0/0 du routeur R1 qui refuse l'accès de l'hôte 192.168.11.10 au réseau 192.168.10.0. La liste de contrôle d'accès est nommée NO_ACCESS.</p>
+<p></p>
+<p>Vous n'êtes pas obligés de mettre des majuscules aux noms des listes de contrôle d'accès. En revanche, si vous le faites, vous les verrez bien mieux en affichant la commande running-config. Il sera également moins probable que vous créiez accidentellement deux listes de contrôle d'accès différentes portant le même nom, mais avec des différences de majuscules. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

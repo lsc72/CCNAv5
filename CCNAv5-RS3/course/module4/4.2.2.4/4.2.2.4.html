@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.2.4 Détection des points d&#x0027;accès</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement LAN sans fil</h1>
+        <h2>Fonctionnement sans fil</h2>
+      </div>
+      <div id="content">
+<p>Les périphériques sans fil doivent détecter un point d'accès ou un routeur sans fil et s'y connecter. Les clients sans fil se connectent au point d'accès à l'aide d'un processus d'analyse (enquête). Ce processus peut être :</p>
+<p>
+<ul>
+<li>
+<b>Mode passif</b> : le point d'accès annonce ouvertement son service en envoyant périodiquement des trames balise de diffusion contenant le SSID, les normes prises en charge et les paramètres de sécurité. L'objectif principal de la balise est de permettre aux clients sans fil de découvrir quels réseaux et points d'accès sont disponibles dans une zone donnée, puis de décider lesquels utiliser.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Mode actif</b> : les clients sans fil doivent connaître l'identifiant SSID. Le client sans fil lance le processus en diffusant une trame de demande d'enquête sur plusieurs canaux. Cette demande contient le nom SSID et les normes prises en charge. Le mode actif peut être obligatoire si un point d'accès ou un routeur sans fil est configuré pour ne pas diffuser de trames de balise.</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 1 illustre le fonctionnement en mode passif, avec le point d'accès diffusant périodiquement une trame de balise. </p>
+<p></p>
+<p>La Figure 2 illustre le fonctionnement en mode actif, avec le client sans fil diffusant une demande d'enquête pour un SSID spécifique. Le point d'accès correspondant à l'identifiant SSID répond avec une trame de réponse d'enquête. </p>
+<p></p>
+<p>Un client sans fil peut également envoyer une demande d'enquête sans nom SSID pour détecter les réseaux WLAN situés à proximité. Les points d'accès configurés pour diffuser des trames de balise répondent au client sans fil par une réponse d'enquête et fournissent le nom SSID. Les points d'accès dont la fonction de diffusion du SSID est désactivée ne répondent pas.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

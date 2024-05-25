@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.1.2 Configuration d&#x0027;un mappage statique Frame Relay</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurer Frame Relay</h1>
+        <h2>Configuration du protocole Frame Relay de base</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Configuration d'un mappage statique Frame Relay</b>
+</p>
+<p></p>
+<p>Les routeurs Cisco prennent en charge tous les protocoles de la couche réseau passant par Frame Relay, comme les protocoles IPv4, IPv6, IPX et AppleTalk. Le mappage entre adresse et DLCI peut être réalisé par un mappage d'adresse statique ou dynamique. </p>
+<p></p>
+<p>Le mappage dynamique est effectué par la fonction ARP inverse. Comme l'ARP inverse est activé par défaut, la configuration du mappage dynamique sur une interface ne demande aucune commande supplémentaire. La Figure 1 présente la topologie utilisée dans cette rubrique.</p>
+<p></p>
+<p>Le mappage statique est configuré manuellement sur un routeur. La mise en place d'un mappage statique dépend des besoins du réseau. Pour mapper une adresse de protocole de tronçon suivant et une adresse DLCI de destination, utilisez la commande <span class="cmd"><b>frame-relay map </b></span><span class="cmd"><i>protocol protocol-address dlci </i></span><span class="cmd"><b><span class="cmd"><span class="cmd">[</span></span>broadcast]</b></span>, comme illustré à la Figure 2. Notez la présence du mot-clé <span class="cmd"><b>broadcast</b></span> à la fin de la commande. </p>
+<p></p>
+<p>Frame Relay, ATM et X.25 sont des réseaux à accès NBMA. Les réseaux NBMA n'autorisent le transfert de données que d'un ordinateur à un autre, sur un circuit virtuel ou par l'intermédiaire d'un commutateur. Les réseaux NBMA ne prennent pas en charge le trafic de type diffusion ou multidiffusion. Un paquet ne peut donc pas atteindre toutes les destinations. Vous devez donc répliquer manuellement les paquets vers toutes les destinations. L'utilisation du mot-clé <span class="cmd"><b>broadcast</b></span> est un moyen simplifié de transmettre les mises à jour de routage. Le mot-clé <span class="cmd"><b>broadcast</b></span> permet que les diffusions et multidiffusions IPv4 soient propagées sur tous les nœuds. Il permet également la multidiffusion IPv6 sur le circuit virtuel permanent. Lorsque le mot-clé est activé, le routeur convertit le trafic de diffusion ou de multidiffusion est trafic monodiffusion, afin que les autres nœuds reçoivent les mises à jour de routage.</p>
+<p></p>
+<p>La Figure 3 présente l'utilisation des mots-clés lors de la configuration de mappages d'adresses statiques. Notez que le premier mappage Frame Relay IPv6 Frame Relay sur une adresse de monodiffusion globale ne comprend pas le mot-clé <span class="cmd"><b>broadcast</b></span>. Toutefois, le mot-clé <span class="cmd"><b>broadcast</b></span> est utilisé dans le mappage de l'adresse link-local. Les protocoles de routage IPv6 utilisent des adresses link-local pour les mises à jour du routage de multidiffusion ; par conséquent, seul le mappage des adresses link-local nécessite le mot-clé <span class="cmd"><b>broadcast</b></span> pour transférer des paquets de multidiffusion. </p>
+<p></p>
+<p>Cet exemple ne montre que les configurations pour mapper les circuits virtuels entre R1 et R2.</p>
+<p></p>
+<p>
+<b>Remarque </b>: certains protocoles de routage peuvent nécessiter d'autres options de configuration. Par exemple, les protocoles RIP, EIGRP et OSPF nécessitent des opérations de configuration supplémentaires pour être pris en charge sur les réseaux NBMA.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

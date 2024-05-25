@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.2.3 Métrique de bande passante </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1> Fonctionnement du protocole EIGRP</h1>
+        <h2>Métriques</h2>
+      </div>
+      <div id="content">
+<p>La métrique de bande passante est une valeur statique utilisée par certains protocoles de routage, notamment EIGRP et OSPF, pour calculer leur métrique de routage. La bande passante est indiquée en kilobits par seconde (kb/s). La plupart des interfaces série utilisent la valeur de bande passante par défaut de 1 544 kb/s ou 1 544 000 b/s (1,544 Mb/s). Il s’agit de la bande passante d’une connexion T1. Cependant, certaines interfaces série utilisent une valeur de bande passante par défaut différente. La Figure 1 illustre la topologie utilisée dans cette section. Les types de ports série et leurs bandes passantes associées ne correspondent pas nécessairement aux types de connexions plus courantes figurant sur les réseaux actuels. </p>
+<p></p>
+<p>Vérifiez toujours la bande passante à l'aide de la commande <span class="cmd"><b>show interfaces</b></span>.</p>
+<p></p>
+<p>La valeur par défaut de la bande passante ne correspond pas nécessairement à la bande passante physique réelle de l'interface. Si la bande passante réelle du lien est différente de la valeur de bande passante par défaut, cette dernière doit être modifiée.</p>
+<p></p>
+<p>
+<b>Configuration du paramètre de bande passante</b>
+</p>
+<p></p>
+<p>Sur la plupart des liens série, la métrique de bande passante est définie par défaut sur 1 544 kb/s. Étant donné que les protocoles EIGRP et OSPF utilisent la bande passante dans les calculs de métrique par défaut, il est important d’attribuer une valeur correcte à la bande passante afin que les informations de routage soient correctes. </p>
+<p></p>
+<p>Utilisez la commande de mode de configuration d'interface suivante pour modifier la métrique de bande passante : </p>
+<p></p>
+<p></p>
+<p>
+<span class="cmd">Router(config-if)# </span>
+<span class="cmd">
+<b>bandwidth </b>
+</span>
+<span class="cmd">
+<i>kilobits-bandwidth-value</i>
+</span>
+</p>
+<p></p>
+<p>Utilisez la commande <span class="cmd"><b>no bandwidth</b></span> pour restaurer la valeur par défaut.</p>
+<p></p>
+<p>À la Figure 2, le lien entre R1 et R2 présente une bande passante de 64 kb/s et le lien entre R2 et R3 une bande passante de 1 024 kb/s. La figure montre les configurations utilisées sur les trois routeurs pour modifier la bande passante sur les interfaces série appropriées.</p>
+<p></p>
+<p>
+<b>Vérification du paramètre de bande passante</b>
+</p>
+<p></p>
+<p>Utilisez la commande<span class="cmd"><b> show interfaces </b></span>pour vérifier les nouveaux paramètres de bande passante, comme indiqué à la Figure 3. Il est important de modifier la métrique de bande passante des deux côtés de la liaison afin d’assurer un acheminement correct dans les deux directions.</p>
+<p></p>
+<p>La modification de la valeur de bande passante ne modifie pas la bande passante réelle de la liaison. La commande<span class="cmd"><b> bandwidth </b></span>modifie uniquement la métrique de bande passante utilisée par les protocoles de routage, notamment EIGRP et OSPF. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

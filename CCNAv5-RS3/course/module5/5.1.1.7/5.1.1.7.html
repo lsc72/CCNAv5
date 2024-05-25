@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.1.7 Configuration du protocole OSPFv3 à zone unique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.1.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées du protocole OSPF à zone unique </h1>
+        <h2>Routage au sein des couches de distribution et cœur de réseau</h2>
+      </div>
+      <div id="content">
+<p>Ce chapitre examine une implémentation de base du protocole de routage OSPFv3 pour IPv6.</p>
+<p></p>
+<p>La Figure 1 illustre un exemple de topologie utilisée pour configurer OSPFv3. Les routeurs de la topologie disposent d'une configuration initiale, qui inclut les adresses IPv6 des interfaces activées. Aucun routage statique ou dynamique n'est actuellement configuré sur l'un des routeurs. Toutes les interfaces des routeurs R1, R2 et R3 (sauf le bouclage sur R2) se trouvent dans la zone fédératrice OSPF. </p>
+<p></p>
+<p>À la Figure 2, dans le mode de configuration du routeur OSPFv3 sur R1, l'ID de routeur est attribué manuellement et la bande passante de référence est modifiée pour tenir compte des interfaces rapides. Les interfaces participant à OSPFv3 sont ensuite configurées. L'interface Gigabit Ethernet 0/0 est également configurée pour refléter sa bande passante réelle. Notez qu'aucun masque générique n'est requis pour la configuration du protocole OSPFv3. </p>
+<p></p>
+<p>À la Figure 3, dans le mode de configuration du routeur OSPFv3 sur R2, l'ID de routeur est attribué manuellement et la bande passante de référence est modifiée pour tenir compte des interfaces rapides. Les interfaces participant à OSPFv3 sont ensuite configurées. Là encore, l'interface Gigabit Ethernet 0/0 est configurée pour refléter sa bande passante réelle. </p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe à la Figure 4 pour attribuer manuellement l'ID de routeur et modifier la bande passante de référence. Configurez ensuite les interfaces en conséquence, en commençant par l'interface Gigabit Ethernet 0/0. Attribuez également la bande passante réelle à cette interface. </p>
+<p></p>
+<p>Remarquez les messages d'information indiquant que R3 a établi une contiguïté de voisinage complète avec R1 avec l'ID de routeur 1.1.1.1 et avec R2 avec l'ID de routeur 2.2.2.2. Le réseau OSPFv3 est désormais convergent.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

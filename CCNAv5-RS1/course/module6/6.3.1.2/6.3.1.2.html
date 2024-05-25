@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.1.2 Processeur et système d&#x0027;exploitation d&#x0027;un routeur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routeurs</h1>
+        <h2>Composants d&#x0027;un routeur</h2>
+      </div>
+      <div id="content">
+<p>Comme tous les ordinateurs, tablettes, et périphériques connectés, les périphériques Cisco nécessitent un processeur pour exécuter les instructions des systèmes d'exploitation, telles que l'initialisation du système, les fonctions de routage et les fonctions de commutation. </p>
+<p></p>
+<p>Le processeur nécessite un système d'exploitation pour fournir des fonctions de routage et de commutation. Cisco IOS est le logiciel système utilisé pour la plupart des périphériques Cisco, indépendamment de leur taille et de leur type. Ce logiciel est par exemple utilisé pour des routeurs, des commutateurs de réseau local, des petits points d'accès sans fil, des grands routeurs dotés de dizaines d'interfaces et bien d'autres périphériques.</p>
+<p></p>
+<p>Le composant en surbrillance dans la figure est le processeur d'un routeur Cisco 1941 équipé d'un dissipateur thermique.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.2.1 Réseaux de tailles diverses</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Connecté au monde entier</h1>
+        <h2>Fourniture de ressources dans un réseau</h2>
+      </div>
+      <div id="content">
+<p>Les réseaux peuvent être de différentes tailles. Il existe des réseaux élémentaires, constitués de deux ordinateurs, mais également des réseaux extrêmement complexes, capables de connecter des millions de périphériques. </p>
+<p></p>
+<p>Les réseaux les plus simples permettent de partager des ressources, telles que des imprimantes, des documents, des images et de la musique, entre quelques ordinateurs locaux. </p>
+<p></p>
+<p>Les réseaux de bureaux à domicile et les réseaux de petits bureaux sont souvent configurés par des personnes qui travaillent à domicile ou à partir d'un bureau distant et qui doivent se connecter à un réseau d'entreprise ou à d'autres ressources centralisées. En outre, de nombreux entrepreneurs indépendants utilisent des réseaux domestiques ou des réseaux de petits bureaux pour faire la promotion et vendre leurs produits, commander des fournitures et communiquer avec les clients. Les communications transmises via un réseau sont généralement plus efficaces et plus économiques que les formes de communication classiques telles que le courrier postal ou les appels téléphoniques interurbains ou internationaux.</p>
+<p></p>
+<p>Dans les grandes entreprises, des réseaux de très grande envergure peuvent être utilisés pour permettre la consolidation, le stockage, ainsi que l'accès aux données sur des serveurs réseau. Les réseaux permettent également des communications rapides, par exemple grâce aux e-mails, à la messagerie instantanée et à la collaboration entre les employés. Parallèlement aux avantages internes, de nombreuses entreprises utilisent leurs réseaux pour proposer des produits et services aux clients par le biais d'Internet.</p>
+<p></p>
+<p>Internet est le plus grand réseau existant. En réalité, le terme « Internet » signifie « réseau de réseaux ». Internet est littéralement un ensemble de réseaux privés et publics interconnectés, tels que ceux décrits ci-dessus. Les entreprises, les réseaux de petits bureaux et même les réseaux domestiques fournissent généralement une connexion partagée à Internet.</p>
+<p></p>
+<p>La rapidité avec laquelle Internet s'est intégré à notre quotidien est tout simplement stupéfiante.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

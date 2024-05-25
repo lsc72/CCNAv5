@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.2.4.3 Configuration de la redirection avec IOS</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.2.4.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de la traduction d&#x0027;adresses réseau (NAT)</h1>
+        <h2>Redirection</h2>
+      </div>
+      <div id="content">
+<p>Les commandes IOS utilisées pour implémenter la redirection sont similaires à celles utilisées pour configurer la NAT statique. En essence, la redirection correspond à la traduction NAT statique avec un numéro de port TCP ou UDP spécifique.</p>
+<p></p>
+<p>La Figure 1 montre la commande NAT statique utilisée pour configurer la redirection à l'aide d'IOS. </p>
+<p></p>
+<p>La Figure 2 présente un exemple de configuration de redirection à l'aide de commandes IOS sur le routeur R2. 192.168.10.254 est l'adresse IPv4 locale interne du serveur Web écoutant le port 80. Les utilisateurs accèdent à ce serveur Web interne via l'adresse IP globale 209.165.200.225, adresse IPv4 publique unique au monde. Dans ce cas, il s'agit de l'adresse de l'interface Serial 0/1/0 de R2. Le port global est configuré en tant que 8080. Il s'agira du port de destination utilisé avec l'adresse IPv4 globale 209.165.200.225 pour accéder au serveur Web interne. Dans la configuration NAT, notez les paramètres de commande suivants :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<i>local-ip</i>
+</span> = 192.168.10.254</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<i>local-port</i>
+</span> = 80</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<i>global-ip</i>
+</span> = 209.165.200.225</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<i>global-port</i>
+</span> = 8080</li>
+</ul>
+</p>
+<p></p>
+<p>Lorsqu'aucun numéro de port réservé n'est utilisé, le client doit spécifier le numéro de port dans l'application.</p>
+<p></p>
+<p>Comme d'autres types de NAT, la redirection nécessite la configuration des interfaces NAT internes et externes.</p>
+<p></p>
+<p>Comme pour la NAT statique, la commande <span class="cmd"><b>show ip nat translations</b></span> peut être utilisée pour vérifier la redirection, comme le montre la Figure 3. </p>
+<p></p>
+<p>Dans l'exemple, lorsque le routeur reçoit le paquet possédant l'adresse IPv4 globale interne 209.165.200.225 et le port de destination TCP 8080, le routeur effectue une recherche dans la table NAT en utilisant l'adresse IPv4 de destination et le port de destination comme clé. Le routeur traduit alors l'adresse en adresse locale interne de l'hôte 192.168.10.254 et utilise le port de destination 80. R2 transfère ensuite le paquet vers le serveur Web. Ce processus est inversé pour les paquets de retour du serveur Web vers le client.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

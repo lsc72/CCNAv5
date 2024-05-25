@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.3.1.2 Routage inter-VLAN au moyen d&#x0027;interfaces virtuelles de commutateurs</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout; 
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Commutation de couche 3</h1>
+        <h2>Fonctionnement et configuration de la commutation de couche 3</h2>
+      </div>
+      <div id="content">
+<p>Au tout début des réseaux commutés, la commutation était rapide (souvent à la vitesse du matériel, ce qui signifie que la vitesse était équivalente au temps qu'il fallait physiquement pour recevoir et transmettre des trames vers d'autres ports) et le routage était lent (il devait être traité par un logiciel). Les concepteurs ont donc dû prolonger la partie commutée du réseau autant que possible. La couche d'accès, la couche de distribution et la couche cœur de réseau étaient souvent configurées pour communiquer au niveau de la couche 2. Cette topologie créait des problèmes de boucle. Pour résoudre ces problèmes, les technologies Spanning Tree étaient utilisées pour empêcher les boucles sans entraver la flexibilité et la redondance des connexions entre commutateurs.</p>
+<p></p>
+<p>Toutefois, à mesure que les technologies réseau ont évolué, le routage est devenu plus rapide et plus économique. Aujourd'hui, le routage peut être effectué à la vitesse du matériel. La conséquence de cette évolution est que le routage peut être transféré vers la couche cœur de réseau et la couche de distribution sans affecter les performances du réseau. </p>
+<p></p>
+<p>De nombreux utilisateurs se trouvent sur des VLAN séparés, dont chacun constitue généralement un sous-réseau distinct. Par conséquent, il est logique de configurer les commutateurs de distribution en tant que passerelles de couche 3 pour les utilisateurs de chaque VLAN de commutateur d'accès. Cela implique que chaque commutateur de distribution doit avoir des adresses IP qui correspondent à chaque VLAN de commutateur d'accès.</p>
+<p></p>
+<p>Les ports de couche 3 (routés) sont généralement implémentés entre la couche de distribution et la couche principale. </p>
+<p></p>
+<p>L'architecture réseau représentée ne dépend pas de Spanning Tree, car il n'existe pas de boucles physiques dans la portion de couche 2 de la topologie. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

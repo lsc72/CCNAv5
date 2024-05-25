@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<data>		
+		<slide type="MBAR">	
+		<slide>	
+		<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+		<element type="IMAGE" src="10.1.2.3.jpg" x="0" y="0" width="470" height="400"/>
+		<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+<element type="BUBBLE" compId="ID_s1_txt01" x="3" y="55" width="175" height="40" align="center" tailPosition="4" tailFlip="1" />
+<element type="BUBBLE" compId="ID_s1_txt02" x="5" y="205" width="88" height="132" align="center" tailPosition="3" tailFlip="1" />
+		<element type="TEXT" id="ID_static_1" text="192.168.10.0/24" x="44" y="184.45" width="83.5" align="left" />
+		<element type="TEXT" id="ID_static_2" text="192.168.11.0/24" x="198.95" y="184.45" width="83.5" align="left" />
+		<element type="TEXT" id="ID_static_3" text="192.168.30.0/24" x="320.95" y="184.45" width="83.5" align="left" />
+		<element type="TEXT" id="ID_static_4" text="S0/0/0" x="242.95" y="48.15" width="35.95" align="left" />
+		<element type="TEXT" id="ID_static_5" text="S0/0/1" x="328.95" y="47.15" width="35.95" align="left" />
+		<element type="TEXT" id="ID_static_6" text="S0/0/0" x="186" y="75.15" width="35.95" align="left" />
+		<element type="TEXT" id="ID_static_7" text="10.1.1.1/30" x="223.95" y="94.15" width="59.1" align="left" />
+		<element type="TEXT" id="ID_static_8" text="G0/0 .1" x="135" y="118.15" width="28" align="right" />
+		<element type="TEXT" id="ID_static_9" text="G0/1 .1" x="200.95" y="125.15" width="28" align="left" />
+		<element type="TEXT" id="ID_static_10" text="S0/0/1" x="389.95" y="75.15" width="35.95" align="left" />
+		<element type="TEXT" id="ID_static_11" text="G0/0" x="409.95" y="126.15" width="28" align="left" />
+		<element type="TEXT" compId="ID_s1_txt04" x="284" y="350" width="68.3" expand="down" align="center" />
+		<element type="TEXT" compId="ID_s1_txt03" x="206" y="350" width="72.3" expand="down" align="center" />
+		
+		
+		</slide>
+			
+			<slide>	
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title" />
+			<element type="IMAGE" src="10.1.2.3.B.jpg" x="0" y="0" width="470" height="400"/>
+			<element type="TEXT" id="ID_static_15" text="C:\WINDOWS\system32\cmd.exe" x="30.7" y="50" width="170.2" align="center" />
+			<element type="TEXT" textId="ID_static_9" x="22" y="75.45" width="430" align="left" size="10" />
+			</slide>
+			
+			<slide>	
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+			<element type="ROUTER" textId="ID_router_txt1" x="13.45" y="50.45" width="420" height="179" />
+			<element type="TEXT" compId="ID_s3_txt01" x="26" y="201" width="104.5" expand="right" align="left" color="#00000" />			
+			</slide>
+			
+			<slide>	
+			<element type="TEXT" subType="TITLE" compId="ID_s4_title" />
+			<element type="IMAGE" src="10.1.2.3.C.jpg" x="0" y="0" width="470" height="400"/>
+			<element type="TEXT" id="ID_static_15" text="C:\WINDOWS\system32\cmd.exe" x="30.7" y="50" width="170.2" align="center" />
+			<element type="TEXT" textId="ID_static_11" x="22" y="72.45" width="403" align="left" size="10" />
+			</slide>
+			
+	
+			<slide>	
+			<element type="TEXT" subType="TITLE" compId="ID_s5_title" />	
+			<element type="ACTIVITY" subType="SYNTAX" compId="ID_s5_SC5" x="12.5" y="25" width="420" height="367" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+			</slide>
+		</slide>	
+		
+		
+		
+<text id="ID_static_9">
+<![CDATA[<pre>C:\Documents and Settings\Administrator>ipconfig /release
+
+Windows IP Configuration
+
+Ethernet adapter Local Area Connection:
+
+  Connection-specific DNS Suffix.: 
+  IP Address ....................: 0.0.0.0
+  Subnet Mask....................: 0.0.0.0
+  Default Gateway................: 
+
+C:\Documents and Settings\Administrator>ipconfig /renew
+
+Windows IP Configuration
+
+An error occurred while renewing interface Local Area Connection:
+unable to contact your DHCP server. Request has timed out.</pre>
+]]>
+</text>
+		
+<text id="ID_router_txt1"><![CDATA[<pre>R1(config)# <b>interface g0/0 </b>
+R1(config-if)# <b>ip helper-address 192.168.11.6 </b>
+R1(config-if)# <b>end </b>
+R1# <b>show ip interface g0/0 </b>
+GigabitEthernet0/0 is up, line protocol is up 
+  Internet address is 192.168.10.1/24
+  Broadcast address is 255.255.255.255
+  Address determined by setup command
+  MTU is 1500 bytes
+  <span class="orange orange1">Helper address is 192.168.11.6</span></pre>
+]]></text>
+
+<text id="ID_static_11">
+<![CDATA[<pre>C:\Documents and Settings\Administrator>ipconfig /release
+
+Windows IP Configuration
+
+Ethernet adapter Local Area Connection:
+
+  Connection-specific DNS Suffix.: 
+  IP Address ....................: 0.0.0.0
+  Subnet Mask....................: 0.0.0.0
+  Default Gateway................: 
+
+C:\Documents and Settings\Administrator>ipconfig /renew
+
+Windows IP Configuration
+
+Ethernet adapter Local Area Connection:
+
+  Connection-specific DNS Suffix.: 
+  IP Address ....................: 192.168.10.11
+  Subnet Mask....................: 255.255.255.0
+  Default Gateway................: 192.168.10.1
+
+C:\Documents and Settings\Administrator></pre>
+]]>
+</text>
+
+
+
+		
+	</data>

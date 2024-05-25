@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.2.4 Interface passive</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv2 à zone unique</h1>
+        <h2>Configuration d&#x0027;OSPFv2 à zone unique</h2>
+      </div>
+      <div id="content">
+<p>Par défaut, les messages OSPF sont acheminés à partir de toutes les interfaces compatibles OSPF. Cependant, ces messages ne doivent réellement être envoyés qu'à partir des interfaces connectées aux autres routeurs compatibles OSPF. </p>
+<p></p>
+<p>Consultez la topologie dans la figure. Les messages OSPF sont acheminés à partir de l'interface G0/0 de l'ensemble des trois routeurs même si aucun voisin OSPF ne se trouve sur ce réseau local. L'envoi de messages inutiles sur un réseau local a trois effets néfastes sur le réseau :</p>
+<p>
+<ul>
+<li>
+<b>Utilisation inefficace de la bande passante</b> - La bande passante disponible est monopolisée par le transport de messages inutiles. Les messages sont à diffusion multiple ; par conséquent, les commutateurs acheminent également les messages à partir de tous les ports. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Utilisation inefficace des ressources</b> - Tous les périphériques du réseau local doivent traiter le message, voire éventuellement le supprimer.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Risques de sécurité accru</b>s - L'annonce de mises à jour sur un réseau de diffusion constitue un risque de sécurité. Les messages OSPF peuvent être interceptés par un logiciel d'analyse de paquets. Les mises à jour de routage peuvent être modifiées et retournées au routeur avec des métriques fausses qui altèrent la table de routage et provoquent l'acheminement incorrect du trafic.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

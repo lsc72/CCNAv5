@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+	<!-- Slide 01 -->
+		<slide> 
+			<element type="TEXT" subType="TITLE" compId="ID_s1_header"/>
+			<element type="IMAGE" src="8_2_3_5.jpg" width="470" height="400" x="2" y="0"/>
+			<element type="TEXT" id="ID_static_1" text="2001:DB8:CAFE:1::/64" x="49.8" y="325.65" width="123.95" align="center" bold="1" />
+			<element type="TEXT" id="ID_static_2" text="2001:DB8:CAFE:3::/64" x="284.7" y="325.65" width="123.95" align="center" bold="1" />
+			<element type="TEXT" id="ID_static_3" text="2001:DB8:CAFE:A001::/64" x="25.6" y="182.6" width="145.95" align="center" bold="1" />
+			<element type="TEXT" id="ID_static_4" text="2001:DB8:CAFE:2::/64" x="164.2" y="71.5" width="123.95" align="center" bold="1" />
+			<element type="TEXT" id="ID_static_5" text="S0/0/0" x="185" y="175.2" width="35" align="center" />
+			<element type="TEXT" id="ID_static_6" text="S0/0/1 " x="220" y="171.2" width="38.8" align="center" />
+			<element type="TEXT" id="ID_static_7" text=":2" x="178.85" y="159.3" width="13" align="center" />
+			<element type="TEXT" id="ID_static_8" text=":1" x="255.6" y="159.3" width="13" align="center" />
+			<element type="TEXT" id="ID_static_9" text="S0/0/0" x="134.35" y="236.6" width="35" align="center" />
+			<element type="TEXT" id="ID_static_10" text=":1" x="119.95" y="230.5" width="13" align="center" />
+			<element type="TEXT" id="ID_static_11" text="S0/0/1" x="274.9" y="237.25" width="35" align="center" />
+			<element type="TEXT" id="ID_static_12" text=":2" x="311.85" y="230.5" width="13" align="center" />
+			<element type="TEXT" id="ID_static_13" text="G0/0" x="74.35" y="289.45" width="26.95" align="center" />
+			<element type="TEXT" id="ID_static_14" text=":1" x="106.1" y="289.45" width="13" align="center" />
+			<element type="TEXT" id="ID_static_15" text="G0/0" x="312.2" y="289.65" width="26.95" align="center" />
+			<element type="TEXT" id="ID_static_16" text=":1" x="346.95" y="289.65" width="13" align="center" />
+			<element type="TEXT" id="ID_static_17" text="G0/0" x="194.9" y="109.85" width="26.95" align="center" />
+			<element type="TEXT" id="ID_static_18" text=":1" x="225.55" y="109.85" width="13" align="center" />
+			<element type="TEXT" id="ID_static_19" text="FE80::2" x="140.35" y="139.75" width="44.95" align="right" color="#f68026" bold="1" />
+			<element type="TEXT" id="ID_static_20" text="2001:DB8:CAFE:A002::/64" x="277.8" y="183.75" width="145.95" align="center" bold="1" />
+			<element type="TEXT" id="ID_static_21" text="FE80::1" x="26.55" y="259.35" width="44.95" align="right" color="#f68026" bold="1" />
+			<element type="TEXT" id="ID_static_22" text="FE80::3" x="377.6" y="259.35" width="45" align="center" color="#f68026" bold="1" />
+			<element type="TEXT" compId="ID_s1_txt01" x="27" y="54" width="122.3" expand="down" align="left" />
+			<element type="TEXT" compId="ID_s1_txt02" x="20" y="341" width="161.3" expand="left+right" align="center" />
+			<element type="TEXT" compId="ID_s1_txt03" x="258" y="341" width="161.3" expand="left+right" align="center" />
+		</slide>
+	<!-- Slide 02 -->
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_header"/>
+			<element type="ROUTER"  textId="router_s2_text1"  x="2.95" y="38.95" width="434.4" height="340.4" size="10"/>		
+		</slide>
+	<!-- Slide 03 -->
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_header"/>
+			<element type="ROUTER"  textId="router_s3_text1"  x="2.95" y="38.95" width="434.4" height="340.4" size="10"/>		
+		</slide>
+	<!-- Slide 04 -->
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s4_header"/>
+			<element type="ROUTER"  textId="router_s4_text1"  x="2.95" y="38.95" width="434.4" height="340.4" size="10"/>		
+		</slide>
+	<!-- Slide 05 -->
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s5_header"/>
+			<element type="ROUTER"  textId="router_s5_text1"  x="2.95" y="38.95" width="434.4" height="340.4" size="10"/>		
+		</slide>
+				
+	  </slide>
+
+<text id="router_s2_text1"><![CDATA[<code>R1# <b>show ipv6 protocols</b> 
+IPv6 Routing Protocol is "connected"
+IPv6 Routing Protocol is "ND"
+IPv6 Routing Protocol is "ospf 10"
+  Router ID 1.1.1.1
+  Area border router
+<span class="orange">  Number of areas: 2 normal,</span> 0 stub, 0 nssa
+  Interfaces (Area 0):       
+    Serial0/0/0                                  
+  Interfaces (Area 1):                           
+    GigabitEthernet0/0                                              
+  Redistribution:
+    None
+R1# </code>]]></text>
+
+<text id="router_s3_text1"><![CDATA[<code>R1# <b>show ipv6 ospf interface brief</b>
+Interface    PID   <span class="width30 orange"> Area</span>        Intf ID    Cost  State Nbrs F/C
+Se0/0/0      10    <span class="width30 orange"> 0   </span>        6          647   P2P   1/1
+Gi0/0        10    <span class="width30 orange"> 1   </span>        3          1     DR    0/0
+R1# 
+</code>]]></text>
+
+<text id="router_s4_text1"><![CDATA[<code>R1# <b>show ipv6 route ospf</b>
+IPv6 Routing Table - default - 8 entries
+Codes: C - Connected, L - Local, S - Static, U - Per-user Static
+route
+       B - BGP, R - RIP, H - NHRP, I1 - ISIS L1
+       I2 - ISIS L2, IA - ISIS interarea, IS - ISIS summary, D - 
+       EIGRP
+       EX - EIGRP external, ND - ND Default, NDp - ND Prefix, DCE -
+Destination
+       NDr - Redirect, O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF
+       ext 1
+       OE2 - OSPF ext 2, ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2
+O   2001:DB8:CAFE:2::/64 [110/648]
+     via FE80::2, Serial0/0/0
+<span class="orange">OI  2001:DB8:CAFE:3::/64 [110/1295]
+     via FE80::2, Serial0/0/0</span>
+O   2001:DB8:CAFE:A002::/64 [110/1294]
+     via FE80::2, Serial0/0/0
+R1# </code>]]></text>
+
+<text id="router_s5_text1"><![CDATA[<code>R1# <b>show ipv6 ospf database</b> 
+
+        OSPFv3 Router with ID (1.1.1.1) (Process ID 10)
+
+                 Router Link States (Area 0)
+
+ADV Router   Age    Seq#       Fragment ID  Link count Bits
+ 1.1.1.1     1617   0x80000002 0            1          B
+ 2.2.2.2     1484   0x80000002 0            2          None
+ 3.3.3.3     14     0x80000001 0            1          B
+
+             Inter Area Prefix Link States (Area 0)
+
+ADV Router   Age     Seq#        Prefix
+ 1.1.1.1     1833    0x80000001  2001:DB8:CAFE:1::/64
+ 3.3.3.3     1476    0x80000001  2001:DB8:CAFE:3::/64
+
+             Link (Type-8) Link States (Area 0)
+
+ADV Router   Age     Seq#        Link ID    Interface
+ 1.1.1.1     1843    0x80000001  6          Se0/0/0
+ 2.2.2.2     1619    0x80000001  6          Se0/0/0
+
+             Intra Area Prefix Link States (Area 0)
+          
+ADV Router  Age   Seq#       Link ID  Ref-lstype  Ref-LSID
+ 1.1.1.1    1843  0x80000001 0        0x2001      0
+ 2.2.2.2    1614  0x80000002 0        0x2001      0
+ 3.3.3.3    1486  0x80000001          0x2001      0
+
+              Router Link States (Area 1)
+
+ADV Router  Age   Seq#       Fragment ID Link count Bits
+ 1.1.1.1    1843  0x80000001 0           0          B
+
+            Inter Area Prefix Link States (Area 1)
+
+ADV Router   Age      Seq#         Prefix
+ 1.1.1.1     1833     0x80000001  2001:DB8:CAFE:A001::/64
+ 1.1.1.1     1613     0x80000001  2001:DB8:CAFE:A002::64
+ 1.1.1.1     1613     0x80000001  2001:DB8:CAFE:2::/64
+ 1.1.1.1     1474     0x80000001  2001:DB8:CAFE:3::/64
+
+             Link (Type-8) Link States (Area 1)
+
+ADV Router   Age      Seq#        Link ID    Interface
+ 1.1.1.1     1844     0x80000001   3          Gi0/0
+          
+             Intra Area Prefix Link States (Area 1)
+
+ADV Route  Age   Seq#       Link ID Ref-lstype Ref-LSID
+ 1.1.1.1   1844  0x80000001 0       0x2001     0
+R1# 
+</code>]]></text>
+</data>
+

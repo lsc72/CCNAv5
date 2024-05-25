@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.4.1.3 Exemple de route statique récapitulative</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.4.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration des routes récapitulatives et des routes statiques flottantes</h1>
+        <h2>Configuration des routes récapitulatives IPv4</h2>
+      </div>
+      <div id="content">
+<p>Plusieurs routes statiques peuvent être récapitulées en une seule route statique si :</p>
+<p>
+<ul>
+<li>Les réseaux de destination sont contigus et peuvent être récapitulés dans une adresse réseau unique. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les multiples routes statiques utilisent toutes la même interface de sortie ou adresse IP de tronçon suivant. </li>
+</ul>
+</p>
+<p></p>
+<p>Prenons l'exemple de la Figure 1. Tous les routeurs disposent d'une connectivité utilisant des routes statiques.</p>
+<p></p>
+<p>La Figure 2 affiche les entrées de la table de routage statique pour R3. Notez que ce dernier possède trois routes statiques pouvant être récapitulées du fait qu'elles partagent les mêmes deux premiers octets. </p>
+<p></p>
+<p>La Figure 3 illustre les étapes permettant de récapituler ces trois réseaux :</p>
+<p></p>
+<p>
+<b>Étape 1.</b> Répertoriez les réseaux à récapituler au format binaire. </p>
+<p>
+<b>Étape 2.</b> Pour trouver le masque de sous-réseau à récapituler, commencez par le bit le plus à gauche, allez vers la droite pour rechercher tous les bits correspondant de façon consécutive, jusqu'à trouver une colonne dont les bits ne correspondent pas, vous permettant ainsi d'identifier la limite de la récapitulation.</p>
+<p>
+<b>Étape 3.</b> Comptez le nombre de bits correspondants à l'extrême gauche ; dans notre exemple, il y en a 22. Ce nombre identifie le masque de sous-réseau pour la récapitulation de route telle que /22 ou 255.255.252.0.</p>
+<p>
+<b>Étape 4.</b> Pour rechercher l'adresse réseau pour la récapitulation, copiez les 22 bits correspondants et ajoutez tous les bits 0 à la fin pour obtenir 32 bits.</p>
+<p></p>
+<p>Une fois la route récapitulative identifiée, remplacez les routes existantes par une route récapitulative. </p>
+<p></p>
+<p>La Figure 4 illustre la façon dont les trois routes existantes sont supprimées et la nouvelle route statique récapitulative est configurée. </p>
+<p></p>
+<p>La Figure 5 confirme que la route statique récapitulative figure dans la table de routage de R3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

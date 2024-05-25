@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.3.3.2 Cisco Express Forwarding</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.3.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Commutateurs LAN</h1>
+        <h2>Commutation de couche 3</h2>
+      </div>
+      <div id="content">
+<p>Les périphériques Cisco prenant en charge la commutation de couche 3 utilisent Cisco Express Forwarding (CEF). Cette méthode de transmission est assez complexe, mais heureusement, comme toutes les bonnes technologies, elle opère principalement « en coulisse ». CEF nécessite en principe peu de configuration sur un appareil Cisco.</p>
+<p></p>
+<p>Grosso modo, CEF met fin à l'interdépendance stricte habituelle entre les prises de décision de couche 2 et de couche 3. En réalité, les allers-retours constants entre les structures de couche 2 et de couche 3 au sein d'un périphérique réseau ralentissent la transmission des paquets IP. Ainsi, dans la mesure où les structures de données de couche 2 et de couche 3 peuvent être dissociées, la transmission est accélérée. </p>
+<p></p>
+<p>Les deux principaux composants de l'opération CEF sont les suivants :</p>
+<p>
+<ul>
+<li>Base d'informations de transfert (FIB) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Tables de contiguïté</li>
+</ul>
+</p>
+<p></p>
+<p>Le principe de la FIB est très similaire à celui d'une table de routage. Un routeur utilise la table de routage pour déterminer le meilleur chemin vers une destination en fonction de la partie réseau de l'adresse IP de destination. Avec CEF, les informations qui étaient stockées dans le cache du routeur sont en fait stockées dans plusieurs structures de données pour la commutation CEF. Les structures de données optimisent la recherche, ce qui permet une transmission efficace des paquets. Un périphérique réseau utilise la table de recherche FIB pour prendre des décisions de commutation en fonction de la destination sans avoir à accéder au cache du routeur. </p>
+<p></p>
+<p>Cette table est mise à jour lorsque des modifications surviennent sur le réseau, et contient toutes les routes connues à chaque instant. </p>
+<p></p>
+<p>Les tables de contiguïté gèrent les adresses du tronçon suivant de couche 2 pour toutes les entrées de la FIB. </p>
+<p></p>
+<p>La séparation des informations d'accessibilité (dans la table FIB) et des informations de transmission (dans la table de contiguïté) offre un certain nombre d'avantages : </p>
+<p>
+<ul>
+<li>La table de contiguïté peut être élaborée séparément de la table FIB, ce qui permet aux deux tables de se former sans nécessiter la commutation d'aucun paquet. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La réécriture d'en-tête MAC utilisée pour transmettre un paquet n'est pas stockée dans les entrées de la mémoire cache. Par conséquent, les modifications d'une chaîne de réécriture d'en-tête MAC ne nécessitent pas la suppression des entrées du cache.</li>
+</ul>
+</p>
+<p></p>
+<p>CEF est activé par défaut sur la plupart des périphériques Cisco qui effectuent la commutation de couche 3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

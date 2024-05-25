@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.1.1 Adressage IP des périphériques</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Schémas d&#x0027;adressage</h1>
+        <h2>Ports et adresses</h2>
+      </div>
+      <div id="content">
+<p>L'utilisation d'adresses IP, IPv4 ou IPv6, est le principal moyen permettant aux périphériques de se localiser les uns les autres et d'établir la communication de bout en bout sur Internet. En fait, dans tout interréseau, les adresses IP sont essentielles pour que les périphériques communiquent de la source à la destination et inversement.</p>
+<p></p>
+<p>Chaque périphérique final d'un réseau doit comporter une adresse IP. Voici quelques exemples de périphériques finaux :</p>
+<p></p>
+<p>
+<ul>
+<li>Ordinateurs (stations de travail, ordinateurs portables, serveurs de fichiers, serveurs Web)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Imprimantes réseau</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Téléphones VoIP</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Caméras de surveillance</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Smartphones</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Périphériques mobiles (par exemple, lecteurs de codes-barres sans fil)</li>
+</ul>
+</p>
+<p></p>
+<p>La structure d'une adresse IPv4 est appelée « notation décimale à point » et est composée de quatre nombres décimaux compris entre 0 et 255. Les adresses IPv4 sont des numéros affectés à des périphériques connectés à un réseau. Ces adresses sont logiques par nature, dans la mesure où elles fournissent des informations sur l'emplacement des périphériques. </p>
+<p></p>
+<p>En plus d'une adresse IP, un masque de sous-réseau est également nécessaire. Un masque de sous-réseau est un type spécial d'adresse IPv4 qui, allié à l'adresse IP, détermine à quel sous-réseau spécifique (qui fait partie d'un réseau plus grand) le périphérique appartient. </p>
+<p></p>
+<p>Les adresses IP peuvent être attribuées aux ports physiques et aux interfaces virtuelles des périphériques. Une interface virtuelle signifie qu'il n'y a aucun matériel physique sur le périphérique qui lui est associé. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

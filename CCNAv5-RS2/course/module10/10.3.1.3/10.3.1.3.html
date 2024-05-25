@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.3.1.3 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.3.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Tous les nœuds d'un réseau nécessitent une adresse IP unique pour communiquer avec d'autres périphériques. L'attribution statique des informations d'adressage IP sur les réseaux de grande envergure entraîne une charge administrative qui peut être éliminée en utilisant DHCPv4 ou DHCPv6 pour attribuer de façon dynamique les informations d'adressage IPv4 et IPv6 respectives.</p>
+<p></p>
+<p>Le DHCPv4 comprend trois mécanismes d'allocation d'adresses, offrant ainsi de la souplesse lors de l'attribution d'adresses IP : </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Allocation manuelle </b>: l'administrateur attribue une adresse IPv4 préallouée au client et le DHCPv4 communique uniquement l'adresse IPv4 au périphérique. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Allocation automatique </b>: DHCPv4 attribue de façon automatique et permanente une adresse IPv4 statique à un périphérique en sélectionnant cette adresse dans un pool d'adresses disponibles. Il n'y a pas de bail et l'adresse est attribuée de façon permanente au périphérique. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Allocation dynamique</b> : DHCPv4 attribue ou loue dynamiquement une adresse IPv4 d'un pool d'adresses pour une durée limitée configurée sur le serveur, ou jusqu'à ce que le client n'ait plus besoin de l'adresse. </li>
+</ul>
+</p>
+<p></p>
+<p>L'allocation dynamique est le mécanisme DHCPv4 le plus répandu et implique l'échange de plusieurs paquets différents entre le serveur et le client DHCPv4. Cet échange se solde par la location d'informations d'adressage valides pendant une durée prédéfinie.</p>
+<p></p>
+<p>Les messages provenant du client (DHCPDISCOVER, DHCPREQUEST) sont diffusés pour permettre à tous les serveurs DHCPv4 sur le réseau d'entendre la demande d'informations d'adressage et l'accusé de réception de ces données émis par le client. Les messages provenant du serveur DHCPv4 (DHCPOFFER, DHCPACK) sont envoyés en monodiffusion directement au client demandant des informations.</p>
+<p></p>
+<p>Il existe deux méthodes disponibles pour la configuration dynamique des adresses de monodiffusion globale IPv6. </p>
+<p>
+<ul>
+<li>Configuration automatique des adresses sans état (SLAAC)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Protocole DHCP (Dynamic Host Configuration Protocol) pour IPv6 (DHCPv6 avec état)</li>
+</ul>
+</p>
+<p></p>
+<p>Avec la configuration automatique sans état, le client utilise les informations fournies par le message RA IPv6 pour sélectionner et configurer automatiquement une adresse IPv6 unique. L'option DHCPv6 sans état enjoint le client à utiliser les informations dans le message RA pour l'adressage, mais les paramètres de configuration supplémentaires sont fournis par un serveur DHCPv6. </p>
+<p></p>
+<p>DHCPv6 avec état est similaire à DHCPv4. Dans ce cas, le message RA enjoint le client de ne pas utiliser les informations qu'il contient. Toutes les informations d'adressage et de configuration sont obtenues auprès d'un serveur DHCPv6 avec état. Le serveur DHCPv6 maintient à jour les informations sur l'état des adresses IPv6 comme un serveur DHCPv4 attribuant des adresses pour IPv4.</p>
+<p></p>
+<p>Si le serveur DHCP se trouve sur un segment de réseau différent de celui du client DHCP, alors il est nécessaire de configurer un agent de relais. L'agent de relais transfère des messages de diffusion spécifiques provenant d'un segment de réseau local vers un serveur spécifié situé sur un autre segment de réseau local (dans ce cas, un message de diffusion DHCP est acheminé vers un serveur DHCP).</p>
+<p></p>
+<p>Les problèmes de dépannage de DHCPv4 et de DHCPv6 demandent l'exécution des mêmes tâches :</p>
+<p>
+<ul>
+<li>Résolution des conflits d'adresses</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Vérification de la connectivité physique</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Vérification de la connectivité à l'aide d'une adresse IP statique</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Vérification de la configuration du port du commutateur</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Vérification du fonctionnement sur le même sous-réseau ou VLAN</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

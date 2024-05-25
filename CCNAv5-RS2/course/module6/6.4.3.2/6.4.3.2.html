@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.4.3.2 Configuration d&#x0027;une route statique flottante par défaut</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.4.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration des routes récapitulatives et des routes statiques flottantes</h1>
+        <h2>Configuration des routes statiques flottantes</h2>
+      </div>
+      <div id="content">
+<p>Les routes statiques IPv4 sont configurées à l'aide de la commande de configuration globale <span class="cmd"><b>ip route</b></span> et en spécifiant une distance administrative. Si aucune distance administrative n'est configurée, la valeur par défaut (1) est utilisée.</p>
+<p></p>
+<p>Consultez la topologie dans la Figure 1. Dans ce scénario, la route préférée pour R1 est celle qui va vers R2. La connexion vers R3 doit être utilisée comme route de secours uniquement.</p>
+<p></p>
+<p>R1 est configuré avec une route statique par défaut pointant vers R2. Étant donné qu'aucune distance administrative n'est configurée, la valeur par défaut (1) est utilisée pour cette route statique. R1 est également configuré avec une route statique flottante par défaut pointant vers R3 avec une distance administrative de 5. Cette valeur est supérieure à la valeur par défaut 1 et, par conséquent, cette route est flottante et n'est pas présente dans la table de routage, à moins que la route préférée échoue.</p>
+<p></p>
+<p>La Figure 2 vérifie que la route par défaut vers R2 est installée dans la table de routage. Notez que la route de secours vers R3 ne figure pas dans la table de routage.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe dans la Figure 3 pour configurer R3 de la même façon que R1.</p>
+<p></p>
+<p></p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

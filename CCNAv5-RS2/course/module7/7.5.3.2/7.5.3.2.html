@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.5.3.2 Meilleure route = correspondance la plus longue</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.5.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>La table de routage</h1>
+        <h2>Processus de recherche de route IPv4</h2>
+      </div>
+      <div id="content">
+<p>Qu'entend-on par le routeur doit trouver la meilleure correspondance dans la table de routage ? La meilleure correspondance est égale à la correspondance la plus longue. </p>
+<p></p>
+<p>Pour obtenir une correspondance entre l'adresse IPv4 de destination d'un paquet et une route de la table de routage, l'adresse IPv4 du paquet et la route de la table de routage doivent partager un certain nombre de bits les plus à gauche identiques. Le masque de sous-réseau de la route dans la table de routage permet de déterminer le nombre minimum de bits les plus à gauche qui doivent correspondre. N'oubliez pas qu'un paquet IPv4 ne contient que l'adresse IPv4, et non le masque de sous-réseau. </p>
+<p></p>
+<p>La meilleure correspondance est la route de la table de routage qui possède le plus grand nombre de bits les plus à gauche correspondants à ceux de l'adresse IPv4 de destination du paquet. La route dotée du plus grand nombre de bits les plus à gauche correspondants (ou la plus longue correspondance) constitue toujours la route préférée.</p>
+<p></p>
+<p>Dans la figure, un paquet est destiné à 172.16.0.10. Le routeur a trois routes possibles qui correspondent à ce paquet : 172.16.0.0/12, 172.16.0.0/18 et 172.16.0.0/26. Parmi les trois routes, 172.16.0.0/26 est celle qui présente la plus longue correspondance et elle est donc choisie pour transférer le paquet. N'oubliez pas qu'une route est une correspondance lorsqu'elle possède au minimum le nombre de bits correspondants indiqués par le masque de sous-réseau de la route.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

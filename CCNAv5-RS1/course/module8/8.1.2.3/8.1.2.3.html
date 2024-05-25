@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.2.3 Réseau, hôte et adresses de diffusion IPv4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Masque de sous-réseau IPv4</h2>
+      </div>
+      <div id="content">
+<p>Il existe trois sortes d'adresse comprises dans la plage d'adresses de chaque réseau IPv4 :</p>
+<p>
+<ul>
+<li>Adresse réseau</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Adresses d'hôte</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Adresse de diffusion</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Adresse réseau</b>
+</p>
+<p>L'adresse réseau est généralement utilisée pour faire référence à un réseau. Le masque de sous-réseau ou la longueur du préfixe peuvent aussi être utilisés pour décrire une adresse réseau. Par exemple, le réseau illustré à la Figure 1 peut être appelé le réseau 10.1.1.0, le réseau 10.1.1.0 255.255.255.0 ou le réseau 10.1.1.0/24. Tous les hôtes du réseau 10.1.1.0/24 auront la même partie réseau.</p>
+<p></p>
+<p>Comme l'illustre la Figure 2, dans la plage d'adresses IPv4 d'un réseau, la première adresse est réservée à l'adresse réseau. La partie adresse de cette adresse comprend uniquement des 0. Tous les hôtes du réseau partagent la même adresse réseau.</p>
+<p></p>
+<p>
+<b>Adresse de l'hôte</b>
+</p>
+<p>Chaque périphérique final nécessite une adresse unique pour communiquer sur le réseau. Avec les adresses IPv4, les valeurs comprises entre l'adresse réseau et l'adresse de diffusion peuvent être attribuées aux périphériques finaux d'un réseau. Comme l'illustre la Figure 3, la partie hôte de cette adresse est composée de n'importe quelle combinaison de bits 0 et 1, mais ne peut pas contenir uniquement des bits 0 ou 1.</p>
+<p></p>
+<p>
+<b>Adresse de diffusion</b>
+</p>
+<p>L'adresse de diffusion IPv4 est une adresse spécifique, attribuée à chaque réseau. Elle permet de transmettre des données à l'ensemble des hôtes d'un réseau. Pour envoyer les données à tous les hôtes d'un réseau en une seule fois, un hôte peut envoyer un paquet adressé à l'adresse de diffusion du réseau : chaque hôte du réseau qui recevra ce paquet en traitera le contenu. </p>
+<p></p>
+<p>L'adresse de diffusion correspond à la plus grande adresse de la plage d'adresses d'un réseau. Il s'agit de l'adresse dans laquelle les bits de la partie hôte sont tous des « 1 ». Un octet au format binaire ne comportant que des 1 correspond au nombre 255 en notation décimale. Par conséquent, comme illustré à la Figure 4, pour le réseau 10.1.1.0/24, dans lequel le dernier octet est utilisé pour la partie hôte, l'adresse de diffusion serait 10.1.1.255. Notez que la partie hôte n'est pas toujours un octet entier. Cette adresse est également désignée sous le nom de diffusion dirigée.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

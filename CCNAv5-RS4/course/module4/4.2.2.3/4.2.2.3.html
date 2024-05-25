@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.2.3 Configuration de sous-interfaces point à point</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurer Frame Relay</h1>
+        <h2>Configuration des sous-interfaces</h2>
+      </div>
+      <div id="content">
+<p>Les sous-interfaces permettent de remédier aux limites des réseaux Frame Relay, car elles permettent de diviser un réseau à maillage partiel en un certain nombre de réseaux plus petits, à maillage global ou point à point. Chaque sous-réseau reçoit son propre numéro de réseau et apparaît pour les protocoles comme s'il était accessible par l'intermédiaire d'une interface séparée. </p>
+<p></p>
+<p></p>
+<p>Pour créer une sous-interface, en mode de configuration globale, utilisez la commande <span class="cmd"><b>interface serial</b></span> suivie du numéro de port physique, d'un point (.) puis du numéro de la sous-interface. Pour faciliter le dépannage, utilisez le DLCI comme numéro de sous-interface. Vous devez également spécifier si l'interface est point à multipoint ou point à point à l'aide du mot-clé <span class="cmd"><b>multipoint</b></span> ou <span class="cmd"><b>point-to-point</b></span>, car il n'y a pas de valeur par défaut. Ces mots-clés sont définis dans la Figure 1.</p>
+<p></p>
+<p>La commande suivante crée une sous-interface point à point pour le PVC 103 vers R3 : </p>
+<p>
+<span class="cmd">R1(config-if)# </span>
+<span class="cmd">
+<b>interface serial 0/0/0.103 point-to-point</b>
+</span>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: pour plus de simplicité, seules les adresses IPv4 sont utilisées dans cette section pour illustrer les sous-interfaces. Les mêmes concepts et les mêmes commandes s'appliquent également à l'adressage IPv6. </p>
+<p></p>
+<p>Si la sous-interface est configurée comme point à point, le DLCI local de la sous-interface doit également être configuré pour le distinguer de celui de l'interface physique. Le DLCI est aussi nécessaire pour les sous-interfaces multipoints pour lesquelles le protocole ARP inverse est activé pour IPv4. Il n'est pas nécessaire pour les sous-interfaces multipoints configurées avec des mappages de routage statique. </p>
+<p></p>
+<p>C'est le fournisseur de services Frame Relay qui attribue les identificateurs DLCI. Ces numéros vont de 16 à 992 et n'ont généralement qu'une signification locale. Cette plage de numéros est variable, en fonction de l'interface LMI utilisée. </p>
+<p></p>
+<p>La commande <span class="cmd"><b>frame-relay interface-dlci</b></span> configure le DLCI local sur la sous-interface, comme illustré à la Figure 2 :<span class="cmd"><b></b></span></p>
+<p>
+<span class="cmd">R1(config-subif)# </span>
+<span class="cmd">
+<b>frame-relay interface-dlci 103</b>
+</span>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: malheureusement, la modification de la configuration d'une sous-interface Frame Relay existante peut ne pas offrir le résultat prévu. Dans cette situation, fermez l'interface physique, apportez les modifications nécessaires aux sous-interfaces, puis réactivez l'interface physique. Si la configuration corrigée génère des résultats inattendus, vous devrez peut-être enregistrer la configuration, puis redémarrer le routeur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

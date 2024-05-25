@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.5.2.1 Dépannage d&#x0027;une route manquante</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.5.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage des problèmes de routes statiques et par défaut</h1>
+        <h2>Dépannage de la configuration des routes statiques et par défaut IPv4</h2>
+      </div>
+      <div id="content">
+<p>Les réseaux sont soumis à des événements susceptibles d'entraîner assez fréquemment la modification de leur état :</p>
+<p>
+<ul>
+<li>Une interface est désactivée. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Un fournisseur de services perd une connexion.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les liaisons sont sursaturées.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Un administrateur entre une configuration erronée.</li>
+</ul>
+</p>
+<p></p>
+<p>Lorsqu'un réseau subit une modification, la connectivité risque d'être perdue. Les administrateurs réseau sont responsables de l'identification et de la résolution du problème. Pour trouver et résoudre ces problèmes, un administrateur réseau doit également connaître les outils nécessaires vous permettant d'identifier les problèmes de routage rapidement. </p>
+<p></p>
+<p>Les commandes standard de dépannage IOS comprennent : </p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>ping</b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>traceroute</b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip route</b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip interface brief </b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show cdp neighbors detail </b>
+</span>
+</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 1 présente le résultat d'une commande ping étendue à partir de l'interface source de R1 vers l'interface du réseau local de R3. On parle de requête ping étendue lorsque l'interface source ou l'adresse IP source est spécifiée. </p>
+<p></p>
+<p>La Figure 2 présente le résultat d'une commande traceroute depuis R1 vers le réseau local de R3.</p>
+<p></p>
+<p>La Figure 3 affiche la table de routage de R1. </p>
+<p></p>
+<p>La Figure 4 fournit un statut rapide de toutes les interfaces du routeur. </p>
+<p></p>
+<p>La Figure 5 fournit une liste des périphériques Cisco connectés directement. Cette commande valide la connectivité de couche 2 (et donc de couche 1). Par exemple, si un périphérique voisin est répertorié dans le résultat de la commande, mais qu'il ne peut pas être testé avec une commande ping, l'adressage de couche 3 doit être examiné.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

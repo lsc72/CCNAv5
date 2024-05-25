@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+<slide type="MBAR">
+
+	<slide>		
+		<element type="TEXT" subType="TITLE" compId="ID_s1_title" />	
+	<element type="TEXT" compId="ID_s1_txt02" x="152.9" y="288.9" width="140.7" expand="down" align="center" class="orangeCallOut" />
+	<element type="TEXT" compId="ID_s1_txt01" x="37.9" y="288.9" width="100.45" expand="down" align="center" class="orangeCallOut" />
+		<element type="ROUTER" textId="ID_router_txt1" x="16.5" y="135" width="415" height="120" />
+		<element type="IMAGE" src="arrow_1.png" x="90.90" y="215" width="10.65" height="74.50"/>	
+		<element type="TEXT" compId="ID_s1_txt03" x="27.35" y="154.85" width="104.5" expand="right" align="left" />
+	</slide>
+
+	<slide>		
+		<element type="TEXT" subType="TITLE" compId="ID_s2_title" />
+		<element type="ROUTER" textId="ID_router_txt2" x="16.5" y="39" width="415" height="334.45" />
+		<element type="TEXT" compId="ID_s2_txt01" x="27.35" y="131.85" width="104.5" expand="right" align="left" />
+		<element type="TEXT" compId="ID_s2_txt02" x="27.35" y="300.85" width="104.5" expand="right" align="left" />	
+	</slide>
+
+	<slide>		
+		<element type="TEXT" subType="TITLE" compId="ID_s3_title" />
+	<element type="TEXT" compId="ID_s3_txt01" x="195.9" y="269.4" width="131.65" expand="down" align="center" class="orangeCallOut" />
+		<element type="ROUTER" textId="ID_router_txt3" x="16.5" y="135" width="415" height="120" />
+		<element type="IMAGE" src="arrow_1.png" x="263.90" y="200" width="10.65" height="74.50"/>
+		<element type="TEXT" compId="ID_s3_txt02" x="27.35" y="157.85" width="104.5" expand="right" align="left" />
+		
+	</slide>
+	
+	<slide>		
+		<element type="TEXT" subType="TITLE" compId="ID_s4_title" />
+		<element type="ROUTER" textId="ID_router_txt4" x="16.5" y="135" width="415" height="120" />
+	<element type="TEXT" compId="ID_s4_txt01" x="40.9" y="282.9" width="80.5" expand="down" align="center" class="orangeCallOut" />
+<element type="TEXT" compId="ID_s4_txt02" x="142.55" y="282.9" width="120.75" expand="down" align="center" class="orangeCallOut" />
+		<element type="IMAGE" src="arrow_1.png" x="90.90" y="215" width="10.65" height="74.50"/>
+		<element type="TEXT" compId="ID_s4_txt03" x="27.35" y="157.85" width="104.5" expand="right" align="left" />
+
+	</slide>
+	
+<text id="ID_router_txt1"><![CDATA[
+<pre>R1# <b>show ip eigrp topology</b>
+
+
+P 192.168.1.0/24, 1 successors, FD is 2170112
+        <span class="orange">via 192.168.10.6 (2170112/2816), Serial0/0/1</span>
+</pre>
+		]]>
+		</text>
+		
+<text id="ID_router_txt2"><![CDATA[
+<pre>R1# <b>debug eigrp fsm</b>
+EIGRP Finite State Machine debugging is on
+R1# <b>conf t</b>
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)# <b>interface s 0/0/1</b>
+R1(config-if)# <b>shutdown</b>
+
+EIGRP-IPv4(1): Find FS for dest 192.168.1.0/24. FD is 2170112,
+RD is 2170112
+DUAL: AS(1) <span class="orange">Dest 192.168.1.0/24 entering active state</span> for tid
+0.
+EIGRP-IPv4(1): dest(192.168.1.0/24) active
+EIGRP-IPv4(1): rcvreply: 192.168.1.0/24 via 172.16.3.2 metric
+41024256/3012096 EIGRP-IPv4(1): reply count is 1
+EIGRP-IPv4(1): Find FS for dest 192.168.1.0/24. FD is
+72057594037927935, RD is 72057594037927935 
+DUAL: AS(1) <span class="orange">Removing dest 192.168.1.0/24, nexthop 192.168.10.6</span>
+DUAL: AS(1) <span class="orange orange1">RT installed 192.168.1.0/24 via 172.16.3.2</span>
+
+R1(config-if)# <b>end</b>
+R1# <b>undebug all</b>
+</pre>
+		]]>
+		</text>
+		
+<text id="ID_router_txt3"><![CDATA[
+<pre>R1# <b>show ip route</b>
+
+
+D     192.168.1.0/24 [90/41024256] <span class="orange">via 172.16.3.2,</span> 00:05:25,
+      Serial0/0/0</pre>
+		]]>
+		</text>
+		
+<text id="ID_router_txt4"><![CDATA[
+<pre>R1# <b>show ip eigrp topology</b>
+
+
+P 192.168.1.0/24, 1 successors, FD is 41024256
+        <span class="orange">via 172.16.3.2 (41024256/3012096), Serial0/0/0</span>
+</pre>
+		]]>
+		</text>
+
+
+</slide>
+</data>

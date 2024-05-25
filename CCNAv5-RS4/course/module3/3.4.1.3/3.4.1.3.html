@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.4.1.3 Dépannage d&#x0027;une configuration PPP avec authentification</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.4.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage de la connectivité WAN</h1>
+        <h2>Dépannage de PPP</h2>
+      </div>
+      <div id="content">
+<p>L'authentification est une fonction qui doit être correctement mise en œuvre, ou bien la sécurité de la connexion série peut être compromise. Vérifiez toujours votre configuration avec la commande <span class="cmd"><b>show interfaces serial</b></span>, comme vous l'avez fait sans authentification.</p>
+<p></p>
+<p>
+<b>Remarque </b>: ne partez jamais du principe que votre authentification fonctionne tant que vous ne l'avez pas testée. Le débogage vous permet de vérifier votre configuration et de corriger les éventuels défauts. Pour le débogage de l'authentification PPP, utilisez la commande <span class="cmd"><b>debug ppp authentication</b></span>.</p>
+<p></p>
+<p>La figure présente un exemple de résultat de la commande <span class="cmd"><b>debug ppp authentication</b></span>. Voici une interprétation du résultat :</p>
+<p></p>
+<p>La ligne 1 indique que le routeur ne peut pas s'authentifier sur l'interface série Serial0, car l'homologue n'a pas envoyé de nom.</p>
+<p></p>
+<p>La ligne 2 indique que le routeur n'a pas pu valider la réponse CHAP, car USERNAME <span class="cmd">pioneer</span> n'a pas été trouvé. </p>
+<p></p>
+<p>La ligne 3 indique qu'aucun mot de passe n'a été trouvé pour <span class="cmd">pioneer</span>. D'autres réponses possibles à cette ligne auraient pu être « no name received to authenticate » (aucun nom à authentifier), « unknown name » (nom inconnu), « no secret for given name » (aucun secret pour le nom donné), « short MD5 response received » (réponse MD5 courte reçue) ou « MD5 compare failed » (échec de la comparaison MD5). </p>
+<p></p>
+<p>Dans la dernière ligne, le code 4 indique une défaillance. Les autres valeurs de code ont les significations suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>1 - Confirmation </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>2 - Réponse </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>3 - Réussite </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>4 - Défaillance</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>id - 3 est le numéro de l'ID selon le format de paquet LCP</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>len - 48 est la longueur du paquet sans en-tête</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

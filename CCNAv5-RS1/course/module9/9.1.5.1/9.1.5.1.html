@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.5.1 La segmentation traditionnelle en sous-réseaux n&#x0027;est pas efficace</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.5.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmenter un réseau IPv4 en sous-réseaux</h1>
+        <h2>Les avantages du masquage de sous-réseau de longueur variable</h2>
+      </div>
+      <div id="content">
+<p>Avec la méthode classique de segmentation en sous-réseaux, le même nombre d'adresses est attribué à chaque sous-réseau. Si tous les sous-réseaux ont besoin d'un même nombre d'hôtes, l'utilisation de blocs d'adresses de taille fixe est judicieuse. Mais, bien souvent, ce n'est pas le cas. </p>
+<p></p>
+<p>Par exemple, la topologie représentée à la Figure 1 nécessite sept sous-réseaux, un pour chacun des quatre réseaux locaux et un autre pour chacune des trois connexions de réseau étendu entre les routeurs. Si l'on utilise la méthode classique de segmentation en sous-réseaux pour l'adresse 192.168.20.0/24, 3 bits peuvent être empruntés au dernier octet de la partie hôte pour obtenir les sept sous-réseaux requis. Comme l'illustre la Figure 2, en empruntant 3 bits, on obtient 8 sous-réseaux et on laisse 5 bits d'hôte avec 30 hôtes utilisables par sous-réseau. Ce schéma permet de créer les sous-réseaux nécessaires et de répondre aux besoins en hôtes du plus grand réseau local.</p>
+<p></p>
+<p>Bien que cette méthode classique satisfasse aux besoins du plus grand réseau local et divise l'espace d'adressage en un nombre approprié de sous-réseaux, de nombreuses adresses sont inutilisées. </p>
+<p></p>
+<p>Par exemple, seules deux adresses sont nécessaires dans chaque sous-réseau des trois liaisons de réseau étendu. Puisque chaque sous-réseau possède 30 adresses utilisables, 28 adresses sont inutilisées dans chacun de ces sous-réseaux. Comme l'illustre la Figure 3, ce sont au total 84 adresses qui sont inutilisées (28 x 3). </p>
+<p></p>
+<p>De plus, ce schéma ne laisse aucune place à un développement futur, puisqu'il réduit le nombre total de sous-réseaux disponibles. Cette utilisation inefficace des adresses est typique de la méthode classique de segmentation des réseaux par classe. </p>
+<p></p>
+<p>L'application d'un schéma de segmentation classique à ce scénario n'est pas très efficace. En fait, notre exemple illustre parfaitement bien comment le découpage d'un sous-réseau peut être utilisé pour optimiser l'attribution d'adresses.</p>
+<p></p>
+<p>La segmentation des sous-réseaux, qui revient à utiliser le masquage de sous-réseau de longueur variable (VLSM) permet d'optimiser l'efficacité de l'adressage.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

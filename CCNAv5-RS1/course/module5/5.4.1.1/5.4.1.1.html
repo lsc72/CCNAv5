@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.4.1.1 Exercice - Sélection MAC</title>
+    <!-- Activity -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.4.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Sélection MAC</b>
+</p>
+<p>
+<b>Remarque</b> : cet exercice peut être effectué individuellement, en petits groupes ou en classe entière.</p>
+<p></p>
+<p>Regardez la vidéo accessible depuis le lien suivant :</p>
+<p></p>
+<p>
+<a href="http://www.netevents.tv/video/bob-metcalfe-the-history-of-ethernet" target="_blank">http://www.netevents.tv/video/bob-metcalfe-the-history-of-ethernet</a>
+</p>
+<p></p>
+<p>Les thèmes abordés ne concernent pas uniquement l'historique du développement d'Ethernet, mais également de l'évolution actuelle de la technologie Ethernet (approche futuriste).</p>
+<p></p>
+<p>Lorsque vous aurez regardé la vidéo et que vous aurez comparé son contenu à celui du chapitre 5, naviguez sur le Web pour rechercher des informations sur Ethernet. Adoptez une approche comparative : </p>
+<p>
+<ul>
+<li>Quelles étaient les caractéristiques d'Ethernet lors de sa création ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Quelles caractéristiques sont restées identiques au cours des 25 dernières années et quelles modifications sont apportées pour le rendre plus utile/applicable aux méthodes de transmission de données actuelles ?</li>
+</ul>
+</p>
+<p></p>
+<p>Choisissez trois photos de périphériques et supports physiques Ethernet anciens, actuels et futurs (concentrez-vous sur les commutateurs). Partagez ces photos avec la classe et répondez aux questions suivantes :</p>
+<p>
+<ul>
+<li>Comment ont évolué les supports physiques Ethernet et les périphériques intermédiaires ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Quels sont les aspects des supports physiques Ethernet et des périphériques intermédiaires qui sont restés les mêmes ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Quelle va être l'évolution d'Ethernet ?</li>
+</ul>
+</p>
+<p></p>
+<p>
+<a href="../../files/5.4.1.1%20MAC%20and%20Choose%20Instructions.pdf" target="_blank">Instructions de l'exercice en classe - Sélection MAC</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

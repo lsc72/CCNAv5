@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.1.4 Gaspillage d&#x0027;adressage par classe</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Examen de CIDR et VLSM</h1>
+        <h2>Adressage par classe</h2>
+      </div>
+      <div id="content">
+<p>L'adressage par classe spécifié dans les documents RFC 790 et RFC 791 a entraîné un gaspillage considérable de l'espace d'adressage. Au tout début d'Internet, les organisations disposaient de l'intégralité d'une adresse réseau par classe de classe A, B ou C. </p>
+<p></p>
+<p>Comme le montre la figure :</p>
+<p>
+<ul>
+<li>La classe A disposait de 50 % de l'espace d'adressage total. Cependant, seules 126 organisations pouvaient se voir attribuer une adresse réseau de classe A. Chose absurde, chacune de ces organisations pouvait fournir des adresses pour un maximum de 16 millions d'hôtes. Les très grandes entreprises recevaient des blocs entiers d'adresses de classe A. Certaines entreprises et organisations gouvernementales possèdent toujours des adresses de classe A. Par exemple, General Electric possède 3.0.0.0/8, Apple Computer possède 17.0.0.0/8 et le service postal des États-Unis possède 56.0.0.0/8. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La classe B disposait de 25 % de l'espace d'adressage total. Jusqu'à 16 384 organisations pouvaient recevoir une adresse réseau de classe B et chacun de ces réseaux pouvait prendre en charge jusqu'à 65 534 hôtes. Seules les entreprises et organisations gouvernementales pouvaient prétendre utiliser l'intégralité de ces 65 000 adresses. Comme pour les réseaux de classe A, un grand nombre d'adresses IP dans l'espace d'adressage de classe B ont été gaspillées.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La classe C avait 12,5 % de l'espace d'adressage total. De nombreuses organisations supplémentaires ont pu obtenir des réseaux de classe C, mais ils étaient limités en ce qui concerne le nombre d'hôtes qu'ils pouvaient connecter. En fait, dans de nombreux cas, les adresses de classe C étaient souvent trop petites pour la plupart des organisations de taille moyenne.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les classes D et E sont utilisées pour la multidiffusion et les adresses réservées.</li>
+</ul>
+</p>
+<p></p>
+<p>Le résultat global était que l'adressage par classe était un schéma d'adressage générant beaucoup de pertes. Une meilleure solution d'adressage réseau devait être mise au point. Pour cette raison, le routage interdomaine sans classe (CIDR) a été introduit en 1993.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

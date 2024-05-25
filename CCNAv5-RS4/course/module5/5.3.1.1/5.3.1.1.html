@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.3.1.1 Dépannage de la NAT : commandes show</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage de la NAT</h1>
+        <h2>Dépannage de la NAT</h2>
+      </div>
+      <div id="content">
+<p>La Figure 1 représente le routeur R2 activé pour la PAT et utilisant la plage d'adresses 209.165.200.226 à 209.165.200.240. </p>
+<p></p>
+<p>Lorsque des problèmes de connectivité IPv4 surviennent dans un environnement NAT, il s'avère souvent difficile d'en déterminer la cause. Pour résoudre les problèmes, il faut d'abord s'assurer que la fonction NAT n'en est pas la cause. Respectez les étapes suivantes pour vérifier que NAT fonctionne normalement :</p>
+<p></p>
+<p>
+<b>Étape 1. </b>À partir de la configuration, définissez clairement ce que la fonction NAT est censée faire. Cela peut permettre d'identifier un problème de configuration.</p>
+<p></p>
+<p>
+<b>Étape 2. </b>Vérifiez que les traductions correctes existent dans la table de traduction à l'aide de la commande <span class="cmd"><b>show ip nat translations</b></span>.</p>
+<p></p>
+<p>
+<b>Étape 3. </b>Utilisez les commandes <span class="cmd"><b>clear</b></span> et <span class="cmd"><b>debug</b></span> pour vérifier que la NAT fonctionne comme prévu. Regardez si les entrées dynamiques sont recréées après avoir été effacées.</p>
+<p></p>
+<p>
+<b>Étape 4. </b>Analysez de façon détaillée ce qui arrive au paquet et assurez-vous que les routeurs disposent des informations de routage adéquates pour le déplacer.</p>
+<p></p>
+<p></p>
+<p>La Figure 2 présente le résultat des commandes <span class="cmd"><b>show ip nat statistics</b></span> et <span class="cmd"><b>show ip nat translations</b></span>. Avant d'utiliser les commandes <span class="cmd"><b>show</b></span>, effacez les statistiques et les entrées NAT de la table à l'aide des commandes <span class="cmd"><b>clear ip nat statistics</b></span> et <span class="cmd"><b>clear ip nat translation *</b></span>. Une fois que l'hôte 192.168.10.10 établit une connexion Telnet avec le serveur à l'adresse 209.165.201.1, les statistiques et la table NAT s'affichent et vous permettent de vérifier que la NAT fonctionne correctement. </p>
+<p></p>
+<p>Dans un environnement réseau simple, il est utile de surveiller les statistiques NAT à l'aide de la commande <span class="cmd"><b>show ip nat statistics</b></span>. La commande <span class="cmd"><b>show ip nat statistics</b></span> affiche des informations sur le nombre total de traductions actives, les paramètres de configuration NAT, le nombre d'adresses dans le pool et le nombre d'adresses attribuées. Toutefois, dans un environnement NAT plus complexe où plusieurs traductions ont lieu, cette commande ne permet pas forcément d'identifier clairement le problème. Il peut être nécessaire d'exécuter des commandes <span class="cmd"><b>debug</b></span> sur le routeur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

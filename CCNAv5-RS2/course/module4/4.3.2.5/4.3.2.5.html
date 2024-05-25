@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.2.5 Packet Tracer : analyse des routes connectées directement </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement d&#x0027;un routeur</h1>
+        <h2>Routes connectées directement</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Contexte </b>
+</p>
+<p>Le réseau de l'exercice est déjà configuré. Vous vous connecterez aux routeurs et utiliserez les commandes <span class="cmd"><b>show</b></span> pour découvrir les questions portant sur les routes connectées directement et pour y répondre. </p>
+<p></p>
+<p>
+<a href="../../files/4.3.2.5%20Packet%20Tracer%20-%20Investigating%20Directly%20Connected%20Routes%20Instructions.pdf" target="_blank">Packet Tracer : instructions pour l'analyse des routes connectées directement </a>
+</p>
+<p></p>
+<p>
+<a href="../../files/4.3.2.5%20Packet%20Tracer%20-%20Investigating%20Directly%20Connected%20Routes.pka" target="_blank">Packet Tracer : analyse des routes connectées directement - PKA</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

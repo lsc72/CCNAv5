@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.3.10 Créer 100 sous-réseaux avec le préfixe /16</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.3.10_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmenter un réseau IPv4 en sous-réseaux</h1>
+        <h2>Segmenter un réseau IPv4 en sous-réseaux</h2>
+      </div>
+      <div id="content">
+<p>Dans les exemples précédents, nous avions un interréseau nécessitant 3 sous-réseaux et un autre nécessitant 5 sous-réseaux. Pour parvenir à créer quatre sous-réseaux, nous avons emprunté 2 bits parmi les 8 bits d'hôte disponibles avec une adresse IP dont le masque par défaut était 255.255.255.0 ou le préfixe /24. Le masque de sous-réseau obtenu était 255.255.255.192 et un total de 4 sous-réseaux possibles ont été créés. En appliquant la formule de calcul du nombre d'hôtes de 2^6 - 2, nous avons déterminé que chacun des 4 sous-réseaux disposait de 62 adresses d'hôte maximum à attribuer aux nœuds. </p>
+<p></p>
+<p>Pour obtenir 5 sous-réseaux, nous avons emprunté 3 bits parmi les 8 bits d'hôte disponibles avec une adresse IP dont le masque par défaut était 255.255.255.0 ou le préfixe /24. Après avoir emprunté ces 3 bits à la partie hôte de l'adresse, il restait 5 bits d'hôte. Le masque de sous-réseau obtenu était 255.255.255.224, avec un total de 8 sous-réseaux créés et 30 adresses d'hôte par sous-réseau.</p>
+<p></p>
+<p>Prenons à présent l'exemple de grandes entreprises ou de campus dont l'interréseau requiert 100 sous-réseaux. Tout comme dans les exemples précédents, pour parvenir à créer 100 sous-réseaux, nous devons emprunter des bits à la partie hôte de l'adresse IP de l'interréseau existant. Comme précédemment, pour calculer le nombre de sous-réseaux, nous devons déterminer le nombre de bits d'hôte disponibles et utiliser la formule de calcul suivante des sous-réseaux : 2^nombre de bits empruntés moins 2. Si l'on reprend l'adresse IP du dernier exemple, soit 192.168.10.0/24, nous disposons de 8 bits d'hôte. Pour créer 100 sous-réseaux, nous devons donc emprunter 7 bits. </p>
+<p></p>
+<p>Calcul du nombre de sous-réseaux si 7 bits sont empruntés : 2^7 = 128 sous-réseaux.</p>
+<p></p>
+<p>Cependant, si l'on emprunte 7 bits, il ne reste qu'un seul bit d'hôte et si l'on applique la formule de calcul du nombre d'hôtes, on n'obtient aucun hôte sur ces sous-réseaux. Calcul du nombre d'hôtes s'il reste un bit : 2^1 = 2, on retire 2 pour l'adresse réseau et la diffusion réseau et l'on obtient un résultat de 0 hôte (2^1 - 2 = 0).</p>
+<p></p>
+<p>Dans une situation nécessitant un plus grand nombre de sous-réseaux, le réseau IP doit disposer de davantage de bits d'hôte à emprunter, par exemple une adresse IP dont le masque de sous-réseau par défaut est /16 ou 255.255.0.0. Les adresses dont le premier octet dispose d'une plage de 128 à 191 adresses ont un masque par défaut de 255.255.0.0 ou /16. Les adresses de cette plage possèdent 16 bits dans la partie réseau et 16 bits dans la partie hôte. Ces 16 bits représentent les bits qui peuvent être empruntés pour créer des sous-réseaux.</p>
+<p></p>
+<p>Si l'on utilise un nouveau bloc d'adresses IP, 172.16.0.0/16, des bits d'hôte doivent être empruntés pour créer au moins 100 sous-réseaux. Nous allons procéder de la gauche vers la droite à partir du premier bit d'hôte disponible et emprunter un seul bit à la fois jusqu'à obtenir le nombre de bits nécessaires pour créer 100 sous-réseaux. L'emprunt de 1 bit permet de créer 2 sous-réseaux, l'emprunt de 2 bits permet de créer 4 sous-réseaux, avec 3 bits l'on obtient 8 sous-réseaux et ainsi de suite. Calculez le nombre de sous-réseaux créés lorsque l'on emprunte 7 bits. Pour cela, utilisez la formule 2^nombre de bits empruntés :</p>
+<p></p>
+<p>2^7 = 128 sous-réseaux</p>
+<p></p>
+<p>En empruntant 7 bits, on obtient 128 sous-réseaux, comme montré sur la figure.</p>
+<p></p>
+<p>Souvenez-vous que le masque de sous-réseau doit être modifié en fonction des bits empruntés. Dans cet exemple, lorsque 7 bits sont empruntés, le troisième octet du masque compte 7 bits de plus. En notation décimale, le masque est représenté par 255.255.254.0 ou le préfixe /23, car le troisième octet est 11111110 au format binaire et le quatrième octet est 00000000 en binaire. La segmentation en sous-réseaux a lieu dans le troisième octet, avec les bits d'hôte dans les troisième et quatrième octets.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.4.2 Présentation de l&#x0027;IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche réseau</h1>
+        <h2>Paquet IPv6</h2>
+      </div>
+      <div id="content">
+<p>Au début des années 90, l'Internet Engineering Task Force (IETF) a commencé à se soucier de ces problèmes liés à l'IPv4 et a commencé à chercher une alternative. Cela a conduit au développement de la version 6 du protocole IP (IPv6). L'IPv6 supprime les limites de l'IPv4 et améliore de façon efficace le protocole, grâce à des fonctionnalités qui correspondent mieux aux exigences actuelles et futures des réseaux. </p>
+<p></p>
+<p>Voici les améliorations apportées par l'IPv6 :</p>
+<p>
+<ul>
+<li>
+<b>Espace d'adressage plus important</b> – les adresses IPv6 sont basées sur un adressage hiérarchique 128 bits (32 bits pour l'IPv4). Cela augmente considérablement le nombre d'adresses IP disponibles.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Traitement des paquets plus efficace</b> – l'en-tête IPv6 a été simplifié et comporte moins de champs. Cela améliore le traitement des paquets par les routeurs intermédiaires et permet également la prise en charge d'extensions et d'options pour plus d'évolutivité et de longévité.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Traduction d'adresses réseau non nécessaire</b> – grâce au grand nombre d'adresses publiques IPv6, la technologie NAT n'est plus nécessaire. Les sites clients, des plus grandes entreprises aux sites de particuliers, peuvent obtenir une adresse réseau publique IPv6. Cela évite certains des problèmes d'application causés par la technologie NAT, qui sont rencontrés par des applications nécessitant une connectivité de bout en bout.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Sécurité intégrée</b> – l'IPv6 prend nativement en charge les fonctions d'authentification et de confidentialité. Avec l'IPv4, d'autres fonctions devaient être mises en œuvre pour bénéficier de ces fonctionnalités.</li>
+</ul>
+</p>
+<p></p>
+<p>L'espace d'adressage IPv4 de 32 bits fournit environ 4 294 967 296 adresses uniques. Parmi ces adresses, seules 3,7 milliards peuvent être attribuées car le système d'adressage IPv4 sépare les adresses en classes et réserve des adresses pour la multidiffusion, les tests et d'autres usages spécifiques.</p>
+<p></p>
+<p>Comme l'illustre la figure, l'espace d'adressage IPv6 fournit 340 282 366 920 938 463 463 374 607 431 768 211 456 adresses, soit 340 undécillions d'adresses, nombre presque équivalent au nombre de grains de sable sur Terre. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

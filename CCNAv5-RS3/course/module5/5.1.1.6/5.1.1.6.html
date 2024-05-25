@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.1.6 Vérification du protocole OSPF à zone unique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées du protocole OSPF à zone unique </h1>
+        <h2>Routage au sein des couches de distribution et cœur de réseau</h2>
+      </div>
+      <div id="content">
+<p>Voici quelques commandes utiles pour vérifier OSPF :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip ospf neighbor </b>
+</span>- Commande permettant de vérifier que le routeur a établi une contiguïté avec les routeurs voisins. Si l'ID de routeur du routeur voisin ne s'affiche pas, ou qu'il n'affiche pas l'état FULL, les deux routeurs n'ont pas établi de contiguïté OSPF.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip protocols</b>
+</span>
+<span class="cmd"></span>- commande permettant de vérifier rapidement des informations de configuration OSPF essentielles. Cela comprend l'ID de processus OSPF, l'ID du routeur, les réseaux annoncés par le routeur, les voisins dont le routeur reçoit les mises à jour et la distance administrative par défaut, à savoir 110 pour OSPF.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip ospf </b>
+</span>- commande utilisée pour afficher l'ID de processus OSPF, l'ID de routeur, le SPF OSPF et des informations sur la zone OSPF.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip ospf interface</b>
+</span> - commande affichant une liste détaillée pour chaque interface utilisant OSPF, et très pratique pour déterminer si les instructions <span class="cmd"><b>network </b></span>ont été composées correctement.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip ospf interface brief</b>
+</span> - commande affichant un récapitulatif et l'état des interfaces compatibles OSPF.</li>
+</ul>
+</p>
+<p></p>
+<p>Les Figures 1 à 5 affichent le résultat correspondant à chaque commande de vérification saisie sur R1.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe à la Figure 6 pour vérifier la contiguïté de voisinage, des informations de configuration OSPF essentielles et pour afficher un récapitulatif des interfaces utilisant OSPF sur R2.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe à la Figure 7 pour vérifier la contiguïté de voisinage, des informations de configuration OSPF essentielles et pour afficher un récapitulatif des interfaces utilisant OSPF sur R3.</p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

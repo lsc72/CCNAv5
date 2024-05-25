@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.1.4 SMTP, POP et IMAP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Services et protocoles de couche application courants</h1>
+        <h2>Protocoles de couche application courants </h2>
+      </div>
+      <div id="content">
+<p>L'un des principaux services offerts par un FAI est l'hébergement de la messagerie. Par sa simplicité et sa rapidité, l'e-mail a révolutionné la façon dont les gens communiquent. Toutefois, pour que la messagerie fonctionne sur un ordinateur ou autre périphérique final, plusieurs applications et services sont nécessaires.</p>
+<p></p>
+<p>L'e-mail est une méthode de stockage et de transfert qui permet d'envoyer, de stocker et de récupérer des messages électroniques à travers un réseau. Les messages sont stockés dans des bases de données sur des serveurs de messagerie. Les FAI gèrent souvent des serveurs de messagerie qui prennent en charge de nombreux comptes client différents. </p>
+<p></p>
+<p>Les clients de messagerie communiquent avec les serveurs de messagerie pour envoyer et recevoir des messages. Les serveurs de messagerie communiquent avec d'autres serveurs de messagerie pour acheminer les messages d'un domaine à un autre. Un client de messagerie ne communique pas directement avec un autre client de messagerie lors de l'envoi des e-mails. En fait, les deux clients dépendent du serveur de messagerie pour transporter les messages. Cela se vérifie également lorsque les deux utilisateurs appartiennent au même domaine. </p>
+<p></p>
+<p>Les clients de messagerie envoient des messages au serveur de messagerie configuré dans les paramètres de l'application. Lorsque le serveur reçoit le message, il vérifie si le domaine destinataire se trouve dans sa base de données locale. Dans la négative, il envoie une requête DNS pour déterminer l'adresse IP du serveur de messagerie du domaine de destination. L'e-mail est ensuite transféré au serveur approprié.</p>
+<p></p>
+<p>Les e-mails font appel à trois protocoles distincts : SMTP (Simple Mail Transfer Protocol), POP (Post Office Protocol) et IMAP (Internet Message Access Protocol. Le processus de couche application qui envoie l'e-mail utilise le protocole SMTP, et ce, qu'il soit envoyé d'un client à un serveur ou d'un serveur à un autre.</p>
+<p></p>
+<p> Pour récupérer l'e-mail, le client fait appel à l'un des deux protocoles de couche application suivants : POP ou IMAP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

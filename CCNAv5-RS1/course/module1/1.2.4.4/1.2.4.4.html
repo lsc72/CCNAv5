@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.4.4 Packet Tracer : représentation du réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.4.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>LAN, WAN et Internet</h1>
+        <h2>Connexion à Internet</h2>
+      </div>
+      <div id="content">
+<p>Packet Tracer est un logiciel pratique, mobile et flexible, qui vous aidera dans le cadre de votre certification Cisco Certified Network Associate (CCNA). Packet Tracer vous permet de tester le comportement d'un réseau, de concevoir des modèles de réseau et de mettre en pratique des hypothèses. Dans cet exercice, vous découvrirez un réseau relativement complexe qui permet d'illustrer certaines fonctionnalités de Packet Tracer. Ainsi, vous apprendrez comment accéder à l'Aide et aux didacticiels. Vous découvrirez également comment utiliser les différents modes et espaces de travail. Enfin, vous découvrirez comment Packet Tracer peut servir d'outil de modélisation de représentations de réseau.</p>
+<p></p>
+<p>
+<a href="../../files/1.2.4.4%20Packet%20Tracer%20-%20Representing%20the%20Network%20Instructions.pdf" target="_blank">Packet Tracer – Représentation du réseau : instructions</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/1.2.4.4%20Packet%20Tracer%20-%20Representing%20the%20Network.pka" target="_blank">Packet Tracer – Représentation du réseau : PKA</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

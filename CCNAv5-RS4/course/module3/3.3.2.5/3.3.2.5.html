@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.2.5 Configuration de l&#x0027;authentification PPP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de PPP</h1>
+        <h2>Authentification PPP</h2>
+      </div>
+      <div id="content">
+<p>Pour spécifier l'ordre dans lequel les protocoles CHAP ou PAP sont demandés sur l'interface, utilisez la commande de configuration d'interface <span class="cmd"><b>ppp authentication</b></span>, comme présenté dans la figure. Utilisez la forme <span class="cmd"><b>no</b></span> de la commande pour désactiver l'authentification. </p>
+<p></p>
+<p>Une fois que vous avez activé l'authentification CHAP ou PAP, ou les deux, le routeur local demande au périphérique distant de prouver son identité avant d'autoriser la circulation du trafic. Ceci est effectué comme suit :</p>
+<p></p>
+<p>
+<ul>
+<li>L'authentification PAP demande au périphérique distant d'envoyer un nom et un mot de passe à vérifier par rapport à une entrée de la base de données de noms d'utilisateur locale ou de la base de données TACACS/TACACS+ distante. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>L'authentification CHAP envoie une demande de confirmation au périphérique distant. Ce dernier doit chiffrer la valeur de demande de confirmation à l'aide d'un secret partagé puis renvoyer la valeur chiffrée et son nom au routeur local dans un message de réponse. Le routeur local utilise le nom du périphérique distant pour rechercher le secret approprié dans la base de données de noms d'utilisateur locale ou distante TACACS/TACACS+. Il utilise le secret trouvé pour chiffrer la demande de confirmation d'origine et vérifier que les valeurs chiffrées correspondent.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: le serveur AAA/TACACS (Authentication, authorization and accounting) est un serveur dédié qui sert à l'authentification des utilisateurs. Les clients TACACS envoient une demande à un serveur d'authentification TACACS. Le serveur peut authentifier l'utilisateur, autoriser les actions de l'utilisateur et suivre ce qu'il fait.</p>
+<p></p>
+<p>PAP ou CHAP, ou les deux peuvent être activés. Si les deux méthodes sont activées, la première méthode spécifiée est sollicitée lors de la négociation de liaison. Si l'homologue suggère d'utiliser la deuxième méthode ou refuse d'utiliser la première méthode, la deuxième méthode doit être utilisée. Certains périphériques distants prennent en charge le protocole CHAP uniquement, et d'autres le protocole PAP uniquement. L'ordre dans lequel les méthodes sont spécifiées dépend de votre appréciation quant à la capacité du périphérique distant à négocier correctement la méthode appropriée, ainsi que de vos préoccupations en termes de sécurité de la ligne de données. Les noms d'utilisateur et les mots de passe PAP sont envoyés sous forme de chaînes en texte clair, qui peuvent être interceptées et réutilisées. CHAP comble la plupart des lacunes connues en termes de sécurité.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

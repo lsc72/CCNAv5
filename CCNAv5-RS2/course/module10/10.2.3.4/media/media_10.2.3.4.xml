@@ -1,0 +1,49 @@
+﻿<textcomponents>
+
+<component id="ID_s1_title">
+<text><![CDATA[<b>Agent de relais DHCPv6</b>]]></text>
+</component>
+<component id="ID_s1_txt01">
+<text><![CDATA[<b>Agent de relais DHCPv6</b>]]></text>
+</component>
+<component id="ID_s1_txt02">
+<text><![CDATA[<b>Serveur DHCPv6</b>]]></text>
+</component>
+
+
+<component id="ID_s2_title">
+<text><![CDATA[<b>Commandes de l'agent de relais DHCPv6</b>]]></text>
+</component>
+
+<component id="ID_s3_title"> <!--text><![CDATA[<b>DHCPv6 Relay Agent</b>]]></text-->
+	</component>
+	<component id="ID_s3_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font size='10' face="Arial" color="#0000FF">***Vous devez saisir la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font>  </b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>Configurez les commandes de relais DHCPv6 sur le routeur approprié pour que PC3 reçoive une adresse IPv4 et d'autres paramètres du serveur DHCPv6. Quittez le mode de configuration sur tout périphérique qui ne nécessite aucune configuration.  </b></font>]]></existingcommands>
+		<command prompt="R1(config)#">
+			<correctresponse><![CDATA[exit]]></correctresponse>
+		</command>		
+		<command prompt="R2(config)#">
+			<correctresponse><![CDATA[exit]]></correctresponse>
+		</command>		
+		<command prompt="R3(config)#">
+			<correctresponse><![CDATA[interface g0/0]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+			<correctresponse><![CDATA[ipv6 dhcp relay destination 2001:db8:cafe:1::6]]></correctresponse>
+				<deviceresponse><![CDATA[<span class="command">R3(config-if)#</span>]]></deviceresponse> 					
+			<instruction><![CDATA[<font size='10' face="Arial" class="syntaxBottomLine"><b>Vous avez correctement configuré le relais DHCPv6.  </b></font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+	<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+</textcomponents>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.3.4 Connecteurs de fibre réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Supports réseau</h1>
+        <h2>Fibre optique</h2>
+      </div>
+      <div id="content">
+<p>Un connecteur fibre optique termine l'extrémité d'un câble à fibre optique. Divers connecteurs de ce type sont disponibles. Les principales différences entre les types de connecteurs sont les dimensions et les méthodes de couplage mécanique. Généralement, les entreprises fixent chacune un type de connecteur à utiliser dans l'ensemble des installations, selon le matériel qu'elles emploient globalement, ou alors elles choisissent les connecteurs en fonction du type de fibre (un pour la fibre multimode et un pour la fibre multimode). En tenant compte de toutes les générations de connecteurs, environ 70 types de connecteur sont actuellement utilisés.</p>
+<p></p>
+<p>Comme l'illustre la Figure 1, les trois connecteurs fibre optique réseau les plus répandus sont les suivants :</p>
+<p>
+<ul>
+<li>
+<b>Connecteur ST (Straight-Tip)</b> : connecteur à baïonnette d'ancienne version couramment utilisé avec la fibre monomode.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Connecteur SC (Subscriber Connector)</b> : parfois appelé connecteur carré ou connecteur standard. Il s'agit d'un connecteur largement utilisé dans les réseaux locaux et étendus qui fait appel à un mécanisme de clipsage permettant de vérifier l'insertion. Ce type de connecteur est utilisé avec la fibre optique multimode et monomode.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Connecteur LC (Lucent Connector)</b> : parfois appelé petit connecteur ou connecteur local, il est de plus en plus répandu en raison de sa petite taille. Il est utilisé avec la fibre monomode et prend également en charge la fibre multimode. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque :</b> d'autres connecteurs fibre optique tels que les connecteurs FC (Ferrule Connector) et SMA (Sub Miniature A) servent peu dans les déploiements de réseaux locaux et étendus. Certains connecteurs, tels que les connecteurs biconiques et D4 sont à présent obsolètes. Ils ne sont donc pas abordés dans ce chapitre.</p>
+<p></p>
+<p>La lumière pouvant uniquement voyager dans une direction par la fibre optique, deux fibres sont requises pour prendre en charge le fonctionnement bidirectionnel simultané. C'est pour cette raison que les câbles de brassage en fibre optique regroupent deux câbles à fibre optique raccordés par une paire de connecteurs monovoies standard. Certains connecteurs à fibres optiques acceptent à la fois les fibres de transmission et de réception. Ce sont des connecteurs bidirectionnels (voir figure 1). </p>
+<p></p>
+<p>Les câbles de brassage en fibre optique sont nécessaires pour interconnecter des périphériques d'infrastructure. Par exemple, la Figure 2 illustre différents câbles de brassage courants :</p>
+<p>
+<ul>
+<li>Câble de brassage multimode SC-SC</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Câble de brassage monomode LC-LC</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Câble de brassage multimode ST-LC</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Câble de brassage monomode SC-ST</li>
+</ul>
+</p>
+<p></p>
+<p>Les câbles à fibre optique doivent être protégés par un petit embout en plastique lorsqu'ils ne sont pas utilisés.</p>
+<p></p>
+<p>Notez également l'utilisation de couleurs permettant de différencier les câbles de brassage monomode et multimode. C'est la norme TIA 598 qui recommande l'utilisation d'une gaine jaune pour les câbles à fibre optique monomode et d'une gaine orange (ou bleue) pour les câbles à fibre multimode.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

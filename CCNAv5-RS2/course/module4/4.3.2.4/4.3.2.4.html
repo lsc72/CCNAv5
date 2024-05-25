@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.2.4 Exemple d&#x0027;interface IPv6 connectée directement</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement d&#x0027;un routeur</h1>
+        <h2>Routes connectées directement</h2>
+      </div>
+      <div id="content">
+<p>L'exemple de la Figure 1 décrit les étapes de configuration pour les interfaces connectées directement de R1 avec les adresses IPv6 indiquées. Observez les messages d'information de couche 1 et 2 générés lorsque chaque interface est configurée et activée.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>show ipv6 route</b></span> illustrée en Figure 2 est utilisée pour vérifier que les adresses des interfaces IPv6 spécifiques et des réseaux IPv6 figurent désormais dans la table de routage IPv6. Comme pour IPv4, la lettre « <span class="cmd">C</span> » placée en regard d'une route indique qu'il s'agit d'un réseau connecté directement. Un « <span class="cmd">L</span> » indique la route locale. Dans un réseau IPv6, la route locale est précédée d'un préfixe /128. Des routes locales sont utilisées par la table de routage pour traiter efficacement les paquets dont l'adresse de destination est celle de l'interface du routeur. </p>
+<p></p>
+<p>Notez qu'il existe également une route installée vers le réseau FF00::/8. Cette route est nécessaire pour le routage de multidiffusion.</p>
+<p></p>
+<p>La Figure 3 montre comment la commande <span class="cmd"><b>show ipv6 route</b></span> peut être combinée à une destination réseau donnée pour afficher les détails de la manière dont cette route a été découverte par le routeur. </p>
+<p></p>
+<p>La Figure 4 décrit comment la connectivité à R2 peut être vérifiée à l'aide de la commande <span class="cmd"><b>ping</b></span>. </p>
+<p></p>
+<p>Dans la Figure 5, notez ce qui se passe lorsque l'interface LAN G0/0 de R2 est la cible de la commande <span class="cmd"><b>ping</b></span>. Les requêtes ping n'aboutissent pas. C'est parce que R1 n'a pas d'entrée dans la table de routage pour atteindre le réseau 2001:DB8:ACAD:4::/64. </p>
+<p></p>
+<p>R1 requiert des informations supplémentaires pour atteindre un réseau distant. Les entrées de route de réseau distant peuvent être ajoutées à la table de routage selon l'une des méthodes suivantes :</p>
+<p>
+<ul>
+<li>Routage statique </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Protocoles de routage dynamique</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

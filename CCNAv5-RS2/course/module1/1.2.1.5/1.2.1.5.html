@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.1.5 Commutation cut-through</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>L&#x0027;environnement commuté</h1>
+        <h2>Transfert de trames</h2>
+      </div>
+      <div id="content">
+<p>La commutation cut-through présente l'avantage, par rapport à la commutation par stockage et retransmission, de commencer à transférer une trame plus tôt. La commutation cut-through comporte deux caractéristiques principales : la transmission rapide des trames et le traitement des trames incorrectes.</p>
+<p></p>
+<p>
+<b>Transmission rapide des trames</b>
+</p>
+<p></p>
+<p>Comme indiqué par la figure, un commutateur cut-through peut décider de transférer une trame dès qu'il a trouvé l'adresse MAC de destination de la trame dans sa table d'adresses MAC. Il n'a pas besoin d'attendre que le reste de la trame soit arrivé au port d'entrée pour prendre une décision.</p>
+<p></p>
+<p>Grâce aux contrôleurs MAC et aux circuits ASIC d'aujourd'hui, un commutateur cut-through peut déterminer rapidement s'il doit examiner une plus grande partie des en-têtes d'une trame, à des fins de filtrage supplémentaire. Par exemple, le commutateur peut analyser les 14 premiers octets (l'adresse MAC source, l'adresse MAC de destination et les champs EtherType), puis examiner 40 octets supplémentaires afin d'effectuer des fonctions plus sophistiquées relatives aux couches 3 et 4 d'IPv4.</p>
+<p></p>
+<p>La commutation cut-through transfère la plupart des trames non valides. Les trames comportant des erreurs sont transférées vers d'autres segments du réseau. En cas de taux d'erreur élevé dans le réseau (trames non valides), la commutation cut-through risque d'encombrer la bande passante avec des trames endommagées et incorrectes.</p>
+<p></p>
+<p>
+<b>Fragment Free </b>
+</p>
+<p></p>
+<p>La commutation « fragment free » est une forme modifiée de la commutation cut-through, où le commutateur attend la fin de la réception de la fenêtre de collision (64 octets) avant de transférer la trame. Le champ de données de chaque trame est ainsi contrôlé, afin d'assurer qu'aucune fragmentation ne s'est produite. La commutation fragment free assure un meilleur contrôle des erreurs que la méthode cut-through, pratiquement sans augmentation de la latence. </p>
+<p></p>
+<p>Grâce à son avantage de faible latence, similaire à la commutation cut-through, cette commutation est mieux adaptée aux applications HPC (high-performance computing) extrêmement exigeantes, qui nécessitent des latences de processus à processus d'au plus 10 microsecondes.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.2.3 Types de trame HLDC</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation des connexions série point à point</h1>
+        <h2>Encapsulation HDLC</h2>
+      </div>
+      <div id="content">
+<p>HDLC définit trois types de trames, chacune avec un format de champ de contrôle différent. </p>
+<p></p>
+<p>
+<b>Indicateur</b>
+</p>
+<p>Le champ d'indicateur déclenche la vérification des erreurs et y met fin. La trame commence toujours par un champ d'indicateur à 8 bits et se termine toujours par ce même indicateur. La séquence de bits est 01111110. Comme il existe un risque que cette séquence soit présente dans les données, le système HDLC qui envoie les informations insère toujours un bit 0 après cinq 1 consécutifs dans le champ de données. Dans la pratique, la séquence d'indicateur ne peut donc se trouver qu'à la fin de la trame. Le système récepteur supprime les bits insérés. Quand les trames sont transmises de façon consécutive, l'indicateur de fin de la première trame sert d'indicateur de début de la suivante. </p>
+<p></p>
+<p>
+<b>Adresse</b>
+</p>
+<p>Le champ d'adresse contient l'adresse HDLC de la station secondaire. Cette adresse peut contenir une adresse spécifique, un groupe d'adresses ou une adresse de diffusion. Une adresse principale est une source ou une destination de communication, qui élimine le besoin d'inclure l'adresse de la station principale. </p>
+<p></p>
+<p>
+<b>Contrôle</b>
+</p>
+<p>Le champ de contrôle utilise trois formats différents, en fonction de la trame HDLC utilisée :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Trame d'information (I) </b>: les trames I transportent les informations de couche supérieure, ainsi que certaines informations de contrôle. Cette trame envoie et reçoit les numéros d'ordre, et le bit d'interrogation final (P/F) est chargé du contrôle de flux et d'erreur. Le numéro de séquence d'envoi désigne le numéro de la trame suivante à envoyer. Le numéro de séquence de réception fournit le numéro de la trame suivante à recevoir. L'expéditeur et le récepteur s'occupent de la maintenance des numéros de séquence d'envoi et de réception. La station principale utilise le bit d'interrogation pour indiquer à la station secondaire si elle demande une réponse immédiate. La station secondaire utilise le bit d'interrogation pour indiquer à la station principale si la trame actuelle est la dernière de sa réponse en cours. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Trame de supervision (S) </b>: les trames S fournissent les informations de contrôle. Une trame S peut demander et suspendre la transmission, signaler un état et accuser réception de trames d'information. Les trames S ne présentent pas de champ d'informations. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Trame non numérotée (U) </b>: les trames U servent au contrôle, et ne suivent pas de séquence spécifique. Selon la fonction de la trame U, son champ de contrôle comporte 1 ou 2 octets. Certaines trames U présentent un champ d'informations.</li>
+</ul>
+</p>
+<p></p>
+<p></p>
+<p>
+<b>Protocole</b>
+</p>
+<p>Utilisé uniquement dans HDLC. Ce champ spécifie le type de protocole encapsulé dans la trame (par exemple 0x0800 pour IP). </p>
+<p></p>
+<p>
+<b>Données</b>
+</p>
+<p>Le champ de données contient des informations PIU (Path Information Unit) ou XID (Exchange Identification). </p>
+<p></p>
+<p>
+<b>Séquence de contrôle de trame (FCS)</b>
+</p>
+<p>La séquence FCS précède le délimiteur d'indicateur de fin. Il s'agit habituellement d'un reste de calcul de contrôle par redondance cyclique (CRC, Cyclic Redundancy Check). Le calcul CRC est de nouveau effectué dans le récepteur. Si le résultat est différent de la valeur dans la trame d'origine, une erreur est signalée.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

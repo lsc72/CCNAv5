@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.1.1 Rôle de la couche transport</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole de couche Transport</h1>
+        <h2>Transport des données</h2>
+      </div>
+      <div id="content">
+<p>La couche transport est chargée de l'établissement d'une session de communication temporaire entre deux applications et de l'acheminement des données entre ces deux applications. Une application génère les données à envoyer d'une application sur un hôte source vers une application sur un hôte de destination, quels que soient le type d'hôte de destination, le type de support sur lequel aura lieu la transmission, le chemin emprunté par les données, l'encombrement de la liaison et la taille du réseau. Comme le montre la figure, la couche transport constitue la liaison entre la couche application et les couches inférieures chargées de la transmission sur le réseau.</p>
+<p></p>
+<p>La couche transport fournit une méthode d'acheminement des informations sur l'ensemble du réseau qui garantit que les données peuvent être correctement rassemblées au niveau du destinataire. La couche transport segmente les données et se charge des contrôles nécessaires à la réorganisation de ces segments de données en différents flux de communication. Dans le cadre de la suite de protocoles TCP/IP, ces processus de segmentation et de réorganisation peuvent être réalisés à l'aide de deux protocoles de couche transport très différents : TCP (Transmission Control Protocol) et UDP (User Datagram Protocol). </p>
+<p></p>
+<p>Les protocoles de couche transport effectuent les tâches principales suivantes :</p>
+<p>
+<ul>
+<li>Effectuer un suivi des communications individuelles entre les applications résidant sur les hôtes source et de destination ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Segmenter les données pour faciliter la gestion et réassembler les données segmentées en flux de données d'application vers la destination</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Identifier l'application appropriée pour chaque flux de communication </li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.8 Extensions LMI</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.8_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation du protocole Frame Relay</h1>
+        <h2>Fonctionnement de la technologie Frame Relay</h2>
+      </div>
+      <div id="content">
+<p>En plus des fonctions de protocole Frame Relay pour le transfert de données, la spécification Frame Relay comprend des extensions LMI facultatives. Voici quelques-unes de ces extensions : </p>
+<p>
+<ul>
+<li>
+<b>Messages d'état du circuit virtuel </b>: fournit des informations sur l'intégrité du circuit virtuel permanent assurant la communication et la synchronisation entre périphériques, en signalant régulièrement l'existence de nouveaux circuits virtuels permanents et la suppression de circuits existants. Les messages d'état des circuits virtuels empêchent que les données ne soient envoyées vers des trous noirs (des circuits virtuels qui n'existent plus). </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Multidiffusion </b>: permet à l'expéditeur de transmettre une même trame à plusieurs destinataires. La multidiffusion prend en charge la livraison des messages de protocole de routage et des procédures de résolution des adresses qui sont généralement envoyés simultanément à plusieurs destinations. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adressage global </b>: fournit des ID de connexion de niveau global plutôt que local, permettant ainsi leur utilisation pour identifier une interface donnée du réseau Frame Relay. L'adressage global fait que le réseau Frame Relay fonctionne comme un LAN en termes d'adressage, les ARP étant utilisés comme sur un LAN. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Contrôle de flux simple </b>: offre un mécanisme de contrôle de flux XON/XOFF qui s'applique à toute l'interface Frame Relay. Il est destiné aux périphériques qui ne peuvent pas utiliser les bits de notification d'encombrement FECN et BECN utilisés par les couches supérieures, mais qui ont tout de même besoin d'un certain niveau de contrôle du flux.</li>
+</ul>
+</p>
+<p></p>
+<p>L'interface LMI est utilisée pour gérer les liaisons Frame Relay. Chaque message d'interface LMI est classé par un DLCI qui se trouve dans la trame d'interface LMI. Le champ DLCI 10 bits prend en charge 1024 ID de circuits virtuels de 0 à 1023, comme illustré à la Figure 1. Les extensions LMI réservent certains de ces ID de circuits virtuels, réduisant ainsi le nombre de circuits virtuels autorisés. Les messages LMI sont échangés entre l'ETTD et le DCE via ces DLCI réservés.</p>
+<p></p>
+<p>Il existe plusieurs types d'interfaces LMI, chacune étant incompatible avec les autres. Le type de LMI configuré sur le routeur doit correspondre au type utilisé par le fournisseur de services. Trois types d'interfaces LMI sont pris en charge par les routeurs Cisco : </p>
+<p>
+<ul>
+<li>
+<b>CISCO </b>: l'extension LMI originale </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>ANSI </b>: correspond à la norme ANSI T1.617 Annexe D </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Q933A</b>
+<span class="cmd">
+<b></b>
+</span> : correspond à la norme UIT Q933 Annexe A</li>
+</ul>
+</p>
+<p></p>
+<p>Pour afficher les informations du message LMI et les numéros de DLCI associés, utilisez la commande <span class="cmd"><b>show interfaces </b></span><span class="cmd">[</span><span class="cmd"><i>type number</i></span><span class="cmd">]</span>, comme illustré à la Figure 2. Cisco utilise le DLCI 1023 pour identifier les messages LMI utilisés pour la gestion de la liaison Frame Relay.</p>
+<p></p>
+<p>Depuis la version 11.2 du logiciel Cisco IOS, la fonction de détection automatique LMI détecte le type de LMI pris en charge par le commutateur Frame Relay connecté directement. En fonction des messages d'état LMI reçus du commutateur Frame Relay, le routeur configure automatiquement son interface suivant le type de LMI accepté par le commutateur en question. S'il est nécessaire de définir le type LMI, utilisez la commande de configuration d'interface <span class="cmd"><b>frame-relay lmi-type </b></span><span class="cmd">[</span><span class="cmd"><b>cisco </b></span><span class="cmd">|</span><span class="cmd"><b> ansi </b></span><span class="cmd">|</span><span class="cmd"><b> q933a</b></span><span class="cmd">]</span>. La configuration du type de LMI désactive la fonction de détection automatique.</p>
+<p></p>
+<p>Dans les cas où un commutateur Frame Relay utilise des paramètres d'expiration différents de ceux par défaut, l'intervalle entre les messages de maintien de la connexion doit également être configuré sur l'interface Frame Relay afin d'éviter l'expiration des messages d'échange d'état. Les messages d'échange d'état LMI définissent l'état de la connexion du circuit virtuel permanent. En cas de grande discordance dans l'intervalle des messages de maintien de la connexion entre le routeur et le commutateur, le commutateur peut considérer le routeur comme arrêté. Il est important de consulter le fournisseur du service Frame Relay pour obtenir des informations sur la modification de ce paramètre. Par défaut, l'intervalle entre les messages de maintien de connexion est de 10 secondes sur les interfaces série Cisco. Vous pouvez modifier cet intervalle avec la commande de configuration d'interface <span class="cmd"><b>keepalive</b></span>. </p>
+<p></p>
+<p>Les messages d'état aident à contrôler l'intégrité des liaisons logiques et physiques. Ces informations sont cruciales dans l'environnement de routage, car les protocoles de routage prennent leurs décisions en fonction de l'intégrité des liaisons.</p>
+<p></p>
+<p>Comme illustré à la Figure 3, les messages d'état Frame Relay sont similaires à la trame Frame Relay. À la place du champ d'adresse de la trame Frame Relay utilisé pour la transmission des données se trouve un champ DLCI LMI. À la suite du champ DLCI viennent les champs Control, Protocol Discriminator et Call Reference. Ils sont identiques à ceux des trames de données Frame Relay standard. Le quatrième champ indique le type de message LMI et comprend un des trois types de messages LMI pris en charge par Cisco. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

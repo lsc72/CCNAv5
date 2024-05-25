@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.2.4.4 Activer SSH</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.2.4.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Garantie de la sécurité du réseau</h1>
+        <h2>Sécurisation des périphériques</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Accès distant via SSH</b>
+</p>
+<p>L'ancien protocole de gestion à distance des périphériques est Telnet. Ce protocole n'est pas sécurisé. Les données contenues dans un paquet Telnet sont transmises en clair. Un outil comme Wireshark permet d'« analyser » une session Telnet et d'obtenir ainsi les mots de passe. Par conséquent, il est vivement recommandé d'activer SSH sur les périphériques pour assurer la sécurité des accès à distance. Il est possible de configurer un périphérique Cisco de sorte qu'il prenne en charge le protocole SSH, en quatre étapes décrites sur la figure.</p>
+<p></p>
+<p>
+<b>Étape 1.</b> Assurez-vous que le routeur dispose d'un nom d'hôte unique, puis spécifiez le nom de domaine IP du réseau à l'aide de la commande <span class="cmd"><b> ip domain-name </b></span><span class="cmd"><i>domain-name</i></span> en mode de configuration globale.</p>
+<p></p>
+<p>
+<b>Étape 2.</b> Des clés secrètes unidirectionnelles doivent être générées pour qu'un routeur chiffre le trafic SSH. La clé est l'élément qui permet concrètement de chiffrer et de déchiffrer les données. Pour créer une clé de chiffrement, utilisez la commande <span class="cmd"><b>crypto key generate rsa general-keys modulus</b></span> <span class="cmd"><i>modulus-size</i></span> en mode de configuration globale. La signification précise des différentes parties de cette commande est complexe et ne rentre pas dans le cadre du cours, mais pour l'instant, notez simplement que le module détermine la taille de la clé, de 360 à 2 048 bits. Plus le module est grand, plus la clé est sécurisée, mais plus le chiffrement et le déchiffrage des informations sont longs. Il est recommandé d'utiliser un module d'au moins 1 024 bits. </p>
+<p></p>
+<p>
+<span class="cmd">Router(config)#</span>
+<span class="cmd">
+<b>crypto key generate rsa general-keys modulus 1024</b>
+</span>
+</p>
+<p></p>
+<p>
+<b>Étape 3.</b> Créez une entrée de nom d'utilisateur dans la base de données locale à l'aide de la commande <span class="cmd"><b>username</b></span> <span class="cmd"><i>name</i></span> <span class="cmd"><b>secret</b></span> <span class="cmd"><i>secret</i></span> en mode de configuration globale.</p>
+<p></p>
+<p>
+<b>Étape 4.</b> Activez les sessions SSH entrantes à l'aide des commandes de ligne vty <span class="cmd"><b>login local</b></span> et <span class="cmd"><b>transport input ssh</b></span>.</p>
+<p></p>
+<p>Le service SSH du routeur est désormais accessible à l'aide d'un logiciel client SSH.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

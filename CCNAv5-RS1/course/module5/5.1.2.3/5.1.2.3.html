@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.2.3 Initiation à la trame Ethernet</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole Ethernet</h1>
+        <h2>Attributs de trame Ethernet</h2>
+      </div>
+      <div id="content">
+<p>Les principaux champs de la trame Ethernet sont les suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Champs Préambule et Délimiteur de début de trame</b> : les champs Préambule (7 octets) et Délimiteur de début de trame (SFD, également appelé le début de trame (1 octet)) servent à synchroniser les périphériques émetteurs et destinataires. Les huit premiers octets de la trame préparent les noeuds de réception à recevoir. Les quelques premiers octets indiquent essentiellement aux récepteurs de se préparer à recevoir une nouvelle trame. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Champ Adresse MAC de destination</b> : ce champ de 6 octets est l'identifiant du destinataire. Comme nous l'avons vu précédemment, cette adresse est utilisée par la couche 2 pour aider les périphériques à déterminer si une trame leur est adressée. L'adresse de la trame est comparée à l'adresse MAC du périphérique. Si les deux correspondent, le périphérique accepte la trame.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Champ Adresse MAC source</b> : ce champ de 6 octets identifie la carte réseau ou l'interface d'origine de la trame. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Champ Longueur</b> : pour les normes IEEE 802.3 antérieures à 1997, le champ Longueur définit la longueur exacte du champ de données de la trame. Cette longueur est ensuite utilisée dans la séquence de contrôle de trame, pour garantir la réception du message. Sinon, le rôle de ce champ est d'indiquer le protocole de couche supérieure présent. Si la valeur de deux octets est supérieure ou égale à l'hexadécimal 0x0600 ou au décimal 1 536, le contenu du champ Données est décodé selon le protocole EtherType indiqué. Par contre, si la valeur est égale ou inférieure à la valeur hexadécimale 0x05DC ou à 1 500, le champ Longueur est utilisé pour indiquer l'utilisation du format de trame IEEE 802.3. C'est ainsi que l'on distingue les trames Ethernet II et 802.3. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Champ Données</b> : ce champ de 46 à 1 500 octets contient les données encapsulées d'une couche supérieure, ce qui correspond à une unité de données de protocole générique de la couche 3 ou à un paquet IPv4 pour employer un terme plus courant. La longueur minimale de la trame est fixée à 64 octets. Si un paquet de petite taille est encapsulé, d'autres bits sont utilisés pour augmenter la trame et la ramener à sa taille minimale. Ces bits sont appelés champs de remplissage.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Champ Séquence de contrôle de trame</b> : le champ FCS (4 octets) permet de détecter les erreurs d'une trame. Il fait appel à un contrôle par redondance cyclique (CRC). Le périphérique d'envoi inclut les résultats d'un CRC dans le champ FCS de la trame. Le périphérique de réception reçoit la trame et génère un CRC pour détecter les erreurs. Si les calculs correspondent, aucune erreur ne se produit. Les calculs non rapprochés indiquent que les données ont changé et que la trame est abandonnée. Si les données sont modifiées, cela peut perturber les signaux électriques qui représentent les bits.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

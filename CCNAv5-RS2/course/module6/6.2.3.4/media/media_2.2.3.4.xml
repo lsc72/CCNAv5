@@ -1,0 +1,88 @@
+﻿<textcomponents>
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Configuration des routes statiques IPv6 directement connectées sur R1  </b>]]></text>
+	</component>
+	 
+	<component id="ID_s2_title">
+		<text><![CDATA[<b>Vérification de la table de routage de R1  </b>]]></text>
+	</component>
+
+	<component id="ID_s3_title">
+		<text><![CDATA[<b>Configuration des routes statiques IPv6 connectées directement  </b>]]></text>
+	</component>
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+<component id="ID_sc1_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc1_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc1_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+	
+	
+		
+			<component id="ID_s3_SC01" fontFace='Courier New' fontSize="10">
+		<text></text>		
+		<feedback id="fb"><![CDATA[<b> *** </b><font size='10' face="Arial" color="#0000FF" class="font10px"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font size='10' face="Arial" class="font10px"><b>Configurez une route IPv6 au réseau 2001:DB8:ACAD:1::/64 à l'aide de l'interface de sortie s0/0/0.  </b></font>]]></existingcommands>
+		<command prompt="R2(config)# ">
+		    <correctresponse><![CDATA[ipv6 route 2001:DB8:ACAD:1::/64 s0/0/0]]></correctresponse>
+			<instruction><![CDATA[<font size='10' face="Arial" class="font10px"><b>Configurez une route IPv6 au réseau 2001:DB8:ACAD:3::/64 à l'aide de l'interface de sortie s0/0/1.  </b>]]></instruction>
+		</command>
+		<command prompt="R2(config)# ">
+		    <correctresponse><![CDATA[ipv6 route 2001:DB8:ACAD:3::/64 s0/0/1]]></correctresponse>
+			<instruction><![CDATA[<font size='10' face="Arial" class="font10px"><b>Quittez le mode de configuration et affichez la table de routage IPv6.  </b>]]></instruction>
+		</command>
+		<command prompt="R2(config)# ">
+		    <correctresponse><![CDATA[exit]]></correctresponse>
+		</command>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ipv6 route]]></correctresponse>
+		    <deviceresponse><![CDATA[<font size='8' class="font9px">IPv6 Routing Table - default - 9 entries <br>Codes: C - Connected, L - Local, S - Static, U - Per-user Static route <br>       B - BGP, R - RIP, I1 - ISIS L1, I2 - ISIS L2 <br>       IA - ISIS interarea, IS - ISIS summary, D - EIGRP, EX - EIGRP external <br>       ND - ND Default, NDp - ND Prefix, DCE - Destination, NDr - Redirect <br>       O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF ext 1, OE2 - OSPF ext 2 <br>       ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2 <br>S 2001:DB8:ACAD:1::/64 [1/0] <br>     via Serial0/0/0, directly connected <br>C 2001:DB8:ACAD:2::/64 [0/0] <br>     via GigabitEthernet0/0, directly connected <br>L 2001:DB8:ACAD:2::1/128 [0/0] <br>     via GigabitEthernet0/0, receive <br>S 2001:DB8:ACAD:3::/64 [1/0] <br>     via Serial0/0/1, directly connected <br>C 2001:DB8:ACAD:4::/64 [0/0] <br>     via Serial0/0/0, directly connected <br>L 2001:DB8:ACAD:4::2/128 [0/0] <br>     via Serial0/0/0, receive <br>C 2001:DB8:ACAD:5::/64 [0/0] <br>     via Serial0/0/1, directly connected <br>L 2001:DB8:ACAD:5::2/128 [0/0] <br>     via Serial0/0/1, receive <br>L FF00::/8 [0/0] <br>     via Null0, receive <br></font>R2#]]></deviceresponse>			
+			<instruction><![CDATA[<font size='10' face="Arial"  class="syntaxBottomLine"><b>Vous avez correctement configuré les routes IPv6 statiques connectées directement sur R2.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+	<component id="ID_s4_title">
+		<text><![CDATA[<b>Configuration des routes statiques IPv6 connectées directement  </b>]]></text>
+	</component>
+
+		
+	<component id="ID_s4_SC01" fontFace='Courier New' fontSize="10">
+		<text></text>		
+		<feedback id="fb"><![CDATA[<b> *** </b><font size='10' face="Arial" color="#0000FF" class="font10px"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font size='10' face="Arial" class="font10px"><b>Configurez une route IPv6 aux réseaux 2001:DB8:ACAD:1::/64, 2001:DB8:ACAD:2::/64 et 2001:DB8:ACAD:4::/64 au moyen de l'interface de sortie S0/0/1.  </b></font>]]></existingcommands>
+		<command prompt="R3(config)# ">
+		    <correctresponse><![CDATA[ipv6 route 2001:DB8:ACAD:1::/64 S0/0/1]]></correctresponse>
+		</command>
+		<command prompt="R3(config)# ">
+		    <correctresponse><![CDATA[ipv6 route 2001:DB8:ACAD:2::/64 S0/0/1]]></correctresponse>
+		</command>
+		<command prompt="R3(config)# ">
+		    <correctresponse><![CDATA[ipv6 route 2001:DB8:ACAD:4::/64 S0/0/1]]></correctresponse>
+			<instruction><![CDATA[<font size='10' face="Arial" class="font10px"><b>Quittez le mode de configuration et affichez la table de routage IPv6.  </b>]]></instruction>
+		</command>
+		<command prompt="R3(config)# ">
+		    <correctresponse><![CDATA[exit]]></correctresponse>
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ipv6 route]]></correctresponse>
+		    <deviceresponse><![CDATA[<font size='8' class="font9px">IPv6 Routing Table - default - 8 entries <br>Codes: C - Connected, L - Local, S - Static, U - Per-user Static route <br>       B - BGP, R - RIP, I1 - ISIS L1, I2 - ISIS L2 <br>       IA - ISIS interarea, IS - ISIS summary, D - EIGRP, EX - EIGRP external <br>       ND - ND Default, NDp - ND Prefix, DCE - Destination, NDr - Redirect <br>       O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF ext 1, OE2 - OSPF ext 2 <br>       ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2 <br>S 2001:DB8:ACAD:1::/64 [1/0] <br>     via Serial0/0/1, directly connected <br>S 2001:DB8:ACAD:2::/64 [1/0] <br>     via Serial0/0/1, directly connected <br>C 2001:DB8:ACAD:3::/64 [0/0] <br>     via GigabitEthernet0/0, directly connected <br>L 2001:DB8:ACAD:3::1/128 [0/0] <br>     via GigabitEthernet0/0, receive <br>S 2001:DB8:ACAD:4::/64 [1/0] <br>     via Serial0/0/1, directly connected <br>C 2001:DB8:ACAD:5::/64 [0/0] <br>     via Serial0/0/1, directly connected <br>L 2001:DB8:ACAD:5::1/128 [0/0] <br>     via Serial0/0/1, receive <br>L FF00::/8 [0/0] <br>     via Null0, receive <br></font>R3#]]></deviceresponse>	<instruction><![CDATA[<font size='10' face="Arial"  class="syntaxBottomLine"><b>Vous avez correctement configuré les routes IPv6 statiques connectées directement sur R3.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+  
+</textcomponents>

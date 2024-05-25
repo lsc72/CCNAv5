@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.4.1 Intervalles des paquets Hello et Dead OSPF</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées du protocole OSPF à zone unique </h1>
+        <h2>Réglage précis des interfaces OSPF</h2>
+      </div>
+      <div id="content">
+<p>Les intervalles des paquets Hello et Dead du protocole OSPF sont configurables par interface. Si les intervalles OSPF ne correspondent pas, la contiguïté de voisinage ne peut pas s'établir.</p>
+<p></p>
+<p>Pour vérifier les intervalles actuellement configurés d'une interface, utilisez la commande<span class="cmd"><b> show ip ospf interface</b></span>, comme illustré à la Figure 1. Les intervalles des paquets Hello et Dead de l'interface Serial 0/0/0 sont respectivement définis sur les valeurs par défaut 10 et 40 secondes. </p>
+<p></p>
+<p>La Figure 2 illustre un exemple d'utilisation d'une technique de filtrage pour afficher les intervalles OSPF de l'interface OSPF Serial 0/0/0 activée sur R1. </p>
+<p></p>
+<p>À la Figure 3, la commande<span class="cmd"><b> show ip ospf neighbor </b></span>est utilisée sur R1 pour vérifier que R1 est contigu à R2 et à R3. Notez que la sortie pour le délai Dead amorce un compte à rebours de 40 secondes. Par défaut, cette valeur est réactualisée toutes les 10 secondes lorsque R1 reçoit un Hello de son voisin.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

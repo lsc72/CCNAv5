@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.2.4 Packet Tracer : comparaison entre la sélection du chemin RIP et EIGRP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage dynamique à vecteur de distance</h1>
+        <h2>Types de protocoles de routage à vecteur de distance</h2>
+      </div>
+      <div id="content">
+<p>
+<b>PCA </b>et <b>PCB </b>ont besoin de communiquer. Le chemin emprunté par les données entre ces périphériques finaux peut transiter par<b> R1</b>,<b> R2</b> et<b> R3</b>. Elles peuvent également transiter par<b> R4</b> et<b> R5</b>. Le processus par lequel les routeurs sélectionnent le meilleur chemin est fonction du protocole de routage. Nous étudierons le comportement des deux protocoles de routage à vecteur de distance, le protocole EIGRP (Enhanced Interior Gateway Routing Protocol) et le protocole RIPv2 (Routing Information Protocol version 2).</p>
+<p></p>
+<p>
+<a href="../../files/7.2.2.4%20Packet%20Tracer%20-%20Comparing%20RIP%20and%20EIGRP%20Path%20Selection%20Instructions.pdf" target="_blank">Packet Tracer : comparaison entre la sélection du chemin RIP et EIGRP - Instructions</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/7.2.2.4%20Packet%20Tracer%20-%20Comparing%20RIP%20and%20EIGRP%20Path%20Selection.pka" target="_blank">Packet Tracer : comparaison entre la sélection du chemin RIP et EIGRP - PKA</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

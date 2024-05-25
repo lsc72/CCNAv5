@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.3.5 Transmission multidiffusion</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.3.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Adresses IPv4 de monodiffusion, de diffusion et de multidiffusion</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Transmission multidiffusion</b>
+</p>
+<p>La transmission multidiffusion permet de conserver la bande passante d'un réseau IPv4. Elle réduit le trafic en permettant à un hôte d'envoyer un paquet à un groupe d'hôtes spécifiques qui font partie d'un groupe de multidiffusion. Pour atteindre plusieurs hôtes de destination à l'aide d'une transmission de type monodiffusion, un hôte source a besoin d'envoyer un paquet qu'il adresse à chaque hôte. Dans une transmission multidiffusion, l'hôte source peut envoyer un seul paquet, qui parviendra à des milliers d'hôtes de destination. L'interréseau doit répliquer des flux de multidiffusion de façon efficace, afin qu'ils atteignent uniquement les destinataires visés.</p>
+<p></p>
+<p>Voici quelques exemples de transmission multidiffusion :</p>
+<p>
+<ul>
+<li>Diffusions vidéo et audio</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Échange d'informations de routage entre des protocoles de routage</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Distribution de logiciels</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Jeu en ligne</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Adresses de multidiffusion</b>
+</p>
+<p>L'IPv4 utilise un bloc d'adresses réservées pour s'adresser à des groupes de multidiffusion. Cette plage d'adresses va de 224.0.0.0 à 239.255.255.255. La plage d'adresses de multidiffusion est divisée en différents types d'adresse : les adresses link-local réservées et les adresses d'étendue globale. Il existe un autre type d'adresse de multidiffusion, dit adresses d'étendue administrative ou d'étendue limitée.</p>
+<p></p>
+<p>Les adresses de multidiffusion IPv4 du bloc 224.0.0.0 - 224.0.0.255 sont des adresses de liaison locales réservées. Ces adresses s'appliquent aux groupes de multidiffusion d'un réseau local. Un routeur connecté au réseau local sait que les paquets sont adressés à un groupe de multidiffusion link-local et ne transmet jamais ces paquets. Les adresses link-local réservées s'appliquent principalement aux protocoles de routage qui utilisent le type de transmission multidiffusion pour échanger des informations de routage.</p>
+<p></p>
+<p></p>
+<p>Les adresses d'étendue globale vont de 224.0.1.0 à 238.255.255.255. Elles peuvent aussi être utilisées dans la multidiffusion de données sur Internet. Par exemple, 224.0.1.1 est une adresse réservée au protocole NTP (Network Time Protocol) pour synchroniser les horloges des périphériques réseau.</p>
+<p></p>
+<p>
+<b>Clients multidiffusion</b>
+</p>
+<p>Les hôtes qui reçoivent des données de multidiffusion spécifiques sont appelés des « clients multidiffusion ». Ces clients font appel à des services demandés par un programme client pour s'abonner au groupe de multidiffusion. </p>
+<p></p>
+<p>Chaque groupe de multidiffusion est représenté par une seule adresse de destination multidiffusion IPv4. Lorsqu'un hôte IPv4 s'abonne à un groupe de multidiffusion, il traite les paquets adressés à cette adresse de multidiffusion, ainsi que ceux adressés à son adresse de monodiffusion, qui a été attribuée à lui seul. </p>
+<p></p>
+<p>L'animation présente la façon dont les clients acceptent des paquets multidiffusion.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

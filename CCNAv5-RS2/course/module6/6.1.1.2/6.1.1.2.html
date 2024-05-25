@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.1.2 Pourquoi utiliser le routage statique ?</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentation du routage statique</h1>
+        <h2>Routage statique</h2>
+      </div>
+      <div id="content">
+<p>Le routage statique offre plusieurs avantages par rapport au routage dynamique, notamment :</p>
+<p>
+<ul>
+<li>Les routes statiques ne sont pas annoncées sur le réseau, pour une meilleure sécurité. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les routes statiques utilisent moins de bande passante que les protocoles de routage dynamique, aucun cycle de processeur n'est utilisé pour calculer et communiquer des routes. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le chemin qu'une route statique utilise pour envoyer des données est connu.</li>
+</ul>
+</p>
+<p></p>
+<p>Le routage statique présente les inconvénients suivants :</p>
+<p>
+<ul>
+<li>La configuration initiale et la maintenance prennent du temps.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La configuration présente des risques d'erreurs, tout particulièrement dans les grands réseaux.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>L'intervention de l'administrateur est requise pour assurer la mise à jour des informations relatives aux routes.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>N'évolue pas bien avec les réseaux en expansion et la maintenance devient fastidieuse. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Exige une connaissance complète de l'ensemble du réseau pour une implémentation correcte.</li>
+</ul>
+</p>
+<p></p>
+<p>Les fonctionnalités du routage statique et du routage dynamique sont comparées dans la figure. Notez que les avantages d'une méthode constituent les inconvénients de l'autre.</p>
+<p></p>
+<p>Les routes statiques sont utiles pour les plus petits réseaux avec un seul chemin vers un réseau externe. Ils offrent également une sécurité sur les réseaux de plus grande envergure pour certains types de trafic ou des liens vers d'autres réseaux nécessitant plus de contrôle. Il est important de comprendre que le routage statique et le routage dynamique ne s'excluent pas mutuellement. En revanche, la plupart des réseaux utilisent une combinaison de protocoles de routage dynamique et de routes statiques. Cela peut donner lieu à un routeur disposant de plusieurs chemins vers un réseau de destination via des routes statiques et des routes apprises dynamiquement. Toutefois, la distance administrative (AD) d'une route statique correspond à 1. Par conséquent, une route statique sera prioritaire par rapport à toutes les routes apprises dynamiquement. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

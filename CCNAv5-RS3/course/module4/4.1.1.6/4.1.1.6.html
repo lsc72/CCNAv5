@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.1.6 Certification Wi-Fi </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts de la technologie sans fil</h1>
+        <h2>Introduction à la technologie sans fil</h2>
+      </div>
+      <div id="content">
+<p>Les normes assurent une interopérabilité entre les périphériques produits par différents fabricants. Au niveau international, les trois principales organisations d'influence en matière de normes WLAN sont les suivantes :</p>
+<p>
+<ul>
+<li>
+<b>ITU-R</b> : cette organisation réglemente l'attribution du spectre RF et des orbites satellite. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>IEEE</b> : spécifie la manière dont les fréquences radio sont modulées pour transporter des informations. Elle assure le respect des normes pour les réseaux locaux et les réseaux métropolitains (MAN), avec la famille de normes IEEE 802 LAN/MAN. Les principales normes de la famille IEEE 802 sont les normes 802.3 Ethernet et 802.11 WLAN. Bien que l'IEEE dispose de normes spécifiques pour les périphériques à modulation de fréquence, elle n'a pour le moment édicté aucune norme de fabrication ; par conséquent, l'interprétation des normes 802.11 par les différents fournisseurs peut entraîner des problèmes d'interopérabilité entre leurs périphériques. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Wi-Fi Alliance</b> : la Wi-Fi Alliance® (<a href="http://www.wi-fi.org/" target="_blank">http://www.wi-fi.org</a>) est une association sectorielle mondiale, à but non lucratif, consacrée à la promotion de la croissance et de l'adoption des WLAN. L'objectif de cette association de fournisseurs est d'améliorer l'interopérabilité des produits basés sur la norme 802.11, en certifiant les fournisseurs pour leur conformité vis-à-vis des normes du secteur. </li>
+</ul>
+</p>
+<p></p>
+<p>La Wi-Fi Alliance certifie la compatibilité des produits et de la technologie Wi-Fi comme suit : </p>
+<p>
+<ul>
+<li>Compatibilité IEEE 802.11a/b/g/n/ac/ad</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Utilisation sécurisée IEEE 802.11i avec WPA2™ et le protocole EPA (Extensible Authentication Protocol)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Technologie WPS (Wi-Fi Protected Setup) pour simplifier les connexions au périphérique</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Wi-Fi Direct pour partager des données multimédias entre les périphériques</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Wi-Fi Passpoint pour simplifier la mise en place d'une connexion sécurisée avec les réseaux de points d’accès sans fil Wi-Fi</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Wi-Fi Miracast pour afficher en toute transparence des vidéos entre les périphériques</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: d'autres produits de certification Wi-Fi sont également disponibles, tels que WMM® (Wi-Fi Multimedia™), Tunneled Direct Link Setup (TDLS) et WMM-Power Save.</p>
+<p></p>
+<p>La Figure 1 présente les logos Wi-Fi Alliance identifiant la compatibilité avec les différentes fonctionnalités. Les périphériques affichant l'un de ces logos prennent en charge la fonction correspondante. Un même périphérique peut présenter plusieurs logos.</p>
+<p></p>
+<p>Cliquez sur le bouton Lecture dans les Figures 2 à 4 pour visionner des animations sur les fonctions Wi-Fi Direct, Wi-Fi Passpoint et Wi-Fi Miracast.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

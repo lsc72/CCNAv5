@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.1.1 Liste des protocoles STP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Types de protocoles STP</h1>
+        <h2>Présentation</h2>
+      </div>
+      <div id="content">
+<p>Plusieurs protocoles Spanning Tree sont apparus depuis la création du protocole IEEE 802.1D d'origine. </p>
+<p></p>
+<p>Ceux-ci incluent :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Protocole STP</b> : version IEEE 802.1D initiale (802.1D-1998 et versions antérieures) offrant une topologie sans boucle dans un réseau avec liens redondants. La conception CST (Common Spanning Tree, arbre recouvrant commun) suppose une seule instance Spanning Tree pour l'ensemble du réseau ponté, quel que soit le nombre de VLAN.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>PVST+</b> : version améliorée du protocole STP proposée par Cisco, qui offre une instance Spanning Tree 802.1D séparée pour chaque VLAN configuré dans le réseau. L'instance séparée prend en charge PortFast, UplinkFast, BackboneFast, la protection BPDU, le filtre BPDU, la protection de racine et la protection de boucle. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>802.1D-2004</b> : version mise à jour du protocole STP standard, intégrant IEEE 802.1w.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Protocole RSTP (Rapid Spanning Tree Protocol) ou IEEE 802.1w</b> : version évoluée du protocole STP, qui offre une convergence plus rapide.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Rapid PVST+</b> : version améliorée du protocole RSTP proposée par Cisco et utilisant PVST+. Rapid PVST+ offre une instance 802.1w séparée pour chaque VLAN. L'instance séparée prend en charge PortFast, la protection BPDU, le filtre BPDU, la protection de racine et la protection de boucle.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Protocole</b>
+<b>MSTP (Multiple Spanning Tree Protocol)</b> : version IEEE standard inspirée par l'implémentation propriétaire de Cisco MISTP (Multiple Instance STP). MSTP mappe plusieurs VLAN dans une même instance Spanning Tree. MST est l'implémentation Cisco de MSTP ; elle fournit jusqu'à 16 instances du protocole RSTP et allie plusieurs VLAN avec la même topologie physique et logique au sein d'une instance courante du protocole RSTP. Chaque instance prend en charge PortFast, la protection BPDU, le filtre BPDU, la protection de racine et la protection de boucle.</li>
+</ul>
+</p>
+<p></p>
+<p>Un professionnel des réseaux, dont la mission inclut l'administration des commutateurs, peut être amené à décider quel type de protocole STP implémenter.</p>
+<p></p>
+<p>
+<b>Remarque </b>: les fonctions propriétaires Cisco héritées UplinkFast et BackboneFast ne sont pas présentées dans ce cours. Elles sont remplacées par l'implémentation de Rapid PVST+, qui les intègre dans le cadre de l'implémentation RSTP standard.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

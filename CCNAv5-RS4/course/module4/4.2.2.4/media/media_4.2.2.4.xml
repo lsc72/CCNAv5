@@ -1,0 +1,112 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Topologie Frame Relay avec sous-interfaces</b>]]></text>
+</component>
+<component id="ID_s1_txt01">
+ <text><![CDATA[<b>Frame Relay</b>]]></text> 
+ </component>
+
+<component id="ID_s1_txt02">
+ <text><![CDATA[DLCI 103]]></text> 
+ </component>
+
+ <component id="ID_s1_txt03">
+ <text><![CDATA[DLCI 301]]></text> 
+ </component>
+
+
+ <component id="ID_s1_txt04">
+ <text><![CDATA[DLCI 102]]></text> 
+ </component>
+
+ <component id="ID_s1_txt05">
+ <text><![CDATA[DLCI 201]]></text> 
+ </component>
+
+ <component id="ID_s1_txt06">
+ <text><![CDATA[DLCI 203]]></text> 
+ </component>
+
+ <component id="ID_s1_txt07">
+ <text><![CDATA[DLCI 302]]></text> 
+ </component>
+
+ 
+
+
+<component id="ID_s2_title">
+<text><![CDATA[<b>Configuration de sous-interfaces point à point sur R1</b>]]></text>
+</component>
+
+
+
+
+<component id="ID_s3_title">
+		<text><![CDATA[<b>Configuration de sous-interfaces point à point sur R2</b>]]></text>
+	</component>
+	<component id="ID_s3_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font size='10' face="Arial" color="#0000FF">***Vous devez entrer la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font></b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>Configurez l'interface série 0/0/1 de R2 avec les sous-interfaces à l'aide des commandes de configuration Frame Relay appropriées. Effectuez les tâches dans l'ordre présenté&nbsp;:<ul><li>Configurez l'interface physique de R2 pour l'encapsulation Frame Relay.</li><li>Activer l'interface</li><li>Repassez en mode de configuration globale.</li></ul></b></font>]]></existingcommands>
+		<command prompt="R2(config)#">
+			<correctresponse><![CDATA[interface Serial0/0/1]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)#">
+			<correctresponse><![CDATA[encapsulation frame-relay]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)#">
+			<correctresponse><![CDATA[no shutdown]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)#">
+			<correctresponse><![CDATA[exit]]></correctresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Configurez la sous-interface .201 avec&nbsp;:<ul><li>Une bande passante de 64</li><li>L'adresse IPv4 10.1.1.2/30</li><li>L'interface DLCI 201</li><li>Repassez en mode de configuration globale</li></ul></font>]]></instruction>
+		</command>
+		<command prompt="R2(config)#">
+			<correctresponse><![CDATA[interface Serial0/0/1.201 point-to-point]]></correctresponse>
+		</command>
+		<command prompt="R2(config-subif)#">
+			<correctresponse><![CDATA[bandwidth 64]]></correctresponse>
+		</command>
+		<command prompt="R2(config-subif)#">
+			<correctresponse><![CDATA[ip address 10.1.1.2 255.255.255.252]]></correctresponse>
+		</command>
+		<command prompt="R2(config-subif)#">
+			<correctresponse><![CDATA[frame-relay interface-dlci 201]]></correctresponse>
+		</command>
+		<command prompt="R2(config-fr-dlci)#">
+			<correctresponse><![CDATA[exit]]></correctresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Configurez la sous-interface .203 avec&nbsp;:<ul><li>Une bande passante de 64</li><li>L'adresse IPv4 10.1.1.9/30</li><li>L'interface DLCI 203</li><li>Repassez en mode de configuration globale</li></ul></font>]]></instruction>
+		</command>
+		<command prompt="R2(config-subif)#">
+			<correctresponse><![CDATA[interface Serial0/0/1.203 point-to-point]]></correctresponse>
+		</command>
+		<command prompt="R2(config-subif)#">
+			<correctresponse><![CDATA[bandwidth 64]]></correctresponse>
+		</command>
+		<command prompt="R2(config-subif)#">
+			<correctresponse><![CDATA[ip address 10.1.1.9 255.255.255.252]]></correctresponse>
+		</command>
+		<command prompt="R2(config-subif)#">
+			<correctresponse><![CDATA[frame-relay interface-dlci 203]]></correctresponse>
+		</command>
+		<command prompt="R2(config-fr-dlci)#">
+			<correctresponse><![CDATA[exit]]></correctresponse>
+			<deviceresponse><![CDATA[R2(config-if)#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Vous avez correctement configuré les sous-interfaces Frame Relay point à point.</font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+
+<component id="ID_sc3_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc3_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc3_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+	
+
+</textcomponents>

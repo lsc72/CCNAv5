@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.4.1 Directives générales sur la création de listes de contrôle d&#x0027;accès</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement des listes de contrôle d&#x0027;accès IP</h1>
+        <h2>Directives concernant la création des listes de contrôle d&#x0027;accès</h2>
+      </div>
+      <div id="content">
+<p>L'écriture des listes de contrôle d'accès peut être une tâche complexe. Pour chaque interface, plusieurs stratégies peuvent être nécessaires pour gérer le type de trafic autorisé à entrer dans cette interface ou en sortir. Le routeur représenté sur la figure dispose de deux interfaces configurées pour IPv4 et IPv6. Si nous avions besoin de listes de contrôle d'accès pour les deux protocoles, sur les deux interfaces et dans les deux directions, nous aurions besoin de huit listes de contrôle d'accès distinctes. Chaque interface possèderait quatre listes de contrôle d'accès : deux pour IPv4 et deux pour IPv6. Pour chaque protocole, une liste de contrôle d'accès sert au trafic entrant et une autre au trafic sortant. </p>
+<p></p>
+<p>
+<b>Remarque</b> : il n'est pas nécessaire de configurer les listes de contrôle d'accès dans les deux directions. Le nombre de listes de contrôle d'accès et leur direction appliquée à l'interface dépendront des exigences.</p>
+<p></p>
+<p>Vous trouverez ci-dessous quelques instructions pour utiliser les listes de contrôle d'accès :</p>
+<p></p>
+<p>
+<ul>
+<li>Utilisez des listes de contrôle d'accès sur les routeurs pare-feu entre votre réseau interne et un réseau externe, par exemple Internet. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Utilisez des listes de contrôle d'accès sur un routeur situé entre deux sections de votre réseau pour contrôler le trafic entrant ou sortant sur une partie donnée du réseau interne. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Configurez des listes de contrôle d'accès sur les routeurs périphériques situés à la périphérie de vos réseaux. Cela permet de fournir une protection de base contre le réseau externe ou entre une zone plus sensible et une zone moins contrôlée de votre réseau. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Configurez des listes de contrôle d'accès pour tout protocole réseau configuré sur les interfaces de routeur périphérique. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Règle des trois P</b>
+</p>
+<p></p>
+<p>Pour retenir la règle générale d'application des listes de contrôle d'accès, il suffit de se souvenir des trois P. Vous pouvez configurer une liste de contrôle d'accès par protocole, par direction et par interface : </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Une liste de contrôle d'accès par protocole</b> : pour contrôler le flux du trafic sur une interface, définissez une liste de contrôle d'accès pour chaque protocole activé sur l'interface. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Une liste de contrôle d'accès par direction</b> : les listes de contrôle d'accès contrôlent le trafic dans une seule direction à la fois sur une interface. Vous devez créer deux listes de contrôle d'accès ; la première pour contrôler le trafic entrant et la seconde pour contrôler le trafic sortant. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b> Une liste de contrôle d'accès par interface</b> : les listes de contrôle d'accès contrôlent le trafic dans une seule interface, par exemple, Gigabit Ethernet 0/0.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.2.1 Domaines de collision</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>L&#x0027;environnement commuté</h1>
+        <h2>Domaines de commutation</h2>
+      </div>
+      <div id="content">
+<p>Dans les segments Ethernet basés sur des concentrateurs, les périphériques réseau sont en concurrence pour le support, car ils doivent transmettre à tour de rôle. Les segments de réseaux partageant la même bande passante entre périphériques sont appelés des domaines de collision. En effet, lorsque deux périphériques de ce segment, ou plus, tentent de communiquer au même moment, des collisions peuvent se produire.</p>
+<p></p>
+<p>Il est toutefois possible de diviser un réseau en segments et de réduire le nombre de périphériques qui partagent la bande passante. Pour ce faire, il convient d'utiliser d'autres périphériques réseau (par exemple des commutateurs et des routeurs) fonctionnant au niveau de la couche d'accès au réseau et des couches supérieures du modèle TCP/IP. Chaque nouveau segment devient un nouveau domaine de collision. Les périphériques d'un segment disposent alors d'une bande passante plus importante et les collisions dans un domaine de collision n'ont pas d'influence sur le fonctionnement des autres segments. Cette technique est également appelée la microsegmentation.</p>
+<p></p>
+<p>Comme illustré par la figure, chaque port du commutateur se connecte à un PC ou à un serveur unique, et chaque port de commutateur représente un domaine de collision distinct.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

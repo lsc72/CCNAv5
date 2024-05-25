@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.1.2 HTTP et HTML</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Services et protocoles de couche application courants</h1>
+        <h2>Protocoles de couche application courants </h2>
+      </div>
+      <div id="content">
+<p>Lorsqu'une adresse Web (ou URL pour Uniform Resource Locator) est saisie dans un navigateur Web, ce dernier établit une connexion avec le service Web s'exécutant sur le serveur à l'aide du protocole HTTP. L'URL et l'URI (Uniform Resource Identifier) sont les noms que la plupart des utilisateurs associent aux adresses Web. </p>
+<p></p>
+<p><a href="http://www.cisco.com/index.html" target="_blank">L'adresse http://www.cisco.com/index.html</a> est un exemple d'une URL qui se réfère à une ressource spécifique : une page Web nommée <b>index.html</b> sur un serveur identifié comme étant <b>cisco.com</b>. Cliquez sur chaque figure pour afficher les étapes du protocole HTTP.</p>
+<p></p>
+<p>Les navigateurs Web sont le type d'application cliente qu'utilise un ordinateur pour se connecter au Web et accéder aux ressources stockées sur un serveur Web. Comme avec la plupart des processus serveur, le serveur Web s'exécute en tant que service en tâche de fond et met différents types de fichiers à la disposition de l'utilisateur. </p>
+<p></p>
+<p>Pour accéder au contenu, les clients Web établissent des connexions au serveur et demandent les ressources voulues. Le serveur retourne les ressources et, à la réception de ces dernières, le navigateur interprète les données avant de les présenter à l'utilisateur.</p>
+<p></p>
+<p>Les navigateurs peuvent interpréter et présenter de nombreux types de données, tels que des données en texte clair ou HTML, le langage dans lequel sont conçues les pages Web. Cependant, d'autres types de données peuvent nécessiter un autre service ou programme, généralement nommé plug-in ou composant additionnel. Pour aider le navigateur à déterminer le type de fichier qu'il reçoit, le serveur indique le type de données que contient le fichier. </p>
+<p></p>
+<p>Pour mieux comprendre l'interaction entre le navigateur Web et le client Web, voyons comment une page Web s'ouvre dans un navigateur. Dans cet exemple, utilisez l'URL <a href="http://www.cisco.com/index.html" target="_blank">http://www.cisco.com/index.html</a>.</p>
+<p></p>
+<p>D'abord, comme le montre la Figure 1, le navigateur interprète les trois parties de l'URL : </p>
+<p></p>
+<p>1. <b>http</b> (protocole ou schéma)</p>
+<p>2. <b>www.cisco.com</b> (nom du serveur)</p>
+<p>3. <b>index.html</b> (nom du fichier demandé)</p>
+<p></p>
+<p>Comme illustré à la Figure 2, le navigateur fait ensuite appel à un serveur de noms pour convertir l'adresse www.cisco.com en une adresse numérique, qu'il utilise pour se connecter au serveur. Le navigateur envoie une requête GET au serveur et demande le fichier <b>index.html</b> en se conformant à la norme HTTP. Comme le montre la Figure 3, le serveur envoie au navigateur le code HTML pour cette page Web. Enfin, comme le montre la Figure 4, le navigateur déchiffre le code HTML et met en forme la page pour la fenêtre du navigateur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

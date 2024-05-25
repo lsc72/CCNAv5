@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.1.2 Attaque « double-tagging »</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité et conception de VLAN</h1>
+        <h2>Attaques VLAN</h2>
+      </div>
+      <div id="content">
+<p>L'attaque double-tagging (ou double encapsulation) est un autre type d'attaque par saut de VLAN. Ce type d'attaque tire parti de la manière dont le matériel de la plupart des commutateurs fonctionne. La majorité des commutateurs réalisent un seul niveau de désencapsulation 802.1Q, ce qui permet à un pirate d'intégrer une étiquette 802.1Q masquée à l'intérieur de la trame. Cette étiquette permet à la trame d'être transférée vers un VLAN que l'étiquette 802.1Q d'origine n'a pas spécifié. Il est important de noter que l'attaque par saut de VLAN de double encapsulation fonctionne même si les ports trunk sont désactivés, car un hôte envoie généralement une trame sur un segment qui n'est pas une liaison trunk.</p>
+<p></p>
+<p>Une attaque par saut de VLAN double-tagging se déroule en trois étapes :</p>
+<p></p>
+<p>1. Le pirate envoie une trame 802.1Q marquée de deux étiquettes au commutateur. L'en-tête externe porte l'étiquette VLAN du pirate, qui est identique au VLAN natif du port trunk. Supposons que le commutateur traite la trame envoyée par le pirate comme si elle se trouvait sur un port trunk ou un port disposant d'un VLAN voix (un commutateur ne doit pas recevoir de trame Ethernet étiquetée sur un port d'accès). Dans cet exemple, supposons que le VLAN natif est le VLAN 10. L'étiquette interne est le VLAN victime ; dans ce cas, il s'agit du VLAN 20.</p>
+<p></p>
+<p>2. La trame arrive sur le commutateur, qui vérifie la première étiquette 802.1Q de 4 octets. Le commutateur détecte que la trame est destinée au VLAN 10, qui est le VLAN natif. Le commutateur transfère le paquet par tous les ports du VLAN 10 après avoir éliminé l'étiquette du VLAN 10. Sur le port trunk, l'étiquette du VLAN 10 est éliminée et le paquet n'est pas balisé de nouveau, car il fait partie du VLAN natif. À ce stade, l'étiquette du VLAN 20 reste inchangée et n'a pas été inspectée par le premier commutateur.</p>
+<p></p>
+<p>3. Le deuxième commutateur examine uniquement l'étiquette 802.1Q interne que le pirate a envoyée et constate que la trame est destinée au VLAN 20, le VLAN cible. Il envoie la trame sur le port victime ou la diffuse, selon qu'il existe une entrée de table d'adresse MAC pour l'hôte victime.</p>
+<p></p>
+<p>Ce type d'attaque est unidirectionnel et ne fonctionne que si le pirate est connecté à un port se trouvant dans le même VLAN que le VLAN natif du port trunk. Ce type d'attaque est plus difficile à contrer que les simples attaques par saut de VLAN. </p>
+<p></p>
+<p>Le meilleur moyen pour repousser les attaques de double-tagging consiste à s'assurer que le VLAN natif des ports trunk est différent du VLAN de tous les ports utilisateur. En réalité, il est recommandé d'utiliser un VLAN fixe différent de tous les VLAN utilisateur du réseau commuté en tant que VLAN natif pour toutes les trunks 802.1Q.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.3.1 Analyse de la topologie STP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration Spanning Tree (arbre recouvrant)</h1>
+        <h2>Problèmes liés à la configuration du protocole STP</h2>
+      </div>
+      <div id="content">
+<p>Pour analyser la topologie STP, observez les étapes suivantes :</p>
+<p></p>
+<p>
+<b>Étape 1.</b> Détectez la topologie de couche 2. Servez-vous de la documentation du réseau, le cas échéant, ou utilisez la commande <span class="cmd"><b>show cdp neighbors</b></span> pour découvrir la topologie de couche 2.</p>
+<p></p>
+<p>
+<b>Étape 2. </b>Après avoir découvert la topologie de couche 2, faites appel à vos connaissances STP pour déterminer le chemin prévu pour la couche 2. Il est nécessaire de déterminer quel commutateur est le pont racine.</p>
+<p></p>
+<p>
+<b>Étape 3. </b>Utilisez la commande <span class="cmd"><b>show spanning-tree vlan</b></span> pour déterminer quel commutateur est le pont racine.</p>
+<p></p>
+<p>
+<b>Étape 4. </b>Exécutez la commande <span class="cmd"><b>show spanning-tree vlan</b></span> sur tous les commutateurs pour savoir quels ports sont en état de blocage ou de réacheminement, et confirmez le chemin de couche 2 supposé.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

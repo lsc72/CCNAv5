@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+<slide type="MBAR">
+	<slide>
+		<element type="ROUTER" textId="ID_router_txt1" x="8.6" y="79.85" width="426" height="61.25" size="10"/>
+		<element type="ROUTER" textId="ID_router_txt2" x="8.6" y="159.85" width="426" height="180.45" size="10"/>
+		<element type="TEXT" compId="ID_s1_txt01" x="19" y="305" width="104.5" expand="right" align="left" />
+		<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+	</slide>
+	<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+		<element type="ROUTER" textId="ID_router_txt3" x="0" y="156.85" width="430" height="82.25" size="10" />
+	</slide>
+	<slide>
+		<element type="IMAGE" src="media_7.2.2.2.jpg" width="470" height="400" x="0" y="0" />
+		<element type="TEXT" id="ID_static_1" text="S0/0/0" x="67.5" y="102.7" align="center" width="39.15" />
+		<element type="TEXT" id="ID_static_2" text="S0/0/0" x="341.05" y="102.7" align="center" width="39.15" />
+		<element type="TEXT" id="ID_static_3" text="192.168.2.1" x="30.25" y="24.45" align="center" width="64.65" class="orangeCallOut"/>
+		<element type="TEXT" id="ID_static_4" text="209.165.201.1" x="24.9" y="155.55" align="center" width="77.7" class="orangeCallOut"/>
+		<element type="TEXT" id="ID_static_5" text="209.165.201.2" x="330.9" y="155.5" align="center" width="77.7" class="orangeCallOut"/>
+		<element type="TEXT" id="ID_static_6" text="192.168.2.2" x="345" y="24.45" align="center" width="77.7" class="orangeCallOut"/>
+		<element type="TEXT" compId="ID_s3_txt02" x="169" y="113" width="104.5" expand="up+down" align="center" />
+		<element type="TEXT" compId="ID_s3_txt01" x="11" y="61" width="104.5" expand="down" align="center" />
+		<element type="TEXT" compId="ID_s3_txt04" x="339" y="61" width="97.95" expand="down" align="center" />
+		<element type="TEXT" compId="ID_s3_txt03" x="185" y="39" width="85.4" expand="up" align="center" />
+		<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+		<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC" x="16.6" y="182.2" width="409" height="218.5" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+	</slide>
+</slide>
+<text id="ID_router_txt1"><![CDATA[<pre>R1# <b>show ip interface brief | include Tunnel</b>
+
+<span class="orange_block">Tunnel0             192.168.2.1     YES manual up      up</span></pre>]]></text>
+<text id="ID_router_txt2"><![CDATA[<pre>R1# <b>show interface Tunnel 0</b>
+<div class="orange" style="width:99.8%">Tunnel0 is up, line protocol is up</div>
+  Hardware is Tunnel
+  <div class="orange" style="width:96.5%;margin-left: -12px;padding-left: 13px;">Internet address is 192.168.2.1/24</div>
+  MTU 17916 bytes, BW 100 Kbit/sec, DLY 50000 usec,
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation TUNNEL, loopback not set
+  Keepalive not set
+  <div class="orange" style="width:96.5%;margin-left: -12px;padding-left: 13px;margin-bottom:2px;">Tunnel source 209.165.201.1, destination 209.165.201.2</div>
+  <div class="orange" style="width:96.5%;margin-left: -12px;padding-left: 13px;">Tunnel protocol/transport GRE/IP</div>
+
+
+</pre>]]></text>
+<text id="ID_router_txt3"><![CDATA[<pre>R1# <b>show ip ospf neighbor</b>
+
+Neighbor ID     Pri State        Dead Time  Address     Interface
+<span class="orange_block">209.165.201.2   0   FULL/  -     00:00:37   192.168.2.2   Tunnel0</span>
+</pre>]]></text>
+</data>

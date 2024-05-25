@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.5.1.1 Entrées de table de routage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.5.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>La table de routage</h1>
+        <h2>Parties d&#x0027;une entrée de route IPv4</h2>
+      </div>
+      <div id="content">
+<p>La topologie illustrée dans la Figure 1 est utilisée comme topologie de référence pour cette section. Notez que dans la topologie :</p>
+<p>
+<ul>
+<li>R1 est le routeur de périphérie qui se connecte à Internet. Par conséquent, il propage une route statique par défaut vers R2 et R3. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>R1, R2 et R3 contiennent des réseaux discontinus séparés par un autre réseau par classe.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>R3 introduit en outre une route de super-réseau 192.168.0.0/16.</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 2 affiche la table de routage IPv4 de R1 avec des routes connectées directement, statiques et dynamiques.</p>
+<p></p>
+<p>
+<b>Remarque</b> : la hiérarchie de table de routage de Cisco IOS était à l'origine mise en œuvre avec le schéma de routage par classe. Bien que la table de routage incorpore à la fois l'adressage par classe et sans classe, la structure globale se base toujours sur le schéma par classe.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

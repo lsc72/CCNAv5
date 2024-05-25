@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		<element type="IMAGE" src="2_4_2_1.jpg" x="0" y="0" width="470" height="400"/>
+		<element type="TEXT" text="2001:DB8:ACAD:2::/64" x="14.65" y="55.5" width="117.2" align="center" />
+		<element type="TEXT" text="2001:DB8:ACAD:4::/64" x="13.65" y="199.5" width="117.2" align="center" />
+		<element type="TEXT" text="2001:DB8:ACAD:1::/64" x="115.65" y="73" width="117.2" align="center" />
+		<element type="TEXT" text="2001:DB8:ACAD:3::/64" x="162.65" y="156.45" width="117.2" align="center" />
+		<element type="TEXT" text="S0/0/1" x="275.4" y="98.55" width="35.9" align="center" />
+		<element type="TEXT" text="S0/0/0" x="352.6" y="110.05" width="35.9" align="center" />
+		<element type="TEXT" text="2001:DB8:FEED:1::/64" x="273.3" y="73" width="115.9" align="center" />
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title" />
+			<element type="ROUTER" textId="ID_s4_txt01" x="1.55" y="226.7" width="433.25" height="151.40"/>	
+		</slide>
+		
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title" />
+			<element type="ROUTER" textId="ID_s5_txt01" x="1.55" y="226.7" width="433.25" height="175.40"/>	
+		</slide>
+		
+		
+		
+		
+	
+	
+		<text id="ID_s4_txt01"><![CDATA[
+<code>R1(config)# <b>ipv6 route 2001:DB8:ACAD:1::/64 2001:db8:feed:1::2</b>
+R1(config)# <b>ipv6 route 2001:DB8:ACAD:2::/64 2001:db8:feed:1::2</b>
+R1(config)# <b>ipv6 route 2001:DB8:ACAD:3::/64 2001:db8:feed:1::2</b>
+R1(config)# <b>ipv6 route 2001:DB8:ACAD:4::/64 2001:db8:feed:1::2</b>
+R1(config)# </code>
+		]]></text>
+		
+		<text id="ID_s5_txt01"><![CDATA[<table cellpadding="1" cellspacinig="1" border="0" width="431" height="170" style="overflow-y:auto;overflow-x:hidden !important;">
+<tr><td width="419">R1# <b>show ipv6 route static</b></td></tr>
+<tr><td>IPv6 Routing Table - default - 7 entries</td></tr>
+<tr><td colspan="2">
+<table cellpadding="0" cellspacinig="0" border="0" width="95%">
+<tr><td width="14%" valign="top">Codes:</td><td width="81%">C - Connected, L - Local, S - Static, U - Per-user Static route</td></tr>
+<tr><td width="14%"></td><td width="81%">B - BGP, R - RIP, I1 - ISIS L1, I2 - ISIS L2</td></tr>
+<tr><td width="14%"></td><td width="81%">IA - ISIS interarea, IS - ISIS summary, D - EIGRP, EX - EIGRP external</td></tr>
+<tr><td width="14%"></td><td width="81%">ND - ND Default, NDp - ND Prefix, DCE - Destination, NDr - Redirect</td></tr>
+<tr><td width="14%"></td><td width="81%">O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF ext 1, OE2 - OSPF ext 2</td></tr>
+<tr><td width="14%"></td><td width="81%">ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2</td></tr>
+</table>
+</td></tr>
+<tr><td colspan="2">
+<table cellpadding="0" cellspacinig="0" border="0" width="95%">
+<tr><td width="8%">S</td><td width="87%">2001:DB8:ACAD:1::/64 [1/0]</td></tr>
+<tr><td width="8%"></td><td width="87%">&nbsp;&nbsp;via 2001:DB8:FEED:1::2</td></tr>
+<tr><td width="8%">S</td><td width="87%">2001:DB8:ACAD:2::/64 [1/0]</td></tr>
+<tr><td width="8%"></td><td width="87%">&nbsp;&nbsp;via 2001:DB8:FEED:1::2</td></tr>
+<tr><td width="8%">S</td><td width="87%">2001:DB8:ACAD:3::/64 [1/0]</td></tr>
+<tr><td width="8%"></td><td width="87%">&nbsp;&nbsp;via 2001:DB8:FEED:1::2</td></tr>
+<tr><td width="8%">S</td><td width="87%">2001:DB8:ACAD:4::/64 [1/0]</td></tr>
+<tr><td width="8%"></td><td width="87%">&nbsp;&nbsp;via 2001:DB8:FEED:1::2</td></tr>
+</table>
+</td></tr>
+<tr><td>R1#</td></tr>
+</table>]]></text>
+			
+	</slide>
+</data>

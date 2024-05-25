@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.3.1.1 Segmenter le réseau en sous-réseaux à l&#x0027;aide d&#x0027;ID de sous-réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Critères de conception à prendre en compte pour les réseaux IPv6</h1>
+        <h2>Segmentation en sous-réseaux d&#x0027;un réseau IPv6</h2>
+      </div>
+      <div id="content">
+<p>La segmentation en sous-réseaux IPv6 demande une approche différente de celle des sous-réseaux IPv4. En effet, l'approche IPv6 fait appel à tellement d'adresses que le motif de segmentation est tout autre. Un espace d'adressage IPv6 n'est pas segmenté en sous-réseaux pour conserver des adresses. En revanche, il est subdivisé pour prendre en charge la conception hiérarchique et logique du réseau. L'approche IPv4 consiste à gérer la pénurie d'adresses, mais la segmentation IPv6 consiste à créer une hiérarchie d'adressage en fonction du nombre de routeurs et de réseaux qu'ils prennent en charge. </p>
+<p></p>
+<p>Souvenez-vous qu'un bloc d'adresses IPv6 avec le préfixe /48 contient 16 bits pour l'ID de sous-réseau, comme le montre la Figure 1. La segmentation à l'aide de l'ID de sous-réseau à 16 bits peut générer jusqu'à 65 536 sous-réseaux /64 et ne nécessite pas d'emprunter de bits à l'ID d'interface ni à la partie hôte de l'adresse. Chaque sous-réseau IPv6 /64 contient environ dix-huit quintillions d'adresses, ce qui dépasse largement les besoins de tout segment de réseau IP.</p>
+<p></p>
+<p>Les sous-réseaux créés à partir de l'ID de sous-réseau sont faciles à représenter, puisqu'aucune conversion en binaire n'est requise. Pour déterminer le sous-réseau disponible suivant, il suffit de compter en hexadécimal. Comme le montre la Figure 2, cela revient à compter en hexadécimal dans la partie d'ID de sous-réseau.</p>
+<p></p>
+<p>Le préfixe global de routage est identique pour tous les sous-réseaux. Seul le quartet représentant l'ID de sous-réseau est incrémenté pour chaque sous-réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

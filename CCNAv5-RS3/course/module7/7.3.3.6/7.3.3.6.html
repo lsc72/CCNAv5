@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.3.6 Table topologique : commande show ip eigrp topology (suite)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.3.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1> Fonctionnement du protocole EIGRP</h1>
+        <h2>Algorithme DUAL et table topologique</h2>
+      </div>
+      <div id="content">
+<p>Comme indiqué à la Figure 1, la première ligne de la table topologique affiche :</p>
+<p>
+<ul>
+<li>
+<b>P </b>: la route est à l'état passif. Lorsque l'algorithme DUAL n'effectue pas ses calculs de diffusion pour déterminer le chemin d'un réseau, la route est en mode stable, également appelé état passif. Si DUAL recalcule ou recherche un nouveau chemin, la route est à l'état actif et affiche la lettre A. Toutes les routes de la table topologique d’un domaine de routage stable doivent être à l’état passif. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>192.168.1.0/24 </b>: réseau de destination qui se trouve également dans la table de routage.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>1 successors </b>: affiche le nombre de successeurs pour ce réseau. S'il existe plusieurs chemins à coût égal vers ce réseau, plusieurs successeurs sont disponibles.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>FD is 3012096 </b>: distance de faisabilité, la métrique EIGRP pour atteindre le réseau de destination. Il s'agit de la métrique affichée dans la table de routage IP.</li>
+</ul>
+</p>
+<p></p>
+<p>Comme indiqué à la Figure 2, la première sous-entrée du résultat présente le successeur :</p>
+<p>
+<ul>
+<li>
+<b>via 192.168.10.10 </b>: adresse de tronçon suivant du successeur, R3. Cette adresse est indiquée dans la table de routage.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>3012096 </b>: distance de faisabilité vers 192.168.1.0/24. Il s'agit de la métrique affichée dans la table de routage IP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>2816 </b>: distance annoncée du successeur et coût de R3 pour atteindre ce réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Serial 0/0/1 </b>: interface sortante servant à atteindre ce réseau, comme indiqué dans la table de routage.</li>
+</ul>
+</p>
+<p></p>
+<p>Comme indiqué à la Figure 3, la deuxième sous-entrée indique le successeur potentiel, R1 (s'il n'y a pas de deuxième entrée, alors il n'y a pas d'autre successeur potentiel) :</p>
+<p>
+<ul>
+<li>
+<b>via 172.16.3.1 </b>: adresse de tronçon suivant du successeur potentiel, R1.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>41024256 </b>: nouveau successeur potentiel de R2 vers 192.168.1.0/24, si R1 devient le nouveau successeur et devient la nouvelle métrique affichée dans la table de routage IP. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>2170112 </b>: distance annoncée du successeur potentiel ou métrique de R1 pour atteindre ce réseau. La distance annoncée doit être inférieure à la distance de faisabilité actuelle de 3 012 096 pour remplir la condition de faisabilité.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Serial 0/0/0 </b>: interface sortante servant à atteindre le successeur potentiel, si ce routeur devient le successeur.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

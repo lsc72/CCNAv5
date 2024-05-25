@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.2.3 Vérification d&#x0027;une route statique par défaut</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration des routes statiques et par défaut</h1>
+        <h2>Configuration des routes par défaut IPv4</h2>
+      </div>
+      <div id="content">
+<p>Dans la figure, la commande <span class="cmd"><b>show ip route static</b></span> affiche le contenu de la table de routage. Notez l'astérisque (<span class="cmd">*)</span><span class="cmd"><b></b></span> en regard de la route avec le code « <span class="cmd">S </span>». Comme affiché dans la table des codes de la figure, l'astérisque indique que cette route statique est la route par défaut idéale, c'est pourquoi elle est sélectionnée comme passerelle de dernier recours. </p>
+<p></p>
+<p>L'élément essentiel de cette configuration est le masque /0. Souvenez-vous que le masque de sous-réseau dans une table de routage détermine le nombre de bits devant correspondre entre l'adresse IP de destination du paquet et la route dans la table de routage. Le chiffre binaire 1 indique que les bits doivent correspondre. Le chiffre binaire 0 indique que les bits ne doivent pas correspondre. Le masque /0 dans cette entrée de route indique qu'aucun des bits ne doit correspondre. La route statique par défaut correspond à tous les paquets pour lesquels il n'existe pas de correspondance plus spécifique.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

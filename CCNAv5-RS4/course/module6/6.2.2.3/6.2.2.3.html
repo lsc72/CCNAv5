@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.2.3 Séparation de la voix et des données dans l&#x0027;ADSL</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Comparaison des solutions haut débit</h1>
+        <h2>DSL</h2>
+      </div>
+      <div id="content">
+<p>Le principal avantage de l'ADSL est sa capacité à fournir des services de données en même temps que des services de voix POTS. Les transmissions de signaux de voix et de données se propagent en effet le long de la même paire de fils, comme le montre la Figure 1. Les circuits de données sont déchargés du commutateur vocal.</p>
+<p></p>
+<p>Lorsque le fournisseur de services émet des signaux voix analogiques et des signaux ADSL sur la même paire de fils, il se peut que les signaux ADSL déforment les communications vocales. Pour cette raison, le fournisseur sépare le canal POTS du modem ADSL au niveau du site du client à l'aide de filtres ou de répartiteurs. Cette configuration garantit un service téléphonique ordinaire ininterrompu même si la ligne ADSL tombe en panne. Une fois les filtres ou les répartiteurs en place, l'abonné peut utiliser la ligne téléphonique et la connexion ADSL de manière simultanée, sans effet négatif sur l'un ou l'autre service. </p>
+<p></p>
+<p>La Figure 1 illustre la boucle locale se terminant au niveau du site du client au point de démarcation. Le point de démarcation est l'endroit où la ligne téléphonique pénètre à l'intérieur du site du client. Le périphérique qui matérialise ce point de démarcation est le périphérique NID (Network Interface Device). C’est là qu’un répartiteur peut être attaché à la ligne téléphonique. Le répartiteur divise la ligne téléphonique. Une branche alimente la maison en fils téléphoniques alors que l’autre branche se connecte au modem ADSL. Il agit tel un filtre passe-bas, autorisant uniquement le passage de fréquences entre 0 et 4 kHz à destination ou en provenance du téléphone. </p>
+<p></p>
+<p>Il existe deux façons de séparer l'ADSL de la voix au niveau du site du client, à savoir à l'aide d'un microfiltre ou d'un répartiteur.</p>
+<p></p>
+<p>Un microfiltre est un filtre passe-bas passif à deux extrémités, comme le montre la Figure 2. La première extrémité se connecte au téléphone, alors que la deuxième se connecte à la prise murale du téléphone. Cliquez sur la zone en surbrillance de la Figure 2 pour afficher une image d'un microfiltre. Cette solution permet à l'abonné d'utiliser n'importe quelle prise électrique de son domicile pour le service voix ou ADSL.</p>
+<p></p>
+<p>Un répartiteur POTS, comme le montre la Figure 3, sépare le trafic DSL du trafic POTS. Le répartiteur POTS est un périphérique passif. Cliquez sur la zone en surbrillance de la Figure 3 pour afficher un diagramme d'un répartiteur. En cas de panne de courant, le trafic vocal accède tout de même au commutateur vocal du central téléphonique du fournisseur. Les répartiteurs se trouvent au central téléphonique, et dans certains déploiements, sur les sites des clients. Au niveau du central téléphonique (CO), le répartiteur POTS sépare le trafic vocal destiné aux connexions POTS du trafic de données destiné au DSLAM. L’installation du répartiteur POTS sur le périphérique de l’interface réseau suppose qu’un technicien se déplace sur le site du client.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

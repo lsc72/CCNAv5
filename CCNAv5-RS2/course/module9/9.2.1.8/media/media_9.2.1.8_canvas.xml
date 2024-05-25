@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_title" />
+			<element type="ROUTER" textId="staticTxt" width="458" height="150" x="5.95" y="53.95" style="font-family:Courier New"/>
+			<element type="TEXT" compId="ID_txt01" width="104" x="5.35" y="33.85" align="left" expand="right" /> 
+			<element type="ROUTER" textId="staticTxt1" width="460" height="165" x="5.95" y="224.95" style="font-family:Courier New"/>
+			<element type="TEXT" compId="ID_txt02" width="104" x="5.35" y="206" align="left" expand="right" /> 
+	</slide>
+	<text id="staticTxt"><![CDATA[ 		R1(config)#<b> access-list 1 remark Do not allow Guest workstation through  </b><br/> R1(config)#<b> access-list 1 deny host 192.168.10.10  </b><br/> R1(config)#<b> access-list 1 remark Allow devices from all other 192.168.x.x subnets  </b><br/> R1(config)#<b> access-list 1 permit 192.168.0.0 0.0.255.255  </b><br/> R1(config)#<b> interface s0/0/0  </b><br/> R1(config-if)#<b> ip access-group 1 out  </b><br/> R1(config-if)#
+	]]></text>
+	<text id="staticTxt1"><![CDATA[<pre>
+R1(config)#<b> ip access-list standard NO_ACCESS </b>
+R1(config-std-nacl)#<b> remark Do not allow access from Lab<br/>workstation </b>
+R1(config-std-nacl)#<b> deny host 192.168.11.10 </b>
+R1(config-std-nacl)#<b> remark Allow access from all other networks </b>
+R1(config-std-nacl)#<b> permit any </b>
+R1(config-std-nacl)#<b> exit  </b>
+R1(config-std-nacl)#<b> interface G0/0 </b>
+R1(config-if)#<b> ip access-group NO_ACCESS out </b>
+R1(config-if)#</pre>
+	]]></text>
+</data>

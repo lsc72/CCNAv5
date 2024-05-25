@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.5.1.1 Périphérique multifonction</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.5.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Services de routage intégrés</h1>
+        <h2>Routeur intégré</h2>
+      </div>
+      <div id="content">
+<p>L'utilisation des réseaux n'est pas limitée aux entreprises. </p>
+<p></p>
+<p>Les particuliers tirent eux aussi de plus en plus profit des technologies réseau. Les réseaux domestiques sont utilisés pour assurer la connectivité et le partage d'Internet entre plusieurs ordinateurs de bureau et portables personnels dans une habitation. Ils permettent également aux particuliers de profiter de différents services tels que le partage d'une imprimante réseau ou le stockage centralisé de photos, de musiques et de films sur un appareil de stockage en réseau (NAS). Ils offrent également un accès à Internet à d'autres périphériques d'utilisateur final, tels que les tablettes, les smartphones et même des appareils domestiques tels que les téléviseurs. </p>
+<p></p>
+<p>Un réseau domestique est très similaire à un réseau de petite entreprise. Cependant, la plupart des réseaux domestiques et de nombreux réseaux de petites entreprises n'exigent aucun périphérique de grande envergure tels que des routeurs et des commutateurs dédiés. Les périphériques de plus petite envergure sont suffisants tant qu'ils intègrent les mêmes fonctions de routage et de commutation. De ce fait, de nombreux réseaux domestiques et de petites entreprises utilisent un périphérique multifonction. </p>
+<p></p>
+<p>Pour les besoins de ce cours, les périphériques multifonctions seront désignés sous le nom de « routeurs intégrés ».</p>
+<p></p>
+<p>L'utilisation d'un routeur intégré revient en quelque sorte à disposer de plusieurs périphériques interconnectés. Par exemple, la connexion entre le commutateur et le routeur est mise en œuvre, mais de manière interne. Lorsqu'un paquet est transmis d'un périphérique à un autre sur le même réseau local, le commutateur intégré transmet automatiquement le paquet au périphérique de destination. Toutefois, si un paquet est transmis à un périphérique sur un réseau distant, le commutateur intégré transmet ensuite le paquet à la connexion interne du routeur. Le routeur interne détermine alors le meilleur chemin et achemine le paquet en conséquence. </p>
+<p></p>
+<p>La plupart des routeurs intégrés proposent à la fois une commutation filaire et une connexion sans fil. Ils servent alors de point d'accès (AP) au réseau sans fil, comme le montre la Figure 1. La connexion sans fil est un moyen répandu, flexible et économique de fournir des services réseau aux périphériques finaux pour les particuliers comme les entreprises.</p>
+<p></p>
+<p>Les Figures 2 et 3 présentent les principaux avantages et considérations liés à l'utilisation de connexions sans fil. </p>
+<p></p>
+<p>Outre le routage, la commutation et la connexion sans fil, un routeur intégré peut proposer de nombreuses fonctionnalités, notamment : le service DHCP, un pare-feu et même des services de stockage en réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

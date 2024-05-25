@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.3 Auto-MDIX</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de base d&#x0027;un commutateur</h1>
+        <h2>Configuration des ports de commutateur</h2>
+      </div>
+      <div id="content">
+<p>Jusqu'à récemment, il était nécessaire d'utiliser certains types de câble (droit ou croisé) pour connecter les périphériques. Différents câbles Ethernet étaient notamment nécessaires pour connecter deux commutateurs ou un commutateur et un routeur. La fonctionnalité d'interface croisée dépendante du support (auto-MDIX) d'une interface permet d'éliminer ce problème. Lorsque la fonction auto-MDIX est activée, l'interface détecte automatiquement le type de câble requis pour la connexion (droit ou croisé) et configure la connexion en conséquence. Lors de la connexion de périphérique à des commutateurs sans fonction auto-MDIX, des câbles droits doivent être utilisés, notamment pour la connexion des serveurs, des stations de travail ou des routeurs. Des câbles croisés doivent être utilisés pour la connexion d'autres commutateurs et de répéteurs. </p>
+<p></p>
+<p>Lorsque la fonction auto-MDIX est activée, le type de câble utilisé n'a pas d'importance. L'interface s'adapte et fait en sorte d'assurer la communication. Sur les routeurs et les commutateurs Cisco les plus récents, la commande du mode de configuration d'interface<span class="cmd"><b> mdix auto </b></span>permet d'activer cette fonctionnalité. Lorsque la fonctionnalité auto-MDIX est utilisée sur une interface, la vitesse de l'interface et le mode de bidirectionnalité doivent être réglés sur <span class="cmd"><b>auto</b></span> pour un fonctionnement correct.</p>
+<p>Les commandes permettant d'activer la fonctionnalité auto-MDIX sont indiquées sur la Figure 1.</p>
+<p></p>
+<p>
+<b>Remarque </b>: la fonctionnalité auto-MDIX est activée par défaut sur les commutateurs Cisco Catalyst 2960 et 3560, mais n'est pas disponible sur les anciens commutateurs Cisco Catalyst 2950 et 3550.</p>
+<p></p>
+<p>Pour examiner le paramètre auto-MDIX d'une interface donnée, utilisez la commande <span class="cmd"><b>show controllers ethernet-controller</b></span> avec le mot-clé <span class="cmd"><b>phy</b></span>. Pour limiter le résultat aux lignes relatives à la fonction auto-MDIX, utilisez le filtre<span class="cmd"><b> include Auto-MDIX</b></span>. Comme illustré à la Figure 2, le résultat indique si la fonctionnalité est activée ou désactivée (On/Off).</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 3 pour configurer la fonctionnalité auto-MDIX sur l'interface FastEthernet 0/1 de S2.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

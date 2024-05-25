@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.1.3 Mémoire des routeurs</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routeurs</h1>
+        <h2>Composants d&#x0027;un routeur</h2>
+      </div>
+      <div id="content">
+<p>Un routeur a accès à quatre types de mémoire : vive, morte, vive non volatile et Flash.</p>
+<p></p>
+<p>
+<b>Mémoire vive (RAM)</b>
+</p>
+<p>La mémoire vive est utilisée pour stocker divers processus et applications, notamment les suivants :</p>
+<p>
+<ul>
+<li>
+<b>Cisco IOS</b> – l'IOS est copié dans la mémoire vive pendant le démarrage.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Fichier de configuration en cours</b> – il s'agit du fichier de configuration qui stocke les commandes de configuration actuellement utilisées par l'IOS du routeur. On parle également de « running-config ».</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Table de routage IP</b> – ce fichier stocke des informations sur les réseaux directement connectés et distants. Il permet de déterminer le meilleur chemin à utiliser pour transférer des paquets.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Cache ARP</b> – ce cache contient les mappages adresses IPv4/adresses MAC, de la même manière que le cache ARP d'un PC. Le cache ARP est utilisé sur les routeurs dotés d'interfaces de réseau local telles que les interfaces Ethernet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Mémoire tampon de paquets</b> – les paquets sont stockés temporairement dans une mémoire tampon lors de leur réception sur une interface ou avant de quitter une interface.</li>
+</ul>
+</p>
+<p></p>
+<p>Tout comme des ordinateurs, les routeurs Cisco utilisent en fait de la mémoire vive dynamique (DRAM). La mémoire DRAM est un type très répandu de mémoire vive, qui stocke les instructions et les données requises par le processeur. Contrairement à la mémoire morte, la mémoire vive est une mémoire volatile et nécessite une alimentation continue pour conserver les informations qu'elle contient. Elle perd tout son contenu lorsque le routeur est mis hors tension ou redémarré.</p>
+<p></p>
+<p>Par défaut, les routeurs 1941 sont fournis avec 512 Mo de mémoire DRAM, soudés sur la carte système principale (intégrés) et un module DIMM pour les mises à niveau de mémoire (jusqu'à 2 Go supplémentaires). Les modèles Cisco 2901, 2911 et 2921 sont fournis avec 512 Mo de mémoire DRAM intégrés. Notez que la première génération de routeurs à services intégrés et que les routeurs Cisco plus anciens ne possèdent pas de mémoire vive intégrée.</p>
+<p></p>
+<p>
+<b>ROM</b>
+</p>
+<p>Les routeurs Cisco utilisent la mémoire morte pour stocker :</p>
+<p>
+<ul>
+<li>
+<b>les instructions de démarrage</b> – contiennent les instructions de démarrage. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>le logiciel de diagnostic de base</b> – effectue un test POST de tous les composants.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>un IOS limité</b> – version de sauvegarde limitée du système d'exploitation, au cas où le routeur ne puisse pas charger l'IOS complet. </li>
+</ul>
+</p>
+<p></p>
+<p>La mémoire morte contient un firmware inclus dans un circuit intégré du routeur et ne perd pas son contenu lorsque le routeur est mis hors tension ou redémarré.</p>
+<p></p>
+<p>
+<b>NVRAM</b>
+</p>
+<p>La mémoire vive non volatile est utilisée par Cisco IOS comme stockage permanent pour le fichier de configuration initiale (startup-config). Tout comme la mémoire morte, la mémoire vive non volatile ne perd pas son contenu lors de la mise hors tension du périphérique. </p>
+<p></p>
+<p>
+<b>Mémoire Flash</b>
+</p>
+<p>La mémoire Flash est une mémoire non volatile utilisée comme stockage permanent pour l'IOS et d'autres fichiers associés au système. L'IOS est copié de la mémoire Flash vers la mémoire vive lors du processus de démarrage.</p>
+<p></p>
+<p>Les routeurs Cisco 1941 sont livrés avec deux slots CompactFlash externes. Chacun d'eux peut prendre en charge des densités de stockage haut débit pouvant être mises à niveau jusqu'à un maximum de 4 Go.</p>
+<p></p>
+<p>La figure ci-contre présente les quatre types de mémoire.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

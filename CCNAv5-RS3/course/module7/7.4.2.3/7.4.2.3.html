@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.2.3 Configuration du protocole EIGRP pour le processus de routage IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole EIGRP pour IPv6</h1>
+        <h2>Configuration du protocole EIGRP pour IPv6</h2>
+      </div>
+      <div id="content">
+<p>La commande de mode de configuration globale<span class="cmd"><b> ipv6 unicast-routing </b></span>active le routage IPv6 sur le routeur. Cette commande doit être exécutée avant la configuration d'un protocole de routage IPv6. Cette commande n'est pas indispensable pour configurer les adresses IPv6 des interfaces, mais elle est nécessaire pour activer le routeur comme routeur IPv6.</p>
+<p></p>
+<p>
+<b>Protocole EIGRP pour IPv6 </b>
+</p>
+<p></p>
+<p>La commande de mode de configuration globale suivante permet d'entrer dans le mode de configuration du routeur pour le protocole EIGRP pour IPv6 :</p>
+<p></p>
+<p>
+<span class="cmd">Router(config)# </span>
+<span class="cmd">
+<b>ipv6</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<b>router eigrp</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>autonomous-system</i>
+</span>
+</p>
+<p></p>
+<p>Tout comme le protocole EIGRP pour IPv4, la valeur <span class="cmd"><i>autonomous-system </i></span>doit être la même sur tous les routeurs du domaine de routage. À la Figure 1, le processus de routage EIGRP pour IPv6 n'a pu être configuré qu'une fois le routage IPv6 activé à l'aide de la commande de mode de configuration globale<span class="cmd"><b> ipv6 unicast-routing</b></span>.</p>
+<p></p>
+<p>
+<b>ID du routeur</b>
+</p>
+<p></p>
+<p>Comme indiqué à la Figure 2, la commande<span class="cmd"><b> eigrp router-id </b></span>sert à configurer l'ID de routeur. Le protocole EIGRP pour IPv6 utilise un ID de routeur 32 bits. Pour obtenir cette valeur, le protocole EIGRP pour IPv6 utilise le même processus que le protocole EIGRP pour IPv4. La commande<span class="cmd"><b> eigrp router-id </b></span>prime sur toute adresse de bouclage ou d'interface physique IPv4. Si un routeur EIGRP pour IPv6 ne dispose d'aucune interface active avec une adresse IPv4, la commande<span class="cmd"><b> eigrp router-id </b></span>doit être exécutée.</p>
+<p></p>
+<p>L'ID de routeur doit être un nombre de 32 bits unique dans le domaine de routage IP EIGRP ; sinon, des incohérences peuvent apparaître au niveau du routage.</p>
+<p></p>
+<p>
+<b>Remarque </b>: la commande <span class="cmd"><b>eigrp router-id</b></span> est utilisée pour configurer l'ID de routeur pour le protocole EIGRP. Certaines versions de Cisco IOS acceptent la commande <span class="cmd"><b>router-id</b></span> sans la spécification préalable de l'option <span class="cmd"><b>eigrp</b></span>. Toutefois, la configuration en cours affichera <span class="cmd"><b>eigrp router-id</b></span> quelle que soit la commande utilisée.</p>
+<p></p>
+<p>Par défaut, le processus EIGRP pour IPv6 est désactivé. Vous devez exécuter la commande<span class="cmd"><b> no shutdown </b></span>pour activer le processus EIGRP pour IPv6, comme indiqué à la Figure 3. Cette commande n'est pas nécessaire pour le protocole EIGRP pour IPv4. Bien que le processus EIGRP pour IPv6 soit activé, il est impossible d'envoyer et de recevoir des mises à jour de routage et des contiguïtés de voisinage tant que le protocole EIGRP n'est pas activé sur les interfaces appropriées. </p>
+<p></p>
+<p>Vous avez besoin de la commande<span class="cmd"><b> no shutdown </b></span>et d'un ID de routeur pour établir des contiguïtés de voisinage du routeur.</p>
+<p></p>
+<p>La Figure 4 montre la configuration EIGRP pour IPv6 complète pour le routeur R2.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 5 pour configurer le processus EIGRP pour IPv6 sur le routeur R3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

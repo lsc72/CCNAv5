@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.1.2 Périphériques professionnels d&#x0027;entreprise</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentation d&#x0027;une conception réseau</h1>
+        <h2>Conception hiérarchique du réseau</h2>
+      </div>
+      <div id="content">
+<p>Les utilisateurs attendent des réseaux d'entreprise qu'ils soient opérationnels 99,999 % du temps, comme le montre l'exemple illustré par la figure. Les pannes d'un réseau d'entreprise empêchent celle-ci de mener normalement ses activités, ce qui peut entraîner une perte de revenus, de clients, de données et d'opportunités. </p>
+<p></p>
+<p>Pour atteindre un tel niveau de fiabilité dans un réseau d'entreprise, un équipement professionnel haut de gamme y est couramment installé. Un équipement d'entreprise est conçu et fabriqué conformément à des normes plus strictes que celles des périphériques de bas de gamme, et il transfère des volumes élevés de trafic réseau.</p>
+<p></p>
+<p>Ces appareils sont conçus à des fins de fiabilité et à ce titre présentent des fonctionnalités telles que des blocs d'alimentation redondants et des capacités de basculement. La fonction de basculement signifie qu'un périphérique est en mesure de passer d'un module, service ou périphérique en panne à l'élément opérationnel correspondant, avec une interruption de service réduite ou nulle. </p>
+<p></p>
+<p>L'achat et l'installation d'équipement d'entreprise haut de gamme ne signifient pas pour autant qu'il faut négliger la conception du réseau. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

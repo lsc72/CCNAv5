@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.2.2 Fiabilité du protocole TCP – Accusé de réception et taille de fenêtre</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>TCP et UDP</h1>
+        <h2>Fiabilité et contrôle de flux</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Confirmation de la réception des segments</b>
+</p>
+<p></p>
+<p>L'une des fonctions du protocole TCP consiste à garantir que chaque segment atteigne sa destination. Les services TCP sur l'hôte de destination accusent réception des données reçues à l'application source. </p>
+<p></p>
+<p>Le numéro d'ordre (SEQ) et le numéro d'accusé de réception (ACK) sont utilisés ensemble pour confirmer la réception des octets de données contenus dans les segments envoyés. Le numéro SEQ indique le nombre relatif d'octets qui ont été transmis dans cette session, y compris les octets dans le segment actuel. Le protocole TCP utilise le numéro ACK renvoyé à la source pour indiquer l'octet suivant que le destinataire s'attend à recevoir. C'est ce que l'on appelle un accusé de réception prévisionnel. </p>
+<p></p>
+<p>La source est informée que la destination a reçu tous les octets de ce flux de données jusqu'à l'octet indiqué par le numéro ACK, mais sans inclure ce dernier. L'hôte expéditeur est censé envoyer un segment qui utilise un numéro d'ordre égal au numéro ACK. </p>
+<p></p>
+<p>Souvenez-vous qu'en fait chaque connexion est composée de deux sessions unidirectionnelles. Les numéros SEQ et ACK sont échangés dans les deux sens.</p>
+<p></p>
+<p>Dans l'exemple de la figure ci-contre, l'hôte de gauche envoie des données à l'hôte de droite. Il envoie un segment contenant 10 octets de données pour cette session et un numéro d'ordre égal à 1 dans l'en-tête. </p>
+<p></p>
+<p>L'hôte récepteur reçoit le segment au niveau de la couche 4 et détermine que le numéro d'ordre est 1 et qu'il y a 10 octets de données. L'hôte renvoie alors un segment à l'hôte de gauche pour accuser la réception de ces données. Dans ce segment, l'hôte définit le numéro ACK sur 11 pour indiquer que le prochain octet de données qu'il prévoit de recevoir dans cette session est l'octet numéro 11. Quand l'hôte expéditeur reçoit cet accusé de réception, il peut envoyer le segment suivant contenant des données pour cette session commençant par l'octet numéro 11.</p>
+<p></p>
+<p>Dans notre exemple, si l'hôte expéditeur devait attendre un accusé de réception tous les 10 octets, le réseau subirait une forte surcharge. Pour réduire la surcharge due à ces accusés de réception, plusieurs segments de données peuvent être envoyés et faire l'objet d'un accusé de réception grâce à un seul message TCP en retour. Cet accusé de réception contient un numéro ACK basé sur le nombre total d'octets reçus dans la session. Prenons l'exemple d'un numéro d'ordre de début égal à 2000. Si 10 segments de 1 000 octets chacun étaient reçus, le numéro ACK 12001 serait renvoyé à la source. </p>
+<p></p>
+<p>La quantité de données qu'une source peut transmettre avant qu'un accusé de réception soit reçu est la « taille de fenêtre », qui est un champ de l'en-tête TCP qui permet de gérer les données perdues et le contrôle de flux.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

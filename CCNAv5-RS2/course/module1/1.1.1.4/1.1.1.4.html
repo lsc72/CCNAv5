@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.1.4 Hiérarchie du réseau commuté sans frontières</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Conception d&#x0027;un réseau local</h1>
+        <h2>Réseaux convergents</h2>
+      </div>
+      <div id="content">
+<p>La création d'un réseau commuté sans frontières exige l'utilisation de principes de conception de réseaux robustes, pour assurer une disponibilité, une flexibilité, une sécurité et une facilité de gestion optimales. Le réseau commuté sans frontières doit pouvoir répondre aux besoins actuels et prendre en charge les services et technologies ultérieurement requis. Les directives de conception de réseaux commutés sans frontières reposent sur les principes suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Hiérarchie</b> : faciliter la compréhension du rôle de chaque périphérique à chaque niveau, simplifier le déploiement, l'exploitation et la gestion, tout en réduisant les domaines défaillants à chaque niveau</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Modularité</b> : permettre l'extension transparente du réseau et l'activation de services intégrés à la demande</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Résilience</b> : assurer que le réseau reste toujours actif, pour répondre aux attentes des utilisateurs</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Flexibilité</b> : utiliser toutes les ressources du réseau, afin de répartir avec intelligence la charge de trafic</li>
+</ul>
+</p>
+<p></p>
+<p>Ces principes ne sont pas indépendants. Il est essentiel de comprendre comment chaque principe s'insère dans le contexte des autres. La conception hiérarchisée d'un réseau commuté sans frontières établit une base sur laquelle les concepteurs de réseaux peuvent ajouter des fonctionnalités de sécurité, de mobilité et de communications unifiées. Comme illustré dans la figure, les modèles à trois et à deux couches constituent deux bases testées et fiables de conception hiérarchisée pour des réseaux de campus.</p>
+<p></p>
+<p>Les trois couches critiques dans ces conceptions à plusieurs niveaux sont les couches d'accès, de distribution et de cœur de réseau. Chaque couche peut être considérée comme un module bien défini et structuré, avec des rôles et des fonctions spécifiques dans le réseau de campus. L'introduction du principe de modularité dans la conception hiérarchique du réseau de campus assure ensuite que ce réseau reste résilient et suffisamment flexible pour fournir des services réseau stratégiques. La modularité facilite également la croissance et les modifications qui surviennent au fil du temps.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

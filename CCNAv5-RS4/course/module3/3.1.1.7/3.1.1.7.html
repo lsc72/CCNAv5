@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.1.7 Point de démarcation</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.1.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation des connexions série point à point</h1>
+        <h2>Communications série</h2>
+      </div>
+      <div id="content">
+<p>Avant la déréglementation qui s'est produite en Amérique du Nord, ainsi que dans d'autres pays, les compagnies de téléphone étaient propriétaires de la boucle locale, y compris le câblage et l'équipement se trouvant chez le client. La boucle locale est la ligne qui relie le local d'un abonné au téléphone au central téléphonique (CO) de la compagnie de téléphone. Or, la déréglementation oblige désormais les compagnies de téléphone à dégrouper leur infrastructure de boucle locale pour permettre à d'autres fournisseurs d'offrir des équipements et des services. Il s'est alors avéré nécessaire de délimiter la partie du réseau appartenant à la compagnie de téléphone et celle appartenant au client. Ce point de délimitation est le point de démarcation. Le point de démarcation indique l'endroit où votre réseau communique avec un réseau qui est la propriété d'une autre organisation. En téléphonie, il s'agit de l'interface entre le CPE (Customer Premises Equipment) et l'équipement du fournisseur de services réseau. Ce point de démarcation marque le point du réseau où s'arrête la responsabilité du fournisseur de services, comme illustré à la Figure 1. </p>
+<p></p>
+<p>Le RNIS illustre bien les différences de points de démarcation. Aux États-Unis, le fournisseur de services fournit la boucle locale jusque dans le local du client, et le client fournit l'équipement actif, par exemple le CSU/DSU sur lequel se termine la boucle locale. Cette terminaison est souvent située dans une armoire de télécommunications, le client étant responsable de la maintenance, du remplacement ou de la réparation de l'équipement. Dans les autres pays du monde, l'unité de terminaison de réseau (NTU, Network Terminating Unit) est fournie et gérée par le fournisseur de services. Ceci permet au fournisseur de services de gérer et de dépanner la boucle locale de façon réactive, car le point de démarcation se situe après l'unité de terminaison de réseau. Le client connecte un périphérique CPE, par exemple un routeur ou un périphérique d'accès Frame Relay, au NTU à l'aide d'une interface série V.35 ou RS-232.</p>
+<p></p>
+<p>Un port série de routeur est nécessaire pour chaque connexion de ligne louée. Si le réseau sous-jacent est basé sur les technologies porteur T ou porteur E, la ligne louée se connecte au réseau de l'opérateur via un CSU/DSU. L'objectif du CSU/DSU est de fournir un signal d'horloge à l'interface de l'équipement client depuis le DSU et d'assurer la terminaison du support de transport par canaux de l'opérateur sur le CSU. Le CSU fournit également des fonctions de diagnostic dont un test d'envoi en boucle. </p>
+<p></p>
+<p>Comme illustré à la Figure 2, la plupart des interfaces TDM T1 ou E1 sur les routeurs actuels présentent les fonctionnalités CSU/DSU. Aucun CSU/DSU séparé n'est nécessaire, car cette fonctionnalité est intégrée à l'interface. Des commandes IOS permettent de configurer le fonctionnement du CSU/DSU.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

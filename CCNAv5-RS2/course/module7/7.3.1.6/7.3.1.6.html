@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.1.6 Configuration des interfaces passives</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage RIP et RIPng</h1>
+        <h2>Configuration du protocole RIP</h2>
+      </div>
+      <div id="content">
+<p>Par défaut, les mises à jour RIP sont transférées via toutes les interfaces compatibles RIP. Cependant, les mises à jour RIP doivent réellement être envoyées via des interfaces qui se connectent à d'autres routeurs compatibles RIP. </p>
+<p></p>
+<p>Par exemple, consultez la topologie dans la Figure 1. Le protocole RIP envoie des mises à jour à partir de son interface G0/0 même si aucun périphérique RIP n'existe sur ce réseau local. Le routeur R1 n'a aucun moyen de savoir cela et envoie donc une mise à jour toutes les 30 secondes. L'envoi de mises à jour non nécessaires sur un réseau local a une incidence sur le réseau à trois niveaux :</p>
+<p>
+<ul>
+<li>
+<b>Gaspillage de la bande passante </b>- La bande passante est utilisée pour transporter les mises à jour inutiles. Puisque les mises à jour RIP sont diffusées ou multidiffusées, les commutateurs transfèrent également les mises à jour via tous les ports. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Gaspillage des ressources</b> - Tous les périphériques du réseau local doivent traiter la mise à jour jusqu'aux couches transport, point à partir duquel les périphériques ignoreront la mise à jour. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Risque de sécurité</b> - L'annonce des mises à jour sur un réseau de diffusion constitue un risque pour la sécurité. Les mises à jour RIP peuvent être interceptées par un logiciel d'analyse de paquets. Les mises à jour de routage peuvent être modifiées et retournées au routeur avec des métriques fausses qui altèrent la table de routage et provoquent l'acheminement incorrect du trafic. </li>
+</ul>
+</p>
+<p></p>
+<p>Utilisez la commande de configuration du routeur <span class="cmd"><b>passive-interface </b></span>pour empêcher la transmission de mises à jour de routage via une interface de routeur, tout en permettant que le réseau soit annoncé aux autres routeurs. La commande arrête l'envoi de mises à jour de routage via l'interface spécifiée. Toutefois, le réseau auquel appartient l'interface spécifiée continue d'être annoncé dans les mises à jour de routage envoyées via d'autres interfaces. </p>
+<p></p>
+<p>Il est inutile que R1, R2 et R3 transmettent les mises à jour RIP via leurs interfaces LAN. La configuration dans la Figure 2 identifie l'interface G0/0 de R1 comme étant passive. La commande<span class="cmd"><b> show ip protocols</b></span> permet ensuite de vérifier que l'interface Gigabit Ethernet était passive. Notez que l'interface G0/0 n'est plus indiquée comme envoyant ou recevant des mises à jour de la version 2, mais figure plutôt maintenant dans la section Passive Interface(s). Notez par ailleurs que le réseau 192.168.1.0 figure toujours sous Routing for Networks, ce qui signifie que ce réseau est encore inclus en tant qu'entrée de route dans les mises à jour RIP envoyées à R2. </p>
+<p></p>
+<p>
+<b>Remarque </b>: tous les protocoles de routage prennent en charge la commande <span class="cmd"><b>passive-interface</b></span>. </p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe dans la Figure 3 pour configurer l'interface LAN comme interface passive sur R2 et R3.</p>
+<p></p>
+<p>Toutes les interfaces peuvent également être rendues passives à l'aide de la commande <span class="cmd"><b>passive-interface default</b></span>. Les interfaces qui ne doivent pas être passives peuvent être réactivées à l'aide de la commande <span class="cmd"><b>no passive-interface</b></span>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

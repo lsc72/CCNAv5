@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.4.2 Minuteurs Hello et de mise en attente</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations EIGRP avancées</h1>
+        <h2>Réglage précis des interfaces EIGRP</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Intervalles Hello et temps d'attente du protocole EIGRP pour IPv4</b>
+</p>
+<p></p>
+<p>Le protocole EIGRP utilise un protocole Hello léger pour établir et surveiller l'état de connexion de son voisin. Le temps d'attente indique au routeur la durée maximale pendant laquelle le routeur doit patienter pour recevoir le paquet Hello suivant avant de déclarer le voisin comme inaccessible. </p>
+<p></p>
+<p>Les intervalles Hello et les temps d'attente sont configurables pour chaque interface et ne doivent pas nécessairement correspondre aux autres routeurs EIGRP pour établir ou gérer des contiguïtés. La commande suivante permet de configurer un intervalle Hello différent :</p>
+<p></p>
+<p>
+<span class="cmd">Router(config-if)# </span>
+<span class="cmd">
+<b>ip hello-interval eigrp</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>as-number seconds</i>
+</span>
+</p>
+<p></p>
+<p>Si l'intervalle Hello est modifié, assurez-vous que la valeur du temps d'attente est égale ou supérieure à l'intervalle Hello. Sinon, la contiguïté de voisinage est désactivée dès l'expiration du temps d'attente, avant l'intervalle Hello suivant. Utilisez la commande suivante pour configurer un temps d'attente différent :</p>
+<p></p>
+<p>
+<span class="cmd">Router(config-if)# </span>
+<span class="cmd">
+<b>ip hold-time eigrp</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>as-number seconds</i>
+</span>
+</p>
+<p></p>
+<p>La valeur<span class="cmd"><i> seconds</i></span> des intervalles Hello et des temps d'attente peut être comprise entre 1 et 65 535. </p>
+<p></p>
+<p>La Figure 1 montre la configuration de R1 pour utiliser un intervalle Hello de 50 secondes et un temps d'attente de 150 secondes. La forme<span class="cmd"><b> no </b></span>peut être utilisée dans ces deux commandes pour restaurer les valeurs par défaut.</p>
+<p></p>
+<p>Il n'est pas nécessaire que l'intervalle Hello et le temps d'attente concordent pour que deux routeurs établissent une contiguïté EIGRP.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 2 pour configurer l'interface adjacente sur R2 avec les mêmes valeurs que R1. </p>
+<p></p>
+<p></p>
+<p>
+<b>Intervalles Hello et temps d'attente du protocole EIGRP pour IPv6</b>
+</p>
+<p></p>
+<p>Le protocole EIGRP pour IPv6 utilise les mêmes intervalle Hello et temps d'attente que le protocole EIGRP pour IPv4. Les commandes de mode de configuration d'interface sont identiques à celles d'IPv4 :</p>
+<p></p>
+<p>
+<span class="cmd">Router(config-if)# </span>
+<span class="cmd">
+<b>ipv6 hello-interval eigrp</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>as-number seconds</i>
+</span>
+</p>
+<p></p>
+<p>
+<span class="cmd">Router(config-if)# </span>
+<span class="cmd">
+<b>ipv6 hold-time eigrp</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>as-number seconds</i>
+</span>
+</p>
+<p></p>
+<p>La Figure 3 montre les configurations d'intervalle Hello et de temps d'attente pour R1 et R2 avec le protocole EIGRP pour IPv6.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

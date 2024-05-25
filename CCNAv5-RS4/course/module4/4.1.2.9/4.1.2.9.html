@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.9 Utilisation de LMI et de l&#x0027;ARP inverse pour le mappage des adresses</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.9_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation du protocole Frame Relay</h1>
+        <h2>Fonctionnement de la technologie Frame Relay</h2>
+      </div>
+      <div id="content">
+<p>Les messages d'état LMI combinés aux messages du protocole ARP inverse permettent au routeur d'associer des adresses de couche réseau et des adresses de couche liaison de données. </p>
+<p></p>
+<p>Lancez l'animation de la Figure 1 pour voir comment commence le processus LMI. </p>
+<p></p>
+<p>Dans cet exemple, lorsque R1 se connecte au réseau Frame Relay, il envoie un message de demande d'état LMI au réseau. Le réseau répond par un message d'état LMI contenant des informations sur chaque circuit virtuel configuré sur la liaison d'accès. </p>
+<p></p>
+<p>Le routeur répète régulièrement la demande d'état, mais les réponses suivantes ne comprennent que les modifications d'état. Après un certain nombre de ces réponses abrégées, le réseau envoie un message d'état complet.</p>
+<p></p>
+<p>Si le routeur doit mapper des circuits virtuels sur des adresses de couche réseau, il envoie un message de protocole ARP inverse sur chaque circuit virtuel. Le protocole ARP inverse fonctionne de façon similaire au protocole ARP sur un réseau local Ethernet, sauf que le protocole ARP inverse ne diffuse pas les demandes. Avec le protocole ARP, le périphérique émetteur connaît l'adresse IP de couche 3 et envoie une diffusion pour découvrir l'adresse MAC de couche 2 de destination. Avec le protocole ARP inverse, le routeur connaît l'adresse de couche 2, qui correspond au DLCI local, et envoie une demande d'adresse IP de couche 3 de destination. </p>
+<p></p>
+<p>
+<b>Fonctionnement d'ARP inverse</b>
+</p>
+<p></p>
+<p>Lorsqu'une interface prenant en charge le protocole ARP inverse devient active, elle déclenche le protocole ARP inverse et formule une demande ARP inverse pour le circuit virtuel actif. La demande ARP inverse comprend le matériel source, l'adresse de protocole source de couche 3 et l'adresse matérielle cible connue. Elle remplit ensuite le champ d'adresse du protocole de couche 3 avec des zéros. Elle encapsule le paquet pour le réseau spécifique et l'envoie directement au périphérique de destination via le circuit virtuel.</p>
+<p></p>
+<p>À réception de la demande ARP inverse, le périphérique de destination utilise l'adresse du périphérique source pour créer son propre mappage DLCI/couche 3. Il envoie ensuite une réponse ARP inverse qui comprend les informations d'adresse de couche 3. Lorsque le périphérique source reçoit la réponse ARP inverse, il complète le mappage DLCI/couche 3 à l'aide des informations fournies.</p>
+<p></p>
+<p>Lorsque l'interface d'un routeur Cisco est configurée pour utiliser l'encapsulation Frame Relay, le protocole ARP inverse est activé par défaut.</p>
+<p></p>
+<p>Lancez l'animation de la Figure 2 pour voir le fonctionnement du protocole ARP inverse. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

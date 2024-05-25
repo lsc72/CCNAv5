@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.1.2 Fonctions ARP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole ARP ( Address Resolution Protocol)</h1>
+        <h2>ARP</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Résolution des adresses IPv4 en adresses MAC</b>
+</p>
+<p>À chaque trame placée sur un support LAN doit correspondre une adresse MAC de destination. Quand un paquet est envoyé à la couche liaison de données pour être encapsulé dans une trame, le nœud consulte une table stockée dans sa mémoire pour connaître l'adresse de couche liaison de données qui est mappée à l'adresse IPv4 de destination. Cette table est appelée table ARP ou cache ARP. La table ARP est stockée dans la mémoire vive (RAM) du périphérique. </p>
+<p></p>
+<p>Chaque entrée, ou ligne, de la table ARP relie une adresse IP à une adresse MAC. La relation entre les deux valeurs s'appelle un mappage. Autrement dit, si vous choisissez une adresse IP dans la table, vous trouverez l'adresse MAC correspondante. La table ARP stocke temporairement (dans la mémoire cache) le mappage des périphériques du réseau local. </p>
+<p></p>
+<p>Pour lancer la procédure, un nœud émetteur tente de trouver l'adresse MAC associée à une adresse IPv4 de destination. Si ce mappage se trouve dans la table, le nœud utilise l'adresse MAC comme destination MAC dans la trame qui encapsule le paquet IPv4. La trame est ensuite codée sur le support réseau. </p>
+<p></p>
+<p>
+<b>Mise à jour de la table ARP</b>
+</p>
+<p>La table ARP est mise à jour de manière dynamique. Un périphérique dispose de deux méthodes pour obtenir des adresses MAC. La première consiste à surveiller le trafic sur le segment du réseau local. Quand un noeud reçoit des trames en provenance du support, il enregistre les adresses IP source et MAC dans la table ARP sous forme de mappage. Au fur et à mesure que les trames sont transmises sur le réseau, le périphérique remplit la table ARP de paires d'adresses. </p>
+<p></p>
+<p>L'envoi d'une requête ARP permet également d'obtenir une paire d'adresses, comme illustré sur la figure. Une requête ARP est une diffusion de couche 2 à tous les périphériques du réseau local Ethernet. La requête ARP contient l'adresse IP de l'hôte de destination et l'adresse MAC de diffusion, FFFF.FFFF.FFFF. Comme il s'agit d'une diffusion, tous les nœuds sur le réseau local Ethernet le reçoivent et regardent le contenu. Le nœud dont l'adresse IP correspond à l'adresse IP de la requête ARP répond. La réponse est une trame de monodiffusion contenant l'adresse MAC qui correspond à l'adresse IP de la requête. Cette réponse permet de créer une nouvelle entrée dans la table ARP du nœud émetteur.</p>
+<p></p>
+<p>Les entrées de la table MAC sont horodatées de la même façon que les entrées de la table MAC sur les commutateurs. Si le périphérique ne reçoit pas de trame d'un périphérique précis avant expiration de l'horodatage, l'entrée correspondant à ce périphérique précis est supprimée de la table ARP.</p>
+<p></p>
+<p>Des entrées statiques de mappage peuvent également être ajoutées dans une table ARP, mais ceci ne se produit que rarement. Les entrées statiques de la table ARP n'expirent pas avec le temps et elles doivent être supprimées manuellement.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

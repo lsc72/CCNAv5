@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.4.2 Modification des intervalles OSPFv2</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées du protocole OSPF à zone unique </h1>
+        <h2>Réglage précis des interfaces OSPF</h2>
+      </div>
+      <div id="content">
+<p>Il peut être souhaitable de modifier les minuteurs OSPF afin que les routeurs détectent plus rapidement les défaillances du réseau. Cela augmente le trafic, mais le besoin d'une convergence rapide est parfois plus important que les inconvénients du trafic supplémentaire produit.</p>
+<p></p>
+<p>
+<b>Remarque</b> : les valeurs par défaut des intervalles des paquets Hello et Dead sont basées sur les meilleures pratiques et doivent être modifiées uniquement dans de rares circonstances. </p>
+<p></p>
+<p>Les intervalles des paquets Hello et Dead OSPF peuvent être modifiés manuellement au moyen des commandes suivantes de mode de configuration d'interface : </p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>ip ospf hello-interval </b>
+</span>
+<span class="cmd">
+<i>secondes</i>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>ip ospf dead-interval </b>
+</span>
+<span class="cmd">
+<i>secondes</i>
+</span>
+</li>
+</ul>
+</p>
+<p></p>
+<p>Pour rétablir les intervalles sur leur valeur par défaut, utilisez les commandes<span class="cmd"><b> no ip ospf hello-interval </b></span>et<span class="cmd"><b> no ip ospf dead-interval</b></span>.</p>
+<p></p>
+<p>L'exemple de la Figure 1 remplace l'intervalle Hello par la valeur de 5 secondes. Immédiatement après la modification de l'intervalle Hello, Cisco IOS modifie automatiquement l'intervalle Dead pour le porter à 4 fois la valeur de l'intervalle Hello. Cependant, le fait de modifier de façon explicite le minuteur est une saine pratique, plutôt que de compter sur une fonction automatique d’IOS. Les modifications figurent ainsi dans la configuration. Par conséquent, l'intervalle Dead est également défini manuellement à 20 secondes sur l'interface série 0/0/0 de R1.</p>
+<p></p>
+<p>Comme affiché par le message de contiguïté OSPFv2 en surbrillance à la Figure 1, lorsque le minuteur Dead de R1 arrive à expiration, R1 et R2 perdent leur contiguïté. En effet, les valeurs ont été modifiées uniquement d'un côté du lien série entre R1 et R2. N'oubliez pas que les intervalles des paquets Hello et Dead doivent correspondre d'un voisin à l'autre. </p>
+<p></p>
+<p>Utilisez la commande<span class="cmd"><b> show ip ospf neighbor </b></span>sur R1 pour vérifier les contiguïtés de voisinage, comme illustré à la Figure 2. Notez que le seul voisin répertorié est le routeur 3.3.3.3 (R3) et que R1 n'est plus contigu au voisin 2.2.2.2 (R2). Les minuteurs définis sur Serial 0/0/0 n’affectent pas la contiguïté de voisinage avec R3.</p>
+<p></p>
+<p>Pour rétablir la contiguïté entre R1 et R2, l'intervalle Hello de l'interface Serial 0/0/0 de R2 est défini sur<span class="cmd"><b> 5 </b></span>secondes, comme illustré à la Figure 3. Presque immédiatement, Cisco IOS affiche un message indiquant que la contiguïté a été établie avec un état <span class="cmd"><b>FULL</b></span> (complet).</p>
+<p></p>
+<p>Vérifiez les intervalles de l'interface au moyen de la commande<span class="cmd"><b> show ip ospf interface</b></span>, comme illustré à la Figure 4. Notez que l'intervalle Hello est de 5 secondes et que l'intervalle Dead a été automatiquement défini à 20 secondes au lieu des 40 secondes par défaut. N'oubliez pas que le protocole OSPF définit automatiquement la valeur de l'intervalle Dead à quatre fois celle de l'intervalle Hello.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

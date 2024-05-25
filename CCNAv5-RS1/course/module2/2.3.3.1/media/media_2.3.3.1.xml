@@ -1,0 +1,66 @@
+﻿<textcomponents>
+
+<!--Slide 1-->
+<component id="ID_title">
+<text><![CDATA[<b>Test de la pile&nbsp;TCP/IP locale</b>]]></text>
+</component>
+
+<component id="ID_txt01">
+<text><![CDATA[L'envoi d'une requête ping à l'hôte local confirme que la suite de protocoles&nbsp;TCP/IP est installée et fonctionne sur la carte réseau locale.]]></text> 
+</component>
+
+<component id="ID_txt02">
+<text><![CDATA[Envoyer une requête ping à l'adresse&nbsp;<font color="#077A77"><b>127.0.0.1 </b></font> revient à ce que le périphérique s'envoie la requête ping à lui-même.]]></text> 
+</component>
+
+<component id="ID_txt03">
+<text><![CDATA[<b>C:\&gt;ping 127.0.0.1</b>]]></text> 
+</component>
+<!--End Slide 1-->
+
+
+<!--Slide 2-->
+
+<component id="ID_SC_title">
+<text><![CDATA[<b>Test de l'adresse de bouclage</b>]]></text>
+</component>
+
+<!--Syntax Checker Button Text-->
+<component id="ID_sc_reset">
+<text><![CDATA[Réinitialiser]]></text>
+</component>
+
+<component id="ID_sc_showme">
+<text><![CDATA[Démonstration]]></text>
+</component>
+
+<component id="ID_sc_showall">
+<text><![CDATA[Afficher tout]]></text>
+</component>
+<!--End Syntax Checker Button Text-->
+
+
+<!--Syntax Checker Body Text-->
+<component id="ID_SC" fontFace='Courier New' fontSize="10">
+
+<text></text>		
+
+<feedback id="fb"><![CDATA[<span><font size = '10' face="Arial"><span><b>***</b></span>Vous devez saisir la commande précisément et en entier. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.<span><b>***</b></span></font></span>
+]]></feedback>	
+
+<existingcommands><![CDATA[<font size = '10' face="Arial"><b>Entrez la commande permettant de tester une adresse de bouclage sur un PC Windows.</b></font><br><dnt>------------------------------------<br>Microsoft Windows [Version 6.1.7601]<br>Copyright (c) 2009 Microsoft Corporation.  All rights reserved.</dnt><br><br>]]></existingcommands>
+
+<command prompt="C:\>" id="cmd1" node="start">
+<correctresponse id="cr1"><![CDATA[ping 127.0.0.1]]></correctresponse>
+<deviceresponse id="dr1"><![CDATA[<dnt><br>Pinging 127.0.0.1 with 32 bytes of data:<br>Reply from 127.0.0.1: bytes=32 time&lt;1ms TTL=128<br>Reply from 127.0.0.1: bytes=32 time&lt;1ms TTL=128<br>Reply from 127.0.0.1: bytes=32 time&lt;1ms TTL=128<br>Reply from 127.0.0.1: bytes=32 time&lt;1ms TTL=128<br><br>Ping statistics for 127.0.0.1:<br><span class="spacer">    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),</span><br>Approximate round trip times in milli-seconds:<br><span class="spacer">    Minimum = 0ms, Maximum = 0ms, Average = 0ms</span><br><br>C:\&gt;</dnt>]]></deviceresponse>
+<instruction id="ins1"><![CDATA[<font size = '10' face="Arial"><b>Vous avez réussi à tester l'adresse de bouclage.</b>]]></instruction> 			
+</command>
+
+<command prompt=""/>
+
+</component>
+<!--End Syntax Checker Body Text-->
+
+<!--End Slide 2-->
+
+</textcomponents>

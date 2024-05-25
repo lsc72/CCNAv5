@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.2.3 Protocole LACP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts d&#x0027;agrégation de liaisons</h1>
+        <h2>Fonctionnement des EtherChannel</h2>
+      </div>
+      <div id="content">
+<p>
+<b>LACP</b>
+</p>
+<p>LACP fait partie d'une spécification IEEE (802.3ad) qui permet de regrouper plusieurs ports physiques pour former un seul canal logique. LACP permet à un commutateur de négocier un regroupement automatique en envoyant des paquets LACP à l'homologue. Il assure une fonction semblable à celle de PAgP avec Cisco EtherChannel. LACP étant une norme IEEE, il peut être utilisé pour faciliter les EtherChannel dans des environnements multifournisseurs. Sur les périphériques Cisco, les deux protocoles sont pris en charge.</p>
+<p></p>
+<p>
+<b>Remarque </b>: LACP était initialement défini comme IEEE 802.3ad. Cependant, LACP est désormais défini dans la norme plus récente IEEE 802.1AX pour les réseaux locaux et métropolitains.</p>
+<p></p>
+<p>LACP offre les mêmes avantages en matière de négociation que PAgP. LACP permet de créer la liaison EtherChannel en détectant les configurations de chacun des côtés et en assurant leur compatibilité, afin que la liaison EtherChannel puisse être activée au besoin. La figure illustre les modes pour LACP.</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>On </b>: ce mode force l'interface à établir un canal sans LACP. Les interfaces configurées en mode On (Activé) n'échangent pas de paquets LACP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>LACP active </b>: ce mode LACP place un port dans un état de négociation actif. Dans cet état, le port entame des négociations avec d'autres ports en envoyant des paquets LACP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>LACP passive </b>: ce mode LACP place un port dans un état de négociation passif. Dans cet état, le port répond aux paquets LACP qu'il reçoit, mais n'entame pas de négociation par paquet LACP.</li>
+</ul>
+</p>
+<p></p>
+<p>Tout comme avec PAgP, les modes doivent être compatibles de chaque côté pour que la liaison EtherChannel se forme. Le mode On (Activé) est répété, car il crée la configuration EtherChannel de manière inconditionnelle, sans négociation dynamique PAgP ou LACP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

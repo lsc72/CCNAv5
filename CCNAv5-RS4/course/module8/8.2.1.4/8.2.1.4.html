@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.1.4 Versions SNMP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>SNMP</h1>
+        <h2>Fonctionnement de SNMP</h2>
+      </div>
+      <div id="content">
+<p>Il existe plusieurs versions du protocole SNMP, notamment :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>SNMPv1</b> : protocole SNMP (Simple Network Management Protocol), norme Internet complète, définie dans la RFC 1157.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>SNMPv2c</b> : protocole défini dans les RFC 1901 à 1908, utilisant un cadre administratif basé sur les identifiants de communauté.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>SNMPv3</b> : protocoles standard interopérable, défini à l'origine dans les RFC 2273 à 2275 et fournissant un accès sécurisé aux périphériques, grâce à l'authentification et au chiffrement des paquets sur le réseau. Cela inclut les fonctionnalités de sécurité suivantes : intégrité du message visant à s'assurer qu'un paquet n'a pas été altéré lors de son transit, authentification permettant de vérifier la validité de la source du message et chiffrement destiné à empêcher la lecture du message par une source non autorisée.</li>
+</ul>
+</p>
+<p></p>
+<p>Toutes les versions utilisent des gestionnaires SNMP, des agents et des bases de données MIB. Le logiciel Cisco IOS prend en charge les trois versions ci-dessus. La version 1 est une solution héritée que l'on rencontre rarement dans les réseaux actuels ; par conséquent, ce cours se concentre sur les versions 2c et 3. </p>
+<p></p>
+<p>Les deux protocoles SNMPv1 et SNMPv2c utilisent une forme de sécurité basée sur la communauté. La communauté des gestionnaires capables d'accéder à la variable MIB de l'agent est définie par une liste de contrôle d'accès et un mot de passe.</p>
+<p></p>
+<p>Contrairement au protocole SNMPv1, le protocole SNMPv2c inclut un mécanisme de récupération en masse ainsi que des messages d'erreur plus détaillés envoyés aux stations de gestion. Ce mécanisme de récupération en masse récupère les tables ainsi que de grandes quantités d'informations, minimisant ainsi la durée de transmission ou RTT (Round Trip Time). La gestion des erreurs améliorée du protocole SNMPv2c inclut des codes d'erreur développés permettant d'effectuer la distinction entre différents types de conditions d'erreur. Ces conditions sont signalées par le biais d'un code d'erreur unique dans le protocole SNMPv1. Les codes de retour d'erreur utilisés dans le protocole SNMPv2c incluent le type d'erreur.</p>
+<p></p>
+<p>
+<b>Remarque </b>: les protocoles SNMPv1 et SNMPv2c offrent des fonctionnalités de sécurité minimales. En particulier, les protocoles SNMPv1 et SNMPv2c ne peuvent ni authentifier la source d'un message de gestion ni permettre le chiffrement. Les RFC 3410 à 3415 contiennent la description la plus récente du protocole SNMPv3. Ce protocole inclut des méthodes permettant de garantir la transmission sécurisée des données critiques entre les périphériques gérés.</p>
+<p></p>
+<p>Le protocole SNMPv3 fournit des services à la fois pour les modèles et les niveaux de sécurité. Un modèle de sécurité est une stratégie d'authentification configurée pour un utilisateur ainsi que pour le groupe auquel il appartient. Un niveau de sécurité est le niveau de sécurité autorisé au sein d'un modèle de sécurité. La combinaison du niveau de sécurité et du modèle de sécurité détermine le mécanisme de sécurité utilisé lors du traitement d'un paquet SNMP. Les modèles de sécurité disponibles sont SNMPv1, SNMPv2c et SNMPv3. </p>
+<p></p>
+<p>La figure identifie les caractéristiques des différentes combinaisons de modèles et de niveaux de sécurité.</p>
+<p></p>
+<p>Un administrateur réseau doit configurer l'agent SNMP de manière à utiliser la version SNMP prise en charge par la station de gestion. Étant donné qu'un agent peut communiquer avec plusieurs gestionnaires SNMP, il est possible de configurer le logiciel de manière à prendre en charge les communications à l'aide du protocole SNMPv1, SNMPv2c ou SNMPv3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

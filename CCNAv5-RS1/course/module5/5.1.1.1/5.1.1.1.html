@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.1.1 Sous-couches LLC et MAC</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole Ethernet</h1>
+        <h2>Fonctionnement du protocole Ethernet</h2>
+      </div>
+      <div id="content">
+<p>Ethernet est la technologie LAN la plus répandue aujourd'hui. </p>
+<p></p>
+<p>Ethernet fonctionne au niveau de la couche liaison de données et de la couche physique. Ethernet est une famille de technologies réseau définies par les normes IEEE 802.2 et 802.3. Ethernet prend en charge des bandes passantes de données de :</p>
+<p>
+<ul>
+<li>10 Mbit/s</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>100 Mbit/s</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>1 000 Mbit/s (1 Gbit/s)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>10 000 Mbit/s (10 Gbit/s)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>40 000 Mbit/s (40 Gbit/s)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>100 000 Mbit/s (100 Gbit/s)</li>
+</ul>
+</p>
+<p></p>
+<p>Comme illustré à la Figure 1, les normes Ethernet définissent à la fois les protocoles de la couche 2 et les technologies de la couche 1. Pour les protocoles de couche 2, tout comme pour chacune des normes IEEE 802, Ethernet s'appuie sur les deux sous-couches distinctes de la couche liaison de données pour fonctionner : les sous-couches LLC et MAC.</p>
+<p></p>
+<p>
+<b>La sous-couche LLC</b>
+</p>
+<p>La sous-couche LLC Ethernet gère la communication entre les couches supérieures et les couches inférieures. Celle-ci a généralement lieu entre les logiciels et les matériels réseau du périphérique. La sous-couche LLC extrait les données des protocoles réseau, en principe un paquet IPv4, et leur ajoute des informations de contrôle pour faciliter la transmission du paquet jusqu'au noeud de destination. Elle est utilisée pour communiquer avec les couches supérieures de l'application et pour faire passer le paquet aux couches inférieures en vue de son acheminement.</p>
+<p></p>
+<p>La mise en œuvre de la sous-couche LLC se fait au niveau logiciel et est indépendante du matériel. Dans un ordinateur, la sous-couche LLC est en quelque sorte le pilote de la carte réseau. Le pilote de la carte réseau est un logiciel qui interagit directement avec le matériel de la carte réseau pour transmettre les données entre la sous-couche MAC et les supports physiques.</p>
+<p></p>
+<p>
+<b>La sous-couche MAC</b>
+</p>
+<p>La sous-couche MAC est la sous-couche inférieure de la couche liaison de données. Elle est mise en œuvre au niveau matériel, généralement sur la carte réseau de l'ordinateur. Les spécifications sont décrites par les normes IEEE 802.3. La Figure 2 présente la liste des normes Ethernet courantes de l'IEEE. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

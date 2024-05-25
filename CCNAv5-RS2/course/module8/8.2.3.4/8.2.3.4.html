@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.3.4 Bandes passantes d&#x0027;interface par défaut</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv2 à zone unique</h1>
+        <h2>Coût OSPF</h2>
+      </div>
+      <div id="content">
+<p>Toutes les interfaces ont des valeurs de bande passante par défaut qui leur sont affectées. Comme pour la bande passante de référence, les valeurs de bande passante des interfaces n'affectent pas réellement la vitesse ou la capacité du lien. Au lieu de cela, elles sont utilisées par le protocole OSPF pour calculer la métrique de routage. Par conséquent, il est important que la valeur de bande passante reflète la vitesse réelle du lien, afin que la table de routage contienne des informations de chemin précises.</p>
+<p></p>
+<p>Bien que les valeurs de bande passante des interfaces Ethernet correspondent généralement à la vitesse des liens, ce n'est peut-être pas le cas pour d'autres interfaces. Par exemple, la vitesse réelle des interfaces série est souvent différente de celle de la bande passante par défaut. Sur les routeurs Cisco, la bande passante par défaut de la plupart des interfaces série est réglée sur 1,544 Mbit/s. </p>
+<p></p>
+<p>
+<b>Remarque :</b> les interfaces série plus anciennes peuvent afficher une vitesse par défaut de 128 Kbit/s. </p>
+<p></p>
+<p>Consultez l'exemple dans la Figure 1. Notez que le lien entre :</p>
+<p>
+<ul>
+<li>R1 et R2 doivent être définis sur 1 544 Kbit/s (la valeur par défaut) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>R2 et R3 doivent être définis sur 1 024 Kbit/s</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>R1 et R3 doivent être définis sur 64 Kbit/s</li>
+</ul>
+</p>
+<p></p>
+<p>Utilisez la commande <span class="cmd"><b>show interfaces</b></span> pour afficher le paramètre de bande passante des interfaces. La Figure 2 indique les paramètres de l'interface série 0/0/0 de R1. Le paramètre de bande passante est correct et donc l'interface série ne doit pas être modifiée. </p>
+<p></p>
+<p>La Figure 3 présente les paramètres de l'interface série 0/0/1 de R1. Elle confirme également que l'interface utilise la valeur par défaut de 1 544 Kbit/s pour la bande passante des interfaces. Selon la topologie de référence, cette valeur doit être définie sur 64 Kbit/s. Par conséquent, l'interface série 0/0/1 de R1 doit être modifiée.</p>
+<p></p>
+<p>La Figure 4 indique une métrique de coût résultant de 647, qui est basée sur la bande passante de référence définie sur 1 000 000 000 Bit/s et la bande passante d'interface par défaut de 1,544 Kbit/s (1 000 000 000/1 544 000).</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

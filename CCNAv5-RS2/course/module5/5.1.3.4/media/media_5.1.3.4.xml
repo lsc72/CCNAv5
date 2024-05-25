@@ -1,0 +1,87 @@
+﻿<textcomponents> <!--Slide 1-->
+<component id="ID_s1_title">
+<text><![CDATA[<b>  </b>]]></text>
+</component>
+
+<component id="ID_s1_txt01">
+<text><![CDATA[&lt;résultat omis&gt;]]></text>
+</component>
+
+<component id="ID_s1_txt02">
+<text><![CDATA[&lt;résultat omis&gt;]]></text>
+</component>
+
+<component id="ID_s1_txt03">
+<text><![CDATA[&lt;résultat omis&gt;]]></text>
+</component> <!--Slide 2-->
+<component id="ID_s2_title">
+<text><![CDATA[<b>Table de routage Router-on-a-Stick</b>]]></text> 
+</component>
+
+<component id="ID_s3_title">
+<text><![CDATA[<b>Configuration du routage inter-VLAN de type router-on-a-stick</b>]]></text>
+</component> <!--<component id="ID_s1_txt01">
+<text><![CDATA[&lt;output omitted&gt;]]></text>
+</component>-->
+
+<component id="ID_sc_reset">
+<text><![CDATA[Réinitialiser]]></text>
+</component>
+
+<component id="ID_sc_showme">
+<text><![CDATA[Démonstration]]></text>
+</component>
+
+<component id="ID_sc_showall">
+<text><![CDATA[Afficher tout]]></text>
+</component>
+
+<component id="ID_SC5" fontFace='Courier New' fontSize="10">
+<feedback id="fb"><![CDATA[<b><font size='10' face="Arial" color="#0000FF">*** Vous devez saisir la commande précisément et en entier. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font>  </b>
+]]></feedback>
+<existingcommands><![CDATA[<font size='10' face="Arial"><b>Configurez R1 comme suit&nbsp;:<ul><li>Créez la sous-interface .10 sur l'interface g0/0.<li>Configurez l'encapsulation pour le VLAN&nbsp;10.<li>Affectez l'adresse IP 172.17.10.1/24 à la sous-interface.</ul>  </b></font>]]></existingcommands>
+<command prompt="R1(config)#">
+<correctresponse><![CDATA[interface g0/0.10]]></correctresponse>
+</command>
+<command prompt="R1(config-subif)#">
+<correctresponse><![CDATA[encapsulation dot1q 10]]></correctresponse>
+</command>
+<command prompt="R1(config-subif)#">
+<correctresponse><![CDATA[ip address 172.17.10.1 255.255.255.0]]></correctresponse>
+<instruction><![CDATA[<font size='10' face="Arial"><b><ul><li>Créez la sous-interface .30 sur l'interface g0/0.<li>Configurez l'encapsulation pour le VLAN&nbsp;30.<li>Affectez l'adresse IP 172.17.30.1/24 à la sous-interface.<li>Activez l'interface physique.<li>Revenez au mode d'exécution privilégié.</ul>  </b></font>]]></instruction>
+</command>
+<command prompt="R1(config-subif)#">
+<correctresponse><![CDATA[interface g0/0.30]]></correctresponse>
+</command>
+<command prompt="R1(config-subif)#">
+<correctresponse><![CDATA[encapsulation dot1q 30]]></correctresponse>
+</command>
+<command prompt="R1(config-subif)#">
+<correctresponse><![CDATA[ip address 172.17.30.1 255.255.255.0]]></correctresponse>
+</command>
+<command prompt="R1(config-subif)#">
+<correctresponse><![CDATA[interface g0/0]]></correctresponse>
+</command>
+<command prompt="R1(config-if)#">
+<correctresponse><![CDATA[no shutdown]]></correctresponse>
+</command>
+<command prompt="R1(config-if)#">
+<correctresponse><![CDATA[end]]></correctresponse>
+<deviceresponse><![CDATA[R1# <br>*Mar 20 06:32:03.777: %LINK-3-UPDOWN: Interface GigabitEthernet0/0, changed state to down <br>*Mar 20 06:32:04.217: %SYS-5-CONFIG_I: Configured from console by console <br>*Mar 20 06:32:06.929: %LINK-3-UPDOWN: Interface GigabitEthernet0/0, changed state to up <br>*Mar 20 06:32:07.929: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to up]]></deviceresponse>
+<instruction><![CDATA[<font size='10' face="Arial"><b>Affichez les informations relatives au VLAN sur R1.  </b></font>]]></instruction>
+</command>
+<command prompt="R1#">
+<correctresponse><![CDATA[show vlans]]></correctresponse>
+<deviceresponse><![CDATA[<font size='9' face="Courier New"><br>Virtual LAN ID: 1 (IEEE 802.1Q Encapsulation) <br> vLAN Trunk Interface: GigabitEthernet0/0 <br> This is configured as native Vlan for the following interface(s) : <br>GigabitEthernet0/0 Native-vlan Tx-type: Untagged <br> Protocols Configured: Address: Received: Transmitted: <br> Other 0 1 <br> 0 packets, 0 bytes input <br> 1 packets, 18 bytes output <br> <br>Virtual LAN ID: 10 (IEEE 802.1Q Encapsulation) <br> vLAN Trunk Interface: GigabitEthernet0/0.10 <br> Protocols Configured: Address: Received: Transmitted: <br> IP 172.17.10.1 0 0 <br> Other 0 1 <br> 0 packets, 0 bytes input <br> 1 packets, 46 bytes output <br>Virtual LAN ID: 30 (IEEE 802.1Q Encapsulation) <br> vLAN Trunk Interface: GigabitEthernet0/0.30 <br> Protocols Configured: Address: Received: Transmitted: <br> IP 172.17.30.1 0 0 <br> Other 0 1 <br> 0 packets, 0 bytes input <br> 1 packets, 46 bytes output <br></font>R1#]]></deviceresponse>
+<instruction><![CDATA[<font size='10' face="Arial"><b>Affichez la table de routage sur R1.  </b></font>]]></instruction>
+</command>
+<command prompt="R1#">
+<correctresponse><![CDATA[show ip route]]></correctresponse>
+<deviceresponse><![CDATA[<font size='8' face="Courier New">Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP <br> D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area <br> N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2 <br> E1 - OSPF external type 1, E2 - OSPF external type 2 <br> i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2 <br> ia - IS-IS inter area, * - candidate default, U - per-user static route <br> o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP <br> + - replicated route, % - next hop override <br> <br></font>Gateway of last resort is not set <br> <br> 172.17.0.0/16 is variably subnetted, 4 subnets, 2 masks <br>C 172.17.10.0/24 is directly connected, GigabitEthernet0/0.10 <br>L 172.17.10.1/32 is directly connected, GigabitEthernet0/0.10 <br>C 172.17.30.0/24 is directly connected, GigabitEthernet0/0.30 <br>L 172.17.30.1/32 is directly connected, GigabitEthernet0/0.30]]></deviceresponse>
+<instruction><![CDATA[<font size='10' face="Arial"><b>Vous avez configuré correctement le routage inter-VLAN de type router-on-a-stick.</font>]]></instruction>
+</command>
+<command prompt=""/>
+</component>
+
+
+</textcomponents>

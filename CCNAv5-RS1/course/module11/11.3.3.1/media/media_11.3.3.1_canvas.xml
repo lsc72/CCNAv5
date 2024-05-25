@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+			<element type="ROUTER" textId="ID_router_txt1" x="0" y="40" width="430" height="320" size="10"/>
+		</slide>
+
+
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+			<element type="ROUTER" textId="ID_router_txt2" x="0" y="40" width="430" height="320" size="10" />
+		</slide>
+
+
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+			<element type="ROUTER" textId="ID_router_txt3" x="0" y="40" width="430" height="320" size="10"/>
+		</slide>
+
+
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s4_title"/>
+			<element type="ROUTER" textId="ID_router_txt4" x="0" y="40" width="430" height="320" size="10"/>
+		</slide>
+
+
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s5_title"/>
+			<element type="ROUTER" textId="ID_router_txt5" x="0" y="40" width="430" height="320" size="10"/>
+		</slide>
+
+
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s6_title"/>
+			<element type="ROUTER" textId="ID_router_txt6" x="0" y="40" width="430" height="331" size="10"/>
+		</slide>
+
+
+	</slide>
+<text id="ID_router_txt1"><![CDATA[<pre>R1#<b>show running-config</b>
+<span id="ID_s1_txt01"></span>
+Building configuration...
+Current configuration : 1063 bytes
+!
+version 12.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+hostname R1
+enable secret 5 $1$i6w9$dvdpVM6zV10E6tSyLdkR5/
+no ip domain lookup
+!
+interface FastEthernet0/0
+ description LAN 192.168.1.0 default gateway 
+ ip address 192.168.1.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface Serial0/0/0
+ description WAN link to R2
+ ip address 192.168.2.1 255.255.255.0
+ encapsulation ppp
+ clock rate 64000
+ no fair-queue
+!
+interface Serial0/0/1
+ no ip address
+ shutdown
+!
+interface Vlan1
+ no ip address
+!
+router rip
+ version 2
+ network 192.168.1.0
+ network 192.168.2.0
+!
+banner motd ^CUnauthorized Access Prohibited^C
+!
+ip http server
+!
+line con 0
+ password cisco
+ login
+line aux 0
+line vty 0 4
+ password cisco
+ login
+</pre>]]></text>
+
+<text id="ID_router_txt2"><![CDATA[<pre>R1#<b>show interfaces</b>
+<span id="ID_s1_txt01"></span>
+FastEthernet0/0 is up, line protocol is up
+  Hardware is Gt96k FE, address is 001b.5325.256e
+  (bia 001b.5325.256e)
+  Internet address is 192.168.1.1/24
+  MTU 1500 bytes, BW 100000 Kbit, DLY 100 usec,
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Full-duplex, 100Mb/s, 100BaseTX/FX
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input 00:00:17, output 00:00:01, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes);
+  Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     196 packets input, 31850 bytes
+     Received 181 broadcasts, 0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog
+     0 input packets with dribble condition detected
+     392 packets output, 35239 bytes, 0 underruns
+     0 output errors, 0 collisions, 3 interface resets
+     0 babbles, 0 late collision, 0 deferred
+     0 lost carrier, 0 no carrier
+     0 output buffer failures, 0 output buffers swapped out
+
+FastEthernet0/1 is administratively down,
+line protocol is down
+
+Serial0/0/0 is up, line protocol is up
+  Hardware is GT96K Serial
+  Internet address is 192.168.2.1/24
+  MTU 1500 bytes, BW 1544 Kbit, DLY 20000 usec,
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation PPP, LCP Listen, loopback not set
+  Keepalive set (10 sec)
+  Last input 00:00:02, output 00:00:03, output hang never
+  Last clearing of "show interface" counters 00:51:52
+  Input queue: 0/75/0/0 (size/max/drops/flushes);
+  Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     401 packets input, 27437 bytes, 0 no buffer
+     Received 293 broadcasts, 0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored, 0 abort
+     389 packets output, 26940 bytes, 0 underruns
+     0 output errors, 0 collisions, 2 interface resets
+     0 output buffer failures, 0 output buffers swapped out
+     6 carrier transitions
+     DCD=up  DSR=up  DTR=up  RTS=up  CTS=up
+
+Serial0/0/1 is administratively down, line protocol is down
+</pre>]]></text>
+
+<text id="ID_router_txt3"><![CDATA[<pre>R1#<b>show arp</b>
+Protocol  Address          Age (min)  Hardware Addr   Type   Interface
+Internet  172.17.0.1              -   001b.5325.256e  ARPA   FastEthernet0/0
+Internet  172.17.0.2             12   000b.db04.a5cd  ARPA   FastEthernet0/0</pre>]]></text>
+
+<text id="ID_router_txt4"><![CDATA[<pre>R1#<b>show ip route</b>
+Codes: C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       o - ODR, P - periodic downloaded static route
+
+Gateway of last resort is not set
+C    192.168.1.0/24 is directly connected, FastEthernet0/0
+C    192.168.2.0/24 is directly connected, Serial0/0/0
+R    192.168.3.0/24 [120/1] via 192.168.2.2, 00:00:24, Serial0/0/0</pre>]]></text>
+
+<text id="ID_router_txt5"><![CDATA[<pre>R1#<b>show protocols</b>
+Global values:
+  Internet Protocol routing is enabled
+FastEthernet0/0 is up, line protocol is up
+  Internet address is 192.168.1.1/24
+FastEthernet0/1 is administratively down, line protocol is down
+FastEthernet0/1/0 is up, line protocol is down
+FastEthernet0/1/1 is up, line protocol is down
+FastEthernet0/1/2 is up, line protocol is down
+FastEthernet0/1/3 is up, line protocol is down
+Serial0/0/0 is up, line protocol is up
+  Internet address is 192.168.2.1/24
+Serial0/0/1 is administratively down, line protocol is down
+Vlan1 is up, line protocol is down</pre>]]></text>
+
+<text id="ID_router_txt6"><![CDATA[<pre>R1#<b>show version</b>
+<span id="ID_s1_txt01"></span>
+Cisco IOS Software, 1841 Software (C1841-ADVIPSERVICESK9-M),
+Version 12.4(10b),
+RELEASE SOFTWARE (fc3)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2007 by Cisco Systems, Inc.
+Compiled Fri 19-Jan-07 15:15 by prod_rel_team
+
+ROM: System Bootstrap, Version 12.4(13r)T, RELEASE SOFTWARE (fc1)
+R1 uptime is 43 minutes
+System returned to ROM by reload at 22:05:12 UTC Sat Jan 5 2008
+System image file is "flash:c1841-advipservicesk9-mz.124-10b.bin"
+
+Cisco 1841 (revision 6.0) with 174080K/22528K bytes of memory.
+Processor board ID FTX1111W0QF
+6 FastEthernet interfaces
+2 Serial(sync/async) interfaces
+1 Virtual Private Network (VPN) Module
+DRAM configuration is 64 bits wide with parity disabled.
+191K bytes of NVRAM.
+62720K bytes of ATA CompactFlash (Read/Write)
+
+Configuration register is 0x2102</pre>]]></text>
+
+</data>

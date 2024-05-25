@@ -1,0 +1,47 @@
+﻿<textcomponents> <!-- slide 1 -->
+<component id='ID_s1_txt01'>
+	<text><![CDATA[Ports VTY 0-4]]></text>
+</component> <!-- slide 2 -->
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+<component id="ID_s2_SC1" fontFace='Courier New' fontSize="10">
+	<text></text>		
+	<feedback id="fb"><![CDATA[<b> *** </b><font face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> ]]></feedback>		
+	<existingcommands><![CDATA[<font face="Arial"><b>Configurez les lignes VTY pour accepter les connexions SSH entrantes à l'aide de la liste d'accès 21.  </b></font>]]></existingcommands>
+	<command prompt="R1(config)#">
+	<correctresponse><![CDATA[line vty 0 4]]></correctresponse>
+	</command>
+	<command prompt="R1(config-line)#">
+	<correctresponse><![CDATA[login local]]></correctresponse>
+	</command>
+	<command prompt="R1(config-line)#">
+	<correctresponse><![CDATA[transport input ssh]]></correctresponse>
+	</command>
+	<command prompt="R1(config-line)#">
+	<correctresponse><![CDATA[access-class 21 in]]></correctresponse>
+	<instruction><![CDATA[<font face="Arial"><b>Repassez en mode de configuration globale et créez la liste d'accès&nbsp;21 pour autoriser le réseau 192.168.10.0/24 et refuser explicitement tous les autres.  </b></font>]]></instruction>
+	</command>
+	<command prompt="R1(config-line)#">
+	<correctresponse><![CDATA[exit]]></correctresponse>
+	</command>
+	<command prompt="R1(config)#">
+	<correctresponse><![CDATA[access-list 21 permit 192.168.10.0,0 0.0.0.0,255]]></correctresponse>
+	</command>
+	<command prompt="R1(config)#">
+	<correctresponse><![CDATA[access-list 21 deny any]]></correctresponse>
+	<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez correctement sécurisé les lignes VTY sur R1.  </b></font>]]></instruction>
+	</command>
+	<command prompt=""/>
+</component>
+
+	
+</textcomponents>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.6 Mappage des adresses Frame Relay</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation du protocole Frame Relay</h1>
+        <h2>Fonctionnement de la technologie Frame Relay</h2>
+      </div>
+      <div id="content">
+<p>Avant qu'un routeur Cisco puisse transmettre des données via Frame Relay, il doit connaître les DLCI locaux mappés sur les adresses de couche 3 de la destination distante. Les routeurs Cisco prennent en charge tous les protocoles de la couche réseau passant par Frame Relay, comme les protocoles IPv4, IPv6, IPX et AppleTalk. Ce mappage entre adresse et DLCI peut être réalisé de manière statique ou dynamique. La Figure 1 présente un exemple de topologie avec un mappage DLCI.</p>
+<p></p>
+<p>
+<b>ARP inverse</b>
+</p>
+<p></p>
+<p>Un des outils principaux de Frame Relay est le protocole ARP inverse (Address Resolution Protocol). Alors que le protocole ARP traduit les adresses IPv4 de couche 3 en adresses MAC de couche 2, le protocole ARP inverse effectue l'opération inverse. Les adresses IPv4 de couche 3 correspondantes doivent être disponibles avant l'utilisation des circuits virtuels. </p>
+<p></p>
+<p>
+<b>Remarque</b> : Frame Relay pour IPv6 utilise le protocole IND (Inverse Neighbor Discovery) pour obtenir une adresse IPv6 de couche 3 de la part d'un DLCI de couche 2. Le routeur Frame Relay envoie un message de sollicitation IND pour demander une adresse IPv6 de couche 3 correspondant à une adresse DLCI de couche 2 sur le routeur Frame Relay distant. En même temps, le message de sollicitation IND fournit l'adresse DLCI de couche 2 de l'expéditeur au routeur Frame Relay distant.</p>
+<p></p>
+<p>
+<b>Mappage dynamique</b>
+</p>
+<p></p>
+<p>Le mappage dynamique des adresses s'appuie sur le protocole ARP inverse pour convertir l'adresse de couche réseau IPv4 du tronçon suivant en valeur DLCI locale. Le routeur Frame Relay envoie des demandes d'ARP inverse sur son circuit virtuel permanent pour détecter l'adresse de protocole du périphérique distant connecté au réseau Frame Relay. Le routeur utilise les réponses obtenues pour compléter une table de mappage d'adresse en DLCI sur le routeur Frame Relay ou sur le serveur d'accès. Le routeur établit et entretient cette table de mappage qui contient toutes les demandes d'ARP inverse résolues, y compris les entrées de mappage statique et dynamique. </p>
+<p></p>
+<p>Sur les routeurs Cisco, le protocole ARP inverse est activé par défaut pour tous les protocoles activés sur l'interface physique. Les paquets d'ARP inverse ne sont pas envoyés pour les protocoles qui ne sont pas activés sur l'interface. </p>
+<p></p>
+<p>
+<b>Mappage statique Frame Relay</b>
+</p>
+<p></p>
+<p>L'utilisateur peut choisir d'ignorer le mappage ARP inverse dynamique en indiquant un mappage statique pour l'adresse de protocole du tronçon suivant au DLCI local. Le mappage statique fonctionne de façon similaire au protocole ARP inverse en associant une adresse de protocole du tronçon suivant à un DLCI Frame Relay local. Vous ne pouvez pas utiliser le protocole ARP inverse et une instruction de mappage pour le même DLCI et le même protocole.</p>
+<p></p>
+<p>Un exemple d'utilisation de mappage d'adresse statique est une situation dans laquelle le routeur à l'autre extrémité du réseau Frame Relay ne prend pas en charge le protocole ARP inverse dynamique pour un protocole réseau particulier. Afin d'assurer la connectivité, un mappage statique est nécessaire pour finaliser la conversion de l'adresse de couche réseau distante en DLCI local.</p>
+<p></p>
+<p>Un autre exemple est dans le cas d'un réseau Frame Relay Hub and Spoke. Dans ce cas, le mappage statique s'utilise sur les routeurs situés sur les rayons pour permettre l'accès de rayon à rayon. Comme il n'y a pas de connectivité entre les routeurs situés sur les rayons, la résolution d'adresse inverse ne fonctionnerait pas entre eux. Le protocole de résolution d'adresse inverse se base sur la présence d'une connexion directe point à point entre deux extrémités. Dans ce cas, le protocole ARP inverse dynamique ne fonctionne qu'entre le rayon et le centre, chaque rayon nécessitant un mappage statique pour pouvoir assurer la connexion entre rayons.</p>
+<p></p>
+<p>
+<b>Configuration du mappage statique</b>
+</p>
+<p></p>
+<p>La mise en place d'un mappage statique dépend des besoins du réseau. Pour mapper une adresse de protocole de tronçon suivant et une adresse DLCI de destination, utilisez cette commande :<span class="cmd"><b> frame-relay map </b></span><span class="cmd"><i>protocol protocol-address </i></span><span class="cmd"><i></i></span><span class="cmd"><i> dlci </i></span><span class="cmd">[</span><span class="cmd"><b>broadcast</b></span><span class="cmd">] [</span><span class="cmd"><b>ietf</b></span><span class="cmd">] [</span><span class="cmd"><b>cisco</b></span><span class="cmd">]</span>.</p>
+<p></p>
+<p>Utilisez le mot-clé <span class="cmd"><b>ietf</b></span> pour la connexion à un routeur non-Cisco.</p>
+<p></p>
+<p>La configuration du protocole OSPF peut être grandement simplifiée en ajoutant le mot-clé facultatif <span class="cmd"><b>broadcast</b></span>. Le mot-clé <span class="cmd"><b>broadcast</b></span> spécifie si la diffusion et la multidiffusion sont autorisées sur le circuit virtuel, d'où la possibilité d'utiliser des protocoles de routage dynamique sur le circuit virtuel.</p>
+<p></p>
+<p>La Figure 2 est un exemple de mappage statique sur un routeur Cisco. Dans cet exemple, le mappage d'adresse statique est effectué sur l'interface série 0/0/1. L'encapsulation Frame Relay utilisée sur le DLCI 102 est CISCO. Comme présenté dans les étapes de configuration, le mappage statique de l'adresse via la commande <span class="cmd"><b>frame-relay map</b></span> permet aux utilisateurs de sélectionner le type d'encapsulation Frame Relay utilisé sur chaque circuit virtuel. </p>
+<p></p>
+<p>La Figure 3 présente le résultat de la commande <span class="cmd"><b>show frame-relay map</b></span>. Notez que l'interface est active et que l'adresse IPv4 de destination est 10.1.1.2. Le DLCI identifie la connexion logique utilisée pour atteindre cette interface. Cette valeur est affichée en décimal (102), en hexadécimal (0x66) et comme elle apparaîtrait sur la ligne (0x1860). Il s'agit d'une entrée statique et non d'une entrée dynamique. Cette liaison utilise l'encapsulation, et non l'encapsulation IETF.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

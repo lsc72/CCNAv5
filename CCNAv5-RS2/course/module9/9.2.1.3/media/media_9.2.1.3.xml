@@ -1,0 +1,67 @@
+﻿<textcomponents>
+
+	<component id="ID_s1_title">
+	  <text><![CDATA[<b>Syntaxe de la commande <font face="_typewriter">access-list</font> pour les listes de contrôle d'accès standard</b>]]></text> 
+	  </component>
+		
+	<component id="ID_s2_title">
+	  <text><![CDATA[<b>Suppression d'une liste de contrôle d'accès (ACL)</b>]]></text> 
+	</component>
+	
+	  
+	  
+	<component id="ID_Table_01">
+			<text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4'>
+		<tr class="liner">
+			<td colspan='2' bgcolor='#0E6360' class="liner_top"><font size='1' color='#434321'><span style="color:#DAE17A">.</span></font></td>
+		</tr>
+		
+		<tr>
+			
+			<td width="100" bgcolor='#077A77' valign="top"><font color='#ffffff'><b>Paramètre</b></font></td>
+			<td bgcolor='#077A77' valign="top"><font color='#ffffff'><b>Description</b></font></td>	
+			
+		</tr>
+			
+		
+		<tr>
+			<td bgcolor="#EFF8F7" valign="top"><font face='_typewriter' color='#393536'><i>access-list-number</i></font></td>
+			<td bgcolor="#EFF8F7" valign="top"><font color='#393536'>Numéro de la liste de contrôle d'accès. Il s'agit d'un nombre décimal compris entre 1 et 99 ou entre 1&nbsp;300 et 1&nbsp;999 (pour les listes de contrôle d'accès standard).</font></td>			
+		 
+		</tr>
+		<tr>
+			<td bgcolor="#ffffff" valign="top"><font color='#393536' face='_typewriter'><b>deny</b></font></td>
+			<td bgcolor="#ffffff" valign="top"><font color='#393536'>Refuse l'accès si les conditions sont respectées.</font></td>			
+		 
+		</tr>
+		
+		<tr>
+			<td bgcolor="#EFF8F7" valign="top"><font color='#393536' face='_typewriter'><b>permit</b></font></td>
+			<td bgcolor="#EFF8F7" valign="top"><font color='#393536'>Autorise l'accès si les conditions sont respectées.</font></td>	 	 
+		</tr>
+		
+		<tr>
+			<td bgcolor="#ffffff" valign="top"><font color='#393536' face='_typewriter'><b>remark</b></font></td>
+			<td bgcolor="#ffffff" valign="top"><font color='#393536'>Ajoutez une remarque sur les entrées dans une liste de contrôle d'accès IP pour en faciliter la compréhension et la recherche.</font></td>			
+		 
+		</tr>	
+		
+		<tr>
+			<td bgcolor="#EFF8F7" valign="top"><font color='#393536' face='_typewriter'><i>Source</i></font></td>
+			<td bgcolor="#EFF8F7" valign="top"><font color='#393536'>Numéro du réseau ou de l'hôte d'où provient le paquet. Il existe deux façons d'indiquer la <font color='#393536' face='_typewriter'><i>source</i></font>&nbsp;:<ul><li><textformat blockindent='-14'>Utiliser 32&nbsp;bits en notation décimale à point, divisés en quatre parties.</textformat> </li><li><textformat blockindent='-14'>Utiliser le mot-clé <font face='_typewriter'><b>any</b></font> comme abréviation d'une <font face='_typewriter'><i>source </i></font> et d'un masque générique source (<font face='_typewriter'><i>source-wildcard </i></font>) de 0.0.0.0 255.255.255.255.</textformat> </li></ul></font></td>
+		 
+		</tr>
+		
+		<tr>
+			<td bgcolor="#ffffff" valign="top"><font color='#393536' face='_typewriter'><i>source-wildcard</i></font></td>
+			<td bgcolor="#ffffff" valign="top"><font color='#393536'>Masque générique de 32&nbsp;bits à appliquer à la source (facultatif). Place les 1 aux positions de bit à ignorer.</font></td>
+	</tr>
+	
+		
+		<tr>
+			<td bgcolor="#ffffff" valign="top"><font color='#393536' face='_typewriter'><b>log</b></font></td>
+			<td bgcolor="#EFF8F7" valign="top"><font color='#393536'><p>Déclenche un message de journalisation informatif au sujet du paquet correspondant à l'entrée à envoyer à la console (facultatif). (Le niveau des messages consignés sur la console est déterminé par la commande <font face='_typewriter'><b>logging console</b></font>.) </p><br/><p>Le message indique le numéro de liste de contrôle d'accès, si le paquet a été autorisé ou refusé, l'adresse source et le nombre de paquets. Le message est généré pour le premier paquet pour lequel il y a correspondance, puis par intervalles de cinq minutes, et comprend le nombre de paquets autorisés ou refusés dans l'intervalle de cinq minutes précédent. </p></font></td>
+		</tr>		
+	</table>]]></text> 
+	</component>
+</textcomponents>

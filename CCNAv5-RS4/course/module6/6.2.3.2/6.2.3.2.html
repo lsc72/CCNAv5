@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.3.2 Types de technologies sans fil haut débit (suite)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Comparaison des solutions haut débit</h1>
+        <h2>Accès haut débit sans fil</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Implémentations cellulaires/mobiles</b>
+</p>
+<p></p>
+<p>Le haut débit mobile se réfère à l'accès Internet sans fil offert par l'intermédiaire de tours de téléphonie mobile à des ordinateurs, des téléphones portables et autres périphériques numériques utilisant des modems portables. La Figure 1 illustre une station de base utilisée dans un réseau haut débit mobile. </p>
+<p></p>
+<p>Les téléphones portables utilisent les ondes radio pour communiquer, et ce, par l'intermédiaire d'une tour de téléphonie mobile proche. Le téléphone portable possède une petite antenne radio. Le fournisseur possède quant à lui une antenne beaucoup plus grande, située au sommet d'une tour, comme le montre la figure. </p>
+<p></p>
+<p>L'accès au haut débit cellulaire/mobile est constitué de diverses normes prenant en charge des débits allant jusqu'à 5 Mo/s. Les variantes incluent les technologies 2G (utilisant GSM, CDMA ou TDMA), 3G (utilisant UMTS, CDMA2000, EDGE ou HSPA+) et 4G (utilisant WiMAX ou LTE). Un abonnement de téléphonie mobile n'inclut pas nécessairement un abonnement haut débit mobile.</p>
+<p></p>
+<p>Trois termes sont couramment utilisés dans les discussions relatives aux réseaux cellulaires/mobiles, à savoir :</p>
+<p>
+<ul>
+<li>
+<b>Internet sans fil</b> : terme général désignant les services Internet disponibles à partir d'un téléphone portable ou tout périphérique utilisant la même technologie.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>2G/3G/4G sans fil</b> : modifications importantes apportées aux réseaux sans fil des sociétés de téléphonie mobile, grâce à l'évolution des deuxième, troisième et quatrième générations de technologies mobiles sans fil.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Évolution à long terme</b> : technologie plus récente et plus rapide considérée comme faisant partie de la technologie 4G.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Implémentations satellite</b>
+</p>
+<p>Les services Internet par satellite sont utilisés dans les endroits où aucun accès Internet par voie terrestre n'est disponible ou en cas d'installations temporaires mobiles. L'accès Internet par l'intermédiaire de satellites est disponible partout dans le monde, y compris sur des navires en mer, dans des avions en vol ou sur des véhicules roulant sur terre. </p>
+<p></p>
+<p>Il existe trois manières de se connecter à Internet à l'aide de satellites : </p>
+<p>
+<ul>
+<li>
+<b>Multidiffusion unidirectionnelle</b> : les systèmes Internet par satellite sont utilisés pour la distribution de données, d'audio et de vidéo par multidiffusion IP. Même si la plupart des protocoles IP nécessitent une communication bidirectionnelle pour le contenu Internet incluant des pages Web, il est possible d'utiliser des services Internet par satellite unidirectionnels pour charger des pages sur un système de stockage local situé au niveau des sites des utilisateurs finaux. Toute interactivité bidirectionnelle est impossible.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Retour terrestre unidirectionnel</b> : les systèmes Internet par satellite utilisent un accès commuté classique pour envoyer des données sortantes par le biais d'un modem et recevoir des téléchargements en provenance du satellite.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Système Internet satellite bidirectionnel</b> : envoie des données à partir de sites distants via le satellite vers un concentrateur, qui envoie ensuite ces données vers Internet. L’antenne parabolique doit être positionnée avec précision sur chaque site pour éviter toute interférence avec d’autres satellites.</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 2 illustre un système Internet satellite bidirectionnel. La vitesse de chargement représente environ 1/10e de la vitesse de téléchargement, qui est de l'ordre de 500 kbit/s.</p>
+<p></p>
+<p>La principale exigence d'installation est que l'antenne doit bénéficier d'une vision dégagée en direction de l'équateur, où se trouvent la plupart des satellites en orbite. Les arbres et de fortes pluies risquent d’affecter la réception des signaux. </p>
+<p></p>
+<p>La technologie Internet satellite bidirectionnelle utilise la multidiffusion IP, qui permet à un seul satellite de desservir simultanément jusqu'à 5.000 canaux de communication. La multidiffusion IP envoie simultanément des données d’un point vers de nombreux autres en envoyant des données compressées. La compression permet de diminuer la taille des données ainsi que la bande passante requise.</p>
+<p></p>
+<p>Une entreprise peut créer un WAN privé utilisant des communications par satellite ainsi que la technologie VSAT (Very Small Aperture Terminal). Un VSAT est un type d'antenne parabolique similaire à celles utilisées pour la télévision par satellite à domicile et sa largeur est généralement d'environ 1 mètre. La parabole VSAT se place à l'extérieur, pointée vers un satellite donné, et est câblée vers une interface de routeur spéciale, le routeur étant installé à l'intérieur du bâtiment. L'utilisation d'antennes VSAT crée un WAN privé. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

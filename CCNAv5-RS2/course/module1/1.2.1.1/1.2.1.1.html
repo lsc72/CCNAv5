@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.1.1 La commutation : concept général des réseaux et des télécommunications</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>L&#x0027;environnement commuté</h1>
+        <h2>Transfert de trames</h2>
+      </div>
+      <div id="content">
+<p>Le concept de commutation et de transfert de trames est universel dans les réseaux et les télécommunications. Différents types de commutateurs sont utilisés dans les réseaux LAN, WAN et le réseau téléphonique public commuté (RTPC). Le concept fondamental de commutation désigne un périphérique effectuant une décision en fonction de deux critères :</p>
+<p>
+<ul>
+<li>Port d'entrée </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Adresse de destination</li>
+</ul>
+</p>
+<p>Le commutateur décide de transférer le trafic selon le flux de ce trafic. Le terme « entrée » décrit l'emplacement où une trame entre dans le périphérique sur un port. Le terme « sortie » décrit les trames quittant le périphérique par un port particulier. </p>
+<p></p>
+<p>La décision du commutateur est basée sur le port d'entrée et sur l'adresse de destination du message. </p>
+<p></p>
+<p>Un commutateur LAN gère une table qu'il utilise pour déterminer l'acheminement du trafic. Dans la figure, cliquez sur le bouton Lire pour voir une animation du processus de commutation. Dans cet exemple : </p>
+<p>
+<ul>
+<li>Si un message entre par le port 1 du commutateur et possède l'adresse de destination EA, le commutateur transfère le trafic en sortie par le port 4 </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Si un message entre par le port 5 du commutateur et possède l'adresse de destination EE, le commutateur transfère le trafic en sortie par le port 1. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Si un message entre par le port 3 du commutateur et possède l'adresse de destination AB, le commutateur transfère le trafic en sortie par le port 6 </li>
+</ul>
+</p>
+<p></p>
+<p>La seule intelligence du commutateur de réseau local consiste à utiliser sa table pour transférer le trafic en fonction du port d'entrée et de l'adresse de destination d'un message. Un commutateur de réseau local utilise une seule table de commutation qui décrit une association stricte entre les adresses et les ports ; par conséquent, un message comportant une adresse de destination donnée sort toujours par le même port, quel que soit le port d'entrée qu'il ait utilisé. </p>
+<p></p>
+<p>Les commutateurs LAN Cisco transmettent des trames Ethernet basées sur l'adresse MAC de destination des trames.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

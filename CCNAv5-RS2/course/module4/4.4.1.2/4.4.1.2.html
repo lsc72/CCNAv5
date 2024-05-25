@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.1.2 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>De nombreux indicateurs en matière de structure et de performances sont utilisés pour étudier les réseaux : topologie, vitesse, coût, sécurité, disponibilité, évolutivité et fiabilité.</p>
+<p></p>
+<p>Les routeurs Cisco et les commutateurs Cisco ont beaucoup de points communs. Ils prennent en charge le même système d'exploitation de modes, les mêmes structures de commandes et comptent de nombreuses commandes similaires. Une fonction de distinction entre les commutateurs et les routeurs est le type d'interface pris en charge par chacun. Lorsqu'une interface est configurée sur les deux périphériques, les commandes show appropriées doivent être utilisées pour vérifier le bon fonctionnement de l'interface.</p>
+<p></p>
+<p>Le rôle principal d'un routeur est de relier plusieurs réseaux et de transférer des paquets d'un réseau à l'autre. Cela signifie qu'un routeur comporte généralement plusieurs interfaces. Chaque interface est membre d'un réseau IP différent ou en est un hôte. </p>
+<p></p>
+<p>Le logiciel CISCO IOS utilise ce que l'on appelle la distance administrative (AD) pour déterminer la route à installer dans la table de routage IP. La table de routage est la liste des réseaux connus du routeur. La table de routage inclut des adresses réseau pour ses propres interfaces, qui correspondent aux réseaux connecté directements, ainsi que des adresses réseau pour des réseaux distants. Un réseau distant est un réseau qui n'est accessible qu'en transférant le paquet vers un autre routeur.</p>
+<p></p>
+<p>Les réseaux distants sont ajoutés à la table de routage de deux manières : soit par la configuration manuelle de routes statiques par l'administrateur réseau, soit par l'implémentation d'un protocole de routage dynamique. Les routes statiques n'ont pas autant de surcharge que les protocoles de routage dynamique ; elles peuvent toutefois nécessiter plus de maintenance si la topologie change constamment ou si celle-ci est instable. </p>
+<p></p>
+<p>Les protocoles de routage dynamique s'adaptent automatiquement aux modifications, sans qu'aucune intervention de l'administrateur réseau ne soit nécessaire. Les protocoles de routage dynamique requièrent un traitement accru par le processeur et ils utilisent un certain nombre de liens pour les mises à jour et les messages de routage. Souvent, une table de routage contient à la fois des routes statiques et des routes dynamiques. </p>
+<p></p>
+<p>Les routeurs prennent leur décision principale de transfert au niveau de la couche 3, c'est-à-dire la couche réseau. Toutefois, les interfaces du routeur participent aux couches 1, 2 et 3. Les paquets IP de couche 3 sont encapsulés dans une trame liaison de données de couche 2 et codés en bits au niveau de la couche 1. Les interfaces du routeur participent aux processus de couche 2 associés à leur encapsulation. Par exemple, l'interface Ethernet d'un routeur participe au processus ARP comme d'autres hôtes se trouvant sur ce réseau local.</p>
+<p></p>
+<p>La table de routage IP Cisco n'est pas une base de données linéaire. La table de routage est en fait une structure hiérarchique utilisée pour accélérer le processus de recherche lors de la localisation de routes et du transfert de paquets.</p>
+<p></p>
+<p>Les composants de la table de routage IPv6 sont très similaires à ceux de la table de routage IPv4. Par exemple, la table est remplie à l'aide d'interfaces connectées directement, de routes statiques et de routes acquises de manière dynamique. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

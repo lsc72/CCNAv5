@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.3.4 Configuration d&#x0027;une interface de bouclage IPv4</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration initiale d&#x0027;un routeur</h1>
+        <h2>Paramètres de base d&#x0027;un routeur</h2>
+      </div>
+      <div id="content">
+<p>Une autre configuration courante des routeurs Cisco IOS consiste à activer une interface de bouclage.</p>
+<p></p>
+<p>L'interface de bouclage est une interface logique interne au routeur. Elle n'est pas affectée à un port physique et ne peut donc jamais être connectée à un autre périphérique. Elle est considérée comme une interface logicielle qui est automatiquement placée en état « up », tant que le routeur fonctionne. </p>
+<p></p>
+<p>L'interface de bouclage est utile en cas de test et de gestion d'un périphérique Cisco IOS, car elle garantit qu'au moins une interface est toujours disponible. Par exemple, elle peut être utilisée à des fins de test des processus de routage internes, par exemple, en émulant les réseaux se trouvant derrière le routeur. </p>
+<p></p>
+<p>En outre, l'adresse IPv4 affectée à l'interface de bouclage peut jouer un rôle essentiel pour les processus du routeur qui utilisent une adresse IPv4 d'interface à des fins d'identification, comme le protocole OSPF. En activant une interface de bouclage, le routeur utilise l'adresse de l'interface de bouclage toujours disponible pour l'identification, et non une adresse IP attribuée à un port physique qui peut tomber en panne. </p>
+<p></p>
+<p>L'activation et l'attribution d'une adresse de bouclage sont simples :</p>
+<p></p>
+<p>
+<span class="cmd">Router(config)# </span>
+<span class="cmd">
+<b>interface loopback </b>
+</span>
+<span class="cmd">
+<i>numéro</i>
+</span>
+</p>
+<p>
+<span class="cmd">Router(config-if)# </span>
+<span class="cmd">
+<b>ip address </b>
+</span>
+<span class="cmd">
+<i>ip-address</i>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>subnet-mask</i>
+</span>
+</p>
+<p>
+<span class="cmd">Router(config-if)# </span>
+<span class="cmd">
+<b>exit</b>
+</span>
+</p>
+<p></p>
+<p>Plusieurs interfaces de bouclage peuvent être activées sur un routeur. L'adresse IPv4 de chaque interface de bouclage doit être unique et ne doit pas être utilisée par une autre interface. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

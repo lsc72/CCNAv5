@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.2.1 Route statique par défaut</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration des routes statiques et par défaut</h1>
+        <h2>Configuration des routes par défaut IPv4</h2>
+      </div>
+      <div id="content">
+<p>Une route par défaut est une route statique qui correspond à tous les paquets. Au lieu de stocker toutes les routes vers tous les réseaux dans la table de routage, un routeur peut stocker une route par défaut unique pour représenter n'importe quel réseau ne figurant pas dans la table de routage.</p>
+<p></p>
+<p>Les routeurs utilisent couramment des routes par défaut configurées localement ou apprises d'un autre routeur, à l'aide d'un protocole de routage dynamique. Une route par défaut est utilisée lorsqu'aucune autre route de la table de routage ne correspond à l'adresse IP de destination du paquet. En d'autres termes, si une correspondance plus spécifique n'existe pas, la route par défaut est utilisée comme passerelle de dernier recours. </p>
+<p></p>
+<p>Les routes statiques par défaut sont communément utilisées lors de la connexion :</p>
+<p>
+<ul>
+<li>D'un routeur de périphérie au réseau d'un fournisseur de services</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>D'un routeur d'extrémité (un routeur avec un seul routeur voisin en amont) </li>
+</ul>
+</p>
+<p></p>
+<p>Comme vous le voyez dans la figure, la syntaxe de commande pour une route statique par défaut est similaire à toute autre route statique, à l'exception du fait que l'adresse réseau correspond à <span class="cmd"><b>0.0.0.0</b></span> et que le masque de sous-réseau correspond à <span class="cmd"><b>0.0.0.0</b></span>. La syntaxe des commandes de base d'une route statique par défaut est :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>ip route 0.0.0.0 0.0.0.0 </b>
+</span>
+<span class="cmd">{</span>
+<span class="cmd">
+<i>ip-address </i>
+</span>
+<span class="cmd">|</span>
+<span class="cmd">
+<i> exit-intf</i>
+</span>
+<span class="cmd">}</span>
+</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque :</b> une route statique par défaut IPv4 est généralement appelée « route à quatre zéros ». </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

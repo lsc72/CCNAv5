@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.2.2 Résolution des problèmes d&#x0027;accessibilité</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurer Frame Relay</h1>
+        <h2>Configuration des sous-interfaces</h2>
+      </div>
+      <div id="content">
+<p>Il y a plusieurs moyens de remédier au problème d'accessibilité :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Désactiver le découpage d'horizon </b>: une des méthodes pour résoudre les problèmes d'accessibilité engendrées par le découpage d'horizon est de le désactiver. Cependant, la désactivation du découpage d'horizon augmente les risques de boucles de routage dans votre réseau. De plus, seul le protocole IP permet la désactivation du découpage d'horizon, IPX et AppleTalk ne le permettant pas.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Topologie à maillage global </b>: une autre méthode est d'utiliser une topologie à maillage global, même si cette topologie entraîne des coûts supplémentaires.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Sous-interfaces </b>: dans une topologie Hub and Spoke Frame Relay, le routeur hub peut être configuré avec des interfaces logiques, les sous-interfaces.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Sous-interfaces Frame Relay</b>
+</p>
+<p>Frame Relay peut fragmenter une interface physique en plusieurs interfaces virtuelles appelées sous-interfaces, comme illustré à la Figure 1. Une sous-interface est tout simplement une interface logique directement associée à une interface physique. Ainsi, les sous-interfaces Frame Relay peuvent être configurées pour que chaque circuit virtuel permanent arrive dans une interface série physique.</p>
+<p></p>
+<p>Pour activer le transfert des mises à jour de routage de diffusion dans un réseau Frame Relay, vous pouvez configurer le routeur avec des sous-interfaces logiques. Avec une configuration de sous-interfaces, chaque circuit virtuel peut être configuré comme connexion point à point. Un réseau à maillage partiel peut être divisé en un certain nombre de réseaux à maillage global point à point plus petits. Chaque sous-réseau point à point peut être affecté à une adresse réseau unique. Ceci permet à chaque sous-interface de fonctionner comme une ligne louée. Avec une sous-interface point à point Frame Relay, chaque paire de routeurs point à point réside dans son propre sous-réseau. Ceci permet aux paquets reçus sur une sous-interface d'être envoyés sur une autre sous-interface, même si les paquets sont transférés de la même interface physique.</p>
+<p></p>
+<p>Les sous-interfaces Frame Relay peuvent être configurées en mode point à point ou en mode multipoint :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Point à point </b>(Figure 2) : une sous-interface point à point unique établit une connexion de circuit virtuel permanent à une autre interface physique ou une autre sous-interface sur un routeur distant. Dans ce cas, chaque paire de routeurs point à point réside sur son propre sous-réseau et chaque sous-interface point à point dispose d'un seul identificateur DLCI. Dans un environnement point à point, chaque sous-interface agit comme une interface point à point. Pour chaque circuit virtuel point à point, il existe un sous-réseau distinct. Par conséquent, le trafic des mises à jour du routage n'est pas soumis à la règle du découpage d'horizon. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Multipoint </b>(Figure 3) : une sous-interface multipoint unique établit plusieurs connexions de circuit virtuel permanent avec plusieurs interfaces physiques ou sous-interfaces sur des routeurs distants. Toutes les interfaces participantes se trouvent dans le même sous-réseau. La sous-interface fonctionne comme une interface Frame Relay NBMA, de telle sorte que le trafic des mises à jour du routage est soumis à la règle du découpage d'horizon. Tous les circuits virtuels multipoints appartiennent au même sous-réseau.</li>
+</ul>
+</p>
+<p></p>
+<p>Lors de la configuration de sous-interfaces, la commande <span class="cmd"><b>encapsulation frame-relay</b></span> est affectée à l'interface physique. Tous les autres éléments de configuration, comme l'adresse de couche réseau et les DLCI, sont affectés à la sous-interface. </p>
+<p></p>
+<p>Les configurations de sous-interface multipoint peuvent aider à conserver les adresses. Ceci peut être utile si le masquage de sous-réseau de longueur variable (VLSM) n'est pas utilisé. Toutefois, les configurations multipoint risquent de ne pas fonctionner correctement, compte tenu du trafic de multidiffusion et du découpage d'horizon. L'option de sous-interface point à point a été créée pour remédier à ce problème.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

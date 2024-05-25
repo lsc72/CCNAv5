@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.3 Documentation de l&#x0027;adressage réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration initiale d&#x0027;un routeur</h1>
+        <h2>Brancher les périphériques</h2>
+      </div>
+      <div id="content">
+<p>Lorsque vous concevez un nouveau réseau ou que vous mappez un réseau existant, fournissez des explications écrites sur le réseau. Au minimum, la documentation doit identifier les éléments suivants :</p>
+<p>
+<ul>
+<li>les noms des périphériques ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>les interfaces utilisées ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>les adresses IP et masques de sous-réseau ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>les adresses des passerelles par défaut.</li>
+</ul>
+</p>
+<p></p>
+<p>Comme l'illustre la figure, ces informations sont recueillies au moyen de deux documents réseau utiles :</p>
+<p>
+<ul>
+<li>
+<b>Schéma de topologie</b> : offre une référence visuelle présentant la connectivité physique et l'adressage de couche 3 logique. Il est souvent créé à l'aide d'un logiciel, tel que Microsoft Visio.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Table d'adressage</b> : table dans laquelle figurent des noms de périphérique, interfaces, adresses IPv4, masques de sous-réseau et adresses de passerelle par défaut.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

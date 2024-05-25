@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.3.1 La commande ipv6 route</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration des routes statiques et par défaut</h1>
+        <h2>Configuration des routes statiques IPv6</h2>
+      </div>
+      <div id="content">
+<p>Les routes statiques pour IPv6 sont configurées à l'aide de la commande de configuration globale <span class="cmd"><b>ipv6 route</b></span>. La Figure 1 montre la version simplifiée de la syntaxe des commandes :</p>
+<p></p>
+<p>
+<span class="cmd">Router(config)#</span>
+<span class="cmd">
+<b>ipv6 route</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>ipv6-prefix/prefix-length</i>
+</span>
+<span class="cmd">
+<b></b>
+</span>
+<span class="cmd">{</span>
+<span class="cmd">
+<i>ipv6-address </i>
+</span>
+<span class="cmd">|</span>
+<span class="cmd">
+<i> exit-intf</i>
+</span>
+<span class="cmd">}</span>
+<span class="cmd">
+<b></b>
+</span>
+</p>
+<p></p>
+<p></p>
+<p>La plupart des paramètres sont identiques à la version IPv4 de la commande. Les routes statiques IPv6 peuvent également être implémentées comme :</p>
+<p>
+<ul>
+<li>route statique IPv6 standard</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>route statique IPv6 par défaut</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>route statique IPv6 récapitulative</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>route statique IPv6 flottante</li>
+</ul>
+</p>
+<p></p>
+<p>Comme avec IPv4, ces routes peuvent être configurées comme étant récursives, directement connectées ou entièrement spécifiées.</p>
+<p></p>
+<p>La commande de configuration globale <span class="cmd"><b>ipv6 unicast-routing</b></span> doit être configurée pour permettre au routeur de transférer des paquets IPv6. La Figure 2 illustre l'activation du routage de monodiffusion IPv6.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe dans les Figures 3 et 4 pour activer le routage de monodiffusion IPv6 sur R2 et R3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

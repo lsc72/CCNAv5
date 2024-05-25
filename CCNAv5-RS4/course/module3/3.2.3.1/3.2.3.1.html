@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.3.1 Établissement d&#x0027;une session PPP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement de PPP</h1>
+        <h2>Sessions PPP</h2>
+      </div>
+      <div id="content">
+<p>La phase d'établissement de la session PPP comporte elle-même trois phases, comme illustré :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Phase 1 : établissement du lien et négociation de la configuration.</b> Avant que le protocole PPP puisse échanger des datagrammes de couche réseau, par exemple IP, le protocole LCP doit d'abord ouvrir la connexion et négocier les options de configuration. Cette phase se termine lorsque le routeur récepteur renvoie une trame de reçu de configuration vers le routeur établissant la connexion. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Phase 2 : définition de la qualité de la liaison (facultative).</b> Le protocole LCP teste la liaison pour déterminer si la qualité de la liaison est suffisante pour utiliser les protocoles de couche réseau. Le protocole LCP peut retarder la transmission des informations de protocole de couche réseau jusqu'à la fin de la phase. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Phase 3 : négociation de la configuration du protocole de couche réseau.</b> Lorsque le protocole LCP a terminé la phase liée à la qualité de la liaison, le protocole NCP correspondant peut configurer séparément les protocoles de couche réseau et les démarrer et les arrêter à tout moment. Si le protocole LCP ferme la liaison, il en informe le protocole de couche réseau afin qu'il puisse appliquer l'action appropriée.</li>
+</ul>
+</p>
+<p></p>
+<p>La liaison reste configurée pour la communication, jusqu'à ce que des trames explicites LCP ou NCP la ferment, ou bien jusqu'à ce que des événements externes se produisent, par exemple l'expiration d'un minuteur d'inactivité ou une intervention de l'administrateur. </p>
+<p></p>
+<p>Le protocole LCP peut fermer la liaison à tout moment. C'est normalement le cas lorsqu'un des routeurs demande la fermeture, mais cela peut aussi se produire suite à un événement physique, par exemple la perte du porteur ou l'expiration d'un minuteur d'inactivité.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

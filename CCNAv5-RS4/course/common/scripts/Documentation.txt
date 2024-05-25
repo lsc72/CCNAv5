@@ -1,0 +1,79 @@
+
+Demo sample tickets
+
+single page with graphics 	-	1.1.1.1
+Multibar			-	1.1.1.3
+
+
+For Media XML
+ 	
+	Public variable 	-	mx
+
+
+In canvas.XML
+
+--------------------------------------------------------------------
+For Main Media properties
+--------------------------------------------------------------------
+
+Example:
+	<slide type="SINGLE" sWidth="470" sHeight="400">
+
+Explanation:
+
+	slide types 	-	"SINGLE"
+			-	"MBAR"
+			-	"MBUTTON"
+	
+	width		-	Stage width
+	height		- 	Stage Height
+
+Important notes:
+	if the stage size is 470x400 means dont have to specify widht & height
+
+--------------------------------------------------------------------
+For Text componoent properties
+--------------------------------------------------------------------
+
+Example:
+	<element type="LABEL" compId="ID_txt01" x="100" y="100" width="50" expand="up+down" align="center" style="" bgColor="#00f" borderColor="#000" borderStroke="2" corner="5"/>
+
+Explanation:
+
+	type		-	"LABEL" (For label texts)
+			-	"TITLE"	(For title texts)
+
+	x		-	x value
+	y		-	y value
+	width		-	width of the text comp
+	height	 	-	height of the text comp
+
+	align		-	"center"
+			-	"left"	
+		 	-	"right"
+
+	expand		-	"up"
+			-	"down"
+			-	"left"
+			-	"right"
+			-	"up+down"
+			-	"left+right"
+
+	size		-	font size
+	color		-	font color
+	style		-	inline css style
+	bgColor		-	backgournd color
+	borderColor	-	border color
+	border		-	border storke
+	corner		-	corner radius
+	rotation	-	rotate the text
+
+Important notes:
+
+	if text component type is "LABEL" means DON'T assign the size and color until the size is 10
+	if text component type is "TITLE" means DONT assign the x,y,width, color and size
+
+
+--------------------------------------------------------------------
+For Image componoent properties
+--------------------------------------------------------------------					

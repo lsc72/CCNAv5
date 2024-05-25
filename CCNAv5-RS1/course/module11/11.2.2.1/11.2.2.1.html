@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.2.2.1 Virus, vers et chevaux de Troie</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Garantie de la sécurité du réseau</h1>
+        <h2>Failles et attaques du réseau</h2>
+      </div>
+      <div id="content">
+<p>Les attaques de programmes malveillants peuvent provenir de différents types de programmes informatiques créés dans le but d'entraîner l'endommagement ou la perte de données. Les trois principaux types d'attaques de programmes malveillants sont les virus, les chevaux de Troie et les vers.</p>
+<p></p>
+<p>Un virus est un logiciel malveillant intégré à un autre programme pour exécuter une fonction indésirable spécifique sur l'ordinateur de l'utilisateur. Par exemple, il peut s'agir d'un programme intégré à command.com (interpréteur de commandes principal des systèmes Windows) qui supprime certains fichiers et infecte toute autre version de command.com qu'il détecte.</p>
+<p></p>
+<p>Un cheval de Troie se distingue uniquement par le fait qu'il a été entièrement conçu pour ressembler à une application normale, alors qu'il s'agit d'un outil malveillant. Une application logicielle qui exécute un programme de jeu sur un ordinateur peut être un exemple de cheval de Troie. Pendant que l'utilisateur est occupé à jouer, le cheval de Troie envoie une copie de lui-même à tous les contacts du carnet d'adresses de l'utilisateur. Les destinataires reçoivent le jeu et y jouent, ce qui propage le cheval de Troie à toutes les adresses de leur propre carnet.</p>
+<p></p>
+<p>En principe, un virus a besoin d'un mécanisme de transmission (un vecteur), comme un fichier .zip ou un autre fichier exécutable joint à un e-mail, pour transmettre son code d'un système à l'autre. Le virus informatique se distingue fondamentalement du ver par le fait qu'une interaction humaine est nécessaire pour le propager.</p>
+<p></p>
+<p>Les vers sont des programmes autonomes qui attaquent un système en tentant d'exploiter une faille spécifique. Lorsque l'exploitation de la vulnérabilité réussit, le ver recopie son programme de l'hôte assaillant vers les systèmes nouvellement exploités et le cycle recommence. Les différentes phases de l'attaque d'un ver sont les suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Activation de la vulnérabilité</b> : un ver s'installe en exploitant les vulnérabilités connues d'un système, comme des utilisateurs naïfs qui exécutent sans vérification un fichier exécutable joint à un e-mail.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Mécanisme de propagation</b> : l'accès à l'hôte étant acquis, le ver s'y reproduit, puis choisit d'autres cibles. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Charge</b> : une fois l'hôte infecté par un ver, le pirate peut y accéder et bien souvent en tant qu'utilisateur privilégié. Les assaillants peuvent utiliser une faille locale pour augmenter leur niveau de privilèges jusqu'à celui d'administrateur. </li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

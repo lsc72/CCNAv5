@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.2.3 Vérification de DHCPv6 sans état </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 6</h1>
+        <h2>DHCPv6 sans état</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Vérification du serveur DHCPv6 sans état</b>
+</p>
+<p></p>
+<p>Dans la Figure 1, la commande <span class="cmd"><b>show ipv6 dhcp pool</b></span> vérifie le nom du pool DHCP v6 et ses paramètres. Le nombre de clients actifs est 0, car le serveur ne conserve aucune information sur les états.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>show running-config</b></span> permet également de vérifier toutes les commandes qui ont été configurées précédemment.</p>
+<p></p>
+<p>
+<b>Vérification du client DHCPv6 sans état</b>
+</p>
+<p></p>
+<p>Dans cet exemple, un routeur est utilisé en tant que client DHCPv6 sans état. Sur la Figure 2, le résultat de la commande <span class="cmd"><b>show ipv6 interface</b></span> indique « <span class="cmd">Stateless address autoconfig enabled</span> », ce qui signifie que la configuration automatique des adresses sans état est activée sur le routeur et qu'il dispose d'une adresse de monodiffusion globale IPv6. L'adresse de monodiffusion globale IPv6 a été créée via SLAAC, qui inclut le préfixe contenu dans le message RA. L'IID a été généré à l'aide du processus EUI-64. DHCPv6 n'a pas été utilisé pour attribuer l'adresse IPv6.</p>
+<p></p>
+<p>Les informations concernant le routeur par défaut proviennent également du message RA. Il s'agissait de l'adresse IPv6 source du paquet contenant le message RA et de l'adresse link-local du routeur.</p>
+<p></p>
+<p>Le résultat de la commande <span class="cmd"><b>debug ipv6 dhcp detail</b></span> présenté à la Figure 3 montre les messages DHCPv6 échangés entre le client et le serveur. Dans cet exemple, la commande a été saisie sur le client. Le message DEMANDE D'INFORMATIONS s'affiche, car il est envoyé par un client DHCPv6 sans état. Notez que le client, le routeur R3, envoie les messages DHCPv6 de son adresse link-local à l'adresse All_DHCPv6_Relay_Agents_and_Servers FF02::1:2.</p>
+<p></p>
+<p>Le résultat du débogage affiche tous les messages DHCPv6 envoyés entre le client et le serveur, y compris les options de serveur DNS et de nom de domaine qui ont été configurées sur le serveur.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 4 pour configurer et vérifier DHCPv6 sans état sur le routeur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

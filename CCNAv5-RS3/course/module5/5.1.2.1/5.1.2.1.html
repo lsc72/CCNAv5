@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.2.1 Types de réseaux OSPF</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées du protocole OSPF à zone unique </h1>
+        <h2>OSPF dans les réseaux à accès multiple</h2>
+      </div>
+      <div id="content">
+<p>Pour configurer les paramètres OSPF, commencez par une implémentation de base du protocole de routage OSPF. </p>
+<p></p>
+<p>OSPF définit cinq types de réseaux, comme illustré aux Figures 1 à 5.</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Point à point</b> : deux routeurs interconnectés sur un lien commun. Aucun autre routeur n'est présent sur ce lien. Cette configuration est souvent utilisée pour les liens de réseaux étendus. (Figure 1)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Accès multiple avec diffusion</b> : routeurs multiples interconnectés sur un réseau Ethernet. (Figure 2)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Accès NBMA (Nonbroadcast multiaccess)</b> : accès multiple sans diffusion, où des routeurs multiples sont interconnectés dans un réseau ne permettant pas les diffusions, par exemple Frame Relay. (Figure 3)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Point à multipoint</b> : routeurs multiples interconnectés dans une topologie Hub and Spoke sur un réseau à accès NBMA. Cette configuration est souvent utilisée pour connecter des sites d'agences (spokes) à un site central (hub). (Figure 4)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Liens virtuels</b> : réseau OSPF spécial utilisé pour interconnecter des zones OSPF distantes à la zone fédératrice. (Figure 5)</li>
+</ul>
+</p>
+<p></p>
+<p>Un réseau à accès multiple est un réseau comportant des périphériques multiples sur le même support partagé, qui partagent des communications. Les réseaux locaux Ethernet constituent l'exemple le plus répandu de réseau à accès multiple avec diffusion. Dans les réseaux de diffusion, tous les périphériques du réseau voient toutes les trames de diffusion et de multidiffusion. Ce sont également des réseaux à accès multiple, car de nombreux hôtes, imprimantes, routeurs et autres périphériques peuvent être membres du même réseau. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

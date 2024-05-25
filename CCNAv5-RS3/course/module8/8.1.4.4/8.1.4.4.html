@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.4.4 Équilibrage de la charge IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.4.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations EIGRP avancées</h1>
+        <h2>Réglage précis des interfaces EIGRP</h2>
+      </div>
+      <div id="content">
+<p>La Figure 1 montre la topologie du réseau EIGRP pour IPv6. Les liens série dans la topologie présentent la même bande passante que dans la topologie EIGRP pour IPv4.</p>
+<p></p>
+<p>Comme dans le scénario précédent pour IPv4, R3 comporte deux routes EIGRP à coût égal pour le réseau entre R1 et R2, 2001:DB8:CAFE:A001::/64. Une route passe par R1 à FE80::1 et l'autre passe par R2 à FE80::2. </p>
+<p></p>
+<p>La Figure 2 montre que les métriques EIGRP sont identiques dans les tables de routage IPv6 et IPv4 pour les réseaux 2001:DB8:CAFE:A001::/64 et 172.16.3.0/30, car la métrique composite EIGRP est la même pour les protocoles EIGRP pour IPv6 et IPv4. </p>
+<p></p>
+<p>
+<b>Équilibrage de charge à coût inégal</b>
+</p>
+<p></p>
+<p>Les protocoles EIGRP pour IPv4 et IPv6 peuvent également équilibrer le trafic entre plusieurs routes qui comportent des métriques différentes. C'est ce que l'on appelle l'équilibrage de charge à coût inégal. Le réglage d'une valeur à l'aide de la commande de mode de configuration du routeur<span class="cmd"><b> variance </b></span>permet au processus EIGRP d'installer plusieurs routes sans boucle avec un coût inégal dans une table de routage locale. </p>
+<p></p>
+<p>Une route apprise via le protocole EIGRP doit remplir deux critères pour figurer dans la table de routage locale :</p>
+<p>
+<ul>
+<li>La route doit être sans boucle, être un successeur potentiel ou avoir une distance annoncée inférieure à la distance totale.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La métrique de la route doit être inférieure à celle de la meilleure route (successeur) multipliée par la variance configurée sur le routeur.</li>
+</ul>
+</p>
+<p></p>
+<p>Par exemple, si la variance est réglée sur 1, seules les routes avec la même métrique que le successeur sont installées dans la table de routage locale. Si la variance est réglée sur 2, toute route apprise par le protocole EIGRP avec une métrique inférieure à 2 fois la métrique du successeur sera installée dans la table de routage locale.</p>
+<p></p>
+<p>Pour contrôler le mode de distribution du trafic sur les routes lorsque plusieurs routes vers le même réseau de destination présentent des coûts différents, utilisez la commande<span class="cmd"><b> trafﬁc-share balanced</b></span>. Le trafic est alors distribué proportionnellement au rapport des coûts. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

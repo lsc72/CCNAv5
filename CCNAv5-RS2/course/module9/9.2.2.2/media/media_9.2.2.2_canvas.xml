@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_title" />
+			<element type="TEXT" compId="ID_txt01" width="72" x="0" y="55.35" align="right" expand="up+down" />
+			<element type="TEXT" compId="ID_txt02" width="72" x="0" y="130.4" align="right" expand="up+down" />
+			<element type="TEXT" compId="ID_txt03" width="72" x="0" y="233.4" align="right" expand="up+down" />
+			<element type="TEXT" compId="ID_txt04" width="72" x="0" y="337" align="right" expand="up+down" />  
+	<element type="ROUTER" textId="staticTxt" width="391.8" height="47.7" x="75.65" y="40" style="font-family:Courier New"/>
+	<element type="ROUTER" textId="staticTxt1" width="391.8" height="87.4" x="75.65" y="95.2" style="font-family:Courier New"/>
+	<element type="ROUTER" textId="staticTxt2" width="391.8" height="103.65" x="75.65" y="190.1" style="font-family:Courier New"/>
+	<element type="ROUTER" textId="staticTxt3" width="391.8" height="88.5" x="75.65" y="301.25" style="font-family:Courier New"/>
+			
+	</slide>
+	<text id="staticTxt"><![CDATA[ 		R1(config)#<b>access-list 1 deny host 192.168.10.99  </b> R1(config)#<b>access-list 1 permit 192.168.0.0 0.0.255.255  </b>	
+	]]></text>
+	<text id="staticTxt1"><![CDATA[ 		R1# <b>show access-lists 1  </b><br/> Standard IP access list 1<br/>
+			<div style="background-color:#FACCA8;padding-left:10px;width:363px"> 				10 deny 192.168.10.99</div> 				<span style="padding-left:10px;">20 permit 192.168.0.0, wildcard bits 0.0.255.255</span><br/> R1#
+	]]></text>
+	<text id="staticTxt2"><![CDATA[ 		R1# <b>conf t  </b><br/> R1(config)#<b>ip access-list standard 1  </b><br/> R1(config-std-nacl)#<b>no 10  </b><br/> R1(config-std-nacl)#<b>10 deny host 192.168.10.10  </b><br/> R1(config-std-nacl)#<b>end  </b><br/> R1#	
+	]]></text>
+	<text id="staticTxt3"><![CDATA[ 		R1# <b>show access-lists  </b><br/> Standard IP access list 1<br/>
+		<div style="background-color:#FACCA8;padding-left:10px;width:363px"> 			10 deny 192.168.10.10</div> 			<span style="padding-left:10px;">20 permit 192.168.0.0, wildcard bits 0.0.255.255</span><br/> R1#	
+	]]></text>
+</data>

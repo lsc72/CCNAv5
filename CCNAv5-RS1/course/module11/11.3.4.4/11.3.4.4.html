@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.3.4.4 Utilisation de la commande show ip interface brief</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.3.4.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Performances réseau de base</h1>
+        <h2>Commandes hôtes et IOS</h2>
+      </div>
+      <div id="content">
+<p>De la même manière que les commandes et les utilitaires sont utilisés pour vérifier la configuration d'un hôte, les commandes peuvent être utilisées pour vérifier les interfaces des périphériques intermédiaires. Cisco IOS fournit plusieurs commandes permettant de vérifier le fonctionnement des interfaces de routeur et de commutateur.</p>
+<p></p>
+<p>
+<b>Vérification des interfaces de routeur</b>
+</p>
+<p></p>
+<p>Pour vérifier les interfaces d'un routeur, la commande <span class="cmd"><b>show ip interface brief</b></span> est le plus souvent préférée à la commande <span class="cmd"><b>show ip interface</b></span>, car ses résultats sont plus abrégés. Elle fournit un résumé des informations clés pour toutes les interfaces réseau d'un routeur.</p>
+<p></p>
+<p>La Figure 1 présente la topologie utilisée dans cet exemple.</p>
+<p></p>
+<p>Sur la Figure 2, cliquez sur le bouton R1. Le résultat de la commande <span class="cmd"><b>show ip interface brief</b></span> affiche toutes les interfaces du routeur, l'adresse IP attribuée à chaque interface et, le cas échéant, l'état opérationnel de l'interface.</p>
+<p></p>
+<p>D'après le résultat, l'interface FastEthernet 0/0 possède l'adresse IP 192.168.254.254. Les deux dernières colonnes de cette ligne indiquent l'état des couches 1 et 2 de cette interface. La mention <span class="cmd"><b>up</b></span> dans la colonne Status indique que cette interface est opérationnelle sur la couche 1. La mention <span class="cmd"><b>up</b></span> dans la colonne Protocol indique que le protocole de couche 2 est lui aussi opérationnel.</p>
+<p></p>
+<p>Notez également que l'interface Serial 0/0/1 n'a pas été activée puisque son état indiqué dans la colonne Status est <span class="cmd"><b>administratively down</b></span>. </p>
+<p></p>
+<p>De même que dans le cas d'un périphérique final, vous pouvez vérifier la connectivité de couche 3 du routeur avec les commandes <span class="cmd"><b>ping</b></span> et <span class="cmd"><b>traceroute</b></span>. Dans cet exemple, les commandes <span class="cmd"><b>ping</b></span> et<span class="cmd"><b> trace</b></span> affichent une connectivité fonctionnelle.</p>
+<p></p>
+<p>
+<b>Vérification des interfaces de commutateur</b>
+</p>
+<p></p>
+<p>Sur la Figure 2, cliquez sur le bouton S1. La commande <span class="cmd"><b>show ip interface brief</b></span> peut également servir à vérifier l'état des interfaces du commutateur. L'adresse IP du commutateur est appliquée à une interface de réseau local virtuel. Dans ce cas, l'interface Vlan1 obtient l'adresse IP 192.168.254.250, elle a été activée et est opérationnelle.</p>
+<p></p>
+<p>Le résultat indique également que l'interface FastEthernet0/1 est désactivée. Cela signifie soit qu'aucun périphérique n'est connecté à l'interface soit que l'interface réseau du périphérique connecté à cette interface n'est pas opérationnelle. </p>
+<p></p>
+<p>En revanche, les résultats affichés pour FastEthernet0/2 et FastEthernet0/3 montrent que ces interfaces sont opérationnelles. Cet état est indiqué par la mention <span class="cmd"><b>up</b></span> dans les deux colonnes Status et Protocol.</p>
+<p></p>
+<p>Le commutateur peut aussi tester sa connectivité de couche 3 à l'aide des commandes <span class="cmd"><b>show ip interface brief</b></span> et <span class="cmd"><b>traceroute</b></span>. Dans cet exemple, les commandes <span class="cmd"><b>ping</b></span> et<span class="cmd"><b> trace</b></span> affichent une connectivité fonctionnelle. </p>
+<p></p>
+<p>Il est important de garder à l'esprit qu'un commutateur ne doit pas forcément disposer d'une adresse IP pour effectuer son travail de transmission de trame sur la couche 2. L'adresse IP est nécessaire seulement si le commutateur est prévu pour être géré en réseau à l'aide de Telnet ou de SSH. Si l'administrateur réseau a l'intention de se connecter à distance au commutateur à partir d'un emplacement extérieur au réseau local, alors une passerelle par défaut doit également être configurée. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

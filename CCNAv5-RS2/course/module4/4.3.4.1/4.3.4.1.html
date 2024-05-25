@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.4.1 Routage dynamique </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement d&#x0027;un routeur</h1>
+        <h2>Protocoles de routage dynamique</h2>
+      </div>
+      <div id="content">
+<p>Les protocoles de routage dynamique sont utilisés par les routeurs pour partager des informations sur l'accessibilité et l'état des réseaux distants. Les protocoles de routage dynamique effectuent plusieurs tâches, notamment la détection de réseaux et la gestion des tables de routage.</p>
+<p></p>
+<p>La détection de réseaux est la capacité d'un protocole de routage à partager des informations concernant les réseaux qu'il connaît avec d'autres routeurs utilisant le même protocole de routage. Au lieu de configurer manuellement des routes statiques vers des réseaux distants sur chaque routeur, un protocole de routage dynamique permet aux routeurs de recevoir automatiquement, par le biais d'autres routeurs, les informations nécessaires concernant ces réseaux. Ces réseaux, ainsi que le meilleur chemin vers chacun d'eux, sont ajoutés à la table de routage du routeur et identifiés comme des réseaux détectés par un protocole de routage dynamique spécifique.</p>
+<p></p>
+<p>Lors de la découverte du réseau, les routeurs échangent des routes et mettent à jour leurs tables de routage. Les routeurs ont convergé après avoir terminé leurs échanges et mis à jour leurs tables de routage. Les routeurs gèrent alors les réseaux dans leurs tables de routage. </p>
+<p></p>
+<p>La figure présente un scénario simple illustrant la manière dont deux routeurs voisins échangeraient initialement des informations de routage. Dans ce message simplifié, le réseau d'échange R1 se présente et indique les réseaux qu'il peut atteindre. R2 répond et fournit ses réseaux à R1.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.1.1 Présentation des VPN</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Réseaux privés virtuels (VPN)</h1>
+        <h2>Notions de base des VPN</h2>
+      </div>
+      <div id="content">
+<p>Les entreprises ont besoin de moyens à la fois sécurisés, fiables et économiques permettant d'interconnecter plusieurs réseaux, par exemple pour que les filiales et les fournisseurs puissent se connecter au réseau du siège de l'entreprise. De plus, avec l'augmentation du nombre de télétravailleurs, les entreprises ont un besoin croissant de moyens sécurisés, fiables et économiques de connecter aux ressources présentes sur les sites de l'entreprise les employés travaillant dans de petites structures ou des bureaux à domicile (SOHO), ainsi qu'à d'autres emplacements distants.</p>
+<p></p>
+<p>La figure illustre les topologies utilisées par les réseaux modernes pour connecter des emplacements distants. Dans certains cas, les sites distants sont uniquement connectés au siège, alors que dans d'autres cas, ils sont connectés à divers sites. </p>
+<p></p>
+<p>Les entreprises utilisent des VPN pour créer une connexion sécurisée de bout en bout par réseau privé sur des réseaux tiers, comme Internet ou des extranets. Le tunnel supprime la barrière de distance et permet aux utilisateurs distants d'accéder aux ressources réseau du site central. Un VPN est un réseau privé créé par tunneling sur un réseau public, généralement Internet. Un VPN est un environnement de communication dans lequel l'accès est strictement contrôlé de manière à autoriser les connexions homologues au sein d'une communauté définie d'intérêt.</p>
+<p></p>
+<p>Les premiers VPN étaient exclusivement des tunnels IP qui n'incluaient ni l'authentification ni le chiffrement des données. Par exemple, le protocole GRE est un protocole de tunneling développé par Cisco, capable d'encapsuler une large variété de types de paquets de protocole de couche réseau au sein de tunnels IP. Cela crée une liaison point à point vers des routeurs Cisco au niveau de points distants sur un interréseau IP. </p>
+<p></p>
+<p>À l'heure actuelle, l'implémentation sécurisée de VPN avec chiffrement, tels que des VPN IPsec, est ce qu'on entend habituellement par une mise en réseau privé virtuel.</p>
+<p></p>
+<p>Une passerelle VPN est requise pour l'implémentation de VPN. La passerelle VPN peut être un routeur, un pare-feu ou un périphérique Cisco ASA (Adaptive Security Appliance). Un périphérique ASA est un pare-feu autonome qui allie un pare-feu, un concentrateur VPN ainsi qu'un système de protection contre les intrusions en une seule image logicielle.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

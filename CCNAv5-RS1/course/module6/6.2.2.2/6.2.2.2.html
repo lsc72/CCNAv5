@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.2.2 Table de routage d&#x0027;un routeur IPv4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage</h1>
+        <h2>Tables de routage du routeur</h2>
+      </div>
+      <div id="content">
+<p>Une table de routage d'hôte ne contient que les informations sur les réseaux directement connectés. Un hôte nécessite une passerelle par défaut pour envoyer des paquets vers une destination distante. La table de routage d'un routeur contient des informations similaires mais peut également identifier des réseaux distants spécifiques. </p>
+<p></p>
+<p>La table de routage d'un routeur est similaire à la table de routage d'un hôte. En effet, ces deux tables de routage indiquent :</p>
+<p>
+<ul>
+<li>Réseau de destination</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>la métrique associée au réseau de destination ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>la passerelle permettant d'atteindre le réseau de destination.</li>
+</ul>
+</p>
+<p></p>
+<p>Sur un routeur Cisco IOS, la commande <span class="cmd"><b>show ip route</b></span> peut être utilisée pour afficher la table de routage de routeur. Un routeur fournit également des informations de routage supplémentaires, notamment comment la route a été découverte, la date de la dernière mise à jour et l'interface spécifique à utiliser pour atteindre une destination prédéfinie.</p>
+<p></p>
+<p>Lorsqu'un paquet arrive sur l'interface de routeur, le routeur examine l'en-tête du paquet pour déterminer le réseau de destination. Si le réseau de destination correspond à une route dans la table de routage, le routeur transfère le paquet en utilisant les informations indiquées dans la table de routage. Si plusieurs routes sont possibles pour la même destination, la métrique est utilisée pour décider de la route qui apparaît dans la table de routage.</p>
+<p></p>
+<p>La figure ci-contre illustre la table de routage du périphérique R1 dans un réseau simple. Contrairement à la table de routage d'hôte, il n'y a pas dans cette table de titre de colonne identifiant les informations contenues dans une entrée de table de routage. Par conséquent, il est important d'apprendre la signification des différents types d'informations inclus dans chaque entrée.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

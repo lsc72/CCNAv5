@@ -1,0 +1,78 @@
+﻿<textcomponents>
+
+<component id="ID_s1_title">
+	<text><![CDATA[<b>Topologie de référence OSPF</b>]]></text>		
+</component>
+
+<component id="ID_s1_txt01">
+	<text><![CDATA[<b>Zone&nbsp;0</b>]]></text>		
+</component>
+<component id="ID_s1_txt02">
+	<text><![CDATA[Internet]]></text>		
+</component>
+
+
+<component id="ID_s2_title">
+<text><![CDATA[<b>Configuration du protocole OSPF à zone unique sur R1</b>]]></text>
+</component>
+
+
+<component id="ID_s3_title">
+<text><![CDATA[<b>Configuration du protocole OSPF à zone unique sur R2</b>]]></text>
+</component>
+
+<component id="ID_s4_title">
+<text><![CDATA[<b>Configuration du protocole OSPF à zone unique sur R3</b>]]></text>
+</component>
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+<component id="ID_SC4" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font size='10' face="Arial" color="#0000FF">***Vous devez entrer la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font></b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>Configurez la bande passante de GigabitEthernet0/0 sur 1&nbsp;000&nbsp;000 et revenez au mode de configuration globale.</b></font>]]></existingcommands>
+		<command prompt="R3(config)#">
+		    <correctresponse><![CDATA[interface GigabitEthernet0/0]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[bandwidth 1000000]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[exit]]></correctresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Configurez les éléments suivants pour le protocole OSPF, en utilisant l'ID de processus&nbsp;10&nbsp;:<ul><li>Définissez l'ID de routeur à 3.3.3.3.<li>Définissez la bande passante de référence de coût à 1000&nbsp;Gbit (réflexion).<li>Annoncez les interfaces 192.168.1.1, 192.168.10.6 et 192.168.10.10 pour la zone&nbsp;0.<li>Définissez l'interface g0/0 comme passive.</b></font>]]></instruction>
+		</command>
+		<command prompt="R3(config)#">
+		    <correctresponse><![CDATA[router ospf 10]]></correctresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[router-id 3.3.3.3]]></correctresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[auto-cost reference-bandwidth 1000]]></correctresponse>
+			<deviceresponse><![CDATA[% OSPF: Reference bandwidth is changed.<br>        Please ensure reference bandwidth is consistent across all routers.]]></deviceresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[network 192.168.1.1 0.0.0.0 area 0]]></correctresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[network 192.168.10.6 0.0.0.0 area 0]]></correctresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[network 192.168.10.10 0.0.0.0 area 0]]></correctresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[passive-interface g0/0]]></correctresponse>
+			<deviceresponse><![CDATA[*Aug 28 17:15:26.547: %OSPF-5-ADJCHG: Process 10, Nbr 1.1.1.1 on Serial0/0/0 from LOADING to FULL, Loading Done<br>*Aug 28 17:15:26.863: %OSPF-5-ADJCHG: Process 10, Nbr 2.2.2.2 on Serial0/0/1 from LOADING to FULL, Loading Done<br>R3(config-router)#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Vous avez correctement configuré le protocole OSPF à zone unique sur R3.</b></font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+</textcomponents>

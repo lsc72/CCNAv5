@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.3.2.2 Modules destinés aux logements des commutateurs Cisco</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.3.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Commutateurs LAN</h1>
+        <h2>Fixe ou modulaire</h2>
+      </div>
+      <div id="content">
+<p>Les gammes de commutateurs Cisco sont fréquemment déployées dans le monde entier en raison des options supplémentaires flexibles qu'elles offrent. Cisco IOS propose non seulement l'ensemble de fonctionnalités le plus complet par rapport à tous les autres systèmes d'exploitation réseau, mais il est également adapté aux besoins de chaque périphérique réseau Cisco, en particulier aux commutateurs. </p>
+<p></p>
+<p>Pour illustrer les options disponibles, qui sont bien trop nombreuses pour être répertoriées ici, nous allons nous contenter de celles des commutateurs Catalyst 3560. Les commutateurs Catalyst 3560 sont équipés de ports SFP (Small Form-Factor Pluggable) qui prennent en charge différents modules émetteurs-récepteurs SFP. Voici la liste des modules SFP pris en charge sur un ou plusieurs types de commutateurs 3560 :</p>
+<p></p>
+<p>
+<b>Modules SFP FastEthernet</b> </p>
+<p>
+<ul>
+<li>100BASE-FX (fibre optique multimode (MMF)) pour 2 kilomètres (km)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>100BASE-LX10 (fibre optique monomode (SMF)) pour 2 km</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>100BASE-BX10 (SMF) pour 10 km</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>100BASE-EX (SMF) pour 40 km</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>100BASE-ZX (SMF) pour 80 km</li>
+</ul>
+</p>
+<p>
+<b>Modules SFP Gigabit Ethernet</b> </p>
+<p>
+<ul>
+<li>1000BASE-SX 50/62,5 μm (MMF) jusqu'à 550/220 m</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>1000BASE-LX/LH (SMF/MMF) jusqu'à 10/0,550 km</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>1000BASE-ZX (SMF) jusqu'à 70 km</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>1000BASE-BX10-D & 1000BASE-BX10-U (SMF) jusqu'à 10 km</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>1000BASE-T (émetteur-récepteur en fil de cuivre)</li>
+</ul>
+</p>
+<p>
+<b>Modules SFP 10 Gigabit Ethernet</b> </p>
+<p>
+<ul>
+<li>10G-SR (MMF) jusqu'à 400 m</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>10G-SR-X (MMF) jusqu'à 400 m (prise en charge d'une plage de températures étendue)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>10G-LRM (MMF) jusqu'à 220 m</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>FET-10G (MMF) jusqu'à 100 m (pour les liaisons montantes de matrice Nexus)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>10G-LR (SMF) jusqu'à 10 km</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>10G-LR-X (SMF) jusqu'à 10 km (prise en charge d'une plage de températures étendue) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>10G-ER (SMF) jusqu'à 40 km</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>10G-ZR (SMF) jusqu'à 80 km</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Twinax (émetteur-récepteur en fil de cuivre) jusqu'à 10 m</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Fibre optique active jusqu'à 10 m (pour les connexions intra/interrack) </li>
+</ul>
+</p>
+<p></p>
+<p>Les modules 40 Gigabit Ethernet et 100 Gigabit Ethernet sont pris en charge sur les périphériques Cisco haut de gamme, tels que le commutateur Catalyst 6500, les routeurs CRS et ASR 9000 et les commutateurs Nexus 7000.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.1.1 Évolution des protocoles de routage dynamique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de routage dynamique</h1>
+        <h2>Fonctionnement des protocoles de routage dynamique</h2>
+      </div>
+      <div id="content">
+<p>Les protocoles de routage dynamique sont utilisés dans les réseaux depuis la fin des années quatre-vingt. Le protocole RIP (Routing Information Protocol) est l'un des tout premiers protocoles de routage. La version 1 du protocole RIP (RIPv1) a été publiée en 1988, mais certains de ses algorithmes de base étaient déjà utilisés sur ARPANET (Advanced Research Projects Agency Network) dès 1969. </p>
+<p></p>
+<p>À mesure que les réseaux évoluaient et devenaient plus complexes, de nouveaux protocoles de routage ont émergé. Le protocole de routage RIP a été mis à jour pour prendre en compte la croissance de l'environnement réseau, devenant ainsi RIPv2. Toutefois, à ce jour, cette nouvelle version n'est toujours pas adaptée aux grands réseaux. Aussi, deux protocoles de routage avancés ont été développés pour répondre aux besoins des réseaux plus importants : OSPF (Open Shortest Path First) et IS-IS (Intermediate System-to-Intermediate System). Cisco a développé les protocoles IGRP (Interior Gateway Routing Protocol) et Enhanced IGRP (EIGRP), qui s'adaptent également bien aux réseaux de plus grande taille. </p>
+<p></p>
+<p>Il a fallu par ailleurs interconnecter des interréseaux différents et assurer un routage entre ces derniers. Le protocole BGP (Border Gateway Protocol) (BGP) est désormais utilisé entre les fournisseurs d'accès Internet (FAI). Le protocole BGP est également utilisé entre les FAI et leurs clients privés plus importants pour échanger des informations de routage. </p>
+<p></p>
+<p>La Figure 1 illustre le calendrier de l'ajout des divers protocoles. </p>
+<p></p>
+<p>La Figure 2 classifie les protocoles. </p>
+<p></p>
+<p>Le nombre d'appareils personnels utilisant le protocole IP ne cessant de croître, l'espace d'adressage IPv4 est pratiquement épuisé, ce qui a donné lieu à l'émergence du protocole IPv6. De nouvelles versions des protocoles de routage IP ont été développées pour prendre en charge les communications reposant sur IPv6 (voir la ligne IPv6 dans la figure). </p>
+<p></p>
+<p>Le protocole RIP est le plus simple des protocoles de routage dynamique. Il est utilisé dans cette section pour fournir des notions de base sur le protocole de routage. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

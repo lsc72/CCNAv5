@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.1.5 Configuration d&#x0027;une route statique entièrement spécifiée</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration des routes statiques et par défaut</h1>
+        <h2>Configuration des routes statiques IPv4</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Route statique entièrement spécifiée</b>
+</p>
+<p>Dans une route statique entièrement spécifiée, l'interface de sortie et l'adresse IP de tronçon suivant sont spécifiées. C'est un autre type de route statique qui est utilisé dans les systèmes d'exploitation IOS plus anciens, avant le protocole CEF. Cette forme de route statique est utilisée lorsque l'interface de sortie est une interface à accès multiple et il est nécessaire d'identifier explicitement le tronçon suivant. Le tronçon suivant doit être connecté directement à l'interface de sortie spécifique.</p>
+<p></p>
+<p>Supposons que la liaison réseau entre R1 et R2 soit une liaison Ethernet et que l'interface GigabitEthernet 0/1 de R1 soit connectée à ce réseau, tel qu'illustré dans la Figure 1. Le service CEF n'est pas activé. Pour éliminer la recherche récursive, une route statique directement connectée peut être mise en œuvre à l'aide de la commande suivante :</p>
+<p></p>
+<p>
+<span class="cmd">R1(config)# </span>
+<span class="cmd">
+<b>ip route 192.168.2.0 255.255.255.0 GigabitEthernet 0/1</b>
+</span>
+</p>
+<p></p>
+<p>Toutefois, cela peut entraîner des résultats inattendus ou incohérents. La différence entre un réseau Ethernet à accès multiples et un réseau série point à point repose sur le fait qu'un réseau point à point n'a qu'un seul autre périphérique sur ce réseau : le routeur à l'autre extrémité de la liaison. Avec les réseaux Ethernet, de nombreux périphériques différents peuvent partager le même réseau à accès multiple, y compris des hôtes et même plusieurs routeurs. En désignant seulement l'interface de sortie Ethernet dans la route statique, le routeur n'a pas assez d'informations pour déterminer le périphérique de tronçon suivant. </p>
+<p></p>
+<p>R1 sait que le paquet doit être encapsulé dans une trame Ethernet et envoyé en sortie via l'interface GigabitEthernet 0/1. Toutefois, R1 ne connaît pas l'adresse IPv4 de tronçon suivant et ne peut donc pas déterminer l'adresse MAC de destination pour la trame Ethernet.</p>
+<p></p>
+<p>En fonction de la topologie et des configurations sur les autres routeurs, cette route statique peut fonctionner ou ne pas fonctionner. Lorsque l'interface de sortie est un réseau Ethernet, il est recommandé d'utiliser une route statique entièrement spécifiée comprenant à la fois l'interface de sortie et l'adresse de tronçon suivant. </p>
+<p></p>
+<p>Comme l'illustre la Figure 2, lors de la transmission de paquets à R2, l'interface de sortie est Gigabit Ethernet 0/1 et l'adresse IPv4 de tronçon suivant est 172.16.2.2.</p>
+<p></p>
+<p>
+<b>Remarque :</b> grâce à l'utilisation du protocole CEF, une route statique entièrement spécifiée n'est plus nécessaire. Une route statique utilisant une adresse de tronçon suivant doit être utilisée.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe dans les Figures 3 et 4 pour configurer et vérifier les routes statiques entièrement spécifiées sur R2 et R3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

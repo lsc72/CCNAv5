@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.5.3 Exemple d&#x0027;authentification EIGRP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.5.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations EIGRP avancées</h1>
+        <h2>EIGRP sécurisé</h2>
+      </div>
+      <div id="content">
+<p>Pour authentifier les mises à jour de routage, toutes les interfaces dans lesquelles le protocole EIGRP est activé doivent être configurées pour prendre en charge l'authentification. La Figure 1 présente la topologie IPv4 et les interfaces configurées avec l'authentification. </p>
+<p></p>
+<p>La Figure 2 montre la configuration du routeur R1 à l'aide de la chaîne de clés<span class="cmd"><b> EIGRP_KEY </b></span>et de la chaîne clé<span class="cmd"><b> cisco123</b></span>. Une fois R1 configuré, les autres routeurs reçoivent les mises à jour de routage authentifiées. Les contiguïtés sont perdues jusqu'à ce que les voisins soient configurés avec l'authentification du protocole de routage.</p>
+<p></p>
+<p>La Figure 3 présente une configuration similaire pour le routeur R2. Notez que la même chaîne clé, <span class="cmd"><b>cisco123</b></span>, sert à authentifier les informations avec R1 et enfin, R3. </p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 4 pour configurer l'authentification du protocole EIGRP sur R3.</p>
+<p></p>
+<p>
+<b>Configuration de l'authentification du protocole EIGRP pour IPv6</b>
+</p>
+<p></p>
+<p>Les algorithmes et la configuration servant à authentifier les messages EIGRP pour IPv6 sont les mêmes que pour EIGRP pour IPv4. La seule différence est que les commandes de mode de configuration de l'interface utilisent<span class="cmd"><b> ipv6</b></span> à la place de<span class="cmd"><b> ip</b></span>.</p>
+<p></p>
+<p>
+<span class="cmd">Router(config-if)# </span>
+<span class="cmd">
+<b>ipv6 authentication mode eigrp</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>as-number</i>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<b>md5</b>
+</span>
+</p>
+<p>
+<span class="cmd">Router(config-if)# </span>
+<span class="cmd">
+<b>ipv6 authentication key-chain eigrp</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>as-number name-of-chain</i>
+</span>
+</p>
+<p></p>
+<p>La Figure 5 montre les commandes servant à configurer l'authentification EIGRP pour IPv6 sur le routeur R1 à l'aide de la chaîne de clés<span class="cmd"><b> EIGRP_IPV6_KEY </b></span>et de la chaîne clé<span class="cmd"><b> cisco123</b></span>. Les mêmes configurations doivent être utilisées sur R2 et R3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

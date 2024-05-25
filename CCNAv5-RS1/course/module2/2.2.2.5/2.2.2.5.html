@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.2.5 Messages de bannière</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Bases</h1>
+        <h2>Limitation de l&#x0027;accès aux configurations de périphérique</h2>
+      </div>
+      <div id="content">
+<p>Bien que les mots de passe soient l'un des moyens dont vous disposez pour empêcher l'accès non autorisé à un réseau, il est vital de mettre en place une méthode pour déclarer que l'accès à un périphérique est réservé aux personnes autorisées. À cet effet, ajoutez une bannière aux informations affichées par le périphérique.</p>
+<p></p>
+<p>Les bannières peuvent constituer une pièce importante dans un procès intenté à une personne qui aurait accédé illégalement à un périphérique. En effet, dans certains systèmes juridiques, il n'est pas possible de poursuivre des utilisateurs, ni même de les surveiller, sauf s'ils ont reçu une notification appropriée. </p>
+<p></p>
+<p>La formulation utilisée dans une bannière dépend des lois en vigueur localement et des stratégies d'entreprise. Voici quelques exemples d'informations à inclure dans une bannière : </p>
+<p></p>
+<p>
+<ul>
+<li>« L'utilisation du périphérique est strictement réservée au personnel autorisé. »</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>« Vos interactions avec le périphérique peuvent faire l'objet d'une surveillance. » </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>« Toute utilisation non autorisée fera l'objet de poursuites judiciaires. »</li>
+</ul>
+</p>
+<p></p>
+<p>Comme les bannières peuvent être vues par quiconque essaie d'ouvrir une session, le message doit être formulé avec la plus grande prudence. Par exemple, il faut éviter de laisser entendre que l'utilisateur qui ouvre la session est « bienvenu » ou « invité » à le faire. En effet, il est difficile de prouver la responsabilité d'une personne qui perturbe le fonctionnement du réseau après un accès non autorisé s'il apparaît qu'elle a été invitée à le faire. </p>
+<p></p>
+<p>La création de bannières est un processus simple, à condition de respecter un minimum de règles dans leur rédaction. Si vous utilisez une bannière, abstenez-vous de souhaiter la bienvenue à l'utilisateur accédant au routeur. Votre bannière doit préciser que seul le personnel autorisé a le droit d'accéder au périphérique. Enfin, la bannière peut contenir des informations sur les arrêts programmés du système et d'autres renseignements concernant tous les utilisateurs du réseau.</p>
+<p></p>
+<p>IOS fournit plusieurs types de bannières. L'une des bannières communes est le message du jour (MOTD). Ce message s'utilise souvent pour les mentions légales parce qu'il s'affiche sur tous les terminaux connectés. </p>
+<p></p>
+<p>Configurez le message du jour en entrant la commande <span class="cmd"><b>banner motd</b></span> en mode de configuration globale.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>banner motd</b></span> nécessite l'emploi de délimiteurs pour identifier le contenu du message de bannière. La commande <span class="cmd"><b>banner motd</b></span> est suivie d'un espace et d'un caractère de délimitation. Ensuite, une ou plusieurs lignes de texte constituent le message de bannière. Enfin, le caractère de délimitation apparaît une seconde fois pour marquer la fin du message. Vous pouvez utiliser comme délimiteur tout caractère ne figurant pas dans le message. C'est la raison pour laquelle les symboles tels que « # » sont souvent employés comme délimiteurs.</p>
+<p></p>
+<p>La syntaxe permettant de configurer un message du jour, en mode de configuration globale, est :</p>
+<p></p>
+<p>
+<span class="cmd">Switch(config)#</span>
+<span class="cmd">
+<b>banner motd #</b>
+</span>
+<span class="cmd">
+<i>le message</i>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<b>#</b>
+</span>
+</p>
+<p></p>
+<p>Une fois cette commande exécutée, la bannière s'affichera lors de toutes les tentatives d'accès au périphérique suivantes jusqu'à ce que vous la supprimiez.</p>
+<p></p>
+<p>La figure illustre une bannière configurée à l'aide du symbole « # ». Notez que la bannière est maintenant affichée lorsque vous accédez au commutateur. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

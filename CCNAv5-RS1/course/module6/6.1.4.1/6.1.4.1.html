@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.4.1 Limites du protocole IPv4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche réseau</h1>
+        <h2>Paquet IPv6</h2>
+      </div>
+      <div id="content">
+<p>Au fil des années, l'IPv4 a été mis à jour afin de relever de nouveaux défis. Cependant, même avec des modifications, l'IPv4 a toujours trois problèmes majeurs :</p>
+<p>
+<ul>
+<li>
+<b>Manque d'adresses IP</b> – l'IPv4 a un nombre limité d'adresses IP publiques disponibles. Bien qu'il existe environ 4 milliards d'adresses IPv4, le nombre croissant de périphériques IP, les connexions permanentes et la croissance potentielle des pays en voie de développement entraînent une hausse du nombre d'adresses devant être disponibles.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Croissance de la table de routage Internet</b> – une table de routage est utilisée par les routeurs pour déterminer les meilleurs chemins disponibles. À mesure que le nombre de serveurs (nœuds) connectés à Internet augmente, il en va de même pour le nombre de routes réseau. Ces routes IPv4 consomment beaucoup de mémoire et de ressources processeur sur les routeurs Internet. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Manque de connectivité de bout en bout</b> – la technologie de traduction d'adresses réseau (NAT) est généralement implémentée dans les réseaux IPv4. Cette technologie permet à plusieurs périphériques de partager une adresse IP publique unique. Cependant, étant donné que l'adresse IP publique est partagée, l'adresse IP d'un hôte interne du réseau est masquée. Cela peut être problématique pour les technologies nécessitant une connectivité de bout en bout.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

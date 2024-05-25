@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.1.1 Prise charge de la mobilité</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts de la technologie sans fil</h1>
+        <h2>Introduction à la technologie sans fil</h2>
+      </div>
+      <div id="content">
+<p>Les réseaux d’entreprise d’aujourd’hui évoluent de façon à prendre en charge les personnes itinérantes. Ces personnes se connectent à l'aide de différents périphériques, notamment des ordinateurs de bureau, ordinateurs portables, tablettes et smartphones. Dans cette vision de la mobilité, chacun emmène dans ses déplacements sa connexion au réseau.</p>
+<p></p>
+<p>Il existe de nombreuses infrastructures différentes (LAN filaire, réseaux de fournisseurs de services) qui rendent cette mobilité possible ; mais dans un environnement d'entreprise, la plus importante est le réseau local sans fil (WLAN). </p>
+<p></p>
+<p>La productivité ne se limite plus à un lieu de travail précis ou à une période définie. Aujourd'hui, les utilisateurs s'attendent à pouvoir être connectés en permanence, quels que soient le lieu et l'heure, au bureau, à la maison ou à l'aéroport. Autrefois, les salariés itinérants étaient contraints de passer des appels téléphoniques payants pour vérifier les messages et retourner des appels entre deux vols. Désormais, ils peuvent consulter leur messagerie électronique et vocale, ainsi que l'avancement de leurs projets, depuis leur smartphone.</p>
+<p></p>
+<p>Ils comptent sur une connexion sans fil dans tous leurs déplacements. Les fonctions d'itinérance permettent à un périphérique sans fil de maintenir l'accès Internet sans perte de connexion.</p>
+<p></p>
+<p>Visionnez la vidéo ci-contre pour découvrir la mobilité offerte par les réseaux sans fil.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

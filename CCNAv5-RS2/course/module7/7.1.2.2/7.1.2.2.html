@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.2.2 Tableau de bord de routage statique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de routage dynamique</h1>
+        <h2>Comparaison des routages statique et dynamique</h2>
+      </div>
+      <div id="content">
+<p>La table de la figure illustre les avantages et les inconvénients du routage statique. Il est facile de mettre en œuvre le routage statique sur un petit réseau. Les routes statiques restent inchangées, ce qui rend leur dépannage assez facile. Les routes statiques n'envoient pas de messages de mise à jour et, par conséquent, n'entraînent qu'une surcharge minime. </p>
+<p></p>
+<p>Les inconvénients du routage statique sont les suivants : </p>
+<p>
+<ul>
+<li>Les routes statiques ne sont pas faciles à mettre en œuvre dans un grand réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La gestion des configurations statiques peut prendre du temps.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Si un lien échoue, une route statique ne peut pas réacheminer le trafic. </li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

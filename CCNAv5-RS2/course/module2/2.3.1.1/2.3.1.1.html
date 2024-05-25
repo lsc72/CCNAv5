@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.1.1 Exercice : trio de commutateurs</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Trio de commutateurs</b>
+</p>
+<p></p>
+<p>
+<b>Scénario </b>
+</p>
+<p>Vous êtes l'administrateur réseau d'une PME. Le siège de votre entreprise a demandé l'implémentation de la sécurité sur tous les commutateurs dans tous les bureaux. Le mémorandum fourni ce matin :</p>
+<p>
+<i>« D'ici lundi 18 avril 20xx, les trois premiers ports de tous les commutateurs configurables situés dans tous les bureaux doivent être sécurisés avec des adresses MAC. Une adresse sera réservée à l'imprimante, une adresse sera réservée à l'ordinateur portable et une adresse sera réservée au serveur du bureau. </i>
+</p>
+<p>
+<i>Si la sécurité d'un port est compromise, nous vous demandons de le fermer jusqu'à ce que la raison de la faille de sécurité puisse être certifiée. </i>
+</p>
+<p>
+<i>Veuillez implémenter cette stratégie avant la date indiquée dans ce mémorandum. Pour toute question, appelez le +1.800.555.1212. Merci. L'équipe de gestion de réseau »</i>
+</p>
+<p>Travaillez avec un partenaire en classe et créez un exemple de Packet Tracer pour tester cette nouvelle stratégie de sécurité. Après avoir créé votre fichier, testez-le avec au moins un périphérique pour vous assurer qu'il est opérationnel ou validé. </p>
+<p>Enregistrez votre travail et préparez-vous à le partager avec la classe. </p>
+<p></p>
+<p>
+<a href="../../files/2.3.1.1%20Switch%20Trio%20Instructions.pdf" target="_blank">Exercice en classe : trio de commutateurs, instructions</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

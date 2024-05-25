@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.1.1 Couche liaison de données</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche liaison de données</h1>
+        <h2>Objectif de la couche liaison de données</h2>
+      </div>
+      <div id="content">
+<p>La couche d'accès au réseau TCP/IP correspond dans le modèle OSI aux couches suivantes :</p>
+<p>
+<ul>
+<li>Liaison de données (couche 2)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Physique (couche 1)</li>
+</ul>
+</p>
+<p></p>
+<p>Comme l'illustre la figure, la couche liaison de données est responsable de l'échange des trames entre les nœuds via un support réseau physique. Elle permet aux couches supérieures d'accéder aux supports et contrôle la manière dont les données sont placées et reçues sur les supports. </p>
+<p></p>
+<p>
+<b>Remarque</b> : la notation de couche 2 des périphériques réseau connectés à un support commun est appelée un nœud.</p>
+<p></p>
+<p>Plus précisément, la couche liaison de données assure ces deux services de base : </p>
+<p>
+<ul>
+<li>Elle accepte les paquets de couche 3 et les encapsule dans des unités de données appelées des trames. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Elle contrôle l'accès au support et détecte les erreurs.</li>
+</ul>
+</p>
+<p></p>
+<p>La couche liaison de données sépare efficacement les transitions de support qui se produisent lorsque le paquet est transféré à partir des processus de communication des couches supérieures. La couche liaison de données reçoit des paquets provenant d'un protocole de couche supérieure et les achemine également vers un protocole de couche supérieure, ici IPv4 ou IPv6. Ce protocole de couche supérieure n'a pas besoin de savoir quel support de communication sera utilisé. </p>
+<p></p>
+<p>
+<b>Remarque</b> : dans ce chapitre, le terme « support » n'est pas lié à du contenu numérique ou multimédia tel que l'audio, l'image, la télévision et la vidéo. Il fait référence au matériel qui transporte les signaux de données, tels que les câbles en cuivre et à fibre optique.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

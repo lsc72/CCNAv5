@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.2.4 Exemple : configuration de sous-interfaces point à point</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurer Frame Relay</h1>
+        <h2>Configuration des sous-interfaces</h2>
+      </div>
+      <div id="content">
+<p>La Figure 1 illustre la topologie précédente, mais avec des sous-interfaces point à point. Chaque circuit virtuel permanent est un sous-réseau distinct. Les interfaces physiques du routeur sont divisées en sous-interfaces, chaque sous-interface se trouvant sur un sous-réseau distinct.</p>
+<p></p>
+<p>Dans la figure 2, R1 a deux sous-interfaces point à point. La sous-interface s0/0/1.102 se connecte à R2 et la sous-interface s0/0/1.103 se connecte à R3. Chaque sous-interface se trouve sur un sous-réseau différent. </p>
+<p></p>
+<p>Pour configurer les sous-interfaces d'une interface physique, procédez comme suit :</p>
+<p></p>
+<p>
+<b>Étape 1. </b>Supprimez toutes les adresses de couche réseau affectées à l'interface physique. Si l'interface physique dispose d'une adresse, les trames ne sont pas reçues par les sous-interfaces locales.</p>
+<p></p>
+<p>
+<b>Étape 2. </b>Configurez l'encapsulation Frame Relay sur l'interface physique à l'aide de la commande <span class="cmd"><b>encapsulation frame-relay</b></span>.</p>
+<p></p>
+<p>
+<b>Étape 3. </b>Pour chaque circuit virtuel permanent défini, créez une sous-interface logique. Indiquez le numéro de port, suivi d'un point (.) et du numéro de sous-interface. Pour faciliter le dépannage, il est conseillé d'utiliser l'identificateur DLCI comme numéro de sous-interface. </p>
+<p></p>
+<p>
+<b>Étape 4.</b> Configurez une adresse IP pour l'interface et définissez la bande passante.</p>
+<p></p>
+<p>
+<b>Étape 5. </b>Configurez le DLCI local sur la sous-interface avec la commande <span class="cmd"><b>frame-relay interface-dlci</b></span>. Souvenez-vous que c'est le fournisseur de services Frame Relay qui attribue les identificateurs DLCI.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 3 pour configurer l'interface physique du routeur R2 en sous-interfaces point à point avec la configuration Frame Relay appropriée.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.2.4 Protocole EIGRP pour IPv6 : routes récapitulatives manuelles</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations EIGRP avancées</h1>
+        <h2>Résumé manuel</h2>
+      </div>
+      <div id="content">
+<p>Alors que la récapitulation automatique n'est pas disponible pour les réseaux EIGRP IPv6, il est possible d'activer la récapitulation manuelle pour le protocole EIGRP IPv6.</p>
+<p></p>
+<p>La Figure 1 présente une topologie EIGRP IPv6 avec quatre adresses de bouclage configurées sur R3. Ces adresses virtuelles servent à représenter les réseaux physiques dans la table de routage IPv6 de R3. Ces réseaux peuvent être récapitulés manuellement dans le protocole EIGRP pour IPv6.</p>
+<p></p>
+<p>La Figure 2 présente la configuration des adresses de bouclage IPv6 sur R3. Seules quatre adresses de bouclage sont présentées dans la topologie et configurées sur R3 ; toutefois, dans cet exemple, on suppose que tous les sous-réseaux 2001:DB8:ACAD::/48 peuvent être atteints via R3.</p>
+<p></p>
+<p>Pour configurer la récapitulation manuelle du protocole EIGRP pour IPv6 sur une interface EIGRP spécifique, utilisez la commande de mode de configuration d'interface suivante :</p>
+<p></p>
+<p>
+<span class="cmd">Router(config-if)# </span>
+<span class="cmd">
+<b>ipv6 summary-address eigrp</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>as-number prefix/prefix-length</i>
+</span>
+</p>
+<p></p>
+<p>La Figure 3 montre la configuration permettant de propager une route récapitulative manuelle EIGRP pour IPv6 vers R1 et R2 pour le préfixe 2001:DB8:ACAD::/48. Comme pour le protocole EIGRP pour IPv4, R3 comprend une route récapitulative vers null0 sous forme de mécanisme de prévention des boucles.</p>
+<p></p>
+<p>Il est possible de vérifier la réception de la route récapitulative manuelle en examinant la table de routage des autres routeurs du domaine de routage. La Figure 4 montre la route 2001:DB8:ACAD::/48 dans la table de routage IPv6 de R1.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

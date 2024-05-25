@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.2.4 Vérification des rôles de DR/BDR</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées du protocole OSPF à zone unique </h1>
+        <h2>OSPF dans les réseaux à accès multiple</h2>
+      </div>
+      <div id="content">
+<p>Dans la topologie à accès multiple illustrée à la Figure 1, trois routeurs sont interconnectés par un réseau à accès multiple Ethernet commun, 192.168.1.0/28. Chaque routeur est configuré avec l'adresse IP indiquée sur l'interface Gigabit Ethernet 0/0. </p>
+<p></p>
+<p>Comme les routeurs sont connectés sur un réseau commun à accès multiple avec diffusion, OSPF a sélectionné automatiquement un DR et un BDR. Dans cet exemple, R3 a été sélectionné comme DR car son ID de routeur est 3.3.3.3, soit le plus élevé de ce réseau. R2 est le BDR car son ID de routeur vient en deuxième position dans ce réseau.</p>
+<p></p>
+<p>Pour vérifier les rôles du routeur, utilisez la commande<span class="cmd"><b> show ip ospf interface </b></span>(Figure 2). Le résultat produit par R1 confirme les aspects suivants :</p>
+<p>
+<ul>
+<li>R1 n'est ni le DR, ni le BDR ; c'est un DROther, avec une priorité par défaut égale à 1. (1) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le routeur désigné (DR) est R3 avec l'ID de routeur 3.3.3.3 et l'adresse IP 192.168.1.3, tandis que le routeur désigné de secours (BDR) est R2 avec l'ID de routeur 2.2.2.2 et l'adresse IP 192.168.1.2. (2)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>R1 comporte deux contiguïtés, l'une avec le BDR et l'autre avec le DR. (3)</li>
+</ul>
+</p>
+<p></p>
+<p>Le résultat produit par R2 à la Figure 3 confirme les aspects suivants :</p>
+<p>
+<ul>
+<li>R2 est le BDR, avec une priorité par défaut égale à 1. (1) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le routeur désigné (DR) est R3 avec l'ID de routeur 3.3.3.3 et l'adresse IP 192.168.1.3, tandis que le routeur désigné de secours (BDR) est R2 avec l'ID de routeur 2.2.2.2 et l'adresse IP 192.168.1.2. (2)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>R2 comporte deux contiguïtés, l'une avec un voisin dont l'ID de routeur est 1.1.1.1 (R1) et l'autre avec le DR. (3)</li>
+</ul>
+</p>
+<p></p>
+<p>Le résultat produit par R3 à la Figure 4 confirme les aspects suivants :</p>
+<p>
+<ul>
+<li>R3 est le DR, avec une priorité par défaut égale à 1. (1)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le routeur désigné (DR) est R3 avec l'ID de routeur 3.3.3.3 et l'adresse IP 192.168.1.3, tandis que le routeur désigné de secours (BDR) est R2 avec l'ID de routeur 2.2.2.2 et l'adresse IP 192.168.1.2. (2)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>R3 comporte deux contiguïtés, l'une avec un voisin dont l'ID de routeur est 1.1.1.1 (R1) et l'autre avec le BDR. (3)</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

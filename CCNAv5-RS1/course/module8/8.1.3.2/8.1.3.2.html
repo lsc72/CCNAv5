@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.3.2 Attribution d&#x0027;une adresse IPv4 dynamique à un hôte</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Adresses IPv4 de monodiffusion, de diffusion et de multidiffusion</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Attribution dynamique </b>
+</p>
+<p>Sur les réseaux locaux, il n'est pas rare que les utilisateurs changent fréquemment. Les nouveaux utilisateurs arrivent avec des ordinateurs portables et ont besoin d'une connexion. D'autres disposent de nouvelles stations de travail ou d'autres périphériques réseau, tels que des smartphones, qui doivent être connectés. Plutôt que de demander à l'administrateur réseau d'attribuer des adresses IP à chaque station de travail, il est plus facile d'attribuer ces adresses automatiquement. Cette opération est réalisée à l'aide du protocole DHCP (Dynamic Host Configuration Protocol), comme illustré à la Figure 1.</p>
+<p></p>
+<p>Le protocole DHCP permet l'attribution automatique des informations d'adressage, telles que l'adresse IP, le masque de sous-réseau, la passerelle par défaut et d'autres paramètres. La configuration du serveur DHCP nécessite qu'un bloc d'adresses, appelé pool d'adresses, soit utilisé pour l'attribution aux clients DHCP d'un réseau. Les adresses attribuées à ce pool doivent être définies de manière à exclure toutes les adresses statiques utilisées par d'autres périphériques.</p>
+<p></p>
+<p>Le protocole DHCP est généralement la méthode d'attribution d'adresses IPv4 privilégiée pour les réseaux de grande taille, car le personnel de support du réseau est dégagé de cette tâche et le risque d'erreur de saisie est presque éliminé. </p>
+<p></p>
+<p>L'autre avantage de l'attribution dynamique réside dans le fait que les adresses ne sont pas permanentes pour les hôtes, elles sont uniquement « louées » pour une certaine durée. Si l'hôte est mis hors tension ou retiré du réseau, l'adresse est retournée au pool pour être réutilisée. Cela est particulièrement intéressant pour les utilisateurs mobiles qui se connectent et se déconnectent d'un réseau.</p>
+<p></p>
+<p>Si le protocole DHCP est activé sur un périphérique hôte, la commande <span class="cmd"><b>ipconfig</b></span> peut être utilisée pour afficher les informations sur l'adresse IP attribuée par le serveur DHCP, comme illustré à la Figure 2.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

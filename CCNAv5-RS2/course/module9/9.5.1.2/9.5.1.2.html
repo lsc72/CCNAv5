@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.5.1.2 Comparaison des listes de contrôle d&#x0027;accès IPv4 et IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.5.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Listes de contrôle d&#x0027;accès IPv6</h1>
+        <h2>Création de listes de contrôle d&#x0027;accès IPv6</h2>
+      </div>
+      <div id="content">
+<p>Bien que les adresses IPv4 et IPv6 liste sont très similaires, il existe trois différences entre eux. </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Application d'une liste de contrôle d'accès IPv6</b>
+</li>
+</ul>
+</p>
+<p></p>
+<p>La première différence concerne la commande utilisée pour appliquer une liste de contrôle d'accès IPv6 à une interface. La commande <span class="cmd"><b>ip access-group</b></span> permet d'appliquer une liste de contrôle d'accès IPv4 à une interface IPv4. IPv6 utilise la commande <span class="cmd"><b>ipv6 traffic-filter</b></span> pour effectuer la même tâche sur les interfaces IPv6. </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Aucun masque générique</b>
+</li>
+</ul>
+</p>
+<p></p>
+<p>À la différence des listes de contrôle d'acccèsIPv4, les listes de contrôle d'accès IPv6 n'utilisent pas de masques génériques. Au lieu de cela, la longueur de préfixe est utilisée pour indiquer dans quelle mesure l'adresse IPv6 source ou de destination doit correspondre.</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Instructions supplémentaires par défaut</b>
+</li>
+</ul>
+</p>
+<p></p>
+<p>La dernière différence majeure concerne l'ajout de deux instructions d'autorisation implicites à la fin de chaque liste de contrôle d'accès IPv6. À la fin de chaque liste de contrôle d'accès IPv4 standard ou étendue, il existe une instruction implicite <span class="cmd"><b>deny any</b></span> ou <span class="cmd"><b>deny any any</b></span>. Il existe également une instruction <span class="cmd"><b>deny ipv6 any any</b></span> similaire à la fin de chaque liste de contrôle d'accès IPv6. En revanche, dans le cas d'IPv6, deux autres instructions implicites sont appliquées par défaut :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>permit icmp any any nd-na</b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>permit icmp any any nd-ns</b>
+</span>
+</li>
+</ul>
+</p>
+<p></p>
+<p>Ces deux instructions permettent au routeur de prendre part à l'équivalent IPv6 du protocole ARP pour IPv4. Souvenez-vous qu'ARP est utilisé dans le cadre d'IPv4 pour traduire les adresses de couche 3 en adresses MAC de couche 2. Comme le montre la figure, IPv6 utilise des messages de découverte de voisin (ND pour Neighbor Discovery) ICMP pour effectuer la même opération. La découverte de voisin fait appel à des messages de sollicitation de voisin (NS pour Neighbor Solicitation) et d'annonce de voisin (NA pour Neighbor Advertisement). </p>
+<p></p>
+<p>Les messages ND sont encapsulés en paquets IPv6 et nécessitent des services de la couche réseau IPv6 tandis que le protocole ARP pour IPv4 n'utilise pas la couche 3. Étant donné qu'IPv6 utilise le service de couche 3 pour la découverte de voisin, les listes de contrôle d'accès IPv6 doivent autoriser implicitement l'envoi et la réception des paquets ND sur une interface. Plus précisément, les messages nd-na (découverte de voisin-annonce de voisin) et nd-ns (découverte de voisin-sollicitation de voisin) sont autorisés.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.4.1 Technologies d&#x0027;accès internet</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>LAN, WAN et Internet</h1>
+        <h2>Connexion à Internet</h2>
+      </div>
+      <div id="content">
+<p>Il existe plusieurs manières de connecter des utilisateurs et des entreprises à Internet.</p>
+<p></p>
+<p>Les utilisateurs à domicile, les télétravailleurs (travailleurs à domicile) et les PME ont généralement besoin d'un fournisseur d'accès Internet (FAI) pour se connecter à Internet. Les options de connexion varient considérablement d'un FAI et d'une région à l'autre. Cependant, les options les plus utilisées sont le câble haut débit, la DSL haut débit, les WAN sans fil et les services mobiles.</p>
+<p></p>
+<p>Les entreprises ont généralement besoin d'un accès aux autres sites professionnels et à Internet. Des connexions rapides sont requises pour prendre en charge les services d'entreprise, notamment les téléphones IP, la vidéoconférence, ainsi que les data centers. </p>
+<p></p>
+<p>Les connexions professionnelles sont généralement fournies par des fournisseurs de services. Les services professionnels les plus courants sont la DSL, les lignes louées et les solutions Metro Ethernet.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

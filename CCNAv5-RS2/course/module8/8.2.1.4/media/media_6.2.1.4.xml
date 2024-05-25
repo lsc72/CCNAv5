@@ -1,0 +1,67 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+	<text><![CDATA[<b>Topologie de référence OSPF  </b>]]></text>		
+</component>
+<component id="ID_s2_title">
+	<text><![CDATA[<b>Attribution d'un ID de routeur à R1  </b>]]></text>		
+</component>
+<component id="ID_s3_title">
+	<text><![CDATA[<b>Attribution d'un ID de routeur à R2 et R3  </b>]]></text>		
+</component>
+	
+<component id="ID_s1_txt01">
+	<text><![CDATA[<b>Zone&nbsp;0  </b>]]></text>		
+</component>
+<component id="ID_s1_txt02">
+	<text><![CDATA[<b>Internet  </b>]]></text>		
+</component>
+	
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+
+	<component id="ID_SC2" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b> *** </b><font  face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> ]]></feedback>		
+		<existingcommands><![CDATA[<font  face="Arial"><b><ul><li>Passer en mode de configuration du routeur OSPF en utilisant l'ID de processus 10<li>Attribuer un ID de routeur de 2.2.2.2<li>Repasser en mode d'exécution privilégié  </b></ul></font>]]></existingcommands>
+		<command prompt="R2(config)#">
+		    <correctresponse><![CDATA[router ospf 10]]></correctresponse>
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[router-id 2.2.2.2]]></correctresponse>
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+						<deviceresponse><![CDATA[<font  face="Courier New" fontSize="10">R2#<br>*Mar 25 20:03:56.863: %SYS-5-CONFIG_I: Configured from console by console<br>R2#</font>]]></deviceresponse> 
+			<instruction><![CDATA[<font  face="Arial"><b>Vérifiez l'ID de routeur dans les paramètres du protocole&nbsp;OSPF sur R2.  </b>]]></instruction>			
+		</command>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ip protocols]]></correctresponse>
+						<deviceresponse><![CDATA[<font  face="Courier New" fontSize="10">*** IP Routing is NSF aware *** <br> <br>Routing Protocol is "ospf 10" <br>  Outgoing update filter list for all interfaces is not set <br>  Incoming update filter list for all interfaces is not set <br>  Router ID 2.2.2.2 <br>  Number of areas in this router is 0. 0 normal 0 stub 0 nssa <br>  Maximum path: 4 <br>  Routing for Networks: <br> Routing Information Sources: <br>    Gateway Distance Last Update <br>  Distance: (default is 110) <br> <br>R2#</font>]]></deviceresponse> 
+		<instruction><![CDATA[<font  face="Arial"><b>Vous êtes désormais sur R3&nbsp;:<ul><li>Passer en mode de configuration du routeur OSPF en utilisant l'ID de processus 10<li>Attribuer un ID de routeur de 3.3.3.3<li>Repasser en mode d'exécution privilégié</ul>  </b></font>]]></instruction>
+		</command>
+		<command prompt="R3(config)#">
+		    <correctresponse><![CDATA[router ospf 10]]></correctresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[router-id 3.3.3.3]]></correctresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+						<deviceresponse><![CDATA[R3#<br>*Mar 25 20:11:05.415: %SYS-5-CONFIG_I: Configured from console by console<br>R3#]]></deviceresponse> 
+			<instruction><![CDATA[<font  face="Arial"><b>Vérifiez l'ID de routeur dans les paramètres du protocole OSPF sur R3.  </b>]]></instruction>			
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip protocols]]></correctresponse>
+						<deviceresponse><![CDATA[<font  face="Courier New" fontSize="10">*** IP Routing is NSF aware *** <br> <br>Routing Protocol is "ospf 10" <br>  Outgoing update filter list for all interfaces is not set <br>  Incoming update filter list for all interfaces is not set <br>  Router ID 3.3.3.3 <br>  Number of areas in this router is 0. 0 normal 0 stub 0 nssa <br>  Maximum path: 4 <br>  Routing for Networks: <br> Routing Information Sources: <br>    Gateway Distance Last Update <br>  Distance: (default is 110) <br> <br>R3#</font>]]></deviceresponse> 			
+						<instruction><![CDATA[<font  face="Arial" class="syntaxBottomLine"><b>Vous avez correctement attribué l'ID de routeur.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+</textcomponents>

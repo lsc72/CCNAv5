@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.5.1.2 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.5.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Le protocole EIGRP (Enhanced Interior Gateway Routing Protocol) est un protocole de routage à vecteur de distance sans classe. Le protocole EIGRP est une version améliorée d'un autre protocole de routage Cisco, IGRP (Interior Gateway Routing Protocol), aujourd'hui obsolète. Le protocole EIGRP a été initialement lancé en 1992 en tant que protocole propriétaire Cisco disponible uniquement sur les périphériques Cisco. En 2013, Cisco a lancé une fonctionnalité de base du protocole EIGRP sous la forme d'une norme ouverte vers IETF. </p>
+<p></p>
+<p>EIGRP utilise le code source « D » de DUAL dans la table de routage. Par défaut, le protocole EIGRP a pour distance administrative 90 pour les routes internes et 170 pour les routes importées à partir d’une source externe, telles que les routes par défaut.</p>
+<p></p>
+<p>Le protocole EIGRP est un protocole de routage à vecteur de distance avancé qui comprend des fonctionnalités indisponibles dans d'autres protocoles de routage à vecteur de distance tels que RIP, notamment : algorithme DUAL (Diffusing Update Algorithm), établissement de contiguïtés de voisinage, protocole de transport fiable (RTP), mises à jour partielles et limitées et équilibrage de charge à coût égal et inégal.</p>
+<p></p>
+<p>Le protocole EIGRP utilise des modules dépendants d'un protocole (PDM, Protocol Dependent Modules) qui lui permettent de prendre en charge différents protocoles de couche 3 dont IPv4 et IPv6. EIGRP utilise RTP (Reliable Transport Protocol – Protocole de transport fiable) comme protocole de transport pour la livraison de paquets EIGRP. Le protocole EIGRP utilise le mode d'acheminement fiable pour les mises à jour, les demandes et les réponses EIGRP et le mode d'acheminement non fiable pour les paquets Hello et les reçus EIGRP. Le protocole RTP fiable signifie qu’un reçu EIGRP doit être renvoyé.</p>
+<p></p>
+<p>Avant d’envoyer des mises à jour EIGRP, un routeur doit d’abord détecter ses voisins. Cette opération est effectuée à l'aide des paquets Hello EIGRP. Il n'est pas nécessaire que les valeurs Hello et de mise hors service concordent pour que deux routeurs deviennent voisins. La commande<span class="cmd"><b> show ip eigrp neighbors </b></span>permet d'afficher la table de voisinage et de vérifier que le protocole EIGRP a établi une contiguïté avec ses voisins.</p>
+<p></p>
+<p>Contrairement au protocole RIP, EIGRP n’envoie pas de mises à jour périodiques. EIGRP envoie des mises à jour partielles ou limitées qui ne contiennent que les modifications de routes, et uniquement aux routeurs concernés par la modification. La métrique composite EIGRP utilise la bande passante, le délai, la fiabilité et la charge pour déterminer le meilleur chemin. Par défaut, seuls la bande passante et le délai sont pris en compte.</p>
+<p></p>
+<p>Au centre du protocole EIGRP se trouve l’algorithme de diffusion de mise à jour DUAL (Diffusing Update Algorithm). La Finite State Machine (FSM) DUAL permet de déterminer le meilleur chemin ainsi que les chemins de secours potentiels vers chaque réseau de destination. Le successeur est un routeur voisin utilisé pour transmettre le paquet en utilisant la route à moindre coût vers le réseau de destination. La distance de faisabilité (FD) est la métrique la plus basse calculée pour atteindre le réseau de destination via le successeur. Un successeur potentiel (FS) est un voisin qui dispose d’un chemin de secours sans boucle vers le même réseau que le successeur et qui répond également à la condition de faisabilité. La condition de faisabilité est respectée lorsque la distance annoncée d’un voisin à un réseau est inférieure à la distance de faisabilité sur routeur local par rapport à ce même réseau de destination. La distance annoncée correspond simplement à la distance de faisabilité d'un voisin EIGRP vers le réseau de destination.</p>
+<p></p>
+<p>Le protocole EIGRP est configuré à l'aide de la commande<span class="cmd"><b> router eigrp </b></span><span class="cmd"><i>autonomous-system</i></span>. La valeur système-autonome est en fait un ID de processus et doit être la même sur tous les routeurs du domaine de routage EIGRP. La commande<span class="cmd"><b> network </b></span>est identique à celle utilisée avec le protocole RIP. Le réseau est l’adresse réseau par classe des interfaces connectées directement sur le routeur. Un masque générique est un paramètre facultatif qui peut être utilisé pour n’inclure que certaines interfaces spécifiques.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

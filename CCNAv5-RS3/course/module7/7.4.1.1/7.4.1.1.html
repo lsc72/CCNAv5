@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.1.1 Protocole EIGRP pour IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole EIGRP pour IPv6</h1>
+        <h2>Protocole EIGRP pour IPv4 versus IPv6</h2>
+      </div>
+      <div id="content">
+<p>Tout comme son homologue IPv4, le protocole EIGRP pour IPv6 échange des informations de routage pour renseigner la table de routage IPv6 avec des préfixes distants. Le protocole EIGRP pour IPv6 a été intégré à Cisco IOS, version 12.4(6)T.</p>
+<p></p>
+<p>
+<b>Remarque</b> : dans IPv6, l'adresse réseau est considérée comme étant le préfixe et le masque de sous-réseau est appelé la longueur de préfixe.</p>
+<p></p>
+<p>EIGRP pour IPv4 s'exécute sur la couche réseau IPv4, communique avec d'autres homologues IPv4 EIGRP et annonce uniquement les routes IPv4. Le protocole EIGRP pour IPv6 présente les mêmes fonctionnalités que le protocole EIGRP pour IPv4, mais utilise IPv6 comme transport de couche réseau, pour communiquer avec les homologues EIGRP pour IPv6 et annoncer les routes IPv6. </p>
+<p></p>
+<p>Le protocole EIGRP pour IPv6 utilise également l'algorithme DUAL comme moteur de calcul pour garantir la présence de chemins sans boucle et de chemins de secours dans tout le domaine de routage.</p>
+<p></p>
+<p>Comme avec tous les protocoles de routage IPv6, le protocole EIGRP pour IPv6 a des processus distincts par rapport à son homologue IPv4. Les processus et les opérations sont fondamentalement les mêmes que dans le protocole de routage IPv4, mais ils s'exécutent indépendamment. Les protocoles EIGRP pour IPv4 et EIGRP pour IPv6 disposent chacun des tables de voisinage EIGRP, des tables topologiques EIGRP et des tables de routage IP distinctes, comme indiqué dans la figure. Le protocole EIGRP pour IPv6 est un module dépendant d'un protocole (PDM) distinct.</p>
+<p></p>
+<p>Les commandes de configuration et de vérification du protocole EIGRP pour IPv6 ressemblent beaucoup à celles utilisées dans le protocole EIGRP pour IPv4. Elles sont décrites plus loin dans cette section.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

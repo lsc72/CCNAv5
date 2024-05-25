@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.2.1 Conception pour l&#x0027;évolutivité </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentation d&#x0027;une conception réseau</h1>
+        <h2>Évolution du réseau</h2>
+      </div>
+      <div id="content">
+<p>Pour prendre en charge un réseau d'entreprise, un concepteur de réseau doit développer une stratégie permettant au réseau de rester disponible et d'être mis à l'échelle efficacement et facilement. Voici les recommandations faisant partie d'une stratégie de base de conception de réseau :</p>
+<p></p>
+<p>
+<ul>
+<li>Utilisez un équipement modulaire extensible ou des périphériques en cluster, qui peuvent être facilement mis à niveau pour augmenter les capacités. Des modules de périphériques peuvent être ajoutés à l'équipement existant pour prendre en charge de nouvelles fonctions et de nouveaux périphériques, sans nécessiter de mises à niveau majeures de l'équipement. Certains périphériques peuvent être intégrés à un cluster afin de fonctionner comme un périphérique unique, pour simplifier la gestion et la configuration.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Concevez un réseau hiérarchique pour inclure des modules pouvant être ajoutés, mis à niveau et modifiés, comme nécessaire, sans influence sur la conception des autres zones fonctionnelles du réseau. Par exemple, pour un réseau de campus, créez une couche d'accès séparée pouvant être étendue sans affecter les couches de distribution et cœur de réseau. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Établissez une stratégie hiérarchique d'adresses IPv4 ou IPv6. Une planification minutieuse des adresses IPv4 élimine la nécessité d'un nouvel adressage du réseau lorsqu'il faut prendre en charge des utilisateurs et des services supplémentaires. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Choisissez des routeurs ou des commutateurs multicouches pour limiter les diffusions et filtrer le trafic non souhaité sur le réseau. Utilisez des périphériques de couche 3 pour filtrer et réduire le trafic vers le cœur du réseau. </li>
+</ul>
+</p>
+<p></p>
+<p>Comme illustré par la figure, il existe des conditions de conception de réseau plus avancées, notamment :</p>
+<p>
+<ul>
+<li>Implémentation de liens redondants dans le réseau entre des périphériques critiques et entre des périphériques de couche d'accès et de couche cœur de réseau</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Implémentation de liens multiples entre les équipements, avec agrégation de liens (EtherChannel) ou équilibrage de charge à coût égal, afin d'augmenter la bande passante. La combinaison de liens Ethernet multiples en une configuration EtherChannel unique avec équilibrage de la charge augmente la bande passante disponible. Des implémentations EtherChannel peuvent être utilisées lorsque des restrictions budgétaires empêchent l'achat d'interfaces haut débit et de fibre optique</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Implémentation d'une connectivité sans fil pour permettre la mobilité et l'extension</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Utilisation d'un protocole de routage évolutif et implémentation de fonctions au sein de ce protocole pour isoler les mises à jour du routage et réduire les dimensions de la table de routage</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

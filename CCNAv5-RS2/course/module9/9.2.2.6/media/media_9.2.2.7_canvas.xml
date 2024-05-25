@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide type="MBAR"> <!-- Slide 1 -->
+		<slide>
+			<element type="ROUTER" textId="ID_txt01" x="6" y="111.45" width="430" height="97.15" />
+		</slide> <!-- Slide 2 -->
+		<slide> <!-- Title -->
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title"/> <!-- Router text-->		
+			<element type="ROUTER" textId="ID_r1_txt01" x="6" y="41.45" width="430" height="347.1"/> <!-- Lazy text -->
+			<element type="TEXT" compId="ID_s2_txt01" width="65" x="353.8" y="105.75" align="left" expand="down"  bgColor="#FDE6D4" borderColor="#F68026" corner="5" border="2"/>
+			<element type="TEXT" compId="ID_s2_txt02" width="110" x="295" y="210.2" align="left" expand="down"  bgColor="#FDE6D4" borderColor="#F68026" corner="5" border="2"/>
+			
+		</slide> <!-- Slide 3 -->
+		<slide> <!-- Title -->
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title"/> <!-- Router text-->		
+			<element type="ROUTER" textId="ID_r2_txt01" x="6" y="41.45" width="430" height="347.1"/> <!-- Lazy text -->
+			<element type="TEXT" compId="ID_s3_txt01" width="250" x="162.5" y="103.5" align="left" expand="up+down" class="orangeCallOut" />
+			<element type="TEXT" compId="ID_s3_txt02" width="200" x="216" y="217.1" align="left" expand="down"  bgColor="#FDE6D4" borderColor="#F68026" corner="5" border="2"/>
+		
+		</slide>
+			
+	</slide> <!-- Router text -->
+		<text id="ID_txt01"><![CDATA[ 	    R1(config)# <b>access-list 3 deny 192.168.10.0 0.0.0.255  </b> R1(config)# <b>access-list 3 permit host 192.168.10.10<br/>  </b> % Access rule can't be configured at higher sequence num as it is part of the existing rule at sequence num 10</br> 		R1(config)#
+		]]></text>
+
+		<text id="ID_r1_txt01"><![CDATA[ 		R1(config)#<b> access-list 1 deny 192.168.10.0 0.0.0.255  </b><br /> R1(config)#<b> access-list 1 deny 192.168.20.0 0.0.0.255  </b><br /> R1(config)#<b> access-list 1 deny 192.168.30.0 0.0.0.255  </b><br /> R1(config)#<b> access-list 1 permit 10.0.0.1  </b><br /> R1(config)#<b> access-list 1 permit 10.0.0.2  </b><br /> R1(config)#<b> access-list 1 permit 10.0.0.3  </b><br /> R1(config)#<b> access-list 1 permit 10.0.0.4  </b><br /> R1(config)#<b> access-list 1 permit 10.0.0.5  </b><br /> R1(config)#<b> end  </b><br /> R1# <b>show running-config | include access-list 1  </b><br /> access-list 1 permit 10.0.0.2<br /> access-list 1 permit 10.0.0.3<br /> access-list 1 permit 10.0.0.1<br /> access-list 1 permit 10.0.0.4<br /> access-list 1 permit 10.0.0.5<br /> access-list 1 deny&nbsp;&nbsp; 192.168.10.0 0.0.0.255<br /> access-list 1 deny&nbsp;&nbsp; 192.168.20.0 0.0.0.255<br /> access-list 1 deny&nbsp;&nbsp; 192.168.30.0 0.0.0.255<br /> R1# 
+		<img src="9.2.2.6_s1_A.png" width="26.65" height="51.2" id="ima1"/>
+		<img src="9.2.2.6_s1_B.png" width="51" height="115" id="ima2"/>
+		]]></text>
+		
+		<text id="ID_r2_txt01"><![CDATA[ 		R1# <b>show access-lists 1  </b><br /> Standard IP access list 1<br /> &nbsp;50 permit 10.0.0.2<br /> &nbsp;60 permit 10.0.0.3<br /> &nbsp;40 permit 10.0.0.1<br /> &nbsp;70 permit 10.0.0.4<br /> &nbsp;80 permit 10.0.0.5<br /> &nbsp;10 deny&nbsp;&nbsp;192.168.10.0, wildcard bits 0.0.0.255<br /> &nbsp;20 deny&nbsp;&nbsp;192.168.20.0, wildcard bits 0.0.0.255<br /> &nbsp;30 deny&nbsp;&nbsp;192.168.30.0, wildcard bits 0.0.0.255<br /> R1# <b>copy running-config startup-config  </b><br /> R1# <b>reload  </b><br /> R1# <b>show access-lists 1  </b><br /> Standard IP access list 1<br /> &nbsp;10 permit 10.0.0.2<br /> &nbsp;20 permit 10.0.0.3<br /> &nbsp;30 permit 10.0.0.1<br /> &nbsp;40 permit 10.0.0.4<br /> &nbsp;50 permit 10.0.0.5<br /> &nbsp;60 deny&nbsp;&nbsp; 192.168.10.0, wildcard bits 0.0.0.255<br /> &nbsp;70 deny&nbsp;&nbsp; 192.168.20.0, wildcard bits 0.0.0.255<br /> &nbsp;80 deny&nbsp;&nbsp; 192.168.30.0, wildcard bits 0.0.0.255<br /> R1#
+		<img src="9.2.2.6_s2_B.png" width="27" height="66" id="ima4"/>
+		<img src="9.2.2.6_s2_A.png" width="21.8" height="69.75" id="ima3"/>
+		]]></text>
+</data>

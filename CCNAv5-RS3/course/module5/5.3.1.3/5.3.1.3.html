@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.3.1.3 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.3.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>OSPF définit cinq types de réseaux : point à point, accès multiple avec diffusion, accès multiple sans diffusion, point à multipoint et liens virtuels. </p>
+<p></p>
+<p>Les réseaux à accès multiple peuvent présenter deux difficultés pour OSPF en matière d'inondation de LSA : la création de contiguïtés multiples et la diffusion massive de paquets LSA. La solution pour gérer le nombre de contiguïtés et la diffusion des paquets LSA sur un réseau à accès multiple est apportée par les routeurs DR et BDR. Lorsque le DR arrête de produire des paquets Hello, le BDR s'autodésigne comme DR et en assume le rôle.</p>
+<p></p>
+<p>Les routeurs du réseau sélectionnent comme DR le routeur dont la priorité d'interface est la plus élevée. Le routeur dont la priorité d'interface est en deuxième position est sélectionné comme BDR. Plus la priorité est élevée, plus le routeur a de chances d'être sélectionné en tant que routeur désigné (DR). Un routeur de priorité 0 ne peut pas devenir DR. La priorité par défaut des interfaces de diffusion à accès multiple est égale à 1. Par conséquent, sauf configuration contraire, tous les routeurs possèdent une valeur de priorité égale et ils doivent utiliser un autre critère d'ex aequo durant la sélection du routeur désigné (DR) et du routeur désigné de secours (BDR). Si les priorités d'interface sont identiques, le routeur dont l'ID est le plus élevé est sélectionné en tant que routeur désigné (DR). Le routeur dont l'ID est le deuxième plus élevé est le routeur désigné de secours (BDR). L'ajout d'un nouveau routeur n'initie pas un nouveau processus de sélection. </p>
+<p></p>
+<p>Pour propager une route par défaut dans OSPF, le routeur doit être configuré avec une route statique par défaut et la commande<span class="cmd"><b> default-information originate </b></span>doit être ajoutée à la configuration. Vérifiez les routes au moyen de la commande<span class="cmd"><b> show ip route </b></span>ou<span class="cmd"><b> show ipv6 route</b></span>.</p>
+<p></p>
+<p>Pour aider le protocole OSPF à déterminer le chemin exact, la bande passante de référence doit être remplacée par une valeur supérieure pour prendre en compte les réseaux disposant de liens plus rapides que 100 Mbit/s. Pour modifier la bande passante de référence, utilisez la commande de mode de configuration de routeur<span class="cmd"><b>auto-cost reference-bandwidth </b></span><span class="cmd"><i>Mbps</i></span>. Pour modifier la bande passante des interfaces, utilisez la commande de mode de configuration d'interface<span class="cmd"><b>bandwidth </b></span><span class="cmd"><i>kilobits</i></span>. Le coût peut être configuré manuellement sur une interface, au moyen de la commande de mode de configuration d'interface<span class="cmd"><b> ip ospf cost </b></span><span class="cmd"><i>value </i></span>. </p>
+<p></p>
+<p>Les intervalles des paquets Hello et Dead du protocole OSPF doivent correspondre. Si tel n'est pas le cas, la contiguïté de voisinage ne peut pas s'établir. Pour modifier ces intervalles, exécutez les commandes d'interface suivantes :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>ip ospf hello-interval </b>
+</span>
+<span class="cmd">
+<i>secondes</i>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>ip ospf dead-interval </b>
+</span>
+<span class="cmd">
+<i>secondes</i>
+</span>
+<span class="cmd">
+<b></b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>ipv6 ospf hello-interval </b>
+</span>
+<span class="cmd">
+<i>secondes</i>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>ipv6 ospf dead-interval </b>
+</span>
+<span class="cmd">
+<i>secondes</i>
+</span>
+</li>
+</ul>
+</p>
+<p></p>
+<p>OSPF prend en charge 3 types d'authentification : aucune authentification, authentification par simple mot de passe et authentification MD5. L'authentification MD5 OSPF peut être configurée globalement ou par interface. Pour vérifier que l'authentification MD5 OSPF est activée, utilisez la commande<span class="cmd"><b> show ip ospf interface </b></span>en mode d'exécution privilégié.</p>
+<p></p>
+<p>Lors du dépannage de voisins OSPF, veillez à ce que les états FULL ou 2WAY soient normaux. Les commandes suivantes résument le dépannage du protocole OSPF IPv4 :<span class="cmd"><b></b></span></p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip protocols </b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip ospf neighbor </b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip ospf interface </b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip ospf</b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ip route ospf </b>
+</span>
+</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>clear ip ospf </b>
+</span>
+<span class="cmd">[</span>
+<span class="cmd">
+<i>process-id</i>
+</span>
+<span class="cmd">]</span>
+<span class="cmd">
+<b> process</b>
+</span>
+</li>
+</ul>
+</p>
+<p></p>
+<p>Le dépannage du protocole OSPFv3 est similaire à celui du protocole OSPFv2. Les commandes suivantes sont les commandes équivalentes utilisées pour OSPFv3 :<span class="cmd"><b> show ipv6 protocols</b></span>,<span class="cmd"><b> show ipv6 ospf neighbor</b></span><span class="cmd">,</span><span class="cmd"><b> show ipv6 ospf interface</b></span>,<span class="cmd"><b> show ipv6 ospf</b></span>,<span class="cmd"><b> show ipv6 route ospf</b></span> et<span class="cmd"><b> clear ipv6 ospf </b></span><span class="cmd">[</span><span class="cmd"><i>process-id</i></span><span class="cmd">]</span><span class="cmd"><b> process</b></span>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.4.8 Trame 802.11 sans fil</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.4.8_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Contrôle d&#x0027;accès au support</h1>
+        <h2>Trame liaison de données</h2>
+      </div>
+      <div id="content">
+<p>
+<b>802.11 sans fil</b>
+</p>
+<p></p>
+<p>La norme IEEE 802.11 utilise la même sous-couche LLC 802.2 et le même schéma d'adressage à 48 bits que les autres réseaux locaux 802. Cependant, il existe de nombreuses différences au niveau de la sous-couche MAC et de la couche physique. Un environnement sans fil nécessite une attention particulière. Il n'existe aucune connectivité physique définissable. De ce fait, les facteurs externes peuvent interférer avec le transfert des données et le contrôle de l'accès est difficile. Pour relever ces défis, les normes sans fil comportent des contrôles supplémentaires.</p>
+<p></p>
+<p>La norme IEEE 802.11 est généralement appelée Wi-Fi. Il s'agit d'un système avec gestion des conflits qui fait appel à un processus d'accès au support de type CSMA/CA. CSMA/CA spécifie une procédure d'interruption aléatoire pour tous les noeuds qui attendent de transmettre des données. Le risque de conflit de support se pose surtout juste après que le support devienne disponible. La mise en retrait des noeuds pendant une période aléatoire réduit considérablement les risques de collision de données.</p>
+<p></p>
+<p>Les réseaux 802.11 utilisent également les accusés de réception de liaison de données pour confirmer la bonne réception d'une trame. Si la station de travail d'envoi ne détecte pas la trame d'accusé de réception, car la trame de données d'origine ou l'accusé de réception n'a pas été reçu intact, la trame est retransmise. Cet accusé de réception explicite corrige les interférences et autres problèmes de transmission radio.</p>
+<p></p>
+<p>Les autres services pris en charge par les réseaux 802.11 sont l'authentification, l'association (connectivité à un périphérique sans fil) et la confidentialité (chiffrement). </p>
+<p></p>
+<p>Comme l'illustre la figure, une trame 802.11 contient les champs suivants :</p>
+<p>
+<ul>
+<li>
+<b>Version de protocole</b> : version de la trame 802.11 utilisée</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Type et sous-type</b> : identifient une des trois fonctions et sous-fonctions de la trame (contrôle, données et gestion)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Vers DS</b> : défini sur 1 bit dans les trames de données destinées au système de distribution (périphériques de la structure sans fil)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>À partir de DS</b> : défini sur 1 bit dans les trames de données quittant le système de distribution</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Fragments supplémentaires</b> : défini sur 1 bit pour les trames comportant un autre fragment </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Réessayer</b> : défini sur 1 bit si la trame est une retransmission d'une trame antérieure</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Gestion de l'alimentation</b>: défini sur 1 bit pour indiquer qu'un nœud sera en mode économie d'énergie</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Données supplémentaires</b> : défini sur 1 bit pour indiquer à un nœud en mode économie d'énergie que d'autres trames sont mises en mémoire tampon pour ce nœud</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>WEP (Wired Equivalent Privacy)</b> : défini sur 1 bit si la trame contient des informations chiffrées WEP à des fins de sécurité</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Ordre</b> : défini sur 1 bit dans une trame de type de données qui utilise une classe de services strictement ordonnée (pas de réorganisation nécessaire)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Durée/ID</b> : selon le type de trame, indique le temps (en microsecondes) nécessaire pour transmettre la trame ou l'identité d'association (AID, Association Identity) de la station de travail ayant transmis la trame</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>AD (adresse de destination)</b> : adresse MAC du nœud de destination final sur le réseau</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>AS (adresse source)</b> : adresse MAC du nœud qui a lancé la trame</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>AR (adresse du récepteur)</b> : adresse MAC qui identifie le périphérique sans fil constituant le destinataire immédiat de la trame</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Numéro de fragment</b> : indique le numéro de chaque fragment d'une trame<b></b></li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Numéro d'ordre</b> : indique le numéro d'ordre attribué à la trame ; les trames retransmises sont identifiées par des numéros d'ordre dupliqués</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>AE (adresse de l'émetteur)</b> : adresse MAC qui identifie le périphérique sans fil ayant transmis la trame</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Corps de trame</b> : contient les informations transportées ; généralement un paquet IP pour les trames de données</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>FCS (séquence de contrôle de trame)</b> : contient un contrôle par redondance cyclique (CRC) 32 bits de la trame</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

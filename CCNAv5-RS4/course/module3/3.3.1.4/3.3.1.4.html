@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.1.4 Commande de contrôle de la qualité de la liaison PPP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de PPP</h1>
+        <h2>Configuration de PPP</h2>
+      </div>
+      <div id="content">
+<p>Souvenez-vous que le protocole LCP offre une phase optionnelle de détermination de la qualité de la liaison. Dans cette phase, le protocole LCP teste la liaison pour déterminer si la qualité de la liaison est suffisante pour utiliser des protocoles de couche 3. </p>
+<p></p>
+<p>La commande <span class="cmd"><b>ppp quality </b></span><span class="cmd"><i>percentage</i></span> permet de s'assurer que la liaison répond aux exigences de qualité qui ont été définies, sinon la liaison se ferme.</p>
+<p></p>
+<p>Les pourcentages sont calculés dans les deux directions, entrante et sortante. La qualité en sortie est calculée en comparant le nombre total de paquets et d'octets envoyés au nombre total de paquets et d'octets reçus par le nœud de destination. La qualité en entrée est calculée en comparant le nombre total de paquets et d'octets reçus au nombre total de paquets et d'octets envoyés par le nœud de destination. </p>
+<p></p>
+<p>Si le pourcentage de qualité de la liaison n'est pas assuré, la liaison est considérée comme étant de mauvaise qualité et est alors fermée. LQM (Link Quality Monitoring) met en place un temps de décalage, afin que la liaison ne passe pas en permanence de l'état activé à désactivé.</p>
+<p></p>
+<p>L'exemple de configuration qui suit surveille les données abandonnées sur la liaison et évite le bouclage de trame, comme illustré à la Figure 1 :</p>
+<p></p>
+<p>
+<span class="cmd">R3(config)# </span>
+<span class="cmd">
+<b>interface serial 0/0/0</b>
+</span>
+</p>
+<p></p>
+<p>
+<span class="cmd">R3(config-if)# </span>
+<span class="cmd">
+<b>encapsulation ppp</b>
+</span>
+</p>
+<p></p>
+<p>
+<span class="cmd">R3(config-if)# </span>
+<span class="cmd">
+<b>ppp quality 80</b>
+</span>
+</p>
+<p></p>
+<p>Utilisez la commande <span class="cmd"><b>no ppp quality</b></span> pour désactiver LQM.</p>
+<p></p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 2 pour configurer l'encapsulation, la compression et le LQM du protocole PPP sur l'interface série 0/0/1 du routeur R1.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.3.3 Accès avec gestion des conflits</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Contrôle d&#x0027;accès au support</h1>
+        <h2>Topologies LAN</h2>
+      </div>
+      <div id="content">
+<p>Lorsqu'une méthode non déterministe avec gestion des conflits est utilisée, un périphérique réseau peut tenter d'accéder au support chaque fois qu'il doit envoyer des données. Pour éviter que le chaos total ne règne sur les supports, ces méthodes utilisent un processus d'accès multiple avec écoute de porteuse (CSMA) pour d'abord détecter si le support véhicule un signal. </p>
+<p></p>
+<p>Si un signal de  porteuse issu d'un autre noeud et circulant sur le support est détecté, alors un autre périphérique est en train de transmettre des données. Lorsque le périphérique qui tente de transmettre des données constate que le support est occupé, il attend et essaie de nouveau au bout d'un court laps de temps. Si aucun signal n'est détecté, le périphérique transmet ses données. Les réseaux Ethernet et sans fil utilisent un contrôle d'accès au support basé sur le conflit. </p>
+<p></p>
+<p>Il est possible que le processus CSMA échoue et que deux périphériques transmettent des données en même temps, créant ainsi une collision de données. Dans ce cas, les données envoyées par les deux périphériques sont corrompues et doivent être envoyées de nouveau. </p>
+<p></p>
+<p>Les méthodes de contrôle d'accès au support basé sur le conflit n'impliquent pas la surcharge provoquée par les méthodes d'accès contrôlé. Aucun mécanisme établissant quel périphérique en attente peut accéder au support n'est requis. Cependant, les systèmes d'accès basé sur le conflit évoluent mal lorsque les supports sont très sollicités. À mesure que l'utilisation des supports s'intensifie et que le nombre de noeuds augmente, il est de moins en moins probable que l'accès aux supports s'effectue sans collision de données. En outre, les mécanismes de récupération nécessaires pour résoudre les erreurs liées à ces collisions de données diminuent encore plus le débit.</p>
+<p></p>
+<p>Le processus CSMA est généralement mis en oeuvre conjointement avec une méthode de résolution des conflits de supports. Les deux méthodes les plus courantes sont :</p>
+<p>
+<ul>
+<li>
+<b>Méthode CSMA/CD (Carrier sense multiple access with collision detection)</b> : le périphérique final établit si le support comporte un signal de données. Si aucun signal de données n'est détecté et donc que le support est libre, le périphérique transmet ses données. Si des signaux sont alors détectés indiquant qu'un autre périphérique était au même moment en train de transmettre des données, tous les périphériques arrêtent de transmettre leurs données et réessayent ultérieurement. Les formes traditionnelles d'Ethernet utilisent cette méthode.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Méthode CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance)</b> : le périphérique final détermine si le support comporte un signal de données. Si le support est libre, le périphérique envoie une notification à travers le support pour indiquer son intention de l'utiliser. Dès qu'il reçoit une autorisation de transmission, le périphérique envoie les données. Cette méthode est utilisée par les technologies de réseau sans fil 802.11.</li>
+</ul>
+</p>
+<p></p>
+<p>La figure illustre ce qui suit :</p>
+<p>
+<ul>
+<li>Principe de fonctionnement des méthodes d'accès avec gestion des conflits</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Caractéristiques des méthodes d'accès avec gestion des conflits</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Exemples de méthodes d'accès avec gestion des conflits</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

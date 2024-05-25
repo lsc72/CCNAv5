@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.1.2.5 Comparaison entre NAT et PAT</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement de la NAT</h1>
+        <h2>Types de NAT</h2>
+      </div>
+      <div id="content">
+<p>Faisons le point sur les différences entre la NAT et la PAT pour mieux comprendre leurs fonctions respectives. </p>
+<p></p>
+<p>Comme le montre la figure, la NAT traduit les adresses IPv4 une à une, d'adresses IPv4 privées en adresses IPv4 publiques et vice versa. En revanche, la PAT modifie à la fois l'adresse et le numéro de port. </p>
+<p></p>
+<p>La NAT achemine les paquets entrants vers leur destination interne en se référant à l'adresse IPv4 source entrante donnée par l'hôte sur le réseau public. Avec la PAT, il n'y a généralement qu'une ou quelques adresses IPv4 visibles de l'extérieur. Les paquets entrants provenant du réseau public sont acheminés vers leur destination sur le réseau privé selon une table appartenant au routeur NAT. Cette table enregistre les associations entre ports publics et privés. On parle alors de suivi de connexion.</p>
+<p></p>
+<p>
+<b>Paquets sans segment de couche 4</b>
+</p>
+<p></p>
+<p>Qu'en est-il des paquets IPv4 transportant des données autres qu'un segment TCP ou UDP ? Ces paquets ne comportent pas de numéro de port de couche 4. La fonction PAT traduit la plupart des protocoles communs transportés par IPv4 qui n'utilisent pas le protocole TCP ou UDP comme protocole de couche transport. Le plus connu de ces derniers est ICMPv4. Chacun de ces types de protocole est pris en charge différemment par la PAT. Par exemple, les messages de requête, les demandes d'écho et les réponses d'écho ICMPv4 incluent un ID de requête. ICMPv4 utilise l'ID de requête pour identifier une demande d'écho et sa réponse d'écho correspondante. L'ID de requête est incrémenté à chaque envoi de demande d'écho. La fonction PAT utilise l'ID de requête au lieu du numéro de port de couche 4. </p>
+<p></p>
+<p>
+<b>Remarque</b> : les autres messages ICMPv4 n'utilisent pas l'ID de requête. Ces messages et d'autres protocoles qui n'utilisent pas les numéros de port TCP ou UDP peuvent varier et sortent du cadre de ce programme.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

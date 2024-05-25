@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.1.2 Fonctionnement de SNMP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>SNMP</h1>
+        <h2>Fonctionnement de SNMP</h2>
+      </div>
+      <div id="content">
+<p>Les agents SNMP qui résident sur des périphériques gérés collectent et stockent les informations relatives aux périphériques et à leur fonctionnement. Ces informations sont stockées localement par l'agent dans la base de données MIB. Le gestionnaire SNMP utilise ensuite l'agent SNMP pour accéder aux informations contenues dans la base de données MIB.</p>
+<p></p>
+<p>Il existe deux types principaux de requêtes de gestionnaire SNMP, à savoir get et set. Une requête get est utilisée par le système de gestion de réseau (NMS) afin d'obtenir des données de la part d'un périphérique. Une requête set est utilisée par le système de gestion de réseau (NMS) afin de modifier les variables de configuration du périphérique de l'agent. Une requête set peut également initier des actions au niveau d'un périphérique. Par exemple, une requête set peut provoquer le redémarrage d'un routeur ainsi que l'envoi ou la réception d'un fichier de configuration. Le gestionnaire SNMP utilise les actions get et set pour réaliser les opérations décrites dans le tableau de la Figure 1.</p>
+<p></p>
+<p>L'agent SNMP répond comme suit aux requêtes du gestionnaire SNMP :</p>
+<p>
+<ul>
+<li>
+<b>Obtenir une variable MIB</b> : l'agent SNMP effectue cette fonction en réponse à une unité de données de protocole GetRequest à partir du système de gestion de réseau (NMS). L'agent récupère la valeur de la variable MIB demandée et répond au système de gestion de réseau (NMS) en lui communiquant cette valeur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Définir une variable MIB</b> : l'agent SNMP effectue cette fonction en réponse à une unité de données de protocole SetRequest à partir du système de gestion de réseau (NMS). L'agent SNMP modifie la valeur de la variable MIB à la valeur spécifiée par le système de gestion de réseau (NMS). Une réponse d'agent SNMP à une requête set inclut les nouveaux paramètres définis dans le périphérique. </li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 2 illustre l'utilisation d'une requête get SNMP visant à déterminer si l'interface G0/0 est à l'état « up/up ». </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

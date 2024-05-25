@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.2.3 Configuration du routage inter-VLAN existant : configuration de l&#x0027;interface du routeur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout; 
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du routage inter-VLAN</h1>
+        <h2>Configuration du routage inter-VLAN existant</h2>
+      </div>
+      <div id="content">
+<p>Le routeur peut ensuite être configuré pour effectuer le routage entre réseaux locaux virtuels.</p>
+<p></p>
+<p>Les interfaces du routeur sont configurées de la même façon que le sont les interfaces VLAN sur les commutateurs. Pour configurer une interface spécifique, passez du mode de configuration globale au mode de configuration d'interface. </p>
+<p></p>
+<p>Comme indiqué dans la Figure 1, chaque interface est configurée avec une adresse IP à l'aide de la commande <span class="cmd"><b>ip address </b></span><span class="cmd"><i>ip_address subnet_mask</i></span> en mode de configuration d'interface. </p>
+<p></p>
+<p>Dans l'exemple, l'interface G0/0 est configurée avec l'adresse IP 172.17.10.1 et le masque de sous-réseau 255.255.255.0 à l'aide de la commande <span class="cmd"><b>ip address 172.17.10.1 255.255.255.0</b></span>. </p>
+<p></p>
+<p>Les interfaces de routeur sont désactivées par défaut et doivent être activées à l'aide de la commande <span class="cmd"><b>no shutdown</b></span> avant utilisation. Une fois la commande du mode de configuration d'interface <span class="cmd"><b>no shutdown</b></span> émise, une notification apparaît, indiquant que l'état de l'interface est devenu actif, c'est-à-dire qu'elle est désormais activée.</p>
+<p></p>
+<p>Le processus est répété pour toutes les interfaces de routeur. Chaque interface de routeur doit être affectée à un sous-réseau unique pour permettre le routage. Dans cet exemple, l'autre interface de routeur, G0/1, a été configurée pour utiliser l'adresse IP 172.17.30.1, située sur un sous-réseau différent de l'interface G0/0.  </p></p>
+<p></p>
+<p>Une fois que les adresses IP sont attribuées aux interfaces physiques et que les interfaces sont activées, le routeur est en mesure d'effectuer le routage inter-VLAN.</p>
+<p></p>
+<p>Affichez la table de routage à l'aide de la commande <span class="cmd"><b>show ip route</b></span>. </p>
+<p></p>
+<p>Dans la Figure 2, il existe deux routes visibles dans la table de routage. Une route mène au sous-réseau 172.17.10.0, connecté à l'interface locale G0/0. L'autre route mène au sous-réseau 172.17.30.0, connecté à l'interface locale G0/1. Le routeur utilise cette table de routage pour déterminer où envoyer le trafic qu'il reçoit. Par exemple, si le routeur reçoit un paquet sur l'interface G0/0 destiné au sous-réseau 172.17.30.0, il identifie qu'il doit envoyer le paquet par l'interface G0/1 pour atteindre les hôtes du sous-réseau 172.17.30.0.</p>
+<p></p>
+<p>Notez la lettre<span class="cmd"><b> C</b></span> à gauche de chaque entrée de route pour les VLAN. Cette lettre indique que la route est locale pour une interface connectée, qui est également identifiée dans l'entrée de route. En utilisant les informations de cet exemple, si le trafic était destiné au sous-réseau 172.17.30.0, le routeur transférerait le trafic par l'interface G0/1.  </p></p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

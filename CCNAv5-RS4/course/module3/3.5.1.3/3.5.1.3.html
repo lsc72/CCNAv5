@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.5.1.3 Résumé</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.5.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Les transmissions série envoient les bits les uns à la suite des autres sur un seul canal. Les ports série sont bidirectionnels. Les communications série synchrones nécessitent un signal d'horloge.</p>
+<p>Les liaisons point à point sont en général plus coûteuses que les services partagés. Ce coût peut être compensé par les avantages qu'elles offrent. La disponibilité constante est importante pour certains protocoles, par exemple VoIP.</p>
+<p>SONET est une norme de réseau optique qui recourt au multiplexage STDM pour optimiser l'utilisation de la bande passante. Aux États-Unis, les débits de transmission OC sont des spécifications normalisées de SONET.</p>
+<p>La hiérarchie de bande passante utilisée par les opérateurs est différente en Amérique du Nord (porteur T) et en Europe (porteur E). En Amérique du Nord, le débit de base de la ligne est DS0, soit 64 kbit/s. Plusieurs lignes DS0 sont regroupées pour offrir des débits plus élevés. </p>
+<p>Le point de démarcation marque le point du réseau où s'arrête la responsabilité du fournisseur de services et où commence celle du client. L'équipement d'abonné, habituellement un routeur, joue le rôle d'ETTD. Le DCE est en général un modem ou un CSU/DSU.</p>
+<p>Un câble modem Null est utilisé pour connecter deux ETTD sans recourir à un DCE, en croisant les lignes Tx et Rx. Lors de l'utilisation de ce câble dans des travaux pratiques, un des routeurs doit fournir le signal d'horloge.</p>
+<p>Cisco HDLC est une extension HDLC du protocole de couche liaison de données synchrone. Elle est utilisée par de nombreux fournisseurs pour proposer la prise en charge de protocoles multiples. Il s'agit de la méthode d'encapsulation par défaut sur les liaisons série synchrones Cisco.</p>
+<p>Le protocole PPP synchrone est utilisé pour la connexion aux périphériques non-Cisco, pour surveiller la qualité de la liaison, fournir l'authentification ou bien pour regrouper les liaisons pour une utilisation partagée. PPP utilise HDLC pour l'encapsulation de datagrammes. LCP est le protocole PPP utilisé pour établir, configurer, tester la connexion de liaison de données et y mettre fin. LCP peut aussi authentifier un homologue à l'aide du protocole PAP ou CHAP. Un ensemble de NCP est utilisé par le protocole PPP pour prendre en charge plusieurs protocoles de couche réseau en même temps. Le protocole PPP multiliaison répartit le trafic sur des liaisons groupées en découpant les paquets en morceaux, et en envoyant ces morceaux simultanément sur plusieurs liaisons à la même adresse distante, où ils sont réassemblés.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

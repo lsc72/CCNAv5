@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.1.2 Qu&#x0027;est-ce que la fonction NAT ?</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement de la NAT</h1>
+        <h2>Caractéristiques de la NAT</h2>
+      </div>
+      <div id="content">
+<p>La fonction NAT peut être utilisée à différentes fins, mais son utilisation principale consiste à limiter la consommation des adresses IPv4 publiques. Ainsi, elle permet aux réseaux d'utiliser des adresses IPv4 privées en interne, et assure la traduction de ces adresses en une adresse publique lorsque nécessaire uniquement. La NAT permet également d'ajouter un niveau de confidentialité et de sécurité à un réseau, car elle empêche les réseaux externes de voir les adresses IPv4 internes.</p>
+<p></p>
+<p>Les routeurs configurés pour la NAT peuvent être configurés avec une ou plusieurs adresses IPv4 publiques valides. Ces adresses publiques sont appelées collectivement « pool NAT ». Lorsqu'un périphérique interne envoie du trafic hors du réseau, le routeur configuré pour la NAT traduit l'adresse IPv4 interne du périphérique en une adresse publique du pool NAT. Pour les périphériques externes, tout le trafic entrant sur le réseau et sortant de celui-ci semble posséder une adresse IPv4 publique du pool d'adresses fourni. </p>
+<p></p>
+<p>Un routeur NAT fonctionne généralement à la périphérie d'un réseau d'extrémité. Un réseau d'extrémité est un réseau ayant une seule connexion à son réseau voisin, avec un seul chemin pour émettre et recevoir. Dans l'exemple de la figure, R2 est un routeur périphérique. Du point de vue du FAI, R2 forme un réseau d'extrémité. </p>
+<p></p>
+<p>Lorsqu'un périphérique situé dans un réseau d'extrémité souhaite communiquer avec un périphérique en dehors de son réseau, le paquet est transmis au routeur périphérique. Le routeur périphérique mène à bien le processus NAT et traduit l'adresse privée interne du périphérique en une adresse publique externe routable. </p>
+<p></p>
+<p>
+<b>Remarque</b> : la connexion au FAI peut utiliser une adresse privée ou une adresse publique qui est partagée parmi les clients. Pour les besoins de ce chapitre, une adresse publique est représentée.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

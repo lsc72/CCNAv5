@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.1.5 Conversion de nombres décimaux en nombres binaires</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Structure de l&#x0027;adresse IPv4</h2>
+      </div>
+      <div id="content">
+<p>En plus d'être capable de convertir un nombre binaire en nombre décimal, il est également nécessaire de comprendre la conversion d'un nombre décimal en binaire. </p>
+<p></p>
+<p>Puisque nous représentons les adresses IPv4 sous forme de décimales à point, il suffit que nous examinions le processus de conversion d'un nombre binaire de 8 bits en valeurs décimales comprises entre 0 et 255 pour chaque octet d'une adresse IPv4.</p>
+<p></p>
+<p>Déterminons d'abord si le nombre décimal est supérieur ou égal à la valeur décimale la plus grande représentée par le bit de poids fort. À la position le plus à gauche, nous déterminons si la valeur d'octet est supérieure ou égale à 128. Si la valeur d'octet est inférieure à 128, nous plaçons un 0 dans cette position binaire pour la valeur décimale 128 et nous passons à la position de bit correspondant à la valeur décimale 64.</p>
+<p></p>
+<p>Si la valeur de l'octet à la position correspondant à la valeur décimale 128 est supérieure ou égale à 128, nous plaçons un 1 dans cette position binaire et soustrayons 128 à la valeur à convertir. Nous comparons le reste de cette opération à la plus petite valeur suivante, 64. Nous répétons cette procédure pour toutes les positions de bit restantes.</p>
+<p></p>
+<p>Cliquez sur les figures 1 à 6 pour afficher le processus de conversion du nombre 168 en équivalent binaire, 10101000.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

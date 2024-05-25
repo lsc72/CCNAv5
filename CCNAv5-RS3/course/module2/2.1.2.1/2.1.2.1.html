@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.1 Algorithme Spanning Tree : introduction</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts du mode Spanning Tree</h1>
+        <h2>Fonctionnement du protocole STP</h2>
+      </div>
+      <div id="content">
+<p>La redondance améliore la disponibilité de la topologie du réseau en supprimant le risque de points de défaillance uniques dans un réseau ; par exemple, une panne d’un commutateur ou d’un câble du réseau. Lorsqu'une redondance physique est intégrée à la conception, des problèmes de boucle et de trames en double apparaissent. Ceux-ci ont des conséquences désastreuses pour un réseau commuté. Le protocole STP (Spanning Tree Protocol) a été conçu afin de résoudre ces problèmes.</p>
+<p></p>
+<p>Le protocole STP garantit l’unicité du chemin logique entre toutes les destinations sur le réseau en bloquant intentionnellement les chemins redondants susceptibles d’entraîner la formation d’une boucle. Un port est considéré comme bloqué lorsque les données utilisateur ne sont pas autorisées à entrer ou à sortir du port, à l’exception des trames d'unité BDPU (Bridged Protocol Data Unit) qui sont employées par le protocole STP pour empêcher la formation de boucles. Le blocage des chemins redondants est essentiel pour empêcher la formation de boucles sur le réseau. Les chemins physiques sont préservés pour assurer la redondance, mais ils sont désactivés afin d’empêcher la création de boucles. Si le chemin est amené à être utilisé en cas de panne d’un commutateur ou d’un câble réseau, l’algorithme Spanning Tree (STA) recalcule les chemins et débloque les ports nécessaires pour permettre la réactivation du chemin redondant.</p>
+<p></p>
+<p>Cliquez sur le bouton Lecture de la Figure 1 pour voir le protocole STP en action.</p>
+<p></p>
+<p>Dans l’exemple, le protocole STP est activé sur tous les commutateurs :</p>
+<p></p>
+<p>1. PC1 envoie une trame de diffusion sur le réseau. </p>
+<p></p>
+<p>2. S2 est configuré avec STP et a bloqué le port pour Trunk2. Cet état de blocage empêche le port d'être utilisé pour réacheminer des données utilisateur, évitant ainsi qu'une boucle se forme. S2 réachemine une trame de diffusion vers tous les ports de commutation, excepté le port d'origine sur PC1 et le port pour Trunk2. </p>
+<p></p>
+<p>3. S1 reçoit la trame de diffusion et la réachemine vers tous ses ports, via lesquels elle atteint PC4 et S3. S3 réachemine la trame par le port destiné à Trunk2 et S2 abandonne la trame. La boucle de couche 2 est évitée.</p>
+<p></p>
+<p>Cliquez sur le bouton Lecture de la Figure 2 pour visionner les calculs STP effectués lorsqu'une défaillance a lieu.</p>
+<p></p>
+<p>Dans cet exemple :</p>
+<p></p>
+<p>1. PC1 envoie une trame de diffusion sur le réseau. </p>
+<p></p>
+<p>2. 2. La diffusion est transmise sur le réseau, exactement comme dans l’animation précédente. </p>
+<p></p>
+<p>3. La liaison trunk entre S2 et S1 est défaillante, entraînant une interruption du chemin précédent. </p>
+<p></p>
+<p>4. S2 débloque le port précédemment bloqué vers Trunk2 et autorise le trafic de diffusion à parcourir le réseau via un chemin alternatif, permettant d'éviter une interruption de la communication. Si la liaison est restaurée, STP assure une reconvergence et le port sur S2 est à nouveau bloqué.</p>
+<p></p>
+<p>Le protocole STP empêche la boucle de se former en configurant un chemin sans boucle sur l'ensemble du réseau, grâce à des ports bloqués stratégiquement placés. Les commutateurs qui exécutent le protocole STP sont capables d’assurer la continuité des communications en cas de panne en débloquant dynamiquement les ports préalablement bloqués et en autorisant le trafic à emprunter les chemins de substitution. </p>
+<p></p>
+<p>Jusqu'à maintenant, nous avons utilisé le terme Spanning Tree Protocol et l'acronyme STP. Toutefois, cela peut prêter à confusion. De nombreux professionnels utilisent ces termes pour désigner des implémentations différentes du concept de Spanning Tree, par exemple le protocole RSTP (Rapid Spanning Tree Protocol) et le protocole MSTP (Multiple Spanning Tree Protocol). Pour pouvoir communiquer clairement sur les concepts de Spanning Tree, il est important de parler d'une implémentation ou d'une norme particulière dans son contexte. La dernière documentation en date de l'IEEE sur le concept de Spanning Tree, IEEE-802-1D-2004, explique que « le protocole STP est désormais souvent délaissé au profit du protocole RSTP (Rapid Spanning Tree Protocol) ». Il est donc clair que l'IEEE utilise le terme « STP » pour désigner l'implémentation initiale du protocole de Spanning Tree et le terme « RSTP » pour parler de la version de ce protocole spécifiée dans le document IEEE-802.1D-2004. Dans ce cadre, lorsque le protocole STP original est utilisé dans un contexte de discussion, le terme « STP 802.1D initial » est préféré pour éviter toute confusion.</p>
+<p></p>
+<p>
+<b>Remarque </b>: le protocole STP est basé sur un algorithme inventé par Radia Perlman lorsqu'elle travaillait pour Digital Equipment Corporation et a publié l'ouvrage « An Algorithm for Distributed Computation of a Spanning Tree in an Extended LAN », en 1985. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

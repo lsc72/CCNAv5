@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.2.2 Format du message DNS</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Services et protocoles de couche application courants</h1>
+        <h2>Services d&#x0027;adressage IP</h2>
+      </div>
+      <div id="content">
+<p>Un serveur DNS assure la résolution des noms à l'aide du domaine <i>BIND (Berkeley Internet Name Domain)</i> ou du nom de démon, souvent appelé named (prononcer « naïme-di »). Au départ, BIND a été développé par quatre étudiants de l'université de Berkley (Californie) au début des années 1980. Comme le montre la figure, le format de message DNS utilisé par BIND est le format DNS le plus répandu sur Internet.</p>
+<p></p>
+<p>Le serveur DNS stocke différents types d'enregistrements de ressource utilisés pour résoudre les noms. Ces enregistrements contiennent le nom, l'adresse et le type d'enregistrement.</p>
+<p></p>
+<p>Certains de ces types d'enregistrements sont les suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>A</b> : adresse de périphérique final</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>NS</b> : serveur de noms faisant autorité</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>CNAME</b> : nom canonique (ou nom de domaine complet) d'un alias. Il est utilisé lorsque plusieurs services emploient une adresse réseau unique, mais que chaque service possède sa propre entrée dans le DNS.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>MX</b> : enregistrement d'échange d'e-mails. Il associe un nom de domaine à une liste de serveurs d'échange d'e-mails pour ce domaine.</li>
+</ul>
+</p>
+<p></p>
+<p>Lorsqu'un client envoie une requête, le processus BIND du serveur cherche d'abord dans ses propres enregistrements pour résoudre le nom. S'il n'est pas en mesure de résoudre le nom à l'aide de ses enregistrements stockés, il contacte d'autres serveurs.</p>
+<p></p>
+<p>La requête peut être transmise à plusieurs serveurs, ce qui peut nécessiter un délai supplémentaire et consommer de la bande passante. Lorsqu'une correspondance est trouvée et retournée au serveur demandeur d'origine, le serveur stocke temporairement dans la mémoire cache l'adresse numérique correspondant au nom. </p>
+<p></p>
+<p>Si ce même nom est de nouveau demandé, le premier serveur peut retourner l'adresse en utilisant la valeur stockée dans son cache de noms. La mise en cache réduit le trafic réseau de données de demandes DNS et les charges de travail des serveurs situés aux niveaux supérieurs dans la hiérarchie. Le service Client DNS sur les ordinateurs Windows optimise les performances de la résolution des noms DNS en stockant également en mémoire les noms déjà résolus. La commande <b>ipconfig /displaydns</b> affiche toutes les entrées DNS mises en cache sur un système Windows.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

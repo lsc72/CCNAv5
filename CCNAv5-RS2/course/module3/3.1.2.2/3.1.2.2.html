@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.2.2 Contrôle des domaines de diffusion à l&#x0027;aide de réseaux locaux virtuels</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmentation d&#x0027;un VLAN</h1>
+        <h2>VLAN dans un environnement à commutateurs multiples</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Réseau sans VLAN </b>
+</p>
+<p></p>
+<p>Dans des circonstances normales, lorsqu'un commutateur reçoit une trame de diffusion sur l'un de ses ports, il la transfère par tous les autres ports, à l'exception du port de réception. Dans l'animation de la Figure 1, le réseau entier est configuré dans le même sous-réseau (172.17.40.0/24) et aucun VLAN n'est configuré. Par conséquent, lorsque l'ordinateur du personnel enseignant (PC1) envoie une trame de diffusion, le commutateur S2 l'envoie par tous ses ports. Par la suite, l'ensemble du réseau reçoit la diffusion, car il s'agit d'un seul domaine de diffusion. </p>
+<p></p>
+<p>
+<b>Réseau avec VLAN </b>
+</p>
+<p></p>
+<p>Comme le montre l'animation de la Figure 2, le réseau a été segmenté en utilisant deux VLAN. Les périphériques du personnel enseignant sont affectés au VLAN 10 et les périphériques des étudiants au VLAN 20. Lorsqu'une trame de diffusion est envoyée de l'ordinateur du personnel enseignant (PC1) au commutateur S2, ce dernier transfère la trame de diffusion uniquement aux ports du commutateur configurés pour prendre en charge le VLAN 10.</p>
+<p></p>
+<p>Les ports qui assurent la connexion entre les commutateurs S2 et S1 (ports F0/1) et entre les commutateurs S1 et S3 (ports F0/3) sont des trunks qui ont été configurées pour prendre en charge tous les VLAN du réseau. </p>
+<p></p>
+<p>Lorsque le commutateur S1 reçoit la trame de diffusion sur le port F0/1, il la transfère par le seul autre port configuré pour prendre en charge le VLAN 10, soit le port F0/3. Lorsque le commutateur S3 reçoit la trame de diffusion sur le port F0/3, il la transfère par le seul autre port configuré pour prendre en charge le VLAN 10, soit le port F0/11. La trame de diffusion parvient au seul autre ordinateur sur le réseau configuré dans le VLAN 10, soit l'ordinateur PC4 du personnel enseignant.</p>
+<p></p>
+<p>Lorsque des VLAN sont implémentés sur un commutateur, la transmission du trafic monodiffusion, multidiffusion et diffusion à partir d'un hôte figurant sur un VLAN donné est limitée aux périphériques se trouvant sur ce VLAN.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

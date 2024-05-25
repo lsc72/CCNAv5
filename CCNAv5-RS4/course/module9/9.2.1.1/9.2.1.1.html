@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.1.1 Outils logiciels de dépannage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Outils de dépannage</h2>
+      </div>
+      <div id="content">
+<p>Un grand nombre d'outils logiciels et matériels pouvant faciliter le dépannage sont disponibles. Ces outils peuvent être utilisés pour la collecte et l'analyse des symptômes des problèmes réseau. Ils offrent également souvent des fonctions de surveillance et de création de rapports, pouvant servir à l'établissement de la ligne de base du réseau.</p>
+<p></p>
+<p>Les outils logiciels de dépannage courants sont les suivants :</p>
+<p></p>
+<p>
+<b>Outils de système de gestion du réseau (NMS)</b>
+</p>
+<p>Les outils de système de gestion du réseau (NMS) incluent des outils de surveillance, de configuration et de gestion des pannes de niveau périphérique. La Figure 1 illustre un exemple d'écran du logiciel de système d'administration de réseaux (NMS) « WhatsUp Gold ». Ces outils permettent d’analyser et de corriger des problèmes réseau. Le logiciel de surveillance du réseau affiche de façon graphique une vue physique des périphériques réseau, permettant aux administrateurs réseau de surveiller les périphériques distants sans les contrôler physiquement. Le logiciel de gestion des périphériques offrent des informations dynamiques sur l’état, les statistiques et la configuration des produits commutés. Autres exemples d'outils de gestion du réseau couramment utilisés : CiscoView, HPBTO (anciennement appelé OpenView) et SolarWinds. </p>
+<p></p>
+<p>
+<b>Bases de connaissances</b>
+</p>
+<p>Les bases de connaissance en ligne des fournisseurs de périphériques réseau sont devenues des sources d'informations indispensables. En associant les bases de connaissances des fabricants aux moteurs de recherche sur Internet, tels que Google, un administrateur réseau a accès à de nombreuses informations basées sur l’expérience. </p>
+<p></p>
+<p>La Figure 2 illustre la page Cisco <b>Outils et ressources (Tools & Resources)</b> du site Web <a href="http://www.cisco.com/" target="_blank">http://www.cisco.com</a>. Il s'agit d'un outil gratuit fournissant des informations sur le matériel et les logiciels Cisco. Cet outil contient des procédures de dépannage, des guides d'implémentation et des livres blancs originaux relatifs à la plupart des aspects des technologies réseau.</p>
+<p></p>
+<p>
+<b>Outils de création d'une ligne de base</b>
+</p>
+<p>De nombreux outils d'automatisation du processus de documentation réseau et de planification initiale sont disponibles. Ces outils existent à la fois pour les systèmes d'exploitation Windows, Linux et AUX. La Figure 3 illustre une capture d'écran des logiciels SolarWinds LANsurveyor et CyberGauge. Les outils de planification initiale sont utiles pour la réalisation des tâches de documentation courantes. Ils permettent par exemple de dessiner des schémas de réseaux, de mettre à jour la documentation réseau matérielle et logicielle, et de mesurer de manière économique l'utilisation de la bande passante réseau de référence.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

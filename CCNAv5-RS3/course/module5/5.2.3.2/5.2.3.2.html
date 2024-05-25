@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.3.2 Dépannage du protocole OSPFv3</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résolution des problèmes liés aux mises en œuvre du protocole OSPF à zone unique</h1>
+        <h2>Dépannage des problèmes de routage du protocole OSPFv3 à zone unique</h2>
+      </div>
+      <div id="content">
+<p>Dans la topologie de la Figure 1, tous les routeurs ont été configurés pour prendre en charge le routage OSPFv3. </p>
+<p></p>
+<p>Un examen rapide de la table de routage IPv6 de R1 (Figure 2) révèle que celui-ci reçoit la route par défaut, le LAN de R2 (2001:DB8:CAFE:2::/64) et le lien entre R2 et R3 (2001:DB8:CAFE:A002::/64). Cependant, il ne reçoit pas la route OSPFv3 du LAN de R3 (2001:DB8:CAFE:3::/64). </p>
+<p></p>
+<p>Le résultat de la Figure 3 vérifie les paramètres OSPFv3 sur R3. Notez que le protocole OSPF est activé sur l'interface Serial 0/0/1 uniquement. Il apparaît que ce protocole n'est pas activé sur l'interface G0/0 de R3.</p>
+<p></p>
+<p>Contrairement à OSPFv2, OSPFv3 n'utilise pas la commande<span class="cmd"><b> network</b></span> ; OSPFv3 est activé directement sur l'interface. La Figure 4 confirme que l'interface de R3 n'est pas activée pour OSPFv3. </p>
+<p></p>
+<p>L'exemple illustré à la Figure 5 active OSPFv3 sur l'interface Gigabit Ethernet 0/0 de R3. R3 devrait désormais annoncer le LAN de R3 à ses voisins OSPFv3.</p>
+<p></p>
+<p>Le résultat de la Figure 6 permet de vérifier que le LAN de R3 se trouve dorénavant dans la table de routage de R1. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

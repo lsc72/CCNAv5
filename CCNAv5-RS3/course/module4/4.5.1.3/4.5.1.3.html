@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.5.1.3 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.5.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Aujourd'hui, les réseaux WLAN sont couramment implémentés chez les particuliers, dans les entreprises et les environnements de campus. Seules les fréquences 2,4 GHz, 5 GHz et 60 GHz sont utilisées pour les WLAN 802.11. L'ITU-R réglemente l'attribution du spectre RF, tandis que l'IEEE fournit les normes 802.11 visant à définir comment ces fréquences radio sont utilisées dans la couche physique et la sous-couche MAC des réseaux sans fil. La Wi-Fi Alliance certifie que les produits proposés par les fournisseurs sont conformes aux normes sectorielles.</p>
+<p></p>
+<p>Les clients sans fil utilisent une carte réseau sans fil pour se connecter à un périphérique d'infrastructure, tel qu'un routeur ou un point d'accès sans fil. Les clients sans fil se connectent à l'aide d'un identifiant SSID. Les points d'accès peuvent être implémentés en tant que périphériques autonomes, en clusters de petite taille ou dans un réseau plus important basé sur un contrôleur.</p>
+<p></p>
+<p>Le point d'accès Cisco Aironet AP peut utiliser une antenne omnidirectionnelle, une antenne directionnelle ou une antenne Yagi pour diriger les signaux. La norme IEEE 802.11n/ac/ad fait appel à la technologie MIMO pour améliorer le débit et prendre en charge jusqu'à quatre antennes simultanément. </p>
+<p></p>
+<p>En mode ad hoc ou IBSS, deux périphériques sans fil se connectent l'un à l'autre par P2P. </p>
+<p></p>
+<p>En mode d'infrastructure, les points d'accès se connectent à l'infrastructure de réseau à l'aide d'un système de distribution filaire. Chaque point d'accès définit un ensemble BSS et porte un identifiant BSSID unique. Plusieurs ensembles BSS peuvent être réunis pour former un éventail ESS. Utiliser un SSID donné dans un éventail ESS offre des fonctionnalités d'itinérance transparentes entre les BSS de l'éventail ESS. Il est aussi possible d'utiliser plusieurs SSID pour différencier le niveau d'accès réseau défini, en fonction du SSID utilisé.</p>
+<p></p>
+<p>Le client sans fil commence par s'authentifier auprès d'un point d'accès, puis s'associe à celui-ci. Il est fortement recommandé d'utiliser la norme d'authentification 802.11i/WPA2. AES est la méthode de chiffrement à utiliser avec la norme WPA2.</p>
+<p></p>
+<p>Lors de la planification d'un réseau sans fil, choisissez des canaux qui ne se chevauchent pas lors du déploiement de points d'accès multiples pour couvrir une zone donnée. Un chevauchement de 10 à 15 pour cent est recommandé entre les zones BSA d'un éventail ESS. Les points d'accès Cisco prennent en charge PoE pour simplifier l'installation. </p>
+<p></p>
+<p>Les réseaux sans fil sont particulièrement prédisposés aux attaques, notamment les intrusions, les points d'accès non autorisés, l'interception de données et les attaques DoS. Cisco a mis au point une gamme de solutions pour faire face à ces menaces.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

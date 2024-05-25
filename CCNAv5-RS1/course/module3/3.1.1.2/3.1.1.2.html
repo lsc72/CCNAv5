@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.1.2 Détermination des règles</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Règles de communication</h1>
+        <h2>Les règles</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Détermination des règles</b>
+</p>
+<p>Pour pouvoir communiquer entre elles, les personnes doivent utiliser des règles établies ou des conventions qui régissent la conversation. Par exemple, examinez la Figure 1 qui montre que les protocoles sont indispensables à une communication efficace. Les protocoles utilisés dépendent des caractéristiques du mode de communication, notamment la source, la destination et le canal. Ces règles ou protocoles doivent être respectés pour que le message soit correctement transmis et compris. Il existe de nombreux protocoles qui régissent la communication humaine. Une fois qu'une méthode de communication a été convenue (en face à face, par téléphone, par lettre, à travers une photographie), les protocoles mis en place doivent répondre aux conditions suivantes :</p>
+<p>
+<ul>
+<li>Expéditeur et destinataire identifiés</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Même langue et syntaxe</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Vitesse et rythme d'élocution</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Demande de confirmation ou d'accusé de réception </li>
+</ul>
+</p>
+<p></p>
+<p>Les protocoles utilisés dans les communications réseau partagent de nombreuses caractéristiques fondamentales avec les protocoles utilisés pour régir les conversations humaines. Reportez-vous à la Figure 2. En plus d'identifier la source et la destination, les protocoles informatiques et réseau définissent la manière dont un message est transmis sur un réseau pour répondre aux conditions ci-dessus. Il existe de nombreux protocoles qui doivent interagir, mais les protocoles informatiques courants sont les suivants :</p>
+<p>
+<ul>
+<li>Codage des messages</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Mise en forme et encapsulation des messages</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Taille des messages</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Synchronisation des messages</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Options de remise des messages</li>
+</ul>
+</p>
+<p></p>
+<p>Nous allons étudier chacun de ces protocoles plus en détail. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

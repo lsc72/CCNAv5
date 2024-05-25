@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.3.8 Étape 6 : vérification de la couche transport</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.3.8_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Dépannage de la connectivité IP</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Dépannage de la couche transport</b>
+</p>
+<p>Si la couche réseau semble fonctionner comme prévu, mais que les utilisateurs ne peuvent toujours pas accéder aux ressources, l'administrateur réseau doit commencer par dépanner les couches supérieures. Deux des problèmes les plus fréquents qui affectent la connectivité de la couche transport sont liés à la configuration des listes de contrôle d'accès et à la configuration NAT. Un outil couramment utilisé pour tester la fonctionnalité de la couche transport est l'utilitaire Telnet. </p>
+<p></p>
+<p>
+<b>Attention</b> : tandis que Telnet peut être utilisé pour tester la couche transport, pour des raisons de sécurité, le protocole SSH doit être utilisé pour la gestion et la configuration à distance des périphériques.</p>
+<p></p>
+<p>Un administrateur réseau tente de résoudre un problème empêchant à un utilisateur d'envoyer des e-mails par l'intermédiaire d'un serveur SMTP donné. L'administrateur envoie une requête ping au serveur et celui-ci répond. Cela signifie que la couche réseau, ainsi que toutes les couches inférieures, située entre l'utilisateur et le serveur est opérationnelle. L'administrateur sait par conséquent que le problème se situe au niveau de la couche 4 ou d'une couche supérieure et il doit donc commencer par dépanner ces couches.</p>
+<p></p>
+<p>Bien que l'application serveur Telnet s'exécute sur son propre numéro de port réservé 23 et que les clients Telnet se connectent à ce port par défaut, il est possible de spécifier un numéro de port différent sur le client afin de se connecter à n'importe quel port TCP devant être testé. Cela indique si la connexion a été acceptée (présence du terme « Open » dans le résultat), refusée ou si le délai est arrivé à expiration. Il est possible de tirer des conclusions supplémentaires en matière de connectivité à partir de n'importe laquelle de ces réponses. Certaines applications, si elles utilisent un protocole de session ASCII, peuvent même afficher une bannière d'application et il est possible de déclencher certaines réponses du serveur en tapant des mots-clés spécifiques, comme dans le cas des protocoles SMTP, FTP et HTTP.</p>
+<p></p>
+<p>Compte tenu du scénario précédent, l'administrateur établit une connexion Telnet réussie à partir de PC1 avec le serveur HQ, à l'aide d'IPv6, comme le montre la Figure 1. Dans la Figure 2, l'administrateur tente d'établir une connexion Telnet avec le même serveur, en utilisant le port 80. Le résultat permet de vérifier que la couche transport se connecte avec succès de PC1 à HQ. Toutefois, le serveur n'accepte pas les connexions sur le port 80.</p>
+<p></p>
+<p>L'exemple de la Figure 3 montre une connexion Telnet réussie de R1 à R3, à l'aide d'IPv6. La Figure 4 illustre une tentative similaire de connexion Telnet à l'aide du port 80. À nouveau, le résultat permet de vérifier la réussite de la connexion de la couche transport, mais le routeur R3 refuse la connexion à l'aide du port 80.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.3.3 Audits de sécurité réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité du commutateur : gestion et implémentation</h1>
+        <h2>Meilleures pratiques de sécurité</h2>
+      </div>
+      <div id="content">
+<p>Les outils de sécurité réseau permettent à un administrateur réseau de procéder à un audit de sécurité réseau. Un audit de sécurité révèle quel type d'informations un pirate est en mesure de rassembler grâce à un simple contrôle du trafic réseau. </p>
+<p></p>
+<p>Par exemple, les outils d'audit de sécurité réseau permettent à un administrateur d'inonder la table d'adresses MAC de fausses adresses MAC. Les ports de commutateur sont ensuite audités lorsque le commutateur les inonde de trafic. Au cours de l'audit, les mappages d'adresses MAC légitimes deviennent obsolètes et sont replacés par de faux mappages d'adresses MAC. Cette méthode permet d'identifier les ports compromis et les ports incorrectement configurés pour résister à ce type d'attaque.</p>
+<p></p>
+<p>Le temps est un facteur crucial pour un audit réussi. Les différents commutateurs prennent en charge diverses quantités d'adresses MAC dans leur table MAC. Il peut être difficile de déterminer le nombre adéquat d'adresses MAC usurpées à envoyer au commutateur. L'administrateur réseau doit également faire face au délai d'obsolescence de la table d'adresses MAC. Si les adresses MAC usurpées deviennent obsolètes tandis qu'un audit du réseau est en cours, les adresses MAC autorisées commencent à remplir la table MAC, ce qui limite les données qu'il est possible de contrôler via un outil d'audit de sécurité.</p>
+<p></p>
+<p>Il est également possible de recourir aux outils de sécurité réseau pour tester la pénétration sur un réseau. Le test de pénétration est une attaque simulée contre le réseau permettant de déterminer le niveau de vulnérabilité en cas de véritable attaque. Un administrateur réseau peut ainsi identifier les faiblesses de la configuration des périphériques réseau et apporter les modifications nécessaires pour rendre ces périphériques davantage résilients aux attaques. Les attaques qu'un administrateur peut réaliser sont nombreuses et la plupart des suites d'outils offrent une documentation complète détaillant la syntaxe requise pour l'exécution de l'attaque voulue. </p>
+<p></p>
+<p>En raison des effets que peuvent avoir les tests de pénétration sur le réseau, ils sont menés selon des conditions de contrôle strictes qui respectent les procédures détaillées dans le cadre d'une stratégie de sécurité réseau complète. Un réseau de banc d'essai hors ligne qui simule le véritable réseau de production est idéal. Le réseau de banc d'essai peut être utilisé par le personnel réseau pour effectuer des tests de pénétration sur le réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.4.1.2 Calcul d&#x0027;une route récapitulative</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.4.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration des routes récapitulatives et des routes statiques flottantes</h1>
+        <h2>Configuration des routes récapitulatives IPv4</h2>
+      </div>
+      <div id="content">
+<p>La récapitulation de réseaux en une seule adresse et un seul masque peut s'effectuer en trois étapes :</p>
+<p></p>
+<p>
+<b>Étape 1. </b>Répertoriez les réseaux au format binaire. La Figure 1 présente les réseaux 172.20.0.0/16 à 172.23.0.0/16 au format binaire.</p>
+<p></p>
+<p>
+<b>Étape 2. </b>Comptez le nombre de bits correspondants les plus à gauche pour déterminer le masque de la route récapitulative. La Figure 2 met en évidence les 14 bits correspondants les plus à gauche. Il s'agit du préfixe, ou du masque de sous-réseau, de la route récapitulée : /14 ou 255.252.0.0.</p>
+<p></p>
+<p>
+<b>Étape 3. </b>Copiez les bits correspondants, puis ajoutez les bits zéro pour déterminer l'adresse réseau récapitulée. La figure 3 montre que les bits correspondants comportant des zéros à la fin permettent d'obtenir l'adresse 172.20.0.0. Les quatre réseaux (172.20.0.0/16, 172.21.0.0/16, 172.22.0.0/16 et 172.23.0.0/16) peuvent être récapitulés en une seule adresse réseau avec son préfixe 172.20.0.0/14.</p>
+<p></p>
+<p>La Figure 4 montre R1 configuré avec une route statique récapitulative permettant d'atteindre les réseaux 172.20.0.0/16 à 172.23.0.0/16.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

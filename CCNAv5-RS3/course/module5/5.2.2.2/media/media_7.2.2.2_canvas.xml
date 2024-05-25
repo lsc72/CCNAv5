@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	  <slide type="MBAR">
+	  <!-- Slide 01 -->
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+			<element type="IMAGE" src="media_7.2.2.2.jpg" x="0" y="0" width="470" height="400" />
+			<element type="TEXT" text="172.16.2.0/24" x="188.95" y="77.4" align="center" width="67" bold="1"/>
+			<element type="TEXT" text="G0/0" x="196.35" y="125.85" align="center" width="23.7" />
+			<element type="TEXT" text=".1" x="226.15" y="125.85" align="center" width="7.15" />
+			<element type="TEXT" text="209.165.200.224/27" x="247.15" y="125.85" align="center" width="97.9" bold="1"/>
+			<element type="TEXT" text="192.168.10.8/30" x="296.15" y="190.7" align="center" width="78.95" bold="1" />
+			<element type="TEXT" text="172.16.3.0/30" x="77.6" y="184.95" align="center" width="66.75" bold="1" />
+			<element type="TEXT" text="172.16.1.0/24" x="60.6" y="337.95" align="center" width="67" bold="1" />
+			<element type="TEXT" text="S0/0/0" x="190.35" y="180.35" align="center" width="31.75" />
+			<element type="TEXT" text="S0/0/0" x="113.55" y="240.3" align="center" width="31.75" />
+			<element type="TEXT" text=".10" x="333" y="235.3" align="center" width="14.75" />
+			<element type="TEXT" text="G0/0" x="314.1" y="282.95" align="center" width="23.7" />
+			<element type="TEXT" text="192.168.1.0/24" x="306.95" y="336.95" align="center" width="73.1" bold="1"/>
+			<element type="TEXT" text="G0/0" x="66.6" y="282.95" align="center" width="23.7" />
+			<element type="TEXT" text=".1" x="347.75" y="282.95" align="center" width="7.15" />
+			<element type="TEXT" text=":2" x="174.55" y="173.35" align="center" width="8.6" />
+			<element type="TEXT" text=".225" x="248.15" y="155.15" align="center" width="20.95" />
+			<element type="TEXT" text=".1" x="94.2" y="235.3" align="center" width="7.15" />
+			<element type="TEXT" text="Lo0" x="249.15" y="140.05" align="center" width="18" />
+			<element type="TEXT" text="S0/0/1" x="229.95" y="180.35" align="center" width="30.25" />
+			<element type="TEXT" text=".1" x="98.2" y="282.95" align="center" width="7.15" />
+			<element type="TEXT" text=".226" x="329.95" y="150.15" align="center" width="20.85" />
+			<element type="TEXT" text="S0/0/1" x="286.7" y="241.3" align="center" width="30.25" />
+			<element type="TEXT" text=".9" x="270.35" y="172.35" align="center" width="8.7" />
+			<element type="TEXT" compId="ID_s1_txt02" x="356.3" y="147.35" width="78.7" expand="up+down" align="center" />
+			<element type="TEXT" compId="ID_s1_txt01" x="18" y="50" width="134.6" expand="down" align="left" />	
+
+		</slide>
+		
+	<!-- Slide 02 -->
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+			<element type="ROUTER"  textId="router_s2_text1"  x="3.55" y="47" width="434.05" height="347.4" />
+
+		</slide>
+	<!-- Slide 03 -->
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+			<element type="ROUTER"  textId="router_s3_text1"  x="5" y="37" width="432" height="355"/>		
+
+		</slide>
+	<!-- Slide 04 -->
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s4_title"/>
+			<element type="ROUTER"  textId="router_s4_text1"  x="5" y="37" width="432" height="130"/>		
+
+		</slide>
+	<!-- Slide 05 -->
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s5_title"/>
+			<element type="ROUTER"  textId="router_s5_text1"  x="5" y="37" width="432" height="158" />	
+		</slide>
+	<!-- Slide 06 -->
+	<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+			<element type="ROUTER"  textId="router_s6_text1"  x="3.55" y="47" width="434.05" height="347.4" />
+		</slide>
+	  </slide>
+
+	  
+<text id="router_s2_text1"><![CDATA[<code>R1# <b>show ip route </b>
+Codes: L -  local, C - connected, S - static, R - RIP, M - 
+            mobile, B - BGP
+       D -  EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF 
+            inter area 
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA 
+            external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i -  IS-IS, su - IS-IS summary, L1 - IS-IS level-1, 
+            L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - 
+            per-user static route
+       o -  ODR, P - periodic downloaded static route, H - 
+            NHRP, l - LISP
+       + -  replicated route, % - next hop override
+
+Gateway of last resort is 172.16.3.2 to network 0.0.0.0
+
+O*E2  0.0.0.0/0 [110/1] via 172.16.3.2, 00:05:26, 
+      Serial0/0/0
+      172.16.0.0/16 is variably subnetted, 5 subnets, 3 
+      masks
+C        172.16.1.0/24 is directly connected, 
+         GigabitEthernet0/0
+L        172.16.1.1/32 is directly connected,  
+         GigabitEthernet0/0
+O        172.16.2.0/24 [110/65] via 172.16.3.2, 00:05:26, 
+         Serial0/0/0
+C        172.16.3.0/30 is directly connected, Serial0/0/0
+L        172.16.3.1/32 is directly connected, Serial0/0/0
+      192.168.10.0/30 is subnetted, 1 subnets
+O        192.168.10.8 [110/128] via 172.16.3.2, 00:05:26, 
+         Serial0/0/0
+R1#</code>]]></text>
+
+
+<text id="router_s3_text1"><![CDATA[<code>R3# <b>show ip protocols </b>
+*** IP Routing is NSF aware ***
+Routing Protocol is "ospf 10"
+  Outgoing update filter list for all interfaces is not set
+  Incoming update filter list for all interfaces is not set
+  Router ID 3.3.3.3
+  Number of areas in this router is 1. 1 normal 0 stub 0   
+  nssa  
+  Maximum path: 4  <span style="background-color:#FACCA8;display:block;width:99.9%">Routing for Networks:
+    192.168.10.8 0.0.0.3 area 0</span>  Passive Interface(s):
+    Embedded-Service-Engine0/0
+    GigabitEthernet0/0
+    GigabitEthernet0/1
+    GigabitEthernet0/3
+    RG-AR-IF-INPUT1
+  Routing Information Sources:
+    Gateway         Distance      Last Update
+    1.1.1.1              110      00:02:48
+    2.2.2.2              110      00:02:48
+  Distance: (default is 110)
+
+R3# </code>]]></text>
+<text id="router_s4_text1"><![CDATA[<code>R3# <b>show running-config | section router ospf</b>
+router ospf 10
+ router-id 3.3.3.3
+ passive-interface default
+ no passive-interface Serial0/0/1
+ network 192.168.10.8 0.0.0.3 area 0
+R3# </code>]]></text>
+<text id="router_s5_text1"><![CDATA[<code>R3# <b>conf t</b>
+Enter configuration commands, one per line.  End with CNTL/Z.
+R3(config)# <b>router ospf 10</b>
+R3(config-router)# <b>network 192.168.1.0 0.0.0.255 area 0</b>
+R3(config-router)# <b>end</b>
+R3# 
+*Apr 10 11:03:11.115: %SYS-5-CONFIG_I: Configured from 
+console by console
+R3# 
+</code>]]></text>
+<text id="router_s6_text1"><![CDATA[<code>R1# <b>show ip route ospf</b>
+Codes: L -  local, C - connected, S - static, R - RIP, M - 
+            mobile, B - BGP
+       D -  EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF 
+            inter area 
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA 
+            external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i -  IS-IS, su - IS-IS summary, L1 - IS-IS level-1, 
+            L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - 
+            per-user static route
+       o -  ODR, P - periodic downloaded static route, H - 
+            NHRP, l - LISP
+       + -  replicated route, % - next hop override
+
+Gateway of last resort is 172.16.3.2 to network 0.0.0.0
+
+O*E2  0.0.0.0/0 [110/1] via 172.16.3.2, 00:08:38, 
+      Serial0/0/0
+      172.16.0.0/16 is variably subnetted, 5 subnets, 3 
+      masks
+O        172.16.2.0/24 [110/65] via 172.16.3.2, 00:08:38, 
+         Serial0/0/0
+O     <span style="background-color:#FACCA8;display:inline-block;width:89.9%">192.168.1.0/24 [110/129] via 172.16.3.2, 00:00:37,</span>
+      <span style="background-color:#FACCA8;display:inline-block;width:89.9%">Serial0/0/0</span>
+      192.168.10.0/30 is subnetted, 1 subnets
+O        192.168.10.8 [110/128] via 172.16.3.2, 00:08:38, 
+         Serial0/0/0
+R1# 
+
+</code>]]></text>
+
+</data>
+

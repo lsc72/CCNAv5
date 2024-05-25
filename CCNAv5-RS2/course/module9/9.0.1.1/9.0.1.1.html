@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.0.1.1 Introduction</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Listes de contrôle d&#x0027;accès</h1>
+        <h2>Listes de contrôle d&#x0027;accès</h2>
+      </div>
+      <div id="content">
+<p>La sécurité du réseau est un sujet de taille, dont la plus grande partie n'est pas abordée dans ce cours. Ceci dit, la compréhension approfondie des listes de contrôle d'accès est l'une des principales compétences requises chez un administrateur réseau. </p>
+<p></p>
+<p>Les concepteurs de réseaux utilisent des pare-feu pour protéger les réseaux de toute utilisation non autorisée. Les pare-feu sont des solutions logicielles ou matérielles permettant de mettre en œuvre des stratégies de sécurité du réseau. Prenons l'exemple d'un verrou de porte dans une pièce à l'intérieur d'un bâtiment. Le verrou autorise uniquement les utilisateurs autorisés et munis d'une clé ou d'une carte d'accès à entrer. De la même façon, un pare-feu filtre les paquets non autorisés ou dangereux, les empêchant ainsi d'accéder au réseau. Sur un routeur Cisco, vous pouvez configurer un pare-feu simple, qui assurera les fonctions de base de filtrage du trafic à l'aide de listes de contrôle d'accès. Les administrateurs utilisent des listes de contrôle d'accès pour bloquer le trafic ou n'autoriser qu'un trafic spécifique sur leurs réseaux.</p>
+<p></p>
+<p>Une liste de contrôle d'accès est un ensemble séquentiel d'instructions d'autorisation ou de refus qui s'appliquent aux adresses ou aux protocoles de couche supérieure. Les listes de contrôle d'accès représentent un outil puissant pour contrôler le trafic entrant ou sortant d'un réseau. Des listes de contrôle d'accès peuvent être configurées pour tous les protocoles réseau routés. </p>
+<p></p>
+<p>Sécuriser le réseau est la principale raison vous incitant à configurer des listes de contrôles d'accès. Ce chapitre explique comment utiliser les listes de contrôle d'accès standard et étendues sur un routeur Cisco dans le cadre d'une solution de sécurité. Vous y trouverez des conseils, des éléments dont il faut tenir compte, des recommandations et des lignes directrices générales sur l'utilisation des listes de contrôle d'accès. </p>
+<p></p>
+<p>Ce chapitre vous donne l'occasion de développer vos connaissances sur les listes de contrôle d'accès grâce à une série de leçons, d'exercices et de travaux pratiques.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

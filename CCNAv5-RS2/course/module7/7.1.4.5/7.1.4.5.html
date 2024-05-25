@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.4.5 Protocoles de routage par classe</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.4.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de routage dynamique</h1>
+        <h2>Types de protocoles de routage</h2>
+      </div>
+      <div id="content">
+<p>La distinction la plus notable entre les protocoles de routage « par classe » et « sans classe » est que les protocoles de routage par classe n'envoient pas d'informations de masque de sous-réseau dans leurs mises à jour de routage. Les protocoles de routage sans classe incluent les informations de masque de sous-réseau dans les mises à jour de routage. </p>
+<p></p>
+<p>Les deux protocoles de routage IPv4 développés à l'origine étaient RIPv1 et IGRP. Ils ont été créés lorsque des adresses réseau ont été attribuées en fonction des classes (c'est-à-dire, les classes A, B ou C). À cette époque, un protocole de routage n'avait pas besoin d'inclure le masque de sous-réseau dans la mise à jour de routage, parce que le masque de réseau pouvait être déterminé en fonction du premier octet de l'adresse réseau. </p>
+<p></p>
+<p>
+<b>Remarque :</b> seuls les protocoles RIPv1 et IGRP sont des protocoles par classe. Tous les autres protocoles de routage IPv4 et IPv6 sont sans classe. L'adressage par classe n'a jamais fait partie du protocole IPv6. </p>
+<p></p>
+<p>Le fait que les protocoles RIPv1 et IGRP n'incluent pas les informations de masque de sous-réseau dans leurs mises à jour signifie qu'ils ne peuvent pas fournir de masques de sous-réseau de longueur variable (VLSM) et de routage interdomaine sans classe (CIDR). </p>
+<p></p>
+<p>Les protocoles de routage par classe créent également des problèmes sur les réseaux discontinus. On parle de « réseau discontinu » lorsque des sous-réseaux de la même adresse d'un réseau principal par classe sont séparés par une adresse réseau par classe différente. </p>
+<p></p>
+<p>Pour illustrer les défauts du routage par classe, reportez-vous à la topologie dans la Figure 1. Notez que les réseaux locaux de R1 (172.16.1.0/24) et R3 (172.16.2.0/24) sont tous deux des sous-réseaux du même réseau de classe B (172.16.0.0/16). Ils sont séparés par différentes adresses réseau par classe (192.168.1.0/30 et 192.168.2.0/30). </p>
+<p></p>
+<p>Lorsque R1 transmet une mise à jour à R2, le protocole RIPv1 n'inclut pas les informations de masque de sous-réseau avec la mise à jour ; il transmet uniquement l'adresse réseau de classe B 172.16.0.0. </p>
+<p></p>
+<p>R2 reçoit et traite la mise à jour. Ensuite, il crée et ajoute une entrée pour le réseau de classe B 172.16.0.0/16 dans la table de routage, comme illustré dans la Figure 2. </p>
+<p></p>
+<p>La Figure 3 montre que lorsque R3 transfère une mise à jour vers R2, il n'inclut pas non plus les informations de masque de sous-réseau et donc transmet uniquement l'adresse réseau par classe 172.16.0.0. </p>
+<p></p>
+<p>Dans la Figure 4, R2 reçoit et traite la mise à jour et ajoute une autre entrée pour l'adresse réseau par classe 172.16.0.0/16 à sa table de routage. Lorsqu'il y a deux entrées avec des métriques identiques dans la table de routage, le routeur partage la charge du trafic en parts égales entre les deux liens. On parle d'équilibrage de la charge. </p>
+<p></p>
+<p>Comme l'illustre la Figure 5, cela a un impact négatif sur un réseau discontinu. Notez le comportement erratique des commandes <span class="cmd"><b>ping</b></span> et <span class="cmd"><b>traceroute</b></span>. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

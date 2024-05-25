@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.1.1 Exercice en classe : modules de périphérique WAN</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Modules de périphérique WAN</b>
+</p>
+<p></p>
+<p>Votre entreprise de taille moyenne améliore son réseau. Afin de tirer le meilleur parti de l'équipement actuellement utilisé, vous décidez d'acheter des modules WAN au lieu d'un nouvel équipement.</p>
+<p></p>
+<p>Toutes les filiales utilisent des routeurs ISR Cisco 1900 ou 2911. Vous allez mettre à jour ces routeurs dans différents emplacements. Chaque filiale possède ses propres exigences à prendre en considération en matière de FAI.</p>
+<p></p>
+<p>Pour mettre à jour les périphériques, mettez l'accent sur les types d'accès aux modules WAN suivants :</p>
+<p>
+<ul>
+<li>Ethernet</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Haut débit</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>T1/E1 et RNIS PRI</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Accès de base (BRI)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Série</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Voix et WAN trunk T1 et E1</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>LAN et WAN sans fil</li>
+</ul>
+</p>
+<p></p>
+<p>
+<a href="../../files/2.3.1.1%20WAN%20Device%20Modules%20Instructions.pdf" target="_blank">Exercice en classe : modules de périphérique WAN</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.1.5 Représentations du réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>LAN, WAN et Internet</h1>
+        <h2>Composants d&#x0027;un réseau</h2>
+      </div>
+      <div id="content">
+<p>Lors de la transmission d'informations complexes, par exemple l'affichage de tous les équipements et supports dans un interréseau important, il est utile d'utiliser des représentations visuelles. Un schéma constitue un moyen facile de comprendre comment les périphériques d'un grand réseau sont connectés. Un tel schéma utilise des symboles pour représenter les périphériques et les connexions qui composent un réseau. Ce type de schéma de réseau est appelé un diagramme de topologie.</p>
+<p></p>
+<p>Comme tout autre langage, le langage propre au réseau comprend un ensemble commun de symboles pour représenter les différents périphériques finaux, périphériques réseau et supports (voir la figure). La capacité à reconnaître les représentations logiques des composants réseau physiques est essentielle pour être en mesure de visualiser l'organisation et le fonctionnement d'un réseau. Tout au long de ce cours et des travaux pratiques, vous apprendrez le fonctionnement de ces périphériques et la réalisation de tâches de configuration de base sur ces périphériques.</p>
+<p></p>
+<p>En plus de ces représentations, une terminologie spécialisée est utilisée pour étudier la manière dont ces périphériques et supports se connectent entre eux. Les termes importants dont il faut se souvenir sont les suivants :</p>
+<p>
+<ul>
+<li>
+<b>Carte réseau</b> – une carte réseau, ou adaptateur de réseau local, fournit la connexion physique au réseau à partir de l'ordinateur ou d'un autre périphérique hôte. Les supports qui relient l'ordinateur au périphérique réseau se branchent directement à la carte réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Port physique</b> – connecteur ou prise sur un périphérique réseau par lequel/laquelle le support est connecté à un hôte ou à un autre périphérique réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Interface</b> – ports spécifiques d'un périphérique interréseau qui se connectent à des réseaux individuels. Puisque les routeurs sont utilisés pour interconnecter des réseaux, les ports sur un routeur sont appelés interfaces réseau.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

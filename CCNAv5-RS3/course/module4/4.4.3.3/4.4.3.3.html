@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.3.3 Résolution d&#x0027;un problème de lenteur du réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration LAN sans fil</h1>
+        <h2>Dépannage des problèmes liés à la fonction WLAN</h2>
+      </div>
+      <div id="content">
+<p>Pour optimiser et accroître la bande passante des routeurs bibande 802.11n/ac, vous avez le choix entre :</p>
+<p>
+<ul>
+<li>
+<b>Mettre à niveau vos clients sans fil</b> : les anciens périphériques 802.11b et même 802.11g peuvent ralentir l'ensemble du WLAN. Pour optimiser les performances, tous les périphériques sans fil doivent prendre en charge la même norme, la plus élevée possible. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Diviser le trafic</b> : la méthode la plus simple pour améliorer les performances sans fil est de diviser le trafic sans fil entre la bande 802.11n 2,4 GHz et la bande 5 GHz. Ainsi, les systèmes 802.11n (ou version supérieure) peuvent utiliser les deux bandes comme s'il s'agissait de deux réseaux sans fil distincts, afin de faciliter la gestion du trafic. Par exemple, utilisez le réseau 2,4 GHz pour les tâches Internet de base, telles que la navigation Web, la messagerie électronique et les téléchargements, et la bande 5 GHz pour les fonctions multimédias en continu, comme illustré à la Figure 1. </li>
+</ul>
+</p>
+<p></p>
+<p>Plusieurs raisons valident l'utilisation d'une approche de division du trafic :</p>
+<p>
+<ul>
+<li>La bande 2,4 GHz peut être adaptée au trafic internet de base sans composante temporelle.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Il est toujours possible de partager la bande passante avec les WLAN adjacents.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La bande 5 GHz est moins fréquentée que la bande 2,4 GHz ; idéale pour la lecture multimédia en continu.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La bande 5 GHz comporte davantage de canaux ; par conséquent, le canal choisi aura plus de chances de ne pas subir d'interférences. </li>
+</ul>
+</p>
+<p></p>
+<p>Par défaut, les routeurs bibande utilisent le même nom de réseau sur la bande 2,4 GHz et la bande 5 GHz. Le moyen le plus simple de segmenter le trafic est de renommer l'un des réseaux sans fil, comme illustré à la Figure 2. Avec un nom distinct et descriptif, il est plus facile de se connecter au réseau approprié.</p>
+<p></p>
+<p>Pour améliorer la portée d'un réseau sans fil, assurez-vous que l'emplacement d'installation physique du routeur sans fil est exempt d'obstacles, tels que des meubles, des structures ou des appareils de grande taille. Ceux-ci risqueraient de bloquer le signal, et de réduire la portée du WLAN. Si cela ne résout toujours pas le problème, vous pouvez envisager d'utiliser un amplificateur du signal Wi-Fi ou de déployer la technologie sans fil Powerline.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

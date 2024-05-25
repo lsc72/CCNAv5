@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.1.5 Étape 3. Installation de la licence</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Licences IOS</h1>
+        <h2>Licences logicielles </h2>
+      </div>
+      <div id="content">
+<p>
+<b>Étape 3. Installation de la licence</b>
+</p>
+<p></p>
+<p>Une fois la licence achetée, le client reçoit un fichier de licence, à savoir un fichier texte XML doté d'une extension .lic. L'installation d'une licence permanente comprend deux étapes :</p>
+<p></p>
+<p>
+<b>Étape 1.</b> Utilisez la commande du mode d'exécution privilégié<span class="cmd"><b> license install </b></span><span class="cmd"><i>stored-location-url </i></span>pour installer un fichier de licence.</p>
+<p></p>
+<p>
+<b>Étape 2.</b> Redémarrez le routeur à l'aide de la commande du mode d'exécution privilégié<span class="cmd"><b> reload</b></span>. Un redémarrage n'est pas nécessaire si une licence d'évaluation est active. </p>
+<p></p>
+<p>La Figure 1 présente la configuration permettant l'installation de la licence permanente du package Sécurité sur le routeur.</p>
+<p></p>
+<p>
+<b>Remarque </b>: le package Communications unifiées n'est pas pris en charge sur les routeurs 1941.</p>
+<p></p>
+<p>Une licence permanente n'expire jamais. Lorsqu'une licence permanente est installée sur un routeur, elle s'applique à l'ensemble de fonctionnalités pendant toute la durée de vie du routeur, même sur les différentes versions IOS. Par exemple, lorsqu'une licence UC, Sécurité ou Données est installée sur un routeur, les fonctionnalités suivantes pour cette licence sont activées même si le routeur est mis à niveau vers une nouvelle version IOS. La licence permanente est souvent choisie dans le cadre de l’achat d’un ensemble de fonctionnalités pour un routeur.</p>
+<p></p>
+<p>
+<b>Remarque </b>: le site de fabrication Cisco préinstalle la licence permanente appropriée sur le périphérique commandé pour l'ensemble de fonctionnalités acheté. Aucune interaction client avec les processus Cisco IOS Software Activation n'est requise pour activer cette licence sur le nouveau matériel.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 2 pour installer un fichier de licence permanente sur le routeur R2.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

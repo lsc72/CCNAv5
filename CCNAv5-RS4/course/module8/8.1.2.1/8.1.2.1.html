@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.2.1 Serveur Syslog</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Syslog</h1>
+        <h2>Configuration de Syslog</h2>
+      </div>
+      <div id="content">
+<p>Pour afficher des messages Syslog, un serveur Syslog doit être installé sur une station de travail au sein du réseau. Il existe plusieurs versions freeware et shareware de Syslog, ainsi que des versions commerciales destinées aux entreprises. La Figure 1 illustre une version d'évaluation du démon Syslog Kiwi sur un ordinateur exécutant Windows 7. </p>
+<p></p>
+<p>Le serveur Syslog fournit une interface relativement conviviale pour l'affichage des résultats Syslog. Le serveur analyse les résultats et place les messages dans des colonnes prédéfinies pour une interprétation aisée. Si des horodatages sont configurés sur le périphérique réseau qui est à la source des messages Syslog, la date et l'heure de chaque message s'affichent dans les résultats du serveur Syslog, comme le montre la Figure 2.</p>
+<p></p>
+<p>Les administrateurs réseau peuvent aisément parcourir de grandes quantités de données compilées sur un serveur Syslog. L'un des avantages de l'affichage des messages Syslog sur un serveur Syslog est la capacité à effectuer des recherches granulaires dans les données. De même, un administrateur réseau peut supprimer rapidement des messages Syslog non importants de la base de données.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

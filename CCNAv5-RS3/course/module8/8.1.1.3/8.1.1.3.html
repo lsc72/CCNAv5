@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.1.3 Configuration de la récapitulation automatique avec le protocole EIGRP </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations EIGRP avancées</h1>
+        <h2>Résumé automatique </h2>
+      </div>
+      <div id="content">
+<p>La récapitulation automatique du protocole EIGRP pour IPv4 est désactivée par défaut à partir des versions Cisco IOS 15.0(1)M et 12.2(33). Auparavant, la récapitulation automatique était activée par défaut. Le protocole EIGRP effectuait dont la récapitulation automatique chaque fois que la topologie EIGRP franchissait une frontière entre deux réseaux par classe principaux différents.</p>
+<p></p>
+<p>À la Figure 1, le résultat de la commande<span class="cmd"><b> show ip protocols </b></span>sur R1 indique que la récapitulation automatique du protocole EIGRP est désactivée. Ce routeur exécute IOS 15.2 ; la récapitulation automatique du protocole EIGRP est donc désactivée par défaut. La Figure 2 présente la table de routage actuelle de R3. Notez que la table de routage IPv4 de R3 contient tous les réseaux et sous-réseaux présents dans le domaine de routage EIGRP.</p>
+<p></p>
+<p>Pour activer la récapitulation automatique du protocole EIGRP, utilisez la commande de mode de configuration du routeur<span class="cmd"><b> auto-summary</b></span>, comme indiqué à la Figure 3 :</p>
+<p></p>
+<p>
+<span class="cmd">R1(config)# </span>
+<span class="cmd">
+<b>router eigrp</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>as-number</i>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config-router)# </span>
+<span class="cmd">
+<b>auto-summary</b>
+</span>
+</p>
+<p></p>
+<p>La forme<span class="cmd"><b> no </b></span>de cette commande sert à désactiver la récapitulation automatique.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 4 pour activer la récapitulation automatique de R3. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

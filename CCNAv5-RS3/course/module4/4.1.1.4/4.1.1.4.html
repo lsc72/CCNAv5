@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.1.4 Fréquences radio </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts de la technologie sans fil</h1>
+        <h2>Introduction à la technologie sans fil</h2>
+      </div>
+      <div id="content">
+<p>Tous les périphériques sans fil fonctionnent dans la plage d'ondes radio du spectre électromagnétique. Il est de la responsabilité de l'International Telecommunication Union - Radiocommunication Sector (ITU-R) de réguler l'attribution du spectre des fréquences radio (RF). Les plages de fréquences, appelées bandes, sont attribuées suivant différents critères. Certaines bandes du spectre électromagnétique sont strictement réglementées et utilisées pour des applications précises, par exemple le contrôle du trafic aérien et les communications des services d'urgence. D'autres sont disponibles librement, par exemple les bandes ISM (industriel, scientifique et médical) et UNII (infrastructure nationale de l'information). </p>
+<p></p>
+<p>
+<b>Remarque </b>: les réseaux WLAN fonctionnent sur la bande de fréquence ISM 2,4 GHz et la bande UNII 5 GHz. </p>
+<p></p>
+<p>Les communications sans fil se font dans la plage des ondes radio (p. ex. 3 Hz à 300 GHz) du spectre électromagnétique, comme illustré à la figure. Cette plage est divisée en deux sections, celle des fréquences radio et celle des fréquences micro-ondes. Notez que que les communications WLAN, Bluetooth, cellulaires et satellite passent toutes par les plages de micro-ondes UHF, SHF et EHF.</p>
+<p></p>
+<p>Les périphériques des LAN sans fil sont équipés d'émetteurs et de récepteurs réglés sur les fréquences spécifiques de la plage des micro-ondes. Plus précisément, les bandes de fréquences suivantes sont affectées aux LAN sans fil 802.11 :</p>
+<p>
+<ul>
+<li>
+<b>2,4 GHz (UHF) </b>- 802.11b/g/n/ad </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>5 GHz (SHF) </b>- 802.11a/n/ac/ad</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>60 GHz</b>
+<b>(EHF) </b>- 802.11ad</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

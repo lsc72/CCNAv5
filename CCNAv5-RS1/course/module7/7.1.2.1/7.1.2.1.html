@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.2.1 Présentation du protocole TCP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole de couche Transport</h1>
+        <h2>Présentation des protocoles TCP et UDP</h2>
+      </div>
+      <div id="content">
+<p>Pour comprendre les différences entre les protocoles TCP et UDP, il est important de comprendre comment chaque protocole utilise des fonctions spécifiques de fiabilité et comment il effectue le suivi des communications.</p>
+<p></p>
+<p>
+<b>Protocole TCP (Transmission Control Protocol)</b>
+</p>
+<p></p>
+<p>Le protocole TCP a été initialement décrit dans le document RFC 793. Outre la prise en charge des fonctions de base de segmentation et de réorganisation des données, le protocole TCP, comme l'illustre la figure, fournit également :</p>
+<p>
+<ul>
+<li>des conversations orientées connexion en établissant des sessions ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>un acheminement fiable ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>une reconstitution ordonnée des données ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>le contrôle de flux.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Établissement de session</b>
+</p>
+<p>Le protocole TCP est un protocole orienté connexion. Un protocole orienté connexion est un protocole qui négocie et établit une connexion permanente (ou session) entre les périphériques source et de destination avant de transmettre du trafic. L'établissement de session prépare les périphériques à communiquer entre eux. Grâce à l'établissement de la session, les périphériques négocient la quantité de trafic pouvant être transmise à un moment donné et les données de communication peuvent être étroitement gérées. La session est interrompue une fois que toutes les communications sont terminées.</p>
+<p></p>
+<p>
+<b>Acheminement fiable</b>
+</p>
+<p>Le protocole TCP est en mesure d'assurer l'acheminement fiable des données. Dans le contexte des réseaux, la fiabilité consiste à veiller à ce que chaque bloc de données envoyé par la source parvienne à destination. Bien des circonstances peuvent entraîner la corruption ou la perte d'un bloc de données lors de son transfert sur le réseau. Le protocole TCP peut garantir que tous les blocs atteignent leur destination en demandant au périphérique source de retransmettre les données perdues ou endommagées. </p>
+<p></p>
+<p>
+<b>Livraison dans le même ordre</b>
+</p>
+<p>Étant donné que les réseaux peuvent fournir plusieurs routes dont les débits de transmission varient, il se peut que les données arrivent dans le désordre. En numérotant et en ordonnant les segments, le protocole TCP s'assure que ces segments sont remis dans le bon ordre. </p>
+<p></p>
+<p>
+<b>Contrôle de flux</b>
+</p>
+<p>Les hôtes du réseau disposent de ressources limitées, par exemple en ce qui concerne la mémoire ou la bande passante. Quand le protocole TCP détermine que ces ressources sont surexploitées, il peut demander à l'application qui envoie les données d'en réduire le flux. Cette opération consiste à réguler la quantité de données transmises par la source. Le contrôle du flux contribue à prévenir la perte de segments sur le réseau et à rendre inutiles les retransmissions.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.4.3 DUAL : aucun successeur potentiel</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.4.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1> Fonctionnement du protocole EIGRP</h1>
+        <h2>Algorithme DUAL et convergence</h2>
+      </div>
+      <div id="content">
+<p>Le chemin vers le successeur peut parfois échouer, sans qu'il existe de successeur potentiel. Dans ce cas, DUAL ne dispose pas d'un chemin de secours sans boucle garanti vers le réseau, le chemin n'apparaît donc pas dans la table topologique comme successeur potentiel. Si la table topologique ne contient aucun successeur potentiel, DUAL met le réseau à l'état actif. DUAL interroge activement ses voisins à la recherche d'un nouveau successeur. </p>
+<p></p>
+<p>R1 utilise actuellement R3 comme successeur vers 192.168.1.0/24, comme indiqué à la Figure 1. Toutefois, R1 ne répertorie pas R2 comme successeur potentiel, car R2 ne remplit pas la condition de faisabilité. Pour comprendre comment DUAL recherche un nouveau successeur en l'absence de successeur potentiel, une défaillance de lien est simulée entre R1 et R3.</p>
+<p></p>
+<p>Avant la simulation de la défaillance de lien, la fonction de débogage de DUAL est activée à l'aide de la commande<span class="cmd"><b> debug eigrp fsm </b></span>sur R1, comme indiqué à la Figure 2. Une défaillance de lien est simulée à l'aide de la commande<span class="cmd"><b> shutdown </b></span>sur l'interface Serial 0/0/1 de R1. </p>
+<p></p>
+<p>Lorsque le successeur n'est plus disponible et en l'absence de successeur potentiel, DUAL met la route à l'état actif. DUAL demande au protocole EIGRP de rechercher un chemin vers le réseau auprès d'autres routeurs. D'autres routeurs répondent au protocole EIGRP et informent l'expéditeur de la demande EIGRP de la disponibilité ou non d'un chemin vers le réseau demandé. Si aucun des routeurs interrogés ne dispose d'un chemin vers ce réseau, l'expéditeur de la demande se retrouve sans route vers ce réseau. </p>
+<p></p>
+<p>Le résultat de débogage sélectionné à la Figure 2 montre le réseau 192.168.1.0/24 mis à l'état actif et les demandes EIGRP envoyées à d'autres voisins. R2 répond par un chemin vers ce réseau, qui devient le nouveau successeur et est installé dans la table de routage.</p>
+<p></p>
+<p>Si l’expéditeur des demandes EIGRP reçoit des réponses EIGRP contenant un chemin vers le réseau demandé, le chemin préféré est désigné comme nouveau successeur et ajouté à la table de routage. Ce processus dure moins longtemps si DUAL dispose d'un successeur potentiel dans sa table topologique et peut rapidement ajouter la nouvelle route à sa table de routage. À la Figure 3, notez que R1 dispose d'une nouvelle route vers le réseau 192.168.1.0/24. Le nouveau successeur EIGRP est le routeur R2.</p>
+<p></p>
+<p>La Figure 4 montre que la table topologique de R1 désigne maintenant R2 comme successeur sans nouveau successeur potentiel. Si le lien entre R1 et R3 est réactivé, R3 redevient le successeur. Toutefois, R2 ne devient toujours pas successeur potentiel, car il ne remplit pas la condition de faisabilité.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

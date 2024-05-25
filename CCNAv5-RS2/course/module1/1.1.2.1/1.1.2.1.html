@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.2.1 Rôle des réseaux commutés</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Conception d&#x0027;un réseau local</h1>
+        <h2>Réseaux commutés</h2>
+      </div>
+      <div id="content">
+<p>Le rôle des réseaux commutés a considérablement évolué au cours des deux dernières décennies. Encore récemment, les réseaux commutés linéaires de couche 2 étaient très largement répandus. Les réseaux de données linéaires de couche 2 étaient fondés sur des propriétés de base d'Ethernet et sur l'utilisation généralisée de répéteurs de concentrateurs pour propager le trafic LAN dans l'ensemble d'une organisation. Comme l'illustre la Figure 1, les réseaux ont fondamentalement changé, pour devenir des réseaux locaux commutés dans un réseau hiérarchique. Un réseau local commuté accroît la flexibilité, améliore la gestion du trafic et apporte des fonctions supplémentaires, notamment : </p>
+<p>
+<ul>
+<li>Qualité de service</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Sécurité supplémentaire </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Prise en charge de réseau et de connectivité sans fil</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Prise en charge de nouvelles technologies, telles que des services de téléphonie IP et de mobilité</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 2 présente la conception hiérarchique utilisée dans le réseau commuté sans frontières. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

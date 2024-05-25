@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.2.5 Opération AND au niveau du bit </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Masque de sous-réseau IPv4</h2>
+      </div>
+      <div id="content">
+<p>Lorsqu'une adresse IPv4 est attribuée à un périphérique, ce dernier utilise le masque de sous-réseau pour savoir à quelle adresse réseau il appartient. L'adresse réseau est l'adresse représentant tous les périphériques du même réseau. </p>
+<p></p>
+<p>En envoyant des données réseau, le périphérique utilise ces informations pour déterminer s'il peut envoyer des paquets en local ou s'il doit envoyer les paquets à une passerelle par défaut pour l'acheminement à distance. Lorsqu'un hôte envoie un paquet, il compare la partie réseau de sa propre adresse IP à la partie réseau de l'adresse IP de destination, grâce aux masques de sous-réseau. Si les bits de réseau correspondent, l'hôte source et l'hôte de destination sont sur le même réseau, et le paquet peut être transmis localement. S'ils ne correspondent pas, l'hôte expéditeur transmet le paquet à la passerelle par défaut, afin qu'il soit envoyé à l'autre réseau. </p>
+<p></p>
+<p>
+<b>Opération AND</b>
+</p>
+<p>Il s'agit de l'une des trois opérations binaires de base, appliquées en logique numérique. Les deux autres sont les opérations OR (OU) et NOT (NON). Bien que les trois soient utilisées dans les réseaux de données, l'opération AND permet de déterminer l'adresse réseau. De ce fait, nous aborderons uniquement l'opération logique AND. L'opération logique AND consiste à comparer deux bits, ce qui donne le résultat suivant :</p>
+<p></p>
+<p>1 AND 1 = 1 (Figure 1)</p>
+<p></p>
+<p>0 AND 1 = 0 (Figure 2)</p>
+<p></p>
+<p>0 AND 0 = 0 (Figure 3)</p>
+<p></p>
+<p>1 AND 0 = 0 (Figure 4)</p>
+<p></p>
+<p>L'adresse d'hôte IPv4 est logiquement ajoutée par une opération AND (bit par bit) à son masque de sous-réseau pour déterminer l'adresse à laquelle l'hôte est associé. Lorsque cette opération AND est appliquée entre l'adresse et le masque de sous-réseau, le résultat obtenu est l'adresse réseau. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

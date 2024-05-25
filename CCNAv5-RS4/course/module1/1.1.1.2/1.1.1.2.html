@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.1.2 Principes d&#x0027;ingénierie structurée</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation de la conception de réseau hiérarchique</h1>
+        <h2>Conception de campus de réseau d&#x0027;entreprise</h2>
+      </div>
+      <div id="content">
+<p>Quelle que soit la taille et quelles que soient les contraintes du réseau, un facteur important dans la bonne mise en place ou conception de réseaux et de suivre les principes d'ingénierie structurée. Ces principes sont les suivants :</p>
+<p>
+<ul>
+<li>
+<b>Hiérarchie </b>: le modèle de réseau hiérarchique est un outil de haut niveau utile à la conception d'une infrastructure réseau fiable. Il décompose le problème complexe que pose la conception du réseau en plus petits éléments, plus gérables. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Modularité </b>: en décomposant les fonctions du réseau en modules, la conception du réseau est plus simple. Cisco a identifié plusieurs modules, dont le campus d'entreprise, le bloc de services, le data center et la périphérie Internet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Résilience </b>: le réseau doit rester disponible et utilisable dans des conditions aussi bien normales qu'anormales. Les conditions normales sont celles dans lesquelles le trafic et le flux réseau sont normaux et comprennent les événements prévus, par exemple les périodes de maintenance. Les conditions anormales se produisent lors de pannes de matériel ou de logiciel, lors de l'apparition de trafic imprévu, d'événements de DoS, intentionnels ou non, ou encore tout autre événement non prévu.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Flexibilité </b>: la capacité à modifier des parties du réseau, à ajouter de nouveaux services ou à augmenter sa capacité sans avoir à passer par une mise à jour complexe (par exemple le remplacement de matériel).</li>
+</ul>
+</p>
+<p></p>
+<p>Afin de répondre à ces objectifs de conception fondamentaux, le réseau doit être créé sur une architecture réseau hiérarchique qui offre suffisamment de flexibilité et de possibilités de croissance.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

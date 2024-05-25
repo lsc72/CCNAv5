@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.1.7 Modèle de package d&#x0027;image système IOS 15</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.1.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Gestion des fichiers système IOS</h1>
+        <h2>Conventions d&#x0027;attribution de noms</h2>
+      </div>
+      <div id="content">
+<p>Les routeurs à services intégrés de 2e génération Cisco (ISR G2) des gammes 1900, 2900 et 3900 prennent en charge les services à la demande par le biais de l'obtention de licences logicielles. Le processus de services à la demande permet aux clients de réaliser des économies de fonctionnement grâce à des opérations de commande et de gestion simples des logiciels. Lors de la commande d'une nouvelle plate-forme ISR G2, le routeur est expédié avec une image du logiciel Cisco IOS universelle unique et une licence permet d'activer les packages de fonctionnalités, comme indiqué à la Figure 1.</p>
+<p></p>
+<p>Il existe deux types d'images universelles prises en charge dans ISR G2 :</p>
+<p>
+<ul>
+<li>
+<b>Images universelles avec la désignation « universalk9 » dans le nom de l'image :</b> cette image universelle offre toutes les fonctionnalités du logiciel Cisco IOS, y compris des fonctionnalités de cryptographie forte des données utiles, telles que le réseau privé virtuel IPsec, le réseau privé virtuel SSL et les communications unifiées sécurisées.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Images universelles avec la désignation « universalk9_npe » dans le nom de l'image </b>: l'application stricte des fonctions de chiffrement assurée par la fonction d'activation logicielle Cisco Software Activation répond aux exigences d'exportation des fonctions de chiffrement. Toutefois, dans certains pays, les exigences d'importation stipulent que la plate-forme ne doit pas prendre en charge les fonctions de cryptographie forte, telles que la cryptographie des données utiles. Pour respecter les exigences d'importation de ces pays, l'image universelle ne prend pas en charge le chiffrement fort des données utiles.</li>
+</ul>
+</p>
+<p></p>
+<p>Avec les périphériques ISR G2, la sélection d'image IOS est simplifiée, puisque toutes les fonctionnalités sont incluses dans l'image universelle. Les fonctionnalités sont activées via l'obtention des licences. Chaque périphérique est livré avec une image universelle. Les packages technologiques IP Base, Données, UC (Communications unifiées) et SEC (Sécurité) sont activés dans l'image universelle à l'aide des clés de licence de Cisco Software Activation. Chaque clé de licence est unique pour un périphérique donné et elle est obtenue de Cisco grâce à la fourniture de l'ID de produit et du numéro de série du routeur ainsi que d'une clé d'activation de produit (PAK). Cisco fournit la PAK lors de l'achat du logiciel. Le package IP Base est installé par défaut. </p>
+<p></p>
+<p>La Figure 2 montre la migration suggérée d'IOS 12 (package de reformation IOS) vers IOS 15 (package simplifié) pour les routeurs ISR de la génération suivante. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

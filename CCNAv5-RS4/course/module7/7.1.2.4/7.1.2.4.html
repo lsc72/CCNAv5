@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.2.4 Packet Tracer : configuration de VPN (facultatif)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Réseaux privés virtuels (VPN)</h1>
+        <h2>Types de réseau privé virtuel</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Contexte/scénario</b>
+</p>
+<p></p>
+<p>Au cours de cet exercice, vous allez configurer deux routeurs de telle sorte qu'ils prennent en charge un VPN IPsec de site à site pour le trafic issu de leurs LAN respectifs. Le trafic VPN IPsec passera par un autre routeur qui n'a pas connaissance du VPN. IPsec permet la transmission sécurisée d'informations sensibles sur des réseaux non protégés tels qu'Internet. IPsec agit en tant que couche réseau, qui protège et authentifie les paquets IP entre les périphériques IPsec participants (homologues), comme les routeurs Cisco.</p>
+<p></p>
+<p>
+<a href="../../files/7.1.2.4%20Packet%20Tracer%20-%20Configuring%20VPNs%20(Optional)%20Instructions.pdf" target="_blank">Packet Tracer : configuration de VPN (facultatif) - instructions</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/7.1.2.4%20Packet%20Tracer%20-%20Configuring%20VPNs%20(Optional).pka" target="_blank">Packet Tracer : configuration de VPN (facultatif) - PKA</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

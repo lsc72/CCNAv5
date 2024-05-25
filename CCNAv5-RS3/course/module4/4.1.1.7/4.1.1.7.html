@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.1.7 Comparaison WLAN/LAN</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.1.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts de la technologie sans fil</h1>
+        <h2>Introduction à la technologie sans fil</h2>
+      </div>
+      <div id="content">
+<p>Les WLAN partagent une même origine avec les LAN Ethernet. L’IEEE a adopté l’ensemble des normes d’architecture de réseau informatique 802 LAN/MAN (réseau métropolitain). Les deux principaux groupes de travail 802 sont 802.3 Ethernet et 802.11 WLAN. Toutefois, il existe d’importantes différences entre les deux.</p>
+<p></p>
+<p>Les WLAN utilisent des fréquences radio au lieu de câbles au niveau de la couche physique et de la sous-couche MAC de la couche liaison de données. Par rapport au câble, les radiofréquences présentent les caractéristiques suivantes :</p>
+<p>
+<ul>
+<li>Contrairement aux fils gainés, les radiofréquences n’ont pas de limites. Ceci permet aux trames de données circulant sur les radiofréquences d'être disponibles pour toute personne capable de recevoir le signal RF.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les radiofréquences ne sont pas protégées des signaux extérieurs, à la différence des câbles qui sont enveloppés d’une gaine isolante. Les radios fonctionnant de manière indépendante au sein d'une même zone géographique, mais utilisant des fréquences radio identiques ou similaires, peuvent interférer les unes avec les autres.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La transmission RF est sujette aux difficultés inhérentes aux technologies reposant sur les ondes, comme les radios grand public. Par exemple, à mesure que l'onde radio s'éloigne de la source, les stations de radio commencent parfois à se mélanger et les bruits parasites augmentent. Le signal fini par être complètement perdu. Les réseaux locaux filaires sont équipés de câbles de longueur appropriée pour éviter que le signal ne perde en intensité.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La réglementation concernant les bandes RF peut être différente d’un pays à un autre. L’utilisation de réseaux locaux sans fil est soumise à d’autres réglementations et ensembles de normes qui ne s’appliquent pas aux réseaux locaux filaires.</li>
+</ul>
+</p>
+<p></p>
+<p>Les WLAN diffèrent également des LAN filaires dans les aspects suivants :</p>
+<p>
+<ul>
+<li>Les WLAN connectent des clients au réseau par le biais d'un point d'accès sans fil ou d'un routeur sans fil, au lieu d'un commutateur Ethernet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les périphériques connectés aux réseaux locaux sans fil sont généralement des appareils mobiles alimentés par batteries, au contraire des périphériques LAN qui sont branchés sur secteur. Les cartes réseau sans fil tendent à réduire l'autonomie de la batterie des périphériques mobiles.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les réseaux locaux sans fil prennent en charge les hôtes qui rivalisent pour accéder aux supports RF (bandes de fréquences). La norme 802.11 préconise l'évitement des collisions (CSMA/CA) au lieu de la détection des collisions (CSMA/CD) pour les accès multimédias, afin d'éviter de manière proactive les collisions au sein du support.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les réseaux locaux sans fil utilisent un format de trame différent de celui des réseaux locaux Ethernet filaires. Les réseaux locaux sans fil ont besoin d’informations supplémentaires au niveau de l’en-tête de couche 2 de la trame.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les réseaux locaux sans fil posent davantage de problèmes en matière de confidentialité dans la mesure où les fréquences radio peuvent atteindre l’extérieur.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.4.1.6 Packet Tracer : configuration de la récapitulation de route IPv4 - Scénario 2</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.4.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration des routes récapitulatives et des routes statiques flottantes</h1>
+        <h2>Configuration des routes récapitulatives IPv4</h2>
+      </div>
+      <div id="content">
+<p>Dans cet exercice, vous allez calculer et configurer des routes récapitulées. La récapitulation de route, également connue sous le nom d'agrégation de routes, est le processus de notification d'un ensemble contigu d'adresses par une seule adresse. Après avoir calculé les routes récapitulatives pour chaque réseau local, vous devez récapituler une route qui inclut tous les réseaux de la topologie pour que le FAI atteigne chaque réseau local.</p>
+<p></p>
+<p>
+<a href="../../files/6.4.1.6%20Packet%20Tracer%20-%20Configuring%20IPv4%20Route%20Summarization%20-%202%20Inst.pdf" target="_blank">Packet Tracer : configuration de la récapitulation de route IPv4 - Scénario 2 - Instructions</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/6.4.1.6%20Packet%20Tracer%20-%20Configuring%20IPv4%20Route%20Summarization%20-%202.pka" target="_blank">Packet Tracer : configuration de la récapitulation de route IPv4 - Scénario 2 - PKA</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.1.2 Problèmes liés à la redondance de la couche 1 : instabilité de la base de données MAC</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts du mode Spanning Tree</h1>
+        <h2>Objectif du mode Spanning Tree</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Instabilité de la base de données MAC</b>
+</p>
+<p></p>
+<p>Les trames Ethernet ne possèdent pas d'attribut de durée de vie (TTL), comme les paquets IP. Ainsi, si aucun mécanisme ne vient bloquer la propagation ininterrompue de ces trames sur le réseau commuté, elles continuent à se propager sans fin entre les commutateurs, ou jusqu'à ce qu'un lien soit coupé et mette fin à la boucle. Cette propagation continue entre les commutateurs peut avoir pour conséquence une instabilité de la base de données MAC. Celle-ci se produit du fait du réacheminement des trames de diffusion. </p>
+<p></p>
+<p>Les trames de diffusion sont envoyées à tous les ports de commutation, excepté au port d'entrée initial. Ceci garantit que tous les périphériques d'un domaine de diffusion reçoivent bien les trames. S'il existe plusieurs chemins possibles pour le réacheminement des trames, une boucle sans fin risque de se former. Dans un tel cas, la table d'adresses MAC d'un commutateur peut réagir en changeant constamment pour s'adapter à la mise à jour des trames de diffusion, entraînant une instabilité de la base de données MAC.</p>
+<p></p>
+<p>Cliquez sur le bouton Lecture dans la figure pour visualiser l'animation. Lorsque l'animation s'interrompt, lisez le texte à gauche de la topologie. L'animation continuera après une courte pause.</p>
+<p></p>
+<p>Dans l'animation :</p>
+<p></p>
+<p>1. PC1 envoie une trame de diffusion à S2. S2 reçoit la trame de diffusion sur F0/11. Lorsque S2 reçoit la trame de diffusion, il met à jour sa table d'adresses MAC afin d'enregistrer la disponibilité de PC1 sur le port F0/11. </p>
+<p></p>
+<p>2. Puisqu'il s'agit d'une trame de diffusion, S2 réachemine la trame à tous les ports, y compris Trunk1 et Trunk2. Lorsque la trame de diffusion arrive à S3 et S1, ceux-ci mettent à jour leur table d'adresses MAC afin d'indiquer que PC1 est disponible en sortie sur le port F0/1 pour S1, et sur le port F0/2 pour S3.</p>
+<p></p>
+<p>3. S'agissant d'une trame de diffusion, S3 et S1 réacheminent la trame sur tous les ports, à l'exception du port d'entrée. S3 envoie la trame de diffusion à S1 depuis PC1. S1 envoie la trame de diffusion à S3 depuis PC1. Chacun d’eux met à jour sa table d’adresses MAC en consignant le port incorrect pour PC1. </p>
+<p></p>
+<p>4. Chaque commutateur réachemine à nouveau la trame de diffusion sur tous ses ports en sortie, à l'exception du port d'entrée, avec pour conséquence le réacheminement de la trame par les deux commutateurs vers S2.</p>
+<p></p>
+<p>5. Lorsque S2 reçoit les trames de diffusion en provenance de S3 et S1, la table d'adresses MAC est à nouveau mise à jour, cette fois-ci avec la dernière entrée envoyée par les deux autres commutateurs. </p>
+<p></p>
+<p>Ce processus se répète sans fin tant que la boucle n'a pas été interrompue par une coupure physique des connexions qui l'ont créée ou par la mise hors tension de l'un des commutateurs de la boucle. Ce phénomène a pour conséquence une charge de processeur élevée sur tous les commutateurs pris dans la boucle. Puisque les mêmes trames sont constamment réacheminées entre l'ensemble des commutateurs de la boucle, les processeurs de commutateur doivent traiter un gros volume de données. Par conséquent, les performances du commutateur se dégradent lors de l’arrivée du trafic légitime.</p>
+<p></p>
+<p>Lorsqu’un hôte est pris dans une boucle réseau, les autres hôtes du réseau ne peuvent pas y accéder. En outre, en raison des modifications constantes apportées à la table d'adresses MAC, le commutateur ne sait plus à partir de quel port réacheminer les trames de monodiffusion. Dans l'exemple ci-dessus, les commutateurs disposent de ports incorrects pour PC1. Toute trame de monodiffusion destinée à PC1 se met en boucle au sein du réseau, de la même manière que les trames de diffusion. Ces multiples trames qui tournent sans fin dans le réseau finissent par former une tempête de diffusion.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

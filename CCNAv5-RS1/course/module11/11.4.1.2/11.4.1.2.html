@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.4.1.2 Systèmes de fichiers du commutateur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.4.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Gestion des fichiers de configuration IOS</h1>
+        <h2>Systèmes de fichiers du routeur et du commutateur</h2>
+      </div>
+      <div id="content">
+<p>Avec le système de fichiers Flash du commutateur Cisco 2960, vous pouvez copier les fichiers de configuration et archiver (télécharger) des images logicielles.</p>
+<p></p>
+<p>La commande permettant d'afficher les systèmes de fichiers sur un commutateur Catalyst est la même que sur les routeurs Cisco : <span class="cmd"><b>show file systems</b></span>, comme le montre la figure.</p>
+<p></p>
+<p>De nombreuses commandes de base d'UNIX sont prises en charge sur les commutateurs et les routeurs Cisco : <span class="cmd"><b>cd</b></span> pour changer de système de fichiers ou de répertoire, <span class="cmd"><b>dir</b></span> pour afficher les répertoires d'un système de fichiers, et <span class="cmd"><b>pwd</b></span> pour afficher le répertoire courant. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

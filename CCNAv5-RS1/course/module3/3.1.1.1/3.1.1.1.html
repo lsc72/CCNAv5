@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.1.1 Qu&#x0027;est-ce que la communication ?</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Règles de communication</h1>
+        <h2>Les règles</h2>
+      </div>
+      <div id="content">
+<p>Un réseau peut être très complexe et consister en des périphériques connectés à Internet, ou alors très simple, comme deux ordinateurs connectés directement entre eux par un seul câble. Tous les niveaux de complexité sont possibles. La taille, la forme et la fonction des réseaux peuvent varier. Cependant, il ne suffit pas de connecter physiquement des périphériques finaux pour permettre la communication. Les périphériques doivent également savoir comment communiquer. </p>
+<p></p>
+<p>Les personnes échangent des idées par de nombreuses méthodes de communication différentes. Cependant, quelle que soit la méthode choisie, tous les modes de communication ont en commun trois éléments. Le premier de ces éléments est la source du message, ou l'expéditeur. Les sources d'un message sont les personnes, ou les périphériques électroniques, qui doivent envoyer un message à d'autres personnes ou périphériques. Le deuxième élément de communication est la destination ou le récepteur du message. La destination reçoit le message et l'interprète. Le troisième élément, appelé canal, est constitué par le support qui fournit la voie par laquelle le message se déplace depuis la source vers la destination.</p>
+<p></p>
+<p>La communication commence par un message (ou des informations) qui doit être envoyé d'une source à une destination. L'envoi de ce message, soit lors d'une conversation en face à face soit sur un réseau, est régi par des règles appelées protocoles. Ces protocoles sont propres au mode de communication. Dans nos communications personnelles quotidiennes, les règles que nous utilisons pour communiquer à travers un support (par exemple, un appel téléphonique) ne sont pas nécessairement identiques aux protocoles liés à d'autres moyens de transmission, par exemple l'envoi d'une lettre.</p>
+<p></p>
+<p>Imaginez deux personnes communiquant face à face comme dans la Figure 1. Avant de communiquer, elles doivent se mettre d'accord sur la façon de communiquer. Si la communication fait appel à la voix, les partenaires doivent d'abord définir la langue. Ensuite, lorsqu'elles ont un message à partager, elles doivent pouvoir mettre ce message en forme de sorte qu'il soit compréhensible. Par exemple, si une personne utilise l'anglais, mais que la structure de sa phrase est mauvaise, le message peut facilement être mal compris. Chacune de ces tâches décrit les protocoles mis en place pour permettre la communication. Cela s'applique à la communication entre les ordinateurs, comme le montre la Figure 2.</p>
+<p></p>
+<p>Pensez au nombre de règles et de protocoles différents qui régissent l'ensemble des différentes méthodes de communication existant actuellement dans le monde. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

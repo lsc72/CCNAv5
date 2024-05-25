@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.6 Solutions pour déploiements sans fil de grande taille</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts de la technologie sans fil</h1>
+        <h2>Composants de WLAN</h2>
+      </div>
+      <div id="content">
+<p>Les organisations nécessitant la mise en cluster de points d'accès multiples ont besoin d'une solution plus robuste et évolutive. Pour les grandes organisations disposant de nombreux points d'accès, Cisco propose des solutions gérées basées sur un contrôleur, notamment l'architecture de gestion du cloud Cisco Meraki et l'architecture réseau sans fil unifié Cisco.</p>
+<p></p>
+<p>
+<b>Remarque </b>: il existe d'autres solutions basées sur un contrôleur, par exemple les contrôleurs en mode Flex. Visitez le site <a href="http://www.cisco.com/" target="_blank">http://www.cisco.com</a> pour en savoir plus à ce sujet.</p>
+<p></p>
+<p>
+<b>Architecture de gestion du cloud Cisco Meraki</b>
+</p>
+<p>L'architecture cloud Cisco Meraki est une solution de gestion utilisée pour simplifier les déploiements sans fil. Avec cette architecture, les points d'accès sont gérés de manière centralisée à partir d'un contrôleur situé dans le Cloud, comme illustré à la Figure 1. La gestion et la mise en réseau Cloud permettent une administration, une visibilité et un contrôle centralisés sans le coût et la complexité des appareils contrôleurs ou des logiciels de gestion chevauchants. </p>
+<p></p>
+<p>Ce processus réduit donc les coûts et la complexité. Le contrôleur applique aux points d'accès Meraki les paramètres d'administration, par exemple les mises à jour de microprogramme, les paramètres de sécurité, les paramètres de réseau sans fil et les paramètres SSID. </p>
+<p></p>
+<p>
+<b>Remarque </b>: seules les données de gestion circulent au sein de l'infrastructure Cloud Meraki. Aucun trafic utilisateur ne transite par les centres de données Meraki. Par conséquent, si la structure Cisco Meraki ne peut accéder au Cloud, le réseau continue de fonctionner normalement. Cela signifie que les utilisateurs peuvent tout de même s'authentifier, les règles de pare-feu sont toujours actives et le trafic se poursuit à plein débit nominal. Seules les fonctions de gestion, telles que les rapports et les outils de configuration, sont interrompues.</p>
+<p></p>
+<p>L'architecture de gestion du cloud Cisco Meraki nécessite les éléments suivants :</p>
+<p>
+<ul>
+<li>
+<b>Points d'accès sans fil gérés par le Cloud Cisco MR</b> : il existe plusieurs modèles, adaptés aux différents types de déploiement. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Meraki Cloud Controller (MCC)</b> : le contrôleur MCC permet la gestion, l'optimisation et la surveillance centralisées d'un système WLAN Meraki. Il ne s'agit pas d'un appareil à acheter et installer pour gérer les points d'accès sans fil. Le contrôleur MCC est plutôt un service Cloud capable de surveiller et d'optimiser le comportement du réseau, et de générer des rapports le concernant. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Tableau de bord Web</b> : le tableau de bord Web Meraki effectue la configuration et les diagnostics à distance.</li>
+</ul>
+</p>
+<p></p>
+<p>Cliquez sur chaque composant de la Figure 2 pour découvrir en détail l'architecture Meraki de Cisco.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

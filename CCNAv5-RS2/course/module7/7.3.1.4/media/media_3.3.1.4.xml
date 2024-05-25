@@ -1,0 +1,76 @@
+﻿<textcomponents>
+
+<component id="ID_s1_title">
+<text><![CDATA[<b>Vérification des paramètres RIP sur R1  </b>]]></text>
+</component>
+<component id="ID_s2_title">
+  <text><![CDATA[<b>Activer et vérifier RIPv2 sur R1  </b>]]></text> 
+</component>
+<component id="ID_s3_title">
+  <text><![CDATA[<b>Vérifier les routes&nbsp;R1  </b>]]></text> 
+</component>
+<component id="ID_s4_title">
+  <text><![CDATA[<b>Activer et vérifier RIPv2 sur R2 et R3  </b>]]></text> 
+</component>
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+
+ <component id="ID_s4_SC2" fontFace='Courier New' fontSize="10"> <!--text><![CDATA[<b>Enable and Verify RIPv2 on R2 and R3 </b>]]></text-->		
+		<feedback id="fb"><![CDATA[<b> *** </b><font face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font face="Arial"><b>Activez le protocole&nbsp;RIP version&nbsp;2 sur R2 et revenez au mode d'exécution privilégié.  </b></font>]]></existingcommands>
+		<command prompt="R2(config)#">
+		    <correctresponse><![CDATA[router rip]]></correctresponse>
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[version 2]]></correctresponse>
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+			<deviceresponse><![CDATA[R2#<br>*Mar 10 13:48:38,951: %SYS-5-CONFIG_I: Configured from console by console]]></deviceresponse>
+			<instruction><![CDATA[<font face="Arial"><b>Vérifiez les paramètres du protocole RIP sur R2.  </b>]]></instruction>			
+			</command>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ip protocols]]></correctresponse>
+			<deviceresponse><![CDATA[<font  face="Courier New"><pre>*** IP Routing is NSF aware *** <br> <br>Routing Protocol is "rip" <br>  Outgoing update filter list for all interfaces is not set <br>  Incoming update filter list for all interfaces is not set <br>  Sending updates every 30 seconds, next due in 26 seconds <br>  Invalid after 180 seconds, hold down 180, flushed after 240 <br>  Redistributing: rip <br>  Default version control: send version 2, receive version 2 <br>    Interface             Send  Recv  Triggered RIP  Key-chain <br>    GigabitEthernet0/0    2     2<br>    Serial0/0/0           2     2<br>    Serial0/0/1           2     2<br>  Automatic network summarization is in effect <br>  Maximum path: 4 <br>  Routing for Networks: <br>    192.168.2.0 <br>    192.168.3.0 <br>    192.168.4.0 <br>  Routing Information Sources: <br>    Gateway         Distance      Last Update <br>    192.168.2.1          120      00:00:19 <br>    192.168.4.1          120      00:00:22 <br>  Distance: (default is 120)</pre>]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial"><b>Affichez la table de routage sur R2.  </b>]]></instruction>			
+			</command>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ip route]]></correctresponse>
+			<deviceresponse><![CDATA[<font  face="Courier New"><pre>Codes: L - local, C - connected, S - static, R - RIP, M - mobile, <br/>B - BGP <br>       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF <br/>inter area <br>       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external <br/>type 2 <br>       E1 - OSPF external type 1, E2 - OSPF external type 2 <br>       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - <br/>IS-IS level-2 <br>       ia - IS-IS inter area, * - candidate default, U - per-<br/>user static route <br>       o - ODR, P - periodic downloaded static route, H - NHRP, <br/>l - LISP <br>       + - replicated route, % - next hop override <br> <br>Gateway of last resort is not set <br> <br>R     192.168.1.0/24 [120/1] via 192.168.2.1, 00:00:03, Serial0/0/0 <br>      192.168.2.0/24 is variably subnetted, 2 subnets, 2 masks <br>C        192.168.2.0/24 is directly connected, Serial0/0/0 <br>L        192.168.2.2/32 is directly connected, Serial0/0/0 <br>      192.168.3.0/24 is variably subnetted, 2 subnets, 2 masks <br>C        192.168.3.0/24 is directly connected, GigabitEthernet0/0 <br>L        192.168.3.1/32 is directly connected, GigabitEthernet0/0 <br>      192.168.4.0/24 is variably subnetted, 2 subnets, 2 masks <br>C        192.168.4.0/24 is directly connected, Serial0/0/1 <br>L        192.168.4.2/32 is directly connected, Serial0/0/1 <br></font>R2#</pre>]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial"><b>Vous êtes maintenant connecté à R3. Activez le protocole&nbsp;RIP version&nbsp;2 sur R3 et revenez au mode d'exécution privilégié.  </b>]]></instruction>			
+			</command>
+		<command prompt="R3(config)#">
+		    <correctresponse><![CDATA[router rip]]></correctresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[version 2]]></correctresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+			<deviceresponse><![CDATA[R3#<br>*Mar 10 13:50:17,359: %SYS-5-CONFIG_I: Configured from console by console]]></deviceresponse>
+			<instruction><![CDATA[<font face="Arial"><b>Vérifiez les paramètres du protocole RIP sur R3.  </b>]]></instruction>			
+			</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip protocols]]></correctresponse>
+			<deviceresponse><![CDATA[<font face="Courier New"><pre>*** IP Routing is NSF aware *** <br> <br>Routing Protocol is "rip" <br>  Outgoing update filter list for all interfaces is not set <br>  Incoming update filter list for all interfaces is not set <br>  Sending updates every 30 seconds, next due in 18 seconds <br>  Invalid after 180 seconds, hold down 180, flushed after 240 <br>  Redistributing: rip <br>  Default version control: send version 2, receive version 2 <br>    Interface             Send  Recv  Triggered RIP  Key-chain <br>    GigabitEthernet0/0    2     2<br>    Serial0/0/1           2     2<br>  Automatic network summarization is in effect <br>  Maximum path: 4 <br>  Routing for Networks: <br>    192.168.4.0 <br>    192.168.5.0 <br>  Routing Information Sources: <br>    Gateway         Distance      Last Update <br>    192.168.4.2          120      00:00:20 <br>  Distance: (default is 120)</font></pre>]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial"><b>Affichez la table de routage sur R3.  </b>]]></instruction>			
+			</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip route]]></correctresponse>
+			<deviceresponse><![CDATA[<font face="Courier New"><pre>Codes: L - local, C - connected, S - static, R - RIP, M -<br/> mobile, B - BGP <br>       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter <br/>area <br>       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external <br/>type 2 <br>       E1 - OSPF external type 1, E2 - OSPF external type 2 <br>       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - <br/>IS-IS level-2 <br>       ia - IS-IS inter area, * - candidate default, U - per-<br/>user static route <br>       o - ODR, P - periodic downloaded static route, H - NHRP, <br/>l - LISP <br>       + - replicated route, % - next hop override <br> <br>Gateway of last resort is not set <br> <br>R     192.168.1.0/24 [120/2] via 192.168.4.2, 00:00:03, Serial0/0/1 <br>R     192.168.2.0/24 [120/1] via 192.168.4.2, 00:00:03, Serial0/0/1 <br>R     192.168.3.0/24 [120/1] via 192.168.4.2, 00:00:03, Serial0/0/1 <br>      192.168.4.0/24 is variably subnetted, 2 subnets, 2 masks <br>C        192.168.4.0/24 is directly connected, Serial0/0/1 <br>L        192.168.4.1/32 is directly connected, Serial0/0/1 <br>      192.168.5.0/24 is variably subnetted, 2 subnets, 2 masks <br>C        192.168.5.0/24 is directly connected, GigabitEthernet0/0 <br>L        192.168.5.1/32 is directly connected, GigabitEthernet0/0 <br></font>R3#</pre>]]></deviceresponse> 
+			<instruction><![CDATA[<font  face="Arial" class="syntaxBottomLine"><b>Vous avez correctement activé et vérifié RIPv2 sur R2 et R3.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+  
+</textcomponents>

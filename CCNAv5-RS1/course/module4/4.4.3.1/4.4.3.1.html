@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.3.1 Topologies LAN physiques</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Contrôle d&#x0027;accès au support</h1>
+        <h2>Topologies LAN</h2>
+      </div>
+      <div id="content">
+<p>La topologie physique définit la façon dont les systèmes finaux sont physiquement interconnectés. Sur les réseaux locaux à supports partagés, les périphériques finaux peuvent être interconnectés selon les topologies physiques suivantes :</p>
+<p>
+<ul>
+<li>
+<b>Topologie en étoile</b> : les périphériques finaux sont connectés à un périphérique intermédiaire central. Dans les premières topologies en étoile, les périphériques finaux étaient interconnectés à l'aide de concentrateurs. Actuellement, des commutateurs sont utilisés. La topologie en étoile est la topologie LAN physique la plus courante, surtout parce qu'elle est facile à installer, très évolutive (il est facile d'ajouter et de retirer des périphériques finaux) et facile à dépanner.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Étoile étendue ou hybride</b> : dans une topologie en étoile étendue, les périphériques intermédiaires centraux sont interconnectés avec d'autres topologies en étoile. Dans une topologie hybride, des réseaux en étoile peuvent être interconnectés via une topologie en bus.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Topologie en bus</b> : tous les systèmes finaux sont enchaînés entre eux et le réseau est terminé à chaque extrémité. Les périphériques d'infrastructure tels que les commutateurs ne sont pas nécessaires pour interconnecter les périphériques finaux. Les topologies en bus étaient utilisées dans les réseaux Ethernet en raison de leur faible coût et de leur simplicité d'installation.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Topologie en anneau</b> : les systèmes finaux sont connectés à leur voisin respectif et forment ainsi un anneau. Contrairement à la topologie en bus, l'anneau n'a pas besoin d'être terminé. Les topologies en anneau étaient utilisées dans les réseaux FDDI (Fiber Distributed Data Interface). Ces réseaux utilisent un deuxième anneau pour la tolérance aux pannes ou l'amélioration des performances.</li>
+</ul>
+</p>
+<p></p>
+<p>La figure illustre l'interconnexion des périphériques finaux sur les réseaux locaux.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.2.1 Étapes de configuration du protocole SNMP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>SNMP</h1>
+        <h2>Configuration du protocole SNMP</h2>
+      </div>
+      <div id="content">
+<p>Un administrateur réseau peut configurer le protocole SNMPv2 de manière à obtenir des informations réseau à partir des périphériques présents sur celui-ci. Comme le montre la figure, les étapes de base de la configuration du protocole SNMP s'exécutent toutes en mode de configuration globale.</p>
+<p></p>
+<p>
+<b>Étape 1. </b>(Obligatoire) Configurez l'identifiant de communauté et le niveau d'accès (lecture seule ou lecture/écriture) à l'aide de la commande <span class="cmd"><b>snmp-server community </b></span><span class="cmd"><i>string</i></span><span class="cmd"><b> ro </b></span><span class="cmd">|</span><span class="cmd"><b> rw</b></span>.</p>
+<p></p>
+<p>
+<b>Étape 2. </b>(Facultatif) Documentez l'emplacement du périphérique à l'aide de la commande <span class="cmd"><b>snmp-server location</b></span><span class="cmd"><i> text</i></span>.</p>
+<p></p>
+<p>
+<b>Étape 3. </b>(Facultatif) Documentez le contact du système à l'aide de la commande <span class="cmd"><b>snmp-server contact</b></span><span class="cmd"><i> text</i></span>.</p>
+<p></p>
+<p>
+<b>Étape 4. </b>(Facultatif) Limitez l'accès SNMP aux hôtes NMS (gestionnaires SNMP) qui sont autorisés par une liste de contrôle d'accès : définissez la liste de contrôle d'accès, puis référencez-la à l'aide de la commande <span class="cmd"><b>snmp-server community</b></span><span class="cmd"><i> string access-list-number-or-name</i></span>. Cette commande peut être utilisée à la fois pour spécifier un identifiant de communauté et pour limiter l'accès SNMP par le biais de listes de contrôle d'accès. Il est possible de combiner les étapes 1 et 4 en une seule, si vous le souhaitez. Le périphérique réseau Cisco allie les deux commandes en une seule si elles sont introduites séparément.</p>
+<p></p>
+<p>
+<b>Étape 5. </b>(Facultatif) Spécifiez le destinataire des opérations de déroutement SNMP à l'aide de la commande <span class="cmd"><b>snmp-server host </b></span><span class="cmd"><i>host-id </i></span><span class="cmd">[</span><span class="cmd"><b>version</b></span><span class="cmd">{</span><span class="cmd"><b>1</b></span><span class="cmd">| </span><span class="cmd"><b>2c</b></span><span class="cmd"> | </span><span class="cmd"><b>3</b></span><span class="cmd"> [</span><span class="cmd"><b>auth</b></span><span class="cmd"> | </span><span class="cmd"><b>noauth</b></span><span class="cmd"> | </span><span class="cmd"><b>priv</b></span><span class="cmd">]}]</span><span class="cmd"><i> community-string</i></span>. Par défaut, aucun gestionnaire de déroutement n'est défini.</p>
+<p></p>
+<p>
+<b>Étape 6. </b>(Facultatif) Activez les déroutements sur un agent SNMP à l'aide de la commande <span class="cmd"><b>snmp-server enable traps </b></span><span class="cmd"><i>notification-types</i></span>. Si aucun type de notification de déroutement n'est spécifié dans cette commande, tous les types de déroutements sont envoyés. L'utilisation répétée de cette commande est requise si un sous-ensemble spécifique de types de déroutements est souhaité.</p>
+<p></p>
+<p>
+<b>Remarque</b> : par défaut, aucun type de déroutement n'est défini dans le protocole SNMP. En l'absence de cette commande, les gestionnaires SNMP doivent tenter d'obtenir toutes les informations pertinentes. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

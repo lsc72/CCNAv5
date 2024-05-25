@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.1.8 Commande passive interface</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.1.8_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole EIGRP pour IPv4</h1>
+        <h2>Configuration du protocole EIGRP avec IPv4</h2>
+      </div>
+      <div id="content">
+<p>Dès qu'une nouvelle interface est activée au sein du réseau EIGRP, le protocole EIGRP tente de former une contiguïté de voisinage avec les routeurs voisins pour envoyer et recevoir les mises à jour EIGRP. </p>
+<p></p>
+<p>Il peut parfois s'avérer nécessaire, ou avantageux, d'inclure un réseau connecté directement dans la mise à jour de routage EIGRP, mais sans permettre la formation de contiguïtés de voisinage hors de cette interface. La commande<span class="cmd"><b> passive-interface</b></span> permet d'empêcher les contiguïtés de voisinage. Deux raisons principales peuvent motiver l'activation de la commande<span class="cmd"><b> passive-interface </b></span>:</p>
+<p>
+<ul>
+<li>Pour supprimer le trafic de mise à jour inutile, notamment en présence d'une interface LAN, sans autres routeurs connectés</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Pour augmenter les contrôles de sécurité, par exemple pour empêcher les périphériques de routage indésirables inconnus de recevoir les mises à jour EIGRP</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 1 montre que R1, R2 et R3 n'ont aucun voisin sur leurs interfaces GigabitEthernet 0/0.</p>
+<p></p>
+<p>La commande de mode de configuration du routeur<span class="cmd"><b> passive-interface</b></span> désactive la transmission et la réception des paquets Hello EIGRP sur ces interfaces. </p>
+<p></p>
+<p>
+<span class="cmd">Router(config)# </span>
+<span class="cmd">
+<b>router eigrp</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>as-number</i>
+</span>
+</p>
+<p>
+<span class="cmd">Router(config-router)# </span>
+<span class="cmd">
+<b>passive-interface</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>interface-type interface-number</i>
+</span>
+</p>
+<p></p>
+<p>La Figure 2 montre la commande<span class="cmd"><b> passive-interface </b></span>configurée de façon à supprimer les paquets Hello sur les réseaux locaux de R1 et R3. R2 est configuré à l'aide du contrôleur de syntaxe.</p>
+<p></p>
+<p>Sans contiguïté de voisinage, le protocole EIGRP ne permet pas d'échanger des routes avec un voisin. Par conséquent, la commande<span class="cmd"><b> passive-interface </b></span>empêche l'échange de routes sur l'interface. Même si le protocole EIGRP n'envoie/ne reçoit pas de mises à jour de routage sur une interface configurée avec la commande<span class="cmd"><b> passive-interface</b></span>, il continue à inclure l'adresse de l'interface dans les mises à jour de routage envoyées par d'autres interfaces non passives.</p>
+<p></p>
+<p>
+<b>Remarque </b>: pour configurer toutes les interfaces comme passives, utilisez la commande<span class="cmd"><b> passive-interface default</b></span>. Pour désactiver une interface considérée comme passive, utilisez la commande<span class="cmd"><b> no passive-interface </b></span><span class="cmd"><i>interface-type interface-number</i></span>.</p>
+<p></p>
+<p>L'interface passive peut être utilisée pour augmenter les contrôles de sécurité, par exemple lorsqu'un réseau doit être connecté à une organisation tierce sur laquelle l'administrateur local n'a aucun contrôle, notamment lors de la connexion à un réseau FAI. Dans ce cas, l'administrateur du réseau local a besoin d'annoncer le lien d'interface dans tout son réseau, mais ne souhaite pas forcément que l'organisation tierce reçoive ou envoie des mises à jour de routage vers le périphérique de routage local, car cela constitue un risque pour la sécurité. </p>
+<p></p>
+<p>
+<b>Vérification de l'interface passive</b>
+</p>
+<p></p>
+<p>Pour vérifier si l'interface d'un routeur est configurée comme passive, utilisez la commande du mode d'exécution privilégié<span class="cmd"><b> show ip protocols</b></span>, comme indiqué à la Figure 3. Notez que, bien que l'interface GigabitEthernet 0/0 de R3 soit passive, le protocole EIGRP continue à inclure l'adresse réseau de l'interface du réseau 192.168.1.0 dans ses mises à jour de routage.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 4 pour configurer R2 de façon à supprimer les paquets Hello EIGRP de son interface GigabitEthernet 0/0.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

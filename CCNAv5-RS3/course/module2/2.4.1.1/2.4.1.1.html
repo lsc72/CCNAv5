@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.4.1.1 Limitations de passerelle par défaut</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.4.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de redondance au premier saut</h1>
+        <h2>Concept de protocoles de redondance au premier saut</h2>
+      </div>
+      <div id="content">
+<p>Les protocoles STP permettent de mettre en place une redondance physique au sein d'un réseau commuté. Cependant, un hôte situé au niveau de la couche d'accès d'un réseau hiérarchique peut également bénéficier de passerelles par défaut alternatives. En cas de défaillance d'un routeur ou d'une interface de routeur (servant de passerelle par défaut), les hôtes configurés avec cette passerelle par défaut sont isolés des réseaux extérieurs. Un mécanisme est nécessaire pour offrir des passerelles par défaut alternatives dans les réseaux commutés où deux routeurs ou plus sont connectés aux mêmes VLAN.</p>
+<p></p>
+<p>
+<b>Remarque </b>: aux fins de discussion sur la redondance des routeurs, nous partirons du principe qu'il n'existe pas de différences fonctionnelles entre un commutateur multicouche et un routeur de la couche de distribution. Dans la pratique, il est courant qu'un commutateur multicouche joue le rôle de passerelle par défaut pour chaque VLAN d'un réseau commuté. Cette discussion est centrée sur la fonctionnalité du <i>routage</i>, quel que soit le périphérique physique utilisé. </p>
+<p></p>
+<p>Dans un réseau commuté, chaque client reçoit une seule passerelle par défaut. Il n'est pas possible de configurer de passerelle secondaire, même si un deuxième chemin existe pour réacheminer les paquets en dehors du segment local.</p>
+<p></p>
+<p>Dans cette figure, R1 est responsable du routage des paquets en provenance de PC1. Si R1 n'est plus disponible, les protocoles de routage peuvent converger dynamiquement. R2 achemine désormais les paquets en provenance des réseaux extérieurs, qui auraient normalement été destinés à R1. Cependant, le trafic en provenance du réseau interne associé à R1, y compris le trafic en provenance des stations de travail, des serveurs et des imprimantes configurés avec R1 comme passerelle par défaut, est encore renvoyé vers R1 puis abandonné.</p>
+<p></p>
+<p>Les périphériques finaux sont généralement configurés avec une seule adresse IP pour une passerelle par défaut. Cette adresse ne change pas lorsque la topologie de réseau est modifiée. Si cette adresse IP de passerelle par défaut n'est pas accessible, le périphérique local est incapable d'envoyer les paquets en dehors du segment de réseau local, ce qui l'isole et le déconnecte du reste du réseau. Même si un routeur redondant pourrait servir de passerelle par défaut sur ce segment, ces périphériques ne peuvent pas déterminer dynamiquement l’adresse d’une nouvelle passerelle par défaut.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.2.3 Vérification de la configuration du trunk</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentations de VLAN</h1>
+        <h2>Trunks de VLAN</h2>
+      </div>
+      <div id="content">
+<p>La Figure 1 présente la configuration du port F0/1 du commutateur S1. La configuration est vérifiée à l'aide de la commande <span class="cmd"><b>show interfaces </b></span><span class="cmd"><i>interface-ID</i></span><span class="cmd"><b> switchport</b></span>. </p>
+<p></p>
+<p>La première zone en surbrillance indique que le mode administratif du port F0/1 est défini sur<span class="cmd"><b> trunk</b></span>. Le port est en mode trunking. La deuxième zone en surbrillance vérifie que le VLAN natif est le VLAN 99. Plus bas dans les résultats, la dernière zone en surbrillance indique que tous les VLAN sont activés sur le trunk.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 2 pour configurer un trunk prenant en charge tous les VLAN sur l'interface F0/1, avec le VLAN 99 comme VLAN natif. Vérifiez la configuration du trunk à l'aide de la commande <span class="cmd"><b>show interfaces f0/1 switchport</b></span>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

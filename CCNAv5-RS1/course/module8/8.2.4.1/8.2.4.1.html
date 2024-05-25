@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.4.1 La structure d&#x0027;une adresse de monodiffusion globale IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Les adresses réseau IPv6</h1>
+        <h2>Les adresses de monodiffusion globale IPv6</h2>
+      </div>
+      <div id="content">
+<p>Les adresses de monodiffusion globale IPv6 sont uniques au monde et routables (Internet IPv6). Ces adresses sont équivalentes aux adresses publiques IPv4. L'ICANN (Internet Committee for Assigned Names and Numbers), opérateur de l'IANA (Internet Assigned Numbers Authority), attribue des blocs d'adresses IPv6 aux cinq RIR. Actuellement, seules des adresses de monodiffusion globale dont les premiers bits sont 001 ou 2000::/3 sont attribuées. C'est uniquement 1/8e de l'espace d'adressage IPv6 total disponible : seule une infime partie est exclue pour les autres types d'adresse de monodiffusion et de multidiffusion. </p>
+<p></p>
+<p>
+<b>Remarque</b> : l'adresse 2001:0DB8::/32 a été réservée à des fins de documentation, par exemple pour être utilisée dans des exemples. </p>
+<p></p>
+<p>La Figure 1 illustre la structure et la plage d'adresses de monodiffusion globale.</p>
+<p></p>
+<p>Une adresse de monodiffusion globale se compose de trois parties :</p>
+<p>
+<ul>
+<li>Préfixe de routage global</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>ID de sous-réseau</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>ID d'interface</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Préfixe de routage global</b>
+</p>
+<p>Le préfixe de routage global est le préfixe ou la partie réseau de l'adresse attribué(e) par le fournisseur (par exemple un FAI) à un client ou à un site. Actuellement, les RIR attribuent le préfixe global de routage /48 aux clients. Ces clients incluent tous les clients potentiels, des réseaux d'entreprise aux réseaux particuliers. Cet espace d'adressage est plus que suffisant pour la plupart des clients. </p>
+<p></p>
+<p>La Figure 2 illustre la structure d'une adresse de monodiffusion globale utilisant le préfixe de routage global /48. Les préfixes /48 sont les préfixes de routage global les plus couramment attribués et seront utilisés dans la plupart des exemples de ce cours. </p>
+<p></p>
+<p>Par exemple, l'adresse IPv6 2001:0DB8:ACAD::/48 a un préfixe indiquant que les 48 premiers bits (3 hextets) (2001:0DB8:ACAD) constituent le préfixe ou la partie réseau de l'adresse. La suite de deux fois deux-points (::) avant la longueur de préfixe /48 signifie que le reste de l'adresse contient uniquement des 0.</p>
+<p></p>
+<p>
+<b>ID de sous-réseau</b>
+</p>
+<p>L'ID de sous-réseau est utilisé par une entreprise pour identifier les sous-réseaux au sein de son site. </p>
+<p></p>
+<p>
+<b>ID d'interface</b>
+</p>
+<p>L'ID d'interface IPv6 est similaire à la partie hôte d'une adresse IPv4. Le terme ID d'interface est utilisé car un hôte unique peut avoir plusieurs interfaces, chacune dotée d'une ou de plusieurs adresses IPv6. </p>
+<p></p>
+<p>
+<b>Remarque :</b> contrairement à l'adressage IPv4, avec IPv6, les adresses d'hôte contenant uniquement des 0 ou uniquement des 1 peuvent être attribuées à un périphérique. L'adresse contenant uniquement des 1 peut être utilisée, puisque les adresses de diffusion ne sont pas utilisées dans IPv6. L'adresse contenant uniquement des 0 peut également être utilisée, mais elle est réservée comme adresse anycast de routeur de sous-réseau, et elle ne doit être attribuée qu'aux routeurs.</p>
+<p></p>
+<p>Un moyen simple de lire la plupart des adresses IPv6 consiste à compter le nombre d'hextets. Comme l'illustre la Figure 3, dans une adresse de monodiffusion globale /64, les quatre premiers hextets sont réservés à la partie réseau de l'adresse, le quatrième hextet indiquant l'ID de sous-réseau. Les quatre hextets restants sont réservés pour l'ID d'interface </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

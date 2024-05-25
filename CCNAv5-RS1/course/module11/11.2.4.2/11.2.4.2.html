@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.2.4.2 Mots de passe</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.2.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Garantie de la sécurité du réseau</h1>
+        <h2>Sécurisation des périphériques</h2>
+      </div>
+      <div id="content">
+<p>Pour protéger les périphériques réseau, il est important d'utiliser des mots de passe forts. Voici quelques recommandations classiques à suivre :</p>
+<p></p>
+<p>
+<ul>
+<li>Utilisez un mot de passe d'au moins 8 caractères et de préférence au moins 10 caractères. Plus le mot de passe est long, plus il est fort.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Choisissez des mots de passe complexes. Utilisez une combinaison de lettres majuscules et minuscules, de chiffres, de symboles et d'espaces si elles sont autorisées. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Évitez la répétition d'un même mot, l'utilisation de mots communs du dictionnaire, les lettres ou les chiffres consécutifs, les noms d'utilisateur, les noms de parents ou d'animaux domestiques, les informations biographiques telles que la date de naissance, les numéros d'identification, les noms d'ancêtre et toute autre information facilement identifiable.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Faites volontairement des fautes d'orthographe. Par exemple, Smith = Smyth = 5mYth ou Sécurité = 5ecur1te.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Modifiez régulièrement votre mot de passe. Si un mot de passe devient obsolète sans que le pirate en soit conscient, son champ d'action est limité.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Ne notez pas les mots de passe sur des bouts de papier conservés à des endroits visibles sur votre bureau ou sur votre écran.</li>
+</ul>
+</p>
+<p></p>
+<p>La figure présente des exemples de mots de passe forts et faibles.</p>
+<p></p>
+<p>Sur les routeurs Cisco, les espaces en début de mot de passe sont ignorés, mais celles situées après le premier caractère sont prises en compte. Par conséquent, vous pouvez utiliser la barre d'espace pour créer un mot de passe fort composé d'une expression de plusieurs mots. C'est ce qu'on appelle une phrase secrète. Il est souvent plus facile de mémoriser une phrase secrète qu'un seul mot. Elle est également plus longue et plus difficile à deviner.</p>
+<p></p>
+<p>Les administrateurs doivent s'assurer que des mots de passe forts sont utilisés sur le réseau. Pour vérifier la force des mots de passe, ils peuvent utiliser les mêmes outils d'attaque en force que les pirates.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

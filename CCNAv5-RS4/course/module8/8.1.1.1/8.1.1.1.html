@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.1.1 Présentation de Syslog</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Syslog</h1>
+        <h2>Fonctionnement de Syslog</h2>
+      </div>
+      <div id="content">
+<p>Les périphériques réseau disposent de mécanismes fiables permettant d'envoyer à l'administrateur des messages système détaillés lors de l'occurrence de certains événements se produisant sur le réseau. Ces messages peuvent être non critiques ou significatifs. Les administrateurs réseau disposent de diverses options permettant de stocker, d'interpréter et d'afficher ces messages, ainsi que pour être alertés des messages susceptibles d'avoir le plus d'impact sur l'infrastructure réseau.</p>
+<p></p>
+<p>La méthode d'accès aux messages système la plus couramment utilisée et fournie par les périphériques réseau est un protocole appelé Syslog. </p>
+<p></p>
+<p>Syslog est un terme utilisé pour décrire une norme. Il sert également à décrire le protocole développé pour cette norme. Le protocole Syslog a été développé pour les systèmes UNIX dans les années 1980, mais a été documenté pour la première fois dans la RFC 3164 par l'IETF en 2001. Le protocole Syslog utilise le port UDP 514 pour envoyer des messages de notification d'événement sur des réseaux IP à des collecteurs de messages d'événement, comme le montre la figure.</p>
+<p></p>
+<p>De nombreux périphériques réseau prennent en charge le protocole Syslog, comme les routeurs, les commutateurs, les serveurs d'applications, les pare-feu et d'autres dispositifs réseau. Le protocole Syslog permet aux périphériques réseau d'envoyer leurs messages système sur le réseau aux serveurs Syslog. Il est possible de concevoir un réseau spécial à gestion hors bande à cette fin. </p>
+<p></p>
+<p>Il existe divers packages logiciels de serveur Syslog pour Windows et UNIX. Nombre d'entre eux sont gratuits.</p>
+<p></p>
+<p>Le service de journalisation du protocole Syslog assume trois fonctions principales :</p>
+<p>
+<ul>
+<li>La capacité à collecter les informations de journalisation pour la surveillance et le dépannage </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La capacité à sélectionner le type d'information de journalisation capturée</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La capacité à spécifier les destinations des messages Syslog capturés</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

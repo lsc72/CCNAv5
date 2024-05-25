@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.2.2 Recueil des symptômes</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage avec une approche systématique</h1>
+        <h2>Procédure de dépannage</h2>
+      </div>
+      <div id="content">
+<p>Lors de la collecte de symptômes, il est important que l'administrateur collecte des faits et des preuves afin d'éliminer progressivement des causes possibles et d'identifier finalement la véritable origine du problème. En analysant ces informations, l'administrateur réseau formule une hypothèse et propose des causes et des solutions possibles, tout en éliminant les autres.</p>
+<p></p>
+<p>La collecte d'informations comporte cinq étapes :</p>
+<p></p>
+<p>
+<b>Étape 1. Collecte d'informations</b> : collectez des informations à partir des demandes d'assistance, des utilisateurs ou des systèmes finaux affectés par le problème afin de définir correctement celui-ci.</p>
+<p></p>
+<p>
+<b>Étape 2. Détermination de la propriété</b> : si le problème se situe au sein du contrôle de l'entreprise, passez à l'étape suivante. Si le problème se situe à l'extérieur de la limite de contrôle de l'entreprise (par exemple en cas de perte de connectivité Internet à l'extérieur du système autonome), contactez un administrateur du système externe avant de collecter des symptômes réseau supplémentaires.</p>
+<p></p>
+<p>
+<b>Étape 3. Réduction de l’étendue des causes probables</b> : déterminez si le problème se situe au niveau de la couche cœur de réseau, de distribution ou d'accès du réseau. Dans la couche identifiée, analysez les symptômes existants et utilisez vos connaissances de la topologie des réseaux pour déterminer quelle partie de l'équipement est vraisemblablement à l'origine du problème.</p>
+<p></p>
+<p>
+<b>Étape 4. Inventaire des symptômes des périphériques suspects</b> : utilisez une approche de dépannage en couches afin de réaliser l'inventaire des symptômes des périphériques suspects. Commencez par la cause la plus probable et utilisez vos connaissances et votre expérience afin de déterminer si le problème est le plus vraisemblablement un problème de configuration matérielle ou logicielle.</p>
+<p></p>
+<p>
+<b>Étape 5. Documentation des symptômes</b> : le problème peut parfois être résolu à l'aide des symptômes documentés. Si ce n'est pas le cas, commencez l'étape d'isolation du problème du processus général de dépannage. </p>
+<p></p>
+<p>Utilisez des commandes Cisco IOS ainsi que d'autres outils pour collecter des symptômes sur le réseau, par exemple :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>commandes ping</b>
+</span>,<span class="cmd"><b> traceroute</b></span> et <span class="cmd"><b>telnet</b></span> </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>commandes show </b>
+</span>et<span class="cmd"><b> debug</b></span> </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>captures de paquets</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>journaux de périphériques</li>
+</ul>
+</p>
+<p></p>
+<p>Le tableau de la figure décrit les commandes Cisco IOS couramment utilisées pour la collecte de symptômes relatifs à un problème réseau.</p>
+<p></p>
+<p>
+<b>Remarque</b> : bien que la commande <span class="cmd"><b>debug</b></span> soit un outil important pour la collecte de symptômes, elle génère de nombreux messages de console, ce qui peut affecter de manière notable les performances d'un périphérique réseau. Si la commande <span class="cmd"><b>debug</b></span> doit être exécutée durant les heures de bureau normales, avertissez les utilisateurs du réseau que des tâches de dépannage sont en cours et que les performances du réseau peuvent en être affectées. N'oubliez pas de désactiver le débogage lorsque vous avez terminé.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

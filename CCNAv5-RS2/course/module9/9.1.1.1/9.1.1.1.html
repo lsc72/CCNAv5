@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.1.1 Qu&#x0027;est-ce qu&#x0027;une liste de contrôle d&#x0027;accès ?</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement des listes de contrôle d&#x0027;accès IP</h1>
+        <h2>Objectif des listes de contrôle d&#x0027;accès</h2>
+      </div>
+      <div id="content">
+<p>Une liste de contrôle d'accès (ou ACL) est une série de commandes IOS qui déterminent si un routeur achemine ou abandonne les paquets en fonction des informations contenues dans l'en-tête de paquet. Les listes de contrôle d'accès font partie des fonctionnalités les plus utilisées du logiciel Cisco IOS. </p>
+<p></p>
+<p>Une fois configurées, les listes de contrôle d'accès assurent les tâches suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>Elles limitent le trafic réseau pour accroître les performances réseau. Si la stratégie de l'entreprise interdit, par exemple, le trafic vidéo sur le réseau, vous pouvez configurer et appliquer des listes de contrôle d'accès pour bloquer ce trafic. Ainsi, la charge réseau est nettement réduite et les performances réseau sont sensiblement améliorées. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Elles contrôlent le flux de trafic. Les listes de contrôle d'accès peuvent limiter l'arrivée des mises à jour de routage. Si aucune mise à jour n'est requise vu les conditions du réseau, la bande passante est préservée. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Elles fournissent un niveau de sécurité de base pour l'accès réseau. Les listes de contrôle d'accès permettent à un hôte d'accéder à une section du réseau tout en empêchant un autre hôte d'y avoir accès. Par exemple, l'accès au réseau du département Ressources humaines peut être limité aux utilisateurs autorisés. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Elles filtrent le trafic en fonction de son type. Ainsi, une liste de contrôle d'accès peut autoriser le trafic des e-mails, mais bloquer tout le trafic Telnet. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Elles filtrent les hôtes pour autoriser ou refuser l'accès aux services sur le réseau. Les listes de contrôle d'accès peuvent autoriser ou refuser à un utilisateur l'accès à certains types de fichier, tels que FTP ou HTTP.</li>
+</ul>
+</p>
+<p></p>
+<p>Par défaut, aucune liste de contrôle d'accès n'est configurée sur les routeurs. Par conséquent, les routeurs ne filtrent pas le trafic, par défaut. Le trafic qui entre dans le routeur est routé uniquement en fonction des informations de la table de routage. Toutefois, lorsqu'une liste de contrôle d'accès est appliquée à une interface, le routeur évalue en outre tous les paquets réseau lorsqu'ils traversent l'interface pour déterminer s'ils peuvent être acheminés. </p>
+<p></p>
+<p>En dehors de l'autorisation ou du blocage du trafic, les listes de contrôle d'accès peuvent être utilisées pour sélectionner les types de trafic à analyser, à acheminer et à traiter selon d'autres méthodes. Par exemple, les listes de contrôle d'accès permettent de classer le trafic par ordre de priorité. Cette fonction s'assimile à une carte VIP pour un concert ou un événement sportif. La carte VIP offre aux spectateurs privilégiés des avantages qui ne sont pas proposés aux détenteurs d'un billet standard, notamment l'entrée prioritaire ou le droit d'accéder à une zone privée.</p>
+<p></p>
+<p>La figure présente un exemple de topologie sur laquelle des listes de contrôle d'accès sont appliquées.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

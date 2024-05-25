@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.4.1 Adresses IPv4 publiques et adresses IP privées</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Les types d&#x0027;adresses IPv4</h2>
+      </div>
+      <div id="content">
+<p>Bien que la majorité des adresses d'hôte IPv4 soient des adresses publiques utilisées dans les réseaux accessibles sur Internet, d'autres blocs d'adresses sont attribués à des réseaux qui ne nécessitent pas d'accès à Internet, ou uniquement un accès limité. Ces adresses sont appelées des adresses privées.</p>
+<p></p>
+<p>
+<b>Adresses privées</b>
+</p>
+<p>Voici ces plages d'adresses privées :</p>
+<p></p>
+<p>10.0.0.0 à 10.255.255.255 (10.0.0.0/8)</p>
+<p></p>
+<p>172.16.0.0 à 172.31.255.255 (172.16.0.0/12)</p>
+<p></p>
+<p>192.168.0.0 à 192.168.255.255 (192.168.0.0/16)</p>
+<p></p>
+<p>Les adresses privées sont définies dans le RFC 1918, « Address Allocation for Private Internets » et sont parfois appelées adresses RFC 1918. Les blocs d'adresses d'espace privé, comme l'illustre la figure, sont utilisés dans les réseaux privés. Les hôtes qui n'ont pas besoin d'accéder à Internet peuvent utiliser des adresses privées. Cependant, au sein du réseau privé, les hôtes ont toujours besoin d'adresses IP uniques dans l'espace privé.</p>
+<p></p>
+<p>Plusieurs hôtes de réseaux différents peuvent utiliser les mêmes adresses d'espace privé. Les paquets qui utilisent ces adresses comme source ou destination ne doivent pas être visibles sur Internet. Le routeur ou le périphérique pare-feu, en périphérie de ces réseaux privés, doivent bloquer ou traduire ces adresses. Même si ces paquets parvenaient sur Internet, les routeurs ne disposeraient pas de routes pour les acheminer vers le réseau privé en question.</p>
+<p></p>
+<p>Dans le RFC 6598, l'IANA a réservé un autre groupe d'adresses connu sous le nom d'espace d'adressage partagé. Comme avec l'espace d'adressage privé du RFC 1918, les adresses partagées de l'espace d'adressage ne sont pas globalement routables. Toutefois, ces adresses sont conçues uniquement pour les réseaux de fournisseurs de services. Le bloc d'adresses partagé est 100.64.0.0/10.</p>
+<p></p>
+<p>
+<b>Adresses publiques</b>
+</p>
+<p>La grande majorité des adresses de la plage d'hôtes multidiffusion IPv4 sont des adresses publiques. Ces adresses sont normalement attribuées à des hôtes publiquement accessibles depuis Internet. Même dans ces blocs d'adresses IPv4, de nombreuses adresses sont réservées à des usages particuliers.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

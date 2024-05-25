@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.3.4 Étape 2 : recherche d&#x0027;incohérences dans les paramètres bidirectionnels</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Dépannage de la connectivité IP</h2>
+      </div>
+      <div id="content">
+<p>Une autre cause courante d'erreur d'interface est une incohérence dans les paramètres bidirectionnels entre les deux extrémités d'une liaison Ethernet. Dans de nombreux réseaux Ethernet, les connexions point à point constituent aujourd'hui la norme tandis que l'utilisation de concentrateurs avec le fonctionnement associé en mode bidirectionnel non simultané est devenue moins courante. Cela signifie que la plupart des liaisons Ethernet fonctionnent à l'heure actuelle en mode bidirectionnel simultané et alors que les collisions étaient considérées comme étant normales pour une liaison Ethernet, ces collisions indiquent aujourd'hui souvent que la négociation en mode bidirectionnel a échoué et que la liaison ne fonctionne pas dans le mode bidirectionnel correct.</p>
+<p></p>
+<p>La norme IEEE 802.3ab Gigabit Ethernet nécessite l'utilisation de la négociation automatique pour la vitesse et le mode bidirectionnel. Par ailleurs et bien que cela ne soit pas strictement obligatoire, pratiquement toutes les cartes réseau Fast Ethernet utilisent également la négociation automatique par défaut. L'utilisation de la négociation automatique pour la vitesse et le mode bidirectionnel est la pratique couramment recommandée. Les instructions de configuration relatives au mode bidirectionnel sont indiquées à la Figure 1.</p>
+<p></p>
+<p>Toutefois, si la négociation en mode bidirectionnel échoue pour l'une ou l'autre raison, il peut s'avérer nécessaire de définir la vitesse et le mode bidirectionnel manuellement sur les deux extrémités. D'une manière générale, cela impliquerait la configuration du mode bidirectionnel en mode bidirectionnel simultané au niveau des deux extrémités de la connexion. Cependant, si cela ne fonctionne pas, l'exécution du mode bidirectionnel non simultané sur les deux extrémités est préféré par rapport à une incohérence dans les paramètres bidirectionnels.</p>
+<p></p>
+<p>
+<b>Exemple de dépannage</b>
+</p>
+<p></p>
+<p>Dans le scénario précédent, l'administrateur réseau devait ajouter des utilisateurs supplémentaires dans le réseau. Afin d'intégrer ces nouveaux utilisateurs, l'administrateur réseau a installé un second commutateur et l'a connecté au premier. Peu après l'ajout de S2 dans le réseau, les utilisateurs ont commencé à rencontrer de sérieux problèmes de performances sur les deux commutateurs lors de la connexion à des périphériques situés sur l'autre commutateur, comme le montre la Figure 2. </p>
+<p></p>
+<p>L'administrateur réseau note la présence d'un message de console sur le commutateur S2 :</p>
+<p></p>
+<p>
+<span class="cmd">*Mar 1 00:45:08.756: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on FastEthernet0/20 (not half duplex), with Switch FastEthernet0/20 (half duplex).</span>
+</p>
+<p></p>
+<p>À l'aide de la commande <span class="cmd"><b>show interfaces fa 0/20</b></span>, l'administrateur réseau examine l'interface de S1 utilisée pour la connexion à S2 et note qu'elle est définie en mode bidirectionnel simultané, comme illustré à la Figure 3. L'administrateur réseau examine maintenant l'autre côté de la connexion, à savoir le port sur S2. La Figure 4 indique que ce côté de la connexion a été configuré pour le mode bidirectionnel non simultané. L'administrateur réseau corrige le paramètre à la valeur <span class="cmd"><b>duplex auto</b></span> afin de négocier automatiquement le mode bidirectionnel. Le port sur S1 étant défini en mode bidirectionnel simultané, S2 utilise également ce mode.</p>
+<p></p>
+<p>Les utilisateurs signalent qu'ils ne rencontrent plus de problèmes de performances.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

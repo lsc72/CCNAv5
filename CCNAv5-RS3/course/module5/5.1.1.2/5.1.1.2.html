@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.1.2 Routage statique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées du protocole OSPF à zone unique </h1>
+        <h2>Routage au sein des couches de distribution et cœur de réseau</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Routage statique</b>
+</p>
+<p></p>
+<p>La figure illustre un exemple de scénario de routage statique. Un administrateur réseau peut configurer manuellement une route statique pour accéder à un réseau spécifique. Contrairement à un protocole de routage dynamique, les routes statiques ne sont pas mises à jour automatiquement et elles doivent être reconfigurées manuellement à chaque modification de la topologie du réseau. Une route statique ne change que lorsque l'administrateur la reconfigure manuellement. </p>
+<p></p>
+<p>Le routage statique a trois fonctions principales : </p>
+<p>
+<ul>
+<li>Il facilite la maintenance des tables de routage dans les réseaux de petite taille qui ne sont pas amenés à se développer de manière significative.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Il assure le routage entre les réseaux d'extrémité. Un réseau d'extrémité est un réseau accessible par une seule route, et le routeur a un seul voisin</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Une seule route par défaut est utilisée pour représenter un chemin vers tout réseau ne présentant aucune correspondance plus spécifique avec une autre route figurant dans la table de routage. Les routes par défaut sont utilisées pour envoyer du trafic vers toute destination au-delà du routeur ascendant.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

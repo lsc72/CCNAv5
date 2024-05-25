@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.3.1 Approches en matière de dépannage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration LAN sans fil</h1>
+        <h2>Dépannage des problèmes liés à la fonction WLAN</h2>
+      </div>
+      <div id="content">
+<p>La résolution des problèmes réseau, quels qu'ils soient, doit faire l'objet d'une approche systématique. Les modèles de mise en réseau logiques, tels que les modèles OSI et TCP/IP, séparent les fonctionnalités réseau en couches modulaires. </p>
+<p></p>
+<p>Au cours du dépannage, ces modèles en couches peuvent être appliqués au réseau physique afin d’isoler les problèmes réseau. Par exemple, si les symptômes font penser à un problème de connexion physique, le technicien réseau peut concentrer ses efforts sur le dépannage du circuit qui fonctionne au niveau de la couche physique. Si ce circuit fonctionne correctement, le technicien recherche dans une autre couche ce qui pourrait causer la défaillance. </p>
+<p></p>
+<p>Il existe trois principales approches en matière de résolution des problèmes de réseau :</p>
+<p>
+<ul>
+<li>
+<b>Méthode ascendante</b> : vous commencez par la couche 1 puis passez aux suivantes. (Figure 1)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Méthode descendante</b> : vous commencez par la couche supérieure, puis redescendez. (Figure 2)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Méthode Diviser et conquérir</b> : envoyez une requête ping à la destination. Si les requêtes ping échouent, vérifiez les couches inférieures. Si les requêtes ping aboutissent, vérifiez les couches supérieures. (Figure 3)</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

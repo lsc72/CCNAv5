@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.2.5 Précisions sur les protocoles de routage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentation d&#x0027;une conception réseau</h1>
+        <h2>Évolution du réseau</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Gestion d'un réseau routé</b>
+</p>
+<p>Les réseaux d'entreprise et les FAI utilisent souvent des protocoles beaucoup plus avancés, tels que les protocoles à état de liens, en raison de leur conception hiérarchique et de leur possibilité de mise à l'échelle pour de grands réseaux. </p>
+<p></p>
+<p>Les protocoles de routage à état de liens, tels que le protocole OSPF (Open Shortest Path First), comme illustré à la Figure 1, sont bien appropriés aux réseaux hiérarchiques plus étendus, où il est important de bénéficier d'une convergence rapide. Les routeurs OSPF établissent et maintiennent la ou les contiguïtés de voisinage avec d'autres routeurs OSPF connectés. Lorsque des routeurs mettent en place une contiguïté avec des voisins, un échange de mises à jour d'état de liens démarre. Les routeurs atteignent un état de contiguïté COMPLET lorsqu'ils ont synchronisé les vues de leur base de données d'état de liens. Avec le protocole OSPF, les mises à jour d'état de liens sont envoyées lors de modifications sur le réseau.</p>
+<p></p>
+<p>Le protocole OSPF est un protocole de routage à état de liens souvent utilisé, qui peut être paramétré avec précision de nombreuses façons différentes. Certaines fonctions plus avancées de configuration et de dépannage OSPF sont couvertes dans le chapitre intitulé Ajustement et résolution des problèmes liés au protocole OSPF à zone unique.</p>
+<p></p>
+<p>En outre, le protocole OSPF prend en charge une conception hiérarchique à deux couches, ou à zones multiples, comme illustré à la Figure 2. Tous les réseaux OSPF commencent par la zone 0, également appelée zone fédératrice. À mesure de l'extension du réseau, d'autres zones peuvent être créées, qui ne font pas partie du réseau fédérateur. Toutes ces zones créées doivent être directement connectées à la zone 0. Les avantages, le fonctionnement et la configuration du protocole OSPF à zones multiples sont présentés dans le chapitre intitulé Protocole OSPF à zones multiples.</p>
+<p></p>
+<p>Un autre protocole de routage largement utilisé pour les réseaux plus étendus est le protocole EIGRP (Enhanced Interior Gateway Routing Protocol). Cisco a développé son protocole propriétaire EIGRP sous forme de protocole de routage à vecteur de distance, avec des fonctionnalités améliorées. Bien que la configuration du protocole EIGRP soit relativement simple, les fonctions et options sous-jacentes sont étendues et robustes. Par exemple, le protocole EIGRP utilise des tables multiples pour gérer le processus de routage, comme illustré à la Figure 3. Le protocole EIGRP comporte de nombreuses fonctionnalités qui ne sont trouvées dans aucun autre protocole de routage. Il constitue un excellent choix pour les réseaux étendus, multiprotocoles, qui emploient principalement des périphériques Cisco.</p>
+<p></p>
+<p>Le fonctionnement et la configuration du protocole de routage EIGRP sont présentés au chapitre intitulé Protocole EIGRP. Certaines options de configuration plus avancées du protocole EIGRP sont couvertes dans le chapitre intitulé Configurations avancées et résolutions des problèmes liés au protocole EIGRP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

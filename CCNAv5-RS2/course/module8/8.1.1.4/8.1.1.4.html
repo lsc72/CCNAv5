@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.1.4 Fonctionnement des états de liens</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Caractéristiques du protocole OSPF</h1>
+        <h2>Open Shortest Path First</h2>
+      </div>
+      <div id="content">
+<p>Pour mettre à jour les informations de routage, les routeurs OSPF effectuent le processus de routage à état de liens générique qui suit afin d'atteindre un état de convergence : </p>
+<p></p>
+<p>1. Établir les contiguïtés de voisinage (Figure 1) - Les routeurs compatibles OSPF doivent se reconnaître mutuellement sur le réseau avant de pouvoir partager des informations. Un routeur compatible OSPF envoie des paquets Hello à partir des interfaces compatibles OSPF pour déterminer si des voisins se trouvent sur ces liens. Si un voisin est présent, le routeur compatible OSPF tente d'établir une contiguïté de voisinage avec celui-ci. </p>
+<p></p>
+<p>2. Échanger des paquets LSA (Link-State Advertisement) (Figure 2) - Une fois que les contiguïtés ont été établies, les routeurs échangent ensuite des paquets LSA. Les LSA contiennent l'état et le coût de chaque lien connecté directement. Les routeurs transmettent leurs LSA aux voisins contigus. Les voisins contigus recevant des LSA les diffusent immédiatement aux autres voisins connectés directement, jusqu'à ce que tous les routeurs de la zone aient tous les LSA.</p>
+<p></p>
+<p>3. Établir la table topologique (Figure 3) - Une fois les paquets LSA reçus, les routeurs compatibles OSPF créent la table topologique (LSDB) sur base des paquets LSA reçus. Cette base de données se retrouve alors à stocker toutes les informations relatives à la topologie du réseau.</p>
+<p></p>
+<p>4. Exécuter l'algorithme SPF (Figures 4 et 5) - Les routeurs exécutent ensuite l'algorithme SPF. Les engrenages dans la figure sont utilisés pour indiquer le fonctionnement de l'algorithme SPF. L'algorithme SPF crée l'arborescence SPF. </p>
+<p></p>
+<p>Le contenu de l'arborescence SPF de R1 est illustré dans la Figure 6.</p>
+<p></p>
+<p>Les meilleurs chemins sont insérés dans la table de routage à partir de l'arborescence SPF. Les décisions de routage sont prises en fonction des entrées de la table de routage.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

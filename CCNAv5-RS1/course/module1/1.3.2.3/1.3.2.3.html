@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.3.2.3 Tolérance aux pannes dans les réseaux à commutation de paquets</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.3.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Réseau en tant que plateforme</h1>
+        <h2>Réseau fiable</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Réseaux à commutation de paquets</b>
+</p>
+<p></p>
+<p>Dans le cadre de leur recherche d'un réseau tolérant aux pannes, les premiers concepteurs d'Internet ont étudié les réseaux à commutation de paquets. Le principe de ce type de réseaux est qu'un message peut être scindé en plusieurs blocs, chacun de ces blocs contenant les informations d'adressage indiquant l'origine et la destination finale du message. Grâce à ces informations intégrées, les blocs de message, appelés paquets, peuvent être envoyés sur le réseau en empruntant des chemins variés avant d'être réassemblés pour recomposer le message d'origine une fois parvenus à destination (voir la figure).</p>
+<p></p>
+<p>Les périphériques du réseau ne connaissent en général pas le contenu des paquets individuels. Seules les adresses de la source et de la destination finale sont visibles. Ces adresses sont souvent appelées adresses IP, exprimées en notation décimale (par exemple, 10.10.10.10). Chaque paquet est envoyé d'un emplacement à un autre de façon indépendante. À chaque emplacement, une décision de routage est prise pour déterminer le chemin qui sera emprunté pour transmettre le paquet vers sa destination finale. Cela revient en fait à envoyer un long message à un ami en utilisant dix cartes postales. Chaque carte postale comporte l'adresse du destinataire. Lorsque les cartes postales sont transférées par la poste, l'adresse de destination est utilisée pour déterminer le chemin que la carte postale doit suivre. Par la suite, les cartes sont acheminées vers l'adresse indiquée.</p>
+<p></p>
+<p>Si un chemin précédemment utilisé n'est plus disponible, la fonction de routage peut choisir dynamiquement le meilleur chemin suivant disponible. Comme les messages sont fragmentés au lieu d'être envoyés sous forme de message unique complet, il est possible de retransmettre via un chemin différent les quelques paquets qui pourraient s'être perdus. Dans bien des cas, le périphérique de destination ignore les défaillances ou modifications de routages qui sont intervenues. Pour revenir à notre exemple de cartes postales, si l'une des cartes postales est perdue le long du chemin, seule cette carte postale doit être renvoyée.</p>
+<p></p>
+<p>Dans ce type de réseau, il est inutile de réserver un circuit unique de bout en bout. Chaque morceau du message peut être envoyé sur le réseau par l'intermédiaire de n'importe quel chemin disponible. De plus, des paquets contenant des morceaux de messages provenant de sources différentes peuvent emprunter simultanément le réseau. Parce qu'il permet d'utiliser dynamiquement des chemins redondants sans intervention de l'utilisateur, Internet est devenu un moyen de communication tolérant aux pannes. Dans notre exemple utilisant des cartes postales, comme celles-ci transitent par le système postal, elles utilisent le même réseau que d'autres cartes postales, lettres et paquets. Par exemple, l'une des cartes postales peut être transportée en avion, avec beaucoup d'autres colis et lettres qui sont acheminés vers leur destination finale.</p>
+<p></p>
+<p>Bien que les réseaux à commutation de paquets sans connexion soient l'infrastructure de base d'Internet aujourd'hui, un système orienté connexion comme le système téléphonique à commutation de circuits peut présenter des avantages. Étant donné que les ressources des divers emplacements de commutation ont pour vocation de fournir un nombre précis de circuits, la qualité et la cohérence des messages transmis sur un réseau orienté connexion peuvent être garanties. En outre, le fournisseur du service peut facturer la période de temps pendant laquelle la connexion est active aux utilisateurs du réseau, ce qui est un autre avantage. Pouvoir facturer aux utilisateurs les connexions actives sur le réseau est un élément essentiel de l'industrie des services de télécommunication.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

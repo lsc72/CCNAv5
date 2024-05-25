@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.3.1.1 Principes fondamentaux des ports de commutateur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Commutateurs LAN</h1>
+        <h2>Commutation</h2>
+      </div>
+      <div id="content">
+<p>Souvenez-vous que la topologie logique d'un réseau Ethernet est un bus à accès multiple dont les périphériques partagent tous l'accès au même support. Cette topologie logique détermine la manière dont les hôtes du réseau examinent et traitent les trames envoyées et reçues sur le réseau. Toutefois, la plupart des réseaux Ethernet actuels utilisent une topologie physique en étoile ou en étoile étendue. Cela signifie que sur la plupart des réseaux Ethernet, les périphériques finaux sont généralement connectés point-à-point à un commutateur de réseau local de couche 2.</p>
+<p></p>
+<p>Un commutateur de réseau local de couche 2 permet d'effectuer une commutation et un filtrage en se basant uniquement sur l'adresse MAC de la couche liaison de données (couche 2) du modèle OSI. Les commutateurs sont entièrement transparents pour les protocoles réseau et les applications utilisateur. Un commutateur de couche 2 génère une table d'adresses MAC qu'il utilise pour des décisions de transmission. Les commutateurs de couche 2 dépendent des routeurs pour transmettre les données entre les sous-réseaux IP indépendants.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

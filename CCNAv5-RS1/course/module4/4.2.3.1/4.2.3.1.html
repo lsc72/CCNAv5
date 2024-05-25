@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.3.1 Propriétés de la fibre optique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Supports réseau</h1>
+        <h2>Fibre optique</h2>
+      </div>
+      <div id="content">
+<p>La fibre optique est de plus en plus utilisée pour interconnecter des périphériques réseau d'infrastructure. Elle permet la transmission de données sur de longues distances et à des débits plus élevés qu'avec les autres supports réseau. </p>
+<p></p>
+<p>La fibre optique est un fil en verre très pur (silice) transparent, à la fois flexible et très fin. Son diamètre n'est pas beaucoup plus grand que celui d'un cheveu humain. Les bits sont codés sur la fibre sous forme d'impulsions lumineuses. Le câble à fibre optique sert de guide d'ondes ou « tuyau lumineux » qui transmet la lumière entre les deux extrémités avec un minimum de perte de signal. </p>
+<p></p>
+<p>Pour mieux vous le représenter, imaginez un rouleau d'essuie-tout vide de plusieurs milliers de mètres de long, dont l'intérieur est recouvert d'un miroir. Un petit pointeur laser serait utilisé pour envoyer des signaux en code Morse à la vitesse de la lumière. Un câble à fibre optique utilise le même principe, mais son diamètre est inférieur et utilise des technologies sophistiquées d'émission et de réception des signaux lumineux. </p>
+<p></p>
+<p>Contrairement aux fils de cuivre, la fibre optique peut transmettre des signaux qui subissent moins d'atténuation et est entièrement insensible aux perturbations électromagnétiques et radioélectriques.</p>
+<p></p>
+<p>Actuellement, les câbles à fibre optique sont utilisés dans quatre domaines d'application :</p>
+<p>
+<ul>
+<li>
+<b>Les réseaux d'entreprise</b> : la fibre est utilisée pour les applications de câblage du réseau fédérateur et pour relier les périphériques d'infrastructure.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Les réseaux FTTH et d'accès</b> : la technologie FTTH (fiber to the home ou fibre optique jusqu'au domicile) est utilisée pour fournir des services haut débit disponibles en permanence aux particuliers et aux petites entreprises. Les réseaux FTTH permettent un accès Internet haut débit abordable, le télétravail, la télémédecine et la vidéo à la demande.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Les réseaux longue distance</b> : les fournisseurs d'accès utilisent des réseaux terrestres longue distance à fibre optique pour connecter les pays et les villes. Ces réseaux vont généralement de quelques dizaines à quelques milliers de kilomètres et utilisent des systèmes proposant jusqu'à 10 Gbit/s.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Les réseaux sous-marins</b> : des câbles à fibre spéciaux sont utilisés pour fournir des solutions haut débit et haute capacité fiables, à l'épreuve des environnements sous-marins sur des distances à l'échelle d'un océan. </li>
+</ul>
+</p>
+<p></p>
+<p>Nous nous intéressons principalement à l'utilisation de la fibre au sein de l'entreprise.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

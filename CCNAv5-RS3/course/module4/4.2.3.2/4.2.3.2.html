@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.3.2 Sélection des canaux</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement LAN sans fil</h1>
+        <h2>Gestion des canaux</h2>
+      </div>
+      <div id="content">
+<p>La norme IEEE 802.11b/g/n fonctionne sur toutes les fréquences micro-ondes du spectre radio. Les normes IEEE 802.11b/g/n fonctionnent sur le spectre de 2,4 GHz à 2,5 GHz, tandis que les normes 802.11a/n/ac fonctionnent sur la bande 5 GHz, plus strictement réglementée. La Figure 1 indique quelles normes 802.11 fonctionnent dans les bandes 2,4 GHz, 5 GHz et 60 GHz. Chaque spectre est sous-divisé en canaux avec une fréquence centrale et une bande passante, analogues aux sous-divisions des bandes radio. </p>
+<p></p>
+<p>La bande 2,4 GHz est divisée en de multiples canaux. La bande passante globale combinée des canaux est de 22 MHz, chaque canal étant séparé par 5 MHz. La norme 802.11b identifie 11 canaux pour l'Amérique du Nord. La bande passante de 22 MHz, combinée à la séparation de 5 MHz entre les fréquences, entraîne un chevauchement entre les canaux successifs, comme illustré à la Figure 2. </p>
+<p></p>
+<p>
+<b>Remarque </b>: en Europe, il existe 13 canaux 802.11b.</p>
+<p></p>
+<p>Une interférence se produit lorsqu'un signal indésirable chevauche un canal réservé au signal souhaité, entraînant une distorsion potentielle. La solution à ce problème d'interférence est d'utiliser des canaux qui ne se chevauchent pas. Plus précisément, les canaux 802.11b n° 1, n° 6 et n° 11, comme illustré à la Figure 3.</p>
+<p></p>
+<p>Une meilleure pratique en matière de WLAN nécessitant plusieurs points d'accès consiste à utiliser des canaux non chevauchants. S'il existe trois points d'accès adjacents, utilisez les canaux n° 1, n° 6 et n° 11. S'il n'y a que deux points d'accès, sélectionnez deux canaux séparés par cinq autres, par exemple les canaux n° 5 et n° 10. La majorité des points d'accès peuvent sélectionner automatiquement un canal en fonction des canaux adjacents utilisés. Certains équipements surveillent constamment l'espace radio pour ajuster en temps réel les paramètres des canaux en cas de changement dans l'environnement.</p>
+<p></p>
+<p>Avec la migration des WLAN d'entreprise vers la norme 802.11n, il est possible d'utiliser des canaux de la bande 5 GHz, plus étendue et moins encombrée, ce qui réduit le risque de « déni de service accidentel (DoS) ». Par exemple, la norme 802.11n utilise la technique OFDM et peut prendre en charge quatre canaux qui ne se chevauchent pas, comme illustré à la Figure 4. </p>
+<p></p>
+<p>La norme 802.11n peut également faire appel à l'agrégation de canaux, qui combine deux canaux 20 MHz en canal 40 MHz, comme illustré à la Figure 5. L'agrégation de canaux augmente le débit en utilisant simultanément deux canaux pour acheminer les données.</p>
+<p></p>
+<p>Les points d'accès plus modernes peuvent ajuster automatiquement les canaux pour éviter les interférences. </p>
+<p></p>
+<p>
+<b>Remarque </b>: la norme IEEE 802.11ac utilise la méthode OFDM avec des largeurs de canal de 80, 160 et 80+80.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

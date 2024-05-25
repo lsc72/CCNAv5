@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.0.1.2 Exercice - Avez-vous remarqué...</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Il s&#x0027;agit d&#x0027;un réseau</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Avez-vous remarqué… ?</b>
+</p>
+<p></p>
+<p>
+<b>Remarque</b> : les étudiants peuvent effectuer cet exercice individuellement, par deux ou en classe entière.</p>
+<p></p>
+<p>Observez les deux réseaux représentés dans le schéma. Comparez les deux réseaux à partir de vos observations. Prenez note des périphériques utilisés dans chaque conception de réseau. Comme les périphériques sont étiquetés, vous connaissez déjà les types de périphériques finaux et intermédiaires de chaque réseau. </p>
+<p></p>
+<p>Mais quelles sont les différences entre les deux réseaux ? Le réseau B contient-il simplement plus de périphériques que le réseau A ?</p>
+<p></p>
+<p>Sélectionnez le réseau que vous utiliseriez si vous possédiez une PME. Préparez-vous à justifier choix selon les critères suivants : coût, vitesse, nombre de ports, évolutivité et simplicité de gestion.</p>
+<p></p>
+<p>
+<a href="../../files/11.0.1.2%20Class%20Activity%20-%20Did%20You%20Notice%20Instructions.pdf" target="_blank">Instructions de l'exercice en classe - Avez-vous remarqué</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

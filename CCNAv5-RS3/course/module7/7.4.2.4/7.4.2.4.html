@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.2.4 Commande d&#x0027;interface ipv6 eigrp</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole EIGRP pour IPv6</h1>
+        <h2>Configuration du protocole EIGRP pour IPv6</h2>
+      </div>
+      <div id="content">
+<p>Le protocole EIGRP pour IPv6 utilise une méthode différente pour activer une interface pour le protocole EIGRP. Au lieu d'utiliser la commande du mode de configuration de routeur<span class="cmd"><b> network </b></span>pour spécifier les adresses d'interface correspondantes, le protocole EIGRP pour IPv6 est configuré directement sur l'interface. </p>
+<p></p>
+<p>Utilisez la commande du mode de configuration d'interface suivante pour activer le protocole EIGRP pour IPv6 sur une interface :</p>
+<p></p>
+<p>
+<span class="cmd">Router(config-if)#</span>
+<span class="cmd">
+<b> ipv6 eigrp </b>
+</span>
+<span class="cmd">
+<i>autonomous-system</i>
+</span>
+</p>
+<p></p>
+<p>La valeur <span class="cmd"><i>autonomous-system</i></span> doit être identique au numéro de système autonome utilisé pour activer le processus de routage EIGRP. Tout comme la commande<span class="cmd"><b> network </b></span>utilisée dans le protocole EIGRP pour IPv4, la commande<span class="cmd"><b> ipv6 eigrp interface </b></span>:</p>
+<p>
+<ul>
+<li>Permet à l'interface d'établir des contiguïtés et d'envoyer ou de recevoir des mises à jour EIGRP pour IPv6</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Inclut le préfixe (réseau) de cette interface dans les mises à jour de routage EIGRP pour IPv6</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 1 montre la configuration qui permet d'activer le protocole EIGRP pour IPv6 sur les interfaces des routeurs R1 et R2. Notez le message suivant l'interface Serial 0/0/0 dans R2 : </p>
+<p></p>
+<p>
+<span class="cmd">%DUAL-5-NBRCHANGE: EIGRP-IPv6 2: Neighbor FE80::1 (Serial0/0/0) is up: new adjacency</span>
+</p>
+<p></p>
+<p>Ce message indique que R2 a établi une contiguïté EIGRP-IPv6 avec le voisin à l'adresse link-local FE80::1. Des adresses link-local statiques étant configurées sur les trois routeurs, il est facile de déterminer que cette contiguïté est établie avec le routeur R1 (FE80::1).</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 2 pour activer le protocole EIGRP pour IPv6 sur les interfaces de R3.</p>
+<p></p>
+<p></p>
+<p>
+<b>Interface passive avec le protocole EIGRP pour IPv6</b>
+</p>
+<p>La commande<span class="cmd"><b> passive-interface </b></span>utilisée pour IPv4 permet également de configurer une interface passive avec le protocole EIGRP pour IPv6. Comme indiqué à la Figure 3, la commande<span class="cmd"><b> show ipv6 protocols </b></span>permet de vérifier la configuration.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

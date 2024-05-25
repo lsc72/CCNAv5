@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.1.3 Technologies sans fil</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts de la technologie sans fil</h1>
+        <h2>Introduction à la technologie sans fil</h2>
+      </div>
+      <div id="content">
+<p>Les communications sans fil sont utilisées dans de nombreuses professions.</p>
+<p></p>
+<p>Bien que la gamme de technologies sans fil disponibles soit en perpétuelle évolution, notre objectif aujourd'hui est de discuter des réseaux sans fil qui offrent aux utilisateurs de la mobilité. Les réseaux sans fil peuvent être répartis dans les principales catégories suivantes :</p>
+<p>
+<ul>
+<li>
+<b>Réseaux personnels sans fil (WPAN, Wireless Personal-Area Network)</b> : réseaux ayant une portée de quelques dizaines de centimètres. Les périphériques Bluetooth ou Wi-Fi Direct sont les principaux périphériques utilisés sur les WPAN.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Réseaux locaux sans fil (WLAN, Wireless LAN)</b> : réseaux ayant une portée de plusieurs mètres ou dizaines de mètres, et couvrant par exemple une pièce, une habitation, des bureaux, voire un environnement de campus.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Réseaux sans fil étendus (WWAN, Wireless Wide-Area Network)</b> : réseaux ayant une portée de plusieurs kilomètres, par exemple à l'échelle d'une ville, d'une hiérarchie cellulaire ou même en lien interville par le biais de relais hertziens.</li>
+</ul>
+</p>
+<p></p>
+<p>Cliquez sur chaque composant dans la figure pour afficher des informations sur les différentes technologies sans fil disponibles pour connecter les périphériques à ces réseaux sans fil :</p>
+<p>
+<ul>
+<li>
+<b>Bluetooth</b> : initialement, norme WPAN IEEE 802.15 utilisant un processus d'appariement des périphériques pour communiquer sur des distances allant jusqu'à 100 m. Les versions récentes de Bluetooth ont été normalisées par le Bluetooth Special Interest Group (<a href="https://www.bluetooth.org/" target="_blank">https://www.bluetooth.org/</a>).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Wi-Fi (Wireless Fidelity)</b> : norme WLAN IEEE 802.11 couramment déployée pour assurer l'accès au réseau des utilisateurs domestiques et professionnels, avec un trafic données, voix et vidéo, sur des distances allant jusqu'à 300 m.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>WiMAX (Worldwide Interoperability for Microwave Access)</b> : norme WWAN IEEE 802.16 offrant un accès sans fil à haut débit jusqu'à 50 km de distance. La technologie WiMAX est une alternative aux connexions câblées et d'ADSL haut débit. Une fonction de mobilité a été ajoutée à WiMAX en 2005, lui permettant aujourd'hui d'être utilisée par les fournisseurs de services pour offrir un réseau cellulaire haut débit. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Haut débit cellulaire</b> : utilisation de l'accès cellulaire des fournisseurs de services par des entreprises et organisations nationales et internationales pour offrir une connectivité au réseau mobile en haut débit. Cette technologie a été utilisée à ses débuts avec les téléphones portables de 2e génération (2G), en 1991, puis avec les technologies de communication mobile de 3e (3G) et de 4e (4G) générations, grâce à l'augmentation des débits en 2001 et 2006. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Haut débit satellite</b> : technologie offrant un accès réseau aux sites distants via une antenne parabolique directionnelle alignée sur un satellite à orbite géostationnaire (GEO). Cette technique est généralement plus coûteuse et requiert une visibilité directe.</li>
+</ul>
+</p>
+<p></p>
+<p>Il existe aujourd'hui de nombreuses technologies sans fil. Cependant, le présent chapitre est centré sur les WLAN 802.11.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

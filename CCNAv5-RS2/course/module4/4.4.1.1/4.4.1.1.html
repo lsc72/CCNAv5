@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.1.1 Exercice - Une carte ne serait pas de refus !</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Exercice :</b>
+<b>Une carte ne serait pas de refus !</b>
+</p>
+<p></p>
+<p>
+<b>Scénario</b>
+</p>
+<p></p>
+<p>Utilisez les tables de routage Ashland et Richmond indiquées dans le fichier fourni pour cet exercice. </p>
+<p>Avec l'aide d'un autre étudiant, créez une topologie du réseau en utilisant les informations contenues dans les tables. </p>
+<p>Afin de faciliter l'exercice, procédez comme suit :</p>
+<p>
+<ul>
+<li>
+<b>Commencez par le routeur Ashland</b> : utilisez sa table de routage pour identifier des ports et des adresses IP/réseaux.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Ajoutez le routeur Richmond</b> : utilisez sa table de routage pour identifier des ports et des adresses IP/réseaux.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Ajoutez tous les autres périphériques intermédiaires et finaux comme indiqué dans les tables.</li>
+</ul>
+</p>
+<p>En outre, notez les réponses apportées par votre groupe aux questions de réflexion fournies avec cet exercice.</p>
+<p>Préparez-vous à partager votre travail avec un autre groupe et/ou la classe.</p>
+<p></p>
+<p>
+<a href="../../files/4.4.1.1%20We%20Really%20Could%20Use%20A%20Map%20Instructions.pdf" target="_blank">Exercice en classe - Une carte ne serait pas de refus ! Instructions</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

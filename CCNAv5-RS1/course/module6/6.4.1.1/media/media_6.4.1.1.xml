@@ -1,0 +1,140 @@
+﻿<textcomponents>
+
+<!--Slide 1-->
+<component id="ID_txt01">
+<text><![CDATA[OU]]></text>
+</component>
+<!--End Slide 1-->
+
+<!--Slide 5-->
+<component id="ID_title">
+<text><![CDATA[<b>Configuration d'un routeur Cisco</b>]]></text>
+</component>
+
+<!--Syntax Checker Button Text-->
+<component id="ID_sc_reset">
+<text><![CDATA[Réinitialiser]]></text>
+</component>
+
+<component id="ID_sc_showme">
+<text><![CDATA[Démonstration]]></text>
+</component>
+
+<component id="ID_sc_showall">
+<text><![CDATA[Afficher tout]]></text>
+</component>
+<!--End Syntax Checker Button Text-->
+
+<!--Syntax Checker Body Text-->
+<component id="ID_SC" fontFace='Courier New' fontSize="10">
+
+<text></text>		
+
+<feedback id="fb"><![CDATA[<span><font size = '10' face="Arial"><span><b>***</b></span>Vous devez saisir la commande précisément et en entier. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.<span><b>***</b></span></font></span>
+]]></feedback>		
+
+<existingcommands><![CDATA[<font size = '10' face="Arial"><b>Entrez les commandes permettant d'attribuer le nom «&nbsp;R1&nbsp;» au routeur.</b></font>]]></existingcommands>
+
+<command prompt="Router&gt;" id="cmd1" node="start">
+<correctresponse id="cr1" ignoreCase = 'true'><![CDATA[enable]]></correctresponse>
+<deviceresponse id="dr1"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins1"><![CDATA[<span></span>]]></instruction> 
+</command>
+
+<command prompt="Router#"  id="cmd2">
+<correctresponse id="cr2" ignoreCase = 'true'><![CDATA[configure terminal]]></correctresponse>
+<deviceresponse id="dr2"><![CDATA[<dnt><font size='10'>Enter configuration commands, one per line. End with CNTL/Z.</font></dnt>]]></deviceresponse>
+<instruction id="ins2"><![CDATA[<span></span>]]></instruction>
+</command>
+
+<command prompt="Router(config)#"  id="cmd3">
+<correctresponse id="cr3" ignoreCase = 'true'><![CDATA[hostname R1]]></correctresponse>
+<deviceresponse id="dr3"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins3"><![CDATA[<font size = '10' face="Arial"><b>Attribuez «&nbsp;class&nbsp;» comme mot de passe secret.</b></font>]]></instruction> 			
+</command>
+
+<command prompt="R1(config)#"  id="cmd4">
+<correctresponse id="cr4" ignoreCase = 'true'><![CDATA[enable secret class]]></correctresponse>
+<deviceresponse id="dr4"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins4"><![CDATA[<font size = '10' face="Arial"><b>Attribuez «&nbsp;cisco&nbsp;» comme mot de passe de ligne de console et faites en sorte que le mot de passe soit requis lors de la connexion des utilisateurs. Enfin, quittez le mode de configuration de ligne.</b></font>]]></instruction>
+</command>
+
+<command prompt="R1(config)#"  id="cmd5">
+<correctresponse id="cr5" ignoreCase = 'true'><![CDATA[line console 0]]></correctresponse>
+<deviceresponse id="dr5"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins5"><![CDATA[<span></span>]]></instruction>
+</command>
+
+<command prompt="R1(config-line)#"  id="cmd6">
+<correctresponse id="cr6" ignoreCase = 'true'><![CDATA[password cisco]]></correctresponse>
+<deviceresponse id="dr6"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins6"><![CDATA[<span></span>]]></instruction>
+</command>
+
+<command prompt="R1(config-line)#"  id="cmd7">
+<correctresponse id="cr7" ignoreCase = 'true'><![CDATA[login]]></correctresponse>
+<deviceresponse id="dr7"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins7"><![CDATA[<span></span>]]></instruction>
+</command>
+
+<command prompt="R1(config-line)#"  id="cmd8">
+<correctresponse id="cr8" ignoreCase = 'true'><![CDATA[exit]]></correctresponse>
+<deviceresponse id="dr8"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins8"><![CDATA[<font size = '10' face="Arial"><b>Attribuez «&nbsp;cisco&nbsp;» comme mot de passe vty pour les lignes&nbsp;0 à 4 et faites en sorte que le mot de passe soit requis lors de la connexion des utilisateurs.</b>]]></instruction>
+</command>
+
+<command prompt="R1(config)#"  id="cmd9">
+<correctresponse id="cr9" ignoreCase = 'true'><![CDATA[line vty 0 4]]></correctresponse>
+<deviceresponse id="dr9"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins9"><![CDATA[<span></span>]]></instruction>
+</command>
+
+<command prompt="R1(config-line)#"  id="cmd10">
+<correctresponse id="cr10" ignoreCase = 'true'><![CDATA[password cisco]]></correctresponse>
+<deviceresponse id="dr10"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins10"><![CDATA[<span></span>]]></instruction>
+</command>
+
+<command prompt="R1(config-line)#"  id="cmd11">
+<correctresponse id="cr11" ignoreCase = 'true'><![CDATA[login]]></correctresponse>
+<deviceresponse id="dr11"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins11"><![CDATA[<font size = '10' face="Arial"><b>Quittez le mode de configuration de ligne et chiffrez tous les mots de passe en clair.</b>]]></instruction>
+</command>
+
+<command prompt="R1(config-line)#"  id="cmd12">
+<correctresponse id="cr12" ignoreCase = 'true'><![CDATA[exit]]></correctresponse>
+<deviceresponse id="dr12"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins12"><![CDATA[<span></span>]]></instruction>
+</command>
+
+<command prompt="R1(config)#"  id="cmd13">
+<correctresponse id="cr13" ignoreCase = 'true'><![CDATA[service password-encryption]]></correctresponse>
+<deviceresponse id="dr13"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins13"><![CDATA[<font size = '10' face="Arial"><b>Entrez la bannière «&nbsp;<dnt>Authorized Access Only!</dnt>&nbsp;» et utilisez # comme caractère de délimitation.</b>]]></instruction>
+</command>
+
+<command prompt="R1(config)#" id="cmd14">
+<correctresponse id="cr14" ignoreCase = 'true'><![CDATA[banner motd #Authorized Access Only!#]]></correctresponse>
+<deviceresponse id="dr14"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins14"><![CDATA[<font size = '10' face="Arial"><b>Quittez le mode de configuration globale et enregistrez la configuration.</b>]]></instruction>
+</command>
+
+<command prompt="R1(config)#"  id="cmd15">
+<correctresponse id="cr15" ignoreCase = 'true'><![CDATA[exit]]></correctresponse>
+<deviceresponse id="dr15"><![CDATA[<span></span>]]></deviceresponse>
+<instruction id="ins15"><![CDATA[<span></span>]]></instruction>
+</command>
+
+<command prompt="R1#"  id="cmd16" node="end">
+<correctresponse id="cr16" ignoreCase = 'true'><![CDATA[copy running-config startup-config]]></correctresponse>
+<deviceresponse id="dr16"><![CDATA[<dnt><font size='10'>Destination filename [startup-config]? <br>Building configuration...<br>[OK]<br>R1#<br></font></dnt>]]></deviceresponse>
+<instruction id="last"><![CDATA[<font size = '10' face="Arial"><b>Vous avez correctement configuré les paramètres initiaux du périphérique&nbsp;R1.</b>]]></instruction>
+</command>
+
+<command prompt=""/>
+
+</component>
+<!--End Syntax Checker Body Text-->
+
+<!--End Slide 5-->
+</textcomponents>

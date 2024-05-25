@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.4.1.4 Communication vidéo</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.4.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Évolution de l&#x0027;environnement réseau</h1>
+        <h2>Tendances relatives au réseau</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Communication vidéo</b>
+</p>
+<p></p>
+<p>La vidéo est une autre tendance relative au réseau. Elle est indispensable pour la communication et la collaboration. La vidéo est utilisée pour la communication, la collaboration et le divertissement. Les appels vidéo sont de plus en plus populaires et facilitent les communications dans le cadre du réseau humain. Les appels vidéo peuvent être émis et reçus n'importe où via Internet, notamment depuis son domicile ou son bureau. </p>
+<p></p>
+<p>Les appels vidéo et les vidéoconférences s'avèrent particulièrement efficaces pour les processus de vente et les communications professionnelles. La vidéo est un outil utile pour travailler à distance, au niveau régional ou international. Aujourd'hui, les entreprises utilisent la vidéo pour transformer la manière dont elles gèrent leurs activités. La vidéo aide les entreprises à développer un avantage concurrentiel, à réduire les coûts et à diminuer l'impact sur l'environnement grâce à la réduction du nombre de déplacements. La Figure 1 illustre la tendance relative à la vidéo dans le cadre de la communication.</p>
+<p></p>
+<p>Cette évolution provient à la fois des consommateurs et des entreprises. La vidéo devient essentielle pour collaborer efficacement à mesure que les entreprises se développent au-delà des frontières géographiques et culturelles. Les utilisateurs de vidéos souhaitent pouvoir visualiser tous les contenus, où qu'ils se trouvent, et sur n'importe quel périphérique.</p>
+<p></p>
+<p>Les entreprises sont également conscientes de l'importance de la vidéo pour améliorer le réseau humain. La croissance du multimédia, ainsi que ses nouvelles applications, implique la nécessité d'intégrer l'audio et la vidéo dans de nombreuses formes de communication. La conférence audio coexistera avec la conférence vidéo. Les outils de collaboration conçus pour permettre aux employés dispersés sur le territoire de communiquer intègrent peu à peu la vidéo, pour permettre aux équipes de collaborer facilement.</p>
+<p></p>
+<p>L'intégration d'une stratégie pour l'utilisation de la vidéo présente de nombreux avantages. Chaque entreprise est unique. Les différentes raisons d'adopter la vidéo varient d'une entreprise à l'autre et dépendent des différentes fonctions professionnelles. Le service Marketing, par exemple, peut se concentrer sur la mondialisation et l'évolution des demandes des consommateurs, alors que le responsable informatique peut se concentrer sur les économies réalisées grâce à la diminution du nombre de déplacements. La Figure 2 répertorie quelques-unes des raisons pour lesquelles les entreprises doivent développer et mettre en œuvre une stratégie de solution vidéo. </p>
+<p></p>
+<p>La Figure 3 est une vidéo qui présente plus précisément la manière dont la technologie de vidéo TelePresence peut être utilisée au quotidien, au bureau comme à son domicile.</p>
+<p></p>
+<p>Une autre tendance relative à la vidéo est la vidéo à la demande et la vidéo en direct et en continu. Grâce à la vidéo sur le réseau, nous pouvons regarder des films et des programmes TV à n'importe quel moment, n'importe où. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

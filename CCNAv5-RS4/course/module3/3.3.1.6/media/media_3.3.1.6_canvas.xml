@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+<slide type="MBAR">	
+	<slide>
+	<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+	<element type="ROUTER" textId="ID_router_txt1" x="0" y="45" width="438" height="350" />
+	</slide>
+		
+	<slide>
+	<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+	<element type="TEXT" subType="TABLE" compId="ID_s2_table" x="6" y="111" width="420" />
+	</slide>
+		
+	<slide>
+	<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+	<element type="ROUTER" textId="ID_router_txt2" x="2" y="68.45" width="431" height="264" />
+	</slide>
+	
+</slide>
+
+<text id="ID_router_txt1"><![CDATA[<pre>R2# <b>show interfaces serial 0/0/0</b>
+<span class="orange_block">Serial0/0/0 is up, line protocol is up</span>  Hardware is GT96K Serial
+  Internet address is 10.0.1.2/30
+  MTU 1500 bytes, BW 1544 Kbit/sec, DLY 20000 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+<span class="orange_block">  Encapsulation PPP, LCP Open
+  Open: IPCP, IPV6CP, CCP, CDPCP, loopback not set</span>  Keepalive set (10 sec)
+  CRC checking enabled
+  Last input 00:00:02, output 00:00:02, output hang never
+  Last clearing of "show interface" counters 01:29:06
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output
+drops: 0
+  Queueing strategy: weighted fair
+  Output queue: 0/1000/64/0 (size/max total/threshold/drops) 
+     Conversations  0/1/256 (active/max active/max total)
+     Reserved Conversations 0/0 (allocated/max allocated)
+     Available Bandwidth 1158 kilobits/sec
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     1944 packets input, 67803 bytes, 0 no buffer
+     Received 0 broadcasts (0 IP multicasts)
+     0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored, 0 abort
+     1934 packets output, 67718 bytes, 0 underruns
+     0 output errors, 0 collisions, 5 interface resets
+     1 unknown protocol drops
+     0 output buffer failures, 0 output buffers swapped out
+     8 carrier transitions
+     DCD=up  DSR=up  DTR=up  RTS=up  CTS=up
+
+R2#
+</pre>]]></text>
+
+<text id="ID_router_txt2"><![CDATA[<pre><b>R3# show ppp multilink</b>
+
+<span class="orange_block">Multilink1</span>  Bundle name: R4
+<span class="orange_block">  Remote Endpoint Discriminator: [1] R4
+  Local Endpoint Discriminator: [1] R3</span>  Bundle up for 00:01:20, total bandwidth 3088, load 1/255
+  Receive buffer limit 24000 bytes, frag timeout 1000 ms
+    0/0 fragments/bytes in reassembly list
+    0 lost fragments, 0 reordered
+    0/0 discarded fragments/bytes, 0 lost received
+    0x2 received sequence, 0x2 sent sequence
+<span class="orange">  Member links: 2 active,</span> 0 inactive (max 255, min not set)
+<span class="orange_block">    Se0/1/1, since 00:01:20
+    Se0/1/0, since 00:01:06</span>No inactive multilink interfaces
+R3# 
+</pre>]]></text>
+ 
+ 
+</data>

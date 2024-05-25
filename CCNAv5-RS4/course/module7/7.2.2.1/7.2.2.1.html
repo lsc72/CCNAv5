@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.2.1 Configuration de tunnel GRE</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Tunnels GRE de site à site</h1>
+        <h2>Configuration des tunnels GRE</h2>
+      </div>
+      <div id="content">
+<p>Le protocole GRE est utilisé pour la création d'un tunnel VPN entre deux sites, comme le montre la Figure 1. Pour implémenter un tunnel GRE, l'administrateur réseau doit tout d'abord apprendre les adresses IP des points d'extrémité. Ensuite, la configuration d'un tunnel GRE s'effectue en cinq étapes : </p>
+<p></p>
+<p>
+<b>Étape 1. </b>Créez une interface de tunnel à l'aide de la commande <span class="cmd"><b>interface tunnel number</b></span>. </p>
+<p></p>
+<p>
+<b>Étape 2. </b>Spécifiez l'adresse IP source du tunnel.</p>
+<p></p>
+<p>
+<b>Étape 3. </b>Spécifiez l'adresse IP de destination du tunnel.</p>
+<p></p>
+<p>
+<b>Étape 4. </b>Configurez une adresse IP pour l'interface du tunnel.</p>
+<p></p>
+<p>
+<b>Étape 5. </b>(Facultatif) Spécifiez le mode de tunnel GRE en tant que mode d'interface de tunnel. Le mode de tunnel GRE est le mode d'interface de tunnel par défaut du logiciel Cisco IOS.</p>
+<p></p>
+<p>L'exemple de configuration de la Figure 2 illustre une configuration de tunnel GRE de base pour le routeur R1. </p>
+<p></p>
+<p>La configuration de R2 présentée à la Figure 3 est une mise en miroir de celle de R1.</p>
+<p></p>
+<p>La configuration minimale nécessite la spécification des adresses source et de destination du tunnel. Le sous-réseau IP doit également être configuré de manière à fournir de la connectivité IP sur la liaison du tunnel. En ce qui concerne les deux interfaces du tunnel, la source du tunnel est définie à l'interface S0/0/0 série locale et la destination du tunnel à l'interface S0/0/0 série de routeur homologue. L'adresse IP est attribuée aux interfaces de tunnel sur les deux routeurs. OSPF a également été configuré de manière à échanger des routes sur le tunnel GRE. </p>
+<p></p>
+<p>Les descriptions des commandes de tunnel GRE individuelles sont affichées à la Figure 4.</p>
+<p></p>
+<p>
+<b>Remarque </b>: lors de la configuration de tunnels GRE, il est parfois difficile de se rappeler quels réseaux IP sont associés aux interfaces physiques et quels réseaux IP sont associés aux interfaces de tunnel. Rappelez-vous que les interfaces physiques ont déjà été configurées avant la création d'un tunnel GRE. Les commandes <span class="cmd"><b>tunnel source</b></span> et <span class="cmd"><b>tunnel destination</b></span> font référence aux adresses IP des interfaces physiques préconfigurées. La commande<span class="cmd"><b> ip address</b></span> sur les interfaces de tunnel se réfèrent à un réseau IP réalisé spécifiquement pour les besoins du tunnel GRE.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

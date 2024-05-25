@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.2.3 Copie d&#x0027;une image Cisco IOS</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Gestion des fichiers système IOS</h1>
+        <h2>Gestion des images logicielles Cisco IOS</h2>
+      </div>
+      <div id="content">
+<p>Cisco publie régulièrement de nouvelles versions du logiciel Cisco IOS pour résoudre les difficultés et fournir de nouvelles fonctionnalités. Cet exemple utilise le protocole IPv6 pour le transfert, afin de montrer que le protocole TFTP peut également être utilisé dans les réseaux IPv6. </p>
+<p></p>
+<p>La Figure 1 illustre la copie d'une image du logiciel Cisco IOS à partir d'un serveur TFTP. Un nouveau fichier d'image (c1900-universalk9-mz.SPA.152-4.M3.bin) sera copié à partir du serveur TFTP à 2001:DB8:CAFE:100::99 vers le routeur. </p>
+<p></p>
+<p>Procédez comme suit pour mettre à niveau le logiciel sur le routeur Cisco :</p>
+<p></p>
+<p>
+<b>Étape 1. </b>Sélectionnez un fichier d'image Cisco IOS répondant aux exigences en termes de plate-forme, de fonctionnalités et de logiciel. Téléchargez le fichier à partir de cisco.com et transférez-le sur le serveur TFTP.</p>
+<p></p>
+<p>
+<b>Étape 2. </b>vérification de la connectivité au serveur TFTP Envoyez une requête ping au serveur TFTP à partir du routeur. Le résultat de la Figure 2 montre que le serveur TFTP est accessible à partir du routeur.</p>
+<p></p>
+<p>
+<b>Étape 3. </b>Assurez-vous que l'espace dans la mémoire Flash est suffisant sur le routeur à mettre à niveau. La quantité de mémoire Flash disponible peut être vérifiée à l'aide de la commande<span class="cmd"><b> show flash0:</b></span>. Comparez l'espace de mémoire Flash disponible avec la nouvelle taille du fichier d'image. La commande<span class="cmd"><b> show flash0: </b></span>à la Figure 3 sert à vérifier la taille de la mémoire Flash. Dans l'exemple, l'espace de mémoire Flash disponible est de 182 394 880 octets. </p>
+<p></p>
+<p>
+<b>Étape 4. </b>Copiez le fichier d'image IOS à partir du serveur TFTP vers le routeur à l'aide de la commande<span class="cmd"><b> copy </b></span>présentée à la Figure 4. Une fois la commande exécutée à l'aide des URL source et de destination spécifiées, l'utilisateur est invité à indiquer l'adresse IP de l'hôte distant, le nom du fichier source et le nom du fichier de destination. Le transfert du fichier commence.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

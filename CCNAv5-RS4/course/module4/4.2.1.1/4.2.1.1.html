@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.1.1 Commandes de configuration de Frame Relay</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurer Frame Relay</h1>
+        <h2>Configuration du protocole Frame Relay de base</h2>
+      </div>
+      <div id="content">
+<p>Frame Relay est configuré sur les routeurs Cisco via l'interface en ligne de commande Cisco IOS. La Figure 1 décrit les étapes obligatoires et facultatives de la configuration de Frame Relay. </p>
+<p></p>
+<p>La Figure 2 montre les trois topologies de routeur qui seront utilisées dans cette section, même si l'accent sera d'abord mis sur la liaison Frame Relay entre R1 et R2, réseau 10.1.1.0/24. Notez que tous les routeurs ont été configurés avec des adresses IPv4 et IPv6. </p>
+<p></p>
+<p>
+<b>Étape 1. Définitions de l'adresse IP sur l'interface</b>
+</p>
+<p></p>
+<p>Sur un routeur Cisco, Frame Relay est normalement pris en charge sur les interfaces série synchrones. Utilisez la commande <span class="cmd"><b>ip address</b></span> pour définir l'adresse IPv4 de l'interface. </p>
+<p></p>
+<p>Sur la liaison entre R1 et R2, R1 S0/0/1 a été affectée à l'adresse 10.1.1.1/24 et R2 S0/0/1 a été affectée à l'adresse IPv4 10.1.1.2/24. </p>
+<p></p>
+<p>À l'aide de la commande <span class="cmd"><b>ipv6 address</b></span>, les routeurs R1 et R2 ont également été configurés avec les adresses IPv6 suivantes :</p>
+<p>
+<ul>
+<li>R1 a été configuré avec l'adresse IPv6 de monodiffusion globale, 2001:DB8:CAFE:1::1/64 et l'adresse link-local statique FE80::1.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>R2 a été configuré avec l'adresse IPv6 de monodiffusion globale, 2001:DB8:CAFE:1::2/64 et l'adresse link-local statique FE80::2.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque</b> : par défaut, Cisco IOS utilise la méthode EUI-64 pour générer automatiquement l'adresse link-local IPv6 sur une interface. La configuration d'adresses link-local statiques simplifie l'identification des adresses link-local. Les adresses link-local IPv6 sont utilisées par les protocoles de routage IPv6 pour transmettre des messages et en tant qu'adresses de saut suivant dans la table de routage IPv6.</p>
+<p></p>
+<p>
+<b>Étape 2. Configuration de l'encapsulation</b>
+</p>
+<p></p>
+<p>La commande de configuration d'interface <span class="cmd"><b>encapsulation frame-relay </b></span><span class="cmd">[</span><span class="cmd"><b>cisco </b></span><span class="cmd">|</span><span class="cmd"><b> ietf</b></span><span class="cmd">]</span> active l'encapsulation Frame Relay et permet le traitement Frame Relay sur les interfaces prises en charge. Il est possible de choisir une des deux options d'encapsulation,<span class="cmd"> cisco</span> et <span class="cmd">ietf</span>. </p>
+<p>
+<ul>
+<li>Le type d'encapsulation <span class="cmd">cisco</span> est l'encapsulation Frame Relay activée par défaut sur les interfaces prises en charge. Utilisez cette option pour effectuer une connexion à un autre routeur Cisco. De nombreux équipements autres que Cisco prennent également en charge ce type d'encapsulation. Il utilise un en-tête à 4 octets, avec 2 octets pour identifier le DLCI et 2 octets pour identifier le type de paquet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le type d'encapsulation <span class="cmd">ietf</span> est conforme aux RFC 1490 et 2427. Utilisez cette option pour effectuer une connexion à un routeur non-Cisco.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Étape 3. Définition de la bande passante</b>
+</p>
+<p></p>
+<p>Utilisez la commande <span class="cmd"><b>bandwidth</b></span> pour définir la bande passante sur l'interface série. Spécifiez la bande passante en kbit/s. Cette commande avertit le protocole de routage que la bande passante est configurée de façon statique sur la liaison. Les protocoles de routage EIGRP et OSPF utilisent la valeur de bande passante pour calculer et déterminer le calibre de la liaison. </p>
+<p></p>
+<p>
+<b>Étape 4. Définition du type LMI (facultatif)</b>
+</p>
+<p>La définition manuelle du type LMI est facultative, car les routeurs Cisco détectent automatiquement le type LMI par défaut. Souvenez-vous que Cisco prend en charge trois types de LMI : <span class="cmd">cisco</span>, <span class="cmd">ANSI Annexe D</span> et <span class="cmd">Q933-A Annexe A</span>. Le type LMI par défaut des routeurs Cisco est <span class="cmd">cisco</span>. </p>
+<p></p>
+<p>La Figure 3 présente les configurations R1 et R2 pour l'activation de Frame Relay.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>show interfaces serial</b></span> vérifie la configuration, y compris l'encapsulation de couche 2 de Frame Relay et le type LMI par défaut <span class="cmd">cisco</span>, comme illustré à la Figure 4. Notez que cette commande montre l'adresse IPv4, mais ne comprend aucune des adresses IPv6. Exécutez la commande <span class="cmd"><b>show ipv6 interface </b></span>ou la commande <span class="cmd"><b>show ipv6 interface brief</b></span> pour vérifier IPv6.</p>
+<p></p>
+<p>
+<b>Remarque </b>: la commande <span class="cmd"><b>no encapsulation frame-relay</b></span> supprime l'encapsulation Frame Relay de l'interface et rétablit l'encapsulation HDLC par défaut sur l'interface.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

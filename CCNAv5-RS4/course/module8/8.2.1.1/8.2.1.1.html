@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.1.1 Présentation du protocole SNMP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>SNMP</h1>
+        <h2>Fonctionnement de SNMP</h2>
+      </div>
+      <div id="content">
+<p>
+<b>SNMP (Simple Network Management Protocol)</b>
+</p>
+<p>Le protocole SNMP a été développé afin de permettre aux administrateurs de gérer des nœuds, tels que des serveurs, des stations de travail, des routeurs, des commutateurs et des appareils de sécurité sur un réseau IP. Il permet aux administrateurs réseau de gérer les performances des réseaux, de rechercher et de résoudre d'éventuels problèmes sur ceux-ci et de planifier leur croissance. </p>
+<p></p>
+<p>SNMP est un protocole de couche Application qui procure un format pour les messages de communication entre les gestionnaires et les agents. Le système SNMP se compose de trois éléments :</p>
+<p>
+<ul>
+<li>Gestionnaire SNMP </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Agents SNMP (nœud géré)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Base d'informations de gestion (MIB) </li>
+</ul>
+</p>
+<p></p>
+<p>Pour configurer le protocole SNMP sur un périphérique réseau, il faut tout d'abord définir la relation entre le gestionnaire et l'agent.</p>
+<p></p>
+<p>Le gestionnaire SNMP fait partie d'un système de gestion du réseau (NMS). Le gestionnaire SNMP exécute le logiciel de gestion SNMP. Comme le montre la figure, le gestionnaire SNMP peut collecter des informations à partir d'un agent SNMP à l'aide de l'action « get » et modifier des configurations sur un agent à l'aide de l'action « set ». Par ailleurs, les agents SNMP peuvent transmettre ces informations difectement à un système de gestion de réseau (NMS) au moyen de l'action de déroutement « trap ». </p>
+<p></p>
+<p>L'agent SNMP et la base de données MIB résident sur des clients de périphériques réseau. Les périphériques réseau pouvant être gérés, tels que les commutateurs, les routeurs, les serveurs, les pare-feu et les stations de travail, sont équipés d'un module logiciel d'agent SMNP. Les bases de données MIB stockent les données relatives au fonctionnement des périphériques et elles doivent être mises à la disposition des utilisateurs distants authentifiés. L'agent SNMP permet d'accéder à la base de données MIB locale des objets relatifs aux ressources et à l'activité. </p>
+<p></p>
+<p>Le protocole SNMP définit la manière selon laquelle les informations de gestion sont échangées entre les applications de gestion du réseau et les agents de gestion. Le protocole SNMP utilise UDP, avec le numéro de port 162, pour récupérer et envoyer les informations de gestion.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

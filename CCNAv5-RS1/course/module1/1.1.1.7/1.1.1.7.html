@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.1.7 Les réseaux facilitent le divertissement</title>
+    <!-- Activity -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.1.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Connecté au monde entier</h1>
+        <h2>Les réseaux aujourd&#x0027;hui</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Changer notre façon de nous divertir</b>
+</p>
+<p>L'utilisation généralisée d'Internet par l'industrie du loisir et des voyages nous offre le moyen de profiter de nombreuses formes de distraction et de les partager, où que nous nous trouvions. Des présentations interactives nous permettent aujourd'hui d'explorer des lieux dont nous devions nous contenter de rêver autrefois, ou de découvrir des destinations de voyage avant de nous y rendre. Les voyageurs peuvent publier les détails et les photos de leurs aventures en ligne pour qu'ils soient accessibles par tous. </p>
+<p></p>
+<p>Internet sert également à d'autres formes de divertissement. Internet nous permet d'écouter des artistes, de voir des bandes-annonces ou même des films, de lire des livres et de télécharger des éléments à consulter ultérieurement hors connexion. Des concerts et événements sportifs en direct sont disponibles au moment où ils se produisent, ou sont enregistrés pour être consultés à la demande.</p>
+<p></p>
+<p>Les réseaux permettent également de créer de nouvelles formes de divertissement comme les jeux en ligne. Les joueurs peuvent participer à tout type de compétitions en ligne imaginées par les concepteurs de jeux. Nous jouons avec nos amis ou affrontons des ennemis du monde entier aussi facilement que s'ils se trouvaient dans la même pièce que nous.</p>
+<p></p>
+<p>Même des activités réalisées hors connexion se trouvent améliorées par l'utilisation de services collaboratifs en réseau. En effet, des communautés internationales regroupées autour de centres d'intérêt communs se sont rapidement développées. Nous partageons expériences ou passe-temps communs avec des membres de communautés bien éloignées de notre quartier, ville ou région. Les amateurs de sport échangent opinions et informations sur leurs équipes favorites. Les collectionneurs présentent les collections faisant leur fierté et reçoivent des avis d'experts. </p>
+<p></p>
+<p>Enfin, des sites de vente et de mise aux enchères en ligne nous offrent la possibilité d'acheter, de vendre ou d'échanger toutes sortes de marchandises.</p>
+<p></p>
+<p>Quel que soit le type de divertissement que nous apprécions dans notre réseau humain, il peut être amélioré par les réseaux.</p>
+<p></p>
+<p>Quels sont vos divertissements préférés sur Internet ?</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

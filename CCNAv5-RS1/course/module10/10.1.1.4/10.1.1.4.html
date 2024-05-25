@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.1.1.4 Protocoles de couche application TCP/IP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche Application</h1>
+        <h2>Application, session et présentation</h2>
+      </div>
+      <div id="content">
+<p>Tandis que le modèle OSI sépare les fonctions application, présentation et session, les applications TCP/IP les plus connues et les plus répandues intègrent les fonctionnalités des trois couches. </p>
+<p></p>
+<p>Les protocoles d'application TCP/IP spécifient les informations de format et de contrôle nécessaires à un grand nombre de fonctions courantes de communication via Internet. Voici certains de ces protocoles TCP/IP :</p>
+<p>
+<ul>
+<li>
+<b>DNS (Domain Name System)</b> : ce protocole traduit les adresses Internet en adresses IP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Telnet</b> : protocole utilisé pour permettre un accès distant aux serveurs et aux périphériques réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>SMTP (Simple Mail Transfer Protocol)</b> : ce protocole transmet les e-mails et leurs pièces jointes.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>DHCP (Dynamic Host Configuration Protocol)</b> : protocole utilisé pour attribuer une adresse IP, un masque de sous-réseau, une passerelle par défaut et des adresses de serveur DNS à un hôte.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>HTTP (Hypertext Transfer Protocol)</b> : ce protocole est utilisé pour transférer les fichiers qui constituent les pages du Web.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>FTP (File Transfer Protocol)</b> : protocole utilisé pour le transfert interactif de fichiers entre des systèmes.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>TFTP (Trivial File Transfer Protocol)</b> : ce protocole est utilisé pour le transfert actif de fichiers sans connexion.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>BOOTP (Bootstrap Protocol)</b> : ce protocole est un précurseur du protocole DHCP. Il s'agit d'un protocole réseau utilisé pour obtenir des informations d'adresse IP lors du démarrage.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>POP (Post Office Protocol)</b> : protocole utilisé par les clients de messagerie pour récupérer des e-mails à partir d'un serveur distant.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>IMAP (Internet Message Access Protocol)</b> : autre protocole de récupération des e-mails.</li>
+</ul>
+</p>
+<p></p>
+<p>Les protocoles de couche application sont utilisés par les périphériques source et de destination pendant une session de communication. Pour que les communications aboutissent, les protocoles de couche application implémentés sur les hôtes source et de destination doivent être compatibles.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

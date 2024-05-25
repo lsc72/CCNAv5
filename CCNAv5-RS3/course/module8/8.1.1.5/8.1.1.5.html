@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.1.5 Vérification de la récapitulation automatique : table topologique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations EIGRP avancées</h1>
+        <h2>Résumé automatique </h2>
+      </div>
+      <div id="content">
+<p>À la Figure 1, les routeurs R1 et R2 envoient à R3 une mise à jour de routage EIGRP récapitulée de 172.16.0.0/16. Les tables de routage de R1 et R2 contiennent les sous-réseaux du réseau 172.16.0.0/16 ; les deux routeurs envoient donc l'annonce récapitulative sur un réseau principal différent vers R3.</p>
+<p></p>
+<p>La Figure 2 présente le résultat de la commande<span class="cmd"><b> show ip eigrp topology all-links </b></span>utilisée pour afficher la table topologique EIGRP complète de R3. Elle vérifie que R3 a bien reçu la route récapitulative 172.16.0.0/16 de la part de R1 sur 192.168.10.5 et de la part de R2 sur 192.168.10.9. La première entrée via 192.168.10.5 correspond au successeur et la seconde entrée via 192.168.10.9 au successeur potentiel. R1 est le successeur car son lien de 1 544 kb/s avec R3 offre à R3 un meilleur coût EIGRP vers 172.16.0.0/16 que R2, qui utilise un lien inférieur de 1 024 kb/s. </p>
+<p></p>
+<p>L'option<span class="cmd"><b> all-links </b></span>affiche toutes les mises à jour reçues, que la route constitue ou non un successeur potentiel (FS). Dans cette instance, R2 n'est pas qualifié de successeur potentiel. R2 est considéré comme un successeur potentiel car sa distance annoncée (RD) de 2 816 est inférieure à la distance de faisabilité (FD) de 2 170 112 via R1.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

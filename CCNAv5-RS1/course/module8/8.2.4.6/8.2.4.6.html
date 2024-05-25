@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.4.6 Les adresses link-local dynamiques</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.4.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Les adresses réseau IPv6</h1>
+        <h2>Les adresses de monodiffusion globale IPv6</h2>
+      </div>
+      <div id="content">
+<p>S'il utilise la SLAAC (SLAAC uniquement ou SLAAC avec DHCPV6), un périphérique reçoit son préfixe et la longueur de préfixe dans un message d'annonce de routeur ICMPv6. Puisque le préfixe de l'adresse est déterminé par le message d'annonce de routeur, le périphérique doit fournir uniquement la partie ID d'interface de l'adresse. Comme indiqué précédemment, l'ID d'interface peut être automatiquement généré selon le processus EUI-64 ou, selon le système d'exploitation, généré aléatoirement. En utilisant les informations du message d'annonce de routeur et l'ID d'interface, le périphérique peut établir son adresse de monodiffusion globale.</p>
+<p></p>
+<p>Une fois qu'une adresse de monodiffusion globale est attribuée à une interface, le périphérique IPv6 génère automatiquement son adresse link-local. Les périphériques IPv6 doivent avoir au minimum une adresse link-local. Notez qu'une adresse link-local IPv6 permet à un périphérique de communiquer avec les autres périphériques IPv6 situés sur le même sous-réseau. </p>
+<p></p>
+<p>Les adresses link-local IPv6 servent à diverses fins :</p>
+<p>
+<ul>
+<li>Un hôte utilise l'adresse link-local du routeur local en tant qu'adresse IPv6 de passerelle par défaut.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les routeurs échangent des messages du protocole de routage dynamique via des adresses link-local.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les tables de routage des routeurs utilisent l'adresse link-local pour identifier le routeur de saut suivant lors du transfert des paquets IPv6.</li>
+</ul>
+</p>
+<p></p>
+<p>Une adresse link-local peut être établie dynamiquement ou configurée manuellement comme adresse link-local statique. </p>
+<p></p>
+<p>
+<b>Adresse link-local affectée dynamiquement</b>
+</p>
+<p></p>
+<p>L'adresse link-local est créée dynamiquement à l'aide du préfixe FE80::/10 et de l'ID d'interface.</p>
+<p></p>
+<p>Par défaut, les routeurs Cisco IOS utilisent la méthode EUI-64 pour générer l'ID d'interface de toutes les adresses link-local sur des interfaces IPv6. Pour les interfaces série, le routeur utilise l'adresse MAC d'une interface Ethernet. Notez qu'une adresse link-local doit être unique sur la liaison ou le réseau. Toutefois, un inconvénient de l'utilisation de l'adresse link-local attribuée dynamiquement est sa longueur : il est en effet difficile d'identifier et de mémoriser les adresses attribuées. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

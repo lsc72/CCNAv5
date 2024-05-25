@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>0.0.1.11 Présentation du cours</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_0.0.1.11_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Bienvenue dans le cours Notions de base sur le routage et la commutation</h1>
+        <h2>Message destiné aux participants</h2>
+      </div>
+      <div id="content">
+<p>Comme l'indique le titre du cours, celui-ci est centré sur l'apprentissage de l'architecture, des composants et du fonctionnement des routeurs et des commutateurs dans un petit réseau. Dans ce cours, vous allez apprendre à configurer un routeur et un commutateur pour les fonctionnalités de base. Le cours se déroulera comme suit : </p>
+<p>
+<ul>
+<li>Décrire les technologies avancées de commutation telles que les réseaux locaux virtuels et les protocoles VTP (VLAN Trunking Protocol), RSTP (Rapid Spanning Tree Protocol), PVSTP (Per VLAN Spanning Tree Protocol) et 802.1q</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Configurer un réseau commuté de petite taille et résoudre les problèmes de fonctionnement de base</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Configurer et vérifier le routage statique et par défaut </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Configurer et dépanner le fonctionnement de base des routeurs sur un petit réseau routé </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Configurer et dépanner les VLAN et le routage inter-VLAN </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Configurer et contrôler les listes de contrôles d'accès dans les réseaux IPv4 et IPv6, et résoudre les problèmes</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Configurer et contrôler les listes de contrôles d'accès dans les réseaux IPv4 et IPv6, et résoudre les problèmes</li>
+</ul>
+</p>
+<p></p>
+<p>À la fin de ce cours, vous saurez configurer et dépanner les routeurs et les commutateurs et résoudre les problèmes courants des protocoles RIPv1, RIPv2 et OSPF à zone unique et à zones multiples, des LAN virtuels et du routage inter-VLAN dans les réseaux IPv4 et IPv6</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

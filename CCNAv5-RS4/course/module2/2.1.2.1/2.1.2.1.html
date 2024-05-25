@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.1 WAN dans le modèle OSI</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation des technologies WAN</h1>
+        <h2>Opérations WAN</h2>
+      </div>
+      <div id="content">
+<p>Le fonctionnement du WAN se fait principalement sur la couche physique (Couche OSI 1) et la couche de liaison de données (Couche OSI 2). Les normes d'accès au réseau étendu décrivent généralement les méthodes de livraison sur la couche physique et les caractéristiques requises pour la couche liaison de données, notamment l'adressage physique, le contrôle de flux et l'encapsulation. </p>
+<p></p>
+<p>Les normes d'accès aux WAN sont définies et gérées par un certain nombre d'autorités reconnues, dont :</p>
+<p>
+<ul>
+<li>Telecommunication Industry Association et the Electronic Industries Alliance (TIA/EIA)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>ISO (International Standards Organization)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Institute of Electrical and Electronics Engineers (IEEE)</li>
+</ul>
+</p>
+<p></p>
+<p>Les protocoles de la couche 1 décrivent comment fournir les connexions électriques, mécaniques, opérationnelles et fonctionnelles aux services du fournisseur de services de communication.</p>
+<p></p>
+<p>Les protocoles de la couche 2 définissent comment les données sont encapsulées pour être transmises vers un emplacement distant, ainsi que les mécanismes de transfert des trames résultantes. Sont utilisées toute une série de technologies, par exemple le protocole PPP (Point-to-Point Protocol), le Frame Relay et ATM. Certains de ces protocoles utilisent les mêmes trames de base ou bien un sous-ensemble du mécanisme HDLC (High-Level Data Link Control).</p>
+<p></p>
+<p>La plupart des liaisons WAN sont point à point. Pour cette raison, le champ d'adresse dans la trame de couche 2 n'est généralement pas utilisé.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

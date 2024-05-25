@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.5.2.1 Configuration du routeur intégré</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.5.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Services de routage intégrés</h1>
+        <h2>Configuration du routeur intégré</h2>
+      </div>
+      <div id="content">
+<p>Les routeurs sans fil Linksys sont des périphériques répandus à la fois dans les réseaux des particuliers et des petites entreprises. Nous nous servirons donc de l'un d'eux dans ce cours pour montrer les configurations de base d'un routeur intégré. En général, les appareils Linksys sont équipés de quatre ports Ethernet pour les liaisons filaires, et servent également de point d'accès sans fil. Ils remplissent également les fonctions d'un serveur DHCP et d'un mini serveur Web prenant en charge une interface graphique utilisateur (GUI) Web. </p>
+<p></p>
+<p>
+<b>Accès à un routeur Linksys et configuration</b>
+</p>
+<p>Pour commencer, accédez au routeur à l'aide d'un câble reliant un ordinateur à l'un des ports Ethernet du réseau local du routeur, comme l'illustre la figure. Une fois câblé, l'ordinateur connecté obtiendra automatiquement des informations d'adressage IP de la part du routeur intégré, notamment l'adresse de la passerelle par défaut. Celle-ci correspond à l'adresse IP du périphérique Linksys. Vérifiez les paramètres réseau de l'ordinateur à l'aide de la commande <span class="cmd"><b>ipconfig /all</b></span> pour obtenir cette adresse. Vous pouvez maintenant saisir cette adresse IP dans un navigateur Web sur l'ordinateur pour accéder à l'interface utilisateur Web de configuration.</p>
+<p></p>
+<p>Une configuration par défaut est définie sur le périphérique Linksys et permet l'utilisation de services de routage et de commutation de base. Par défaut, l'appareil est également configuré pour remplir les fonctions d'un serveur DHCP. Les tâches de configuration de base, telles que modifier l'identifiant et le mot de passe par défaut, modifier l'adresse IP par défaut de l'appareil Linksys ou même les plages d'adresses IP DHCP par défaut doivent être effectuées avant la connexion du point d'accès au réseau actif.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

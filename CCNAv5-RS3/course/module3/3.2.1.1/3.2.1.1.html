@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.1.1 Instructions de configuration</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>La configuration de l&#x0027;agrégation de liaisons</h1>
+        <h2>Configuration du protocole EtherChannel</h2>
+      </div>
+      <div id="content">
+<p>Les instructions et restrictions suivantes sont utiles pour la configuration d'EtherChannel :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Prise en charge d'EtherChannel </b>: toutes les interfaces Ethernet sur tous les modules doivent prendre en charge EtherChannel, sans que les interfaces soient nécessairement contiguës de manière physique ou sur le même module.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Vitesse et mode bidirectionnel </b>: configurez toutes les interfaces d'un EtherChannel pour qu'elles fonctionnent à la même vitesse et utilisent le même mode bidirectionnel, comme illustré dans la figure.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>VLAN correspondant </b>: toutes les interfaces d'une liaison EtherChannel doivent être attribuées au même VLAN, ou être configurées en tant que trunk (également illustré dans la figure).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Plage de VLAN </b>: un EtherChannel prend en charge la même plage autorisée de VLAN sur toutes les interfaces dans un trunking EtherChannel. Si la plage autorisée de VLAN n'est pas identique, les interfaces ne forment pas un EtherChannel, même si elles sont définies en mode <span class="cmd"><b>auto </b></span>ou<span class="cmd"><b> desirable.</b></span></li>
+</ul>
+</p>
+<p></p>
+<p>Si ces paramètres doivent être modifiés, configurez-les dans le mode de configuration de l'interface de canal de port. Après la configuration de l'interface de canal de port, toute configuration appliquée à l'interface de canal de port affecte également chaque interface. Cependant, les configurations appliquées à chaque interface n'affectent pas l'interface de canal de port. Par conséquent, modifier la configuration d'une interface appartenant à une liaison EtherChannel peut entraîner des problèmes de compatibilité d'interface. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

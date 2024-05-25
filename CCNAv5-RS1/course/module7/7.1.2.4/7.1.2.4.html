@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.2.4 Rôle du protocole UDP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole de couche Transport</h1>
+        <h2>Présentation des protocoles TCP et UDP</h2>
+      </div>
+      <div id="content">
+<p>Bien que le protocole UDP n'inclue pas les mécanismes de fiabilité et de contrôle de flux du protocole TCP, comme l'illustre la figure, la faible surcharge pour l'acheminement des données du protocole UDP fait de ce dernier un protocole de transport idéal pour les applications qui peuvent tolérer certaines pertes de données. Les blocs de communications utilisés dans le protocole UDP sont appelés des datagrammes. Ces datagrammes sont envoyés « au mieux » par le protocole de couche transport. Le système de noms de domaine (DNS), la transmission vidéo en continu et la voix sur IP (VoIP) comptent parmi les applications utilisant le protocole UDP.</p>
+<p></p>
+<p>L'une des conditions les plus importantes pour fournir une vidéo en direct et faire transiter des données vocales sur un réseau est que le flux de données soit rapide. Les applications vidéo et de communication vocale peuvent tolérer certaines pertes de données, qui ont un impact faible ou nul, et sont donc parfaitement adaptées au protocole UDP. </p>
+<p></p>
+<p>UDP est un protocole sans état, c'est-à-dire que ni le client ni le serveur ne sont tenus de surveiller l'état de la session de communication. Comme l'illustre la figure, le protocole UDP n'est pas concerné par la fiabilité et le contrôle de flux. Les données peuvent être perdues ou reçues dans le désordre sans qu'aucun mécanisme UDP ne puisse récupérer ou réorganiser les données. Si la fiabilité est nécessaire dans le cadre de l'utilisation d'UDP comme protocole de transport, elle doit être prise en charge par l'application.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

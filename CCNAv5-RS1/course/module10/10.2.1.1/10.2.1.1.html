@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.1.1 Révision des protocoles de couche application</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Services et protocoles de couche application courants</h1>
+        <h2>Protocoles de couche application courants </h2>
+      </div>
+      <div id="content">
+<p>Il existe des dizaines de protocoles de couche application, mais les opérations courantes font appel à seulement cinq ou six d'entre eux. Les trois protocoles de couche application suivants sont impliqués dans les tâches professionnelles ou personnelles quotidiennes : </p>
+<p></p>
+<p>
+<ul>
+<li>protocole HTTP (HyperText Transfer Protocol)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Protocole SMTP (Simple Mail Transfer Protocol)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Protocole POP (Post Office Protocol)</li>
+</ul>
+</p>
+<p></p>
+<p>Ces protocoles de couche application permettent de parcourir le Web et d'envoyer et de recevoir des e-mails. Le protocole HTTP permet aux utilisateurs de se connecter aux sites Web sur Internet, le protocole SMTP leur permet d'envoyer des e-mails et le protocole POP de recevoir des e-mails.</p>
+<p></p>
+<p>Les prochaines pages se concentrent sur ces trois protocoles de couche application.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

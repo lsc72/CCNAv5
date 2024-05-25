@@ -1,0 +1,40 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Vérification des voisins OSPF de R1  </b>]]></text>
+</component>
+<component id="ID_s2_title">
+  <text><![CDATA[<b>Vérification des paramètres du protocole&nbsp;OSPF 
+ </b>]]></text> 
+  </component>
+<component id="ID_s3_title">
+  <text><![CDATA[<b>Configuration d'adresses link-local  </b>]]></text> 
+  </component>
+  
+  <component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+  
+<component id="ID_SC2" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b> *** </b><font face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font face="Arial"><b>Vérifiez les paramètres du protocole&nbsp;OSPF sur R2.  </b></font>]]></existingcommands>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ip protocols]]></correctresponse>
+			<deviceresponse><![CDATA[<pre>*** IP Routing is NSF aware *** <br> <br>Routing Protocol is "ospf 10" <br>  Outgoing update filter list for all interfaces is not set <br>  Incoming update filter list for all interfaces is not set <br>  Router ID 2.2.2.2 <br>  Number of areas in this router is 1. 1 normal 0 stub 0 nssa <br>  Maximum path: 4 <br>  Routing for Networks: <br>    172.16.2.0 0.0.0.255 area 0 <br>    172.16.3.0 0.0.0.3 area 0 <br>    192.168.10.8 0.0.0.3 area 0 <br>  Routing Information Sources: <br>    Gateway         Distance      Last Update <br>    3.3.3.3              110      00:14:58 <br>    1.1.1.1              110      00:16:59 <br>  Distance: (default is 110) <br> <br>R2#</pre>]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial"><b>Vous êtes maintenant connecté au routeur R3. Vérifiez les paramètres du protocole&nbsp;OSPF sur R3.  </b>]]></instruction>			
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip protocols]]></correctresponse>
+			<deviceresponse><![CDATA[<pre>*** IP Routing is NSF aware *** <br> <br>Routing Protocol is "ospf 10" <br>  Outgoing update filter list for all interfaces is not set <br>  Incoming update filter list for all interfaces is not set <br>  Router ID 3.3.3.3 <br>  Number of areas in this router is 1. 1 normal 0 stub 0 nssa <br>  Maximum path: 4 <br>  Routing for Networks: <br>    192.168.1.1 0.0.0.0 area 0 <br>    192.168.10.6 0.0.0.0 area 0 <br>    192.168.10.10 0.0.0.0 area 0 <br>  Routing Information Sources: <br>    Gateway         Distance      Last Update <br>    1.1.1.1              110      00:16:15 <br>    2.2.2.2              110      00:16:15 <br>  Distance: (default is 110) <br> <br>R3#</pre>]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez correctement vérifié les paramètres du protocole&nbsp;OSPF.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+</textcomponents>

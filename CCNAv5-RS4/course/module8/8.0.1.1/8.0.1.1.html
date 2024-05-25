@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.0.1.1 Introduction</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Surveillance du réseau</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>La surveillance du fonctionnement du réseau fournit à un administrateur réseau les informations nécessaires à la gestion proactive du réseau et à l'établissement de rapports relatifs aux statistiques d'utilisation du réseau. L'activité des liaisons, les taux d'erreur et l'état des liaisons sont quelques-uns des facteurs qui permettent à un administrateur réseau de déterminer l'état et l'utilisation d'un réseau. La collecte et l'analyse de ces informations au fil du temps permet à un administrateur réseau d'observer la croissance du réseau et de détecter et remplacer un élément défaillant avant qu'il ne soit complètement inopérant.</p>
+<p></p>
+<p>Ce chapitre présente trois protocoles qu'un administrateur réseau peut utiliser pour surveiller le réseau. Les protocoles Syslog, SNMP et NetFlow sont des protocoles populaires présentant chacun différentes forces et faiblesses. Ensemble, ils constituent des outils utiles pour la compréhension de ce qui se passe sur un réseau. Le protocole NTP (Network Time Protocol) est utilisé pour synchroniser les paramètres de temps de plusieurs périphériques, ce qui est particulièrement important lors de la comparaison des fichiers journaux de différents périphériques.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

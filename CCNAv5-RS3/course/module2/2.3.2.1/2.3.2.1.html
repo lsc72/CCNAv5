@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.2.1 Spanning Tree Mode</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration Spanning Tree (arbre recouvrant)</h1>
+        <h2>Configuration Rapid PVST+</h2>
+      </div>
+      <div id="content">
+<p>Rapid PVST+ est l'implémentation Cisco du protocole RSTP. Elle prend en charge le protocole RSTP individuellement pour chaque VLAN. La topologie illustrée dans la Figure 1 comporte deux VLAN : le 10 et le 20. </p>
+<p></p>
+<p>
+<b>Remarque </b>: la configuration STP par défaut d'un commutateur Catalyst 2960 est PVST+. Un commutateur Catalyst 2960 prend en charge PVST+, Rapid PVST+ et MST, mais une seule version peut être active pour l'ensemble des VLAN à tout moment. </p>
+<p></p>
+<p>Les commandes Rapid PVST+ contrôlent la configuration des instances Spanning Tree de VLAN. Une instance Spanning Tree est créée lorsqu'une interface est affectée à un VLAN ; l'instance est supprimée lorsque la dernière interface est réacheminée à un autre VLAN. En outre, vous pouvez configurer les paramètres STP de commutateur et de port avant la création d'une instance Spanning Tree. Ces paramètres sont ensuite appliqués lorsque l'instance Spanning Tree est créée. </p>
+<p></p>
+<p>La Figure 2 présente la syntaxe des commandes Cisco IOS requise pour configurer Rapid PVST+ sur un commutateur Cisco. La commande de mode de configuration d'interface globale<span class="cmd"><b>spanning-tree mode rapid-pvst</b></span> est l'une des commandes requises pour la configuration de Rapid PVST+. Lorsque vous spécifiez l'interface à configurer, les interfaces valides incluent les ports physiques, les VLAN et les canaux de port. La plage d’ID de VLAN s'étend de 1 à 4094 lorsque l'image logicielle améliorée est installée, et de 1 à 1005 avec l'image logicielle standard. La plage port-channel est comprise entre 1 et 6.</p>
+<p></p>
+<p>La Figure 3 présente les commandes Rapid PVST+ configurées pour S1.</p>
+<p></p>
+<p>Dans la Figure 4, la commande <span class="cmd"><b>show spanning-tree vlan 10</b></span> affiche la configuration Spanning Tree pour VLAN 10 sur le commutateur S1. Notez que la priorité d'ID de pont est définie sur 4096. Dans la sortie, l'instruction « Spanning tree enabled protocol rstp » indique que S1 exécute Rapid PVST+. Puisque S1 est e pont racine pour VLAN 10, toutes ses interfaces sont des ports désignés.</p>
+<p></p>
+<p>Dans la Figure 5, la commande <span class="cmd"><b>show running-config</b></span> est utilisée pour vérifier la configuration de Rapid PVST+ sur S1.</p>
+<p></p>
+<p>
+<b>Remarque </b>: en général, il n'est pas nécessaire de configurer le paramètre de <i>type de liaison</i> point à point pour Rapid PVST+, car il est rare d'avoir un <i>type de lien</i> partagé. Dans la plupart des cas, la seule différence entre la configuration de PVST+ et celle de Rapid PVST+ est la commande <span class="cmd"><b>spanning-tree mode rapid-pvst</b></span>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

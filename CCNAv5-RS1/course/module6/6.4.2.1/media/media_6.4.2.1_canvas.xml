@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		<slide>
+			<element type="IMAGE" src="media_6.4.2.1.jpg" width="470" height="400" x="0" y="0" />
+			<element type="TEXT" id="ID_static_1" text=".10" x="45.25" y="12.45" width="22.55" align="left" color="#1c3635" />
+			<element type="TEXT" id="ID_static_2" text=".10" x="45.3" y="84.45" width="22.55" align="left" color="#1c3635" />
+			<element type="TEXT" id="ID_static_3" text=".10" x="372.65" y="13.95" width="22.55" align="right" color="#1c3635" />
+			<element type="TEXT" id="ID_static_4" text=".1" x="298.55" y="30.75" width="22.55" align="left" color="#1c3635" />
+			<element type="TEXT" id="ID_static_5" text=".1" x="281.85" y="79.9" width="22.55" align="right" color="#1c3635" />
+			<element type="TEXT" id="ID_static_6" text="G0/0 .1" x="119.45" y="21.45" width="30.8" align="right" color="#1c3635" />
+			<element type="TEXT" id="ID_static_7" text=".225 S0/0/0" x="179.25" y="65.15" width="38.2" align="left" color="#1c3635" />
+			<element type="TEXT" id="ID_static_8" text=".226" x="234.6" y="56.75" width="27.7" align="right" color="#1c3635" />
+			<element type="TEXT" id="ID_static_9" text=".1 G0/1" x="112.45" y="80.2" width="30.8" align="right" color="#1c3635" />
+			<element type="TEXT" id="ID_static_10" text=".10" x="372.9" y="82.95" width="22.55" align="right" color="#1c3635" />
+			<element type="TEXT" id="ID_static_11" text="209.165.200.224/30" x="173.1" y="40.4" width="102" align="center" color="#1c3635" bold="1" />
+			<element type="TEXT" id="ID_static_12" text="192.168.10.0/24" x="56.85" y="4.3" width="95.7" align="center" color="#1c3635" bold="1" />
+			<element type="TEXT" id="ID_static_13" text="192.168.11.0/24" x="56.85" y="115.3" width="95.7" align="center" color="#1c3635" bold="1" />
+			<element type="TEXT" id="ID_static_14" text="10.1.1.0/24" x="326.75" y="4.55" width="83.4" align="left" color="#1c3635" bold="1" />
+			<element type="TEXT" id="ID_static_15" text="10.1.2.0/24" x="327.1" y="115.05" width="95.7" align="left" color="#1c3635" bold="1" />
+			<element type="ROUTER" textId="router_txt" x="5.1" y="168.6" width="428.3" height="225.35"/>
+		</slide>
+		<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_SC_title" />
+		<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC" x="10.65" y="26.9" width="420" height="367" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+		</slide>
+	</slide>
+	<text id="router_txt"><![CDATA[<pre>R1#<b>conf t</b>
+Enter configuration commands, one per line.
+End with CNTL/Z.
+R1(config)# 
+R1(config)#<b>interface gigabitethernet 0/0</b>
+R1(config-if)#<b>ip address 192.168.10.1 255.255.255.0</b>
+R1(config-if)#<b>description Link to LAN-10</b>
+R1(config-if)#<b>no shutdown</b>
+%LINK-5-CHANGED: Interface GigabitEthernet0/0, 
+changed state to up
+%LINEPROTO-5-UPDOWN: Line protocol on Interface 
+GigabitEthernet0/0,changed state to up
+R1(config-if)#<b>exit</b>
+R1(config)# 
+R1(config)#<b>int g0/1</b>
+R1(config-if)#<b>ip add 192.168.11.1 255.255.255.0</b>
+R1(config-if)#<b>des Link to LAN-11</b>
+R1(config-if)#<b>no shut</b>
+%LINK-5-CHANGED: Interface GigabitEthernet0/1,
+changed state to up
+%LINEPROTO-5-UPDOWN: Line protocol on Interface 
+GigabitEthernet0/1, changed state to up
+R1(config-if)#<b>exit</b>
+R1(config)#</pre>]]></text>
+</data>

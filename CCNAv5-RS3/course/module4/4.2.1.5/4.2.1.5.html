@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.1.5 Trames de contrôle </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement LAN sans fil</h1>
+        <h2>Structure de trame 802.11</h2>
+      </div>
+      <div id="content">
+<p>Les trames de contrôle sont utilisées pour gérer les échanges d'informations entre un client sans fil et un point d'accès. Elles aident à éviter les collisions sur le support sans fil. </p>
+<p></p>
+<p>La Figure ci-contre indique la valeur de champ des trames de contrôle les plus courantes, telles que :</p>
+<p>
+<ul>
+<li>
+<b>Trame DPE (demande pour émettre)</b> : les trames DPE et PAE offrent un modèle facultatif de diminution des collisions pour les points d'accès présentant des clients sans fil masqués. Le client sans fil envoie une trame DPE comme première étape d'une connexion en deux étapes, ceci étant obligatoire pour l'envoi de trames de données.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Trame PAE (prêt à émettre)</b> : un point d'accès sans fil répond à la trame DPE par une trame PAE. Celle-ci autorise le client sans fil demandeur à envoyer une trame de données. La trame PAE contribue à la gestion du contrôle des collisions en incluant une valeur temporelle. Ce délai réduit les risques que d'autres clients sans fil transmettent des données en même temps que le client demandeur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Trame ACK (Acknowledgment, reçu)</b> : après réception d'une trame de données, le client sans fil destinataire envoie une trame au client expéditeur si aucune erreur n'est détectée. Si l'expéditeur ne reçoit pas de trame ACK dans la durée impartie, il envoie à nouveau la trame.</li>
+</ul>
+</p>
+<p></p>
+<p>Les trames de contrôle font partie intégrante de la transmission sans fil et jouent un rôle important dans le processus de gestion des conflits de supports sans fil, appelé méthode CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance). </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

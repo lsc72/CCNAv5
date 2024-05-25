@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		<element type="IMAGE" src="3_4_1_2.jpg" width="470" height="400" x="0" y="0" />
+		<element type="TEXT" compId="ID_txt01" x="168" y="58" width="98.15" expand="up+down" align="center" size="10" />
+	<slide> 
+		<element type="ROUTER" textId="ID_r1_txt01" x="0" y="114.6" width="434.6" height="283" />
+		<element type="TEXT" subType="TITLE" compId="ID_s1_title" />
+	</slide>
+	<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s2_title" />
+		<element type="ROUTER" textId="ID_r2_txt01" x="0" y="114.6" width="434.6" height="283" />
+	</slide>
+	<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s3_title" />
+		<element type="ROUTER" textId="ID_r3_txt01" x="0" y="114.6" width="434.6" height="283" />
+	</slide>
+	</slide>
+
+	<text id="ID_r1_txt01"><![CDATA[<pre>R1# <b>debug ppp packet</b>
+PPP packet display debugging is on
+R1# 
+*Apr  1 16:15:17.471: Se0/0/0 LQM: O state Open magic 0x1EFC37C3 
+len 48
+*Apr  1 16:15:17.471: Se0/0/0 LQM:    LastOutLQRs 70 
+LastOutPackets/Octets 194/9735
+*Apr  1 16:15:17.471: Se0/0/0 LQM:    PeerInLQRs 70 
+PeerInPackets/Discards/Errors/Octets 0/0/0/0
+*Apr  1 16:15:17.471: Se0/0/0 LQM:    PeerOutLQRs 71 
+PeerOutPackets/Octets 197/9839
+*Apr  1 16:15:17.487: Se0/0/0 PPP: I pkt type 0xC025, 
+datagramsize 52 link[ppp]
+*Apr  1 16:15:17.487: Se0/0/0 LQM: I state Open magic 0xFE83D624 
+len 48
+*Apr  1 16:15:17.487: Se0/0/0 LQM:    LastOutLQRs 71 
+LastOutPackets/Octets 197/9839
+*Apr  1 16:15:17.487: Se0/0/0 LQM:    PeerInLQRs 71 
+PeerInPackets/Discards/Errors/Octets 0/0/0/0
+*Apr  1 16:15:17.487: Se0/0/0 LQM:    PeerOutLQRs 71 
+PeerOutPackets/Octets 196/9809
+*Apr  1 16:15:17.535: Se0/0/0 LCP: O ECHOREQ [Open] id 36 len 12 
+magic 0x1EFC37C3
+*Apr  1 16:15:17.539: Se0/0/0 LCP-FS: I ECHOREP [Open] id 36 len
+ 12 magic 0xFE83D624
+*Apr  1 16:15:17.539: Se0/0/0 LCP-FS: Received id 36, sent id 36, 
+line up
+*Apr  1 16:15:18.191: Se0/0/0 PPP: I pkt type 0xC025, 
+datagramsize 52 link[ppp]
+*Apr  1 16:15:18.191: Se0/0/0 LQM: I state Open magic 0xFE83D624 
+len 48
+*Apr  1 16:15:18.191: Se0/0/0 LQM:    LastOutLQRs 71 
+LastOutPackets/Octets 197/9839
+*Apr  1 16:15:18.191: Se0/0/0 LQM:    PeerInLQRs 71 
+PeerInPackets/Discards/Errors/Octets 0/0/0/0
+R1# 
+*Apr  1 16:15:18.191: Se0/0/0 LQM:    PeerOutLQRs 72 
+PeerOutPackets/Octets 198/9883
+*Apr  1 16:15:18.191: Se0/0/0 LQM: O state Open magic 0x1EFC37C3 
+len 48
+*Apr  1 16:15:18.191: Se0/0/0 LQM:    LastOutLQRs 72 
+LastOutPackets/Octets 198/9883
+*Apr  1 16:15:18.191: Se0/0/0 LQM:    PeerInLQRs 72 
+PeerInPackets/Discards/Errors/Octets 0/0/0/0
+*Apr  1 16:15:18.191: Se0/0/0 LQM:    PeerOutLQRs 72 
+PeerOutPackets/Octets 199/9913
+*Apr  1 16:15:18.219: Se0/0/0 LCP-FS: I ECHOREQ [Open] id 36 
+len 12 magic 0xFE83D624
+*Apr  1 16:15:18.219: Se0/0/0 LCP-FS: O ECHOREP [Open] id 36 
+len 12 magic 0x1EFC37C3
+R1# <b>un all</b>
+</pre>]]></text>
+	
+	 <text id="ID_r2_txt01"><![CDATA[<pre>R1# <b>debug ppp negotiation</b>
+PPP protocol negotiation debugging is on
+R1# 
+*Apr  1 18:42:29.831: %LINK-3-UPDOWN: Interface Serial0/0/0, 
+changed state to up
+*Apr  1 18:42:29.831: Se0/0/0 PPP: Sending cstate UP notification
+*Apr  1 18:42:29.831: Se0/0/0 PPP: Processing CstateUp message
+*Apr  1 18:42:29.835: PPP: Alloc Context [66A27824]
+*Apr  1 18:42:29.835: ppp2 PPP: Phase is ESTABLISHING
+*Apr  1 18:42:29.835: Se0/0/0 PPP: Using default call direction
+*Apr  1 18:42:29.835: Se0/0/0 PPP: Treating connection as a 
+dedicated line
+*Apr  1 18:42:29.835: Se0/0/0 PPP: Session handle[4000002] 
+Session id[2]
+*Apr  1 18:42:29.835: Se0/0/0 LCP: Event[OPEN] 
+State[Initial to Starting]
+*Apr  1 18:42:29.835: Se0/0/0 LCP: O CONFREQ [Starting] 
+id 1 len 23
+*Apr  1 18:42:29.835: Se0/0/0 LCP:    AuthProto 
+CHAP (0x0305C22305)
+*Apr  1 18:42:29.835: Se0/0/0 LCP:    QualityType 0xC025 
+period 1000 (0x0408C025000003E8)
+*Apr  1 18:42:29.835: Se0/0/0 LCP:    MagicNumber 0x1F887DD3 
+(0x05061F887DD3)<span class="outPut"></span>*Apr  1 18:42:29.855: Se0/0/0 PPP: Phase is AUTHENTICATING, 
+by both
+*Apr  1 18:42:29.855: Se0/0/0 CHAP: O CHALLENGE id 1 len 23 
+from "R1"<span class="outPut"></span>*Apr  1 18:42:29.871: Se0/0/0 IPCP: Authorizing CP
+*Apr  1 18:42:29.871: Se0/0/0 IPCP: CP stalled on 
+event[Authorize CP]
+*Apr  1 18:42:29.871: Se0/0/0 IPCP: CP unstall<span class="outPut"></span>*Apr  1 18:42:29.875: Se0/0/0 CHAP: O SUCCESS id 1 len 4
+*Apr  1 18:42:29.879: Se0/0/0 CHAP: I SUCCESS id 1 len 4
+*Apr  1 18:42:29.879: Se0/0/0 PPP: Phase is UP
+*Apr  1 18:42:29.879: Se0/0/0 IPCP: Protocol configured, 
+start CP. state[Initial]
+*Apr  1 18:42:29.879: Se0/0/0 IPCP: Event[OPEN] 
+State[Initial to Starting]
+*Apr  1 18:42:29.879: Se0/0/0 IPCP: O CONFREQ [Starting] id 1 
+len 10
+*Apr  1 18:42:29.879: Se0/0/0 IPCP:    Address 10.0.1.1 
+(0x03060A000101)
+*Apr  1 18:42:29.879: Se0/0/0 IPCP: Event[UP] 
+State[Starting to REQsent]
+*Apr  1 18:42:29.879: Se0/0/0 IPV6CP: Protocol configured, 
+start CP.state[Initial]
+*Apr  1 18:42:29.883: Se0/0/0 IPV6CP: Event[OPEN] 
+State[Initial to Starting]
+*Apr  1 18:42:29.883: Se0/0/0 IPV6CP: Authorizing CP
+*Apr  1 18:42:29.883: Se0/0/0 IPV6CP: CP stalled on 
+event[Authorize CP]<span class="outPut"></span>*Apr  1 18:42:29.919: Se0/0/0 IPCP: State is Open
+*Apr  1 18:42:29.919: Se0/0/0 IPV6CP: State is Open
+*Apr  1 18:42:29.919: Se0/0/0 CDPCP: State is Open
+*Apr  1 18:42:29.923: Se0/0/0 CCP: State is Open
+*Apr  1 18:42:29.927: Se0/0/0 Added to neighbor route AVL tree: 
+topoid 0, address 10.0.1.2
+*Apr  1 18:42:29.927: Se0/0/0 IPCP: Install route to 10.0.1.2
+*Apr  1 18:42:39.871: Se0/0/0 LQM: O state Open 
+magic 0x1F887DD3 len 48
+*Apr  1 18:42:39.871: Se0/0/0 LQM:    LastOutLQRs 0 
+LastOutPackets/Octets 0/0
+*Apr  1 18:42:39.871: Se0/0/0 LQM:    PeerInLQRs 0 
+PeerInPackets/Discards/Errors/Octets 0/0/0/0
+*Apr  1 18:42:39.871: Se0/0/0 LQM:    PeerOutLQRs 1 
+PeerOutPackets/Octets 3907/155488
+*Apr  1 18:42:39.879: Se0/0/0 LQM: I state Open 
+magic 0xFF101A5B len 48
+*Apr  1 18:42:39.879: Se0/0/0 LQM:    LastOutLQRs 0 
+LastOutPackets/Octets 0/0
+*Apr  1 18:42:39.879: Se0/0/0 LQM:    PeerInLQRs 0 
+PeerInPackets/Discards/Errors/Octets 0/0/0/0
+*Apr  1 18:42:39.879: Se0/0/0 LQM:    PeerOutLQRs 1 
+PeerOutPackets/Octets 3909/155225<span class="outPut"></span>
+</pre>]]></text>
+
+ <text id="ID_r3_txt01"><![CDATA[<pre>R1# <b>debug ppp error</b> 
+PPP Serial3(i): rlqr receive failure. successes = 15 
+PPP: myrcvdiffp = 159 peerxmitdiffp = 41091 
+PPP: myrcvdiffo = 2183 peerxmitdiffo = 1714439 
+PPP: threshold = 25 
+PPP Serial2(i): rlqr transmit failure. successes = 15 
+PPP: myxmitdiffp = 41091 peerrcvdiffp = 159 
+PPP: myxmitdiffo = 1714439 peerrcvdiffo = 2183 
+PPP: l->OutLQRs = 1 LastOutLQRs = 1 
+PPP: threshold = 25 
+PPP Serial3(i): lqr_protrej() Stop sending LQRs. 
+PPP Serial3(i): The link appears to be looped back. 
+</pre>]]></text>
+</data>

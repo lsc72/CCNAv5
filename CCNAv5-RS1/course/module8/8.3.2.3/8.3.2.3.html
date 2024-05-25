@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.2.3 Ping - Tester la connectivité à distance </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Vérification de la connectivité</h1>
+        <h2>Test et vérification</h2>
+      </div>
+      <div id="content">
+<p>La commande ping peut aussi être utilisée pour tester la capacité d'un hôte local à communiquer sur un interréseau. L'hôte local peut envoyer une requête ping à un hôte fonctionnel IPv4 sur un réseau distant, comme présenté à la figure ci-contre.</p>
+<p></p>
+<p>Si cette requête ping aboutit, le fonctionnement d'une grande partie de l'interréseau peut être vérifié. Une requête ping réussie sur un interréseau confirme la communication sur le réseau local, le fonctionnement du routeur qui sert de passerelle et le fonctionnement de tous les autres routeurs sur le chemin entre le réseau local et le réseau de l'hôte distant.</p>
+<p></p>
+<p>En outre, la fonctionnalité de l'hôte distant peut être vérifiée. Si l'hôte distant ne peut pas communiquer en dehors de son réseau local, il ne répond pas. </p>
+<p></p>
+<p>
+<b>Remarque</b> : de nombreux administrateurs réseau limitent ou interdisent l'entrée des messages ICMP dans le réseau d'entreprise. Par conséquent, l'absence d'une réponse ping peut être due à des restrictions de sécurité.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

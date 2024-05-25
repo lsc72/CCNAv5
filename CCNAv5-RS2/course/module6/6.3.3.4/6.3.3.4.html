@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.3.4 Découpages des sous-réseaux en sous-réseaux</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Examen de CIDR et VLSM</h1>
+        <h2>VLSM</h2>
+      </div>
+      <div id="content">
+<p>Une autre manière de visualiser les sous-réseaux VLSM consiste à répertorier tous les sous-réseaux et leurs sous-réseaux respectifs. </p>
+<p></p>
+<p>Dans la Figure 1, le réseau 10.0.0.0/8 correspond à l'espace d'adressage de départ et est subdivisé avec le masque /16. L'emprunt de 8 bits (de /8 à /16) crée 256 sous-réseaux compris entre 10.0.0.0/16 et 10.255.0.0/16. </p>
+<p></p>
+<p>Dans la Figure 2, le sous-réseau 10.1.0.0/16 est à nouveau subdivisé en empruntant 8 bits supplémentaires. Cela crée 256 sous-réseaux avec le masque /24. Ce masque autorise 254 adresses d'hôte par sous-réseau. Les sous-réseaux compris entre 10.1.0.0/24 et 10.1.255.0/24 sont des sous-réseaux du sous-réseau 10.1.0.0/16.</p>
+<p></p>
+<p>Dans la Figure 3, le sous-réseau 10.2.0.0/16 est également subdivisé à nouveau avec le masque /24, autorisant ainsi 254 adresses d'hôtes par sous-réseau. Les sous-réseaux compris entre 10.2.0.0/24 et 10.2.255.0/24 sont des sous-réseaux du sous-réseau 10.2.0.0/16.</p>
+<p></p>
+<p>Dans la Figure 4, le sous-réseau 10.3.0.0/16 /26 est subdivisé à nouveau avec le masque /28, créant ainsi 4 096 sous-réseaux avec 14 adresses d'hôtes par sous-réseau. Les sous-réseaux compris entre 10.3.0.0/28 et 10.3.255.240/28 sont des sous-réseaux du sous-réseau 10.3.0.0/16.</p>
+<p></p>
+<p>Dans la Figure 5, le sous-réseau 10.4.0.0/16 est subdivisé à nouveau avec le masque /20, ce qui crée 16 sous-réseaux et permet 4 094 adresses d'hôtes par sous-réseau. Les sous-réseaux compris entre 10.4.0.0/20 et 10.4.240.0/20 sont des sous-réseaux du sous-réseau 10.4.0.0/16. Ces sous-réseaux /20 sont suffisamment importants pour être découpés en d'autres sous-réseaux, autorisant ainsi davantage de réseaux.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

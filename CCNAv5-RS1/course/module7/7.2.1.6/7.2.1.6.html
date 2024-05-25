@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.1.6 Analyse de la connexion TCP en trois étapes - Étape 3</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>TCP et UDP</h1>
+        <h2>Communication TCP</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Étape 3 : Le client accuse réception de la session de communication serveur-client.</b>
+</p>
+<p></p>
+<p>Enfin, le client TCP répond à l'aide d'un segment contenant un ACK qui constitue la réponse au SYN TCP envoyé par le serveur. Ce segment ne contient pas de données de l'utilisateur. La valeur du champ de numéro d'accusé de réception est supérieure de 1 au numéro d'ordre initial reçu du serveur. Quand les deux sessions sont établies entre le client et le serveur, tous les segments supplémentaires échangés dans cette communication comportent l'indicateur ACK défini.</p>
+<p></p>
+<p>Comme l'illustre la figure ci-contre, les résultats de l'analyseur de protocole montrent l'indicateur de contrôle ACK défini et les numéros relatifs d'ordre et d'accusé de réception. </p>
+<p></p>
+<p>Il est possible de sécuriser le réseau de données en :</p>
+<p>
+<ul>
+<li>Refusant l'établissement de sessions TCP ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Autorisant uniquement l'établissement de sessions pour des services spécifiques ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Autorisant uniquement le trafic faisant déjà partie de sessions établies.</li>
+</ul>
+</p>
+<p></p>
+<p>Ces mesures de sécurité peuvent être implémentées pour toutes les sessions TCP ou uniquement pour certaines sessions.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.2.2 Limitation des problèmes engendrés par ARP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole ARP ( Address Resolution Protocol)</h1>
+        <h2>Problèmes liés au protocole ARP</h2>
+      </div>
+      <div id="content">
+<p>Les commutateurs récents permettent de limiter les problèmes de sécurité et de diffusion liés au protocole ARP. Les commutateurs Cisco prennent en charge plusieurs technologies de sécurité spécialement conçues pour réduire les problèmes Ethernet liés aux diffusions en général et à ARP en particulier.</p>
+<p></p>
+<p>Les commutateurs assurent la segmentation d'un réseau local et le divisent ainsi en domaines de collision distincts. Chaque port d'un commutateur représente un domaine de collision à part et fournit la bande passante totale du support jusqu'aux nœuds connectés sur ce port. Les commutateurs n'empêchent pas, par défaut, la propagation des diffusions aux périphériques connectés, mais ils isolent les communications Ethernet de monodiffusion de sorte qu'elles soient uniquement « entendues » par les périphériques source et de destination. Par conséquent, s'il existe de nombreuses requêtes ARP, chaque réponse ARP se fera uniquement entre deux périphériques.</p>
+<p></p>
+<p>Concernant les attaques de diffusion de différents types, auxquelles les réseaux Ethernet sont soumis, les ingénieurs réseau mettent en œuvre des technologies Cisco de sécurité des commutateurs, notamment des listes d'accès et des dispositifs de sécurité des ports spécialisés.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

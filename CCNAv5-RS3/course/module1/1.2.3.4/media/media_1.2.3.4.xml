@@ -1,0 +1,99 @@
+﻿<textcomponents> 
+<!--Slide 1-->
+<component id="ID_s1_title">
+    <text><![CDATA[<font face="_typewriter"><b>show ip protocols </b></font><b>Command</b>]]></text>
+</component> 
+
+<!--Slide 2-->
+<component id="ID_s2_title">
+   <text><![CDATA[<b>Commande </b><font face="_typewriter"><b>show ip route </b></font>]]></text>
+</component> 
+	 
+<!--Slide 3-->
+<component id="ID_s3_title">
+<text><![CDATA[<b>Commande</b> <b><font face="_typewriter">show ip ospf neighbor </font></b>]]></text>
+</component> 
+
+<!--Slide 4-->
+<component id="ID_s4_title">
+<text><![CDATA[<b>Commande</b> <b><font face="_typewriter">show interfaces </font></b>]]></text>
+</component> 
+
+<!--Slide 5-->
+<component id="ID_s5_title">
+<text><![CDATA[<b>Commande </b><b><font face="_typewriter">show ip interface </font></b>]]></text>
+</component> 
+
+<!--Slide 6-->
+<component id="ID_s6_title">
+<text><![CDATA[<b>Commande </b><b><font face="_typewriter">show ip interface brief </font></b>]]></text>
+</component> 
+
+<!--Slide 7-->
+<component id="ID_s7_title">
+<text><![CDATA[<b>Commande</b> <b><font face="_typewriter">show protocols </font></b>]]></text>
+</component> 
+
+<!--Slide 8-->
+<component id="ID_s8_title">
+<text><![CDATA[<b>Commande </b><b><font face="_typewriter">show cdp neighbors </font></b>]]></text>
+</component> 
+
+<!--Slide 9-->
+<component id="ID_s9_title">
+<text><![CDATA[]]></text>
+</component>
+
+<component id="ID_sc4_reset">
+	<text><![CDATA[Réinitialiser]]></text>
+</component>
+<component id="ID_sc4_showme">
+	<text><![CDATA[Démonstration]]></text>
+</component>
+<component id="ID_sc4_showall">
+	<text><![CDATA[Afficher tout]]></text>
+</component>
+
+<component id="ID_SC6" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font size='10' face="Arial" color="#0000FF">***Vous devez entrer la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font></b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>Exécutez la commande permettant d'afficher des informations sur les protocoles de routage IPv4 configurés.</b></font>]]></existingcommands>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[show ip protocols]]></correctresponse>
+			<deviceresponse><![CDATA[<br>Routing Protocol is "ospf 10" <br>  Outgoing update filter list for all interfaces is not set <br>  Incoming update filter list for all interfaces is not set <br>  Router ID 1.1.1.1 <br>  Number of areas in this router is 1. 1 normal 0 stub 0 nssa <br>  Maximum path: 4 <br>  Routing for Networks: <br>    172.16.1.0 0.0.0.255 area 0 <br>    172.16.3.0 0.0.0.3 area 0 <br>    192.168.10.4 0.0.0.3 area 0 <br>  Passive Interface(s): <br>    GigabitEthernet0/0 <br>  Routing Information Sources:  <br>    Gateway         Distance      Last Update <br>    1.1.1.1              110      00:11:48 <br>    2.2.2.2              110      00:11:50 <br>    3.3.3.3              110      00:11:50 <br>  Distance: (default is 110)<br>R1#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Exécutez la commande permettant d'afficher la table de routage.</b></font>]]></instruction>
+		</command>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[show ip route]]></correctresponse>
+			<deviceresponse><![CDATA[<font size = '8' face="Courier New">Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP <br>       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area <br>       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2 <br>       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP <br>       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area <br>       * - candidate default, U - per-user static route, o - ODR <br>       P - periodic downloaded static route <br> <br></font><font size = '9' face="Courier New">Gateway of last resort is not set <br> <br>   172.16.0.0/16 is variably subnetted, 5 subnets, 3 masks <br>C    172.16.1.0/24 is directly connected, GigabitEthernet0/0 <br>L    172.16.1.1/32 is directly connected, GigabitEthernet0/0 <br>O    172.16.2.0/24 [110/65] via 172.16.3.2, 01:43:03, Serial0/0/0 <br>C    172.16.3.0/30 is directly connected, Serial0/0/0 <br>     172.16.3.1/32 is directly connected, Serial0/0/0 <br>O  192.168.1.0/24 [110/65] via 192.168.10.6, 01:43:03, Serial0/0/1 <br>   192.168.10.0/24 is variably subnetted, 3 subnets, 2 masks <br>C    192.168.10.4/30 is directly connected, Serial0/0/1 <br>L    192.168.10.5/32 is directly connected, Serial0/0/1 <br>O    192.168.10.8/30 [110/128] via 172.16.3.2, 01:43:03, Serial0/0/0 <br>                     [110/128] via 192.168.10.6, 01:43:03, Serial0/0/1<br>R1#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Exécutez la commande permettant d'afficher la table de voisinage OSPF.</b></font>]]></instruction>
+		</command>
+		<command prompt="R1#">
+		  <correctresponse><![CDATA[show ip ospf neighbor]]></correctresponse>
+			<deviceresponse><![CDATA[<font size = '9' face="Courier New"><br>Neighbor ID   Pri   State       Dead Time   Address        Interface <br>2.2.2.2         0   FULL/  -    00:00:34    172.16.3.2     Serial0/0/0 <br>3.3.3.3         0   FULL/  -    00:00:34    192.168.10.6   Serial0/0/1<br></font>R1#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Exécutez la commande fournissant des informations détaillées sur l'état de chaque interface.</b></font>]]></instruction>
+		</command>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[show interfaces]]></correctresponse>
+			<deviceresponse><![CDATA[GigabitEthernet0/0 is up, line protocol is up (connected) <br>  Hardware is CN Gigabit Ethernet, address is 00e0.8fb2.de01 (bia 00e0.8fb2.de01) <br>  Description: Link to LAN 1 <br>  Internet address is 172.16.1.1/24 <br>  MTU 1500 bytes, BW 1000000 Kbit, DLY 10 usec, <br>     reliability 255/255, txload 1/255, rxload 1/255 <br><font face="_sans">&lt;résultat omis&gt;</font> <br>Serial0/0/0 is up, line protocol is up (connected) <br>  Hardware is HD64570 <br>  Description: Link to R2 <br>  Internet address is 172.16.3.1/30 <br>  MTU 1500 bytes, BW 1544 Kbit, DLY 20000 usec, <br>     reliability 255/255, txload 1/255, rxload 1/255 <br>  Encapsulation HDLC, loopback not set, keepalive set (10 sec) <br>  Last input never, output never, output hang never <br>  Last clearing of "show interface" counters never <br><font face="_sans">&lt;résultat omis&gt;</font> <br>Serial0/0/1 is up, line protocol is up (connected) <br>  Hardware is HD64570 <br>  Description: Link to R3 <br>  Internet address is 192.168.10.5/30 <br>  MTU 1500 bytes, BW 1544 Kbit, DLY 20000 usec, <br>     reliability 255/255, txload 1/255, rxload 1/255 <br>  Encapsulation HDLC, loopback not set, keepalive set (10 sec) <br>  Last input never, output never, output hang never <br>  Last clearing of "show interface" counters never <br><font face="_sans">&lt;résultat omis&gt;</font><br>R1#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Exécutez la commande permettant d'afficher un récapitulatif succinct de toutes les interfaces.</b></font>]]></instruction>
+		</command>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[show ip interface brief]]></correctresponse>
+			<deviceresponse><![CDATA[<font size = '8' face="Courier New">Interface           IP-Address    OK?  Method  Status                 Protocol <br>GigabitEthernet0/0  172.16.1.1    YES  manual  up                     up <br>GigabitEthernet0/1  unassigned    YES  unset   administratively down  down <br>Serial0/0/0         172.16.3.1    YES  manual  up                     up <br>Serial0/0/1         192.168.10.5  YES  manual  up                     up <br>Vlan1               unassigned    YES  unset   administratively down  down<br></font>R1#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Exécutez la commande permettant d'afficher les protocoles configurés.</b></font>]]></instruction>
+		</command>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[show protocols]]></correctresponse>
+			<deviceresponse><![CDATA[Global values: <br>  Internet Protocol routing is enabled <br>GigabitEthernet0/0 is up, line protocol is up <br>  Internet address is 172.16.1.1/24 <br>GigabitEthernet0/1 is administratively down, line protocol is down <br>Serial0/0/0 is up, line protocol is up <br>  Internet address is 172.16.3.1/30 <br>Serial0/0/1 is up, line protocol is up <br>  Internet address is 192.168.10.5/30 <br>Vlan1 is administratively down, line protocol is down<br>R1#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Exécutez la commande permettant d'afficher des informations sur les périphériques Cisco connectés directement.</b></font>]]></instruction>
+		</command>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[show cdp neighbors]]></correctresponse>
+			<deviceresponse><![CDATA[<font size = '8' face="Courier New">Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge <br>                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone <br>Device ID    Local Intrfce   Holdtme    Capability   Platform    Port ID <br>S1           Gig 0/0          126            S       2960        Gig 1/1 <br>R2           Ser 0/0/0        136            R       C1900       Ser 0/0/0 <br>R3           Ser 0/0/1        133            R       C1900       Ser 0/0/0<br></font>R1#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Vous avez correctement vérifié les configurations du routeur R1.</b></font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+</textcomponents>

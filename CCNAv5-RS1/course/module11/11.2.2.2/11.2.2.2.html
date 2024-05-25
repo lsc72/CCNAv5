@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.2.2.2 Attaques de reconnaissance</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Garantie de la sécurité du réseau</h1>
+        <h2>Failles et attaques du réseau</h2>
+      </div>
+      <div id="content">
+<p>En plus des attaques de programmes malveillants, les réseaux peuvent également être la proie de différentes attaques de réseau. Les attaques de réseau peuvent être classées en trois catégories principales :</p>
+<p>
+<ul>
+<li>
+<b>Attaques de reconnaissance</b> : découverte et mappage non autorisés de systèmes, services ou vulnérabilités ; </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Attaques par accès</b> : manipulation non autorisée des données, des accès aux systèmes ou des privilèges utilisateur ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Attaques par déni de service</b> : désactivation ou corruption de réseaux, de systèmes ou de services. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Attaques de reconnaissance</b>
+</p>
+<p>Des pirates externes peuvent utiliser des outils Internet, comme les utilitaires nslookup et whois, pour découvrir facilement les adresses IP attribuées à une entreprise ou à une entité donnée. Une fois ces adresses IP connues, l'assaillant peut lancer des requêtes ping vers les adresses publiquement accessibles pour déterminer celles qui sont actives. Pour automatiser cette étape, l'assaillant peut utiliser un outil de balayage comme fping ou gping, qui envoie systématiquement des requêtes ping à une plage d'adresses ou à toutes les adresses d'un sous-réseau. Cette approche est similaire à celle qui consiste à utiliser un annuaire téléphonique et à appeler tous les numéros pour savoir qui répond. </p>
+<p></p>
+<p></p>
+<p>Cliquez sur chaque type d'outil d'attaque de reconnaissance regarder une animation.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

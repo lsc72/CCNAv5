@@ -1,0 +1,30 @@
+﻿<textcomponents> <!--slide 1-->
+<component id="ID_s1_title">
+<text><![CDATA[<b>Métrique composite EIGRP</b>]]></text>
+</component>
+
+<component id="ID_txt01">
+<text><![CDATA[Formule composite par défaut&nbsp;:<br/>métrique = <b>[K1*bande passante + K3*délai]</b><br/><br/>Formule composite complète&nbsp;:<br/>métrique = <b>[K1*bande passante + <font color="#652C8A">(K2*bande passante)/(256 - charge)</font> + K3*délai] * <font color="#652C8A">[K5/(fiabilité + K4)]</font></b><br/><br>(Non utilisée si les valeurs «&nbsp;K&nbsp;» sont nulles)]]></text>
+</component>
+
+<component id="ID_txt02">
+<text><![CDATA[<b>Remarque&nbsp;:</b> il s'agit d'une formule conditionnelle. Si K5 = 0, le dernier terme est remplacé par 1 et la formule devient&nbsp;: métrique = [K1*bande passante + (K2*bande passante)/(256-charge) + K3*délai]]]></text>
+</component>
+
+<component id="ID_txt03">
+<text><![CDATA[<b>Valeurs par défaut&nbsp;:</b><br/> K1 (bande passante) = 1 <br/> K2 (charge) = 0 <br/> K3 (délai) = 1 <br/> K4 (fiabilité) = 0 <br/> K5 (fiabilité) = 0]]></text>
+</component>
+
+<component id="ID_txt04">
+<text><![CDATA[Les valeurs «&nbsp;K&nbsp;» peuvent être modifiées à l'aide de la commande<font face='courier new'><b> metric weights </b></font>]]></text> 
+</component> <!--slide 2-->
+<component id="ID_s2_title">
+<text><![CDATA[<b>Vérification des valeurs K de la métrique</b>]]></text>
+</component>
+
+<component id="ID_s2_txt01">
+<text><![CDATA[&lt;résultat omis&gt;]]></text>
+</component>
+
+
+</textcomponents>

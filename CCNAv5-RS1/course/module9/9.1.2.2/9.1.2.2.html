@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.2.2 Le plan - L&#x0027;attribution des adresses</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmenter un réseau IPv4 en sous-réseaux</h1>
+        <h2>La segmentation en sous-réseaux IP est fondamentale</h2>
+      </div>
+      <div id="content">
+<p>Créez des règles d'attribution des adresses IP dans chaque plage de sous-réseaux. Par exemple : </p>
+<p>
+<ul>
+<li>Les imprimantes et les serveurs sont associés à des adresses IP statiques </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les utilisateurs obtiennent des adresses IP de la part des serveurs DHCP à l'aide de sous-réseaux /24</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les routeurs obtiennent les premières adresses d'hôte disponibles dans la plage</li>
+</ul>
+</p>
+<p></p>
+<p>Deux facteurs très importants qui détermineront le choix du bloc d'adresses privées sont le nombre de sous-réseaux nécessaires et le nombre maximal d'hôtes requis par sous-réseau. Chacun de ces blocs d'adresses vous permettra d'attribuer correctement les adresses aux hôtes en fonction de la taille donnée du réseau et des hôtes nécessaires à l'heure actuelle et dans un avenir proche. Les besoins en termes d'espace IP détermineront la ou les plages d'hôtes à utiliser. </p>
+<p></p>
+<p>Dans les exemples qui suivent, la segmentation repose sur des blocs d'adresses dont les masques de sous-réseau sont 255.0.0.0, 255.255.0.0 et 255.255.255.0.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

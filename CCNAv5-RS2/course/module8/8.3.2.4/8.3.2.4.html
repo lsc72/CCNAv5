@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.2.4 Configuration de l&#x0027;ID de routeur OSPFv3</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv3 à zone unique</h1>
+        <h2>Configuration du OSPFv3</h2>
+      </div>
+      <div id="content">
+<p>Utilisez la commande de mode de configuration globale <span class="cmd"><b>ipv6 router ospf</b></span><span class="cmd"><i> process-id </i></span>pour passer en mode de configuration du routeur. L'invite du mode de configuration du routeur IPv6 est différente de l'invite du mode de configuration du routeur IPv4. Utilisez le mode de confirmation du routeur IPv6 pour configurer les paramètres globaux OSPFv3, tels que l'attribution d'un ID de routeur OSPF et d'une bande passante de référence de 32 bits. </p>
+<p></p>
+<p>Les protocoles de routage IPv6 sont activés sur une interface, et non en mode de configuration du routeur, à l'instar de leurs homologues IPv4. La commande de mode de configuration du routeur IPv4 <span class="cmd"><b>network</b></span> n'existe pas dans IPv6.</p>
+<p></p>
+<p>À l'instar d'OSPFv2, la valeur <span class="cmd"><i>process-id</i></span> est un nombre compris entre 1 et 65 535 choisi par l'administrateur réseau. La valeur <span class="cmd"><i>process-id</i></span> n'a qu'une signification locale, ce qui veut dire qu'elle n'a pas à correspondre à celle des autres routeurs OSPF pour établir des contiguïtés avec ces voisins. </p>
+<p></p>
+<p>OSPFv3 nécessite l'affectation d'un ID de routeur 32 bits pour que le protocole OSPF puisse être activé sur une interface. Le schéma logique dans la Figure 1 illustre la façon dont un ID de routeur est choisi. À l'instar d'OSPFv2, OSPFv3 utilise :</p>
+<p>
+<ul>
+<li>D'abord, un ID de routeur configuré explicitement. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Si aucun n'est configuré, le routeur utilise l'adresse IPv4 configurée la plus élevée d'une interface de bouclage. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Si aucun n'est configuré, le routeur utilise l'adresse IPv4 configurée la plus élevée d'une interface active. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>S'il n'y a aucune source d'adresses IPv4 sur un routeur, le routeur affiche un message de console pour configurer l'ID de routeur manuellement.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque :</b> par souci de cohérence, l'ensemble des trois routeurs utilisent l'ID de processus 10.</p>
+<p></p>
+<p>Comme illustré dans la topologie de la Figure 2, les routeurs R1, R2 et R3 doivent se voir affecter les ID de routeur indiqués. La commande <span class="cmd"><b>router-id</b></span><span class="cmd"><i> rid</i></span> utilisée pour attribuer un ID de routeur dans OSPFv2 est la même que celle qui est utilisée dans OSPFv3. </p>
+<p></p>
+<p>L'exemple de la Figure 3 :</p>
+<p>
+<ul>
+<li>Passe en mode de configuration OSPFv3 du routeur. Remarquez que l'invite du routeur est différente de celle de l'invite de mode de protocole de routage IPv4 par défaut. Notez également l'affichage du message de console informatif lors de l'accès au mode de configuration du routeur OSPFv3. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Attribue l'ID de routeur 1.1.1.1. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Modifie la bande passante de référence sur 1 000 000 000 bits/s (1 Gbit/s), parce que le réseau comporte des liens Gigabit Ethernet. Notez le message de console informatif qui indique que cette commande doit être configurée sur tous les routeurs du domaine de routage.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La commande <span class="cmd"><b>show ipv6 protocols </b></span>permet de vérifier que l'ID de processus 10 du protocole OSPFv3 utilise l'ID de routeur 1.1.1.1.</li>
+</ul>
+</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe dans la Figure 4 pour configurer les paramètres globaux OSPFv3 sur R2 et R3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

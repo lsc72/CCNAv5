@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.3.4 Transmission de diffusion</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Adresses IPv4 de monodiffusion, de diffusion et de multidiffusion</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Transmission de diffusion</b>
+</p>
+<p>Le trafic de diffusion est utilisé pour envoyer des paquets à tous les hôtes du réseau grâce à l'adresse de diffusion du réseau. Avec une diffusion, le paquet contient une adresse IP de destination avec uniquement des un (1) dans la partie hôte. Cela signifie que tous les hôtes se trouvant sur ce réseau local (domaine de diffusion) recevront le paquet et le regarderont. De nombreux protocoles réseau, tels que DHCP, utilisent les diffusions. Lorsqu'un hôte reçoit un paquet envoyé à l'adresse de diffusion du réseau, il traite le paquet comme il le ferait pour un paquet adressé à son adresse de monodiffusion. </p>
+<p></p>
+<p>Voici quelques cas d'utilisation des transmissions de diffusion :</p>
+<p>
+<ul>
+<li>Mappage des adresses d'une couche supérieure à des adresses d'une couche inférieure</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Demande d'une adresse</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>Contrairement à une transmission de type monodiffusion où les paquets peuvent être routés via l'interréseau, les paquets de diffusion sont habituellement limités au réseau local. Cette limitation dépend de la configuration de la passerelle et du type de diffusion. Il existe deux types de diffusion : la diffusion dirigée et la diffusion limitée.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Diffusion dirigée</b>
+</p>
+<p>Une diffusion dirigée est envoyée à tous les hôtes d'un réseau particulier. Ce type de diffusion permet l'envoi d'une diffusion à tous les hôtes d'un réseau qui n'est pas local. Par exemple, pour qu'un hôte situé en dehors du réseau 172.16.4.0/24 communique avec tous les hôtes de ce réseau, l'adresse de destination du paquet doit être 172.16.4.255. Bien que, par défaut, les routeurs n'acheminent pas les diffusions dirigées, ils peuvent être configurés de manière à le faire.</p>
+<p></p>
+<p>
+<b>Diffusion limitée</b>
+</p>
+<p></p>
+<p>La diffusion limitée permet une transmission qui est limitée aux hôtes du réseau local. Ces paquets utilisent toujours l'adresse IPv4 de destination 255.255.255.255. Les routeurs ne transmettent pas les diffusions limitées. C'est la raison pour laquelle un réseau IPv4 est également appelé « domaine de diffusion ». Les routeurs forment les limites d'un domaine de diffusion. </p>
+<p></p>
+<p>Par exemple, un hôte du réseau 172.16.4.0/24 envoie une diffusion à tous les hôtes de son réseau à l'aide d'un paquet dont l'adresse de destination est 255.255.255.255.</p>
+<p></p>
+<p>Lancez l'animation pour voir un exemple de diffusion limitée.</p>
+<p></p>
+<p>Lorsqu'un paquet est diffusé, il utilise les ressources du réseau et est traité par chaque hôte destinataire sur le réseau. Ainsi, le trafic de diffusion devrait être limité de sorte qu'il ne réduise pas les performances du réseau ou des périphériques. Dans la mesure où les routeurs séparent les domaines de diffusion, la création de sous-réseaux, pour les réseaux qui doivent prendre en charge un volume de trafic très important, peut en améliorer les performances.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.3.3 Calcul du masque générique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement des listes de contrôle d&#x0027;accès IP</h1>
+        <h2>Masques génériques dans les listes de contrôle d&#x0027;accès</h2>
+      </div>
+      <div id="content">
+<p>Le calcul des masques génériques peut être complexe. La méthode la plus rapide consiste à soustraire le masque de sous-réseau de 255.255.255.255.</p>
+<p></p>
+<p>
+<b>Calcul du masque générique : exemple 1</b>
+</p>
+<p></p>
+<p>Dans le premier exemple de la figure, supposons que vous souhaitiez autoriser l'accès de tous les utilisateurs du réseau 192.168.3.0. Sachant que le masque de sous-réseau est 255.255.255.0, vous pouvez utiliser 255.255.255.255 et y soustraire le masque de sous-réseau 255.255.255.0. Cette solution génère le masque générique 0.0.0.255.</p>
+<p></p>
+<p>
+<b>Calcul du masque générique : exemple 2</b>
+</p>
+<p></p>
+<p>Dans le deuxième exemple de la figure, supposons que vous souhaitiez autoriser les 14 utilisateurs du sous-réseau 192.168.3.32/28 à accéder au réseau. Le masque du sous-réseau IP est 255.255.255.240. Nous utilisons donc 255.255.255.255 et y soustrayons le masque de sous-réseau 255.255.255.240. Cette solution génère le masque générique 0.0.0.15.</p>
+<p></p>
+<p>
+<b>Calcul du masque générique : exemple 3</b>
+</p>
+<p></p>
+<p>Dans le troisième exemple, supposons que vous souhaitiez faire correspondre uniquement les réseaux 192.168.10.0 et 192.168.11.0. Utilisons 255.255.255.255 et soustrayons le masque de sous-réseau normal, à savoir 255.255.252.0 dans cet exemple. Cette solution génère 0.0.3.255.</p>
+<p></p>
+<p>Vous pouvez obtenir le même résultat en utilisant des instructions telles que les suivantes :</p>
+<p></p>
+<p>
+<span class="cmd">R1(config)# </span>
+<span class="cmd">
+<b>access-list 10 permit 192.168.10.0</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config)# </span>
+<span class="cmd">
+<b>access-list 10 permit 192.168.11.0</b>
+</span>
+</p>
+<p></p>
+<p>Il est bien plus efficace de configurer le masque générique de la manière suivante :</p>
+<p></p>
+<p>
+<span class="cmd">R1(config)#</span>
+<span class="cmd">
+<b> access-list 10 permit 192.168.10.0 0.0.3.255</b>
+</span>
+</p>
+<p></p>
+<p>Étudiez la configuration ci-dessous pour mettre en correspondance les réseaux de la plage 192.168.16.0 à 192.168.31.0 :</p>
+<p></p>
+<p>
+<span class="cmd">R1(config)# </span>
+<span class="cmd">
+<b>access-list 10 permit 192.168.16.0</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config)# </span>
+<span class="cmd">
+<b>access-list 10 permit 192.168.17.0</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config)#</span>
+<span class="cmd">
+<b> access-list 10 permit 192.168.18.0</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config)#</span>
+<span class="cmd">
+<b> access-list 10 permit 192.168.19.0</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config)#</span>
+<span class="cmd">
+<b> access-list 10 permit 192.168.20.0</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config)#</span>
+<span class="cmd">
+<b> access-list 10 permit 192.168.21.0</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config)#</span>
+<span class="cmd">
+<b> access-list 10 permit 192.168.22.0</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config)#</span>
+<span class="cmd">
+<b> access-list 10 permit 192.168.23.0</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config)#</span>
+<span class="cmd">
+<b> access-list 10 permit 192.168.24.0</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config)#</span>
+<span class="cmd">
+<b> access-list 10 permit 192.168.25.0</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config)#</span>
+<span class="cmd">
+<b> access-list 10 permit 192.168.26.0</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config)#</span>
+<span class="cmd">
+<b> access-list 10 permit 192.168.27.0</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config)#</span>
+<span class="cmd">
+<b> access-list 10 permit 192.168.28.0</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config)#</span>
+<span class="cmd">
+<b> access-list 10 permit 192.168.29.0</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config)#</span>
+<span class="cmd">
+<b> access-list 10 permit 192.168.30.0</b>
+</span>
+</p>
+<p>
+<span class="cmd">R1(config)#</span>
+<span class="cmd">
+<b> access-list 10 permit 192.168.31.0</b>
+</span>
+</p>
+<p></p>
+<p>Les 16 instructions de configuration précédentes peuvent être réduites en une seule instruction en utilisant le masque générique approprié comme indiqué ci-dessous :</p>
+<p></p>
+<p>
+<span class="cmd">R1(config)#</span>
+<span class="cmd">
+<b> access-list 10 permit 192.168.16.0 0.0.15.255</b>
+</span>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

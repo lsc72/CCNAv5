@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.2.1 Dépannage de la couche physique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Symptômes et causes du dépannage réseau</h2>
+      </div>
+      <div id="content">
+<p>La couche physique transmet les bits d'un ordinateur à l'autre et régule la transmission d'un flux de bits sur le support physique. La couche physique est la seule couche disposant de composants tangibles, tels que des câbles, des cartes et des antennes.</p>
+<p></p>
+<p>Les problèmes survenant sur un réseau se présentent souvent sous la forme de problèmes de performances. La présence de problèmes de performances signifie qu'il existe une différence entre le comportement attendu et le comportement observé, et que le système ne fonctionne pas comme on peut raisonnablement s'y attendre. Les défaillances et les conditions sous-optimales au niveau de la couche physique perturbent les utilisateurs et peuvent également avoir un impact sur la productivité globale de l'entreprise. Les réseaux qui connaissent ce type de problèmes tombent généralement en panne. Étant donné que les couches supérieures du modèle OSI dépendent de la couche physique pour fonctionner, un administrateur réseau doit avoir la possibilité d'isoler et corriger de façon efficace les problèmes qui se produisent au niveau de cette couche.</p>
+<p></p>
+<p>Les symptômes courants des problèmes réseau au niveau de la couche physique sont les suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Performances inférieures à celles de la planification initiale</b> : les causes les plus fréquentes de lenteur et de faibles performances sont la surchauffe ou l'alimentation insuffisante des serveurs, les configurations incorrectes des commutateurs ou des routeurs, l'encombrement du trafic sur une liaison de faible capacité et les pertes régulières de trames.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Perte de connectivité</b> : en cas de défaillance d'un câble ou d'un périphérique, le symptôme le plus courant est une perte de connectivité entre les périphériques qui communiquent sur cette liaison ou avec le périphérique ou l'interface défaillant. Cette situation peut être révélée par un simple test de requête ping. Une perte de connectivité intermittente peut être le signe d'une connexion lâche ou oxydée.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Goulots d’étranglement sur le réseau ou encombrement</b> : lors de la défaillance d'un routeur, d'une interface ou d'un câble, il se peut que les protocoles de routage redirigent le trafic vers d'autres routes qui n'ont pas été conçues pour supporter cette capacité supplémentaire. Cela peut provoquer un encombrement ou des goulots d’étranglements au niveau de ces éléments du réseau. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Utilisation élevée de l’unité centrale (UC)</b> : des taux d'utilisation élevés du processeur sont un symptôme indiquant qu'un périphérique, tel qu'un routeur, un commutateur ou un serveur, fonctionne à sa limite de conception ou au-delà de celle-ci. Si le problème n’est pas rapidement résolu, la surcharge de l’UC peut entraîner l’échec ou la panne du périphérique. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Messages d’erreur de la console</b> : les messages d'erreur signalés sur la console d'un périphérique indiquent un problème lié à la couche physique.</li>
+</ul>
+</p>
+<p></p>
+<p>Les problèmes réseau relatifs à la couche physique les plus fréquents sont les suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Problèmes d'alimentation</b> : les problèmes d'alimentation constituent la cause principale des pannes de réseau. Vérifiez également le fonctionnement des ventilateurs et assurez-vous de la propreté des orifices d'aspiration et de refoulement du châssis. Si d'autres appareils situés à proximité se sont également arrêtés de fonctionner, il est probable qu'il s'agisse d'un problème lié à l'alimentation principale.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Défaillances matérielles</b> : des cartes réseau défaillantes peuvent être la cause d'erreurs de transmission réseau dues à des collisions tardives, à des trames trop courtes ou à des émissions incontrôlées. Une émission incontrôlée est souvent définie comme une condition au cours de laquelle un périphérique réseau transmet continuellement et de façon aléatoire des données vides de sens sur le réseau. D'autres causes d'émissions incontrôlées sont des fichiers de pilote de carte réseau incorrects ou endommagés, un câblage erroné ou des problèmes de mise à la terre.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Câbles défectueux</b> : de nombreux problèmes peuvent être résolus simplement en refixant correctement des câbles qui ont été partiellement déconnectés. Lorsque vous inspectez les câbles, assurez-vous qu’ils sont en bon état, que les types de câble sont adéquats et que les câbles RJ-45 sont correctement sertis. Les câbles suspects doivent être testés ou remplacés par des câbles qui fonctionnent.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Atténuation</b> : une atténuation peut avoir lieu si la longueur d'un câble est supérieure à la limite de conception du support ou en cas de connexion lâche due à un câble mal fixé ou à des contacts sales ou oxydés. Si l’atténuation est grave, le périphérique récepteur ne parvient pas toujours à faire la distinction entre chaque bit de composant du flux.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Bruit</b> : les interférences électromagnétiques locales (perturbations électromagnétiques) sont généralement appelées « bruit ». Les interférences peuvent être générées par de nombreuses sources, comme des stations de radio FM, la radio de la police, les systèmes de sécurité des bâtiments, les dispositifs des avions pour l'atterrissage automatique, les câbles électriques adjacents, les périphériques équipés de gros moteurs électriques ou tout appareil comportant un émetteur plus puissant que celui d'un téléphone portable.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Erreurs de configuration d'interface</b> : de nombreux éléments peuvent être mal configurés sur une interface et entraîner l'arrêt de celle-ci, comme la fréquence d'horloge, la source d'horloge ou la non-activation de l'interface. Cela provoque une perte de connectivité avec les segments de réseau reliés. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Dépassement des limites de conception</b> : il se peut qu'un composant fonctionne de manière sous-optimale au niveau de la couche physique, car il est utilisé à un taux moyen supérieur à celui qui a été fixé lors de sa configuration. Lorsque vous dépannez ce type de problème, il devient évident que les ressources du périphérique fonctionnent au maximum de sa capacité (ou s’en approchent) et le nombre d’erreurs d’interface augmente. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Surcharge du processeur</b> : les symptômes incluent les processus impliquant une utilisation intense du processeur, les abandons de file d'attente d'entrée, les faibles performances, l'échec ou la lenteur de l'exécution de commandes Telnet ou ping, ainsi que l'absence de mises à jour de routage. L’une des causes de la surcharge de l’UC dans un routeur est le volume du trafic. Si certaines interfaces sont régulièrement surchargées de trafic, envisagez de reconcevoir le flux de trafic au sein du réseau ou de mettre à niveau le matériel.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

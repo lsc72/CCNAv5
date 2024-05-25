@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.4.8 Protocole NTP </title>
+    <!-- Activity -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.4.8_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité du commutateur : gestion et implémentation</h1>
+        <h2>Sécurité des ports de commutateur</h2>
+      </div>
+      <div id="content">
+<p>L'utilisation d'une heure correcte sur un réseau est particulièrement importante. Des horodatages corrects sont nécessaires pour suivre avec précision les événements réseau tels que les violations de sécurité. Par ailleurs, la synchronisation des horloges est critique pour la bonne interprétation des événements au sein des fichiers de données Syslog, ainsi que pour les certificats numériques.</p>
+<p></p>
+<p>Le protocole NTP est un protocole utilisé pour synchroniser les horloges des systèmes informatiques appartenant à un réseau de données à paquets commutés et à latence variable. Le protocole NTP permet aux périphériques réseau de synchroniser leurs paramètres de temps avec un serveur NTP. Un groupe de clients NTP qui obtient des informations d'heure et de date depuis une source unique présentera davantage de cohérence dans ses paramètres de temps.</p>
+<p></p>
+<p>L'une des méthodes les plus sûres pour fournir des paramètres d'horloge sur le réseau consiste à faire en sorte que les administrateurs réseaux implémentent leurs propres horloges maîtres de réseau privé, synchronisées au temps universel coordonné par satellite ou par radio. Toutefois, si les administrateurs réseau ne souhaitent pas implémenter leurs propres horloges maîtres, pour des raisons de coût ou autres, d'autres sources de temps sont disponibles sur Internet. Le protocole NTP permet d'obtenir l'heure correcte depuis une source de temps interne ou externe, notamment les suivantes :</p>
+<p>
+<ul>
+<li>Horloge maître locale</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Horloge maître sur Internet</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>GPS ou horloge atomique</li>
+</ul>
+</p>
+<p></p>
+<p>Un périphérique réseau peut être configuré comme serveur ou comme client NTP. Pour permettre à l'horloge logicielle de se synchroniser à un serveur de temps NTP, utilisez la commande de mode de configuration globale<span class="cmd"><b> ntp server </b></span><span class="cmd"><i>adresse-ip</i></span>. Un exemple de configuration est indiqué à la Figure 1. Le routeur R2 est configuré comme client NTP, tandis que le routeur R1 fait office de serveur NTP faisant autorité. </p>
+<p></p>
+<p>Pour configurer un périphérique comme disposant d'une horloge NTP maître à laquelle les pairs peuvent se synchroniser eux-mêmes, utilisez la commande de mode de configuration globale<span class="cmd"><b> ntp master [</b></span><span class="cmd"><i>strate</i></span><span class="cmd"><b>]</b></span>. La valeur de strate est un nombre compris entre 1 et 15, qui indique la strate NTP que demandera le système. Si le système est configuré en tant que NTP maître et si aucun numéro de strate n'est spécifié, la strate 8 sera utilisée par défaut. Si le maître NTP ne peut atteindre d'horloge sur une strate inférieure, le système déclarera être synchronisé avec le numéro de strate configuré. Les autres systèmes pourront s'y synchroniser à l'aide du protocole NTP. </p>
+<p></p>
+<p>La Figure 2 illustre la vérification du NTP. Pour vérifier l'état des associations NTP, utilisez la commande<span class="cmd"><b> show ntp associations </b></span>en mode d'exécution privilégié. Cette commande indique les adresses IP des homologues éventuellement synchronisés sur cet homologue, des homologues configurés de manière statique et le numéro de strate. La commande de mode d'exécution utilisateur<span class="cmd"><b> show ntp status </b></span>peut être utilisée pour afficher des informations telles que l'état de la synchronisation NTP, l'homologue avec lequel le périphérique est synchronisé et la strate sur laquelle le périphérique fonctionne.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

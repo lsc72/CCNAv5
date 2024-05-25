@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.2.4 VLAN natifs et étiquetage 802.1Q</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmentation d&#x0027;un VLAN</h1>
+        <h2>VLAN dans un environnement à commutateurs multiples</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Trames étiquetées sur le VLAN natif </b>
+</p>
+<p></p>
+<p>Certains périphériques prenant en charge le trunking ajoutent une étiquette VLAN au trafic VLAN natif. Le trafic de contrôle envoyé sur le VLAN natif ne doit pas être étiqueté. Si un port trunk 802.1Q reçoit une trame étiquetée avec un ID de VLAN identique à celui du VLAN natif, il abandonne la trame. Par conséquent, lorsque vous configurez un port sur un commutateur Cisco, configurez les périphériques de sorte qu'ils n'envoient pas de trames étiquetées sur le VLAN natif. Les périphériques tiers qui prennent en charge les trames étiquetées sur le VLAN natif comprennent des téléphones IP, des serveurs, des routeurs et des commutateurs non-Cisco. </p>
+<p></p>
+<p>
+<b>Trames non étiquetées sur le VLAN natif</b>
+</p>
+<p></p>
+<p>Lorsqu'un port trunk du commutateur Cisco reçoit des trames non étiquetées (qui sont peu communes dans un réseau bien conçu), il transfère ces trames au VLAN natif. S'il n'existe aucun périphérique associé au VLAN natif (ce qui n'est pas rare) et aucun autre port trunk (ce qui n'est pas rare non plus), la trame est abandonnée. Le VLAN natif par défaut est le VLAN 1. Lorsque vous configurez un port trunk 802.1Q, un ID de VLAN (PVID) de port par défaut se voit attribuer la valeur de l'ID du VLAN natif. Tout le trafic non étiqueté entrant par le port 802.1Q ou en sortant est transféré en fonction de la valeur PVID. Par exemple, si le VLAN 99 est configuré en tant que VLAN natif, le PVID est 99 et tout le trafic non étiqueté est transféré au VLAN 99. Si le VLAN natif n'a pas été reconfiguré, la valeur PVID est définie sur le VLAN 1. </p>
+<p></p>
+<p>Dans la figure, le PC1 est connecté via un concentrateur à une liaison trunk 802.1Q. Le PC1 envoie le trafic non étiqueté que les commutateurs associent au VLAN natif configuré sur les ports trunk et le transfère en conséquence. Le trafic étiqueté sur le trunk que reçoit le PC1 est abandonné. Ce scénario témoigne d'une conception réseau médiocre pour plusieurs raisons : elle utilise un concentrateur, un hôte est connecté à une liaison trunk et les commutateurs sont équipés de ports d'accès affectés au VLAN natif. Cependant, il illustre la volonté de se servir des VLAN natifs comme d'un moyen de prendre en charge les scénarios existants selon la norme IEEE 802.1Q.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.4.1.2 Redondance de routeur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.4.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de redondance au premier saut</h1>
+        <h2>Concept de protocoles de redondance au premier saut</h2>
+      </div>
+      <div id="content">
+<p>L'un des moyens permettant d'éliminer un point de défaillance unique au niveau de la passerelle par défaut consiste à implémenter un routeur virtuel. Pour implémenter ce type de redondance de routeur, plusieurs routeurs sont configurés pour un fonctionnement conjoint, de manière à présenter l'illusion d'un routeur unique au regard des hôtes du LAN, comme illustré dans la figure. En partageant une adresse IP et une adresse MAC, plusieurs routeurs peuvent jouer le rôle d'un routeur virtuel unique.</p>
+<p></p>
+<p>L’adresse IP du routeur virtuel est configurée comme passerelle par défaut pour les stations de travail sur un segment IP spécifique. Lorsque les trames sont envoyées par les périphériques hôtes vers la passerelle par défaut, ces hôtes utilisent le protocole ARP pour résoudre l'adresse MAC associée à l'adresse IP de la passerelle par défaut. La résolution ARP renvoie l’adresse MAC du routeur virtuel. Les trames envoyées à l'adresse MAC du routeur virtuel peuvent alors être traitées physiquement par le routeur actif, au sein du groupe de routeurs virtuel. Un protocole est utilisé pour identifier au moins deux routeurs comme périphériques chargés de traiter les trames envoyées à l’adresse MAC ou à l’adresse IP d’un routeur virtuel unique. Les périphériques hôtes transmettent le trafic à l’adresse du routeur virtuel. Le routeur physique qui réachemine ce trafic est transparent pour les périphériques hôtes.</p>
+<p></p>
+<p>Un protocole de redondance offre le mécanisme nécessaire pour déterminer quel routeur doit être actif dans le réacheminement du trafic. Il détermine également quand le rôle de réacheminement doit être repris par un routeur en veille. La transition d’un routeur de transfert à un autre est transparente pour les périphériques finaux.</p>
+<p></p>
+<p>La capacité d'un réseau à effectuer une reprise dynamique après la défaillance d'un périphérique jouant le rôle de passerelle par défaut est appelée « redondance au premier saut ».</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

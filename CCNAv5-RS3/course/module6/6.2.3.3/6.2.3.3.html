@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.3.3 Vérification des routes OSPF</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du routage OSPF à zones multiples</h1>
+        <h2>Vérification du protocole OSPF à zones multiples</h2>
+      </div>
+      <div id="content">
+<p>La commande la plus couramment utilisée pour vérifier une configuration OSPF à zones multiples est <span class="cmd"><b>show ip route</b></span>. Ajoutez le paramètre <span class="cmd"><b>ospf</b></span> pour afficher uniquement les informations relatives à OSPF.</p>
+<p></p>
+<p>La Figure 1 présente la table de routage de R1. Notez que les entrées <b>O IA</b> de la table de routage identifient les réseaux appris au niveau des autres zones. En particulier,<b> O </b>représente les routes OSPF et <b>IA</b> les routes interzones, c'est-à-dire les routes provenant d'une autre zone. Souvenez-vous que le routeur R1 se situe dans la zone 0, et que les sous-réseaux 192.168.1.0 et 192.168.2.0 sont connectés à R3 dans la zone 2. L'entrée [110/1295] de la table de routage représente la distance administrative attribuée à OSPF (<span class="cmd">110</span>) et le coût total des routes (coût égal à <span class="cmd">1295</span>).</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 2 pour vérifier la table de routage de R2 et R3, à l'aide de la commande <span class="cmd"><b>show ip route ospf</b></span>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.0.1.2 Exercice – L&#x0027;Internet of Everything (IoE)</title>
+    <!-- Activity -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adressage IP</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Internet of Everything (IoE)</b>
+</p>
+<p></p>
+<p>Si la nature, le trafic, le transport, les réseaux et l'exploration de l'espace dépendent du partage des informations numériques, comment ces informations peuvent-elles être identifiées de la source à la destination ?</p>
+<p></p>
+<p>Dans cet exercice, vous commencerez à réfléchir aux composants de l'IoE, mais également à l'adressage de tous les éléments dans cet univers !</p>
+<p></p>
+<p>
+<ul>
+<li>Lisez les blogs/actualités fournis par John Chambers concernant l'Internet of Everything – IoE –<a href="http://blogs.cisco.com/news/internet-of-everything-2" target="_blank"> http://blogs.cisco.com/news/internet-of-everything-2</a>. Regardez la vidéo au milieu de cette page.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Ensuite, rendez-vous sur la page principale de l'IoE –<a href="http://www.cisco.com/web/tomorrow-starts-here/index.html" target="_blank"> http://www.cisco.com/web/tomorrow-starts-here/index.html</a>. Cliquez sur une catégorie qui vous intéresse.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Consultez la vidéo, le blog ou le fichier PDF correspondant à la catégorie qui vous intéresse.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Écrivez 5 questions ou commentaire sur ce que vous avez vu ou lu. Partagez ensuite ces remarques avec la classe.</li>
+</ul>
+</p>
+<p></p>
+<p></p>
+<p>
+<a href="../../files/8.0.1.2%20Activity%20-%20Modeling%20the%20Internet%20of%20Everything%20_IoE.pdf" target="_blank">Exercice en classe – L'Internet of Everything (IoE) : instructions</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Affectation d'interfaces à une zone&nbsp;OSPF  </b>]]></text>
+</component>
+<component id="ID_s2_title">
+  <text><![CDATA[<b>Affectation d'interfaces à une zone&nbsp;OSPF avec quatre zéros  </b>]]></text> 
+  </component>
+<component id="ID_s3_title">
+  <text><![CDATA[<b>Annonce de réseaux dans OSPF  </b>]]></text> 
+  </component>
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+<component id="ID_s3_SC01" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b> *** </b><font face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> ]]></feedback>		
+		<existingcommands><![CDATA[<font face="Arial"><b><ul><li>Passez en mode de configuration du routeur OSPF en utilisant l'ID de processus 10.  </li><li>Annoncez les réseaux connectés à R2 avec le masque générique approprié de la zone&nbsp;0 (area 0).  </li><li>Retournez au mode d'exécution privilégié lorsque vous avez terminé.  </li>  </b></ul></font>]]></existingcommands>
+		<command prompt="R2(config)#">
+		    <correctresponse><![CDATA[router ospf 10]]></correctresponse>
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[network 172.16.2.0 0.0.0.255 area 0]]></correctresponse>
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[network 172.16.3.0 0.0.0.3 area 0]]></correctresponse>
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[network 192.168.10.8 0.0.0.3 area 0]]></correctresponse>
+			<deviceresponse><![CDATA[<font face='Courier New' fontSize="10">R2(config-router)#<br>*Mar 25 21:19:21,938: %OSPF-5-ADJCHG: Process 10, Nbr 1.1.1.1 on Serial0/0/0 from LOADING to FULL, Loading Done</font>]]></deviceresponse> 
+		</command>
+		<command prompt="R2(config-router)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+			<deviceresponse><![CDATA[<font face='Courier New' fontSize="10">R2#</font>]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial"><b>Vous configurez maintenant R3&nbsp;:<ul><li>Passez en mode de configuration du routeur OSPF en utilisant l'ID de processus 10.<li>Utilisez l'instruction network pour activer les interfaces utilisées par OSPF pour annoncer les réseaux.<li>Retournez au mode d'exécution privilégié lorsque vous avez terminé.</ul>  </b>]]></instruction>			
+		</command>
+		<command prompt="R3(config)#">
+		    <correctresponse><![CDATA[router ospf 10]]></correctresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[network 192.168.1.1 0.0.0.0 area 0]]></correctresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[network 192.168.10.6 0.0.0.0 area 0]]></correctresponse>
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[network 192.168.10.10 0.0.0.0 area 0]]></correctresponse>
+			<deviceresponse><![CDATA[<font face='Courier New' fontSize="10">R3(config-router)#<br>*Mar 26 14:00:55,183: %OSPF-5-ADJCHG: Process 10, Nbr 1.1.1.1 on Serial0/0/0 from LOADING to FULL, Loading Done<br>*Mar 26 14:00:55,243: %OSPF-5-ADJCHG: Process 10, Nbr 2.2.2.2 on Serial0/0/1 from LOADING to FULL, Loading Done</font>]]></deviceresponse> 
+		</command>
+		<command prompt="R3(config-router)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+			<deviceresponse><![CDATA[<font face='Courier New' fontSize="10">R3#</font>]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial" class="syntaxBottomLine"><b>Vous avez correctement annoncé les réseaux OSPF.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+  
+</textcomponents>

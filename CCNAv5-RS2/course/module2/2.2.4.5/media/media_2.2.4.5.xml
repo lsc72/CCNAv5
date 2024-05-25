@@ -1,0 +1,98 @@
+﻿<textcomponents> <!--Slide 1-->
+<component id="ID_s1_title">
+<text><![CDATA[<b>Paramètres par défaut de la sécurité des ports</b>]]></text>
+</component>
+
+<component id="ID_table">
+<text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4'>
+<tr class="mtable_top">
+<td colspan='2' bgcolor='#0E6360' class="mtable_top"><font size='1' color='#0E6360'><span style="color:#98D3D1">.</span></font></td>
+</tr>
+<tr>
+<td bgcolor='#077A77' valign="top"><font color='#ffffff'><b>Caractéristique</b></font></td>
+<td bgcolor='#077A77' valign="top"><font color='#ffffff'><b>Paramètre par défaut</b></font></td>
+</tr>
+<tr>
+<td bgcolor='#FFFFFF'>Sécurité des ports</td>
+<td bgcolor='#FFFFFF'>Désactivée sur un port</td>
+</tr>
+<tr>
+<td bgcolor='#EFF8F7'>Nombre maximal d'adresses MAC sécurisées</td>
+<td bgcolor='#EFF8F7'>1</td>
+</tr>
+<tr>
+<td bgcolor='#FFFFFF'>Mode de violation</td>
+<td bgcolor='#FFFFFF'>Shutdown. Le port est désactivé en cas de dépassement du nombre maximal d'adresses MAC sécurisées.</td>
+</tr>
+<tr>
+<td bgcolor='#EFF8F7'>Apprentissage des adresses rémanentes</td>
+<td bgcolor='#EFF8F7'>Désactivé</td>
+</tr>
+</table>]]></text>
+</component> <!--Slide 2-->
+<component id="ID_s2_title">
+<text><![CDATA[<b>Configuration de la sécurité du port dynamique</b>]]></text>
+</component> 
+
+<component id="ID_s2_table">
+<text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4'>
+<tr>
+<td colspan='2' bgcolor='#98d3d1'><font size='11' class="font11px" color='#1c3635'><b>Commandes de l'interface en ligne de commande de Cisco&nbsp;IOS</b></font></td>
+</tr>
+<tr class="mtable_top">
+<td colspan='2' bgcolor='#0E6360' class="mtable_top"><font size='1' color='#0E6360'><span style="color:#98D3D1">.</span></font></td>
+</tr>
+
+<tr>
+<td bgcolor='#FFFFFF' width='160'>Spécifiez l'interface à configurer pour la sécurité des ports.</td>
+<td bgcolor='#FFFFFF'><font face="courier new">S1(config)# <b>interface fastethernet 0/18</b></font></td>
+</tr>
+
+<tr>
+<td bgcolor='#EFF8F7'>Définissez le mode d'interface sur le mode d'accès.</td>
+<td bgcolor='#EFF8F7'><font face="courier new">S1(config-if)# <b>switchport mode access</b></font></td>
+</tr>
+
+<tr>
+<td bgcolor='#FFFFFF'>Activez la sécurité des ports sur l'interface.</td>
+<td bgcolor='#FFFFFF'><font face="courier new">S1(config-if)# <b>switchport port-security</b></font></td>
+</tr>
+
+</table>]]></text>
+
+</component> <!--Slide 3-->
+<component id="ID_s3_title">
+<text><![CDATA[<b>Configuration de la sécurité des ports rémanents</b>]]></text>
+</component>
+
+
+<component id="ID_s3_table">
+<text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4'>
+<tr>
+<td colspan='2' bgcolor='#98d3d1'><font size='11' class="font11px" color='#1c3635'><b>Commandes de l'interface en ligne de commande de Cisco&nbsp;IOS</b></font></td>
+</tr>
+<tr class="mtable_top">
+<td colspan='2' bgcolor='#0E6360' class="mtable_top"><font size='1' color='#0E6360'><span style="color:#98D3D1">.</span></font></td></tr>
+<tr>
+<td bgcolor='#FFFFFF' width='160'>Spécifiez l'interface à configurer pour la sécurité des ports.</td>
+<td bgcolor='#FFFFFF'><font face="Courier New">S1(config)# <b>interface fastethernet 0/19</b></font></td>
+</tr>
+<tr>
+<td bgcolor='#EFF8F7'>Définissez le mode d'interface sur le mode d'accès.</td>
+<td bgcolor='#EFF8F7'><font face="courier new">S1(config-if)# <b>switchport mode access</b></font></td>
+</tr>
+<tr>
+<td bgcolor='#FFFFFF'>Activez la sécurité des ports sur l'interface.</td>
+<td bgcolor='#FFFFFF'><font face="courier new">S1(config-if)# <b>switchport port-security</b></font></td>
+</tr>
+<tr>
+<td bgcolor='#EFF8F7'>Définissez le nombre maximal d'adresses sécurisées autorisées sur le port.</td>
+<td bgcolor='#EFF8F7'><font face="courier new">S1(config-if)# <b>switchport port-security maximum 50</b></font></td>
+</tr>
+<tr>
+<td bgcolor='#FFFFFF'>Activez l'apprentissage rémanent.</td>
+<td bgcolor='#FFFFFF'><font face="courier new">S1(config-if)# <b>switchport port-security mac-address sticky</b></font></td>
+</tr></table>]]></text>
+</component> 
+
+</textcomponents>

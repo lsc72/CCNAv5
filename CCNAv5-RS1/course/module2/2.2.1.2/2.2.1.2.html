@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.1.2 Noms de périphériques</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Bases</h1>
+        <h2>Noms d&#x0027;hôtes</h2>
+      </div>
+      <div id="content">
+<p>Lors de la configuration d'un périphérique réseau, l'une des premières étapes est la configuration d'un nom de périphérique unique, ou nom d'hôte. Les noms d'hôte apparaissent dans les invites de la CLI, peuvent être utilisés dans différents processus d'authentification entre les périphériques et doivent être utilisés dans les diagrammes de topologie.</p>
+<p></p>
+<p>Les noms d'hôtes sont configurés sur le périphérique réseau actif. Si le nom du périphérique n'est pas explicitement configuré, un nom de périphérique par défaut est utilisé par Cisco IOS. Le nom par défaut d'un commutateur Cisco IOS est « Switch ». </p>
+<p></p>
+<p>Imaginez un interréseau disposant de plusieurs commutateurs portant le nom par défaut « Switch » (comme illustré sur la figure). Il en résulterait une grande confusion lors de la configuration et de la maintenance du réseau. En accédant à un périphérique distant avec une connexion SSH, il est important d'être sûr que vous êtes connecté au périphérique approprié. Si tous les périphériques ont conservé leurs noms par défaut, il est difficile d'identifier le bon périphérique.</p>
+<p></p>
+<p>En revanche, si vous choisissez et notez les noms intelligemment, vous n'aurez aucune peine à mémoriser, expliquer et utiliser les noms des périphériques réseau. Pour nommer les périphériques de façon cohérente et utile, il est nécessaire d'établir une convention d'attribution de noms applicable dans toute l'entreprise ou tout au moins à l'emplacement géographique des périphériques. Il est conseillé de créer la convention d'attribution de noms en même temps que le schéma d'adressage afin d'assurer l'homogénéité au sein de l'entreprise. </p>
+<p></p>
+<p>Les conventions d'attribution des noms doivent par exemple imposer que ceux-ci :</p>
+<p>
+<ul>
+<li>Commencent par une lettre</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Ne contiennent pas d'espaces</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Se terminent par une lettre ou un chiffre</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Ne comportent que des lettres, des chiffres et des tirets</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Comportent moins de 64 caractères</li>
+</ul>
+</p>
+<p></p>
+<p>IOS distingue les majuscules des minuscules dans les noms d'hôte utilisés pour les périphériques. Vous pouvez donc utiliser des majuscules comme vous le feriez normalement pour un nom. Contrairement à IOS, la plupart des systèmes d'attribution de noms Internet ne font aucune distinction entre majuscules et minuscules. </p>
+<p></p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

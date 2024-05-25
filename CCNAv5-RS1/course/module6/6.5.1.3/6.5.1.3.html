@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.5.1.3 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.5.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>La couche réseau, ou couche 3 du modèle OSI, fournit des services permettant aux périphériques finaux d'échanger des données sur le réseau. Pour effectuer ce transport de bout en bout, la couche réseau utilise quatre fonctions de base : l'adressage IP pour les périphériques finaux, l'encapsulation, le routage et la désencapsulation.</p>
+<p></p>
+<p>Internet repose essentiellement sur l'IPv4, qui est toujours le protocole de couche réseau le plus répandu. Un paquet IPv4 contient l'en-tête IP et les données utiles. Cependant, l'IPv4 a un nombre limité d'adresses IP publiques uniques. Cela a conduit au développement de la version 6 du protocole IP (IPv6). L'en-tête simplifié IPv6 offre plusieurs avantages par rapport à l'IPv4, y compris une meilleure efficacité du routage, des en-têtes d'extension simplifiés et le traitement par flux. En outre, les adresses IPv6 sont basées sur un adressage hiérarchique 128 bits (32 bits pour l'IPv4). Cela augmente considérablement le nombre d'adresses IP disponibles.</p>
+<p></p>
+<p>En plus de gérer l'adressage hiérarchique, la couche réseau est également responsable du routage.</p>
+<p></p>
+<p>Les hôtes ont besoin d'une table de routage locale pour s'assurer que les paquets sont dirigés vers le réseau de destination correct. La table locale d'un hôte contient généralement la connexion directe, la route de réseau local et la route locale par défaut. La route locale par défaut est la route à la passerelle par défaut.</p>
+<p></p>
+<p>La passerelle par défaut est l'adresse IP d'une interface de routeur connectée au réseau local. Lorsqu'un hôte doit transmettre un paquet vers une adresse de destination qui n'est pas sur le même réseau que l'hôte, le paquet est envoyé à la passerelle par défaut. </p>
+<p></p>
+<p>Lorsqu'un routeur, tel que la passerelle par défaut, reçoit un paquet, il examine l'adresse IP de destination pour déterminer le réseau de destination. La table de routage d'un routeur stocke des informations sur les routes connectées directement et les routes distantes vers les réseaux IP. Si le routeur possède une entrée dans sa table de routage correspondant au réseau de destination, le routeur transfère le paquet. S'il n'existe aucune entrée de routage, le routeur peut transférer le paquet vers sa propre route par défaut, si elle est configurée, ou il abandonne le paquet.</p>
+<p></p>
+<p>Les entrées de la table de routage peuvent être configurées manuellement sur chaque routeur pour fournir le routage statique, ou les routeurs peuvent se transmettre les informations concernant les routes de manière dynamique à l'aide d'un protocole de routage.</p>
+<p></p>
+<p>Pour que les routeurs soient accessibles, l'interface de routeur doit être configurée. Pour activer une interface spécifique, passez en mode de configuration d'interface via la commande de configuration globale <span class="cmd"><b>interface</b></span> <span class="cmd"><i>type-et-numéro</i></span>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

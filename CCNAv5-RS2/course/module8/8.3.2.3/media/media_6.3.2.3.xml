@@ -1,0 +1,85 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Configuration des adresses link-local sur R1  </b>]]></text>
+</component>
+<component id="ID_s2_title">
+  <text><![CDATA[<b>Vérification des adresses link-local sur R1 
+ </b>]]></text> 
+  </component>
+<component id="ID_s3_title">
+  <text><![CDATA[<b>Configuration d'adresses link-local  </b>]]></text> 
+  </component>
+  
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+
+  <component id="ID_SC3" fontFace='Courier New'  fontSize="10">
+		<feedback id="fb"><![CDATA[<b> *** </b><font face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font  face="Arial"><b>Configurez l'adresse link-local fe80::2 sur chaque interface dans l'ordre suivant&nbsp;:<ul><li>GigabitEthernet0/0<li>Serial0/0/0<li>Serial0/0/1<li>Retournez au mode d'exécution privilégié lorsque vous avez terminé.</ul>  </b></font>]]></existingcommands>
+		<command prompt="R2(config)#">
+		    <correctresponse><![CDATA[interface GigabitEthernet0/0]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)#">
+		    <correctresponse><![CDATA[ipv6 address fe80::2 link-local]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)#">
+		    <correctresponse><![CDATA[interface Serial0/0/0]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)#">
+		    <correctresponse><![CDATA[ipv6 address fe80::2 link-local]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)#">
+		    <correctresponse><![CDATA[interface Serial0/0/1]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)#">
+		    <correctresponse><![CDATA[ipv6 address fe80::2 link-local]]></correctresponse>
+		</command>
+		<command prompt="R2(config-if)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+			<instruction><![CDATA[<font  face="Arial"><b>Affichez le récapitulatif des statuts IPv6 des interfaces.  </b>]]></instruction>
+			</command>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ipv6 interface brief]]></correctresponse>
+			<deviceresponse><![CDATA[<br><font  face="Courier New">Em0/0 [administratively down/down] <br>    unassigned <br>GigabitEthernet0/0 [up/up] <br>    FE80::2 <br>    2001:DB8:CAFE:2::1 <br>GigabitEthernet0/1 [administratively down/down] <br>    unassigned <br>Serial0/0/0 [up/up] <br>    FE80::2 <br>    2001:DB8:CAFE:A001::2 <br>Serial0/0/1 [up/up] <br>    FE80::2 <br>    2001:DB8:CAFE:A002::1 <br>R2#</font>]]></deviceresponse> 
+			<instruction><![CDATA[<font  face="Arial"><b>Vous configurez à présent le routeur&nbsp;R3.<br />Configurez l'adresse link-local fe80::3 sur chaque interface dans l'ordre suivant&nbsp;:<br /> GigabitEthernet0/0<br /> Serial0/0/0<br /> Serial0/0/1<br /> Retourner au mode d'exécution privilégié à la fin  </b>]]></instruction>
+		</command>
+		<command prompt="R3(config)#">
+		    <correctresponse><![CDATA[interface GigabitEthernet0/0]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[ipv6 address fe80::3 link-local]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[interface Serial0/0/0]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[ipv6 address fe80::3 link-local]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[interface Serial0/0/1]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[ipv6 address fe80::3 link-local]]></correctresponse>
+		</command>
+		<command prompt="R3(config-if)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+			<instruction><![CDATA[<font  face="Arial"><b>Affichez le récapitulatif des statuts IPv6 des interfaces.  </b>]]></instruction>
+			</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ipv6 interface brief]]></correctresponse>
+			<deviceresponse><![CDATA[<br><font  face="Courier New">Em0/0 [administratively down/down] <br>    unassigned <br>GigabitEthernet0/0 [up/up] <br>    FE80::3 <br>    2001:DB8:CAFE:3::1 <br>GigabitEthernet0/1 [administratively down/down] <br>    unassigned <br>Serial0/0/0 [up/up] <br>    FE80::3 <br>    2001:DB8:CAFE:A003::2 <br>Serial0/0/1 [up/up] <br>    FE80::3 <br>    2001:DB8:CAFE:A002::2 <br>R3#</font>]]></deviceresponse> 
+			<instruction><![CDATA[<font  face="Arial" class="syntaxBottomLine"><b>Vous avez correctement configuré les adresses link-local.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+</textcomponents>

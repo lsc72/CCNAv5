@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.1.1 Attaque par usurpation du commutateur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité et conception de VLAN</h1>
+        <h2>Attaques VLAN</h2>
+      </div>
+      <div id="content">
+<p>Il existe différents types d'attaque VLAN dans les réseaux commutés modernes. L'architecture VLAN simplifie la maintenance du réseau et améliore les performances, mais elle peut également ouvrir la voie aux excès. Il est important de comprendre la méthodologie générale sous-tendant ces attaques et les principales approches permettant de les limiter.</p>
+<p></p>
+<p>Le saut de VLAN permet à un VLAN de voir le trafic en provenance d'un autre VLAN. L'usurpation de commutateur est un type d'attaque par saut de VLAN tirant parti d'un port trunk configuré de manière incorrecte. Par défaut, les ports trunk ont accès à tous les VLAN et acheminent le trafic de plusieurs VLAN sur la même liaison physique, généralement entre des commutateurs. </p>
+<p></p>
+<p>Dans la figure, cliquez sur le bouton Lecture pour voir l'animation illustrant une attaque d'usurpation de commutateur.</p>
+<p></p>
+<p>Dans une attaque de base d'usurpation de commutateur, le pirate tire parti du fait que la configuration par défaut du port du commutateur est dynamique automatique. Il configure un système afin de se faire passer pour un commutateur. Cette usurpation exige que le pirate soit capable d'émuler 802.1Q et les messages DTP. En amenant un commutateur à penser qu'un autre commutateur tente de former un trunk, un pirate peut accéder à tous les VLAN autorisés sur le port trunk. </p>
+<p></p>
+<p>Le meilleur moyen d'éviter une attaque de base d'usurpation de commutateur est de désactiver le trunking sur tous les ports, excepté ceux qui le requièrent spécifiquement. Sur les ports de trunking requis, désactivez DTP, puis activez manuellement le trunk.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

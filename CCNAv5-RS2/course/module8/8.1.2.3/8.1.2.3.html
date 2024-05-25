@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.2.3 Paquet Hello</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Caractéristiques du protocole OSPF</h1>
+        <h2>Messages OSPF</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Paquet Hello</b>
+</p>
+<p>Le paquet de type 1 du protocole OSPF correspond au paquet Hello. Les paquets Hello sont utilisés pour :</p>
+<p>
+<ul>
+<li>Détecter les voisins OSPF et établir des contiguïtés</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Annoncer les paramètres sur lesquels les deux routeurs doivent s'accorder pour devenir voisins</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Définir le routeur désigné (DR) et le routeur désigné de secours (BDR) sur les réseaux à accès multiple, de type Ethernet et Frame Relay Les liens point-à-point ne nécessitent pas de routeur DR ou BDR.</li>
+</ul>
+</p>
+<p></p>
+<p>La figure affiche les champs contenus dans les paquets Hello de type 1. Les champs importants indiqués dans le schéma incluent :</p>
+<p>
+<ul>
+<li>
+<b>Type</b> - Identifie le type de paquet. Un (1) indique un paquet Hello. La valeur 2 identifie un paquet DBD, 3 un paquet LSR, 4 un paquet LSU et 5 un paquet LSAck.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>ID du routeur</b> - Valeur 32 bits exprimée en notation décimale à point (une adresse IPv4) utilisée pour identifier le routeur d'origine de façon unique.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>ID de zone </b>- Zone d'où provient le paquet. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Masque réseau</b> - Masque de sous-réseau associé à l'interface émettrice.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Intervalle Hello</b> - Indique la fréquence en secondes à laquelle un routeur envoie des paquets Hello. L'intervalle Hello par défaut sur des réseaux à accès multiple est de 10 secondes. Ce minuteur doit être identique sur les routeurs voisins. Dans le cas contraire, aucune contiguïté n'est établie.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Priorité du routeur -</b> Utilisé dans une sélection DR/BDR. La priorité par défaut pour tous les routeurs OSPF correspond à 1, mais elle peut être changée manuellement en une valeur comprise entre 0 et 255. Plus la valeur est élevée, plus le routeur devient le routeur désigné sur le lien.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Intervalle Dead</b> - Durée en secondes pendant laquelle le routeur attend des informations d'un voisin avant de le déclarer hors service. Par défaut, l'intervalle Dead du routeur est quatre fois plus long que l'intervalle Hello. Ce minuteur doit être identique sur les routeurs voisins. Dans le cas contraire, aucune contiguïté n'est établie.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Routeur désigné (DR)</b> - ID du routeur désigné.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Routeur désigné de secours (BDR)</b> - ID du routeur désigné de secours.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Liste des voisins</b> - Liste qui identifie les ID de routeur de tous les routeurs adjacents. </li>
+</ul>
+</p>
+<p></p>
+<p>Cliquez sur chacun des champs en surbrillance dans la figure pour plus d'informations.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

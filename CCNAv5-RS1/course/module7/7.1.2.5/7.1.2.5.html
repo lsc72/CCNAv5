@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.2.5 Séparation de communications multiples</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole de couche Transport</h1>
+        <h2>Présentation des protocoles TCP et UDP</h2>
+      </div>
+      <div id="content">
+<p>La couche transport doit pouvoir segmenter et gérer plusieurs communications ayant différentes exigences relatives au transport. Prenons comme exemple un utilisateur connecté à un réseau sur un périphérique final. L'utilisateur envoie et reçoit simultanément des e-mails et des messages instantanés, consulte des sites Web et passe un appel VoIP. Chacune de ces applications envoie des données sur le réseau et en reçoit simultanément, et ce malgré leurs différents besoins en termes de fiabilité. De plus, les données de l'appel VoIP ne sont pas orientées vers le navigateur Web et le texte des messages instantanés ne finit pas dans un e-mail.</p>
+<p></p>
+<p>Pour garantir la fiabilité, les utilisateurs ont besoin que les e-mails et les pages Web soient intégralement reçus et traités, afin que les informations soient considérées comme utiles. De légers retards dans le chargement des e-mails ou des pages Web sont généralement acceptables, tant que les produits finis s'affichent dans leur intégralité et correctement. Dans cet exemple, le réseau gère la réexpédition ou le remplacement des informations manquantes, et n'affiche pas le produit fini jusqu'à ce que tout soit reçu et correctement assemblé.</p>
+<p></p>
+<p>Dans le cas d'une conversation téléphonique, l'absence de quelques mots peut par contre être considérée comme acceptable. Même si certaines petites parties de quelques mots sont manquées, il est possible de déduire les mots manquants en fonction du contexte de la conversation ou de demander à l'autre interlocuteur de répéter ce qui a été dit. Cela est considéré comme étant préférable aux retards causés si le réseau devait gérer et renvoyer les segments manquants. Dans notre exemple, c'est l'utilisateur, et non le réseau, qui gère la réexpédition ou la reconstitution des informations manquantes.</p>
+<p></p>
+<p>Comme l'illustre la figure, pour que les protocoles TCP et UDP gèrent ces conversations simultanées avec des besoins variables, les services TCP et UDP doivent surveiller les différentes applications en train de communiquer. Pour différencier les segments et les datagrammes de chaque application, les protocoles TCP et UDP utilisent chacun des champs d'en-tête identifiant ces applications de façon unique. Ces identificateurs uniques sont les numéros de port.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

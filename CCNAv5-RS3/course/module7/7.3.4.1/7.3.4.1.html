@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.4.1 Finite State Machine (FSM) DUAL</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1> Fonctionnement du protocole EIGRP</h1>
+        <h2>Algorithme DUAL et convergence</h2>
+      </div>
+      <div id="content">
+<p>L’élément principal d’EIGRP est l’algorithme DUAL et son moteur de calcul de route EIGRP. Le nom réel de cette technologie est « Finite State Machine (FSM) DUAL ». Elle contient toute la logique utilisée pour calculer et comparer les routes dans un réseau EIGRP. La figure montre une version simplifiée de la machine FSM DUAL. </p>
+<p></p>
+<p>Une machine FSM est une machine abstraite, pas un dispositif mécanique avec des pièces mobiles. Les FSM définissent un ensemble d’états possibles que peut prendre un objet, les événements à l’origine de ces états et les événements résultant de ces états. Les concepteurs utilisent les machines FSM pour décrire le comportement d'un périphérique, d'un programme informatique ou d'un algorithme de routage face à une série d'événements de saisie. </p>
+<p></p>
+<p>Les machines FSM sortent du cadre de ce cours. Toutefois, le concept permet d'examiner certains résultats de la machine FSM EIGRP à l'aide de la commande<span class="cmd"><b> debug eigrp fsm</b></span>. Utilisez cette commande pour examiner le comportement de DUAL lorsqu'une route est supprimée de la table de routage.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

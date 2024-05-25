@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.1.5 Commutation multicouche</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sélection des périphériques réseau</h1>
+        <h2>Matériel de commutation</h2>
+      </div>
+      <div id="content">
+<p>Les commutateurs multicouches sont généralement déployés dans les couches de distribution et cœur de réseau du réseau commuté d'une organisation. Ces commutateurs présentent les caractéristiques suivantes : ils peuvent établir une table de routage, prendre en charge quelques protocoles de routage et réacheminer des paquets IP à un débit proche de celui du réacheminement de couche 2. Les commutateurs multicouches prennent souvent en charge du matériel spécialisé, tels que des circuits intégrés spécifiques (ASIC, Application Specific Integrated Circuits). Les ASIC, associés à des structures de données logicielles dédiées, peuvent rationaliser le réacheminement de paquets IP indépendamment du processeur.</p>
+<p></p>
+<p>L'évolution actuelle des réseaux s'oriente vers un environnement commuté de couche 3 pure. Lors des premières utilisations de commutateurs dans des réseaux, aucun commutateur ne prenait en charge le routage ; aujourd'hui, presque tous les commutateurs le font. Il est probable que tous les commutateurs incorporeront bientôt un processeur de routage, car ce coût diminue par rapport à d'autres contraintes. Le terme de commutateur multicouche deviendra finalement redondant.</p>
+<p></p>
+<p>Comme illustré par la figure, le commutateur Catalyst 2960 montre la migration vers un environnement de couche 3 pure. Dans les versions d'IOS antérieures à la version 15.x, ces commutateurs prenaient en charge une seule interface virtuelle commutée (SVI, switched virtual interface). Dans les versions IOS 15.x, ces commutateurs prennent désormais en charge plusieurs SVI actives. Cela signifie que le commutateur peut être accédé à distance au moyen d'adresses IP multiples sur des réseaux distincts.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

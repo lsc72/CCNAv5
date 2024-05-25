@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+
+<slide type="MBAR">
+		<element type="TEXT" compId="ID_title01" subType="TITLE" />	
+	<slide>
+		<element type="ROUTER" textId="ID_router_txt1" x="0" y="90" width="430" height="200" />
+	</slide>
+
+
+	<slide>
+		<element type="ROUTER" textId="ID_router_txt2" x="0" y="90" width="430" height="200" />	
+		<element type="TEXT" compId="ID_s2_txt01" x="285.2" y="163.15" width="123.55" expand="up+down" align="left" class="orangeCallOut" style="z-index:999"/>
+		<element type="TEXT" textId="arrow" x="238.2" y="133.5" width="64.2" height="93.15" style="z-index:998"/>
+	</slide>
+	
+<text id="ID_router_txt1"><![CDATA[<pre>
+R1(config)#<b>interface gigabitethernet 0/0</b>
+R1(config-if)#<b>ipv6 address fe80::1 ?</b>
+  link-local  Use link-local address
+
+R1(config-if)#<b>ipv6 address fe80::1 link-local</b>
+R1(config-if)#<b>exit</b>
+R1(config)#<b>interface gigabitethernet 0/1</b>
+R1(config-if)#<b>ipv6 address fe80::1 link-local</b>
+R1(config-if)#<b>exit</b>
+R1(config)#<b>interface serial 0/0/0</b>
+R1(config-if)#<b>ipv6 address fe80::1 link-local</b>
+R1(config-if)#
+</pre>]]></text>
+
+<text id="ID_router_txt2"><![CDATA[<pre>
+R1#show ipv6 interface brief
+GigabitEthernet0/0     [up/up]
+    <span> FE80::1                    </span>
+    2001:DB8:ACAD:1::1
+GigabitEthernet0/1     [up/up]
+    <span> FE80::1                    </span>
+    2001:DB8:ACAD:2::1
+Serial0/0/0            [up/up]
+    <span> FE80::1                    </span>
+    2001:DB8:ACAD:3::1
+Serial0/0/1            [administratively down/down]
+    unassigned
+R1#
+</pre>]]></text>		
+		
+<text id="arrow"><![CDATA[<img src="arrow.png" width="64" height="84">]]></text>
+
+</slide>
+	
+
+</data>
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.4.5 Trames LAN et WAN</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.4.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Contrôle d&#x0027;accès au support</h1>
+        <h2>Trame liaison de données</h2>
+      </div>
+      <div id="content">
+<p>Dans un réseau TCP/IP, tous les protocoles de couche 2 OSI fonctionnent avec le protocole IP sur la couche OSI 3. Cependant, le protocole de couche 2 utilisé dépend de la topologie logique du réseau et de la mise en œuvre de la couche physique. En raison du large éventail de supports physiques utilisés sur l'ensemble des topologies de réseaux, un nombre élevé de protocoles de couche 2 est utilisé. </p>
+<p></p>
+<p>Chaque protocole effectue un contrôle d'accès au support pour les topologies logiques de couche 2 spécifiées. Cela signifie que différents périphériques réseau peuvent opérer comme des noeuds fonctionnant au niveau de la couche liaison de données lorsqu'ils mettent en oeuvre ces protocoles. Ces périphériques incluent l'adaptateur réseau ou les cartes réseau des ordinateurs, ainsi que les interfaces des routeurs et les commutateurs de couche 2.</p>
+<p></p>
+<p>Le protocole de couche 2 utilisé pour une topologie réseau spécifique dépend de la technologie mettant en oeuvre cette topologie. La technologie dépend à son tour de la taille du réseau (définie par le nombre d'hôtes et l'étendue géographique) et des services à fournir sur le réseau.</p>
+<p></p>
+<p>Un réseau local fait généralement appel à une technologie de bande passante élevée capable de prendre en charge de nombreux hôtes. Cette technologie est économique en raison de l'étendue géographique relativement faible (un bâtiment ou un campus) des réseaux locaux et de leur densité élevée d'utilisateurs.</p>
+<p></p>
+<p>Cependant, il n'est généralement pas rentable d'utiliser une technologie de bande passante élevée dans le cas de réseaux étendus couvrant de grandes zones géographiques (par exemple, une ou plusieurs villes). La capacité de la bande passante est généralement moindre en raison du coût des liaisons physiques longue distance et de la technologie utilisées pour transporter les signaux à travers ces étendues. </p>
+<p></p>
+<p>La différence de bande passante a normalement pour résultat l'utilisation de différents protocoles pour les réseaux locaux et les réseaux étendus.</p>
+<p></p>
+<p>Voici quelques protocoles courants de couche liaison de données : </p>
+<p>
+<ul>
+<li>Ethernet </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>PPP (Point-to-Point Protocol) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>802.11 sans fil</li>
+</ul>
+</p>
+<p></p>
+<p>D'autres protocoles sont abordés dans le cursus CCNA : HDLC (High-Level Data Link Control) et le relais de trames.</p>
+<p></p>
+<p>Cliquez sur Lecture pour voir des exemples de protocoles de couche 2.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

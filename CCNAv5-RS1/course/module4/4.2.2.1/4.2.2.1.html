@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.2.1 Propriétés du câblage à paires torsadées non blindées</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Supports réseau</h1>
+        <h2>Câblage à paires torsadées non blindées (UTP)</h2>
+      </div>
+      <div id="content">
+<p>Lorsqu'il est utilisé comme support réseau, le câblage à paires torsadées non blindées (UTP) se compose de quatre paires de fils à code-couleur qui ont été torsadées, puis entourées d'une gaine en plastique souple. Un câble UTP réseau est constitué de quatre paires de fils en cuivre de 22 ou 24 AGW. Il présente un diamètre extérieur d'environ 0,43 cm (0,17 pouce) et sa petite taille peut constituer un avantage lors de l'installation.</p>
+<p></p>
+<p>Le câble UTP n'utilise pas de blindage pour contrer les effets des perturbations électromagnétiques et radioélectriques. En revanche, les concepteurs de câbles se sont rendu compte qu'il était possible de limiter les effets négatifs de la diaphonie des manières suivantes :</p>
+<p>
+<ul>
+<li>
+<b>Annulation</b> : les concepteurs apparient désormais les fils du circuit. Lorsque deux fils d'un circuit électrique sont proches l'un de l'autre, leurs champs magnétiques sont exactement opposés l'un à l'autre. Par conséquent, les deux champs magnétiques s'annulent et annulent également tous les signaux extérieurs d'EMI et de RFI. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Variation du nombre de torsades par paire de fils</b> : pour renforcer l'effet d'annulation des paires de fils, les concepteurs utilisent un nombre différent de torsades pour chaque paire de fils d'un câble. Le câble UTP doit respecter des caractéristiques précises qui définissent le nombre de torsades autorisées par mètre (3,28 pieds) de câble. Sur la figure, vous observez que la paire orange/orange et blanc est moins torsadée que la paire bleu/bleu et blanc. Chaque couleur de paire présente un nombre de torsades différent.</li>
+</ul>
+</p>
+<p></p>
+<p>Le câble UTP utilise uniquement l'effet d'annulation produit par les paires de fils torsadées pour limiter la dégradation du signal et pour protéger mutuellement les paires de fils des supports réseau. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

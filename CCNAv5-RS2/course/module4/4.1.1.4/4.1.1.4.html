@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.1.4 Les routeurs interconnectent les réseaux</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration initiale d&#x0027;un routeur</h1>
+        <h2>Fonctions d&#x0027;un routeur</h2>
+      </div>
+      <div id="content">
+<p>La plupart des utilisateurs ignorent la présence de nombreux routeurs sur leur propre réseau ou sur Internet. Ils veulent pouvoir accéder aux pages Web, envoyer des e-mails et télécharger de la musique, que le serveur soit accessible sur leur propre réseau ou sur un autre réseau. Les professionnels des réseaux savent que c'est le routeur qui est responsable du transfert de paquets d'un réseau à l'autre, de la source à la destination.</p>
+<p></p>
+<p>Un routeur relie plusieurs réseaux, c'est-à-dire qu'il dispose de plusieurs interfaces appartenant chacune à un réseau IP différent. Lorsqu'un routeur reçoit un paquet IP sur une interface, il détermine quelle interface utiliser pour transférer le paquet vers sa destination. L'interface qu'utilise le routeur pour transférer le paquet peut être la destination finale, mais aussi un réseau connecté à un autre routeur utilisé pour atteindre le réseau de destination.</p>
+<p></p>
+<p>Dans l'animation de la Figure 1, les routeurs R1 et R2 assurent la réception du paquet sur un réseau et son transfert d'un autre réseau vers le réseau de destination.</p>
+<p></p>
+<p>Chaque réseau auquel un routeur se connecte nécessite généralement une interface séparée. Ces interfaces servent à accueillir une combinaison de réseaux locaux (LAN) et de réseaux étendus (WAN). Les réseaux locaux sont généralement des réseaux Ethernet comportant des périphériques tels que PC, imprimantes et serveurs. Les réseaux étendus sont utilisés pour relier des réseaux dans une zone géographique vaste. Par exemple, une connexion WAN est souvent utilisée pour relier un réseau local au réseau du fournisseur d'accès Internet (FAI).</p>
+<p></p>
+<p>Notez que chaque site de la Figure 2 requiert l'utilisation d'un routeur pour l'interconnexion à d'autres sites. Même le bureau à domicile nécessite un routeur. Dans cette topologie, le routeur situé au bureau à domicile est un périphérique spécialisé offrant plusieurs services pour le réseau domestique.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

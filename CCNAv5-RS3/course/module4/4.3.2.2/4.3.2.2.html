@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.2.2 Méthodes d&#x0027;authentification à clé partagée </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité LAN sans fil</h1>
+        <h2>Sécurisation de WLAN</h2>
+      </div>
+      <div id="content">
+<p>Comme illustré à la Figure 1, il existe trois techniques d'authentification par clé partagée :</p>
+<p>
+<ul>
+<li>
+<b>WEP (Wired Equivalent Privacy)</b> : spécification 802.11 d'origine conçue pour offrir un degré de confidentialité similaire à une connexion réseau filaire. Les données sont sécurisées à l'aide de la méthode de chiffrement RC4, par le biais d'une clé statique. Toutefois, la clé ne change jamais lors de l'échange des paquets, ce qui la rend facile à pirater. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>WPA (Wi-Fi Protected Access)</b> : norme Wi-Fi Alliance utilisant la technologie WEP, mais qui sécurise les données à l'aide d'un algorithme de chiffrement TKIP (Temporal Key Integrity Protocol) bien plus robuste. Le protocole TKIP modifie la clé pour chaque paquet, rendant très difficile son piratage. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>IEEE 802.11i/WPA2</b> : IEEE 802.11i est la norme industrielle de sécurisation des réseaux sans fil. La version Wi-Fi Alliance est appelée WPA2. Les normes 802.11i et WPA2 utilisent toutes deux l'Advanced Encryption Standard (AES) pour le chiffrement. Le mode de chiffrement AES est actuellement considéré comme étant le protocole de chiffrement le plus puissant. </li>
+</ul>
+</p>
+<p></p>
+<p>La spécification WEP n'est plus recommandée aujourd'hui. Les clés WEP partagées n'offrent pas une protection suffisamment robuste et ne doivent donc jamais être utilisées. Pour contrebalancer la faiblesse de la clé partagée WEP, la toute première approche adoptée par les entreprises a été d'essayer d'autres techniques, telles que le masquage SSID et le filtrage des adresses MAC. Mais ces techniques ne se sont pas avérées non plus suffisantes. </p>
+<p></p>
+<p>Suite au constat de faiblesse de la sécurité WEP, des mesures de sécurité provisoires ont vu le jour pendant un certain temps. Les fournisseurs comme Cisco, souhaitant répondre à la demande pour une sécurité améliorée, ont donc mis au point leurs propres systèmes tout en aidant à faire évoluer la norme 802.11i. Dans ce processus, l'algorithme de chiffrement TKIP a été créé, en liaison avec la méthode de sécurité WPA de la Wi-Fi Alliance.</p>
+<p></p>
+<p>Les réseaux sans fil modernes doivent toujours utiliser la norme 802.11i/WPA2. WPA2 est la version Wi-Fi de la norme 802.11i ; c'est pourquoi les termes WPA2 et 802.11i sont souvent utilisés de manière interchangeable.</p>
+<p></p>
+<p>Depuis 2006, tout périphérique portant le logo de certification Wi-Fi est également certifié WPA2.</p>
+<p></p>
+<p>
+<b>Remarque </b>: les réseaux Wireless-N (sans fil n) doivent utiliser le mode de sécurité WPA2-Personal (WPA2-Particulier) pour obtenir des performances optimales.</p>
+<p></p>
+<p>Le tableau présenté à la Figure 2 résume les trois méthodes d'authentification par clé partagée.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

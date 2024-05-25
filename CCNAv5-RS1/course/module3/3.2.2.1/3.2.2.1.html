@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.2.1 Suites de protocoles et normes de l&#x0027;industrie</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Normes et protocoles réseau</h1>
+        <h2>Suites de protocoles</h2>
+      </div>
+      <div id="content">
+<p>Comme nous l'avons vu, une suite de protocoles est un ensemble de protocoles qui fonctionnent ensemble pour fournir des services de communication réseau complets. Une suite de protocoles peut être définie par un organisme de normalisation ou développée par un constructeur.</p>
+<p></p>
+<p>Les protocoles IP, HTTP et DHCP font tous partie de la suite de protocoles Internet connue sous le nom de Transmission Control Protocol/IP (TCP/IP). La suite de protocoles TCP/IP est une norme ouverte, ce qui signifie que ces protocoles peuvent être utilisés gratuitement par tous et que tous les constructeurs ont la possibilité de les mettre en œuvre sur leur matériel ou leurs logiciels. </p>
+<p></p>
+<p>Les protocoles basés sur des normes sont des processus ou des protocoles qui ont été validés par le secteur des réseaux et ratifiés, ou approuvés, par un organisme de normalisation. L'utilisation de normes dans le développement et la mise en œuvre de protocoles garantit que les produits provenant de différents fabricants fonctionnent ensemble. Si un fabricant spécifique n'adhère pas strictement à un protocole, son équipement ou ses logiciels risquent de ne pas communiquer correctement avec les produits des autres fabricants. </p>
+<p></p>
+<p>Dans les communications de données, par exemple, si l'un des participants à une conversation utilise un protocole pour gérer une communication unidirectionnelle et que l'autre participant suppose qu'il s'agit d'un protocole décrivant une communication bidirectionnelle, en toute probabilité, aucune information ne sera échangée.</p>
+<p></p>
+<p>Certains protocoles sont propriétaires. Propriétaire, dans ce contexte, signifie qu'une société ou qu'un fournisseur contrôle la définition du protocole et la manière dont il fonctionne. Certains protocoles propriétaires peuvent être utilisés par différentes organisations avec l'autorisation du propriétaire. D'autres peuvent uniquement être implémentés sur du matériel fabriqué par le fournisseur propriétaire. AppleTalk et Novell NetWare sont des exemples de protocoles propriétaires.</p>
+<p></p>
+<p>Plusieurs entreprises peuvent même créer ensemble un protocole propriétaire. Il n'est pas rare qu'un constructeur (voire un groupe de constructeurs) développe un protocole propriétaire pour répondre aux besoins de ses clients, puis contribue à faire de ce protocole propriétaire une norme ouverte. Par exemple, Ethernet était un protocole propriétaire développé initialement par Bob Metcalfe au centre de recherche XEROX de Palo Alto (PARC) dans les années 1970. En 1979, Bob Metcalfe a créé sa propre entreprise, 3COM, et a collaboré avec Digital Equipment Corporation (DEC), Intel et Xerox en vue de promouvoir la norme « DIX » d'Ethernet. En 1985, l'IEEE (Institute of Electrical and Electronics Engineers) a publié la norme IEEE 802.3 qui était quasiment identique à Ethernet. Aujourd'hui, 802.3 est la norme de fait utilisée sur les réseaux locaux (LAN). Autre exemple plus récent : Cisco a ouvert le protocole de routage EIGRP sous forme de RFC informatif afin de répondre aux besoins des clients souhaitant utiliser le protocole sur un réseau multifournisseur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

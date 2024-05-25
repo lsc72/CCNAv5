@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		<slide>
+			<element type="ROUTER" textId="ID_router_txt1" x="5.85" y="57.95" width="428" height="78.85" />
+			<element type="TEXT" subType="TABLE" compId="ID_s1_table" x="5.45" y="143.8" width="426" height="320" class="mtable"/>
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+		</slide>
+
+
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+			<element type="ACTIVITY" subType="SYNTAX" compId="ID_s2_SC5" x="0.35" y="30" width="434.75" height="351.8" size="10" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+		</slide>
+
+
+		<slide>
+			<element type="ROUTER" textId="ID_router_txt2" x="5.85" y="57.95" width="428" height="76.85" />
+			
+			<element type="ROUTER" textId="ID_router_txt3" x="5.85" y="141.95" width="428" height="76.75" />
+			
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+		</slide> 
+		
+		<text id="ID_router_txt1"><![CDATA[<pre>R1(config)#<b> interface s0/0/0</b>
+R1(config-if)#<b> ip hello-interval eigrp 1 50</b>
+R1(config-if)#<b> ip hold-time eigrp 1 150</b></pre>]]></text>
+		
+		<text id="ID_router_txt2"><![CDATA[<pre>R1(config)#<b> inter serial 0/0/0</b>
+R1(config-if)#<b> ipv6 hello-interval eigrp 2 50</b>
+R1(config-if)#<b> ipv6 hold-time eigrp 2 150</b></pre>]]></text>
+		
+		<text id="ID_router_txt3"><![CDATA[<pre>R2(config)#<b> inter serial 0/0/0</b>
+R2(config-if)#<b> ipv6 hello-interval eigrp 2 50</b>
+R2(config-if)#<b> ipv6 hold-time eigrp 2 150 </b></pre>]]></text>
+	</slide>
+</data>

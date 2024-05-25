@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.3.3 Planification d&#x0027;un déploiement WLAN</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement LAN sans fil</h1>
+        <h2>Gestion des canaux</h2>
+      </div>
+      <div id="content">
+<p>La mise en oeuvre d’un réseau local sans fil qui exploite au mieux les ressources et assure un niveau de service optimal peut nécessiter une planification soigneuse. Les réseaux locaux sans fil peuvent aller d’installations relativement simples à des conceptions très complexes et tortueuses. Il est important d'établir un plan bien documenté avant d'implémenter un réseau sans fil.</p>
+<p></p>
+<p>Le calcul du nombre d’utilisateurs qu’un réseau local sans fil peut prendre en charge n’est pas des plus simples. Le nombre d'utilisateurs dépend en effet de la disposition géographique des locaux, notamment du nombre d'entités et de périphériques que peut contenir un espace donné, des débits de données souhaités par les utilisateurs, de l'utilisation de canaux non chevauchants par des points d'accès multiples dans un éventail ESS et des paramètres d'alimentation.</p>
+<p></p>
+<p>Reportez-vous au plan d'implantation présenté à la Figure 1. Lors de la planification de la position des points d'accès, l'administrateur ne peut simplement dessiner des cercles de zone de couverture et les placer sur le plan. La zone de couverture circulaire approximative est importante, mais certaines recommandations le sont également :</p>
+<p>
+<ul>
+<li>S'il est prévu que les points d'accès utilisent des câblages existants ou si les points d'accès ne peuvent être installés à certains emplacements, cela doit être noté sur le plan.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Positionnez les points d'accès au-dessus d'obstacles</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Positionnez les points d’accès à la verticale près du plafond et au centre de chaque zone de couverture, si possible.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Installez les points d’accès à des endroits où les utilisateurs sont appelés à travailler. Par exemple, les salles de conférence constituent généralement un emplacement plus approprié pour les points d’accès que les couloirs.</li>
+</ul>
+</p>
+<p></p>
+<p>Une fois ces éléments pris en compte, estimez la zone de couverture prévue pour chaque point d'accès. Cette valeur varie en fonction des normes WLAN déployées, de la nature des locaux, de la puissance de transmission pour laquelle le point d'accès est configuré, etc. Veillez toujours à consulter les spécifications du point d’accès au moment de planifier les zones de couverture.</p>
+<p></p>
+<p>La zone BSA correspond à la zone de couverture offerte par un canal donné. Il doit y avoir un chevauchement de 10 à 15 entre les zones BSA et l'éventail ESS. Avec un chevauchement de 15 % entre les zones de service de base (BSA), un SSID et des canaux sans chevauchement (par exemple, une cellule sur le canal 1 et l’autre sur le canal 6), la fonctionnalité d’itinérance peut être créée.</p>
+<p></p>
+<p>La Figure 2 donne un exemple de chevauchement pour les zones BSA.</p>
+<p></p>
+<p>D'autres facteurs incluent l'étude du site, une analyse détaillée de l'emplacement préconisé pour les points d'accès.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

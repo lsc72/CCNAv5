@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.3.1 Commandes de dépannage OSPFv3</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résolution des problèmes liés aux mises en œuvre du protocole OSPF à zone unique</h1>
+        <h2>Dépannage des problèmes de routage du protocole OSPFv3 à zone unique</h2>
+      </div>
+      <div id="content">
+<p>Reportez-vous à la Figure 1 pour la topologie OSPFv3 de référence.</p>
+<p></p>
+<p>Le dépannage du protocole OSPFv3 est presque identique à celui du protocole OSPFv2 ; de nombreuses commandes et de nombreux critères de dépannage OSPFv2 s'appliquent donc également à OSPFv3.</p>
+<p></p>
+<p>Par exemple, les commandes ci-dessous sont les commandes équivalentes utilisées pour OSPFv3.</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ipv6 protocols </b>
+</span>(Figure 2) : utilisée pour vérifier des informations de configuration OSPFv3 essentielles, y compris l'ID de processus OSPFv3, l'ID de routeur et les interfaces desquelles le routeur reçoit les mises à jour.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ipv6 ospf neighbor </b>
+</span>(Figure 3) : utilisée pour vérifier que le routeur a établi une contiguïté avec ses routeurs voisins. Le résultat de cette commande affiche l'ID de routeur, la priorité, l'état OSPFv3, le minuteur Dead et l'ID d'interface du voisin, ainsi que l'interface par laquelle le voisin est accessible. Si l'ID du routeur voisin ne s'affiche pas ou si l'état du routeur voisin est différent de <span class="cmd"><b>FULL</b></span> ou de <span class="cmd"><b>2WAY</b></span>, les deux routeurs n'ont pas établi de contiguïté OSPFv3. Lorsque deux routeurs n’établissent pas de contiguïté, les informations d’état de liens ne sont pas échangées. Les bases de données à état de liens incomplètes peuvent entraîner des arborescences SPF et des tables de routage imprécises. Les routes vers les réseaux de destination peuvent ne pas exister, ou ne pas constituer les meilleurs chemins.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ipv6 ospf interface </b>
+</span>(Figure 4) : utilisée pour afficher les paramètres OSPFv3 configurés sur une interface, tels que l'ID de processus OSPFv3 auquel est attribuée l'interface, la zone où se trouvent les interfaces, le coût de l'interface et les intervalles des paquets Hello et Dead. L'ajout du nom et du numéro de l'interface à la commande permet d'afficher le résultat pour une interface spécifique. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ipv6 ospf </b>
+</span>(Figure 5) : utilisée pour examiner l'ID de processus OSPF et l'ID de routeur, ainsi que des informations sur les transmissions LSA.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show ipv6 route ospf </b>
+</span>(Figure 6) : utilisée pour afficher uniquement les routes apprises par OSPFv3 dans la table de routage. Le résultat de cette commande indique que R1 a appris quatre réseaux distants via le protocole OSPFv3.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>clear ipv6 ospf </b>
+</span>
+<span class="cmd">[</span>
+<span class="cmd">
+<i>process-id</i>
+</span>
+<span class="cmd">]</span>
+<span class="cmd">
+<i></i>
+</span>
+<span class="cmd">
+<b>process </b>
+</span> : utilisée pour réinitialiser les contiguïtés de voisinage OSPFv3. </li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

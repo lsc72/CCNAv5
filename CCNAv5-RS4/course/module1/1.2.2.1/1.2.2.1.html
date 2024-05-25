@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.2.1 Modèle d&#x0027;architecture d&#x0027;entreprise Cisco</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Architecture d&#x0027;entreprise Cisco</h1>
+        <h2>Modèle d&#x0027;architecture d&#x0027;entreprise Cisco</h2>
+      </div>
+      <div id="content">
+<p>Afin de répondre à ce besoin de modularité dans la conception des réseaux, Cisco a développé le modèle Architecture d'entreprise Cisco. Ce modèle offre tous les avantages de la conception de réseau hiérarchique sur l'infrastructure du campus et simplifie la conception de réseaux plus grands et plus évolutifs. </p>
+<p></p>
+<p>Le modèle Architecture d'entreprise Cisco décompose le réseau d'entreprise en zones fonctionnelles appelées modules. La modularité intégrée à l'architecture offre plus de flexibilité et simplifie la mise en œuvre et la résolution des problèmes. </p>
+<p></p>
+<p>Comme présenté dans l'illustration, les modules suivants sont les principaux éléments de l'architecture d'entreprise Cisco :</p>
+<p>
+<ul>
+<li>Campus d'entreprise </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Périphérie d'entreprise </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Périphérie du fournisseur de services </li>
+</ul>
+</p>
+<p></p>
+<p>D'autres modules sont connectés à la périphérie du fournisseur de services :</p>
+<p>
+<ul>
+<li>Data center d'entreprise</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Agence d'entreprise </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Télétravailleur d'entreprise </li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

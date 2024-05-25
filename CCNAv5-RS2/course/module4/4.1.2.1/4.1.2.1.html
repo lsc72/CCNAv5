@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.1 Connexion à un réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration initiale d&#x0027;un routeur</h1>
+        <h2>Brancher les périphériques</h2>
+      </div>
+      <div id="content">
+<p>Les périphériques réseau et les utilisateurs finaux se connectent généralement à un réseau à l'aide d'une connexion Ethernet filaire ou d'une connexion sans fil. Reportez-vous à la figure pour obtenir un exemple de topologie de référence. Les réseaux locaux présentés dans cette figure offrent un exemple de la manière dont les utilisateurs et les périphériques réseau peuvent se connecter aux réseaux.</p>
+<p></p>
+<p>Les périphériques d'un bureau à domicile peuvent se connecter comme suit :</p>
+<p>
+<ul>
+<li>Les ordinateurs portables et les tablettes se connectent sans fil à un routeur domestique.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Une imprimante réseau se connecte à l'aide d'un câble Ethernet au port de commutateur du routeur domestique.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le routeur domestique se connecte au modem câble du fournisseur de services à l'aide d'un câble Ethernet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le modem câble se connecte au réseau du fournisseur d'accès Internet (FAI).</li>
+</ul>
+</p>
+<p></p>
+<p>Les périphériques du site d'une filiale se connectent comme suit :</p>
+<p>
+<ul>
+<li>Les ressources de l'entreprise (c'est-à-dire les serveurs de fichiers et les imprimantes) se connectent aux commutateurs de couche 2 à l'aide de câbles Ethernet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les ordinateurs de bureau et les téléphones VoIP (voix sur IP) se connectent aux commutateurs de couche 2 à l'aide de câbles Ethernet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les ordinateurs portables et les smartphones se connectent à des points d'accès sans fil.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les points d'accès sans fil se connectent aux commutateurs à l'aide de câbles Ethernet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les commutateurs de couche 2 se connectent à une interface Ethernet sur le routeur de périphérie à l'aide de câbles Ethernet. Un routeur de périphérie est un périphérique qui se trouve à la périphérie ou à la limite d'un réseau et transmet les données de ce réseau à un autre, entre un LAN et un WAN par exemple.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le routeur de périphérie se connecte à un fournisseur de services WAN.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le routeur de périphérie peut également se connecter à un FAI à des fins de sauvegarde.</li>
+</ul>
+</p>
+<p></p>
+<p>Les périphériques d'un site central se connectent comme suit :</p>
+<p>
+<ul>
+<li>Les ordinateurs de bureau et les téléphones VoIP se connectent aux commutateurs de couche 2 à l'aide de câbles Ethernet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les commutateurs de couche 2 se connectent par redondance aux commutateurs multicouches de couche 3 à l'aide de câbles à fibres optiques Ethernet (connexions orange).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les commutateurs multicouches de couche 3 se connectent à une interface Ethernet sur le routeur de périphérie à l'aide de câbles Ethernet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le serveur de site Web d'entreprise est connecté à l'aide d'un câble Ethernet à l'interface du routeur de périphérie.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le routeur de périphérie se connecte à un fournisseur de services WAN.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le routeur de périphérie peut également se connecter à un FAI à des fins de sauvegarde.</li>
+</ul>
+</p>
+<p></p>
+<p>Dans les réseaux locaux des filiales et du site central, les hôtes sont connectés soit directement soit indirectement (via un point d'accès sans fil) à l'infrastructure réseau à l'aide d'un commutateur de couche 2. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

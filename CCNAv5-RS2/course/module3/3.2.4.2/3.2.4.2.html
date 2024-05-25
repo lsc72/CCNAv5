@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.4.2 VLAN manquants</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentations de VLAN</h1>
+        <h2>Dépannage des VLAN et des trunks</h2>
+      </div>
+      <div id="content">
+<p>S'il n'y a toujours aucune connexion entre les périphériques d'un VLAN, mais que les problèmes d'adressage IP ont été réglés, consultez le diagramme de la Figure 1 pour le dépannage :</p>
+<p></p>
+<p>
+<b>Étape 1. </b>Utilisez la commande <span class="cmd"><b>show vlan</b></span> pour vérifier que le port appartient au VLAN prévu. Si le port est attribué au mauvais VLAN, utilisez la commande <span class="cmd"><b>switchport access vlan</b></span> pour corriger l'appartenance. Utilisez la commande <span class="cmd"><b>show mac address-table</b></span> pour vérifier que les adresses ont été apprises sur un port spécifique du commutateur et le VLAN auquel le port est attribué.</p>
+<p></p>
+<p>
+<b>Étape 2. </b>Si le VLAN auquel est affecté le port est supprimé, le port devient inactif. Utilisez la commande<span class="cmd"><b> show vlan </b></span>ou<span class="cmd"><b> show interfaces switchport</b></span>.</p>
+<p></p>
+<p>Pour afficher la table d'adresses MAC, utilisez la commande <span class="cmd"><b>show mac-address-table</b></span>. L'exemple de la Figure 2 affiche les adresses MAC qui ont été acquises sur l'interface F0/1. Vous constatez que l'adresse MAC<span class="cmd"> 000c.296a.a21c</span> a été acquise sur l'interface F0/1 du VLAN 10. Si ce chiffre n'est pas le numéro VLAN voulu, modifiez l'appartenance des ports à l'aide de la commande <span class="cmd"><b>switchport access vlan</b></span>.</p>
+<p></p>
+<p>Chaque port d'un commutateur appartient à un VLAN. Si le VLAN auquel appartient le port est supprimé, le port devient inactif. Tous les ports appartenant au VLAN qui a été supprimé ne peuvent plus communiquer avec le reste du réseau. Utilisez la commande <span class="cmd"><b>show interface f0/1 switchport</b></span> pour vérifier si le port est inactif. Si le port est inactif, il n'est pas opérationnel tant que le VLAN manquant n'est pas créé à l'aide de la commande <span class="cmd"><b>vlan </b></span><span class="cmd"><i>vlan_id</i></span>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

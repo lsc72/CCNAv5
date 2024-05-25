@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.6.1.1 Exercice : l&#x0027;heure du routage statique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.6.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Exercice :</b>
+<b>l'heure du routage statique</b>
+</p>
+<p></p>
+<p>Comme l'utilisation de l'adressage IPv6 devient de plus en plus répandue, il est important que les administrateurs réseau soient en mesure de diriger le trafic réseau entre les routeurs.</p>
+<p></p>
+<p>Pour prouver que vous pouvez diriger le trafic IPv6 correctement et réviser les concepts du programme de route statique par défaut IPv6, utilisez la topologie comme indiqué dans le fichier PDF fourni, spécifiquement pour cet exercice. </p>
+<p></p>
+<p>Travaillez avec un partenaire pour faire une proposition de IPv6 pour les trois scénarios. Essayez de proposer des routes sans vous aider des travaux pratiques réalisés, des fichiers de Packet Tracer, etc.</p>
+<p></p>
+<p>
+<b>Scénario 1</b>
+</p>
+<p>Route statique par défaut IPv6 dirigeant toutes les données de R2 via l'interface S0/0/0 vers l'adresse de tronçon suivant sur R1.</p>
+<p></p>
+<p>
+<b>Scénario 2</b>
+</p>
+<p>Route statique par défaut IPv6 dirigeant toutes les données de R3 via l'interface S0/0/1 vers l'adresse de tronçon suivant sur R2.</p>
+<p></p>
+<p>
+<b>Scénario 3</b>
+</p>
+<p>Route statique par défaut IPv6 dirigeant toutes les données de R2 via l'interface S0/0/1 vers l'adresse de tronçon suivant sur R3.</p>
+<p></p>
+<p>Une fois terminé, collaborez avec un autre groupe et comparer vos réponses écrites. Discutez des différences trouvées dans vos comparaisons.</p>
+<p></p>
+<p>
+<a href="../../files/6.6.1.1%20Class%20Activity%20-%20Make%20It%20Static%20Instructions.pdf" target="_blank">Exercice en classe : l'heure du routage statique Instructions</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

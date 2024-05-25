@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.2.3 Processus de démarrage d&#x0027;un routeur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routeurs</h1>
+        <h2>Démarrage du routeur</h2>
+      </div>
+      <div id="content">
+<p>Le processus de démarrage est composé de trois phases principales, décrites à la Figure 1 :</p>
+<p>1. Exécution du POST et chargement du bootstrap</p>
+<p>2. Localisation et chargement du logiciel Cisco IOS</p>
+<p>3. Localisation et chargement du fichier de configuration initiale ou passage en mode Configuration</p>
+<p></p>
+<p></p>
+<p>
+<b>1. Exécution du POST et chargement du bootstrap (Figure 2)</b>
+</p>
+<p></p>
+<p>Le Power-On Self Test (POST) est un processus courant qui s'exécute au démarrage de la quasi-totalité des ordinateurs. Le processus POST est utilisé pour tester le matériel du routeur. Lorsque le routeur est mis sous tension, le logiciel présent sur la puce de mémoire morte effectue le POST. Au cours de ce test automatique, le routeur exécute des diagnostics à partir de la mémoire morte sur plusieurs composants matériels, notamment le processeur, la mémoire vive et la mémoire vive non volatile. Une fois le POST terminé, le routeur exécute le programme d'amorçage.</p>
+<p></p>
+<p>Après le POST, le programme d'amorçage est copié de la mémoire morte à la mémoire vive. Ensuite, le processeur exécute les instructions du programme d'amorçage. Le rôle principal du programme d'amorçage est de localiser Cisco IOS et de le charger dans la mémoire vive.</p>
+<p></p>
+<p>
+<b>Remarque</b> : à ce stade, si vous disposez d'une connexion console au routeur, vous commencez à voir les résultats sur l'écran.</p>
+<p></p>
+<p></p>
+<p>
+<b>2. Localisation et chargement de Cisco IOS (Figure 3)</b>
+</p>
+<p></p>
+<p>L'IOS est généralement stocké dans la mémoire Flash et est copié dans la mémoire vive par le processeur pour être exécuté. Pendant la décompression automatique du fichier d'image IOS, une suite de signes dièse (#) s'affiche.</p>
+<p></p>
+<p>Si l'image IOS ne figure pas dans la mémoire Flash, le routeur peut la rechercher à l'aide d'un serveur TFTP. S'il est impossible de localiser une image IOS entière, une version réduite de l'IOS est copiée de la mémoire morte vers la mémoire vive. Cette version de l'IOS permet de diagnostiquer les éventuels problèmes et peut servir à charger une version complète de l'IOS dans la mémoire vive.</p>
+<p></p>
+<p>
+<b>3. Localisation et chargement du fichier de configuration (Figure 4)</b>
+</p>
+<p></p>
+<p>Le bootstrap recherche le fichier de configuration initiale (également appelé startup-config) dans la mémoire vive non volatile. Ce fichier contient les commandes et paramètres de configuration précédemment enregistrés. S'il existe, il est copié dans la mémoire vive en tant que fichier de configuration en cours, ou running-config. Le fichier de configuration en cours contient des adresses d'interface, lance les processus de routage, configure les mots de passe du routeur et définit d'autres caractéristiques du routeur.</p>
+<p></p>
+<p>Si le fichier startup-config n'existe pas dans la mémoire vive non volatile, le routeur peut rechercher un serveur TFTP (Trivial File Transfer Protocol). Si le routeur détecte qu'il possède un lien actif avec un autre routeur configuré, il envoie une requête de recherche par diffusion pour trouver un fichier de configuration dans le lien actif. </p>
+<p></p>
+<p>Si un tel serveur est introuvable, le routeur affiche l'invite du mode Configuration. Le mode Configuration est une série de questions invitant l'utilisateur à entrer des informations de configuration de base. Ce mode n'est pas destiné à être utilisé pour effectuer des configurations de routeur complexes et n'est généralement pas utilisé par les administrateurs réseau. </p>
+<p></p>
+<p>
+<b>Remarque</b> : dans ce cours, le mode Configuration n'est pas utilisé pour configurer le routeur. Lorsque vous êtes invité à passer en mode Configuration, répondez toujours <b>no</b>. Si vous répondez yes et que vous passez en mode Configuration, vous pouvez appuyer à tout moment sur <b>Ctrl </b>+ <b>C</b> pour mettre fin au processus de configuration.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

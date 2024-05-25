@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.1.2.4 Travaux pratiques – Partage de fichiers en peer-to-peer</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche Application</h1>
+        <h2>Interaction des protocoles d&#x0027;application avec les applications des utilisateurs finaux</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Au cours de ce TP, vous aborderez les points suivants :</b>
+</p>
+<p></p>
+<p>
+<ul>
+<li>1re partie : Identifier les réseaux, les protocoles de partage de fichiers et les applications P2P </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>2e partie : Étudier les problèmes relatifs au partage de fichiers en P2P </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>3e partie : Étudier les litiges relatifs aux copyrights dans le cadre du P2P</li>
+</ul>
+</p>
+<p></p>
+<p>
+<a href="../../files/10.1.2.4%20Lab%20-%20Researching%20Peer-to-Peer%20File%20Sharing.pdf" target="_blank">Travaux pratiques – Partage de fichiers en peer-to-peer</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

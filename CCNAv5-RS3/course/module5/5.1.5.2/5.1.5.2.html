@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.5.2 Mises à jour de routage sécurisées</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.5.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées du protocole OSPF à zone unique </h1>
+        <h2>OSPF sécurisé</h2>
+      </div>
+      <div id="content">
+<p>Lorsqu'un routeur est configuré pour l'authentification des voisins, il authentifie la source de chaque paquet de mise à jour de routage qu'il reçoit. Pour ce faire, il échange une clé d'authentification (parfois appelée mot de passe) connue du routeur expéditeur et du routeur destinataire. </p>
+<p></p>
+<p>Pour échanger des informations de mise à jour de routage de façon sécurisée, activez l'authentification OSPF. L'authentification OSPF peut être de type null (aucune authentification), simple ou Message Digest 5 (MD5). </p>
+<p></p>
+<p>OSPF prend en charge 3 types d'authentification :</p>
+<p>
+<ul>
+<li>
+<b>Null</b> : méthode par défaut, signifiant qu'aucune authentification n'est utilisée pour OSPF.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Authentification par simple mot de passe</b> : également appelée authentification en texte clair, car le mot de passe est présent en texte clair dans la mise à jour envoyée sur le réseau. Cette méthode est considérée comme une ancienne méthode d'authentification OSPF.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Authentification MD5</b> : méthode d'authentification la mieux sécurisée et la plus recommandée. L'authentification MD5 apporte une plus grande sécurité car le mot de passe n'est jamais échangé entre homologues. Il est calculé au moyen de l'algorithme MD5. L'expéditeur est authentifié lorsque le résultat de l'algorithme correspond au résultat prévu. </li>
+</ul>
+</p>
+<p></p>
+<p>Cliquez sur le bouton Lecture de l'animation afin de visualiser l'utilisation de l'algorithme MD5 pour authentifier des messages provenant d'homologues voisins. </p>
+<p></p>
+<p>
+<b>Remarque</b> : les protocoles RIPv2, EIGRP, OSPF, IS-IS et BGP prennent tous en charge plusieurs formes d'authentification MD5.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

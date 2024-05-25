@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+	<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+		<element type="IMAGE" src="3_2_4_2.png" x="0" y="0" width="470" height="400" />
+		<element type="BUBBLE" compId="ID_s1_txt01" x="6" y="15" width="176" height="104" align="left" tailPosition="5" tailFlip="1" bgColor="#CCE9E7" borderColor="#67BDBC"  />
+		<element type="BUBBLE" compId="ID_s1_txt02" x="264" y="15" width="165" height="104" align="left" tailPosition="7" tailFlip="0" bgColor="#CCE9E7" borderColor="#67BDBC" />
+		<element type="TEXT" compId="ID_s1_txt06" x="255" y="168" width="57" expand="up+down" align="center"  size="9" />
+		<element type="TEXT" compId="ID_s1_txt08" x="353" y="158" width="70" expand="up+down" align="center"  class="seagreenCallOut"  size="9"/>
+		<element type="TEXT" compId="ID_s1_txt07" x="329" y="148" width="26.1" expand="up" align="left"  size="9"/>
+		<element type="TEXT" compId="ID_s1_txt04" x="133" y="166" width="58.3" expand="up+down" align="center"  size="9"/>
+		<element type="TEXT" compId="ID_s1_txt05" x="208" y="148" width="35.2" expand="up" align="left"  size="9"/>
+		<element type="TEXT" compId="ID_s1_txt03" x="0" y="158" width="80" expand="up+down" align="center" class="seagreenCallOut"  size="9"/>
+		<element type="TEXT" compId="ID_s1_txt12" x="244" y="266" width="72" expand="down" align="center"  class="seagreenCallOut" size="9"/>
+		<element type="TEXT" compId="ID_s1_txt10" x="290" y="213" width="23.1" expand="up" align="left" size="9"/>
+		<element type="TEXT" compId="ID_s1_txt09" x="167" y="213" width="23.1" expand="up" align="left" size="9" />
+		<element type="TEXT" compId="ID_s1_txt11" x="107" y="306" width="105.5" expand="down" align="center"  class="seagreenCallOut" size="9"/>
+		</slide>
+		
+		<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+		<element type="ROUTER" textId="ID_router_txt1" x="7.85" y="32.8" width="427" height="148" />		
+		<element type="ROUTER" textId="ID_router_txt2" x="7.85" y="192.8" width="427" height="190" />		
+		</slide>
+	</slide>
+	<text id="ID_router_txt1"><![CDATA[<pre>S1# <b>show mac address-table interface FastEthernet 0/1</b>
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----  
+<span class="orange">10 </span>    000c.296a.a21c    DYNAMIC     <span class="orange">Fa0/1</span>  
+10     000f.34f9.9181    DYNAMIC     Fa0/1
+Total Mac Addresses for this criterion: 2</pre>]]></text>
+	
+	<text id="ID_router_txt2"><![CDATA[<pre>S1# <b>show interfaces FastEthernet 0/1 switchport</b>
+Name: Fa0/1
+Switchport: Enabled
+Administrative Mode: static access
+Operational Mode: static access
+Administrative Trunking Encapsulation: dot1q
+Operational Trunking Encapsulation: native
+Negotiation of Trunking: Off
+Access Mode VLAN: 10 <span class="orange">(Inactive)</span>
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none</pre>]]></text>
+</data>

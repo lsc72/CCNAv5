@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.2.1 Partie réseau et partie hôte d&#x0027;une adresse IPv4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Masque de sous-réseau IPv4</h2>
+      </div>
+      <div id="content">
+<p>Comprendre la notation binaire est important pour déterminer si deux hôtes sont sur le même réseau. Rappelez-vous qu'une adresse IP est une adresse hiérarchique qui se compose de deux parties : une partie réseau et une partie hôte. Lorsque vous déterminez la partie réseau et la partie hôte, il est nécessaire d'examiner non pas la valeur décimale, mais le flux de 32 bits. Dans le flux de 32 bits, une partie des bits constitue la partie réseau et une autre partie des bits compose la partie hôte.</p>
+<p></p>
+<p>Les bits de la partie réseau de l'adresse doivent être identiques pour tous les périphériques installés sur le même réseau. Les bits de la partie hôte de l'adresse doivent être uniques, pour identifier un hôte spécifique dans un réseau. Que les nombres décimaux entre deux adresses IPv4 correspondent ou non, si deux hôtes ont les mêmes bits comme partie réseau du flux de 32 bits, ces deux hôtes résident sur le même réseau. </p>
+<p></p>
+<p>Les hôtes savent-ils quelle partie du flux de 32 bits représente la partie réseau et quelle partie correspond à la partie hôte ? Le masque de sous-réseau permet de le savoir.</p>
+<p></p>
+<p>Lorsqu'un hôte IP est configuré, un masque de sous-réseau est attribué avec une adresse IP. Comme l'adresse IP, le masque de sous-réseau est constitué de 32 bits. Le masque de sous-réseau indique quelle partie de l'adresse IP correspond au réseau et quelle partie correspond à l'hôte. </p>
+<p></p>
+<p>Le masque de sous-réseau est comparé à l'adresse IP de gauche à droite, bit par bit. Les 1 dans le masque de sous-réseau représentent la partie réseau, et les 0 représentent la partie hôte. Comme l'illustre la Figure 1, le masque de sous-réseau est créé en plaçant le nombre binaire 1 dans chaque position de bit qui représente la partie réseau et en plaçant le nombre binaire 0 dans chaque position de bit qui représente la partie hôte. Notez que le masque de sous-réseau ne contient pas réellement la partie réseau ou hôte d'une adresse IPv4 : il indique uniquement à l'ordinateur où rechercher ces parties dans une adresse IPv4 donnée.</p>
+<p></p>
+<p>Tout comme les adresses IPv4, le masque de sous-réseau est représenté sous forme de notation décimale à point pour une plus grande facilité d'utilisation. Le masque de sous-réseau est configuré sur un périphérique hôte, en conjonction avec l'adresse IPv4, et est nécessaire pour que l'hôte puisse déterminer le réseau auquel il appartient. La Figure 2 montre les masques de sous-réseau valides d'un octet IPv4.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.3.3.1 Commutation de couche 2 et commutation de couche 3</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.3.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Commutateurs LAN</h1>
+        <h2>Commutation de couche 3</h2>
+      </div>
+      <div id="content">
+<p>En plus de déterminer le format de commutateur adéquat, il peut également s'avérer nécessaire de faire un choix entre un commutateur LAN de couche 2 ou de couche 3.</p>
+<p></p>
+<p>Souvenez-vous qu'un commutateur LAN de couche 2 effectue la commutation et le filtrage uniquement en fonction de l'adresse MAC de la couche liaison de données OSI (couche 2) et dépend des routeurs pour transférer les données entre les sous-réseaux IP distincts (voir Figure 1).</p>
+<p></p>
+<p>Comme l'illustre la Figure 2, un commutateur de couche 3 tel que le commutateur Catalyst 3560 fonctionne de manière similaire à un commutateur de couche 2 (par exemple, le commutateur Catalyst 2960) mais, à défaut d'exploiter les informations d'adresses MAC de couche 2 pour décider des opérations de transmission, le commutateur de couche 3 peut également exploiter celles des adresses IP. Un commutateur de couche 3 ne cherche pas uniquement à savoir quelles adresses MAC sont associées à chacun des ports ; il peut également identifier les adresses IP associées à ses interfaces. Il peut alors orienter le trafic sur le réseau également sur la base des informations recueillies sur les adresses IP. </p>
+<p></p>
+<p>Les commutateurs de couche 3 peuvent également exécuter des fonctions de routage de la couche 3, ce qui réduit le besoin de routeurs dédiés sur un réseau local. Parce que les commutateurs de couche 3 disposent d'un matériel de commutation spécifique, l'acheminement des données est généralement aussi rapide que la commutation.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

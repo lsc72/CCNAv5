@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.2.3.4 Sécurité des terminaux</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.2.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Garantie de la sécurité du réseau</h1>
+        <h2>La limitation des attaques de réseau</h2>
+      </div>
+      <div id="content">
+<p>Un réseau sécurisé est aussi robuste que sa liaison la plus faible. Les menaces sophistiquées les plus médiatisées sont les menaces externes, telles que les vers Internet et les attaques par déni de service. Pourtant, la sécurisation du réseau interne est aussi importante que la sécurisation du périmètre d'un réseau. Le réseau interne est composé de points de terminaison du réseau, dont certains sont représentés sur la figure. Un point de terminaison, ou hôte, est un système informatique ou un périphérique qui a un rôle de client réseau. Les terminaux courants sont les ordinateurs portables, les ordinateurs de bureau, les serveurs, les smartphones ou encore les tablettes. Si les utilisateurs n'assurent pas la sécurité de leurs points de terminaison, aucune mesure de sécurité ne permettra de garantir la sécurité du réseau.</p>
+<p></p>
+<p>La sécurisation des points de terminaison est l'une des tâches les plus difficiles d'un administrateur réseau, car elle implique la participation d'humains. L'entreprise doit mettre en place des stratégies bien documentées et les employés doivent en être informés. Ils doivent également être formés sur l'utilisation appropriée du réseau. Les stratégies incluent souvent l'utilisation de logiciels antivirus et la prévention des intrusions sur les hôtes. Des solutions plus complètes de sécurité des points de terminaison reposent sur le contrôle d'accès au réseau. </p>
+<p></p>
+<p>La sécurité des terminaux nécessite également la sécurisation des périphériques de couche 2 dans l'infrastructure réseau pour empêcher les attaques sur cette couche, notamment les usurpations d'adresse MAC, la saturation de la table d'adresses MAC et l'inondation du réseau local. C'est ce qu'on appelle la limitation des attaques.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

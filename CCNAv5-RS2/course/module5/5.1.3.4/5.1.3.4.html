@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.3.4 Configuration de type router-on-a-stick : vérification des sous-interfaces</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout; 
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du routage inter-VLAN</h1>
+        <h2>Configuration du routage inter-VLAN avec la méthode router-on-a-stick</h2>
+      </div>
+      <div id="content">
+<p>Par défaut, les routeurs Cisco sont configurés pour acheminer le trafic entre les sous-interfaces locales. Par conséquent, le routage ne doit pas spécifiquement être activé.</p>
+<p></p>
+<p>Dans la Figure 1, la commande <span class="cmd"><b>show vlans</b></span> affiche des informations sur les sous-interfaces VLAN du logiciel Cisco IOS. Le résultat présente les deux sous-interfaces VLAN, GigabitEthernet 0/0.10 et GigabitEthernet 0/0.30.</p>
+<p></p>
+<p>Examinez ensuite la table de routage à l'aide de la commande <span class="cmd"><b>show ip route</b></span> (Figure 2). Dans l'exemple, les routes définies dans la table de routage indiquent qu'elles sont associées à des sous-interfaces spécifiques, et non à des interfaces physiques distinctes. Il existe deux routes dans la table de routage. Une route mène au sous-réseau 172.17.10.0, connecté à la sous-interface locale G0/0.10. L'autre route mène au sous-réseau 172.17.30.0, connecté à la sous-interface locale G0/0.30. Le routeur utilise cette table de routage pour déterminer où envoyer le trafic qu'il reçoit. Par exemple, si le routeur a reçu un paquet sur la sous-interface G0/0.10 destiné au sous-réseau 172.17.30.0, il identifie qu'il doit envoyer le paquet par la sous-interface G0/0.30 pour atteindre les hôtes du sous-réseau 172.17.30.0.</p>
+<p></p>
+<p></p>
+<p>Dans la Figure 3, utilisez le contrôleur de syntaxe pour configurer et vérifier le modèle router-on-a-stick sur R1.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

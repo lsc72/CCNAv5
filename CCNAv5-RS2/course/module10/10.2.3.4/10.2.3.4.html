@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.3.4 Configuration d&#x0027;un routeur en tant qu&#x0027;agent de relais DHCPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 6</h1>
+        <h2>Serveur DHCPv6 avec état</h2>
+      </div>
+      <div id="content">
+<p>Si le serveur DHCPv6 se trouve sur un réseau différent de celui du client, alors le routeur IPv6 peut être configuré en tant qu'agent de relais DHCPv6. La configuration d'un agent de relais DHCPv6 est similaire à celle d'un routeur IPv4 en tant que relais DHCPv4. </p>
+<p></p>
+<p>
+<b>Remarque</b> : bien que la configuration d'un agent de relais DHCPv6 soit similaire à celle d'un agent de relais DHCPv4, les agents de routeur ou de relais IPv6 transfèrent les messages DHCPv6 de manière légèrement différente des relais DHCPv4. Les messages et le processus sortent du cadre de ce programme de formation.</p>
+<p></p>
+<p>La Figure 1 présente un exemple de topologie où un serveur DHCPv6 se trouve sur le réseau 2001:DB8:CAFE:1::/64. L'administrateur réseau souhaite utiliser ce serveur DHCPv6 en tant que serveur DHCPv6 central avec état pour attribuer des adresses IPv6 à tous les clients. Ainsi, les clients d'autres réseaux (par exemple PC1 sur le réseau 2001:DB8:CAFE:A::/64) doivent communiquer avec le serveur DHCPv6. </p>
+<p></p>
+<p>Les messages DHCPv6 provenant des clients sont envoyés à l'adresse de multidiffusion IPv6 FF02::1:2. All_DHCPv6_Relay_Agents_and_Servers. Cette adresse a une portée link-local, ce qui signifie que les routeurs ne transfèrent pas ces messages. Le routeur doit être configuré en tant qu'agent de relais DHCPv6 pour permettre au client et au serveur DHCPv6 de communiquer.</p>
+<p></p>
+<p>
+<b>Configuration de l'agent de relais DHCPv6</b>
+</p>
+<p></p>
+<p>Comme le montre la Figure 2, la configuration d'un agent de relais DHCPv6 s'effectue à l'aide de la commande <span class="cmd"><b>ipv6 dhcp relay destination</b></span>. Cette commande est configurée sur l'interface reliée au client DHCPv6 en utilisant l'adresse du serveur DHCPv6 comme destination.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>show ipv6 dhcp interface</b></span> permet de vérifier que l'interface G0/0 est en mode relais avec 2001:DB8:CAFE:1::6 configuré en tant que serveur DHCPv6.</p>
+<p></p>
+<p>À l'aide du contrôleur de syntaxe de la Figure 3, configurez les commandes de relais DHCPv6 sur le routeur approprié afin que PC3 puisse recevoir les informations d'adressage IPv6 du serveur DHCPv6. Reportez-vous à la Figure 1 pour consulter la topologie du réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.1.4 Rentabilité et flexibilité de la technologie Frame Relay</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation du protocole Frame Relay</h1>
+        <h2>Avantages du protocole Frame Relay</h2>
+      </div>
+      <div id="content">
+<p>Le réseau Frame Relay de SPAN utilise des circuits virtuels permanents (PVC), comme illustré. Un circuit virtuel permanent correspond à un chemin logique dans un réseau, depuis une liaison Frame Relay initiale jusqu'à sa liaison Frame Relay de destination. Ce chemin est comparable au chemin physique d'une connexion dédiée. Dans un réseau basé sur le protocole Frame Relay, le circuit virtuel permanent définit un chemin unique entre deux points. Le concept de circuit virtuel (VC) est expliqué plus en détail plus loin dans cette section.</p>
+<p></p>
+<p>La solution Frame Relay de SPAN est à la fois économique et flexible.</p>
+<p></p>
+<p>
+<b>Rentabilité de la technologie Frame Relay</b>
+</p>
+<p></p>
+<p>Frame Relay est une solution plus économique, et ce pour deux raisons. Tout d'abord, avec une ligne dédiée, le client paie pour une connexion de bout en bout, qui comprend la boucle locale et la liaison avec le réseau. Avec Frame Relay, les clients ne paient que l'utilisation de la boucle locale et la bande passante achetée au fournisseur de réseau. La distance entre les nœuds n'a pas d'importance. Alors que dans le modèle de ligne dédiée les clients utilisent les lignes dédiées par paliers de 64 kbit/s, les clients Frame Relay peuvent définir leurs besoins en matière de circuit virtuel de façon bien plus fine, les paliers possibles pouvant aller jusqu'à 4 kbit/s.</p>
+<p></p>
+<p>La deuxième raison est que Frame Relay partage la bande passante avec un plus grand nombre de clients. Sur un circuit T1, le fournisseur de réseau peut généralement servir plus de 40 clients à 56 kbit/s. L'utilisation de lignes dédiées demanderait plus de CSU/DSU (un par ligne), ainsi qu'une plus grande complexité dans le routage et la commutation. Le protocole Frame Relay requérant moins d'équipements et moins de maintenance, les fournisseurs de réseau font donc des économies.</p>
+<p></p>
+<p>
+<b>Remarque </b>: les coûts peuvent varier considérablement selon les lieux. </p>
+<p></p>
+<p>
+<b>Flexibilité de la technologie Frame Relay</b>
+</p>
+<p></p>
+<p>Les circuits virtuels permettent une grande flexibilité dans la conception du réseau. Dans l'illustration, les bureaux de SPAN se connectent tous au cloud Frame Relay via leur boucle locale respective. Ne vous souciez pas pour le moment de ce qui se passe réellement dans le réseau représenté par le nuage. Ce qui importe, c'est que lorsqu'un bureau SPAN veut communiquer avec un autre bureau SPAN, il n'a qu'à connecter un circuit virtuel vers cet autre bureau. Dans Frame Relay, l'extrémité de chaque connexion possède un numéro qui l'identifie, le DLCI (Data Link Connection Identifier). N'importe quelle station peut se connecter à une autre. Il lui suffit de déclarer l'adresse de cette station et le numéro DLCI de la ligne à utiliser. Dans une autre section, vous verrez que lorsque Frame Relay est configuré, toutes les données de tous les DLCI configurés passent par le même port du routeur. Imaginez le même degré de flexibilité obtenu avec des lignes dédiées. Ce serait non seulement plus compliqué, mais cela demanderait aussi un équipement beaucoup plus important. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

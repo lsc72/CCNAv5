@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.2.2 Examen de la configuration RIPng</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage RIP et RIPng</h1>
+        <h2>Configuration du protocole RIPng</h2>
+      </div>
+      <div id="content">
+<p>Dans la Figure 1, la commande <span class="cmd"><b>show ipv6 protocols</b></span> ne fournit pas le même niveau d'informations que son homologue IPv4. Cependant, elle permet de confirmer les paramètres suivants :</p>
+<p></p>
+<p>1. Le routage RIPng est configuré et s'exécute sur le routeur R1. </p>
+<p></p>
+<p>2. Les interfaces configurées avec le protocole RIPng. </p>
+<p></p>
+<p>La commande <span class="cmd"><b>show ipv6 route</b></span> affiche les routes installées dans la table de routage comme illustré dans la Figure 2. Le résultat confirme que R1 a désormais détecté les réseaux RIPng en surbrillance. </p>
+<p></p>
+<p>Remarquez que le réseau local du routeur R2 est annoncé comme étant à deux sauts. La raison de ceci est qu'il existe une différence dans la façon dont les protocoles RIPv2 et RIPng calculent le nombre de sauts. Avec le protocole RIPv2 (et RIPv1), la métrique vers le réseau local du routeur R2 correspondrait à un saut. Cela s'explique par le fait que la métrique (le nombre de sauts) qui s'affiche dans la table de routage IPv4 correspond au nombre de sauts nécessaires pour atteindre le réseau distant (en comptant le routeur de tronçon suivant comme premier saut). Dans le protocole RIPng, le routeur expéditeur considère déjà qu'il se trouve à un saut ; par conséquent, R2 annonce son réseau local avec une métrique de 1. Lorsque R1 reçoit la mise à jour, il ajoute un saut supplémentaire à la métrique. Par conséquent, R1 considère que le réseau local du routeur R2 est à deux sauts de distance. De même, il considère que le réseau local de R3 se trouve à trois sauts.</p>
+<p></p>
+<p>L'ajout du mot clé <span class="cmd"><b>rip</b></span> à la commande comme illustré dans la Figure 3 répertorie uniquement les réseaux RIPng. </p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe dans la Figure 4 pour vérifier les routeurs R2 et R3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

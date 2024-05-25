@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.3.11 Calculer le nombre d&#x0027;hôtes </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.3.11_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmenter un réseau IPv4 en sous-réseaux</h1>
+        <h2>Segmenter un réseau IPv4 en sous-réseaux</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Calcul du nombre d'hôtes</b>
+</p>
+<p>Pour calculer le nombre d'hôtes, observez le troisième et le quatrième octet. Après avoir emprunté 7 bits pour le sous-réseau, il reste un bit d'hôte dans le troisième octet et 8 bits d'hôte dans le quatrième octet.</p>
+<p></p>
+<p>Appliquez la formule de calcul du nombre d'hôtes comme illustré à la Figure 1.</p>
+<p></p>
+<p>2^9 = 512 </p>
+<p></p>
+<p>Toutefois, n'oubliez pas que tous les bits 0 de la partie hôte de l'adresse correspondent à l'adresse réseau, et que tous les 1 de la partie hôte correspondent à une adresse de diffusion. Par conséquent, il n'y a que 510 adresses d'hôte réellement disponibles pour chaque sous-réseau. </p>
+<p></p>
+<p>Comme l'illustre la Figure 2, la première adresse d'hôte du premier sous-réseau est 172.16.0.1 et la dernière adresse d'hôte est 172.16.1.254. N'oubliez pas que chaque hôte doit disposer d'une adresse IP valide appartenant à la plage définie pour ce segment du réseau. Le sous-réseau attribué à l'interface du routeur détermine le segment auquel un hôte appartient.</p>
+<p></p>
+<p>
+<b>Rappel :</b>
+</p>
+<p>Les bits peuvent être empruntés uniquement dans la partie hôte de l'adresse. La partie réseau de l'adresse est attribuée par le fournisseur d'accès et ne peut pas être modifiée. Par conséquent, les entreprises qui avaient besoin d'un grand nombre de sous-réseaux devaient en faire part à leur FAI afin qu'il leur attribue un bloc d'adresses IP dont le masque par défaut comportait suffisamment de bits pour créer les sous-réseaux nécessaires.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

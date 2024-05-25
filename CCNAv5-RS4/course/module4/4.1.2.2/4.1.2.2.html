@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.2 Circuits virtuels multiples</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation du protocole Frame Relay</h1>
+        <h2>Fonctionnement de la technologie Frame Relay</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Circuits virtuels multiples</b>
+</p>
+<p></p>
+<p>Frame Relay est multiplexé au niveau statistique, c'est-à-dire qu'il ne transmet qu'une seule trame à la fois, mais que plusieurs connexions logiques peuvent coexister sur une seule ligne physique. Le périphérique d'accès Frame Relay (FRAD, Frame Relay Access Device), ou le routeur connecté au réseau Frame Relay, peut comporter plusieurs circuits virtuels qui le connectent à plusieurs points de terminaison. Les différents circuits virtuels d'une même ligne physique sont distincts du fait qu'ils sont identifiés par leur propre DLCI. Gardez en tête que le DLCI a une signification locale uniquement, et peut être différent à chaque extrémité du circuit virtuel.</p>
+<p></p>
+<p>La Figure 1 présente un exemple de deux circuits virtuels sur une seule ligne d'accès, chacune avec son propre DLCI, connecté à un routeur (R1). </p>
+<p></p>
+<p>Cette capacité réduit souvent la complexité de l'équipement et du réseau nécessaires à la connexion de plusieurs périphériques, ce qui en fait une alternative intéressante du point de vue financier à un maillage de lignes d'accès. Avec cette configuration, chaque point d'extrémité ne nécessite qu'une ligne d'accès et une interface. D'autres économies peuvent être réalisées, car la capacité de la ligne d'accès est fondée sur la bande passante moyenne requise par les circuits virtuels et non sur la bande passante maximale requise. </p>
+<p></p>
+<p>Dans l'exemple de la Figure 2, SPAN Engineering Co. a quatre emplacements distants, et un siège social à Chicago. Chicago est connecté au réseau par cinq circuits virtuels identifiés par un identificateur DLCI. Pour afficher le mappage des DLCI, cliquez sur le siège correspondant dans le tableau. Notez que la société SPAN s'est développée et a récemment ouvert un bureau à San Jose. L'utilisation d'un réseau Frame Relay facilite largement cette expansion.</p>
+<p></p>
+<p>
+<b>Avantages financiers des circuits virtuels multiples</b>
+</p>
+<p></p>
+<p>Avec Frame Relay, les clients ne paient que la bande passante qu'ils utilisent. Ils ne paient effectivement qu'un port Frame Relay. Lorsque le client augmente le nombre de ports, comme présentée ci-dessus, il paie pour obtenir plus de bande passante, mais il ne paie pas d'équipement supplémentaire, car il s'agit de ports virtuels. Il n'y a donc pas de changement de l'infrastructure physique. Comparez cela à l'acquisition d'une plus grande bande passante dans le cas de lignes dédiées.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+<slide type="MBAR">
+	
+	<slide>
+	<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+	<element type="ROUTER" textId="ID_router_txt1" x="0" y="45" width="438" height="350" />
+	</slide>
+		
+	<slide>
+	<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+	<element type="TEXT" subType="TABLE" compId="ID_s2_table" x="1" y="45" width="420" />
+	</slide>
+		
+	<slide>
+	<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+	<element type="TEXT" subType="TABLE" compId="ID_s3_table" x="1" y="45" width="420" height="350" />
+	</slide>
+	
+	
+	<slide>
+	<element type="TEXT" subType="TITLE" compId="ID_s4_title"/>
+	<element type="TEXT" subType="TABLE" compId="ID_s4_table" x="1" y="45" width="420"  />
+	</slide>
+	
+	
+	<slide>
+	<element type="TEXT" subType="TITLE" compId="ID_s5_title"/>
+	<element type="ROUTER" textId="ID_router5_txt1" x="1" y="45" width="430.05" height="78" />	
+	<element type="ROUTER" textId="ID_router5_txt2" x="1" y="150" width="430.05" height="208" />
+	
+	</slide>
+	
+	
+	<slide>
+	<element type="TEXT" subType="TITLE" compId="ID_s6_title"/>
+	<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC2" x="2.1" y="30.45" width="437.1" height="367" resetId="ID_sc1_reset" showMeId="ID_sc1_showme" showAllId="ID_sc1_showall"/>
+	</slide>
+</slide>
+
+<text id="ID_router_txt1"><![CDATA[<pre>R1# <b>show ip cache flow</b>
+IP packet size distribution <span class="orange">(178617 total packets)</span>:
+   1-32   64   96  128  160  192  224  256  288  320  352  384  416  448  480
+   .002 .080 .008 .005 .001 .000 .001 .001 .000 .000 .000 .000 .000 .000 .000
+
+    512  544  576 1024 1536 2048 2560 3072 3584 4096 4608
+   .000 .000 .000 .000 .895 .000 .000 .000 .000 .000 .000
+
+IP Flow Switching Cache, 278544 bytes
+  5 active, 4091 inactive, 1573 added
+  18467 ager polls, 0 flow alloc failures
+  Active flows timeout in 1 minutes
+  Inactive flows timeout in 15 seconds
+IP Sub Flow Cache, 34056 bytes
+  5 active, 1019 inactive, 1569 added, 1569 added to flow
+  0 alloc failures, 0 force free
+  1 chunk, 1 chunk added
+  last clearing of statistics never
+Protocol       Total    Flows   Packets Bytes  Packets Active(Sec) Idle(Sec)
+--------       Flows     /Sec     /Flow  /Pkt     /Sec     /Flow     /Flow
+TCP-Telnet         3      0.0         3    50      0.0       1.0      15.0
+TCP-WWW          245      0.0         6    93      0.0       0.3       2.4
+TCP-other        529      0.0        27    57      0.2       0.7       6.2
+UDP-other        328      0.0         6   107      0.0       2.4      15.3
+ICMP             711      0.0       226  1261      2.4       0.2      15.4
+Total:          1816      0.0        98  1137      2.7       0.8      11.0
+          
+SrcIf         SrcIPaddress    DstIf     DstIPaddress    Pr SrcP DstP  Pkts
+<span class="orange">G0/1          192.168.1.3     Local     192.168.1.1     06 100B 01BB     1</span> 
+G0/1          192.168.1.3     Local     192.168.1.1     01 0000 0303     1 
+G0/1          192.168.1.3     Local     192.168.1.1     01 0000 0800     1 </pre>]]></text>
+
+<text id="ID_router5_txt1"><![CDATA[<pre>R1# <b>show ip flow interface</b>
+GigabitEthernet0/1
+  ip flow ingress
+  ip flow egress</pre>]]></text>
+ 
+<text id="ID_router5_txt2"><![CDATA[<pre style="padding-bottom:6px;">1# <b>show ip flow export</b>
+<span class="orange_block">Flow export v5 is enabled for main cache</span>  Export source and destination details : 
+  VRF ID : Default
+<span class="orange_block">    Destination(1)  192.168.1.3 (2055) 
+  Version 5 flow records
+  1764 flows exported in 532 udp datagrams</span>  0 flows failed due to lack of export packet
+  0 export packets were sent up to process level
+  0 export packets were dropped due to no fib
+  0 export packets were dropped due to adjacency issues
+  0 export packets were dropped due to fragmentation failures
+  0 export packets were dropped due to encapsulation fixup failures</pre>]]></text>
+</data>

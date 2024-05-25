@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.2.2.1 Domain Name Service (service de noms de domaines)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Services et protocoles de couche application courants</h1>
+        <h2>Services d&#x0027;adressage IP</h2>
+      </div>
+      <div id="content">
+<p>Dans les réseaux de données, les périphériques sont identifiés par des adresses IP numériques pour l'envoi et la réception de données sur les réseaux. La plupart des gens ne retiennent pas cette adresse numérique. Pour cette raison, des noms de domaine ont été créés pour convertir les adresses numériques en noms simples et explicites.</p>
+<p></p>
+<p>Sur Internet, ces noms de domaine (par exemple, <a href="http://www.cisco.com/" target="_blank">http://www.cisco.com</a>) sont beaucoup plus faciles à mémoriser que leurs équivalents numériques (par exemple, 198.133.219.25 pour le serveur de Cisco). Si Cisco décide de changer l'adresse numérique <a href="http://www.cisco.com/" target="_blank">www.cisco.com</a>, l'utilisateur n'en a pas conscience, car le nom de domaine reste le même. La nouvelle adresse est simplement reliée au nom de domaine existant et la connexion est ainsi assurée. Lorsque les réseaux étaient de petite taille, il était simple de maintenir le mappage entre les noms de domaine et les adresses qu'ils représentaient. À mesure que les réseaux se sont développés et que le nombre de périphériques a augmenté, ce système manuel est devenu impossible à gérer. </p>
+<p></p>
+<p>Le protocole DNS (Domain Name System) a été créé afin de permettre la résolution de nom pour ces réseaux. Le protocole DNS utilise un ensemble distribué de serveurs pour convertir les noms associés à ces adresses en numéros. Cliquez sur les boutons de la figure pour afficher les étapes de la résolution des adresses DNS.</p>
+<p></p>
+<p>Le protocole DNS définit un service automatisé qui associe les noms des ressources à l'adresse réseau  numérique requise. Il comprend le format des demandes, des réponses et des données. Les communications via le protocole DNS utilisent un format unique nommé message. Ce format de message est utilisé pour tous les types de demandes clientes et de réponses serveur, pour les messages d'erreur et pour le transfert des informations d'enregistrement de ressource entre les serveurs.</p>
+<p></p>
+<p>Les figures 1 à 5 illustrent les différentes étapes de la résolution DNS.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

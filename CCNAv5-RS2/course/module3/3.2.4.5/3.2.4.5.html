@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.4.5 Non-concordance du mode trunk</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.4.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentations de VLAN</h1>
+        <h2>Dépannage des VLAN et des trunks</h2>
+      </div>
+      <div id="content">
+<p>Des liaisons trunk sont en général configurées de manière statique à l'aide de la commande <span class="cmd"><b>switchport mode trunk</b></span>. Les ports trunk du commutateur Cisco Catalyst utilisent le protocole DTP pour négocier l'état de la liaison. Lorsqu'un port d'une liaison trunk est défini sur un mode trunk qui n'est pas compatible avec le port trunk voisin, il est impossible de créer la liaison trunk entre les deux commutateurs. </p>
+<p></p>
+<p>Dans le scénario illustré en Figure 1, le PC4 ne peut pas se connecter au serveur Web interne. La topologie indique une configuration valide. Alors, pourquoi y a-t-il un problème ? </p>
+<p></p>
+<p>Vérifiez l'état des ports trunk du commutateur S1 à l'aide de la commande <span class="cmd"><b>show interfaces trunk</b></span>. Les informations de la Figure 2 révèlent que l'interface Fa0/3 du commutateur S1 n'est actuellement pas une liaison trunk. L'examen de l'interface F0/3 indique que le port du commutateur est en réalité en mode dynamique automatique. Une analyse des trunks sur le commutateur S3 vous apprend qu'il n'y a aucun port trunk actif. Une étude plus approfondie indique que l'interface Fa0/3 est également en mode dynamique automatique. Voilà pourquoi le trunk ne fonctionne pas.</p>
+<p></p>
+<p>Pour résoudre le problème, changez le mode trunk des ports F0/3 sur les commutateurs S1 et S3, comme indiqué en Figure 3. Après la modification de la configuration, le résultat de la commande <span class="cmd"><b>show interfaces</b></span> signale que le port du commutateur S1 est désormais en mode trunking. Les résultats du PC4 indiquent que celui-ci peut de nouveau se connecter au serveur Web/TFTP situé à l'adresse IP 172.17.10.30.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

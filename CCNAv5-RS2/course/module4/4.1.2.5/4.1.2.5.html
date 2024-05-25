@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.5 LED des périphériques</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration initiale d&#x0027;un routeur</h1>
+        <h2>Brancher les périphériques</h2>
+      </div>
+      <div id="content">
+<p>Les ordinateurs hôtes se connectent à un réseau câblé via une interface réseau et un câble Ethernet RJ-45. La plupart des interfaces réseau disposent d'un ou deux voyants LED de liaison. En général, un voyant LED vert indique une bonne connexion, tandis qu'un voyant LED vert clignotant fait état d'une activité réseau. </p>
+<p></p>
+<p>Si le voyant de liaison ne s'allume pas, c'est signe qu'il y a peut-être un problème au niveau du câble réseau ou du réseau lui-même. Le port de commutateur auquel aboutit la connexion doit également présenter un voyant LED allumé. Si l'une des extrémités ou les deux ne s'allument pas, essayez un autre câble réseau.</p>
+<p></p>
+<p>
+<b>Remarque</b> : la fonction réelle des voyants LED varie selon les fabricants informatiques.</p>
+<p></p>
+<p>De même, les périphériques de l'infrastructure réseau utilisent souvent plusieurs voyants LED pour donner un aperçu rapide de leur état. Par exemple, un commutateur Cisco Catalyst 2960 est équipé de plusieurs LED d'état aidant à surveiller l'activité et les performances du système. Ces LED sont généralement verts lorsque le commutateur fonctionne normalement et orange en cas de dysfonctionnement.</p>
+<p></p>
+<p>Les routeurs à services intégrés (ISR) Cisco utilisent divers voyants LED pour fournir des informations d'état. Un routeur Cisco 1941 est représenté dans la figure. Les LED du routeur aident les administrateurs réseau à effectuer un dépannage de base. Chaque périphérique dispose d'une série unique de LED. Reportez-vous à la documentation propre à chaque périphérique pour obtenir une description précise des LED.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

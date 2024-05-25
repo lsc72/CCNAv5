@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_title" />
+	
+	<element type="ROUTER" textId="ID_router_txt1" x="5" y="65" width="460" height="320" />
+	<element type="TEXT" compId="ID_txt01" x="13.2" y="358.95" width="107" align="left" expand="right"/>
+	</slide>
+	<text id="ID_router_txt1"><![CDATA[<pre>S1(config)#interface f0/6
+S1(config-if)#<b>no switchport</b>
+S1(config-if)#<b>ip address 192.168.200.1 255.255.255.0</b>
+S1(config-if)#<b>no shutdown</b>
+S1(config-if)#<b>end</b>
+S1#
+*Mar  1 00:15:40.115: %SYS-5-CONFIG_I: Configured from console by console
+S1#<b>show ip interface brief</b>
+Interface        IP-Address    OK? Method Status                Protocol
+Vlan1            unassigned    YES unset  administratively down down    
+FastEthernet0/1  unassigned    YES unset  down                  down    
+FastEthernet0/2  unassigned    YES unset  down                  down    
+FastEthernet0/3  unassigned    YES unset  down                  down    
+FastEthernet0/4  unassigned    YES unset  down                  down    
+FastEthernet0/5  unassigned    YES unset  down                  down    
+<span style="color:#F26200"><b>FastEthernet0/6  192.168.200.1 YES manual up                    up</b></span>      
+FastEthernet0/7  unassigned    YES unset  up                    up      
+FastEthernet0/8  unassigned    YES unset  up                    up 
+
+</pre>]]></text>
+</data>

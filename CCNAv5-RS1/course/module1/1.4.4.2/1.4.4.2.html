@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.4.4.2 CCNA</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.4.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Évolution de l&#x0027;environnement réseau</h1>
+        <h2>Architectures réseau</h2>
+      </div>
+      <div id="content">
+<p>À mesure que l'usage de ces réseaux intégrés et évolutifs se développe, il en va de même pour les besoins en formation des personnes qui implémentent et gèrent des solutions réseau. Ces formations doivent commencer par les principes de base du routage et de la commutation. L'obtention de la certification Cisco Certified Network Associate (CCNA) est la première étape de la préparation à une carrière dans le domaine des réseaux. </p>
+<p></p>
+<p>La certification CCNA atteste de la capacité à installer, configurer, exploiter et dépanner des réseaux routés et commutés de taille moyenne, ainsi que de la maîtrise de la mise en œuvre et de la vérification des connexions à des sites distants dans un WAN. Le cursus CCNA inclut également des informations de base sur la réduction des menaces, une introduction aux concepts et à la terminologie des réseaux sans fil, ainsi que des évaluations axées sur les performances. Ce cursus CCNA inclut l'utilisation de différents protocoles : IP, Open Shortest Path First (OSPF), Serial Line Interface Protocol, Frame Relay, VLAN, Ethernet, listes de contrôle d'accès (ACL), etc.</p>
+<p></p>
+<p>Ce cours permet de présenter les concepts de réseau et les configurations de routage et de commutation de base, et est le point de départ de la certification CCNA.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

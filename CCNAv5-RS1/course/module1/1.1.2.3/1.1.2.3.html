@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.2.3 Clients et serveurs (suite)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Connecté au monde entier</h1>
+        <h2>Fourniture de ressources dans un réseau</h2>
+      </div>
+      <div id="content">
+<p>Un ordinateur équipé d'un logiciel serveur peut fournir des services à un ou plusieurs clients en même temps.</p>
+<p></p>
+<p>De plus, un seul ordinateur peut exécuter différents types de logiciel serveur. Chez les particuliers et dans les petites entreprises, il peut arriver, par nécessité, qu'un ordinateur fasse office à la fois de serveur de fichiers, de serveur Web et de serveur de messagerie. </p>
+<p></p>
+<p>Un seul ordinateur peut également exécuter différents types de logiciel client. Un logiciel client doit être installé pour chaque type de service requis. Un hôte équipé de plusieurs clients peut se connecter à plusieurs serveurs en même temps. Par exemple, un utilisateur peut consulter sa messagerie électronique et une page Web en même temps qu'il utilise la messagerie instantanée et écoute la radio sur Internet.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

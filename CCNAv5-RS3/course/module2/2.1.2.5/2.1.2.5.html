@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.5 Format de trame BPDU 802.1D</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts du mode Spanning Tree</h1>
+        <h2>Fonctionnement du protocole STP</h2>
+      </div>
+      <div id="content">
+<p>L'algorithme Spanning Tree repose sur l'échange de trames BPDU pour la détermination d'un pont racine. Une trame BPDU contient 12 champs distincts fournissant des informations sur la priorité et le chemin ; ces informations sont utilisées pour déterminer le pont racine et les chemins qui y mènent.</p>
+<p></p>
+<p>Cliquez sur les champs BPDU de la Figure 1 pour obtenir plus de détails.</p>
+<p></p>
+<p>
+<ul>
+<li>Les quatre premiers champs identifient le protocole, la version, le type de message et les indicateurs d’état.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les quatre champs suivants permettent d’identifier le pont racine et le coût du chemin vers le pont racine.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les quatre derniers sont tous des champs de minuteur qui déterminent à quelle fréquence les messages BPDU sont envoyés et combien de temps les informations reçues via le processus BPDU (rubrique suivante) sont conservées. </li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 2 illustre une trame BPDU capturée via Wireshark. Dans la trame BPDU illustrée dans cet exemple, les champs sont plus nombreux que dans notre description précédente. Le message BPDU est encapsulé dans une trame Ethernet lorsqu’il est transmis sur le réseau. L’en-tête 802.3 indique les adresses source et de destination de la trame BPDU. L'adresse MAC de destination de cette trame est 01:80:C2:00:00:00 ; il s'agit d'une adresse de multidiffusion pour le groupe Spanning Tree. Lorsqu'une trame présente cette adresse MAC, chaque commutateur configuré pour Spanning Tree accepte et lit les informations contenues dans la trame ; tous les autres périphériques du réseau ignorent la trame.</p>
+<p></p>
+<p>Dans l’exemple, l’ID de racine et l'ID de pont sont identiques dans la trame BPDU capturée, ce qui indique que la trame a été capturée depuis un pont racine. Tous les minuteurs sont configurés avec des valeurs par défaut.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

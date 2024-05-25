@@ -1,0 +1,85 @@
+﻿<textcomponents> <!--Slide 1-->
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Nous produisons les supports  </b>]]></text>
+	</component> <!--Slide 2-->
+	<component id="ID_s2_title">
+		<text><![CDATA[<b>Vérification de la table de routage  </b>]]></text>
+	</component>
+<component id="ID_s2_test">
+		<text><![CDATA[<b>Vérification de la table de routage  </b>]]></text>
+	</component> <!--Slide 3-->
+	<component id="ID_s3_title">
+		<text><![CDATA[<b>Vérification de la configuration d'une interface  </b>]]></text>
+	</component> <!--Slide 4-->
+
+
+<component id="ID_sc4_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc4_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc4_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+	<component id="ID_s4_title">
+		<text><![CDATA[<b>Vérification des interfaces des routeurs  </b>]]></text>
+	</component>
+	<component id="ID_SC4" fontFace='Courier New' fontSize="10">
+		<text></text>		
+		<feedback id="fb"><![CDATA[<b> *** </b><font fontSize="10" face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font face="Arial" fontSize="10"><b>Entrez la commande permettant de vérifier les paramètres de l'interface GigabitEthernet 0/0.  </b></font>]]></existingcommands>
+		<command prompt="R1#" fontSize="10">
+		    <correctresponse><![CDATA[show interface gigabitethernet 0/0]]></correctresponse>
+		    <deviceresponse><![CDATA[<font>GigabitEthernet0/0 is up, line protocol is up<br>  Hardware is CN Gigabit Ethernet, address is fc99.4775.c3e0 (bia fc99.4775.c3e0)<br>  Description: Link to LAN 1<br>  Internet address is 192.168.10.1/24<br>  MTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec, <br>     reliability 255/255, txload 1/255, rxload 1/255<br>  Encapsulation ARPA, loopback not set<br> Keepalive set (10 sec)<br>  Full Duplex, 100Mbps, media type is RJ45<br>  output flow-control is<br>unsupported, input flow-control is unsupported<br>  ARP type: ARPA, ARP Timeout 04:00:00<br>  Last input 00:05:21, output 00:00:00, output hang never<br>  Last clearing of "show interface" counters never<br>  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0<br>  Queueing strategy: fifo<br>  Output queue: 0/40 (size/max)<br>  5 minute input rate 0 bits/sec, 0 packets/sec<br>  5 minute output rate 0 bits/sec, 0 packets/sec<br>     329 packets input, 70930 bytes, 0 no buffer<br>     Received 298 broadcasts (0 IP multicasts)<br>     0 runts, 0 giants, 0 throttles <br>     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored<br>     0 watchdog, 0 multicast, 0 pause input<br>     437 packets output, 47524 bytes, 0 underruns<br>     0 output errors, 0 collisions, 1 interface resets<br>     30 unknown protocol drops<br>     0 babbles, 0 late collision, 0 deferred<br>     0 lost carrier, 0 no carrier, 0 pause output<br>     0 output buffer failures, 0 output buffers swapped out<br>R1#<br></font>]]></deviceresponse>
+		    <instruction><![CDATA[<font  face="Arial"><b>Entrez la commande permettant de vérifier les paramètres de l'interface GigabitEthernet 0/1.  </b></font>]]></instruction>
+			</command>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[show interface gigabitethernet 0/1]]></correctresponse>
+<deviceresponse><![CDATA[<font>GigabitEthernet0/1 is up, line protocol is up <br>  Hardware is CN Gigabit Ethernet, address is fc99.4775.c3e1 (bia fc99.4775.c3e1)<br>  Description: Link to LAN 2<br>  Internet address is 192.168.11.1/24<br>  MTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec, <br>     reliability 255/255, txload 1/255, rxload 1/255<br> Encapsulation ARPA, loopback not set<br>  Keepalive set (10 sec)<br>  Full Duplex, 100Mbps, media type is RJ45<br>  output flow-control is unsupported, input flow-control is unsupported<br>  ARP type: ARPA, ARP Timeout 04:00:00<br>  Last input 00:00:11, output 00:00:02, output hang never<br>  Last clearing of "show interface" counters never<br>  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0<br>  Queueing strategy: fifo<br>  Output queue: 0/40 (size/max)<br>  5 minute input rate 0 bits/sec, 0 packets/sec<br>  5 minute output rate 0 bits/sec, 0 packets/sec<br>     614 packets input, 125730 bytes, 0 no buffer<br>     Received 585 broadcasts (0 IP multicasts)<br>     0 runts, 0 giants, 0 throttles <br>     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored<br>     0 watchdog, 306 multicast, 0 pause input<br>     717 packets output, 77198 bytes, 0 underruns<br>     0 output errors, 0 collisions, 1 interface resets<br>     228 unknown protocol drops<br>     0 babbles, 0 late collision, 0 deferred<br>     0 lost carrier, 0 no carrier, 0 pause output<br>     0 output buffer failures, 0 output buffers swapped out<br>R1#</font>]]></deviceresponse>
+		    <instruction><![CDATA[<font  face="Arial"><b>Entrez la commande permettant de vérifier les paramètres de l'interface Serial 0/0/0.  </b></font>]]></instruction>
+		</command>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[show interface Serial 0/0/0]]></correctresponse>
+<deviceresponse><![CDATA[<font>Serial0/0/0 is up, line protocol is up <br>  Hardware is WIC MBRD Serial<br>  Description&nbsp;: Link to R2<br>  Internet address is 209.165.200.225/30<br>  MTU 1500 bytes, BW 1544 Kbit/sec, DLY 20000 usec, <br>     reliability 255/255, txload 1/255, rxload 1/255<br>  Encapsulation HDLC, loopback not set<br>  Keepalive set (10 sec)<br>  Last input 00:00:03, output 00:00:02, output hang never<br>  Last clearing of "show interface" counters never<br>  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0<br>  Queueing strategy: fifo<br>  Output queue: 0/40 (size/max)<br>  5 minute input rate 0 bits/sec, 0 packets/sec<br>  5 minute output rate 0 bits/sec, 0 packets/sec<br>     714 packets input, 52752 bytes, 0 no buffer<br>     Received 714 broadcasts (0 IP multicasts)<br>     0 runts, 0 giants, 0 throttles <br>     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored, 0 abort<br>     714 packets output, 53070 bytes, 0 underruns<br>     0 output errors, 0 collisions, 3 interface resets<br>     0 unknown protocol drops<br>     0 output buffer failures, 0 output buffers swapped out<br>     1 carrier transitions<br>     DCD=up DSR=up DTR=up RTS=up CTS=up<br>R1#<br/></font>]]></deviceresponse>
+			<instruction><![CDATA[<font  face="Arial" class="syntaxBottomLine"><b>Vous avez correctement vérifié les paramètres de l'interface du routeur.  </b></font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component> <!--Slide 5-->
+	<component id="ID_s5_title">
+		<text><![CDATA[<b>Vérification des interfaces IP du routeur  </b>]]></text>
+	</component>
+	<component id="ID_SC5" fontFace='Courier New' fontSize="10">
+		<text></text>		
+		<feedback id="fb"><![CDATA[<font size='10' face="Arial" color="#0000FF"><b>***Vous devez saisir la commande exacte et complète.***  </b></font> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>Entrez la commande «&nbsp;show ip interface&nbsp;» pour vérifier les paramètres de l'interface IP GigabitEthernet 0/0.  </b></font>]]></existingcommands>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[show ip interface gigabitethernet 0/0]]></correctresponse>
+		    <deviceresponse><![CDATA[<font size='10'>GigabitEthernet0/0 is up, line protocol is up<br>  Internet address is 192.168.10.1/24<br>  Broadcast address is 255.255.255.255<br>  Address determined by setup command<br>  MTU is 1500 bytes<br>  Helper address is not set<br>  Directed broadcast forwarding is disabled<br>  Outgoing access list is not set<br>  Inbound access list is not set<br>  Proxy ARP is enabled<br>  Local Proxy ARP is disabled<br>  Security level is default<br>  Split horizon is enabled<br>  ICMP redirects are always sent<br>  ICMP unreachables are always sent<br>  ICMP mask replies are never sent<br>  IP fast switching is enabled<br>  IP fast switching on the same interface is disabled<br>  IP Flow switching is disabled<br>  IP CEF switching is enabled<br>  IP CEF switching turbo vector<br>  IP multicast fast switching is enabled<br>  IP multicast distributed fast switching is disabled<br>  IP route-cache flags are Fast, CEF<br>  Router Discovery is disabled<br>  IP output packet accounting is disabled<br>  IP access violation accounting is disabled<br>  TCP/IP header compression is disabled<br>  RTP/IP header compression is disabled<br>  Policy routing is disabled<br>  Network address translation is disabled<br>  BGP Policy Mapping is disabled<br>  Input features: MCI Check<br>  IPv4 WCCP Redirect outbound is disabled<br>  IPv4 WCCP Redirect inbound is disabled<br>  IPv4 WCCP Redirect exclude is disabled<br>R1#</font>]]></deviceresponse>
+		    <instruction><![CDATA[<font size='10' face="Arial"><b>Entrez la commande «&nbsp;show ip interface&nbsp;» pour vérifier les paramètres de l'interface&nbsp;IP GigabitEthernet 0/1.  </b></font>]]></instruction>
+			</command>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[show ip interface gigabitethernet 0/1]]></correctresponse>
+<deviceresponse><![CDATA[<font size='10'>GigabitEthernet0/1 is up, line protocol is up<br>  Internet address is 192.168.11.1/24<br>  Broadcast address is 255.255.255.255<br>  Address determined by setup command<br>  MTU is 1500 bytes<br>  Helper address is not set<br>  Directed broadcast forwarding is disabled<br>  Outgoing access list is not set<br>  Inbound access list is not set<br>  Proxy ARP is enabled<br>  Local Proxy ARP is disabled<br>  Security level is default<br>  Split horizon is enabled<br>  ICMP redirects are always sent<br>  ICMP unreachables are always sent<br>  ICMP mask replies are never sent<br>  IP fast switching is enabled<br>  IP fast switching on the same interface is disabled<br>  IP Flow switching is disabled<br>  IP CEF switching is enabled<br>  IP CEF switching turbo vector<br>  IP multicast fast switching is enabled<br>  IP multicast distributed fast switching is disabled<br>  IP route-cache flags are Fast, CEF<br>  Router Discovery is disabled<br>  IP output packet accounting is disabled<br>  IP access violation accounting is disabled<br>  TCP/IP header compression is disabled<br>  RTP/IP header compression is disabled<br>  Policy routing is disabled<br>  Network address translation is disabled<br>  BGP Policy Mapping is disabled<br>  Input features: MCI Check<br>  IPv4 WCCP Redirect outbound is disabled<br>  IPv4 WCCP Redirect inbound is disabled<br>  IPv4 WCCP Redirect exclude is disabled<br>R1#</font>]]></deviceresponse>
+		    <instruction><![CDATA[<font size='10' face="Arial"><b>Entrez la commande «&nbsp;show ip interface&nbsp;» pour vérifier les paramètres de l'interface IP Serial 0/0/0.  </b></font>]]></instruction>
+		</command>
+		<command prompt="R1#">
+		    <correctresponse><![CDATA[show ip interface Serial 0/0/0]]></correctresponse>
+<deviceresponse><![CDATA[<font size='10'>Serial0/0/0 is up, line protocol is up<br>  Internet address is 209.165.200.225/30<br>  Broadcast address is 255.255.255.255<br>  Address determined by setup command<br>  MTU is 1500 bytes<br>  Helper address is not set<br>  Directed broadcast forwarding is disabled<br>  Outgoing access list is not set<br>  Inbound access list is not set<br>  Proxy ARP is enabled<br>  Local Proxy ARP is disabled<br>  Security level is default<br>  Split horizon is enabled<br>  ICMP redirects are always sent<br>  ICMP unreachables are always sent<br>  ICMP mask replies are never sent<br>  IP fast switching is enabled<br>  IP fast switching on the same interface is enabled<br>  IP Flow switching is disabled<br>  IP CEF switching is enabled<br>  IP CEF switching turbo vector<br>  IP multicast fast switching is enabled<br>  IP multicast distributed fast switching is disabled<br>  IP route-cache flags are Fast, CEF<br>  Router Discovery is disabled<br>  IP output packet accounting is disabled<br>  IP access violation accounting is disabled<br>  TCP/IP header compression is disabled<br>  RTP/IP header compression is disabled<br>  Policy routing is disabled<br>  Network address translation is disabled<br>  BGP Policy Mapping is disabled<br>  Input features: MCI Check<br>  IPv4 WCCP Redirect outbound is disabled<br>  IPv4 WCCP Redirect inbound is disabled<br>  IPv4 WCCP Redirect exclude is disabled<br>R1#</font>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial" class="syntaxBottomLine"><b>Vous avez correctement vérifié les paramètres de l'interface&nbsp;IP du routeur.  </b></font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+</textcomponents>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.2.5 Route statique flottante</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentation du routage statique</h1>
+        <h2>Types de routes statiques</h2>
+      </div>
+      <div id="content">
+<p>Un autre type de route statique est une route statique flottante. Les routes statiques flottantes sont des routes statiques utilisées pour fournir un chemin de secours à une route statique ou une route dynamique principale, en cas d'échec de lien. La route statique flottante est utilisée uniquement lorsque la route principale n'est pas disponible.</p>
+<p></p>
+<p>Pour cela, la route statique flottante est configurée avec une distance administrative plus élevée que la route principale. Souvenez-vous que la distance administrative indique la fiabilité d'une route. Si plusieurs chemins vers la destination existent, le routeur choisira le chemin présentant la plus courte distance administrative. </p>
+<p></p>
+<p>Par exemple, supposons qu'un administrateur souhaite créer une route statique flottante de secours pour une route apprise par le protocole EIGRP. La route statique flottante doit être configurée avec une distance administrative plus élevée que le protocole EIGRP. L'EIGRP possède une distance administrative de 90. Si la route statique flottante est configurée avec une distance administrative de 95, la route dynamique associée au protocole EIGRP est préférée à la route statique flottante. Si la route associée au protocole EIGRP est perdue, la route statique flottante est utilisée à la place. </p>
+<p></p>
+<p>Dans la figure, le routeur Branch transfère généralement l'ensemble du trafic vers le routeur HQ via la liaison WAN privée. Dans cet exemple, les routeurs échangent des informations de routage au moyen du protocole EIGRP. Une route statique flottante, avec une distance administrative supérieure ou égale à 91, peut être configurée pour servir de route de secours. Si la liaison WAN privée échoue et que la route EIGRP disparaît de la table de routage, le routeur sélectionne la route statique flottante comme meilleur chemin pour accéder au réseau local HQ.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

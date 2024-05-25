@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.2.2 Types de paquets OSPF</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Caractéristiques du protocole OSPF</h1>
+        <h2>Messages OSPF</h2>
+      </div>
+      <div id="content">
+<p>Le protocole OSPF utilise des paquets LSP (Link-State Packet) pour établir et maintenir des contiguïtés de voisinage, ainsi que pour échanger des mises à jour de routage. </p>
+<p></p>
+<p>La figure illustre les cinq types de paquets LSP utilisés par le protocole OSPF. Chacun d'eux a un objectif spécifique dans le processus de routage OSPF :</p>
+<p>
+<ul>
+<li>
+<b>Type 1 : paquet Hello</b> - Permet d'établir et de maintenir la contiguïté avec d'autres routeurs OSPF. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Type 2 : paquet DBD (Database Description)</b> - Contient une liste abrégée de la LSDB du routeur expéditeur et est utilisé par les routeurs destinataires à des fins de comparaison avec la LSDB locale. La LSDB doit être identique sur tous les routeurs à état de liens au sein d'un secteur pour créer une arborescence SPF précise.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Type 3 : paquet LSR (Link-State Request)</b> - Les routeurs destinataires peuvent alors demander plus d'informations sur une entrée quelconque dans la description de base de données en envoyant un paquet LSR. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Type 4 : paquet LSU (Link-State Update)</b> - Utilisé pour répondre aux paquets LSRs et pour annoncer de nouvelles informations. Les paquets LSU contiennent sept types de paquets LSA. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Type 5 : paquet LSAck (Link-State Acknowledgment)</b> - Lorsqu'un paquet LSU est reçu, le routeur envoie un paquet LSAck pour confirmer la réception du paquet LSU. Le champ de données du paquet LSAck est vide.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

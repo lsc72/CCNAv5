@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.2.4 Port disponible suivant</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement de la NAT</h1>
+        <h2>Types de NAT</h2>
+      </div>
+      <div id="content">
+<p>Dans l'exemple précédent, les numéros de port du client, 1331 et 1555, n'ont pas été modifiés par le routeur configuré pour la NAT. Ce scénario est peu probable, car il y a de fortes chances que ces numéros de port soient déjà liés à d'autres sessions actives. </p>
+<p></p>
+<p>La fonction PAT tente de conserver le port source d'origine. Cependant, si le port source d'origine est déjà utilisé, la PAT attribue le premier numéro de port disponible en commençant au début du groupe de ports approprié 0 à 511, 512 à 1 023 ou 1 024 à 65 535. Lorsqu'il n'y a plus de ports disponibles et que le pool d'adresses comporte plusieurs adresses externes, la PAT passe à l'adresse suivante pour essayer d'attribuer le port source d'origine. Ce processus se poursuit jusqu'à ce qu'il n'y ait plus de ports ou d'adresses IP externes disponibles. </p>
+<p></p>
+<p>Cliquez sur le bouton Lecture sur la figure pour découvrir le fonctionnement de la PAT.</p>
+<p></p>
+<p>Dans l'animation, les hôtes ont choisi le même numéro de port 1444. Cela est acceptable pour l'adresse interne, car les hôtes possèdent des adresses IP privées uniques. Cependant, sur le routeur NAT, les numéros de port doivent être modifiés pour éviter que les paquets de deux hôtes différents quittent R2 avec la même adresse source. Dans cet exemple, la PAT a attribué le port disponible suivant (1445) à la deuxième adresse d'hôte.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

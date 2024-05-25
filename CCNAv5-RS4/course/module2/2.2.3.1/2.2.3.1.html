@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.3.1 DSL</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Choix d&#x0027;une technologie WAN</h1>
+        <h2>Infrastructure WAN publique</h2>
+      </div>
+      <div id="content">
+<p>La technologie DSL est une technologie de connexion permanente qui utilise les lignes téléphoniques à paire torsadée existantes pour transmettre les données à large bande passante et offre des services IP à ses abonnés. Le modem DSL convertit le signal Ethernet provenant d'un périphérique d'utilisateur en signal DSL, qui est transmis au central téléphonique. </p>
+<p></p>
+<p>Plusieurs lignes d'abonnés DSL sont multiplexées dans une seule liaison à haute capacité grâce à un multiplexeur d'accès DSL (DSLAM) chez le fournisseur. Les DSLAM incorporent la technologie de multiplexage temporel pour regrouper plusieurs lignes d'abonnés sur un seul support, en général une connexion T3 (DS3). Les technologies DSL actuelles utilisent des techniques de codage et de modulation sophistiquées pour obtenir des débits élevés. </p>
+<p></p>
+<p>Il existe un grand nombre de types, de normes et de normes en cours de rédaction concernant le DSL. Il constitue désormais un choix populaire pour les services informatiques d'entreprise desservant des télétravailleurs. L'abonné ne peut généralement pas choisir de se connecter directement au réseau d'une entreprise. Il doit en effet d'abord se connecter à un FAI, puis une connexion IP est établie vers l'entreprise, via Internet. Ce processus présente des risques de sécurité, qui peuvent être combattus par certaines mesures.</p>
+<p></p>
+<p>La topologie de l'illustration présente un exemple de connexion WAN DSL.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

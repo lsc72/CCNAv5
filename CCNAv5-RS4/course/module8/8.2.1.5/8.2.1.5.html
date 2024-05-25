@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.1.5 Identifiants de communauté</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>SNMP</h1>
+        <h2>Fonctionnement de SNMP</h2>
+      </div>
+      <div id="content">
+<p>Pour que le protocole SNMP fonctionne, il faut que le système de gestion de réseau (NMS) ait accès à la base de données MIB. Afin de s'assurer que les demandes d'accès sont valides, une forme quelconque d'authentification doit être implémentée.</p>
+<p></p>
+<p>Les protocoles SNMPv1 et SNMPv2c utilisent des identifiants de communauté qui contrôlent l'accès à la base de données MIB. Les identifiants de communauté sont des mots de passe en texte clair. Les chaînes de communauté SNMP authentifient l'accès aux objets MIB.</p>
+<p></p>
+<p>Il existe deux types d'identifiants de communauté : </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Lecture seule (ro)</b> : fournit un accès aux variables MIB, mais ne permet pas de les modifier, uniquement de les lire. La sécurité étant minimale dans la version 2c, de nombreuses entreprises utilisent le protocole SNMPv2c en mode lecture seule.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Lecture/écriture (rw)</b> : fournit un accès en lecture et en écriture à l'ensemble des objets de la base de données MIB.</li>
+</ul>
+</p>
+<p></p>
+<p>Pour afficher ou définir des variables MIB, l'utilisateur doit spécifier l'identifiant de communauté approprié pour l'accès en lecture ou en écriture. Lancez l'animation de la figure pour voir comment le protocole SNMP utilise l'identifiant de communauté.</p>
+<p></p>
+<p>
+<b>Remarque</b> : les mots de passe en texte clair ne sont pas considérés comme étant un mécanisme de sécurité. En effet, les mots de passe en texte clair sont hautement vulnérables aux attaques de type Man-in-the-Middle, au cours desquelles ils sont mis en danger suite à la capture de paquets. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.2.5 Mises à jour d&#x0027;état de liens</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Caractéristiques du protocole OSPF</h1>
+        <h2>Messages OSPF</h2>
+      </div>
+      <div id="content">
+<p>Les routeurs échangent initialement des paquets DBD de type 2, ce qui correspond à une liste abrégée de la LSDB du routeur expéditeur qui est utilisée par les routeurs destinataires à des fins de vérification sur base de la LSDB locale.</p>
+<p></p>
+<p>Un paquet LSR de type 3 est utilisé par les routeurs destinataires pour demander plus d'informations sur une entrée dans la DBD. </p>
+<p></p>
+<p>Le paquet LSU de type 4 est utilisé pour répondre à un paquet LSR.</p>
+<p></p>
+<p>Les paquets LSU sont également utilisés pour transmettre des mises à jour de routage OSPF, telles que des modifications de liens. Plus spécifiquement, un paquet LSU peut contenir 11 types différents de paquets LSA OSPFv2, comme indiqué dans la figure. OSPFv3 a renommé plusieurs de ces paquets LSA et comporte également deux paquets LSA supplémentaires.</p>
+<p></p>
+<p>
+<b>Remarque :</b> la différence entre les termes LSU et LSA n'est pas évidente, car ils sont souvent utilisés l'un pour l'autre. Toutefois, un paquet LSU contient un ou plusieurs paquets LSA.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.1.3 Protocoles de routage dynamique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées du protocole OSPF à zone unique </h1>
+        <h2>Routage au sein des couches de distribution et cœur de réseau</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Routage dynamique</b>
+</p>
+<p></p>
+<p>Les protocoles de routage permettent aux routeurs de partager dynamiquement des informations sur les réseaux distants, comme illustré par la figure. Les routeurs recevant des mises à jour ajoutent automatiquement ces informations à leurs propres tables de routage. Les protocoles de routage déterminent ensuite le meilleur chemin, ou la meilleure route, vers chaque réseau. L'un des principaux avantages des protocoles de routage dynamique est l'échange d'informations de routage entre les routeurs lors de la modification de la topologie. Cet échange permet aux routeurs de découvrir automatiquement de nouveaux réseaux et également de trouver d'autres chemins en cas d'échec d'un lien vers un réseau actif. </p>
+<p></p>
+<p>Par rapport au routage statique, les protocoles de routage dynamique requièrent une charge administrative moindre. Toutefois, l'utilisation de protocoles de routage dynamique implique qu'une partie des ressources d'un routeur est dédiée au fonctionnement du protocole (y compris le temps processeur et la bande passante du lien réseau). Malgré les avantages du routage dynamique, le routage statique a encore toute sa légitimité. Selon la situation, l'un conviendra mieux que l'autre. Cependant, il est important de comprendre que le routage statique et le routage dynamique ne s'excluent pas mutuellement. En revanche, la plupart des réseaux utilisent une combinaison de protocoles de routage dynamique et de routes statiques.</p>
+<p></p>
+<p>Les protocoles de routage dynamique les plus répandus sont les protocoles EIGRP et OSPF. Ce chapitre porte sur le protocole OSPF.</p>
+<p></p>
+<p>
+<b>Remarque </b>: tous les protocoles de routage dynamique sont en mesure d'annoncer et de propager des routes statiques dans leurs mises à jour de routage.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

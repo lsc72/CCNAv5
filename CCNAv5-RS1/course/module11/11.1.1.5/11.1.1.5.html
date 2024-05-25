@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.1.1.5 Considérations liées à la conception d&#x0027;un petit réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.1.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Création et développement</h1>
+        <h2>Périphériques d&#x0027;un petit réseau</h2>
+      </div>
+      <div id="content">
+<p>Les utilisateurs souhaitent accéder immédiatement à leurs e-mails et aux fichiers qu'ils partagent ou mettent à jour. Pour assurer cette disponibilité, le concepteur du réseau doit procéder ainsi :</p>
+<p></p>
+<p>
+<b>Étape 1</b>. S'assurer que les serveurs de messagerie et de fichiers se trouvent dans un emplacement centralisé.</p>
+<p>
+<b>Étape 2</b>. Protéger l'emplacement contre les accès non autorisés par des mesures de sécurité physiques et logiques.</p>
+<p>
+<b>Étape 3</b>. Créer une certaine redondance dans la batterie de serveurs qui garantit qu'en cas de défaillance de l'un des périphériques, les fichiers ne sont pas perdus.</p>
+<p>
+<b>Étape 4</b>. Configurer des chemins d'accès redondants vers les serveurs.</p>
+<p></p>
+<p>En outre, les réseaux modernes utilisent souvent une forme de voix ou de vidéo sur IP pour la communication avec les clients et les partenaires commerciaux. Ce type de réseau convergent est mis en œuvre sous forme de solution intégrée ou de données brutes supplémentaires superposées sur le réseau IP. L'administrateur réseau doit tenir compte des différents types de trafic et de leur traitement dans la conception du réseau. Dans un réseau de petite taille, les routeurs et les commutateurs doivent être configurés pour prendre en charge le trafic en temps réel, comme la voix et la vidéo, et ce, séparément du trafic des autres données. En fait, dans une conception de réseau bien pensée, le trafic est classifié de manière précise en fonction des priorités, comme le montre la figure. Les classes de trafic peuvent être aussi spécifiques que les suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>Transfert de fichiers</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>E-mail</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Voix</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Vidéos</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Messagerie</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Transactionnel</li>
+</ul>
+</p>
+<p></p>
+<p>En fin de compte, l'objectif de la conception du réseau, quelle que soit sa taille, est d'améliorer la productivité des employés et de réduire le temps d'indisponibilité du réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

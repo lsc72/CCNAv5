@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.1.4 Routage de paquets</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Décisions de routage</h1>
+        <h2>Commutation des paquets entre les réseaux</h2>
+      </div>
+      <div id="content">
+<p>Les processus suivants se produisent lorsque R2 reçoit la trame sur son interface Fa0/0 :</p>
+<p></p>
+<p>1. R2 examine l'adresse MAC de destination, qui correspond à l'adresse MAC de l'interface de réception, FastEthernet 0/0. R2 copie, par conséquent, la trame dans sa mémoire tampon.</p>
+<p>2. R2 constate que le type d'Ethernet indiqué est 0x800, ce qui signifie que la trame Ethernet contient un paquet IPv4 dans sa partie données.</p>
+<p>3. R2 désencapsule la trame Ethernet.</p>
+<p>4. Comme l'adresse IPv4 de destination du paquet ne correspond à aucune adresse d'interface de R2, le routeur consulte sa table de routage pour acheminer ce paquet. R2 recherche dans sa table de routage l'adresse IPv4 de destination du paquet en procédant de la même façon que R1.</p>
+<p></p>
+<p>La table de routage de R2 contient une route vers le réseau 192.168.4.0/24, avec une adresse IPv4 du tronçon suivant 192.168.3.2 et une interface de sortie Serial 0/0/0. Comme l'interface de sortie ne se trouve pas sur un réseau Ethernet, R2 n'est pas tenu de convertir l'adresse IPv4 du tronçon suivant en adresse MAC de destination. </p>
+<p></p>
+<p>5. Le paquet IPv4 est maintenant encapsulé dans une nouvelle trame liaison de données et envoyé à l'interface de sortie Serial 0/0/0.</p>
+<p></p>
+<p>Lorsque l'interface est une connexion série point à point (P2P), le routeur encapsule le paquet IPv4 dans le format de trame liaison de données utilisé par l'interface de sortie (HDLC, PPP, etc.). Comme il n'y a aucune adresse MAC sur les interfaces série, R2 définit l'adresse de destination liaison de données sur l'équivalent d'une diffusion.</p>
+<p></p>
+<p>L'animation de la figure illustre la façon dont R2 transfère le paquet à R3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

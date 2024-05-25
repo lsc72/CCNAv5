@@ -1,0 +1,77 @@
+﻿<textcomponents>
+
+<component id="ID_s1_title">
+  <text><![CDATA[<b>Calcul de la route récapitulative</b>]]></text> 
+  </component>
+<component id="ID_s1_txt01">
+<text><![CDATA[<b>Étape&nbsp;1</b>]]></text>
+</component>
+<component id="ID_s1_txt02">
+  <text><![CDATA[<b>Étape&nbsp;2</b>]]></text> 
+  </component>
+<component id="ID_s1_txt03">
+  <text><![CDATA[Certains bits sont différents.]]></text> 
+  </component>
+<component id="ID_s1_txt04">
+  <text><![CDATA[<b>Correspondance des 22&nbsp;premiers bits</b>]]></text> 
+  </component>
+  <component id="ID_s1_txt05">
+  <text><![CDATA[<b>Étape&nbsp;3</b>]]></text> 
+  </component>
+  <component id="ID_s1_txt06">
+  <text><![CDATA[ou]]></text> 
+  </component>
+
+
+
+
+<component id="ID_s2_title">
+<text><![CDATA[<b>Récapitulation de route de la zone&nbsp;1 sur R1</b>]]></text>
+</component>
+
+<component id="ID_s3_title">
+<text><![CDATA[<b>Vérifier la table de routage de R1 après récapitulation</b>]]></text>
+</component>
+<component id="ID_s4_title">
+<text><![CDATA[<b>Vérifier la table de routage de R1 après récapitulation</b>]]></text>
+</component> 
+<component id="ID_s5_title">
+<text><![CDATA[<b>Récapitulation de route de la zone&nbsp;2</b>]]></text>
+</component> 
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+
+	
+<component id="ID_SC5" fontFace='Courier New' fontSize="10">
+	<feedback id="fb"><![CDATA[<b>***</b><font size='10' face="Arial" color="#0000FF">Vous devez saisir la commande exacte et complète.</font><b>***</b>]]></feedback>
+	<existingcommands><![CDATA[<font size='10' face="Arial"><b>Passez en mode de configuration du routeur OSPF sur R3 en utilisant l'ID de processus 10.<ul><li>Configurez la route récapitulative de la zone&nbsp;2 pour le réseau 192.168.0.0/22<li>Repasser en mode d'exécution privilégié</ul></font>]]></existingcommands>
+	<command prompt="R3(config)#">
+	<correctresponse><![CDATA[router ospf 10]]></correctresponse>
+	</command>
+	<command prompt="R3(config-router)#">
+	<correctresponse><![CDATA[area 2 range 192.168.0.0 255.255.252.0]]></correctresponse>
+	</command>
+	<command prompt="R3(config-router)#">
+	<correctresponse><![CDATA[end]]></correctresponse>
+	<deviceresponse><![CDATA[<font size='10' face="Courier New">R3#<br>*Apr 19 18:11:06.781: %SYS-5-CONFIG_I: Configured from console by console<br>R3#]]></deviceresponse>
+	<instruction><![CDATA[<font size='10' face="Arial"><b>Vérifiez la route récapitulative en sélectionnant les routes OSPF dans la table de routage.</b>]]></instruction>
+	</command>
+	<command prompt="R3#">
+	<correctresponse><![CDATA[show ip route ospf]]></correctresponse>
+	<deviceresponse><![CDATA[<font size='8' face="Courier New">Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP <br> D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area <br> N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2 <br> E1 - OSPF external type 1, E2 - OSPF external type 2 <br> i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2 <br> ia - IS-IS inter area, * - candidate default, U - per-user static route <br> o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP <br> + - replicated route, % - next hop override <br> <br>Gateway of last resort is not set <br> <br> 10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks <br>O IA 10.1.0.0/22 [110/1295] via 192.168.10.5, 00:01:07, Serial0/0/1 <br>O 10.2.1.0/24 [110/648] via 192.168.10.5, 00:01:07, Serial0/0/1 <br>O 192.168.0.0/22 is a summary, 00:01:07, Null0 <br> 192.168.10.0/24 is variably subnetted, 3 subnets, 2 masks <br>O 192.168.10.0/30 [110/1294] via 192.168.10.5, 00:01:07, Serial0/0/1 <br>R3#</font>]]></deviceresponse>
+	<instruction><![CDATA[<font size='10' face="Arial" class="syntaxBottomLine"><b>Vous avez correctement récapitulé les routes de la zone&nbsp;2 sur R3.</b>]]></instruction>
+	</command>
+	<command prompt=""/>
+</component>
+
+	
+</textcomponents>

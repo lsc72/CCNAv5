@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.4.1.4 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.4.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>La couche application accède directement aux processus sous-jacents qui gèrent et permettent la communication entre les utilisateurs connectés au réseau. Cette couche sert de source et de destination des communications via les réseaux de données. Les applications, les protocoles et les services de la couche application permettent aux utilisateurs d'interagir avec le réseau de données de manière cohérente et efficace. </p>
+<p></p>
+<p>
+<ul>
+<li>Les applications sont des programmes informatiques avec lesquels les utilisateurs interagissent et qui lancent le processus de transfert de données à la demande des utilisateurs.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les services sont des programmes s'exécutant en tâche de fond qui assurent la connexion entre la couche application et les couches inférieures du modèle de réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les protocoles fournissent une structure de règles et de processus convenus grâce auxquels les services s'exécutant sur un périphérique particulier peuvent envoyer et recevoir des données de divers périphériques réseau.</li>
+</ul>
+</p>
+<p></p>
+<p>L'acheminement de données via le réseau peut être demandée à un serveur par un client ou d'un périphérique à un autre dans un schéma P2P où la relation client/serveur est établie selon le périphérique qui, à ce moment, est la source ou la destination. Des messages sont échangés entre les services de la couche application au niveau de chaque périphérique final selon les spécifications de protocole pour établir et utiliser ces relations.</p>
+<p></p>
+<p>Des protocoles tels que HTTP, par exemple, prennent en charge l'envoi de pages Web vers des périphériques finaux. Les protocoles SMTP et POP prennent en charge l'envoi et la réception d'e-mails. Les protocoles SMB et FTP permettent aux utilisateurs de partager des fichiers. Les applications peer-to-peer (P2P) permettent aux particuliers de partager facilement et de manière fluide des éléments multimédias de manière distribuée. Le protocole DNS convertit en adresses numériques utilisables par le réseau les noms humainement compréhensibles et utilisés pour faire référence aux ressources réseau. Les clouds sont des emplacements distants en amont qui stockent des données et des applications hôtes pour que les utilisateurs aient besoin d'un nombre limité de ressources locales et qu'ils puissent facilement accéder au contenu stocké sur différents appareils à partir de n'importe quel endroit. </p>
+<p></p>
+<p>Tous ces éléments collaborent, au niveau de la couche application. La couche application permet aux utilisateurs de travailler et de jouer sur Internet.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

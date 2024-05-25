@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.2.1 Processus de routage à état de liens</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage dynamique à état de liens</h1>
+        <h2>Mises à jour d&#x0027;état de liens</h2>
+      </div>
+      <div id="content">
+<p>Comment fonctionne exactement un protocole de routage à état de liens ? Dans les protocoles de routage à état de liens, un lien désigne une interface de routeur. Les informations relatives à l'état de ces liens sont appelées état de liens.</p>
+<p></p>
+<p>Examinez la topologie de la figure. Tous les routeurs de la topologie vont effectuer le processus de routage à état de liens générique qui suit pour atteindre un état de convergence :</p>
+<p></p>
+<p>1. Chaque routeur prend connaissance de ses propres liens et des réseaux qui lui sont connectés directement. Cette opération s'effectue en détectant qu'une interface se trouve dans l'état up.</p>
+<p>2. Chaque routeur est responsable de la détection de ses voisins sur les réseaux connectés directement. Les routeurs à état de liens effectuent cette détection en échangeant des paquets Hello avec d'autres routeurs à état de liens situés sur des réseaux connectés directement.</p>
+<p>3. Chaque routeur construit un paquet LSP (Link-State Packet) contenant l'état de chacun des liens connectés directement. Il procède en enregistrant toutes les informations pertinentes sur chaque voisin, notamment l'ID du voisin, le type de lien et la bande passante.</p>
+<p>4. Chaque routeur inonde tous les voisins avec des paquets LSP. Les voisins stockent tous les paquets LSP reçus dans une base de données. Ensuite, ils diffusent les paquets LSP à leurs voisins jusqu'à ce que tous les routeurs de la zone aient reçu ceux-ci. Chaque routeur stocke une copie de chaque LSP reçu de ses voisins dans une base de données locale</p>
+<p>5. Chaque routeur utilise la base de données pour élaborer une carte complète de la topologie et calcule le meilleur chemin vers chaque réseau de destination. Le routeur possède ainsi une carte complète s'apparentant à une carte routière de l'ensemble des destinations de la topologie et des routes pour les atteindre. L'algorithme SPF sert à construire la carte de la topologie et à déterminer le meilleur chemin vers chaque réseau.</p>
+<p></p>
+<p>
+<b>Remarque :</b> ce processus est identique à la fois pour OSPF pour IPv4 et OSPF pour IPv6. Les exemples de cette section font référence au protocole OSPF pour IPv4.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.3.1.2 Extensions de la commande ping</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Performances réseau de base</h1>
+        <h2>Les commandes</h2>
+      </div>
+      <div id="content">
+<p>Cisco IOS propose un mode « étendu » de la commande ping. Pour entrer dans ce mode, saisissez ping en mode d'exécution privilégié sans spécifier l'adresse IP de destination. Une série d'invites apparaît alors, comme le montre l'exemple suivant. Il suffit d'appuyer sur Entrée pour accepter les valeurs par défaut indiquées. L'exemple ci-dessous montre comment forcer une requête ping à utiliser 10.1.1.1 comme adresse source (voir R2 sur la figure). L'adresse source d'une requête ping standard serait 209.165.200.226. Ainsi, l'administrateur réseau peut contrôler à distance (à partir de R2) que R1 dispose de la route 10.1.1.0/24 dans sa table de routage.</p>
+<p></p>
+<p>R2#<b> ping</b></p>
+<p>Protocol [ip]:</p>
+<p>Target IP address:<b> 192.168.10.1</b></p>
+<p>Repeat count [5]:</p>
+<p>Datagram size [100]:</p>
+<p>Timeout in seconds [2]:</p>
+<p>Extended commands [n]:<b> y</b></p>
+<p>Source address or interface:<b> 10.1.1.1 </b></p>
+<p>Type of service [0]:</p>
+<p>Set DF bit in IP header? [no]:</p>
+<p>Validate reply data? [no]:</p>
+<p>Data pattern [0xABCD]:</p>
+<p>Loose, Strict, Record, Timestamp, Verbose[none]:</p>
+<p>Sweep range of sizes [n]:</p>
+<p>Type escape sequence to abort.</p>
+<p>Sending 5, 100-byte ICMP Echos to 192.168.10.1, timeout is 2 seconds:</p>
+<p>!!!!!</p>
+<p>Success rate is 100 percent (5/5), round-trip min/avg/max = 36/97/132 ms </p>
+<p></p>
+<p>Vous pouvez détecter d'éventuels problèmes de latence en entrant à l'invite un délai d'attente plus long que celui utilisé par défaut. Si l'allongement du délai d'attente de la requête ping permet d'obtenir une réponse, vous pouvez en conclure qu'une connexion existe entre les hôtes, mais que la latence réseau risque de poser problème.</p>
+<p></p>
+<p>Remarque : si vous saisissez « y » à l'invite « Extended commands », vous obtiendrez davantage d'options utiles au dépannage.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

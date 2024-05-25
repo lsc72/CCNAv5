@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.3.6 Étape 4 : vérification de la passerelle par défaut</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.3.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Dépannage de la connectivité IP</h2>
+      </div>
+      <div id="content">
+<p>S'il n'existe aucune route détaillée sur le routeur ou si l'hôte est configuré avec une passerelle par défaut incorrecte, la communication entre deux points d'extrémité situés dans des réseaux différents ne fonctionnera pas. La Figure 1 montre que PC1 utilise R1 en tant que passerelle par défaut. De même, R1 utilise R2 en guise de passerelle par défaut ou de passerelle de dernier recours.</p>
+<p></p>
+<p>Si un hôte a besoin d'accéder à des ressources situées en dehors du réseau local, la passerelle par défaut doit être configurée. La passerelle par défaut est le premier routeur rencontré sur le chemin vers les destinations situées en dehors du réseau local. </p>
+<p></p>
+<p>
+<b>Exemple de dépannage 1</b>
+</p>
+<p>La Figure 2 illustre la commande <span class="cmd"><b>show ip route</b></span> de Cisco IOS ainsi que la commande <span class="cmd"><b>route print</b></span> de Windows, permettant de vérifier la présence d'une passerelle par défaut IPv4.</p>
+<p></p>
+<p>Dans cet exemple, le routeur R1 possède la passerelle par défaut correcte, à savoir l'adresse IPv4 du routeur R2. Toutefois, PC1 possède une passerelle par défaut incorrecte. PC1 devrait posséder la passerelle par défaut du routeur R1, à savoir 10.1.10.1. Cette passerelle doit être configurée manuellement si les informations d'adressage IPv4 ont été configurées manuellement sur PC1. Si les informations d'adressage IPv4 ont été obtenues automatiquement à partir d'un serveur DHCPv4, il faut dans ce cas examiner la configuration du serveur DHCP. Un problème de configuration sur un serveur DHCP est généralement constaté par plusieurs clients.</p>
+<p></p>
+<p>
+<b>Exemple de dépannage 2</b>
+</p>
+<p>Dans le cas de la technologie IPv6, il est possible de configurer la passerelle par défaut manuellement ou en utilisant la configuration automatique des adresses sans état (SLAAC), ou DHCPv6. Avec SLAAC, la passerelle par défaut est annoncée par le routeur aux hôtes à l'aide de messages d'annonce de routeur (RA) ICMPv6. La passerelle par défaut indiquée dans le message d'annonce de routeur est l'adresse IPv6 link-local d'une interface de routeur. Si la passerelle par défaut est configurée manuellement sur l'hôte, ce qui est très improbable, elle peut être définie soit à l'adresse IPv6 globale soit à l'adresse IPv6 link-local.</p>
+<p></p>
+<p>Comme le montre la Figure 3, la commande <span class="cmd"><b>show ipv6 route</b></span> de Cisco IOS affiche la route IPv6 par défaut sur R1 tandis que la commande <span class="cmd"><b>ipconfig</b></span> de Windows est utilisée pour vérifier la présence de la passerelle par défaut IPv6. </p>
+<p></p>
+<p>R1 possède une route par défaut via le routeur R2, mais notez que la commande <span class="cmd"><b>ipconfig</b></span> révèle l'absence d'adresse de monodiffusion globale IPv6 et de passerelle par défaut IPv6. PC1 est compatible IPv6, car il possède une adresse IPv6 link-local. L'adresse link-local est créée automatiquement par le périphérique. En vérifiant la documentation réseau, l'administrateur réseau confirme que les hôtes situés sur ce LAN doivent recevoir leurs informations d'adresses IPv6 à partir du routeur qui utilise SLAAC. </p>
+<p></p>
+<p>
+<b>Remarque</b> : dans cet exemple, les autres périphériques se trouvant sur le même LAN et utilisant SLAAC doivent également rencontrer le même problème de réception des informations d'adresses IPv6.</p>
+<p></p>
+<p>L'exécution de la commande <span class="cmd"><b>show ipv6 interface GigabitEthernet 0/0</b></span> illustrée à la Figure 4 permet de voir que, malgré que l'interface possède une adresse IPv6, elle n'est pas membre du groupe de multidiffusion de tous les routeurs IPv6 FF02::2. Cela signifie que le routeur n'envoie pas de message d'annonce de routeur ICMPv6 sur cette interface. Dans la Figure 5, R1 est activé en tant que routeur IPv6 à l'aide de la commande <span class="cmd"><b>ipv6 unicast-routing</b></span>. La commande <span class="cmd"><b>show ipv6 interface GigabitEthernet 0/0</b></span> indique maintenant que R1 est membre du groupe de multidiffusion de tous les routeurs IPv6 FF02::2.</p>
+<p></p>
+<p>Afin de vérifier qu'une passerelle par défaut est configurée pour PC1, exécutez la commande <span class="cmd"><b>ipconfig</b></span> sur le PC Microsoft Windows ou la commande <span class="cmd"><b>ifconfig</b></span> sur Linux et Mac OS X. Dans la Figure 6, PC1 possède une adresse de monodiffusion globale IPv6 ainsi qu'une passerelle par défaut IPv6. La passerelle par défaut est définie à l'adresse link-local du routeur R1, à savoir FE80::1. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

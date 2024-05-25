@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.1.6 Connexion à un routeur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routeurs</h1>
+        <h2>Composants d&#x0027;un routeur</h2>
+      </div>
+      <div id="content">
+<p>Les périphériques, routeurs et commutateurs Cisco interconnectent généralement de nombreux périphériques. Pour cette raison, ces périphériques possèdent plusieurs types de port et d'interface. Ces ports et interfaces sont utilisés pour connecter des câbles aux périphériques. </p>
+<p></p>
+<p>Les connexions sur un routeur Cisco peuvent être regroupées en deux catégories :</p>
+<p>
+<ul>
+<li>
+<b>Ports de gestion</b> – ports de console et auxiliaire utilisés pour configurer, gérer et dépanner le routeur. Contrairement aux interfaces LAN et WAN, les ports de gestion ne sont pas utilisés pour le transfert de paquets. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Interfaces inband de routeur</b> – interfaces LAN et WAN configurées via l'adressage IP pour transporter le trafic. Les interfaces Ethernet sont les connexions LAN les plus courantes, tandis que les connexions WAN les plus répandues sont les interfaces série et DSL.</li>
+</ul>
+</p>
+<p></p>
+<p>La figure illustre les ports et les interfaces d'un routeur à services intégrés Cisco 1941 G2.</p>
+<p></p>
+<p>Comme de nombreux périphériques réseau, les périphériques Cisco utilisent des LED pour fournir des informations d'état. Une LED indique l'activité de l'interface correspondante. Si une LED est éteinte alors que l'interface est active et correctement connectée, cela peut indiquer un problème avec cette interface. Si une interface est très occupée, sa LED reste toujours allumée. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

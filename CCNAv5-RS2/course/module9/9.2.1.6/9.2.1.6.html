@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.1.6 Application de listes de contrôle d&#x0027;accès standard aux interfaces (suite)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Listes de contrôle d&#x0027;accès IPv4 standard </h1>
+        <h2>Configuration des listes de contrôle d&#x0027;accès IPv4 standard</h2>
+      </div>
+      <div id="content">
+<p>La Figure 1 présente un exemple de liste de contrôle d'accès permettant une exception pour un hôte spécifique d'un sous-réseau.</p>
+<p></p>
+<p>Cette liste de contrôle d'accès remplace l'exemple précédent, mais bloque également le trafic provenant d'une adresse précise. La première commande supprime la version précédente de l'ACL 1. La prochaine instruction de la liste de contrôle d'accès refuse l'hôte PC1 sur le réseau 192.168.10.10. Un hôte sur deux du réseau 192.168.10.0/24 est autorisé. L'instruction de refus implicite fait correspondre un réseau sur deux.</p>
+<p></p>
+<p>La liste de contrôle d'accès est réappliquée à l'interface S0/0/0 dans la direction sortante.</p>
+<p></p>
+<p>La Figure 2 montre un exemple de liste de contrôle d'accès refusant un hôte spécifique. Cette liste de contrôle d'accès remplace l'exemple précédent. Cet exemple bloque toujours le trafic provenant de l'hôte PC1, mais autorise le reste du trafic. </p>
+<p></p>
+<p>Les deux premières commandes sont identiques à celles de l'exemple précédent. La première commande supprime la version précédente de l'ACL 1. La prochaine instruction de la liste de contrôle d'accès refuse l'hôte PC1 situé sur le réseau 192.168.10.10. </p>
+<p></p>
+<p>La troisième ligne est nouvelle et autorise tous les autres hôtes. Cela signifie que tous les hôtes du réseau 192.168.10.0/24 seront autorisés sauf PC1 qui a été refusé dans l'instruction précédente. </p>
+<p></p>
+<p>Cette liste de contrôle d'accès est appliquée à l'interface G0/0 dans la direction entrante. Étant donné que le filtre affecte uniquement le réseau local 192.168.10.0/24 sur l'interface G0/0, il est plus judicieux d'appliquer la liste de contrôle d'accès à l'interface d'entrée. La liste de contrôle d'accès pourrait être appliquée à l'interface S0/0/0 dans la direction sortante, mais dans ce cas, R1 devrait examiner les paquets provenant de tous les réseaux, y compris 192.168.11.0/24.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

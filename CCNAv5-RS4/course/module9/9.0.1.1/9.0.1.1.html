@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.0.1.1 Introduction</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résoudre les problèmes du réseau</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>La défaillance d'une partie importante d'un réseau peut avoir des conséquences graves pour le fonctionnement d'une entreprise. Lorsque des problèmes réseau surviennent, les administrateurs réseau doivent mettre en œuvre une approche de dépannage systématique, et ce, afin de rétablir le plus rapidement possible la fonctionnalité complète du réseau.</p>
+<p></p>
+<p>Outre ses compétences en informatique, la capacité d'un administrateur réseau à pouvoir résoudre rapidement et efficacement des problèmes réseau est l'une des qualités les plus recherchées. Les entreprises ont besoin de personnes disposant de grandes compétences en matière de dépannage réseau et la seule manière d'acquérir ces compétences sont l'expérience pratique et l'utilisation d'approches de dépannage systématiques.</p>
+<p>Ce chapitre décrit la documentation réseau qui doit être tenue à jour, ainsi que les procédures, méthodes et outils de dépannage généraux. Les symptômes et causes typiques relatifs à plusieurs couches du modèle OSI sont également discutés. Ce chapitre inclut par ailleurs des informations sur le dépannage des problèmes liés aux chemins et listes de contrôle d'accès.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

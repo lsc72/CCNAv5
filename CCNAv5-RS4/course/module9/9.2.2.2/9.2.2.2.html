@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.2.2 Dépannage de la couche liaison de données</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Symptômes et causes du dépannage réseau</h2>
+      </div>
+      <div id="content">
+<p>Le dépannage des problèmes de couche 2 peuvent être un processus délicat. La configuration et le fonctionnement de ces protocoles sont critiques pour la création d'un réseau fonctionnel et correctement adapté. Les problèmes de couche 2 entraînent l'apparition de symptômes spécifiques qui, lorsqu'ils sont détectés, permettent d'identifier rapidement le problème. </p>
+<p></p>
+<p>Les symptômes courants des problèmes réseau au niveau de la couche liaison de données sont les suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Aucune fonctionnalité ou connectivité au niveau de la couche réseau ou plus haut</b> : certains problèmes de couche 2 peuvent interrompre l'échange des trames sur une liaison, tandis que d'autres ne provoquent qu'une dégradation des performances réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Performances réseau inférieures aux performances de référence</b> : deux types distincts de fonctionnements sous-optimaux de couche 2 peuvent se produire dans un réseau. En premier lieu, il arrive que des trames empruntent un chemin non optimal pour atteindre leur destination. Dans ce cas, une utilisation élevée de la bande passante peut être relevée sur des liaisons qui ne devraient pas connaître ce niveau de trafic. Ensuite, il se peut que des trames soient abandonnées. Ces problèmes peuvent être identifiés via des statistiques sur le nombre d’erreurs et des messages d’erreur sur la console qui apparaissent sur le commutateur ou le routeur. Dans un environnement Ethernet, une requête ping étendue ou continue indique également si des trames sont abandonnées.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Nombre excessif de diffusions</b> : les systèmes d'exploitation utilisent largement les diffusions et les multidiffusions pour la détection de services réseau et autres hôtes. D'une manière générale, des diffusions excessives se produisent dans l'une des situations suivantes : applications mal programmées ou configurées, larges domaines de diffusion de couche 2 ou problèmes réseau sous-jacents, tels que la présence de boucles STP ou de routes variables.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Messages de console</b> : dans certains cas, un routeur détecte l'apparition d'un problème de couche 2 et envoie un message d'alerte à la console. Un routeur envoie généralement ce message lorsqu’il détecte un problème lors de l’interprétation des trames entrantes (problèmes d’encapsulation ou de tramage) ou lorsque des messages de test d’activité sont attendus mais qu’ils n’arrivent pas. Le message qui apparaît le plus souvent sur la console pour signaler un problème de couche 2 est le message de panne du protocole de ligne.</li>
+</ul>
+</p>
+<p></p>
+<p>Les problèmes de couche liaison de données qui entraînent généralement des problèmes de connectivité réseau ou de performances sont les suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Erreurs d'encapsulation</b> : une erreur d'encapsulation se produit lorsque les bits placés par l'expéditeur dans un champ donné ne sont pas ceux que le destinataire s'attend à recevoir. Cette situation a lieu lorsque l'encapsulation réalisée à une extrémité d'une liaison WAN est configurée différemment de celle utilisée à l'autre extrémité.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Erreurs de mappage d'adresse</b> : dans les topologies de type point à multipoint, Frame Relay ou Ethernet de diffusion, il est essentiel qu'une adresse de destination de couche 2 adéquate soit attribuée à la trame. Elle arrivera ainsi à la bonne destination. Pour ce faire, le périphérique réseau doit faire correspondre une adresse de destination de couche 3 à la bonne adresse de couche 2 à l’aide de cartes statiques ou dynamiques. Dans un environnement dynamique, le mappage des informations de couche 2 et de couche 3 peut échouer, car il se peut que des périphériques aient été spécifiquement configurés pour ne pas répondre aux requêtes ARP ou ARP inverse, que les informations de couche 2 ou de couche 3 mises en cache aient été physiquement modifiées ou que des réponses ARP non valides soient reçues en raison d'une configuration incorrecte ou d'une attaque de sécurité.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Erreurs de trames</b> : les trames fonctionnent généralement en groupes d'octets de 8 bits. Une erreur se produit lorsqu’une trame ne se termine pas par une limite d’octets de 8 bits. Lorsque cela se produit, le récepteur peut éprouver des difficultés à déterminer où se termine une trame et où commence une autre. S’il y a trop de trames non valides, les messages de test d’activité valides ne peuvent pas être échangés. Les erreurs de trames peuvent être dues à une ligne série perturbée, un câble mal conçu (trop long ou avec un blindage inadéquat) ou une horloge de ligne CSU mal configurée.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Défaillances ou boucles STP</b> : l'objectif du protocole STP (Spanning Tree Protocol) est de résoudre une topologie physique redondante dans une topologie en arborescence, et ce, en bloquant les ports redondants. La plupart des problèmes liés au protocole STP sont dus à la présence de boucles de redirection qui se produisent lors de l'absence de ports bloqués dans une topologie redondante et de l'acheminement en cercles du trafic de manière infinie, ou de la diffusion excessive de paquets en raison d'un taux élevé de modifications de la topologie STP. Une modification de topologie ne devrait pas souvent se produire si le réseau est bien configuré. Lorsqu'une liaison entre deux commutateurs est activée ou désactivée, on constate parfois une modification de la topologie du réseau lorsque l'état STP du port passe en mode de transmission ou quitte ce mode. Toutefois, lorsqu'un port oscille entre des états d'activation et de désactivation, cela provoque des modifications répétées de la topologie et des diffusions excessives, ainsi qu'une convergence ou reconvergence STP lente. Cela peut être dû à une non-correspondance entre la topologie réelle et la topologie documentée, à une erreur de configuration, par exemple une configuration incohérente des minuteurs STP, à la surcharge du processeur du commutateur lors de la convergence, ou à une défaillance logicielle.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

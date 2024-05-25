@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.1.4 Les réseaux facilitent l&#x0027;apprentissage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Connecté au monde entier</h1>
+        <h2>Les réseaux aujourd&#x0027;hui</h2>
+      </div>
+      <div id="content">
+<p>Les réseaux et Internet ont fait évoluer notre quotidien : notre façon d'apprendre, notre façon de communiquer, notre façon de travailler et même notre façon de nous divertir.</p>
+<p></p>
+<p>
+<b>Changer notre façon d'apprendre</b>
+</p>
+<p>La communication, la collaboration et l'engagement constituent les pierres angulaires de l'enseignement. Les institutions s'efforcent sans cesse d'améliorer ces processus afin d'optimiser la propagation des connaissances. Les méthodes d'apprentissage traditionnelles s'appuient principalement sur deux sources de connaissances pour fournir des informations aux participants : les manuels et les instructeurs. Ces deux sources sont limitées, aussi bien sur le plan du format que sur le plan de la durée des présentations. </p>
+<p></p>
+<p>Les réseaux ont changé notre façon d'apprendre. L'utilisation de réseaux solides et fiables encourage et enrichit l'expérience didactique des étudiants. Ces réseaux proposent des supports de formation dans de nombreux formats, notamment des exercices, des évaluations, et des commentaires interactifs. Comme l'illustre la Figure 1, les réseaux permettent aujourd'hui :</p>
+<p>
+<ul>
+<li>la création de classes virtuelles ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>la diffusion vidéo à la demande ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>les espaces d'apprentissage collaboratifs ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>l'apprentissage sur appareils mobiles.</li>
+</ul>
+</p>
+<p></p>
+<p>Ainsi, l'accès à un enseignement de qualité n'est plus limité aux personnes résidant à proximité du lieu où l'enseignement est dispensé. L'enseignement à distance en ligne a effacé les obstacles géographiques et augmenté les opportunités. Les cours en ligne (e-learning) peuvent aujourd'hui être diffusés sur un réseau. Ces cours peuvent contenir des données (texte, liens), de l'audio et de la vidéo, disponibles pour les étudiants à tout moment, en tout lieu. Les groupes et forums de discussion en ligne permettent aux participants de collaborer avec leur formateur, avec les autres participants de leur cours et même avec ceux du monde entier. Des cours hybrides associent des leçons dispensées par des instructeurs à des cours en ligne afin d'offrir le meilleur de ces deux méthodes. La Figure 2 présente une vidéo sur les évolutions des salles de classe.</p>
+<p></p>
+<p>Outre les avantages qu'ils offrent aux participants, les réseaux ont également amélioré la gestion et l'administration des cours. Certaines de ces fonctions en ligne incluent l'inscription des participants, la proposition d'évaluations et le suivi de la progression.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

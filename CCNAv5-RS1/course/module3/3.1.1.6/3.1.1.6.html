@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.1.6 Synchronisation des messages</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Règles de communication</h1>
+        <h2>Les règles</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Synchronisation des messages</b>
+</p>
+<p>La synchronisation affecte également la qualité de la réception et de la compréhension d'un message. Les personnes utilisent la synchronisation pour déterminer le moment de la prise de parole, le débit de parole et le temps d'attente d'une réponse. Ce sont les règles de tout engagement.</p>
+<p></p>
+<p>
+<b>Méthode d'accès</b>
+</p>
+<p>La méthode d'accès détermine le moment où un individu peut envoyer un message. Ces règles de synchronisation dépendent de l'environnement. Par exemple, vous pouvez parler si vous avez quelque chose à dire. Dans cet environnement, avant de prendre la parole, l'intervenant doit attendre que tout le monde ait fini de parler. Si deux personnes parlent en même temps, une collision d'informations se produit et elles doivent s'arrêter et recommencer, comme illustré à la Figure 1. De même, il est nécessaire pour les ordinateurs de définir une méthode d'accès. Les hôtes d'un réseau ont besoin d'une méthode d'accès pour savoir à quel moment ils doivent commencer à envoyer des messages et comment réagir en cas d'erreurs. </p>
+<p></p>
+<p>
+<b>Contrôle de flux</b>
+</p>
+<p>La synchronisation affecte également la quantité d'informations pouvant être envoyées, ainsi que leur vitesse d'acheminement. Si une personne parle trop rapidement, l'autre personne éprouve des difficultés à entendre et à comprendre le message, comme illustré à la Figure 2. Le destinataire doit demander à l'expéditeur de parler moins vite. Dans une communication réseau, il arrive que l'hôte émetteur transmette des messages plus rapidement que l'hôte de destination ne peut en recevoir et traiter. Les hôtes source et de destination utilisent le contrôle de flux pour négocier une synchronisation correcte en vue d'établir une communication. </p>
+<p></p>
+<p>
+<b>Délai d'attente de la réponse</b>
+</p>
+<p>Si une personne pose une question et qu'elle n'entend pas de réponse dans un délai acceptable, elle suppose qu'aucune réponse n'a été donnée et réagit en conséquence, comme illustré à la Figure 3. La personne peut répéter la question ou continuer à converser. Les hôtes du réseau sont également soumis à des règles qui spécifient le délai d'attente des réponses et l'action à entreprendre en cas de dépassement du délai d'attente.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

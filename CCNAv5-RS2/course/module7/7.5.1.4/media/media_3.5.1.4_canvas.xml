@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+		<slide width="780">	
+		<element type="TEXT" compId="ID_inst" x="5" y="2" width="317.3" expand="down" align="left" />	
+		<element type="IMAGE" src="3.5.1.4.png" x="0" y="0" width="780" height="400"/>	
+		<element type="TEXT" compId="ID_header" x="364" y="203.2" width="78.35" expand="right" align="left" size="11" />
+		<element type="TEXT" compId="ID_header1" x="450" y="203.2" width="95.45" expand="right" align="left" size="11" />
+		<element type="TEXT" id="ID_static_1" text="10.4.0.0/16" x="334" y="238.75" align="center" width="61.6" />
+		<element type="TEXT" id="ID_static_2" text="172.16.2.0/24" x="334" y="271.25" align="center" width="73.8" />
+		<element type="TEXT" id="ID_static_3" text="172.16.3.0/24" x="334" y="303.75" align="center" width="73.8" />
+		<element type="TEXT" id="ID_static_4" text="192.168.110.0/24" x="334" y="336.25" align="center" width="92.1" />
+		<element type="TEXT" id="ID_static_5" text="192.168.120.0/24" x="334" y="368.75" align="center" width="92.1" />
+		<element type="TEXT" compId="ID_header2" x="560.5" y="203.2" width="95.45" expand="right" align="center" size="11" />
+		<element type="TEXT" compId="ID_header3" x="677" y="203.2" width="95.45" expand="right" align="center" size="11" />
+		
+		<element type="ROUTER" textId="ID_routerOutput1" x="334" y="3" width="442" height="183.65"  size="10.5"/>
+		
+		<element type="ACTIVITY" subType="DRAGDROP" method="NORMAL" replicate="true" compWidth="95" compHeight="30" dragIcon="" dropIcon="" tickPosition="left" dragAlpha="0.3">
+		
+		<subelement type="DRAG" x="10.95" y="160.5" compId="ID_drag01" />
+		<subelement type="DRAG" x="115.95" y="160.5" compId="ID_drag02" />
+		<subelement type="DRAG" x="220.95" y="160.5" compId="ID_drag03" />			
+		<subelement type="DRAG" x="66" y="299.75" compId="ID_drag04" />
+		<subelement type="DRAG" x="10.95" y="194.9" compId="ID_drag05" />
+		<subelement type="DRAG" x="115.95" y="194.9" compId="ID_drag06" />
+		<subelement type="DRAG" x="220.95" y="194.9" compId="ID_drag07" />
+		<subelement type="DRAG" x="169" y="299.75" compId="ID_drag08" />		
+		<subelement type="DRAG" x="10.95" y="229.3" compId="ID_drag09" />
+		<subelement type="DRAG" x="115.95" y="229.3" compId="ID_drag10" />
+		<subelement type="DRAG" x="220.95" y="229.3" compId="ID_drag11" />	
+		<subelement type="DRAG" x="220.95" y="263.7" compId="ID_drag12" />		
+		<subelement type="DRAG" x="10.95" y="263.7" compId="ID_drag13" />
+		<subelement type="DRAG" x="115.95" y="263.7" compId="ID_drag14" />				
+
+		<subelement type="DROP" x="441.05" y="229.9" match="9"/>
+		<subelement type="DROP" x="560.5" y="229.9" match="8"/>
+		<subelement type="DROP" x="677" y="229.9" match="1"/>
+		<subelement type="DROP" x="441.05" y="262.4" match="12"/>
+		<subelement type="DROP" x="560.5" y="262.4" match="1"/>
+		<subelement type="DROP" x="677" y="262.4" match="1"/>	
+		<subelement type="DROP" x="441.05" y="294.9" match="2"/>
+		<subelement type="DROP" x="560.5" y="294.9" match="7"/>
+		<subelement type="DROP" x="677" y="294.9" match="13"/>
+		<subelement type="DROP" x="441.05" y="327.4" match="0"/>
+		<subelement type="DROP" x="560.5" y="327.4" match="4"/>
+		<subelement type="DROP" x="677" y="327.4" match="11"/>	
+		<subelement type="DROP" x="441.05" y="359.9" match="5"/>
+		<subelement type="DROP" x="560.5" y="359.9" match="10"/>
+		<subelement type="DROP" x="677" y="359.9" match="8"/>
+		
+		<subelement type="CHECK" x="51.25" y="372.15" width="100" height="23.25" compId="ID_CHECK"/>
+		<subelement type="RESET" x="179" y="372.15" width="100" height="23.25" compId="ID_RESET"/>
+		<subelement type="FEEDBACK" x="11.5" y="213" width="310.95" height="100" correctTitleId="ID_CORRECT_TITLE" correctBodyId="ID_CORRECT_BODY" wrongTitleId="ID_INCORRECT_TITLE" wrongBodyId="ID_INCORRECT_BODY"/>
+		
+		</element>   
+	</slide>
+<text id="ID_routerOutput1"><![CDATA[<code>Gateway of last resort is not set
+
+   10.0.0.0/16 is subnetted, 1 subnets
+S    10.4.0.0 is directly connected, Serial0/0/0
+   172.16.0.0/24 is subnetted, 3 subnets
+C    172.16.1.0 is directly connected, FastEthernet0/0
+C    172.16.2.0 is directly connected, Serial0/0/0
+D    172.16.3.0 [90/2172416] via 172.16.2.1, 00:00:18, Serial0/0/0
+C  192.168.1.0/24 is directly connected, Serial0/0/1
+O  192.168.100.0/24 [110/65] via 172.16.2.1, 00:00:03, Serial0/0/0
+O  192.168.110.0/24 [110/65] via 172.16.2.1, 00:00:03, Serial0/0/0
+R  192.168.120.0/24 [120/1] via 172.16.2.1, 00:00:18, Serial0/0/0
+</code>]]></text>
+	
+</data>

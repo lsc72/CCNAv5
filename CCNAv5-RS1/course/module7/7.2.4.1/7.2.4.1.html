@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.4.1 Applications utilisant le protocole TCP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>TCP et UDP</h1>
+        <h2>TCP ou UDP, telle est la question</h2>
+      </div>
+      <div id="content">
+<p>De nombreuses applications ont besoin de la fiabilité et des autres services proposés par le protocole TCP. Ce sont des applications qui peuvent tolérer certains retards ou certaines baisses de performances en raison de la charge imposée par le protocole TCP. </p>
+<p></p>
+<p>Cela fait du protocole TCP une solution adaptée pour les applications qui ont besoin d'un transport fiable et qui peuvent tolérer certains retards. Le protocole TCP illustre parfaitement les rôles spécifiques des différentes couches de la pile de protocoles TCP/IP. Comme le protocole TCP de couche transport gère toutes les tâches associées à la segmentation du flux de données, à la fiabilité, au contrôle de flux et à la réorganisation des segments, il permet aux applications de ne pas avoir à gérer ces tâches. Les applications peuvent simplement envoyer le flux de données à la couche transport et utiliser les services du protocole TCP.</p>
+<p></p>
+<p>La figure ci-contre illustre certaines des applications courantes utilisant le protocole TCP :</p>
+<p>
+<ul>
+<li>protocole HTTP (HyperText Transfer Protocol)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Protocole FTP (File Transfer Protocol)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Protocole SMTP (Simple Mail Transfer Protocol)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Telnet</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

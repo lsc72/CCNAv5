@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.1.1.1 Présentation de l&#x0027;DHCPv4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 4</h1>
+        <h2>Fonctionnement de DHCPv4</h2>
+      </div>
+      <div id="content">
+<p>Le protocole DHCPv4 attribue les adresses IPv4 et d'autres informations de configuration réseau de façon dynamique. Comme les ordinateurs de bureau clients constituent la majorité des nœuds du réseau, le protocole DHCPv4 offre un gain de temps extrêmement précieux aux administrateurs réseau.</p>
+<p></p>
+<p>Un serveur DHCPv4 dédié est évolutif et relativement facile à gérer. Cependant, dans le cas d'une petite filiale, d'un petit bureau ou d'un bureau à domicile, un routeur Cisco peut être configuré pour fournir les services DHCPv4, évitant ainsi l'achat d'un serveur dédié. Un ensemble de fonctions Cisco IOS (appelé Easy IP) offre en option un serveur DHCPv4 complet.</p>
+<p></p>
+<p>Le DHCPv4 comprend trois mécanismes d'allocation d'adresses, offrant ainsi de la souplesse lors de l'attribution d'adresses IP : </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Allocation manuelle </b>: l'administrateur attribue une adresse IPv4 préallouée au client et le DHCPv4 communique uniquement l'adresse IPv4 au périphérique. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Allocation automatique </b>: DHCPv4 attribue de façon automatique et permanente une adresse IPv4 statique à un périphérique en sélectionnant cette adresse dans un pool d'adresses disponibles. Il n'y a pas de bail et l'adresse est attribuée de façon permanente au périphérique. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Allocation dynamique</b> : DHCPv4 attribue ou loue dynamiquement une adresse IPv4 d'un pool d'adresses pour une durée limitée définie par le serveur, ou jusqu'à ce que le client n'ait plus besoin de l'adresse. </li>
+</ul>
+</p>
+<p></p>
+<p>L'allocation dynamique est le mécanisme DHCPv4 le plus répandu et sera donc le principal sujet de ce cours. Lorsque vous utilisez l'allocation dynamique, les clients louent les informations au serveur pendant une période définie par l'administrateur, comme le montre la figure. Les administrateurs configurent les serveurs DHCPv4 pour que les baux dépassent le délai d'attente à différents intervalles. Le bail dure généralement entre 24 heures et une semaine voire plus. À l'expiration du bail, le client doit demander une autre adresse, même s'il obtient généralement la même.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

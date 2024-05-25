@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.2.1 Protocoles d&#x0027;encapsulation de réseau étendu</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation des connexions série point à point</h1>
+        <h2>Encapsulation HDLC</h2>
+      </div>
+      <div id="content">
+<p>Sur chaque connexion WAN, les données sont encapsulées dans des trames avant de franchir la liaison WAN. Le type d'encapsulation de couche 2 approprié doit être correctement configuré afin que le bon protocole soit appliqué. Le choix du protocole dépend de la technologie de réseau étendu et de l'équipement de communication. La figure présente les types les plus courants de protocoles WAN, ainsi que leur emploi. Voici la description de chaque type de protocole WAN :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>HDLC</b> : type d'encapsulation par défaut sur les connexions point à point, les liaisons dédiées et les connexions à commutation de circuits dans lesquelles le lien utilise deux périphériques Cisco. HDLC sert maintenant de base au protocole PPP synchrone utilisé par de nombreux serveurs pour se connecter à un réseau étendu, le plus souvent Internet.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Protocole PPP</b> : fournit les connexions routeur à routeur et hôte à réseau sur les réseaux synchrones et asynchrones. Ce protocole PPP fonctionne avec différents protocoles de couche réseau, par exemple les protocoles IPv4 et IPv6. Le protocole PPP utilise le processus d'encapsulation HDLC, mais comporte également des mécanismes de sécurité intégrés, tels que PAP et CHAP. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>SLIP (Serial Line Internet Protocol) </b>: protocole normalisé pour les connexions série point à point sur TCP/IP. SLIP a été largement remplacé par PPP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>X.25/LAPB (Link Access Procedure, Balanced)</b> : norme UIT-T qui définit comment les connexions entre un ETTD et un DCE sont maintenues pour l'accès au terminal distant et les communications à distance sur les réseaux publics de données. X.25 spécifie le protocole LAPB, un protocole de couche liaison de données. X.25 a précédé Frame Relay.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Frame Relay </b>: protocole de couche de liaison de données commutée qui gère plusieurs circuits virtuels. Frame Relay est un protocole de nouvelle génération après X.25. Il élimine certains des processus fastidieux (tels que la correction des erreurs et le contrôle de flux) employés dans X.25. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>ATM</b> : norme internationale pour le relais de cellules dans laquelle les périphériques envoient plusieurs types de services, par exemple de la voix, de la vidéo ou des données, dans des cellules de longueur fixe de 53 octets. Ces cellules de longueur fixe permettent au matériel d'effectuer le traitement, réduisant ainsi les retards de transit. ATM tire parti de support de transmission à haute vitesse, tels que E3, SONET et T3.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

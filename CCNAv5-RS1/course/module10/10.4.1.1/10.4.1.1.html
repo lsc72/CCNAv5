@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.4.1.1 Exercice de conception - L&#x0027;heure de la pratique</title>
+    <!-- Activity -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.4.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>
+<b>L'heure de la pratique</b>
+</p>
+<p></p>
+<p>Consultez l'activité de conception au début de ce chapitre pour effectuer cet exercice. Vos téléphones IP ont été installés en une demi-journée, au lieu de la semaine initialement prévue. Votre réseau dispose à nouveau de toute sa capacité et les applications réseau sont à nouveau disponibles. Vous devez toujours envoyer vos e-mails et rédiger les devis à faire valider par votre responsable.</p>
+<p></p>
+<p>Utilisez le même scénario que celui de l'exercice de conception pour répondre aux questions suivantes :</p>
+<p></p>
+<p>
+<b>A. E-mail</b>
+</p>
+<p>
+<ul>
+<li>Quelles méthodes pouvez-vous utiliser pour envoyer vos e-mails maintenant que le réseau fonctionne ? </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Quel format vos e-mails transmis sur le réseau utiliseront-ils ? </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Comment pouvez-vous envoyer le même message à plusieurs destinataires ? </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Comment pouvez-vous envoyer des pièces jointes de grande taille à plusieurs destinataires par le biais d'applications réseau ? </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>L'utilisation d'applications réseau s'avérerait-elle être un mode de communication rentable pour votre entreprise ?</li>
+</ul>
+</p>
+<p>
+<b>B. Devis à faire valider par le responsable</b>
+</p>
+<p>
+<ul>
+<li>Comme des applications de bureau sont installées sur votre ordinateur, sera-t-il simple de créer le devis que votre responsable doit valider pour le nouveau contrat à envoyer avant la fin de la semaine ? Expliquez votre réponse.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Lorsque vous aurez terminé votre devis, comment le présenterez-vous à votre responsable pour qu'il le valide ? Comment enverra-t-il le devis au client ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>L'utilisation des applications réseau est-elle un moyen rentable d'effectuer des transactions commerciales ? Justifiez votre réponse.</li>
+</ul>
+</p>
+<p></p>
+<p>Imprimez vos réponses ou enregistrez-les au format électronique. Soyez prêt à expliquer vos réponses en classe.</p>
+<p></p>
+<p>
+<a href="../../files/10.4.1.1%20Class%20Activity%20-%20Make%20it%20happen!%20Instructions.pdf" target="_blank">Exercice en classe - L'heure de la pratique Instructions</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

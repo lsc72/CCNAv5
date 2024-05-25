@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.2.2 Protocole d&#x0027;authentification du mot de passe (PAP)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de PPP</h1>
+        <h2>Authentification PPP</h2>
+      </div>
+      <div id="content">
+<p>Le protocole PPP présente de nombreuses caractéristiques, dont l'authentification de couche 2, en plus des autres couches d'authentification qui sont le chiffrement, le contrôle d'accès et les procédures générales de sécurité.</p>
+<p></p>
+<p>
+<b>Initialisation PAP</b>
+</p>
+<p>Le protocole PAP procure une méthode simple permettant à un nœud distant d'établir son identité à l'aide d'un échange en deux étapes. PAP n'est pas interactif. Lorsque la commande <span class="cmd"><b>ppp authentication pap</b></span> est utilisée, le nom d'utilisateur et le mot de passe sont envoyés dans un seul package de données LCP, plutôt que le serveur envoie une invite de connexion et attende une réponse, comme illustré à la Figure 1. Une fois que le protocole PPP a terminé la phase d'établissement de la liaison, le nœud distant envoie régulièrement une paire mot de passe/nom d'utilisateur sur la liaison, jusqu'à ce que le nœud de réception en accuse réception ou mette fin à la connexion.</p>
+<p></p>
+<p>
+<b>Finalisation PAP</b>
+</p>
+<p>Sur le nœud de réception, la combinaison nom d'utilisateur/mot de passe est vérifiée par un serveur d'authentification qui autorise ou refuse la connexion. Un message d'acceptation ou de rejet est renvoyé au demandeur, comme illustré à la Figure 2.</p>
+<p></p>
+<p>Le protocole PAP n'est pas un protocole d'authentification très efficace. Avec le protocole PAP, les mots de passe sont envoyés sur la liaison en texte clair, et il ne comporte aucune protection contre la lecture ou les attaques répétées par tâtonnement. Le nœud distant contrôle la fréquence et la durée des tentatives de connexion.</p>
+<p></p>
+<p>Néanmoins, il peut arriver que l'utilisation de PAP soit justifiée. Par exemple, malgré ses inconvénients, le protocole PAP peut être utilisé dans les environnements suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>une base étendue d'applications client qui ne prennent pas en charge CHAP ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>lorsque des implémentations de CHAP par des fournisseurs multiples sont incompatibles ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>dans les situations où le mot de passe en clair doit être disponible pour simuler une connexion sur un hôte distant.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

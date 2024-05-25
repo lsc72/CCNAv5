@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.4.2.3 Utilisation des ports USB d&#x0027;un routeur Cisco</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.4.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Gestion des fichiers de configuration IOS</h1>
+        <h2>Fichiers de sauvegarde et de restauration de la configuration</h2>
+      </div>
+      <div id="content">
+<p>La fonction de stockage USB (Universal Serial Bus) permet à certains modèles de routeurs Cisco de prendre en charge les disques Flash USB. La fonction Flash USB fournit une capacité de stockage secondaire en option et un périphérique d'amorçage supplémentaire. Les images, les configurations et d'autres fichiers peuvent être copiés vers ou depuis une mémoire Flash USB Cisco avec la même fiabilité qu'en utilisant la carte mémoire CompactFlash. En outre, les routeurs à services intégrés modulaires peuvent démarrer n'importe quelle image du logiciel Cisco IOS stockée sur la mémoire Flash USB. </p>
+<p></p>
+<p>Les modules de mémoire Flash USB Cisco sont disponibles en versions 64 Mo, 128 Mo et 256 Mo. </p>
+<p></p>
+<p>Pour qu'il soit compatible avec un routeur Cisco, un disque Flash USB doit être formaté pour le système de fichiers FAT16. Si ce n'est pas le cas, la commande show file systems affiche une erreur indiquant un système de fichiers incompatible.</p>
+<p></p>
+<p>Voici un exemple d'utilisation de la commande dir sur un système de fichiers USB :</p>
+<p></p>
+<p>
+<b>Router# dir usbflash0:</b>
+</p>
+<p></p>
+<p>
+<b>Directory of usbflash0:/</b>
+</p>
+<p></p>
+<p>
+<b> 1 -rw- 30125020 Dec 22 2032 05:31:32 +00:00 c3825-entservicesk9-mz.123-14.T</b>
+</p>
+<p></p>
+<p>
+<b>63158272 bytes total (33033216 bytes free)</b>
+</p>
+<p>La mémoire Flash USB présente l'avantage de pouvoir contenir plusieurs copies de Cisco IOS et plusieurs configurations de routeur. Elle permet à un administrateur de déplacer et de copier facilement les fichiers IOS et les configurations d'un routeur à un autre et bien souvent, le processus de copie est largement plus rapide qu'il ne le serait sur un réseau local ou étendu. Notez qu'IOS n'identifie pas forcément la capacité de la mémoire Flash USB, mais cela ne signifie pas nécessairement que cette mémoire n'est pas prise en charge. En outre, la version des ports USB d'un routeur est généralement USB 2.0, comme sur la figure.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

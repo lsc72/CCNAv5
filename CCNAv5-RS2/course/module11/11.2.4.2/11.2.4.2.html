@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.2.4.2 Exemple SOHO </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.2.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de la traduction d&#x0027;adresses réseau (NAT)</h1>
+        <h2>Redirection</h2>
+      </div>
+      <div id="content">
+<p>La figure intègre la fenêtre de configuration de la redirection d'un seul port affiché sur un routeur de petite structure Linksys EA6500. Par défaut, la redirection n'est pas activée sur le routeur.</p>
+<p></p>
+<p>Pour activer la redirection pour les applications, il convient de spécifier l'adresse locale interne vers laquelle les demandes doivent être redirigées. Sur la figure, les demandes de service HTTP arrivant sur ce routeur Linksys sont transférées vers le serveur Web dont l'adresse locale interne est 192.168.1.254. Si l'adresse IPv4 du réseau étendu externe du routeur de petite structure est 209.165.200.225, l'utilisateur externe peut saisir <b>http://www.example.com</b>. Le routeur Linksys redirige alors la requête HTTP vers le serveur Web interne à l'adresse IPv4 192.168.1.254, en utilisant le numéro de port par défaut 80.</p>
+<p></p>
+<p>Il est possible d'indiquer un port différent du port par défaut 80. Cependant, l'utilisateur externe doit connaître le numéro de port à utiliser. Pour indiquer un autre port, il faut modifier la valeur du port externe (External Port) dans la fenêtre Single Port Forwarding.</p>
+<p></p>
+<p>La méthode à suivre pour configurer la redirection dépend de la marque et du modèle du routeur haut débit utilisé sur le réseau. Il existe cependant des étapes communes à effectuer. Si les instructions fournies par le FAI ou accompagnant le routeur ne contiennent pas les instructions appropriées, le site Web <a href="http://www.portforward.com/" target="_blank">http://www.portforward.com</a> propose les guides relatifs à plusieurs routeurs haut débit. Vous pouvez suivre les instructions pour ajouter ou supprimer des ports afin de répondre aux besoins des applications que vous voulez autoriser ou refuser.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

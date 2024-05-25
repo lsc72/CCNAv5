@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+<slide>
+			<element type="IMAGE" src="9_2_3_2.jpg" x="0" y="0" width="470" height="400"/>
+			
+			<element type="TEXT" subType="TITLE" compId="ID_title" />
+			<element type="TEXT" text="G0/0" width="28" x="175" y="135.8" align="center" />	
+			<element type="TEXT" text="G0/1" width="28" x="260.95" y="135.8" align="center" />
+			<element type="TEXT" text="192.168.10.0/24" width="83.5" x="45.5" y="197.55" align="center" bold="1" />
+			<element type="TEXT" text="192.168.11.0/24" width="83.5" x="328.95" y="197.55" align="center" bold="1" />
+			<element type="TEXT" text="192.168.10.10/24" width="89.6" x="50.75" y="259.5" align="center" />
+			<element type="TEXT" text="192.168.11.10/24" width="89.6" x="317" y="259.5" align="center"/>
+        	<element type="ROUTER" textId="ID_s1_txt01" x="16" y="12" width="437" height="86.05"/>
+			<element type="ROUTER" textId="ID_s1_txt02" x="4" y="307" width="165.1" height="86.95"/>
+			<element type="ROUTER" textId="ID_s1_txt03" x="224.05" y="307" width="243.1" height="86.95"/>	
+</slide>
+<text id="ID_s1_txt01"><![CDATA[
+	<table width="401" border="0" cellspacing="0" cellpadding="0"> <tr> <td colspan="2">R1#<strong> show access-lists</strong></td> </tr> <tr> <td colspan="2">Standard IP access list 21</td> </tr> <tr> <td width="51">&nbsp;</td> <td width="275">10 permit 192.168.10.0, wildcard bits 0.0.0.255 (2 matches)</td> </tr> <tr> <td>&nbsp;</td> <td>20 deny any (1 match)</td> </tr> <tr> <td colspan="2">R1#</td> </tr></table>
+]]></text>
+<text id="ID_s1_txt02"><![CDATA[
+	<table width="144" border="0" cellspacing="0" cellpadding="0"> <tr> <td>PC1&gt;<strong>ssh 192.168.10.1</strong></td> </tr> <tr> <td>&nbsp;</td> </tr> <tr> <td>Login as: <strong>admin</strong></td> </tr> <tr> <td>Password: <strong>*****</strong></td> </tr> <tr> <td>R1&gt;</td> </tr></table>
+]]></text>
+<text id="ID_s1_txt03"><![CDATA[
+	<table width="222" border="0" cellspacing="0" cellpadding="0"> <tr> <td>PC2&gt;<strong>ssh 192.168.11.1</strong></td> </tr> <tr> <td>ssh connect to host 192.168.11.1 port <br /> 22: Connection refused</td> </tr> <tr> <td>&nbsp;</td> </tr> <tr> <td>PC2&gt;</td> </tr></table>
+]]></text>
+</data>

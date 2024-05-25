@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.1.3 Hiérarchie à deux couches des zones OSPF</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement du protocole OSPF à zones multiples</h1>
+        <h2>Pourquoi choisir le routage OSPF à zones multiples ?</h2>
+      </div>
+      <div id="content">
+<p>Le routage OSPF à zones multiples est mis en œuvre selon une hiérarchie de zones à deux couches :</p>
+<p>
+<ul>
+<li>
+<b>Zone fédératrice (transit)</b> : zone OSPF dont la principale fonction est de faire circuler de manière rapide et efficace les paquets IP. La zone fédératrice est connectée à d'autres types de zone OSPF. En général, les utilisateurs finaux sont introuvables dans une zone fédératrice. La zone fédératrice est également appelée zone OSPF 0. La conception hiérarchique du réseau définit la zone 0 comme étant le centre auquel toutes les autres zones sont connectées directement. (Figure 1)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Zone normale (non fédératrice)</b> : met en relation les utilisateurs et les ressources. Les zones normales sont généralement configurées dans des groupements fonctionnels ou géographiques. Par défaut, une zone normale n’autorise pas le trafic issu d’une autre zone à utiliser ses liens pour parvenir à d’autres zones. L'ensemble du trafic provenant des autres zones doit passer par une zone de transit. (Figure 2)</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: une zone normale peut présenter plusieurs sous-types, notamment une zone standard, une zone de stub, une zone de stub total et une zone NSSA (Not-So-Stubby Area, stub partiel). Ces types de zone ne sont pas abordés dans le présent chapitre. </p>
+<p></p>
+<p>Le protocole OSPF applique cette stricte hiérarchie de zones à deux couches. La connectivité physique sous-jacente du réseau doit être mappée sur la structure de zones à deux couches, toutes les zones non fédératrices étant directement liées à la zone 0. L'ensemble du trafic circulant d'une zone à une autre passe par cette zone fédératrice. On parle alors de trafic interzone. </p>
+<p></p>
+<p>Le nombre optimal de routeurs par zone dépend de certains facteurs, tels que la stabilité du réseau. Toutefois, Cisco recommande de suivre les consignes suivantes :</p>
+<p>
+<ul>
+<li>Une zone ne doit pas contenir plus de 50 routeurs.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Un routeur ne doit pas être inclus dans plus de trois zones.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Un routeur ne doit pas présenter plus de 60 voisins.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

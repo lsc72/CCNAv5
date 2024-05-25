@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.4.1.2 BYOD</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.4.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Évolution de l&#x0027;environnement réseau</h1>
+        <h2>Tendances relatives au réseau</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Le BYOD (Bring Your Own Device)</b>
+</p>
+<p>Le concept de « tous les périphériques, tous les contenus et toutes les méthodes de connexion » est une tendance majeure qui nécessite des modifications importantes au niveau de l'utilisation des périphériques. Cette tendance est appelée « Bring Your Own Device » (BYOD). </p>
+<p></p>
+<p>Le BYOD consiste à offrir aux utilisateurs finaux la liberté d'utiliser leurs propres outils pour accéder aux informations et communiquer au sein d'une entreprise ou d'un réseau de campus. Avec la croissance des appareils personnels et la réduction de leur coût, les employés et les étudiants peuvent disposer des meilleurs outils informatiques et de réseau pour leur usage personnel. Ces outils personnels incluent notamment des ordinateurs portables, des netbooks, des tablettes, des smartphones et des liseuses. Il peut s'agir de périphériques achetés par l'entreprise ou l'école, achetés par l'utilisateur, ou dont le coût a été partagé. </p>
+<p></p>
+<p>Le BYOD, c'est pour n'importe quel appareil, quel que soit son propriétaire, n'importe où. Par exemple, dans le passé, un étudiant qui avait besoin d'accéder au réseau du campus ou à Internet devait utiliser l'un des ordinateurs de l'école. Ces périphériques sont généralement limités et considérés comme des outils réservés au travail en classe ou à la bibliothèque. Une connectivité étendue grâce à l'accès mobile et à l'accès à distance au réseau du campus donne aux étudiants plus de flexibilité et d'opportunités d'apprentissage. </p>
+<p></p>
+<p>Le BYOD est une tendance importante, qui concerne ou concernera tous les services informatiques. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

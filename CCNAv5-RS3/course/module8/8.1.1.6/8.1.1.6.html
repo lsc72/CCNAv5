@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.1.6 Vérification de la récapitulation automatique : table de routage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations EIGRP avancées</h1>
+        <h2>Résumé automatique </h2>
+      </div>
+      <div id="content">
+<p>Examinez la table de routage pour vérifier la bonne réception de la route récapitulative. </p>
+<p></p>
+<p>La Figure 1 présente la table de routage de R3 avant la récapitulation automatique, puis avec la récapitulation automatique activée à l'aide de la commande<span class="cmd"><b> auto-summary</b></span>. Notez qu'une fois la récapitulation automatique activée, la table de routage de R3 contient uniquement l'adresse réseau de classe B 172.16.0.0/16. R1 est le successeur ou routeur de tronçon suivant via 192.168.10.5.</p>
+<p></p>
+<p>
+<b>Remarque </b>: la récapitulation automatique n'est qu'une option avec le protocole EIGRP pour IPv4. L'adressage par classe n'existant pas dans IPv6, la récapitulation automatique n'est pas nécessaire avec le protocole EIGRP pour IPv6.</p>
+<p></p>
+<p>Lors de l'activation de la récapitulation automatique, il est également nécessaire de comprendre l'interface Null. La Figure 2 présente la table de routage de R1. Notez que les deux entrées en surbrillance utilisent une interface de sortie Null0. Le protocole EIGRP a automatiquement inclus une route récapitulative vers Null0 pour deux réseaux par classe, 192.168.10.0/24 et 172.16.0.0/16. </p>
+<p></p>
+<p>L'interface Null0 est une interface IOS virtuelle qui ne conduit nulle part. On l'appelle souvent « le grand vide ». Les paquets contenant une route vers une interface de sortie Null0 sont mis à l'écart. </p>
+<p></p>
+<p>Le protocole EIGRP pour IPv4 intègre automatiquement une route récapitulative Null0 dans les conditions suivantes :</p>
+<p>
+<ul>
+<li>il existe au moins un sous-réseau qui a été acquis via EIGRP ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>il existe plusieurs commandes de mode de configuration du routeur EIGRP<span class="cmd"><b> network</b></span> ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>la fonction de récapitulatif automatique est activée.</li>
+</ul>
+</p>
+<p></p>
+<p>L'objectif de la route récapitulative Null0 est d'empêcher les boucles de routage pour les destinations qui sont incluses dans le récapitulatif alors qu'elles n'existent pas réellement dans la table de routage.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

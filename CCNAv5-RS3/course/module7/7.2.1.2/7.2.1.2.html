@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.1.2 Numéros de système autonome</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole EIGRP pour IPv4</h1>
+        <h2>Configuration du protocole EIGRP avec IPv4</h2>
+      </div>
+      <div id="content">
+<p>Le protocole EIGRP utilise la commande<span class="cmd"><b> router eigrp </b></span><span class="cmd"><i>autonomous-system</i></span><span class="cmd"><b></b></span> pour activer le processus EIGRP. Le numéro de système autonome désigné dans la configuration EIGRP n'est pas associé aux numéros de système autonome globaux attribués par l'IANA (Internet Assigned Numbers Authority) utilisés par les protocoles de routage externes. </p>
+<p></p>
+<p>Alors quelle est la différence entre le numéro de système autonome global attribué par l'IANA et le numéro de système autonome EIGRP ?</p>
+<p></p>
+<p>Un système autonome attribué globalement par l'IANA est un ensemble de réseaux sous le contrôle administratif d'une entité unique qui présente une stratégie de routage commune sur Internet. Dans la figure, les sociétés A, B, C et D sont sous le contrôle administratif de FAI1. FAI1 présente une stratégie de routage commune pour toutes ces sociétés lors de l'annonce des routes à FAI2. </p>
+<p></p>
+<p>Les directives concernant la création, la sélection et l'enregistrement d'un système autonome sont décrites dans le document RFC 1930. Les numéros de système autonome globaux sont attribués par l'IANA, l'autorité qui attribue l'espace d'adresse IP. L'organisme d'enregistrement Internet local (RIR) est responsable de l'attribution d'un numéro de système autonome à une entité à partir de son bloc de numéros de système autonome attribués. Avant 2007, les numéros de système autonome étaient des numéros de 16 bits compris entre 0 et 65 535. Aujourd'hui, des numéros de système autonome de 32 bits sont attribués, faisant passer le nombre de numéros disponibles à plus de 4 milliards. </p>
+<p></p>
+<p>En règle générale, les fournisseurs d'accès Internet (FAI), les fournisseurs de réseaux fédérateurs Internet et les grandes institutions qui assurent des connexions à d'autres entités requièrent un numéro de système autonome. Ces FAI et grandes institutions utilisent le protocole de routage à passerelle extérieure BGP (Border Gateway Protocol) pour propager les informations de routage. BGP est l’unique protocole de routage qui utilise un numéro de système autonome réel dans sa configuration. </p>
+<p></p>
+<p>La grande majorité des entreprises et des institutions disposant de réseaux IP n'ont pas besoin d'un numéro de système autonome, car elles sont contrôlées par une entité plus grande, par exemple un FAI. Ces sociétés utilisent des protocoles IGP tels que RIP, EIGRP, OSPF et IS-IS pour acheminer les paquets dans leurs propres réseaux. Chacune représente ainsi un des nombreux réseaux indépendants et autonomes dans le système autonome du FAI. Le FAI est responsable du routage des paquets à l’intérieur de son système autonome et vers les autres systèmes autonomes.</p>
+<p></p>
+<p>Le numéro de système autonome utilisé pour la configuration EIGRP n'a de sens que par rapport au domaine de routage EIGRP. Il fonctionne comme un ID de processus et permet aux routeurs de suivre plusieurs instances EIGRP en cours d'exécution. Ceci est indispensable car plusieurs instances EIGRP peuvent s'exécuter simultanément sur un réseau. Chaque instance EIGRP peut être configurée pour prendre en charge et échanger les mises à jour de routage de différents réseaux.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

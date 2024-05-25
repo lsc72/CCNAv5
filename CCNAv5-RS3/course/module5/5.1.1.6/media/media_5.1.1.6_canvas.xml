@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+	<data>		
+		<slide type="MBAR">		
+			<slide>
+				<element type="ROUTER" textId="ID_router_txt1" x="5" y="131" width="430" height="100.05" size="10"/>
+				<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+			</slide>
+			<slide>
+				<element type="ROUTER" textId="ID_router_txt2" x="5" y="57.9" width="430" height="306.2" size="10"/>
+				<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+			</slide>
+			<slide>
+				<element type="ROUTER" textId="ID_router_txt3" x="5" y="36.9" width="430" height="355.35" size="10"/>
+				<element type="TEXT" compId="ID_s3_txt01" x="18" y="98" width="248.25" expand="right" align="left" />
+				<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+			</slide>
+			<slide>
+				<element type="ROUTER" textId="ID_router_txt4" x="0" y="21.9" width="435" height="368" size="10"/>
+				<element type="TEXT" compId="ID_s4_txt01" x="18" y="360.9" width="247.05" expand="right" align="left" />
+				<element type="TEXT" subType="TITLE" compId="ID_s4_title"/>
+			</slide>
+			<slide>
+				<element type="TEXT" subType="TITLE" compId="ID_s5_title"/>
+				<element type="ROUTER" textId="ID_router_txt5" x="5" y="131" width="430" height="100.05" size="10"/>
+			</slide>
+			<slide>
+				<element type="TEXT" subType="TITLE" compId="ID_s6_title"/>
+				<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC6" x="10.65" y="32" width="420" height="362" resetId="ID_s6_sc_reset" showMeId="ID_s6_sc_showme" showAllId="ID_s6_sc_showall"/>
+			</slide>
+			<slide>
+				<element type="TEXT" subType="TITLE" compId="ID_s7_title"/>
+				<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC7" x="10.65" y="32" width="420" height="362" resetId="ID_s7_sc_reset" showMeId="ID_s7_sc_showme" showAllId="ID_s7_sc_showall"/>
+			</slide>
+	</slide>
+<text id="ID_router_txt1"><![CDATA[<pre>R1# <b>show ip ospf neighbor </b>
+
+Neighbor ID   Pri  State     Dead Time   Address        Interface
+3.3.3.3       0    FULL/  -  00:00:32    192.168.10.6   Serial0/0/1
+2.2.2.2       0    FULL/  -  00:00:38    172.16.3.2     Serial0/0/0
+R1#</pre>]]></text>
+<text id="ID_router_txt2"><![CDATA[<pre>R1# <b>show ip protocols</b>
+*** IP Routing is NSF aware ***
+
+Routing Protocol is "ospf 10"
+  Outgoing update filter list for all interfaces is not set
+  Incoming update filter list for all interfaces is not set
+  Router ID 1.1.1.1
+  Number of areas in this router is 1. 1 normal 0 stub 0 nssa
+  Maximum path: 4
+  Routing for Networks:
+    172.16.1.0 0.0.0.255 area 0
+    172.16.3.0 0.0.0.3 area 0
+    192.168.10.4 0.0.0.3 area 0
+  Passive Interface(s):
+    GigabitEthernet0/0
+  Routing Information Sources:
+    Gateway         Distance      Last Update
+    3.3.3.3              110      00:12:14
+    2.2.2.2              110      00:12:46
+  Distance: (default is 110)
+
+R1#</pre>]]></text>
+<text id="ID_router_txt3"><![CDATA[<pre>R1# <b>show ip ospf</b>
+ Routing Process "ospf 10" with ID 1.1.1.1
+ Start time: 00:06:18.952, Time elapsed: 00:39:56.400
+
+
+
+ Number of areas in this router is 1. 1 normal 0 stub 0 nssa
+ Number of areas transit capable is 0
+ External flood list length 0
+ IETF NSF helper support enabled
+ Cisco NSF helper support enabled
+ Reference bandwidth unit is 1000 mbps
+ Area BACKBONE(0)
+        Number of interfaces in this area is 3
+          Area has no authentication
+          SPF algorithm last executed 00:15:21.436 ago
+          SPF algorithm executed 6 times
+          Area ranges are
+          Number of LSA 3. Checksum Sum 0x023523
+          Number of opaque link LSA 0. Checksum Sum 0x000000
+          Number of DCbitless LSA 0
+          Number of indication LSA 0
+          Number of DoNotAge LSA 0
+          Flood list length 0
+
+R1#
+</pre>]]></text>
+<text id="ID_router_txt4"><![CDATA[<pre>R1# <b>show ip ospf interface</b>  
+GigabitEthernet0/0 is up, line protocol is up 
+  Internet Address 172.16.1.1/24, Area 0, Attached via Network Statement
+  Process ID 10, Router ID 1.1.1.1, Network Type BROADCAST, Cost: 1
+  Topology-MTID    Cost    Disabled    Shutdown      Topology Name
+        0           1         no          no            Base
+  Transmit Delay is 1 sec, State DR, Priority 1
+  Designated Router (ID) 1.1.1.1, Interface address 172.16.1.1
+  No backup designated router on this network
+  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5
+    oob-resync timeout 40
+    No Hellos (Passive interface) 
+  Supports Link-local Signaling (LLS)
+  Cisco NSF helper support enabled
+  IETF NSF helper support enabled
+  Index 1/1, flood queue length 0
+  Next 0x0(0)/0x0(0)
+  Last flood scan length is 0, maximum is 0
+  Last flood scan time is 0 msec, maximum is 0 msec
+  Neighbor Count is 0, Adjacent neighbor count is 0 
+  Suppress hello for 0 neighbor(s)
+Serial0/0/1 is up, line protocol is up 
+  Internet Address 192.168.10.5/30, Area 0, Attached via Network Statement
+  Process ID 10, Router ID 1.1.1.1, Network Type POINT_TO_POINT, Cost: 647
+</pre>]]></text>
+<text id="ID_router_txt5"><![CDATA[<pre>R1# <b>show ip ospf interface brief</b>
+Interface    PID   Area    IP Address/Mask    Cost  State Nbrs F/C
+Gi0/0        10    0       172.16.1.1/24      1     DR    0/0
+Se0/0/1      10    0       192.168.10.5/30    647   P2P   1/1
+Se0/0/0      10    0       172.16.3.1/30      647   P2P   1/1
+R1#</pre>]]></text>
+	</data>
+
+
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.0.1.2 Transition vers les canaux de réseau local</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout; 
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage inter-VLAN</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Transition vers les canaux de réseau local</b>
+</p>
+<p></p>
+<p>Vous travaillez pour une PME. En tant qu'administrateur réseau, vous devez assurer le bon fonctionnement et la sécurité de votre réseau.</p>
+<p></p>
+<p>Il y a plusieurs années, vous avez créé des VLAN sur le seul commutateur dont vous disposiez pour vos deux services, la comptabilité et les ventes. À mesure que l'entreprise s'est développée, il est devenu évident que ces deux services doivent parfois partager les fichiers et les ressources réseau de l'entreprise.</p>
+<p></p>
+<p>Vous discutez de ce scénario avec les administrateurs réseau de certains sites de votre entreprise. Ils vous conseillent d'envisager l'utilisation du routage inter-VLAN. </p>
+<p></p>
+<p>Effectuez des recherches sur le concept de routage inter-VLAN. </p>
+<p></p>
+<p>Préparez une présentation simple pour montrer à votre responsable comment vous utiliseriez le routage inter-VLAN pour permettre aux services de comptabilité et de vente de partager les fichiers et les ressources réseau de l'entreprise tout en restant indépendants.</p>
+<p></p>
+<p>
+<a href="../../files/5.0.1.2%20Switching%20to%20Local%20Network%20Channels%20Instructions.pdf" target="_blank">Exercice en classe : instructions pour la transition vers les canaux de réseau local</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

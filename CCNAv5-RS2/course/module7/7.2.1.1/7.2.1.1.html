@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.1.1 Technologies de vecteur de distance</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage dynamique à vecteur de distance</h1>
+        <h2>Fonctionnement des protocoles de routage à vecteur de distance</h2>
+      </div>
+      <div id="content">
+<p>Les protocoles de routage à vecteur de distance partagent les mises à jour entre voisins. Les voisins sont des routeurs qui partagent une liaison et qui sont configurés de manière à utiliser le même protocole de routage. Le routeur ne connaît que les adresses réseau de ses propres interfaces et les adresses des réseaux distants qu'il peut atteindre par le biais de ses voisins. Les routeurs utilisant le routage à vecteur de distance ne connaissent pas la topologie du réseau.</p>
+<p>Certains protocoles de routage à vecteur de distance envoient des mises à jour périodiques. Par exemple, le protocole RIP envoie une mise à jour périodique à tous ses voisins toutes les 30 secondes. Le protocole RIP effectue cette opération même si la topologie n'a pas changé ; il continue à envoyer des mises à jour. Le protocole RIPv1 atteint l'ensemble de ses voisins en envoyant des mises à jour à l'adresse IPv4 de tous les hôtes, 255.255.255.255, par le biais d'une diffusion.</p>
+<p>La diffusion de mises à jour périodiques est inefficace, car les mises à jour consomment de la bande passante et pèsent sur les ressources processeur des périphériques réseau. Chaque périphérique réseau doit traiter un message de diffusion. Au lieu de cela, les protocoles RIPv2 et EIGRP utilisent des adresses de multidiffusion de façon à ce que seuls les voisins qui requièrent des mises à jour les reçoivent. Le protocole EIGRP peut également envoyer un message monodiffusion uniquement au voisin affecté. En outre, le protocole EIGRP envoie uniquement des mises à jour lorsque nécessaire, plutôt que régulièrement. </p>
+<p>Comme l'illustre la figure, les deux protocoles modernes de routage à vecteur de distance IPv4 sont RIPv2 et EIGRP. Les protocoles RIPv1 et IGRP sont indiqués uniquement à des fins de précision historique. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

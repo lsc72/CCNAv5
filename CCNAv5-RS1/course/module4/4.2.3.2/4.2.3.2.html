@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.3.2 Éléments d&#x0027;un câble en fibre optique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Supports réseau</h1>
+        <h2>Fibre optique</h2>
+      </div>
+      <div id="content">
+<p>Bien que la fibre optique soit très fine, elle se compose de deux types de verre et d'une protection extérieure. Les différentes couches sont les suivantes : </p>
+<p>
+<ul>
+<li>
+<b>Le cœur</b> : il se compose de verre pur et est en contact direct avec la lumière. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>La gaine optique</b> : il s'agit d'une couche de verre qui entoure le cœur et fonctionne comme un miroir. Les impulsions lumineuses se propagent dans le cœur tandis que la gaine les reflète. Ainsi, les impulsions lumineuses sont contenues dans le cœur de la fibre selon un phénomène appelé réflexion totale interne. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>La protection</b> : il s'agit généralement d'une gaine en PVC qui protège le cœur et la gaine optique. Elle peut également contenir des matériaux de renforcement et un gainage (revêtement) destinés à protéger le verre des rayures et de l'humidité. </li>
+</ul>
+</p>
+<p></p>
+<p>Bien qu'ils puissent être abimés s'ils sont pliés, le cœur et le gainage ont subi une modification de leur propriété au niveau moléculaire qui les rend très résistants. La qualité de la fibre optique est testée par un processus de fabrication rigoureux et doit résister à une traction d'au moins 100 000 livres par pouce carré. La fibre optique est assez résistante pour être manipulée lors de l'installation et du déploiement dans les conditions environnementales difficiles des réseaux du monde entier.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

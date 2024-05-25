@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.3.2 Démarrage à froid</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de routage dynamique</h1>
+        <h2>Principes fondamentaux des protocoles de routage</h2>
+      </div>
+      <div id="content">
+<p>Tous les protocoles de routage suivent les mêmes schémas de fonctionnement. Pour illustrer ceci, examinez le scénario suivant dans lequel les trois routeurs exécutent tous RIPv2. </p>
+<p></p>
+<p>Lorsqu'un routeur est mis sous tension, il ne dispose d'aucune information sur la topologie du réseau. Il ne sait même pas que des périphériques sont connectés à l'autre extrémité de ses liaisons. Les seules informations dont dispose un routeur sont celles de son propre fichier de configuration qui est stocké dans la mémoire vive non volatile. Une fois amorcé avec succès, le routeur applique la configuration enregistrée. Si l'adressage IP est correctement configuré, le routeur détecte d'abord ses propres réseaux connectés directement. </p>
+<p></p>
+<p>Cliquez sur Lecture dans la figure pour voir une animation de détection initiale des réseaux connectés pour chaque routeur. </p>
+<p></p>
+<p>Observez la façon dont les routeurs effectuent le processus d'amorçage et détectent ensuite tous les réseaux connectés directement et masques de sous-réseau. Ces informations sont ajoutées à leurs tables de routage comme suit :</p>
+<p>
+<ul>
+<li>R1 ajoute le réseau 10.1.0.0 disponible via l'interface FastEthernet 0/0 et 10.2.0.0 devient alors disponible via l'interface série 0/0/0.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>R2 ajoute le réseau 10.2.0.0 disponible via l'interface série 0/0/0 et 10.3.0.0 devient alors disponible via l'interface série 0/0/1.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>R3 ajoute le réseau 10.3.0.0 disponible via l'interface série 0/0/1 et 10.4.0.0 devient alors disponible via l'interface FastEthernet 0/0.</li>
+</ul>
+</p>
+<p></p>
+<p>Avec ces informations initiales, les routeurs recherchent ensuite des sources de route supplémentaires pour leurs tables de routage. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

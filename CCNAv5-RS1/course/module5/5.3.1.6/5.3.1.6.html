@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.3.1.6 Commutation cut-through</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.3.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Commutateurs LAN</h1>
+        <h2>Commutation</h2>
+      </div>
+      <div id="content">
+<p>Dans le cas de la commutation cut-through, le commutateur agit sur les données à mesure qu'il les reçoit, même si la transmission n'est pas terminée. Le commutateur met une quantité juste suffisante de la trame en tampon afin de lire l'adresse MAC de destination et déterminer ainsi le port auquel les données sont à transmettre. L'adresse MAC de destination est située dans les six premiers octets de la trame à la suite du préambule. Le commutateur recherche l'adresse MAC de destination dans sa table de commutation, détermine le port d'interface de sortie et transmet la trame vers sa destination via le port de commutateur désigné. Le commutateur ne procède à aucun contrôle d'erreur dans la trame. La commutation cut-through est bien plus rapide que la commutation Store and Forward, puisque le commutateur n'a ni à attendre que la trame soit entièrement mise en mémoire tampon, ni besoin de réaliser un contrôle d'erreur. En revanche, du fait de l'absence d'un contrôle d'erreur, elle transmet les trames endommagées sur le réseau. Les trames qui ont été altérées consomment de la bande passante au cours de leur transmission. La carte de réseau de destination ignore ces trames au bout du compte. </p>
+<p></p>
+<p>Lancez l'animation pour afficher une démonstration du processus de commutation Cut-through.</p>
+<p></p>
+<p>Il existe deux variantes de la commutation cut-through :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Commutation Fast-Forward</b> : ce mode de commutation offre le niveau de latence le plus faible. La commutation Fast-Forward transmet un paquet immédiatement après la lecture de l'adresse de destination. Du fait que le mode de commutation Fast-Forward entame la transmission avant la réception du paquet tout entier, il peut arriver que des paquets relayés comportent des erreurs. Cette situation est occasionnelle et la carte réseau de destination ignore le paquet défectueux lors de sa réception. En mode Fast-Forward, la latence est mesurée à partir du premier bit reçu jusqu'au premier bit transmis. La commutation Fast-Forward est la méthode de commutation cut-through classique.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Commutation Fragment-Free</b> : dans ce mode de commutation, le commutateur stocke les 64 premiers octets de la trame avant la transmission. La commutation Fragment-Free peut être considérée comme un compromis entre la commutation Stockage et retransmission et la commutation Fast-Forward. La raison pour laquelle la commutation Fragment-Free stocke uniquement les 64 premiers octets de la trame est que la plupart des erreurs et des collisions sur le réseau surviennent pendant ces 64 premiers octets. La commutation Fragment-Free tente d'améliorer la commutation Cut-through en procédant à un contrôle d'erreur partiel sur les 64 premiers octets de la trame afin de s'assurer qu'aucune collision ne s'est produite lors de la transmission de la trame. La commutation Fragment-Free offre un compromis entre la latence élevée et la forte intégrité de la commutation Stockage et retransmission d'une part, et la faible latence et l'intégrité réduite de la commutation Cut-through d'autre part.</li>
+</ul>
+</p>
+<p></p>
+<p>La figure présente un exemple de commutation Cut-through.</p>
+<p></p>
+<p>Certains commutateurs sont configurés pour une commutation cut-through par port. Une fois le seuil d'erreurs défini par l'utilisateur atteint, ils passent automatiquement en mode Store and Forward. Lorsque le nombre d'erreurs est inférieur au seuil défini, le port revient automatiquement en mode de commutation cut-through.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

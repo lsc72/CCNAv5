@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.3.5 Vérification du protocole OSPFv3 à zones multiples</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.3.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du routage OSPF à zones multiples</h1>
+        <h2>Vérification du protocole OSPF à zones multiples</h2>
+      </div>
+      <div id="content">
+<p>Le protocole OSPFv3 propose des commandes de vérification similaires à celles du protocole OSPFv2. Pour référence, consultez la topologie OSPFv3 présentée à la Figure 1. </p>
+<p></p>
+<p>La Figure 2 présente les paramètres OSPFv3 de R1. Notez que la commande confirme qu'il existe désormais deux zones. Elle identifie également chaque interface activée respectivement pour les zones.</p>
+<p></p>
+<p>La commande indiquée à la Figure 3 vérifie les interfaces OSPFv3 et la zone à laquelle elles appartiennent.</p>
+<p></p>
+<p>La Figure 4 présente la table de routage de R1. Notez que la table de routage IPv6 contient des entrées <b>OI</b> pour identifier les réseaux appris à partir des autres zones. En particulier,<b> O </b>représente les routes OSPF et <b>I</b> les routes interzones, c'est-à-dire les routes provenant d'une autre zone. Souvenez-vous que le routeur R1 se situe dans la zone 0, et que le sous-réseau 2001:DB8:CAFE3::/64 est connecté à R3 dans la zone 2. L'entrée [110/1295] de la table de routage représente la distance administrative attribuée à OSPF (<span class="cmd">110</span>) et le coût total des routes (coût égal à <span class="cmd">1295</span>).</p>
+<p></p>
+<p>La commande illustrée à la Figure 5 affiche le contenu de la LSDB de R1. Cette commande fournit des informations similaires à son homologue OSPFv2. Toutefois, la LSDB OSPFv3 contient des types de LSA supplémentaires, non disponibles avec OSPFv2.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

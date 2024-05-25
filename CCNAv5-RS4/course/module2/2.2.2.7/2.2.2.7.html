@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.2.7 MPLS</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.2.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Choix d&#x0027;une technologie WAN</h1>
+        <h2>Infrastructures WAN privées</h2>
+      </div>
+      <div id="content">
+<p>La commutation MPLS est une technologie WAN à protocoles multiples présentant des performances élevées. Elle redirige les données d'un routeur vers le suivant en se basant sur des étiquettes de chemin le plus court plutôt que sur les adresses réseau IP. </p>
+<p></p>
+<p>La technologie MPLS présente plusieurs caractéristiques distinctes. Elle est multiprotocoles, ce qui signifie qu'elle est capable de transporter n'importe quelle donnée utile, comme du trafic IPv4, IPv6, Ethernet, ATM, DSL et Frame Relay. Elle utilise des étiquettes qui expliquent au routeur ce qu'il doit faire du paquet. Ces étiquettes identifient les chemins entre les routeurs distants, plutôt qu'entre les terminaux, et pendant que MPLS transmet les paquets IPv4 et IPv6, tout le reste est commuté.</p>
+<p></p>
+<p>MPLS est une technologie du fournisseur de services. Les lignes louées transmettent des bits entre sites et le WAN Frame Relay et WAN Ethernet transmet les trames entre sites. Cependant, MPLS peut transmettre tout type de paquets entre sites. MPLS peut encapsuler des paquets de différents protocoles réseau. Il prend en charge de nombreuses technologies WAN, dont les liaisons T-carrier / E-carrier, Ethernet, ATM, Frame Relay et DSL. </p>
+<p></p>
+<p>L'exemple de topologie de l'illustration présente l'utilisation de MPLS. Notez que les différents sites peuvent se connecter au cloud MPLS avec différentes technologies d'accès. Dans l'illustration, CE fait référence à la périphérie client, PE est le routeur de périphérie du fournisseur qui ajoute et supprime les étiquettes, et P est un routeur interne du fournisseur qui commute les paquets MPLS étiquetés.</p>
+<p></p>
+<p>
+<b>Remarque </b>: MPLS est avant tout une technologie WAN du fournisseur de services. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

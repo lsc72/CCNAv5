@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+
+	<slide type="MBAR">
+			<element type="IMAGE" src="3.3.1.4.jpg" x="0" y="0" width="470" height="400"/>
+			<element type="TEXT" id="ID_static_1" text="S0/0/1" x="75" y="93.8" width="33.5" align="left" />
+			<element type="TEXT" id="ID_static_2" text="S0/0/0" x="335" y="93.8" width="33.5" align="left" />
+			
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+			<element type="TEXT" subType="TABLE" compId="ID_s1_txt01" x="3" y="322" width="432" height="85.95" />
+			<element type="ROUTER" textId="ID_router_txt1" x="2.05" y="122" width="216" height="125" />
+			<element type="ROUTER" textId="ID_router_txt2" x="219.05" y="122" width="216" height="125" />
+			<element type="ROUTER" textId="ID_router_txt3" x="2.05" y="260" width="432" height="48" />
+		</slide>
+		
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+			<element type="ACTIVITY" subType="SYNTAX" compId="ID_s2_SC5" x="12.5" y="130" width="420.1" height="265" resetId="ID_sc2_reset" showMeId="ID_sc2_showme" showAllId="ID_sc2_showall" />
+		</slide>
+		
+	</slide>
+	
+
+<text id="ID_router_txt1">
+<![CDATA[<pre>hostname R1
+!
+interface Serial 0/0/0
+ ip address 10.0.1.1 255.255.255.252
+ ipv6 address 2001:db8:cafe:1::1/64
+ encapsulation ppp
+ <span class="orange">ppp quality 80</span>
+</pre>]]></text>
+
+<text id="ID_router_txt2">
+<![CDATA[<pre>hostname R2
+!
+interface Serial 0/0/0
+ ip address 10.0.1.2 255.255.255.252
+ ipv6 address 2001:db8:cafe:1::2/64
+ encapsulation ppp
+ <span class="orange">ppp quality 80</span>
+</pre>]]></text>
+
+<text id="ID_router_txt3">
+<![CDATA[<pre>Router(config-if)# <b>ppp quality</b> <i>percentage</i></pre>]]></text>
+
+	
+</data>

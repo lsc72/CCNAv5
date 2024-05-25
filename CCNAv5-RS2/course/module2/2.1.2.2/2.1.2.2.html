@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.2 Configuration des ports de commutateur au niveau de la couche physique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de base d&#x0027;un commutateur</h1>
+        <h2>Configuration des ports de commutateur</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Mode bidirectionnel et vitesse</b>
+</p>
+<p></p>
+<p>Les ports de commutateur peuvent être configurés manuellement avec des paramètres de bidirectionnalité et de vitesse spécifiques. Utilisez la commande<span class="cmd"><b> duplex </b></span>du mode de configuration d'interface pour spécifier manuellement le mode de bidirectionnalité d'un port de commutateur. Utilisez la commande <span class="cmd"><b>speed</b></span> du mode de configuration d'interface pour spécifier manuellement la vitesse d'un port de commutateur. Dans la Figure 1, le port F0/1 sur les commutateurs S1 et S2 est configuré manuellement avec le mot-clé<span class="cmd"><b> full </b></span>pour la commande<span class="cmd"><b> duplex</b></span>, et avec le mot-clé<span class="cmd"><b> 100 </b></span>pour la commande<span class="cmd"><b> speed</b></span>. </p>
+<p></p>
+<p>Le paramètre de bidirectionnalité et de vitesse d'un port de commutateur Cisco Catalyst 2960 ou 3560 est auto. Les ports 10/100/1000 fonctionnent soit en mode bidirectionnel non simultané, soit en mode bidirectionnel simultané lorsqu'ils sont définis à 10 ou 100 Mbit/s. Par contre, à 1 000 Mbit/s (1 Gbit/s), ils fonctionnent uniquement en mode bidirectionnel simultané. La négociation automatique est utile lorsque les paramètres de vitesse et de transmission bidirectionnelle du périphérique connecté au port sont inconnus ou susceptibles de changer. Lors d'une connexion à des équipements connus, tels que des serveurs, des postes de travail dédiés ou des périphériques réseau, il est recommandé de régler manuellement les paramètres de vitesse et de transmission bidirectionnelle.</p>
+<p></p>
+<p>Lors du dépannage des problèmes de port de commutateur, les paramètres de bidirectionnalité et de vitesses doivent être vérifiés.</p>
+<p></p>
+<p>
+<b>Remarque </b>: toute incohérence entre les paramètres de bidirectionnalité et de vitesse peut entraîner des problèmes de connectivité. L'échec de la négociation automatique produit des réglages incohérents.</p>
+<p></p>
+<p>Tous les ports fibre optique, tels que les ports 100BASE-FX, fonctionnent uniquement à une vitesse prédéfinie et en mode bidirectionnel simultané. </p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 2 pour configurer le port F0/1 du commutateur S1.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

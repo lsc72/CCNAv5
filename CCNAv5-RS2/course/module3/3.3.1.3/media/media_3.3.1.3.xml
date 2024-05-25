@@ -1,0 +1,67 @@
+﻿<textcomponents> <!--Slide 1-->
+<component id="ID_s1_title">
+<text><![CDATA[<b>Périphérie PVLAN</b>]]></text>
+</component>
+
+<component id="ID_s1_txt01">
+<text><![CDATA[Port non protégé]]></text>
+</component>
+
+<component id="ID_s1_txt02">
+<text><![CDATA[Port protégé]]></text>
+</component>
+
+<component id="ID_s1_txt03">
+<text><![CDATA[Port protégé]]></text>
+</component>
+
+<component id="ID_s1_txt04">
+<text><![CDATA[N'autorise pas le trafic de données.]]></text>
+</component>
+
+<component id="ID_s1_txt05">
+<text><![CDATA[Autorise le trafic de données.]]></text>
+</component> <!--Slide 2-->
+<component id="ID_s2_title">
+<text><![CDATA[<b>Périphérie PVLAN</b>]]></text>
+</component>
+
+<component id="ID_s2_txt01">
+<text><![CDATA[&lt;résultat omis&gt;]]></text>
+</component> <!--Slide 3-->
+<component id="ID_s3_title">
+<text><![CDATA[<b>Périphérie PVLAN</b>]]></text>
+</component>
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+</component>
+<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+</component>
+<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+</component>
+<component id="ID_SC3" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font  face="Arial" color="#0000FF">*** Vous devez saisir la commande précisément et en entier. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font>  </b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font  face="Arial"><b>Configurez la fonction Périphérie PVLAN sur g0/1. Retournez directement au mode d'exécution privilégié lorsque vous avez terminé.  </b></font>]]></existingcommands>
+		<command prompt="S1(config)#">
+			<correctresponse><![CDATA[interface g0/1]]></correctresponse>
+		</command>
+		<command prompt="S1(config-if)#">
+			<correctresponse><![CDATA[switchport protected]]></correctresponse>
+		</command>
+		<command prompt="S1(config-if)#">
+			<correctresponse><![CDATA[end]]></correctresponse>
+				<deviceresponse><![CDATA[<font face="Courier New">S1#<br>*Mar 31, 09:34:24.3434: %SYS-5-CONFIG_I: Configured from console by console<br>S1#</font>]]></deviceresponse>
+			<instruction><![CDATA[<font  face="Arial"><b>Vérifiez la configuration Périphérie PVLAN en affichant les informations du port de commutation pour g0/1.</font>]]></instruction>
+		</command>
+		<command prompt="S1#">
+			<correctresponse><![CDATA[show interfaces g0/1 switchport]]></correctresponse>
+				<deviceresponse><![CDATA[<font face="Courier New">Name: Gi0/1 <br>Switchport: Enabled <br>Administrative Mode: dynamic auto <br>Operational Mode: down <br>Administrative Trunking Encapsulation: dot1q <br>Negotiation of Trunking: On <br>Access Mode VLAN: 1 (default) <br>Trunking Native Mode VLAN: 1 (default) <br>Administrative Native VLAN tagging: enabled <br>Voice VLAN: none <br>Administrative private-vlan host-association: none <br>Administrative private-vlan mapping: none <br>Administrative private-vlan trunk native VLAN: none <br>Administrative private-vlan trunk Native VLAN tagging: enabled <br>Administrative private-vlan trunk encapsulation: dot1q <br>Administrative private-vlan trunk normal VLANs: none <br>Administrative private-vlan trunk associations: none <br>Administrative private-vlan trunk mappings: none <br>Operational private-vlan: none <br>Trunking VLANs Enabled: ALL <br>Pruning VLANs Enabled: 2-1001 <br>Capture Mode Disabled <br>Capture VLANs Allowed: ALL <br> <br>Protected: true <br>Unknown unicast blocked: disabled <br>Unknown multicast blocked: disabled <br>Appliance trust: none</font>]]></deviceresponse>
+			<instruction><![CDATA[<font  face="Arial"><b>Vous avez configuré et vérifié la fonction Périphérie PVLAN.</font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+</textcomponents>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.1.4 Analyse de la connexion TCP en trois étapes - Étape 1</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>TCP et UDP</h1>
+        <h2>Communication TCP</h2>
+      </div>
+      <div id="content">
+<p>En utilisant les informations du logiciel d'analyse de protocoles, par exemple les résultats de Wireshark, vous pouvez examiner le fonctionnement de la connexion TCP en trois étapes :</p>
+<p></p>
+<p>
+<b>Étape 1 : Le client demande l'établissement d'une session de communication client-serveur avec le serveur.</b>
+</p>
+<p></p>
+<p>Un client TCP initie une connexion en trois étapes en envoyant un segment contenant l'indicateur de contrôle SYN qui indique une valeur initiale dans le champ de numéro d'ordre de l'en-tête. Cette valeur initiale du numéro d'ordre, appelée ISN (Initial Sequence Number), est choisie de façon aléatoire et sert à commencer le suivi du flux de données entre le client et le serveur pour cette session. L'ISN figurant dans l'en-tête de chaque segment est incrémenté de un pour chaque octet de données envoyé par le client au serveur tandis que la conversation de données se poursuit.</p>
+<p></p>
+<p>Comme l'illustre la figure ci-contre, le résultat d'un analyseur de protocole affiche l'indicateur de contrôle SYN et le numéro d'ordre relatif. </p>
+<p></p>
+<p>L'indicateur de contrôle SYN est défini et le numéro d'ordre relatif est égal à 0. Bien que l'analyseur de protocole dans le graphique présente les valeurs relatives des numéros d'ordre et d'accusé de réception, les valeurs réelles sont des nombres binaires de 32 bits. La figure illustre les quatre octets au format hexadécimal.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

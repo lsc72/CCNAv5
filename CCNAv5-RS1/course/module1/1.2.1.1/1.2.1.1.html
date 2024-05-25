@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.1.1 Composants du réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>LAN, WAN et Internet</h1>
+        <h2>Composants d&#x0027;un réseau</h2>
+      </div>
+      <div id="content">
+<p>Le chemin emprunté par un message depuis une source jusqu'à une destination peut être aussi simple que la connexion entre deux ordinateurs via un seul câble ou aussi complexe qu'un réseau parcourant le globe terrestre. L'infrastructure réseau constitue la plateforme qui prend en charge le réseau. Elle fournit le canal stable et fiable à travers lequel nos communications peuvent s'établir. </p>
+<p></p>
+<p>L'infrastructure réseau comprend trois catégories de composant réseau :</p>
+<p>
+<ul>
+<li>Les périphériques</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Multimédia</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les services</li>
+</ul>
+</p>
+<p></p>
+<p>Cliquez sur chaque bouton de la figure pour mettre en évidence les composants réseau correspondants.</p>
+<p></p>
+<p>Les périphériques et les supports sont les éléments physiques, ou le matériel, du réseau. Le matériel correspond souvent aux composants visibles de la plateforme réseau, par exemple un ordinateur portable, un ordinateur de bureau, un commutateur, un routeur, un point d'accès sans fil ou le câblage qui sert à relier les périphériques. Parfois, certains composants ne sont pas visibles. Dans le cas d'un support sans fil, les messages sont transmis à travers l'air, à l'aide d'une fréquence radio ou d'ondes infrarouges invisibles.</p>
+<p></p>
+<p>Les composants réseau sont utilisés pour fournir des services et des processus. Les services et les processus sont les programmes de communication, appelés logiciels, qui sont exécutés sur les périphériques réseau. Un service réseau fournit des informations en réponse à une demande. Les services incluent de nombreuses applications réseau courantes utilisées quotidiennement, comme les services d'hébergement de messagerie et les services d'hébergement Web. Les processus fournissent les fonctionnalités qui dirigent et déplacent les messages à travers le réseau. Les processus nous semblent moins évidents, mais ils sont essentiels au fonctionnement des réseaux.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

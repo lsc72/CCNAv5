@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.4.2.5 Packet Tracer - Sauvegarde de fichiers de configuration </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.4.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Gestion des fichiers de configuration IOS</h1>
+        <h2>Fichiers de sauvegarde et de restauration de la configuration</h2>
+      </div>
+      <div id="content">
+<p>Cet exercice a pour objectif de présenter comment restaurer une configuration à partir d'une sauvegarde, puis effectuer une nouvelle sauvegarde. En raison d'une défaillance matérielle, un nouveau routeur a été installé. Heureusement, des fichiers de sauvegarde de configuration ont été enregistrés sur un serveur TFTP. Vous devez restaurer ces fichiers à partir du serveur TFTP pour reconnecter le routeur en minimisant au maximum le temps d'arrêt.</p>
+<p></p>
+<p>
+<a href="../../files/11.4.2.5%20Packet%20Tracer%20-%20Backing%20Up%20Configuration%20Files%20Instructions.pdf" target="_blank">Instructions de Packet Tracer - Sauvegarde de fichiers de configuration</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/11.4.2.5%20Packet%20Tracer%20-%20Backing%20Up%20Configuration%20Files.pka" target="_blank">PKA de Packet Tracer - Sauvegarde de fichiers de configuration</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

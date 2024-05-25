@@ -1,0 +1,38 @@
+﻿<textcomponents>
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Vérification du processus OSPF sur R1  </b>]]></text>
+	</component>
+	<component id="ID_s2_title">
+		<text><![CDATA[<b>Vérification des informations de processus OSPF  </b>]]></text>
+	</component>
+	
+	
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+	
+	
+	<component id="ID_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b> *** </b><font  face="Arial" color="#0000FF"> Vous devez saisir la commande exacte et complète.</font><b> ***  </b> 
+		]]></feedback>		
+		<existingcommands><![CDATA[<font  face="Arial"><b>Vérifiez le processus&nbsp;OSPF sur R2.  </b></font>]]></existingcommands>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ip ospf]]></correctresponse>
+			<deviceresponse><![CDATA[<span class="font"> Routing Process "ospf 10" with ID 2.2.2.2 <br> Start time: 01:37:24,332, Time elapsed: 01:32:17,412 <br> Supports only single TOS(TOS0) routes <br> Supports opaque LSA <br> Supports Link-local Signaling (LLS) <br> Supports area transit capability <br> Supports NSSA (compatible with RFC 3101) <br> Event-log enabled, Maximum number of events: 1000, Mode: cyclic <br> Router is not originating router-LSAs with maximum metric <br> Initial SPF schedule delay 5000 msecs <br> Minimum hold time between two consecutive SPFs 10000 msecs <br> Maximum wait time between two consecutive SPFs 10000 msecs <br> Incremental-SPF disabled <br> Minimum LSA interval 5 secs <br> Minimum LSA arrival 1000 msecs <br> LSA group pacing timer 240 secs <br> Interface flood pacing timer 33 msecs <br> Retransmission pacing timer 66 msecs <br> Number of external LSA 0. Checksum Sum 0x000000 <br> Number of opaque AS LSA 0. Checksum Sum 0x000000 <br> Number of DCbitless external and opaque AS LSA 0 <br> Number of DoNotAge external and opaque AS LSA 0 <br> Number of areas in this router is 1. 1 normal 0 stub 0 nssa <br> Number of areas transit capable is 0 <br> External flood list length 0 <br> IETF NSF helper support enabled <br> Cisco NSF helper support enabled <br> Reference bandwidth unit is 1000 mbps <br>    Area BACKBONE(0) <br>        Number of interfaces in this area is 3 <br>        Area has no authentication <br>        SPF algorithm last executed 01:30:07,268 ago <br>        SPF algorithm executed 3 times <br>        Area ranges are <br>        Number of LSA 3. Checksum Sum 0x02033A <br>        Number of opaque link LSA 0. Checksum Sum 0x000000 <br>        Number of DCbitless LSA 0 <br>        Number of indication LSA 0 <br>        Number of DoNotAge LSA 0 <br>        Flood list length 0  </span><br> <br>R2#]]></deviceresponse> 
+			<instruction><![CDATA[<font  face="Arial"><b>Vous êtes maintenant connecté au routeur R3. Vérifiez le processus&nbsp;OSPF sur R3.  </b>]]></instruction>			
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip ospf]]></correctresponse>
+			<deviceresponse><![CDATA[ <span class="font">Routing Process "ospf 10" with ID 3.3.3.3 <br> Start time: 01:37:10,888, Time elapsed: 01:30:53,104 <br> Supports only single TOS(TOS0) routes <br> Supports opaque LSA <br> Supports Link-local Signaling (LLS) <br> Supports area transit capability <br> Supports NSSA (compatible with RFC 3101) <br> Event-log enabled, Maximum number of events: 1000, Mode: cyclic <br> Router is not originating router-LSAs with maximum metric <br> Initial SPF schedule delay 5000 msecs <br> Minimum hold time between two consecutive SPFs 10000 msecs <br> Maximum wait time between two consecutive SPFs 10000 msecs <br> Incremental-SPF disabled <br> Minimum LSA interval 5 secs <br> Minimum LSA arrival 1000 msecs <br> LSA group pacing timer 240 secs <br> Interface flood pacing timer 33 msecs <br> Retransmission pacing timer 66 msecs <br> Number of external LSA 0. Checksum Sum 0x000000 <br> Number of opaque AS LSA 0. Checksum Sum 0x000000 <br> Number of DCbitless external and opaque AS LSA 0 <br> Number of DoNotAge external and opaque AS LSA 0 <br> Number of areas in this router is 1. 1 normal 0 stub 0 nssa <br> Number of areas transit capable is 0 <br> External flood list length 0 <br> IETF NSF helper support enabled <br> Cisco NSF helper support enabled <br> Reference bandwidth unit is 1000 mbps <br>    Area BACKBONE(0) <br>        Number of interfaces in this area is 3 <br>        Area has no authentication <br>        SPF algorithm last executed 01:28:41,244 ago <br>        SPF algorithm executed 3 times <br>        Area ranges are <br>        Number of LSA 3. Checksum Sum 0x02033A <br>        Number of opaque link LSA 0. Checksum Sum 0x000000 <br>        Number of DCbitless LSA 0 <br>        Number of indication LSA 0 <br>        Number of DoNotAge LSA 0 <br>        Flood list length 0  </span><br> <br>R3#]]></deviceresponse> 
+			<instruction><![CDATA[<font  face="Arial" class="syntaxBottomLine"><b>Vous avez correctement vérifié le processus&nbsp;OSPF.  </b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+</textcomponents>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.1.1 Plate-forme de commutation</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sélection des périphériques réseau</h1>
+        <h2>Matériel de commutation</h2>
+      </div>
+      <div id="content">
+<p>Lors de la conception d'un réseau, il est important de sélectionner le matériel approprié aux besoins actuels, tout en prévoyant la croissance du réseau. Au sein d'un réseau d'entreprise, les commutateurs et les routeurs jouent un rôle essentiel dans la communication réseau. </p>
+<p></p>
+<p>Il existe cinq catégories de commutateurs pour les réseaux d'entreprise, comme illustré à la Figure 1:</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Commutateurs LAN de campus</b> : pour mettre à l'échelle les performances réseau dans un réseau local d'entreprise, il existe des commutateurs de distribution, d'accès, de cœur de réseau et compacts. Ces plates-formes de commutation variées vont des commutateurs sans ventilateurs avec huit ports fixes aux commutateurs à 13 lames prenant en charge des centaines de ports. Les plates-formes de commutateur LAN de Campus incluent les gammes Cisco 2960, 3560, 3750, 3850, 4500, 6500 et 6800.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Commutateurs gérés dans le cloud</b> : les commutateurs d'accès géré dans le cloud Meraki de Cisco permettent l'empilage virtuel des commutateurs. Ils permettent de surveiller et de configurer des milliers de ports de commutation sur le Web, sans aucune intervention du personnel informatique sur le site.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Commutateurs de Data centers</b> : un Data center doit être établi sur des commutateurs qui facilitent l'évolutivité de l'infrastructure, la continuité opérationnelle et la flexibilité du transport. Les plates-formes de commutation de Data centers incluent les commutateurs des gammes Cisco Nexus et Cisco Catalyst 6500.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Commutateurs pour fournisseurs de services</b> : les commutateurs pour fournisseurs de services sont répartis en deux catégories, les commutateurs d'agrégation et les commutateurs d'accès Ethernet. Les commutateurs d'agrégation sont des commutateurs Ethernet de qualité opérateur, qui agrègent le trafic à la périphérie d'un réseau. Les commutateurs d'accès Ethernet pour fournisseurs de services apportent surveillance des applications, services unifiés, virtualisation, sécurité intégrée et gestion simplifiée.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Réseaux virtuels</b> : les réseaux deviennent de plus en plus virtualisés. Les plates-formes de commutation de réseaux virtuels Cisco Nexus apportent des services multilocataires sécurisés en ajoutant une technologie d'intelligence de virtualisation au réseau de Data center.</li>
+</ul>
+</p>
+<p></p>
+<p>Lorsqu'ils sélectionnent un commutateur, les administrateurs réseau doivent déterminer ses facteurs de forme, notamment sa configuration fixe (Figure 2), modulaire (Figure 3), empilable (Figure 4), ou non empilable. L'épaisseur du commutateur, exprimée en nombre d'unités de rack, est également importante pour les commutateurs montés dans un rack. Par exemple, les commutateurs à configuration fixe, illustrés à la Figure 2, occupent chacun 1 unité de rack (1U). </p>
+<p></p>
+<p>Par ailleurs, la Figure 5 souligne d'autres considérations métier courantes pour la sélection de commutateurs. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

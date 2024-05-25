@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.2.8 VSAT</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.2.8_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Choix d&#x0027;une technologie WAN</h1>
+        <h2>Infrastructures WAN privées</h2>
+      </div>
+      <div id="content">
+<p>Toutes les technologies WAN privées présentées jusqu'ici utilisent un support en cuivre ou en fibre optique. Comment faire dans le cas où une organisation a besoin d'une connexion dans un endroit isolé où aucun fournisseur de services ne propose de services WAN ? </p>
+<p></p>
+<p>La technologie VSAT (Very Small Aperture Terminal) est une solution qui utilise les communications satellite pour créer un WAN privé. Un VSAT est une petite antenne satellite similaire à celle utilisée pour Internet ou pour la télévision domestique. Les VSAT créent un WAN privé tout en offrant de la connectivité pour les emplacements distants.</p>
+<p></p>
+<p>Le routeur se connecte à une antenne satellite dirigée vers le satellite du fournisseur de services qui se trouve en orbite géostationnaire. Les signaux doivent couvrir une distance d'environ 35,786 kilomètres (22,236 miles) pour aller jusqu'au satellite et en revenir. </p>
+<p></p>
+<p>Dans l'exemple présenté dans la figure, l'antenne VSAT sur le toit du bâtiment communique avec un satellite qui se trouve à plusieurs milliers de kilomètres dans l'espace. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

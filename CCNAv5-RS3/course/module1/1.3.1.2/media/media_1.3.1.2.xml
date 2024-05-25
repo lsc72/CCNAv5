@@ -1,0 +1,82 @@
+﻿<textcomponents> <!--Slide 1-->
+	<component id="ID_title">
+		<text><![CDATA[<b>Configuration de base d'un commutateur</b>]]></text>
+	</component>
+
+
+	<component id="ID_sc_reset">
+		<text><![CDATA[<b>Réinitialiser</b>]]></text>
+	</component>
+	
+	<component id="ID_sc_showme">
+		<text><![CDATA[<b>Démonstration</b>]]></text>
+	</component>
+	
+	<component id="ID_sc_showall">
+		<text><![CDATA[<b>Afficher tout</b>]]></text>
+	</component>
+
+	
+	<component id="ID_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font size='10' face="Arial" color="#0000FF">***Vous devez entrer la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font></b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font size='10' face="Arial"><b>Cet exercice de contrôleur de syntaxe reprend les configurations de base des commutateurs.<br>Configurez le nom d'hôte du commutateur en «&nbsp;HQSw1&nbsp;».</b></font>]]></existingcommands>
+		<command prompt="Switch#">
+		    <correctresponse><![CDATA[configure terminal]]></correctresponse>
+		</command>
+		<command prompt="Switch(config)#">
+		    <correctresponse><![CDATA[hostname HQSw1]]></correctresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Configurez le mot de passe chiffré du mode d'exécution privilégié sur «&nbsp;class&nbsp;».</b></font>]]></instruction>
+		</command>
+		<command prompt="HQSw1(config)#">
+		    <correctresponse><![CDATA[enable secret class]]></correctresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Définissez tous les mots de passe de ligne sur «&nbsp;cisco&nbsp;» et demandez une connexion, en commençant par la console. Définissez les lignes vty de 0 à 15.</b></font>]]></instruction>
+		</command>
+		<command prompt="HQSw1(config)#">
+		    <correctresponse><![CDATA[line console 0]]></correctresponse>
+		</command>
+		<command prompt="HQSw1(config-line)#">
+		    <correctresponse><![CDATA[password cisco]]></correctresponse>
+		</command>
+		<command prompt="HQSw1(config-line)#">
+		    <correctresponse><![CDATA[login]]></correctresponse>
+		</command>
+		<command prompt="HQSw1(config-line)#">
+		    <correctresponse><![CDATA[line vty 0 15]]></correctresponse>
+		</command>
+		<command prompt="HQSw1(config-line)#">
+		    <correctresponse><![CDATA[password cisco]]></correctresponse>
+		</command>
+		<command prompt="HQSw1(config-line)#">
+		    <correctresponse><![CDATA[login]]></correctresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Passez en mode de configuration globale. Entrez la commande permettant de chiffrer les mots de passe en clair.</b></font>]]></instruction>
+		</command>
+		<command prompt="HQSw1(config-line)#">
+		    <correctresponse><![CDATA[exit]]></correctresponse>
+		</command>
+		<command prompt="HQSw1(config)#">
+		    <correctresponse><![CDATA[service password-encryption]]></correctresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Configurez le VLAN&nbsp;1 avec l'adresse IP 192.168.10.2/24 et activez l'interface.</b></font>]]></instruction>
+		</command>
+		<command prompt="HQSw1(config)#">
+		    <correctresponse><![CDATA[interface vlan 1]]></correctresponse>
+		</command>
+		<command prompt="HQSw1(config-if)#">
+		    <correctresponse><![CDATA[ip address 192.168.10.2 255.255.255.0]]></correctresponse>
+		</command>
+		<command prompt="HQSw1(config-if)#">
+		    <correctresponse><![CDATA[no shutdown]]></correctresponse>
+			<deviceresponse><![CDATA[%LINK-5-CHANGED: Interface Vlan1, changed state to up]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Revenez directement au mode d'exécution privilégié et affichez la configuration en cours.</b></font>]]></instruction>
+		</command>
+		<command prompt="HQSw1(config-if)#">
+		    <correctresponse><![CDATA[end]]></correctresponse>
+		</command>
+		<command prompt="HQSw1#">
+		    <correctresponse><![CDATA[show running-config]]></correctresponse>
+			<deviceresponse><![CDATA[Building configuration...  <br> <br>Current configuration : 1178 bytes <br>&nbsp;!  <br>version 12.2 <br>no service timestamps log datetime msec <br>no service timestamps debug datetime msec <br>service password-encryption <br>&nbsp;!  <br>hostname HQSw1 <br>&nbsp;!  <br>enable secret 5 $1$mERr$9cTjUIEqNGurQiFU.ZeCi1 <br>&nbsp;!  <br>&nbsp;!  <br><font face="_sans">&lt;résultat omis&gt;</font><br>&nbsp;!  <br>&nbsp;!  <br>interface Vlan1 <br> ip address 192.168.10.2 255.255.255.0 <br>&nbsp;!  <br>&nbsp;!  <br>line con 0 <br> password 7 0822455D0A16 <br> login <br>&nbsp;!  <br>line vty 0 4 <br> password 7 0822455D0A16 <br> login <br>line vty 5 15 <br> password 7 0822455D0A16 <br> login <br>&nbsp;!  <br>&nbsp;!  <br>end<br>HQSw1#]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"><b>Vous avez réussi les configurations de base sur le commutateur HQSw1.</b></font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+</textcomponents>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.2.1 Attaques de sécurité courantes : inondation d&#x0027;adresse MAC</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité du commutateur : gestion et implémentation</h1>
+        <h2>Problèmes de sécurité dans les LAN</h2>
+      </div>
+      <div id="content">
+<p>La sécurité de base des commutateurs n'empêche pas les attaques malveillantes. La sécurité est un processus en couches qui par essence n'est jamais terminé. Plus les professionnels des réseaux d'une organisation sont conscients des attaques de sécurité auxquelles ils sont confrontés et du danger qu'elles représentent, plus ils sont en mesure de les prévenir. Certains types d'attaques de sécurité sont décrits dans ce module. Les détails relatifs au fonctionnement de ces attaques sortent du cadre de ce cours. Des informations détaillées sur ces attaques sont disponibles dans les cours CCNA sur les technologies WAN et sur la sécurité.</p>
+<p></p>
+<p>
+<b>Inondation d'adresses MAC</b>
+</p>
+<p></p>
+<p>La table d'adresses MAC d'un commutateur contient les adresses MAC associées à chaque port physique et le VLAN associé à chaque port. Quand un commutateur de couche 2 reçoit une trame, il recherche l'adresse MAC de destination dans la table d'adresses MAC. Tous les modèles de commutateurs Catalyst font appel à une table d'adresses MAC pour la commutation de couche 2. À mesure que les trames parviennent aux ports du commutateur, les adresses MAC source sont enregistrées dans la table d'adresses MAC. Si une entrée existe pour l'adresse MAC, le commutateur transfère la trame vers le port approprié. Si l'adresse MAC n'existe pas dans la table d'adresses MAC, le commutateur inonde tous les ports du commutateur avec la trame, à l'exception du port sur lequel la trame a été reçue. </p>
+<p></p>
+<p>Ce comportement des commutateurs, l'inondation d'adresse MAC pour les adresses inconnues, peut être utilisé pour attaquer un commutateur. Ces attaques sont appelées attaques par débordement de la table d'adresses MAC. Les attaques par débordement de la table d'adresses MAC sont parfois appelées attaques par inondation d'adresses MAC ou attaques par débordement de la table CAM. Les figures illustrent le fonctionnement de ce type d'attaque.</p>
+<p></p>
+<p>Dans la Figure 1, l'hôte A envoie le trafic à l'hôte B. Le commutateur reçoit les trames et recherche l'adresse MAC de destination dans sa table d'adresses MAC. Si le commutateur ne trouve pas l'adresse MAC de destination dans la table d'adresses MAC, le commutateur copie alors la trame et en inonde (diffuse) chaque port du commutateur, à l'exception du port sur lequel elle a été reçue.</p>
+<p></p>
+<p>Dans la Figure 2, l'hôte B reçoit la trame et envoie une réponse à l'hôte A. Le commutateur apprend ensuite que l'adresse MAC de l'hôte B est située sur le port 2, puis il enregistre ces informations dans la table d'adresses MAC.</p>
+<p></p>
+<p>L'hôte C reçoit également la trame de l'hôte A à l'hôte B mais l'adresse MAC de destination de la trame en question étant l'hôte B, l'hôte C ignore cette trame.</p>
+<p></p>
+<p>Comme illustré à la Figure 3, toutes les trames transmises par l'hôte A (ou un autre) vers l'hôte B sont envoyées au port 2 du commutateur et ne sont pas diffusées sur chaque port.</p>
+<p></p>
+<p>La taille des tables d'adresses MAC est limitée. L'inondation d'adresses MAC profite de cette limite pour submerger le commutateur de fausses adresses MAC source jusqu'à ce que la table d'adresses MAC de ce dernier soit saturée. </p>
+<p></p>
+<p>Comme illustré à la Figure 4, un pirate sur l'hôte C peut envoyer au commutateur des trames avec de fausses adresses MAC source et de destination générées aléatoirement. Le commutateur met à jour la table d'adresses MAC avec les informations contenues dans les fausses trames. Lorsque la table d'adresses MAC est pleine de fausses adresses MAC, le commutateur passe en mode « fail-open ». Dans ce mode, le commutateur diffuse l'ensemble des trames à toutes les machines du réseau. Par conséquent, le pirate peut voir toutes les trames.</p>
+<p></p>
+<p>Certains outils d'attaque réseau peuvent produire jusqu'à 155 000 entrées MAC par minute sur un commutateur. La taille maximale de la table d'adresses MAC varie selon le commutateur.</p>
+<p></p>
+<p>Comme illustré à la Figure 5, aussi longtemps que la table d'adresses MAC est pleine, le commutateur diffuse toutes les trames reçues à l'ensemble des ports. Dans cet exemple, les trames transmises entre l'hôte A vers l'hôte B sont également diffusées sur le port 3 du commutateur et vues par le pirate sur l'hôte C.</p>
+<p></p>
+<p>L'une des méthodes permettant d'atténuer les attaques par débordement de la table d'adresses MAC consiste à configurer la sécurité des ports.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

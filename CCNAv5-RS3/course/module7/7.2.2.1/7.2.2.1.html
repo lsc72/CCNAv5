@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.2.1 Vérification du protocole EIGRP : examen des voisins</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole EIGRP pour IPv4</h1>
+        <h2>Vérification du protocole EIGRP avec IPv4</h2>
+      </div>
+      <div id="content">
+<p>Pour que le protocole EIGRP puisse envoyer ou recevoir des mises à jour, les routeurs doivent établir des contiguïtés avec leurs voisins. Les routeurs EIGRP établissent des contiguïtés avec des routeurs voisins en échangeant des paquets Hello EIGRP. </p>
+<p></p>
+<p>Utilisez la commande<span class="cmd"><b> show ip eigrp neighbors </b></span>pour afficher la table de voisinage et vérifier que le protocole EIGRP a établi une contiguïté avec ses voisins. Pour chaque routeur, vous devoir pouvoir visualiser l'adresse IPv4 du routeur adjacent et l'interface que celui-ci utilise pour atteindre son voisin EIGRP. À l'aide de cette topologie, chaque routeur compte deux voisins répertoriés dans la table de voisinage.</p>
+<p></p>
+<p>Le résultat de la commande<span class="cmd"><b> show ip eigrp neighbors</b></span> comprend :</p>
+<p>
+<ul>
+<li>
+<b>H column</b> : répertorie les voisins dans l'ordre où ils ont été appris.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Address</b> : adresse IPv4 du voisin.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Interface</b> : interface locale sur laquelle ce paquet Hello a été reçu.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Hold</b> : le délai d'attente actuel. Lorsqu'un paquet Hello est reçu, cette valeur est réinitialisée au temps d'attente maximal de cette interface, puis un compte à rebours s'effectue jusqu'à zéro. Si la valeur zéro est atteinte, le voisin est considéré comme étant « hors service ».</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Uptime</b> : délai écoulé depuis l'ajout du voisin à la table de voisinage.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Smooth Round Trip Timer (SRTT)</b> et <b>Retransmission Timeout</b> (<b>RTO</b>) : utilisés par le protocole RTP pour gérer les paquets EIGRP fiables. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Queue Count</b> : le nombre de paquets en attente d'envoi. Il doit toujours être égal à zéro. S'il est supérieur à zéro, les paquets EIGRP sont placés en attente d'envoi. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Sequence Number</b> : numéro d'ordre, permettant de suivre les paquets de mise à jour, de demande et de réponse. </li>
+</ul>
+</p>
+<p></p>
+<p>La commande<span class="cmd"><b> show ip eigrp neighbors </b></span>est très utile pour vérifier et dépanner le protocole EIGRP. Si un voisin n'est pas répertorié après l'établissement des contiguïtés avec les voisins d'un routeur, vérifiez que l'interface locale est activée à l'aide de la commande<span class="cmd"><b> show ip interface brief</b></span>. Si l'interface est active, essayez d'envoyer une requête ping à l'adresse IPv4 du voisin. Si la requête ping échoue, cela signifie que l'interface voisine est hors service et doit être activée. Si la commande ping a abouti et qu’EIGRP ne voit toujours pas le routeur comme un voisin, examinez les configurations suivantes :</p>
+<p>
+<ul>
+<li>Les deux routeurs sont-ils configurés avec le même numéro de système autonome EIGRP ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le réseau connecté directement est-il inclus dans les instructions EIGRP<span class="cmd"><b> network </b></span>?</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

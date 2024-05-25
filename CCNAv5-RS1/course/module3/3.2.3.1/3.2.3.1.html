@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.3.1 Normes ouvertes</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Normes et protocoles réseau</h1>
+        <h2>Organismes de normalisation</h2>
+      </div>
+      <div id="content">
+<p>Les normes ouvertes favorisent la concurrence et l'innovation. Elles empêchent également qu'un seul produit d'une entreprise monopolise le marché ou puisse bénéficier d'un avantage inique sur ses concurrents. Pour illustrer ceci, prenons l'exemple de l'achat d'un routeur sans fil par un particulier. Il existe de nombreux appareils proposés par divers constructeurs, qui intègrent tous des protocoles standard tels que IPv4, DHCP, 802.3 (Ethernet) et 802.11 (réseau local sans fil). Ces normes ouvertes permettent également à un client exécutant le système d'exploitation OS X d'Apple de télécharger une page Web à partir d'un serveur Web exécutant le système d'exploitation Linux. Cela s'explique par le fait que les deux systèmes d'exploitation mettent en œuvre les mêmes protocoles de norme ouverte, notamment ceux de la suite TCP/IP.</p>
+<p></p>
+<p>Les organismes de normalisation jouent un rôle important en assurant qu'Internet reste ouvert, que ses spécifications et protocoles soient accessibles librement et puissent être mis en œuvre par tous les constructeurs. Un organisme peut rédiger un ensemble de règles de A à Z ou il peut se baser sur un protocole propriétaire. Si un protocole propriétaire est utilisé, il implique généralement le constructeur à l'origine de sa création. </p>
+<p></p>
+<p>Les organismes de normalisation sont généralement des associations à but non lucratif qui ne sont liées à aucun constructeur. Leur objectif est de développer et de promouvoir le concept des normes ouvertes.</p>
+<p></p>
+<p>Voici les principaux organismes de normalisation :</p>
+<p>
+<ul>
+<li>Internet Society (ISOC) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Internet Architecture Board (IAB)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Internet Engineering Task Force (IETF)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>IEEE (Institute of Electrical and Electronics Engineers)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>ISO (International Organization for Standardization)</li>
+</ul>
+</p>
+<p></p>
+<p>Chacun de ces organismes est abordé plus en détail dans les prochaines pages.</p>
+<p></p>
+<p>Sur la figure, cliquez sur chaque logo pour afficher les informations sur les normes.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

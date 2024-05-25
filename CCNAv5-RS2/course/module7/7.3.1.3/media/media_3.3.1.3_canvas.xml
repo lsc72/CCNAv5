@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title" />
+			<element type="ROUTER" textId="staticTxt" width="407.2" height="360.8" x="29.9" y="27.1" size="10" textX="-30"/>
+		</slide>
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title" />
+			<element type="ROUTER" textId="staticTxt1" width="433.25" height="364.8" x="3.85" y="27.1" size="10"/>
+		</slide>
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title" />
+			<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC3" x="0" y="26.9" width="437" height="367" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+		</slide>
+		
+	</slide>
+	<text id="staticTxt"><![CDATA[<code>       R1# <b>show ip protocols</b>	 
+       *** IP Routing is NSF aware ***
+
+<number value="1" id="n1"></number> <div class="orange" style="padding-right:2px;width:99%;"> Routing Protocol is "rip"</div>
+          Outgoing update filter list for all interfaces is not set
+          Incoming update filter list for all interfaces is not set
+<number value="2" id="n2"></number>   <div class="orange" style="margin-left:-12px;padding-right:2px;width:99%;">    Sending updates every 30 seconds, next due in 16 seconds
+    Invalid after 180 seconds, hold down 180, flushed after 240</div>
+	  Redistributing: rip<br/>
+<number value="3" id="n3"></number><div class="orange" style="margin-left:6px;padding-right:2px;width:99%;">    Default version control: send version 1, receive any version
+      Interface             Send  Recv  Triggered RIP  Key-chain
+      GigabitEthernet0/0    1     1 2                                  
+      Serial0/0/0           1     1 2</div><br/>
+<number value="4" id="n4"></number>	 <div class="orange" style="margin-left:-18px;padding-right:2px;width:99%;">  Automatic network summarization is in effect</div>
+        Maximum path: 4<br/><number value="5" id="n5"></number><div class="orange" style="margin-left:6px;padding-right:2px;width:99%;">  Routing for Networks:
+    192.168.1.0
+    192.168.2.0</div><br/> 
+<number value="6" id="n6"></number><div class="orange" style="margin-left:6px;padding-right:2px;width:99%;">  Routing Information Sources:
+    Gateway         Distance      Last Update
+    192.168.2.2          120      00:00:15</div>
+	Distance: (default is 120)
+       R1#</code>
+	]]></text> 
+	<text id="staticTxt1"><![CDATA[<code>R1# <b>show ip route | begin Gateway</b>
+Gateway of last resort is not set
+
+      192.168.1.0/24 is variably subnetted, 2 subnets, 2 masks
+C        192.168.1.0/24 is directly connected, GigabitEthernet0/0
+L        192.168.1.1/32 is directly connected, GigabitEthernet0/0
+      192.168.2.0/24 is variably subnetted, 2 subnets, 2 masks
+C        192.168.2.0/24 is directly connected, Serial0/0/0
+L        192.168.2.1/32 is directly connected, Serial0/0/0
+<div style="background-color:#FACCA8;width:414px;">R     192.168.3.0/24 [120/1] via 192.168.2.2, 00:00:24, Serial0/0/0
+R     192.168.4.0/24 [120/1] via 192.168.2.2, 00:00:24, Serial0/0/0
+R     192.168.5.0/24 [120/2] via 192.168.2.2, 00:00:24, Serial0/0/0</div>
+R1#</code>
+	
+	]]></text> 
+</data>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.1.4 Composantes du dépannage OSPF</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résolution des problèmes liés aux mises en œuvre du protocole OSPF à zone unique</h1>
+        <h2>Éléments de dépannage du protocole OSPF à zone unique</h2>
+      </div>
+      <div id="content">
+<p>Comme illustré par la figure, les problèmes OSPF sont généralement liés aux aspects suivants :</p>
+<p>
+<ul>
+<li>Contiguïtés de voisinage</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Routes manquantes</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Choix des chemins</li>
+</ul>
+</p>
+<p></p>
+<p>Lors du dépannage de problèmes de voisinage, vérifiez, au moyen de la commande<span class="cmd"><b> show ip ospf neighbors</b></span>, que le routeur a établi des contiguïtés avec les routeurs voisins. En l'absence de contiguïté, les routeurs ne peuvent pas échanger de routes. Vérifiez que les interfaces sont opérationnelles et activées pour OSPF, au moyen des commandes<span class="cmd"><b> show ip interface brief </b></span>et<span class="cmd"><b> show ip ospf interface</b></span>. Si tel est bien le cas, vérifiez que les interfaces sont configurées pour la même zone OSPF sur les deux routeurs et qu'elles ne sont pas configurées comme des interfaces passives.</p>
+<p></p>
+<p>Si la contiguïté entre deux routeurs est établie, vérifiez qu'il existe des routes OSPF dans la table de routage, au moyen de la commande<span class="cmd"><b> show ip route ospf</b></span>. En l'absence de routes OSPF, vérifiez qu'aucun autre protocole de routage avec une moindre distance administrative ne s'exécute sur le réseau. Vérifiez que tous les réseaux requis sont annoncés dans OSPF. Vérifiez également si une liste d'accès est configurée sur un routeur et si elle filtre les mises à jour de routage entrantes ou sortantes. </p>
+<p></p>
+<p>Si toutes les routes requises figurent dans la table de routage, mais si le chemin emprunté par le trafic est incorrect, vérifiez le coût OSPF sur les interfaces du chemin. Prenez garde également aux interfaces dont la bande passante est supérieure à 100 Mb/s, car elles ont toutes le même coût OSPF par défaut.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

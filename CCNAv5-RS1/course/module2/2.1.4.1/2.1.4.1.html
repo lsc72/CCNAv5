@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.4.1 Structure de commande IOS</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>IOS Bootcamp</h1>
+        <h2>Structure des commandes</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Structure des commandes IOS de base</b>
+</p>
+<p></p>
+<p>Un périphérique Cisco IOS prend en charge de nombreuses commandes. Chaque commande IOS a un format ou une syntaxe spécifique et ne peut être exécutée que dans le mode approprié. En général, vous entrez une commande en tapant un nom de commande suivi des mots-clés et des arguments appropriés. En effet, certaines commandes offrent un sous-ensemble de mots-clés et d'arguments qui étendent leurs fonctionnalités. Une commande sert à effectuer une action et les mots-clés permettent de préciser où ou comment l'exécuter.</p>
+<p></p>
+<p>Comme l'illustre la Figure 1, la commande est le premier mot entré (ou les premiers mots entrés) dans la ligne de commande suivant l'invite. Il n'y a pas de distinction entre les majuscules et les minuscules. La commande est suivie d'un ou plusieurs mots clés et arguments. Après avoir saisi une commande complète suivie des mots-clés et des arguments adéquats, appuyez sur la touche Entrée pour envoyer la commande à l'interpréteur de commandes.</p>
+<p></p>
+<p>Les mots-clés décrivent des paramètres spécifiques à l'interpréteur de commandes. Par exemple, la commande <span class="cmd"><b>show</b></span> affiche des informations sur le périphérique. Cette commande admet divers mots-clés permettant de préciser le type d'informations à afficher. Par exemple : </p>
+<p></p>
+<p>
+<span class="cmd">Switch#</span>
+<span class="cmd">
+<b>show running-config</b>
+</span>
+</p>
+<p></p>
+<p>La commande <span class="cmd"><b>show</b></span> est suivie du mot-clé <span class="cmd"><b>running-config</b></span>. Ce mot-clé spécifie que vous voulez afficher la configuration en cours.</p>
+<p></p>
+<p>
+<b>Conventions des commandes IOS</b>
+</p>
+<p></p>
+<p>Une commande peut exiger un ou plusieurs arguments. Un argument n'est généralement pas un mot prédéfini, contrairement à un mot clé. Un argument est une valeur ou une variable définie par l'utilisateur. Pour connaître les mots-clés et arguments requis pour une commande, consultez la section sur la syntaxe des commandes. La syntaxe indique le modèle ou le format devant être utilisé lorsque vous saisissez une commande.</p>
+<p></p>
+<p>Par exemple, la syntaxe d'une commande <span class="cmd"><b>description</b></span> est :</p>
+<p></p>
+<p>
+<span class="cmd">Switch(config-if)#</span>
+<span class="cmd">
+<b>description</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>chaîne</i>
+</span>
+</p>
+<p></p>
+<p>Comme l'illustre la Figure 2, le texte en gras indique les commandes et les mots-clés à saisir tels quels et le texte en italique indique un argument pour lequel vous devez fournir une valeur. Pour la commande <span class="cmd"><b>description</b></span>, l'argument est une chaîne de charactères. La valeur de la chaîne peut être toute chaîne de texte de 80 caractères maximum.</p>
+<p></p>
+<p>Par exemple, pour associer une description à une interface à l'aide de la commande <span class="cmd"><b>description</b></span>, entrez une ligne telle que la suivante :</p>
+<p></p>
+<p>
+<span class="cmd">Switch(config-if)#</span>
+<span class="cmd">
+<b>description</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<b>Commutateur du QG</b>
+</span>
+</p>
+<p></p>
+<p>La commande est <span class="cmd"><b>description</b></span> et l'argument défini par l'utilisateur est <span class="cmd"><b>Commutateur du QG.</b></span> </p>
+<p></p>
+<p>Les exemples suivants illustrent certaines conventions utilisées pour documenter et utiliser les commandes IOS. </p>
+<p></p>
+<p>Pour la commande <span class="cmd"><b>ping</b></span> :</p>
+<p></p>
+<p>Syntaxe :</p>
+<p></p>
+<p>
+<span class="cmd">Switch> </span>
+<span class="cmd">
+<b>ping</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>Adresse IP</i>
+</span>
+</p>
+<p></p>
+<p>Exemple avec des valeurs  :</p>
+<p></p>
+<p>
+<span class="cmd">Switch></span>
+<span class="cmd">
+<b>ping</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<b>10.10.10.5</b>
+</span>
+</p>
+<p></p>
+<p>La commande est <span class="cmd"><b>ping</b></span> et l'argument défini par l'utilisateur est<span class="cmd"><b> 10.10.10.5</b></span>. </p>
+<p></p>
+<p>De même, la syntaxe de la commande <span class="cmd"><b>traceroute</b></span> est la suivante :</p>
+<p></p>
+<p>Syntaxe :</p>
+<p></p>
+<p>
+<span class="cmd">Switch></span>
+<span class="cmd">
+<b>traceroute</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<i>Adresse IP</i>
+</span>
+</p>
+<p></p>
+<p>Exemple avec des valeurs  :</p>
+<p></p>
+<p>
+<span class="cmd">Switch></span>
+<span class="cmd">
+<b>traceroute</b>
+</span>
+<span class="cmd"></span>
+<span class="cmd">
+<b>192.168.254.254</b>
+</span>
+</p>
+<p></p>
+<p>La commande est<span class="cmd"><b> traceroute</b></span> et l'argument défini par l'utilisateur est<span class="cmd"><b> 192.168.254.254</b></span>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

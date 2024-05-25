@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.2.2 Algorithmes de chiffrement</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation d’IPsec</h1>
+        <h2>Cadre IPsec</h2>
+      </div>
+      <div id="content">
+<p>Le degré de sécurité dépend de la longueur de clé de l'algorithme de chiffrement. Plus la longueur de clé augmente, plus il devient difficile de décoder le chiffrement. Toutefois, une clé plus longue nécessite plus de ressources processeur lors du chiffrement et du déchiffrement des données.</p>
+<p></p>
+<p>Les algorithmes DES et 3DES ne sont plus considérés comme étant des méthodes sûres ; par conséquent, il est recommandé d'utiliser l'algorithme AES pour le chiffrement IPsec. La plus grande sécurité en ce qui concerne le chiffrement IPsec de VPN entre des périphériques Cisco est offerte par la version 256 bits de l'algorithme AES. Par ailleurs, des clés RSA (Rivest-Shamir-Adleman) de 512 et 768 bits ont été décodées et Cisco recommande l'usage de clés 2048 bits avec l'option RSA en cas d'utilisation lors de la phase d'authentification d'IKE.</p>
+<p></p>
+<p>
+<b>Chiffrement symétrique</b>
+</p>
+<p></p>
+<p>Les algorithmes de chiffrement, tels qu'AES, nécessitent une clé secrète partagée pour le chiffrement et le déchiffrement. Chacun des deux périphériques réseau doit connaître la clé afin de pouvoir décoder les informations. Dans le cas d'un chiffrement à clé symétrique, également appelé chiffrement à clé secrète, chaque périphérique chiffre les informations avant de les envoyer à l'autre périphérique sur le réseau. En cas de chiffrement à clé symétrique, il est nécessaire de savoir quels périphériques communiquent entre eux, de telle sorte que la même clé puisse être configurée sur chacun de ces périphériques, comme le montre la Figure 1.</p>
+<p></p>
+<p>Par exemple, un expéditeur crée un message codé dans lequel chaque lettre est remplacée par la lettre située deux lettres plus loin dans l'alphabet, A devenant C, B devenant D, etc. Dans cet exemple, le mot SECRET devient UGETGV. L'expéditeur a déjà indiqué au destinataire que la clé secrète correspondait à un décalage de 2. Lors de la réception du message UGETGV, l'ordinateur du destinataire décode le message en décalant vers l'arrière chaque lettre de deux rangs, ce qui donne SECRET. Toute autre personne affichant le message ne voit que le message chiffré, qui n'a pas de sens, à moins que cette personne ne connaisse la clé secrète. </p>
+<p></p>
+<p>Voici une synthèse des algorithmes symétriques :</p>
+<p></p>
+<p>
+<ul>
+<li>Ils utilisent la cryptographie à clé symétrique.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le chiffrement et le déchiffrement utilisent la même clé.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Ils sont généralement utilisés pour chiffrer le contenu du message.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Exemples : DES, 3DES et AES</li>
+</ul>
+</p>
+<p></p>
+<p>Comment les périphériques de chiffrement et de déchiffrement possèdent-ils tous deux une clé secrète partagée ? Il est possible d'utiliser le courrier électronique, la poste ou un courrier express pour envoyer les clés secrètes partagées aux administrateurs des périphériques. Une autre méthode, moins sûre, est le chiffrement asymétrique.</p>
+<p></p>
+<p>
+<b>Chiffrement asymétrique</b>
+</p>
+<p></p>
+<p>Le chiffrement asymétrique utilise des clés différentes pour le chiffrement et le déchiffrement. Même si un pirate informatique connaît une clé, cela n’est pas suffisant pour en déduire la deuxième et ainsi décoder les informations. L'une des clés chiffre le message, tandis que la seconde le déchiffre, comme le montre la Figure 2. Vous ne pouvez pas procéder au chiffrement et au déchiffrement en utilisant la même clé.</p>
+<p></p>
+<p>Le chiffrement à clé publique est une variante du chiffrement asymétrique qui utilise la combinaison d'une clé privée et d'une clé publique. Le destinataire distribue une clé publique à tout expéditeur avec lequel s’effectueront les échanges. L'expéditeur utilise une clé privée qui est associée à la clé publique du destinataire pour déchiffrer le message. De même, l'expéditeur doit partager sa clé publique avec le destinataire. Pour déchiffrer un message, le destinataire utilisera la clé publique de l'expéditeur avec sa propre clé privée.</p>
+<p></p>
+<p>Voici une synthèse des algorithmes asymétriques :</p>
+<p></p>
+<p>
+<ul>
+<li>Ils utilisent la cryptographie à clé publique.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le chiffrement et le déchiffrement utilisent une clé différente.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Ils sont généralement utilisés dans le cas des certificats numériques et de la gestion de clés.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Exemples : RSA</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.1.2 Configuration du routage OSPF à zones multiples</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du routage OSPF à zones multiples</h1>
+        <h2>Configuration du routage OSPF à zones multiples</h2>
+      </div>
+      <div id="content">
+<p>La Figure 1 présente la topologie OSPF à zones multiples de référence. Dans cet exemple :</p>
+<p>
+<ul>
+<li>R1 est un routeur ABR. Il dispose d'interfaces dans la zone 1 et d'une dans la zone 0.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>R2 est un routeur fédérateur interne, car toutes ses interfaces se situent dans la zone 0.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>R3 est un ABR. Il a 2 interfaces dans la zone 2 et une dans la zone 0.</li>
+</ul>
+</p>
+<p></p>
+<p>Aucune commande spéciale n’est requise pour mettre en œuvre ce réseau OSPF à zones multiples. Un routeur devient un routeur ABR simplement lorsqu'il possède deux instructions <span class="cmd"><b>network</b></span> dans différentes zones.</p>
+<p></p>
+<p>Comme illustré à la Figure 2, l'ID du routeur R1 est 1.1.1.1. Cet exemple active le routage OSPF sur les deux interfaces LAN dans la zone 1. L’interface série est configurée dans la zone OSPF 0. R2 ayant des interfaces connectées dans deux zones différentes, il s'agit d'un routeur ABR.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe à la Figure 3 pour configurer le protocole OSPF à zones multiples sur R2 et R3. Dans le contrôleur de syntaxe, pour R2, utilisez le masque générique de l'adresse d'interface réseau. Pour R3, utilisez le masque générique 0.0.0.0 pour tous les réseaux.</p>
+<p></p>
+<p>Une fois la configuration de R2 et de R3 terminée, prenez note des messages d'information indiquant les contiguïtés avec R1 (1.1.1.1).</p>
+<p></p>
+<p>Une fois la configuration de R3 terminée, prenez note des messages d'information indiquant la contiguïté avec R1 (1.1.1.1) et R2 (2.2.2.2). Notez également que le modèle d'adressage IP utilisé pour l'ID de routeur facilite l'identification du voisin. </p>
+<p></p>
+<p>
+<b>Remarque </b>: les masques génériques inverses utilisés pour configurer R2 et R3 ont des fonctions différentes, afin de présenter les deux alternatives à la saisie d'instructions <span class="cmd"><b>network</b></span>. La méthode utilisée pour R3 est plus simple, car le masque générique est toujours <span class="cmd"><b>0.0.0.0</b></span> et n'a pas besoin d'être calculé.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.3.1 Test de l&#x0027;adresse de bouclage sur un périphérique final</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Schémas d&#x0027;adressage</h1>
+        <h2>Vérification de la connectivité</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Test de la boucle</b>
+</p>
+<p></p>
+<p>La figure représente la première étape de la série de tests. La commande <span class="cmd"><b>ping</b></span> permet de vérifier la configuration IP interne d'un hôte local. Ce test s'effectue en exécutant la commande <span class="cmd"><b>ping</b></span> sur une adresse réservée appelée adresse de bouclage (127.0.0.1). L'adresse de bouclage, 127.0.0.1, est définie par le protocole TCP/IP comme adresse réservée renvoyant les paquets vers l'hôte.</p>
+<p></p>
+<p>Les commandes ping sont entrées sur une ligne de commande sur l'hôte local en utilisant la syntaxe suivante :</p>
+<p></p>
+<p>
+<span class="cmd">C:\></span>
+<span class="cmd">
+<b>ping 127.0.0.1</b>
+</span>
+</p>
+<p></p>
+<p>La réponse que vous obtenez présente l'aspect suivant : </p>
+<p></p>
+<p>
+<span class="cmd">Reply from 127.0.0.1: bytes=32 time<1ms TTL=128 </span>
+</p>
+<p>
+<span class="cmd">Reply from 127.0.0.1: bytes=32 time<1ms TTL=128 </span>
+</p>
+<p>
+<span class="cmd">Reply from 127.0.0.1: bytes=32 time<1ms TTL=128 </span>
+</p>
+<p>
+<span class="cmd">Reply from 127.0.0.1: bytes=32 time<1ms TTL=128 </span>
+</p>
+<p>
+<span class="cmd">Ping statistics for 127.0.0.1: </span>
+</p>
+<p>
+<span class="cmd">Packets: Sent = 4, Received = 4, Lost = 0 (0% loss), </span>
+</p>
+<p>
+<span class="cmd">Durée approximative des boucles en millisecondes : </span>
+</p>
+<p>
+<span class="cmd">Minimum = 0 ms, Maximum = 0 ms, Moyenne = 0 ms</span>
+</p>
+<p></p>
+<p>Le résultat indique que quatre paquets de test de 32 octets chacun ont été envoyés, puis renvoyés par l'hôte 127.0.0.1 en moins de 1 ms. Cette requête ping vérifie que la carte réseau, les pilotes et la mise en œuvre TCP/IP fonctionnent correctement. </p>
+<p></p>
+<p>Essayez de tester une adresse de bouclage en entrant les commandes de la Figure 2.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

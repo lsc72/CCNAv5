@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.3.3.3 Affichage des paramètres du commutateur grâce à la commande show version</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.3.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Performances réseau de base</h1>
+        <h2>Commandes Show</h2>
+      </div>
+      <div id="content">
+<p>Sur un commutateur, la commande <span class="cmd"><b>show version</b></span> affiche des informations sur la version du logiciel actuellement chargée, ainsi que sur le matériel et les périphériques. Cette commande affiche notamment les informations suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Version du logiciel</b> : version d'IOS </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Version du bootstrap</b> : version du programme de démarrage </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Durée de l'activité du système</b> - Temps écoulé depuis le dernier redémarrage </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Informations sur le redémarrage du système</b> - Méthode de redémarrage (par exemple le cycle d'alimentation ou un incident) </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Nom de l'image du logiciel</b> : nom du fichier IOS </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Type de commutateur et type de processeur</b> : numéro de modèle et type de processeur </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Type de mémoire (partagée/principale)</b> : mémoire vive principale du processeur et mémoire partagée servant de tampon pour les paquets d'E/S </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Interfaces matérielles</b> : interfaces disponibles sur le commutateur </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Registre de configuration</b> : définit les spécifications du démarrage, la vitesse de la console et des paramètres connexes.</li>
+</ul>
+</p>
+<p></p>
+<p>La figure montre un exemple de résultat <span class="cmd"><b>show version</b></span> classique affiché par un commutateur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

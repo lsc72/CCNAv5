@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.0.1.2 Exercice - Appelle-moi !</title>
+    <!-- Activity -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmenter des réseaux IP en sous-réseaux</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Appelle-moi !</b>
+</p>
+<p></p>
+<p>Dans ce chapitre, vous apprendrez à regrouper les périphériques en sous-réseaux (plus petits groupes de réseau) dans un grand réseau. </p>
+<p></p>
+<p>Dans cet exercice de modélisation, vous devrez penser à une suite de chiffres que vous utilisez au quotidien, votre numéro de téléphone. Au cours de l'exercice, comparez votre numéro de téléphone aux stratégies que les administrateurs réseau peuvent utiliser pour identifier les hôtes afin d'assurer une communication efficace des données.</p>
+<p></p>
+<p>Répondez aux deux questions ci-dessous et notez vos réponses. Conservez les deux sections sur papier ou sur un support numérique. Elles seront utilisées ultérieurement dans le cadre de discussions en classe.</p>
+<p></p>
+<p>
+<ul>
+<li>Expliquez la segmentation par groupes des chiffres constituant votre numéro de téléphone portable ou fixe. Votre numéro de téléphone comporte-t-il un indicatif régional ? Un identificateur de FAI ? Un indicatif de ville ou de pays ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>En quoi la segmentation de votre numéro de téléphone en groupes de chiffres gérés facilite-t-elle la prise de contact ou la communication avec les autres abonnés ?</li>
+</ul>
+</p>
+<p></p>
+<p>
+<a href="../../files/9.0.1.2%20Call%20Me!%20Instructions.pdf" target="_blank">Exercice - Appelle-moi ! Instructions</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

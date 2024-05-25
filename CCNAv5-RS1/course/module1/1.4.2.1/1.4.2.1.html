@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.4.2.1 Tendances technologiques domestiques</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.4.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Évolution de l&#x0027;environnement réseau</h1>
+        <h2>Technologies réseau domestiques</h2>
+      </div>
+      <div id="content">
+<p>Les tendances relatives au réseau affectent non seulement la façon dont nous communiquons au travail et à l'école, mais modifient également chaque aspect de la maison. </p>
+<p></p>
+<p>Les nouvelles tendances domestiques incluent les « technologies domestiques intelligentes ». Les technologies domestiques intelligentes sont intégrées aux appareils de la maison, pour leur permettre de se connecter à d'autres périphériques et ainsi les rendre plus « intelligents » ou automatisés. Imaginez : vous préparez un plat et le placez dans votre four avant de quitter la maison pour la journée. Le four « sait » quel plat il doit faire cuire et est connecté à votre « calendrier des événements » pour déterminer à quelle heure vous prendrez votre repas. Il peut ainsi configurer l'heure de début de cuisson ainsi que le temps de cuisson en fonction de ces informations. Il peut même régler les heures et les températures de cuisson en fonction des changements apportés à votre calendrier. De plus, une connexion depuis un smartphone ou une tablette vous permet de vous connecter directement au four pour effectuer tous les réglages souhaités. Une fois votre plat prêt, le four vous envoie un message pour vous indiquer que votre plat est terminé et maintenu au chaud. </p>
+<p></p>
+<p>Ce scénario ne sera bientôt plus de la science-fiction. Les technologies domestiques intelligentes sont en cours de développement et s'intègreront bientôt à toutes les pièces de la maison. Les technologies domestiques intelligentes deviennent une réalité à mesure que les technologies de réseau domestique et d'Internet haut débit se développent. De nouvelles technologies de réseau domestique sont développées chaque jour pour répondre à ces types de besoin technologique en pleine croissance.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

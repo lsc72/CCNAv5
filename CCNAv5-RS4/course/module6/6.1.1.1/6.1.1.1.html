@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.1.1 Présentation du télétravail</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Télétravail</h1>
+        <h2>Avantages du télétravail</h2>
+      </div>
+      <div id="content">
+<p>Le télétravail désigne le travail effectué à partir d'un emplacement non traditionnel, par exemple à la maison. Les raisons pour lesquelles des travailleurs optent pour le télétravail sont diverses, celui-ci pouvant par exemple permettre à des personnes malades ou handicapées de continuer à travailler. </p>
+<p></p>
+<p>Le télétravail est un terme large se référant à la réalisation de travaux effectués à l'aide d'une connexion à distance et avec l'assistance de systèmes de télécommunication. Un télétravail efficace est possible grâce aux connexions Internet haut débit, aux réseaux privés virtuels (VPN), au protocole VoIP (Voice over IP ou voix sur IP) et à la vidéoconférence. </p>
+<p></p>
+<p>De nombreuses entreprises modernes offrent des emplois à des personnes ne pouvant pas se déplacer tous les jours ou pour qui travailler à la maison s'avère plus pratique. Ces personnes, appelées télétravailleurs, doivent pouvoir se connecter au réseau de leur entreprise, afin de pouvoir travailler et partager des informations à partir de leur domicile. </p>
+<p></p>
+<p>Les solutions haut débit font partie intégrante de la réussite du télétravail. Ce chapitre détaille les avantages du télétravail et explique comment les solutions haut débit permettent de travailler de manière plus intelligente.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.1.2 Sous-couches liaison de données</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche liaison de données</h1>
+        <h2>Objectif de la couche liaison de données</h2>
+      </div>
+      <div id="content">
+<p>La couche liaison de données se divise en fait en deux sous-couches : </p>
+<p>
+<ul>
+<li>
+<b>Contrôle de liaison logique (LLC)</b> : cette sous-couche supérieure définit les processus logiciels qui fournissent des services aux protocoles de couche réseau. Elle place les informations dans la trame qui indique le protocole de couche réseau utilisé pour la trame. Ces informations permettent à plusieurs protocoles de couche 3 (par exemple, IPv4 et IPv6) d'utiliser la même interface réseau et les mêmes supports. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Contrôle d'accès au support (MAC)</b> : cette sous-couche inférieure définit les processus d'accès au support exécutés par le matériel. Elle assure l'adressage de couche liaison de données et la délimitation des données en fonction des exigences de signalisation physique du support et du type de protocole de couche liaison de données utilisé.</li>
+</ul>
+</p>
+<p></p>
+<p>Diviser la couche liaison de données en sous-couches permet à un type de trame défini par la couche supérieure d'accéder à différents types de supports définis par la couche inférieure. Il en est ainsi avec de nombreuses technologies de réseau local, y compris Ethernet.</p>
+<p></p>
+<p>Cette figure illustre la division de la couche liaison de données en sous-couches LLC et MAC. La sous-couche LLC communique avec la couche réseau alors que la sous-couche MAC autorise différentes technologies d'accès au réseau. Par exemple, la sous-couche MAC communique avec la technologie de réseau local Ethernet pour envoyer et recevoir des trames via des câbles en cuivre ou à fibre optique. La sous-couche MAC communique également avec les technologies sans fil telles que le Wi-Fi et le Bluetooth pour envoyer et recevoir des trames sans fil.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

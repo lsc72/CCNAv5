@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		
+<slide>
+<element type="TEXT" subType="TITLE" compId="ID_title"/>
+<element type="IMAGE" src="media_7.2.4.2.jpg" width="470" height="400" x="0" y="0"/>
+<element type="TEXT" id="ID_static_1" text=":10" x="55.2" y="77.4" width="22.55" align="left" color="#1c3635" />
+<element type="TEXT" id="ID_static_2" text=":10" x="55.3" y="149.4" width="22.55" align="left" color="#1c3635" />
+<element type="TEXT" id="ID_static_3" text="G0/0 :1" x="184.55" y="92.95" width="30.8" align="right" color="#1c3635" />
+<element type="TEXT" id="ID_static_4" text=":1 S0/0/0" x="252.25" y="116.85" width="38.2" align="left" color="#1c3635" />
+<element type="TEXT" id="ID_static_5" text=":1 G0/1" x="184.55" y="141.5" width="30.8" align="right" color="#1c3635" />
+<element type="TEXT" id="ID_static_6" text="2001:0DB8:ACAD:3::/64" x="244.85" y="96.8" width="131" align="center" color="#1c3635" bold="1" />
+<element type="TEXT" id="ID_static_7" text="2001:0DB8:ACAD:1::/64" x="79.85" y="68.25" width="140.65" align="center" color="#1c3635" bold="1" />
+<element type="TEXT" id="ID_static_8" text="2001:0DB8:ACAD:2::/64" x="72.85" y="182.25" width="143.15" align="center" color="#1c3635" bold="1" />
+</slide>
+	
+<slide>
+<element type="IMAGE" src="media_7.2.4.2.B.jpg" width="470" height="400" x="0" y="0"/>
+<element type="TEXT" id="ID_static_1" text=":10" x="55.2" y="49.4" width="22.55" align="left" color="#1c3635" />
+<element type="TEXT" id="ID_static_2" text=":10" x="55.3" y="121.4" width="22.55" align="left" color="#1c3635" />
+<element type="TEXT" id="ID_static_3" text="G0/0 :1" x="183.55" y="63.95" width="30.8" align="right" color="#1c3635" />
+<element type="TEXT" id="ID_static_4" text=":1 S0/0/0" x="252.25" y="86.85" width="38.2" align="left" color="#1c3635" />
+<element type="TEXT" id="ID_static_5" text=":1 G0/1" x="184.55" y="111.5" width="30.8" align="right" color="#1c3635" />
+<element type="TEXT" id="ID_static_6" text="2001:0DB8:ACAD:3::/64" x="244.85" y="66.8" width="131" align="center" color="#1c3635" bold="1" />
+<element type="TEXT" id="ID_static_7" text="2001:0DB8:ACAD:1::/64" x="79.85" y="38.25" width="140.65" align="center" color="#1c3635" bold="1" />
+<element type="TEXT" id="ID_static_8" text="2001:0DB8:ACAD:2::/64" x="72.85" y="152.25" width="143.15" align="center" color="#1c3635" bold="1" />
+<element type="ROUTER" textId="ID_router_txt1" x="45.4" y="177.45" width="365.15" height="193.25" />
+</slide>
+	
+<slide>
+<element type="IMAGE" src="7_2_4_2.jpg" width="349.95" height="288.55" x="46.35" y="59.35" subType="STD"/>
+</slide>
+
+<slide>
+<element type="IMAGE" src="media_7.2.4.2.C.jpg" width="470" height="400" x="0" y="0"/>
+<element type="TEXT" id="ID_static_17" text=":10" x="47.5" y="17.85" width="22.55" align="left" color="#1c3635" />
+<element type="TEXT" id="ID_static_18" text=":10" x="47.6" y="89.85" width="22.55" align="left" color="#1c3635" />
+<element type="TEXT" id="ID_static_19" text="G0/0 :1" x="176.85" y="32.4" width="30.8" align="right" color="#1c3635" />
+<element type="TEXT" id="ID_static_20" text=":1 S0/0/0" x="244.55" y="55.3" width="38.2" align="left" color="#1c3635" />
+<element type="TEXT" id="ID_static_21" text=":1 G0/1" x="176.85" y="79.95" width="30.8" align="right" color="#1c3635" />
+<element type="TEXT" id="ID_static_22" text="2001:0DB8:ACAD:3::/64" x="237.15" y="35.25" width="131" align="center" color="#1c3635" bold="1" />
+<element type="TEXT" id="ID_static_23" text="2001:0DB8:ACAD:1::/64" x="72.15" y="6.7" width="140.65" align="center" color="#1c3635" bold="1" />
+<element type="TEXT" id="ID_static_24" text="2001:0DB8:ACAD:2::/64" x="65.15" y="120.7" width="143.15" align="center" color="#1c3635" bold="1" />
+<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC" x="2.5" y="138.25" width="427.1" height="257" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall" />
+</slide>
+	
+	</slide>
+	
+	
+	
+<text id="ID_router_txt1"><![CDATA[<pre>
+R1(config)#<b>interface gigabitethernet 0/0</b>
+R1(config-if)#<b>ipv6 address <span>2001:db8:acad:1::1/64</span></b>
+R1(config-if)#<b>no shutdown</b>
+R1(config-if)#<b>exit</b>
+R1(config)#<b>interface gigabitethernet 0/1</b>
+R1(config-if)#<b>ipv6 address <span>2001:db8:acad:2::1/64</span></b>
+R1(config-if)#<b>no shutdown</b>
+R1(config-if)#<b>exit</b>
+R1(config)#<b>interface serial 0/0/0</b>
+R1(config-if)#<b>ipv6 address <span>2001:db8:acad:3::1/64</span></b>
+R1(config-if)#<b>clock rate 56000</b>
+R1(config-if)#<b>no shutdown</b>
+</pre>]]></text>
+	
+	
+	
+	
+	
+</data>
+

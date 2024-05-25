@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.1.5 Mesure de données</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage avec une approche systématique</h1>
+        <h2>Documentation du réseau</h2>
+      </div>
+      <div id="content">
+<p>Lors de la documentation du réseau, il est souvent nécessaire de collecter des informations directement à partir des routeurs et des commutateurs. En ce qui concerne les commandes de documentation réseau utiles, citons notamment les commandes <span class="cmd"><b>ping</b></span>,<span class="cmd"><b> traceroute</b></span> et <span class="cmd"><b>telnet</b></span> ainsi que les commandes <span class="cmd"><b>show</b></span> suivantes : </p>
+<p></p>
+<p>
+<ul>
+<li>Les commandes <span class="cmd"><b>show ip interface brief</b></span> et <span class="cmd"><b>show ipv6 interface brief</b></span> sont utilisées pour afficher l'état « up » ou « down » ainsi que l'adresse IP de toutes les interfaces d'un périphérique. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les commandes <span class="cmd"><b>show ip route</b></span> et <span class="cmd"><b>show ipv6 route</b></span> permettent d'afficher la table de routage au niveau d'un routeur afin d'identifier les voisins connectés directement, les périphériques distants (par le biais des routes apprises) ainsi que les protocoles de routage qui ont été configurés. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La commande <span class="cmd"><b>show cdp neighbor detail</b></span> permet d'obtenir des informations détaillées sur les périphériques voisins Cisco connectés directement.</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 1 répertorie quelques-unes des commandes Cisco IOS les plus courantes utilisées pour la collecte de données.</p>
+<p></p>
+<p>La collecte manuelle de données réalisée à l'aide des commandes <span class="cmd"><b>show</b></span> sur des périphériques réseau individuels est une tâche extrêmement longue et qui ne constitue pas une solution évolutive. La collecte manuelle de données doit être réservée aux réseaux de petite taille ou se limiter aux périphériques réseau critiques. Dans le cas des réseaux de conception plus simple, les tâches de planification initiale impliquent généralement la combinaison d'une collecte manuelle de données et d'une inspection de base du protocole réseau.</p>
+<p></p>
+<p>Un logiciel de gestion du réseau sophistiqué est souvent utilisé pour la planification initiale des réseaux complexes et de grande taille. Par exemple, comme le montre la Figure 2, le module Fluke Network SuperAgent permet aux administrateurs de créer et d'analyser automatiquement des rapports à l'aide de sa fonctionnalité Intelligent Baselines. Cette fonction compare les niveaux de performances actuels aux observations antérieures. En un coup d’œil, le service informatique peut automatiquement identifier les problèmes de performances et les applications qui ne fournissent pas les niveaux de service attendus. </p>
+<p></p>
+<p>Des heures ou des jours de travail peuvent être nécessaires pour établir une ligne de base initiale ou pour analyser le suivi des performances si l’on souhaite refléter avec précision les performances réseau. Des logiciels de gestion du réseau, des systèmes d'inspection de protocoles ou des analyseurs de paquets s'exécutent souvent en continu pendant le processus de collecte de données. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

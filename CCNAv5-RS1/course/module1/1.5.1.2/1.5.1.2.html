@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.5.1.2 Résumé</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.5.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Les réseaux et Internet ont modifié notre façon de communiquer, d'apprendre, de travailler et de nous divertir. </p>
+<p></p>
+<p>Les réseaux peuvent être de différentes tailles. Cela va des réseaux de base, constitués de deux ordinateurs, aux réseaux les plus complexes capables de connecter des millions de périphériques. </p>
+<p>Internet est le plus grand réseau existant. En réalité, le terme « Internet » signifie « réseau de réseaux ». Internet fournit des services qui nous permettent de communiquer avec la famille, les amis et les collègues. </p>
+<p></p>
+<p>L'infrastructure réseau est la plate-forme qui prend en charge le réseau. Elle fournit le canal stable et fiable à travers lequel nos communications peuvent s'établir. Ce dernier est constitué de composants réseau tels que les périphériques finaux, les équipements intermédiaires et les supports de transmission. </p>
+<p></p>
+<p>Les réseaux doivent être fiables. Cela signifie que le réseau doit être tolérant aux pannes, évolutif, fournir la qualité de service attendue et assurer la sécurité des informations et des ressources. La sécurité du réseau est une partie intégrante des réseaux informatiques, qu'il s'agisse d'un simple environnement domestique avec une seule connexion à Internet ou d'une entreprise avec des milliers d'utilisateurs. Aucune solution unique ne peut protéger le réseau contre les diverses menaces existantes. Pour cette raison, la sécurité doit être implémentée en plusieurs couches, avec plusieurs solutions de sécurité. </p>
+<p></p>
+<p>L'infrastructure réseau peut varier considérablement en termes de taille, de nombre d'utilisateurs, et de nombre et types de services pris en charge. Elle doit se développer et s'adapter pour prendre en charge la façon dont le réseau est utilisé. La plate-forme de routage et de commutation est la base de toute infrastructure réseau. </p>
+<p></p>
+<p>Ce chapitre concerne le réseau en tant que plate-forme principale de prise en charge des communications. Le chapitre suivant vous présentera le système d'exploitation de Cisco, IOS (Internet Operating System), qui permet le routage et la commutation dans un environnement réseau Cisco.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.4.4 Segmenter le réseau pour répondre à ses besoins (suite)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.4.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmenter un réseau IPv4 en sous-réseaux</h1>
+        <h2>Déterminer le masque de sous-réseau</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Déterminez le nombre et la taille des réseaux</b>
+</p>
+<p></p>
+<p>Ensuite, établissez le nombre de sous-réseaux requis et le nombre d'adresses d'hôte nécessaires sur chaque sous-réseau. D'après la topologie du réseau qui se compose de 5 segments de réseau local et de 4 connexions interréseau entre les routeurs, 9 sous-réseaux sont nécessaires. Le plus grand sous-réseau requiert 40 hôtes. Lors de la conception d'un schéma d'adressage, vous devez prévoir l'augmentation du nombre de sous-réseaux et du nombre d'hôtes par sous-réseau. </p>
+<p></p>
+<p>L'adresse réseau 172.16.0.0/22 comporte 10 bits d'hôte. Le plus grand sous-réseau nécessite 40 hôtes, aussi il faut au moins 6 bits d'hôte pour fournir l'adressage de 40 hôtes. Ce chiffre découle de la formule suivante : 2^6 - 2 = 62 hôtes. Les 4 premiers bits d'hôte peuvent être utilisés pour attribuer les sous-réseaux. En appliquant la formule de calcul du nombre de sous-réseaux, on obtient 16 sous-réseaux : 2^4 = 16. Comme l'interréseau en exemple requiert 9 sous-réseaux, cela répond à la demande et permet une certaine évolution. </p>
+<p></p>
+<p>Lorsque 4 bits sont empruntés, la nouvelle longueur de préfixe est /26 avec le masque de sous-réseau 255.255.255.192.</p>
+<p></p>
+<p>Comme le montre la Figure 1, la longueur de préfixe /26 permet de déterminer les 16 adresses de sous-réseau. Seule la partie sous-réseau de l'adresse est incrémentée. Les 22 bits initiaux de l'adresse réseau ne peuvent pas être modifiés et la partie hôte contient tous les bits 0.</p>
+<p></p>
+<p>
+<b>Remarque</b> : étant donné que la partie sous-réseau appartient à la fois au troisième et au quatrième octets, une de ces valeurs ou les deux seront différentes dans les adresses de sous-réseau. </p>
+<p></p>
+<p>Comme l'illustre la Figure 2, le réseau 172.16.0.0/22 d'origine était un seul réseau comportant 10 bits d'hôte et 1 022 adresses à attribuer aux hôtes. En empruntant 4 bits d'hôte, on obtient 16 sous-réseaux (0000 à 1111). Chaque sous-réseau comporte 6 bits d'hôte ou 62 adresses d'hôtes utilisables par sous-réseau. </p>
+<p></p>
+<p>Comme l'illustre la Figure 3, les sous-réseaux peuvent être attribués aux segments de réseau local et aux connexions de routeur à routeur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

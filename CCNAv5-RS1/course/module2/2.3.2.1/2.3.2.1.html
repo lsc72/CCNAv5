@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.2.1 Configuration d&#x0027;une interface virtuelle de commutateur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Schémas d&#x0027;adressage</h1>
+        <h2>Adressage des périphériques</h2>
+      </div>
+      <div id="content">
+<p>Pour accéder à distance au commutateur, une adresse IP et un masque de sous-réseau doivent être configurés sur l'interface SVI :</p>
+<p>
+<ul>
+<li>
+<b>Adresse IP</b> - combinée au masque de sous-réseau, identifie le périphérique final sur l'interréseau de manière unique.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Masque de sous-réseau</b> – détermine quelle partie d'un réseau plus étendu est utilisée par une adresse IP.</li>
+</ul>
+</p>
+<p></p>
+<p>Pour l'instant, le cours est axé sur l'IPv4. Vous étudierez l'IPv6 plus tard. </p>
+<p></p>
+<p>Vous apprendrez ultérieurement le fonctionnement de toutes ces adresses IP, mais pour l'instant, l'objectif est de configurer rapidement le commutateur pour gérer l'accès distant. La figure présente la commande permettant d'activer la connectivité IP au périphérique S1, via l'adresse IP 192.168.10.2 :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>interface vlan 1</b>
+</span> - Utilisé pour accéder au mode de configuration d'interface à partir du mode de configuration globale</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>ip address 192.168.10.2 255.255.255.0</b>
+</span> - Configure l'adresse IP et le masque de sous-réseau pour le commutateur (ce n'est que l'une des nombreuses combinaisons possibles d'adresse IP et de masque de sous-réseau)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>no shutdown</b>
+</span> - Active l'interface par voie administrative</li>
+</ul>
+</p>
+<p></p>
+<p>Une fois ces commandes configurées, le commutateur dispose de tous les éléments IP adaptés pour la communication sur le réseau. </p>
+<p></p>
+<p>
+<b>Remarque :</b> le commutateur doit toujours disposer d'un ou de plusieurs ports physiques configurés, ainsi que des lignes VTY, pour qu'il soit possible de terminer la configuration qui permet une gestion distante du commutateur.</p>
+<p></p>
+<p>Essayez de configurer une interface virtuelle de commutateur en entrant les commandes de la figure.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

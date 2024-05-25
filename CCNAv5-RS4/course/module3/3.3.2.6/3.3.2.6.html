@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.3.2.6 Configuration du protocole PPP avec authentification</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.3.2.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de PPP</h1>
+        <h2>Authentification PPP</h2>
+      </div>
+      <div id="content">
+<p>La procédure mentionnée dans le tableau décrit comment configurer l'encapsulation PPP et les protocoles d'authentification PAP/CHAP. Il est essentiel de procéder à une configuration correcte, car PAP et CHAP s'appuient sur ces paramètres pour leur authentification. </p>
+<p></p>
+<p>
+<b>Configuration de l'authentification PAP</b>
+</p>
+<p></p>
+<p>La figure 1 présente un exemple de configuration d'authentification PAP bidirectionnelle. Les deux routeurs authentifient et sont authentifiés, de telle sorte qu'un effet de miroir se produit sur les commandes d'authentification PAP. Le nom d'utilisateur et le mot de passe PAP que chaque routeur envoie doit correspondre à ceux spécifiés dans la commande <span class="cmd"><b>username </b></span><span class="cmd"><i>name</i></span><span class="cmd"><b> password </b></span><span class="cmd"><i>password</i></span> de l'autre routeur.</p>
+<p></p>
+<p>Le protocole PAP procure une méthode simple permettant à un nœud distant d'établir son identité à l'aide d'un échange en deux étapes. Ceci s'effectue uniquement à l'établissement initial de la liaison. Le nom d'hôte du routeur doit correspondre au nom d'utilisateur que l'autre routeur a configuré pour le protocole PPP. Les mots de passe doivent également correspondre. Pour spécifier les paramètres de nom d'utilisateur et de mot de passe, utilisez la commande suivante : <span class="cmd"><b>ppp pap sent-username </b></span><span class="cmd"><i>name </i></span><span class="cmd"><b>password </b></span><span class="cmd"><i>password</i></span>.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 2 pour configurer l'authentification PAP sur l'interface série 0/0/1 du routeur R1.</p>
+<p></p>
+<p>
+<b>Configuration de l'authentification CHAP</b>
+</p>
+<p></p>
+<p>CHAP vérifie régulièrement l'identité du nœud distant à l'aide d'une connexion en trois étapes. Le nom d'hôte d'un routeur doit correspondre au nom d'utilisateur que l'autre routeur a configuré. Les mots de passe doivent également correspondre. La vérification a lieu lors de l'établissement initial de la liaison et peut être répétée à tout moment une fois la liaison établie. La Figure 3 présente un exemple de configuration CHAP.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 4 pour configurer l'authentification CHAP sur l'interface série 0/0/1 du routeur R1.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

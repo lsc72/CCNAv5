@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.4.1.2 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.4.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Ethernet est la technologie LAN la plus répandue aujourd'hui. Ethernet est une famille de technologies réseau définies par les normes IEEE 802.2 et 802.3. Les normes Ethernet définissent à la fois les protocoles de la couche 2 et les technologies de la couche 1. Pour les protocoles de couche 2, tout comme pour chacune des normes IEEE 802, Ethernet s'appuie sur les deux sous-couches distinctes de la couche liaison de données pour fonctionner : les sous-couches LLC et MAC.</p>
+<p></p>
+<p>Au niveau de la couche liaison de données, la structure de trame est presque la même pour tous les débits Ethernet. La structure de trame Ethernet ajoute des en-têtes et des codes de fin à l'unité de données de protocole de la couche 3 pour encapsuler le message envoyé. </p>
+<p></p>
+<p>On distingue deux types de tramage Ethernet : la norme Ethernet IEEE 802.3 et la norme Ethernet DIX, maintenant appelée Ethernet II. La différence principale entre les deux normes est l'ajout d'un délimiteur de début de trame (SFD) et le remplacement du champ Type en un champ Longueur pour la norme 802.3. Ethernet II est le format de trame Ethernet utilisé par les réseaux TCP/IP. Conformément aux spécifications des normes IEEE 802.2/3, la trame Ethernet fournit un adressage MAC et un contrôle des erreurs. </p>
+<p></p>
+<p>L'adressage de la couche 2 fourni par Ethernet prend en charge les différents types de communications : monodiffusion, diffusion et multidiffusion. Ethernet utilise le protocole ARP pour déterminer les adresses MAC de destination et les mapper à des adresses de couche réseau connues.</p>
+<p></p>
+<p>Chaque nœud sur un réseau IP possède une adresse MAC et une adresse IP. Le nœud doit utiliser ses propres adresses MAC et IP dans les champs sources et doit fournir une adresse MAC et une adresse IP de destination. Bien que l'adresse IP de la destination soit fournie par une couche OSI supérieure, le nœud émetteur doit obtenir l'adresse MAC de destination de la liaison Ethernet. Quel est l'objectif d'ARP ? </p>
+<p></p>
+<p>Le protocole ARP repose sur certains types de message de diffusion Ethernet et de message monodiffusion Ethernet, appelés requêtes ARP et réponses ARP. Le protocole ARP résout les adresses IPv4 en adresses MAC et met à jour une table des mappages.</p>
+<p></p>
+<p>Sur la plupart des réseaux Ethernet, les périphériques finaux sont généralement connectés point-à-point à un commutateur de réseau local de couche 2. Un commutateur de réseau local de couche 2 permet d'effectuer une commutation et un filtrage en se basant uniquement sur l'adresse MAC de la couche liaison de données (couche 2) du modèle OSI. Un commutateur de couche 2 génère une table d'adresses MAC qu'il utilise pour des décisions de transmission. Les commutateurs de couche 2 dépendent des routeurs pour transmettre les données entre les sous-réseaux IP indépendants.</p>
+<p></p>
+<p>Les commutateurs de couche 3 peuvent également exécuter des fonctions de routage de la couche 3, ce qui réduit le besoin de routeurs dédiés sur un réseau local. Parce que les commutateurs de couche 3 disposent d'un matériel de commutation spécifique, l'acheminement des données est généralement aussi rapide que la commutation.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.4.5 Exemples d&#x0027;en-tête IPv6</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.4.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche réseau</h1>
+        <h2>Paquet IPv6</h2>
+      </div>
+      <div id="content">
+<p>Sur les captures Wireshark IPv6, notez que l'en-tête IPv6 a nettement moins de champs qu'un en-tête IPv4. Cela simplifie l'en-tête IPv6, qui est ainsi plus rapidement traité par les routeurs. </p>
+<p></p>
+<p>L'adresse IPv6 a elle-même l'air très différente. En raison des adresses IPv6 plus longues (128 bits), le système de notation hexadécimal est utilisé pour simplifier la représentation de l'adresse. Les adresses IPv6 utilisent donc des signes deux-points (:) pour diviser les adresses en groupes de 16 bits.</p>
+<p></p>
+<p>La Figure 1 affiche le contenu du paquet numéro 46 de cet exemple de capture. Le paquet contient le message initial de connexion en trois étapes du protocole TCP entre un hôte IPv6 et un serveur IPv6. Notez les valeurs de la section d'en-tête IPv6 étendue. Notez également qu'il s'agit d'un paquet TCP et qu'il ne contient aucune autre information au-delà de la section TCP.</p>
+<p></p>
+<p>La Figure 2 affiche le contenu du paquet numéro 49 de cet exemple de capture. Le paquet contient le message HTTP GET destiné au serveur. Notez qu'il s'agit d'un paquet HTTP et qu'il contient désormais des informations au-delà de la section TCP.</p>
+<p></p>
+<p>Enfin, la Figure 3 illustre le contenu du paquet numéro 1 de cet exemple de capture. Ce paquet est un message de sollicitation de voisin ICMPv6. Notez qu'aucune information TCP ou UDP n'est présente. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

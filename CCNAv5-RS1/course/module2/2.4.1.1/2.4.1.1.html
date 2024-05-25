@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.4.1.1 Exercice en classe – Tutorat</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.4.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Tutorat</b>
+</p>
+<p></p>
+<p>
+<b>Les participants travaillent en binôme. Packet Tracer est requis pour cet exercice.</b>
+</p>
+<p></p>
+<p>Supposons qu'un nouveau collègue vous demande de l'aide sur la CLI de Cisco IOS. Ce collaborateur n'a jamais travaillé avec des périphériques Cisco. </p>
+<p></p>
+<p>Vous lui expliquez brièvement les commandes et la structure de la CLI, car vous souhaitez qu'il comprenne bien que la CLI est un langage de commande simple mais performant, facilement utilisable et compréhensible.</p>
+<p></p>
+<p>Utilisez Packet Tracer et l'une des activités disponibles dans ce chapitre comme modèle de réseau simple (par exemple, la section 2.3.3.5 Travaux pratiques - Configuration d'une adresse de gestion de commutateur). </p>
+<p></p>
+<p>Concentrez-vous sur les points suivants :</p>
+<p>
+<ul>
+<li>Bien que les commandes soient techniques, ressemblent-elles à des instructions rédigées en anglais ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Comment le jeu de commandes est-il organisé en sous-groupes ou en modes ? Comment un administrateur sait-il quel mode il utilise ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Quelles sont les commandes utilisées pour configurer les paramètres de base d'un périphérique Cisco ? Comment expliqueriez-vous cette commande à des néophytes ? Usez de comparaisons avec la vie réelle si besoin.</li>
+</ul>
+</p>
+<p></p>
+<p>Indiquez comment regrouper différentes commandes en fonction des modes qu'elles utilisent, afin que le nombre de changements de mode soit aussi réduit que possible.</p>
+<p></p>
+<p>
+<a href="../../files/2.4.1.1%20Class%20Activity%20-%20Tutor%20me!%20Instructions.pdf" target="_blank">Exercice en classe – Tutorat Instructions</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

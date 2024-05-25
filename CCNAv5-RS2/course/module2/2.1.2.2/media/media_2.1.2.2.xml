@@ -1,0 +1,108 @@
+﻿<textcomponents> <!--Slide 1-->
+<component id="ID_s1_title">
+<text><![CDATA[<b>Configuration du mode bidirectionnel et de la vitesse  </b>]]></text>
+</component>
+
+
+<component id="ID_s1_txt01">
+   <text><![CDATA[Mode bidirectionnel simultané<br/>100&nbsp;Mbit/s]]></text>
+   </component>
+
+
+   <component id="ID_s1_txt02">
+   <text><![CDATA[Mode bidirectionnel simultané<br/>100&nbsp;Mbit/s]]></text>
+   </component>
+
+   <component id="ID_s1_table01">
+  <text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4' class="mtable">
+	
+
+<tr>
+	 <td colspan='2' bgcolor='#98D3D1' class="title"><font size='12' class="font12px" color='#393536'><b>Commandes IOS de commutateur Cisco  </b></font></td>
+	 </tr>
+
+
+
+
+
+<tr>
+		<td colspan='2' bgcolor='#0E6360' class="mtable_top"><font size='1' color='#0E6360'><span style="color:#98D3D1">.</span></font></td>
+	</tr>
+		<tr>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536' size="11" class="font11px">Passer en mode de configuration globale.</font></td>
+		<td bgcolor='#EFF8F7' valign="top"><font face="_typewriter" color='#393536' size="11" class="font11px">S1#<b>configure terminal  </b></font></td>
+	</tr>
+	<tr>
+		<td bgcolor='#ffffff' valign="top"><font color='#393536' size="11" class="font11px">Passer en mode de configuration d'interface.</font></td>
+		<td bgcolor='#ffffff' valign="top"><font face="_typewriter" color='#393536' size="11" class="font11px">S1(config)# <b>interface FastEthernet 0/1  </b></font></td>
+	</tr>
+
+
+
+<tr>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536' size="11" class="font11px">Configurez le mode bidirectionnel d'interface.</font></td>
+		<td bgcolor='#EFF8F7' valign="top"><font face="_typewriter" color='#393536' size="11" class="font11px">S1(config-if)# <b>duplex full  </b></font></td>
+	</tr>
+	<tr>
+		<td bgcolor='#ffffff' valign="top"><font color='#393536' size="11" class="font11px">Configurez la vitesse d'interface.</font></td>
+		<td bgcolor='#ffffff' valign="top"><font face="_typewriter" color='#393536' size="11" class="font11px">S1(config-if)# <b>speed 100  </b></font></td>
+	</tr>
+
+
+
+
+<tr>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536' size="11" class="font11px">Repassez en mode d'exécution privilégié.</font></td>
+		<td bgcolor='#EFF8F7' valign="top"><font face="_typewriter" color='#393536' size="11" class="font11px">S1(config-if)# <b>end  </b></font></td>
+	</tr>
+	<tr>
+		<td bgcolor='#ffffff' valign="top"><font color='#393536' size="11" class="font11px">Enregistrez la configuration en cours dans la configuration de démarrage.</font></td>
+		<td bgcolor='#ffffff' valign="top"><font face="_typewriter" color='#393536' size="11" class="font11px">S1# <b>copy running-config startup-config  </b></font></td>
+	</tr>
+	</table>]]></text>
+  </component>
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component> <!--Slide 2-->
+<component id="ID_s2_title">
+<text><![CDATA[<b>  </b>]]></text>
+</component>
+
+<component id="ID_s2_SC01" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font size='10' class="font10px" face="Arial" color="#0000FF">*** Vous devez saisir la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font>  </b>
+		]]></feedback>
+		
+		<existingcommands><![CDATA[<font  face="Arial"><b>Passez en mode de configuration et définissez le mode de bidirectionnalité sur bidirectionnel simultané et la vitesse sur 100 pour l'interface FastEthernet0/1.  </b></font>]]></existingcommands>
+		<command prompt="S1#">
+		    <correctresponse><![CDATA[configure terminal]]></correctresponse>
+				<deviceresponse><![CDATA[<font Face='Courier New' Size="10" class="font10px">Enter configuration commands, one per line. End with CNTL/Z.</font>]]></deviceresponse> 					
+		</command>
+		<command prompt="S1(config)#">
+			<correctresponse><![CDATA[interface FastEthernet0/1]]></correctresponse>
+		</command>
+		<command prompt="S1(config-if)#">
+			<correctresponse><![CDATA[duplex full]]></correctresponse>
+		</command>
+		<command prompt="S1(config-if)#">
+			<correctresponse><![CDATA[speed 100]]></correctresponse>
+			<instruction><![CDATA[<font face="Arial"><b>Quittez le mode de configuration et enregistrez la configuration dans la mémoire vive non volatile.  </b></font>]]></instruction>
+		</command>
+		<command prompt="S1(config-if)#">
+			<correctresponse><![CDATA[end]]></correctresponse>
+				<deviceresponse><![CDATA[<font Face='Courier New' Size="10" class="font10px">S1#<br>%SYS-5-CONFIG_I: Configured from console by console</font>]]></deviceresponse> 					
+		</command>
+		<command prompt="S1#">
+			<correctresponse><![CDATA[copy running-config startup-config]]></correctresponse>
+			<instruction><![CDATA[<font  face="Arial"><b>Vous avez correctement configuré les paramètres bidirectionnels et de vitesse du port de commutateur.  </b></font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+
+</textcomponents>

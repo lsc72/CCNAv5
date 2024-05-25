@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.3.1 Identification des fonctions du collecteur NetFlow</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>NetFlow</h1>
+        <h2>Examen des modèles de trafic</h2>
+      </div>
+      <div id="content">
+<p>Un collecteur NetFlow est un hôte qui exécute un logiciel d'application. Ce logiciel est spécialisé dans le traitement des données NetFlow brutes. Ce collecteur peut être configuré de manière à recevoir des informations NetFlow à partir de nombreux périphériques réseau. Les collecteurs NetFlow agrègent et organisent les données NetFlow comme requis par l'administrateur réseau, compte tenu des contraintes du logiciel.</p>
+<p></p>
+<p>Sur un collecteur NetFlow, les données NetFlow sont inscrites sur un lecteur à des intervalles spécifiés. L'administrateur peut exécuter plusieurs schémas de collecte ou threads simultanément. Il est par exemple possible de stocker différentes coupes de données pour la prise en charge de la planification et de la facturation, un collecteur NetFlow pouvant facilement générer les schémas d'agrégation appropriés.</p>
+<p></p>
+<p>La Figure 1 illustre un collecteur NetFlow écoutant de manière passive les datagrammes NetFlow exportés. Une application de collecteur NetFlow offre une solution hautes performances, simple d'utilisation et évolutive permettant de gérer la consommation de données d'exportation NetFlow issues de plusieurs périphériques. Le but recherché par une entreprise varie, mais l'objectif est souvent la prise en charge des flux critiques associés aux applications clientes. Cela peut inclure la comptabilité, la facturation, ainsi que la planification et la surveillance du réseau.</p>
+<p></p>
+<p>Il existe divers collecteurs NetFlow sur le marché. Ces outils permettent l'analyse du trafic réseau en affichant les principaux hôtes (les plus actifs), les applications les plus utilisées ainsi que d'autres méthodes de mesure des données de trafic, comme le montre la Figure 2. Un collecteur NetFlow affiche les différents types de trafic réseau (Web, e-mail, FTP, P2P (Peer-to-Peer), etc.), ainsi que les périphériques qui envoient et reçoivent le plus de trafic. La collecte de données permet à un administrateur réseau d'identifier les principaux émetteurs, hôtes et destinataires. Les données étant conservées au fil du temps, des analyses réseau réalisées a posteriori permettent de déterminer les tendances d'utilisation du réseau.</p>
+<p></p>
+<p>Sur la base de l'utilisation d'analyseurs NetFlow, un administrateur réseau est capable d'identifier :</p>
+<p></p>
+<p>
+<ul>
+<li>Qui sont les principaux émetteurs et à qui parlent-ils ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Quels sont les sites Web visités régulièrement et quel est le contenu téléchargé ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Qui génère le plus de trafic ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La bande passante est-elle suffisante pour prendre en charge les activités critiques ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Qui monopolise la bande passante ?</li>
+</ul>
+</p>
+<p></p>
+<p>La quantité d'informations pouvant être analysée par un collecteur NetFlow varie en fonction de la version de NetFlow utilisée, car différents formats d'exportation NetFlow entraînent des types d'enregistrements NetFlow distincts. Un enregistrement NetFlow contient des informations spécifiques sur le trafic réel qui compose un flux NetFlow. </p>
+<p></p>
+<p>Un collecteur NetFlow permet la visualisation et l'analyse en temps réel des données de flux enregistrées et agrégées. Les routeurs et les commutateurs pris en charge peuvent être spécifiés, ainsi que le schéma d'agrégation et l'intervalle de temps nécessaire au stockage des données avant l'analyse périodique suivante. Il est possible de trier et de visualiser les données de manière utile pour les utilisateurs : graphiques à barres, graphiques en secteurs ou histogrammes des rapports triés. Les données peuvent ensuite être exportées dans des feuilles de calcul Microsoft Excel, par exemple, pour une analyse plus détaillée et la création de rapports.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

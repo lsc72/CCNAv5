@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide>    
+    <element type="TEXT" subType="TITLE" compId="ID_title"/>
+    <element type="IMAGE" src="9_3_2_2.jpg" x="0" y="25" width="470" height="247"/> 
+    <element type="TEXT" text="R1" x="112.2" y="142.9" width="31" align="center" bold="1" color="#fff"/>
+    <element type="TEXT" text="R2" x="217.65" y="67.3" width="31" align="center" bold="1" color="#fff"/>
+    <element type="TEXT" text="R3" x="327.05" y="142.65" width="31" align="center" bold="1" color="#fff"/>
+    <element type="TEXT" text="S1" x="60.75" y="244.85" width="17.6" align="center" bold="1" color="#fff"/>
+    <element type="TEXT" text="S2" x="150.5" y="244.35" width="17.6" align="center" bold="1" color="#fff"/>
+    <element type="TEXT" text="ISP" x="395.75" y="71.4" width="31" align="center" bold="1" color="#fff"/>
+
+    <element type="TEXT" text="S0/1/0" x="256.6" y="47.25" width="35.95" align="left"/>
+    <element type="TEXT" text="S0/0/1" x="256.6" y="70.25" width="35.95" align="left"/>
+    <element type="TEXT" text="S0/0/0" x="173.75" y="70.25" width="35.95" align="left"/>
+    <element type="TEXT" text="S0/0/0" x="115.1" y="109.9" width="35.95" align="left"/>
+    <element type="TEXT" text="S0/0/1" x="313.95" y="109.9" width="35.95" align="left"/>
+    
+    <element type="TEXT" text="G0/0" x="86.65" y="154.55" width="28" align="left"/>
+    <element type="TEXT" text="G0/1" x="140" y="154.55" width="28" align="left"/>
+
+    <element type="TEXT" text="10.1.1.1/30" x="152" y="135.15" width="59.1" align="left" bold="1"/>
+    <element type="TEXT" text="192.168.10.0/24" x="0" y="213.5" width="83.5" align="left" bold="1"/>
+    <element type="TEXT" text="192.168.11.0/24" x="168" y="213" width="83.5" align="left" bold="1"/>
+    
+     
+	  
+  <element type="ROUTER" textId="staticTxt_D1" x="0" y="270" width="463.25" height="123.55"/>
+  
+</slide>
+
+
+    <text id="staticTxt_D1"><![CDATA[R1(config)#<b>access-list 103 permit tcp 192.168.10.0 0.0.0.255 any eq 80  </b><br /> R1(config)#<b>access-list 103 permit tcp 192.168.10.0 0.0.0.255 any eq 443  </b><br /> R1(config)#<b>access-list 104 permit tcp any 192.168.10.0 0.0.0.255 established  </b><br /> R1(config)#<b>interface g0/0  </b><br /> R1(config-if)#<b>ip access-group 103 in  </b><br /> R1(config-if)#<b>ip access-group 104 out  </b><br />]]>
+  </text>
+
+  <text id="staticTxt_S1_1"><![CDATA[ 
+  <div><span class="orangeBg">2001:0DB8:ACAD</span>:<span class="greenBg">1</span>::/64
+  </div>]]></text>
+  <text id="staticTxt_S1_2"><![CDATA[ 
+  <div><span class="orangeBg">2001:0DB8:ACAD</span>:<span class="greenBg">2</span>::/64
+  </div>]]></text>
+  <text id="staticTxt_S1_3"><![CDATA[ 
+  <div><span class="orangeBg">2001:0DB8:ACAD</span>:<span class="greenBg">3</span>::/64
+  </div>]]></text>
+  <text id="staticTxt_S1_4"><![CDATA[ 
+  <div><span class="orangeBg">2001:0DB8:ACAD</span>:<span class="greenBg">4</span>::/64
+  </div>]]></text>
+
+   <text id="staticTxt_S2_1"><![CDATA[ 
+  <div><span class="orangeBg">2001:0DB8:ACAD</span>:<span class="greenBg">0001</span>::/64
+  </div>]]></text>
+  <text id="staticTxt_S2_2"><![CDATA[ 
+  <div><span class="orangeBg">2001:0DB8:ACAD</span>:<span class="greenBg">0002</span>::/64
+  </div>]]></text>
+  <text id="staticTxt_S2_3"><![CDATA[ 
+  <div><span class="orangeBg">2001:0DB8:ACAD</span>:<span class="greenBg">0003</span>::/64
+  </div>]]></text>
+  <text id="staticTxt_S2_4"><![CDATA[ 
+  <div><span class="orangeBg">2001:0DB8:ACAD</span>:<span class="greenBg">0004</span>::/64
+  </div>]]></text> 
+   
+</data>

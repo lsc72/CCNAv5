@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.2.1 Problèmes d&#x0027;accessibilité</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurer Frame Relay</h1>
+        <h2>Configuration des sous-interfaces</h2>
+      </div>
+      <div id="content">
+<p>Par défaut, la plupart des réseaux Frame Relay offrent une connectivité NBMA entre sites distants, grâce à la topologie Hub and Spoke. Dans une topologie Frame Relay NBMA, lorsqu'une seule interface multipoint doit être utilisée pour connecter plusieurs sites, il peut se produire des problèmes d'accessibilité de la mise à jour du routage. Avec les protocoles de routage à vecteur de distance, les problèmes d'accessibilité peuvent venir du découpage d'horizon et de la réplication de diffusion ou multidiffusion. Avec les protocoles de routage de l'état de liens, les problèmes de choix DR/BDR peuvent engendrer des problèmes d'accessibilité.</p>
+<p></p>
+<p>
+<b>Découpage d'horizon </b>
+</p>
+<p>La règle du découpage d'horizon est un mécanisme de prévention du bouclage pour les protocoles de routage à vecteur de distance, comme EIGRP et RIP. Elle ne s'applique pas aux protocoles de routage d'état de liens. La règle du découpage d'horizon réduit les boucles de routage en empêchant la transmission en dehors de l'interface de la mise à jour de routage reçue sur une interface. </p>
+<p></p>
+<p>Par exemple, dans la Figure 1, qui présente une topologie Hub and Spoke, le routeur distant R2 (routeur sur un rayon) envoie une mise à jour au routeur du siège social R1 (routeur central). R1 connecte plusieurs circuits virtuels permanents sur une seule interface physique. R1 reçoit la multidiffusion sur son interface physique, mais le découpage d'horizon ne peut pas transférer cette mise à jour de routage via la même interface vers les autres routeurs (rayons).</p>
+<p></p>
+<p>
+<b>Remarque </b>: le découpage d'horizon ne pose pas de problème si un seul circuit virtuel permanent (une seule connexion distante) est configuré sur une interface physique. Ce type de connexion est point à point.</p>
+<p></p>
+<p>La Figure 2 présente un exemple similaire, avec la topologie de référence utilisée dans ce chapitre. R2, un routeur sur un rayon, envoie une mise à jour de routage à R1, un routeur central. R1 dispose de plusieurs circuits virtuels permanents sur une seule interface physique. La règle de découpage d'horizon empêche R1 de transférer cette mise à jour de routage via la même interface physique vers l'autre routeur distant (R3). </p>
+<p></p>
+<p>
+<b>Réplication de diffusion et multidiffusion</b>
+</p>
+<p></p>
+<p>Comme illustré à la Figure 3, à cause du découpage d'horizon, lorsqu'un routeur prend en charge des connexions multipoints sur une seule interface, il doit répliquer les paquets de diffusion ou multidiffusion. En cas de mises à jour de routage, les mises à jour doivent être répliquées et envoyées sur chaque circuit virtuel permanent aux routeurs distants. Ces paquets répliqués consomment de la bande passante et provoquent des variations de latence sérieuses dans le trafic utilisateur. Le volume du trafic de diffusion et le nombre de circuits virtuels aboutissant à chaque routeur doivent être évalués dans la phase de conception d'un réseau Frame Relay. La surcharge de trafic, par exemple les mises à jour de routage, peuvent affecter la transmission de données utilisateur critiques, en particulier lorsque le chemin de transmission contient des liaisons à bande passante faible (56 kbit/s).</p>
+<p></p>
+<p>
+<b>Détection de périphérique voisin : DR/BDR</b>
+</p>
+<p></p>
+<p>Les protocoles de routage d'état de liens, par exemple le protocole OSPF, n'utilisent pas la règle du découpage d'horizon pour éviter le bouclage. Cependant, des problèmes d'accessibilité peuvent survenir avec le DR/BDR. Le protocole OSPF sur les réseaux NBMA fonctionne par défaut en mode réseau non diffusion, et les voisins ne sont pas automatiquement découverts. Ces voisins peuvent être configurés de façon statique. Assurez-vous cependant que le routeur central soit bien un DR, comme illustré à la Figure 4. Souvenez-vous que le réseau NBMA se comporte comme Ethernet, et sur un réseau Ethernet, le DR est nécessaire pour échanger des informations entre routeurs sur un segment. Ainsi, seul le routeur du hub peut fonctionner comme DR, car il s'agit du seul routeur qui dispose de circuits virtuels permanents avec tous les autres routeurs.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

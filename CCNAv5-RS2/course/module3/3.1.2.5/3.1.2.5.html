@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.2.5 Étiquetage VLAN voix</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmentation d&#x0027;un VLAN</h1>
+        <h2>VLAN dans un environnement à commutateurs multiples</h2>
+      </div>
+      <div id="content">
+<p>Souvenez-vous que pour la prise en charge VoIP, un VLAN voix séparé est nécessaire. </p>
+<p></p>
+<p>Un port d'accès utilisé pour connecter un téléphone IP Cisco peut être configuré pour utiliser deux VLAN séparés : un VLAN pour le trafic voix et l'autre VLAN pour le trafic de données en provenance d'un appareil branché sur le téléphone. La liaison entre le commutateur et le téléphone IP fait office de trunk pour acheminer à la fois le trafic du VLAN voix et le trafic du VLAN de données.</p>
+<p></p>
+<p>Le téléphone IP Cisco contient un commutateur 10/100 à trois ports intégré. Les ports fournissent des connexions dédiées aux périphériques suivants :</p>
+<p>
+<ul>
+<li>Le port 1 est connecté au commutateur ou à un autre périphérique de VoIP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le port 2 est une interface 10/100 interne qui transporte le trafic du téléphone IP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le port 3 (port d'accès) est connecté à un ordinateur ou autre périphérique.</li>
+</ul>
+</p>
+<p></p>
+<p>Sur le commutateur, l'accès est configuré pour envoyer des paquets CDP (Cisco Discovery Protocol) demandant à un téléphone IP associé d'envoyer le trafic voix au commutateur avec l'une des trois méthodes possibles, selon le type de trafic :</p>
+<p>
+<ul>
+<li>Dans un VLAN voix étiqueté avec une valeur de priorité CoS (Class of Service) de couche 2.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Dans un VLAN d'accès étiqueté avec une valeur de priorité CoS de couche 2.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Dans un VLAN d'accès non étiqueté (pas de valeur de priorité CoS de couche 2).</li>
+</ul>
+</p>
+<p></p>
+<p>Dans la Figure 1, l'ordinateur des étudiants, PC5, est connecté à un téléphone IP Cisco et ce dernier est connecté au commutateur S3. Le VLAN 150 est conçu pour acheminer le trafic vocal, tandis que le PC5 se trouve dans le VLAN 20, lequel est utilisé pour les données des étudiants.</p>
+<p></p>
+<p>
+<b>Exemple de configuration</b>
+</p>
+<p></p>
+<p>La Figure 2 présente un exemple de résultats. Ce cours ne prétend pas expliquer les commandes vocales Cisco IOS, mais les éléments en surbrillance dans l'exemple de résultats indiquent que l'interface F0/18 est dotée d'un VLAN configuré pour les données (VLAN 20) et d'un VLAN configuré pour le trafic vocal (VLAN 150).</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

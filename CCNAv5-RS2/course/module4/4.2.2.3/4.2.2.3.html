@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.2.3 Équilibrage de charge</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Décisions de routage</h1>
+        <h2>Détermination du chemin</h2>
+      </div>
+      <div id="content">
+<p>Que se passe-t-il si une table de routage contient plusieurs chemins avec des métriques identiques vers le même réseau de destination ? </p>
+<p></p>
+<p>Lorsqu'un routeur contient deux chemins ou plus vers une destination avec des métriques à coût égal, le routeur transmet les paquets en utilisant de manière égale les deux chemins. C'est ce que l'on appelle l'équilibrage de charge à coût égal. La table de routage contient le réseau de destination unique, mais plusieurs interfaces de sortie, une pour chaque chemin de coût égal. Le routeur transfère les paquets en utilisant les différentes interfaces de sortie répertoriées dans la table de routage. </p>
+<p></p>
+<p>S'il est correctement configuré, l'équilibrage de charge peut améliorer l'efficacité et les performances du réseau. L'équilibrage de charge à coût égal peut être configuré pour utiliser à la fois des protocoles de routage dynamique et des routes statiques. </p>
+<p></p>
+<p>
+<b>Remarque</b> : seul le protocole EIGRP prend en charge l'équilibrage de charge à coût inégal.</p>
+<p></p>
+<p>L'animation de la figure présente un exemple d'équilibrage de charge à coût égal.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.2.2 Domaines de diffusion</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>L&#x0027;environnement commuté</h1>
+        <h2>Domaines de commutation</h2>
+      </div>
+      <div id="content">
+<p>Si les commutateurs filtrent la plupart des trames sur la base des adresses MAC dont ils disposent, ils ne filtrent pas en revanche les trames de diffusion. Pour que d'autres commutateurs du réseau local reçoivent des trames de diffusion, les commutateurs doivent diffuser ces trames sur tous les ports (les inonder). Un ensemble de commutateurs interconnectés constitue un domaine de diffusion unique. Seul un périphérique de couche réseau, tel qu'un routeur, peut diviser un domaine de diffusion de couche 2. Les routeurs sont utilisés pour segmenter les domaines de collision et les domaines de diffusion.</p>
+<p></p>
+<p>Lorsqu'un périphérique envoie une diffusion de couche 2, l'adresse MAC de destination de la trame est remplie de 1 binaires. Une trame dont l'adresse MAC de destination est constituée uniquement de 1 binaires est reçue par tous les périphériques du domaine de diffusion.</p>
+<p></p>
+<p>Le domaine de diffusion de couche 2 est appelé domaine de diffusion MAC. Le domaine de diffusion MAC est constitué de tous les périphériques du réseau local qui reçoivent les trames de diffusion provenant d'un hôte. </p>
+<p></p>
+<p>Dans la figure, cliquez sur Lire pour le constater dans la première partie de l'animation.</p>
+<p></p>
+<p>Lorsqu'un commutateur reçoit une trame de diffusion, il la transfère à tous ses ports, sauf au port d'entrée où elle a été reçue. Chaque périphérique connecté au commutateur reçoit un exemplaire de la trame de diffusion et la traite. Les diffusions sont parfois nécessaires pour localiser initialement d'autres équipements et services réseau, mais elles réduisent l'efficacité du réseau. La bande passante du réseau est utilisée pour transmettre le trafic de diffusion. Un nombre de diffusions et une charge de trafic trop élevés sur un réseau peuvent entraîner un encombrement, c'est-à-dire un ralentissement des performances réseau.</p>
+<p></p>
+<p>Lorsque deux commutateurs sont interconnectés, le domaine de diffusion augmente, comme l'illustre la deuxième partie de l'animation. Dans cet exemple, une trame de diffusion est transférée à tous les ports connectés sur le commutateur S1. Le commutateur S1 est connecté au commutateur S2. La trame est alors également propagée à tous les périphériques connectés au commutateur S2.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

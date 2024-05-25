@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide>
+	  
+		<element type="ROUTER" textId="ID_router_txt1" x="110" y="75" width="250" height="231" />		 
+		<element type="TEXT" compId="ID_Header01" x="110" y="56" width="251.2" expand="up" align="center" />
+		<element type="TEXT" compId="ID_txt01" x="0" y="109" width="98" expand="up" align="left" class="orangeCallOut" />
+		<element type="TEXT" subType="TITLE" compId="ID_title"/>
+		<element type="TEXT" compId="ID_txt02" x="0" y="140" width="98" expand="down" align="left" class="orangeCallOut" />		
+		<element type="TEXT" compId="ID_txt03" x="334" y="160" width="132.6" expand="up" align="left" class="orangeCallOut" />
+		<element type="TEXT" compId="ID_txt04" x="345" y="190" width="120.6" expand="down" align="left" class="orangeCallOut" />
+		<element type="IMAGE" src="media_6.3.2.1.png" width="470" height="400" x="0" y="0" />		
+		<element type="TEXT" textId="ID_static_1" x="99" y="110" align="center" width="37.45" />
+		<element type="TEXT" textId="ID_static_2" x="97.5" y="150" align="center" width="37.45" />
+		<element type="TEXT" textId="ID_static_3" x="339" y="200" align="center" width="11.45" />
+		<element type="TEXT" textId="ID_static_4" x="115" y="185" align="center" width="37.45" />	
+	</slide>
+	
+	<text id="ID_static_1"><![CDATA[<number value="1"></number>]]></text>
+<text id="ID_static_2"><![CDATA[<number value="2"></number>]]></text>
+<text id="ID_static_3"><![CDATA[<number value="3"></number>]]></text>
+
+<text id="ID_router_txt1"><![CDATA[<pre><span class="orange orange1">interface dialer 2</span>
+  encapsulation ppp
+  ip address negotiated
+
+  <span class="orange orange2">ppp chap hostname Fred
+ppp chap password Barney</span>
+
+   <span class="orange orange3">ip mtu 1492</span>
+   dialer pool <span class="orange orange4">1</span>
+
+<span class="orange1">interface GigabitEthernet0/1</span>
+  no ip address
+  pppoe enable
+  <span class="orange orange5">pppoe-client dial-pool-number 1 </span></pre>]]></text>
+
+
+<text id="ID_static_4"><![CDATA[<number value="4"></number>]]></text>
+
+
+</data>
+

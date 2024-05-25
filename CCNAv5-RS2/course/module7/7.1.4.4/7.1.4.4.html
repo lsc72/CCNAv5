@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.4.4 Protocoles de routage à état de liens</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.4.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de routage dynamique</h1>
+        <h2>Types de protocoles de routage</h2>
+      </div>
+      <div id="content">
+<p>À la différence d'un protocole de routage à vecteur de distance, un routeur configuré avec un protocole de routage à état de liens peut créer une « vue complète » ou une topologie du réseau en récupérant des informations provenant de tous les autres routeurs. </p>
+<p></p>
+<p>Pour reprendre l'analogie avec les poteaux indicateurs, lorsque vous utilisez un protocole de routage à état de liens, c'est comme si vous disposiez d'une carte complète de la topologie du réseau. Les poteaux indicateurs le long du chemin entre la source et la destination ne sont pas nécessaires, car tous les routeurs à état de liens utilisent une carte du réseau identique. Un routeur à état de liens utilise les informations d'état de liens pour créer une topologie et sélectionner le meilleur chemin vers tous les réseaux de destination de la topologie. </p>
+<p></p>
+<p></p>
+<p>Les routeurs compatibles RIP envoient des mises à jour régulières de leurs informations de routage à leurs voisins. Les protocoles de routage à état de liens n'utilisent pas de mises à jour régulières. Une fois que le réseau a convergé, une mise à jour d'état de liens est envoyée uniquement en cas de modification de la topologie. Par exemple, dans l'animation, la mise à jour d'état de liens n'est pas envoyée tant que le réseau 172.16.3.0 n'est pas hors service. </p>
+<p></p>
+<p>Cliquez sur Lecture dans la figure pour afficher les opérations d'état de liens. </p>
+<p></p>
+<p>Les protocoles à état de liens sont tout particulièrement adaptés dans les situations suivantes :</p>
+<p>
+<ul>
+<li>Réseau conçu de manière hiérarchique (il s'agit généralement de grands réseaux)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Réseau pour lequel une convergence rapide est primordiale</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Administrateurs ayant une bonne connaissance du protocole de routage à état de liens implémenté</li>
+</ul>
+</p>
+<p></p>
+<p>Il existe deux protocoles IGP à état de liens IPv4 :</p>
+<p>
+<ul>
+<li>
+<b>OSPF :</b> protocole de routage courant basé sur des normes</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>IS-IS :</b> courant sur les réseaux des fournisseurs</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

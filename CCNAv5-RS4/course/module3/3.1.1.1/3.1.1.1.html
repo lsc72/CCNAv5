@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.1.1 Ports série et parallèle</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation des connexions série point à point</h1>
+        <h2>Communications série</h2>
+      </div>
+      <div id="content">
+<p>Un des types de connexion WAN plus courants est la connexion point à point. Comme illustré à la Figure 1, les connexions point à point sont utilisées pour connecter des LAN au WAN du fournisseur de services, et pour connecter des segments de LAN dans un réseau d'entreprise. </p>
+<p></p>
+<p>La connexion point à point du LAN au WAN est aussi appelée connexion série ou ligne louée. C'est dû au fait que les lignes sont louées à un opérateur (généralement la compagnie de téléphone) et sont dédiées à cet usage par la société qui les loue. Les entreprises paient pour bénéficier d'une connexion continue entre deux sites distants, et la ligne est active et disponible en permanence. Les lignes louées sont fréquemment utilisées pour accéder à un réseau étendu. Leur prix se base généralement sur la bande passante requise et la distance entre les deux points connectés.</p>
+<p></p>
+<p>Il est important de comprendre comment fonctionne la communication série point à point sur les lignes louées pour avoir une compréhension globale du fonctionnement du WAN. </p>
+<p></p>
+<p>La communication sur une connexion série est une méthode de transmission de données dans laquelle les bits sont transférés de façon séquentielle sur un seul canal. On peut comparer cela à un tuyau dans lequel ne passerait qu'une seule balle à la fois. Le tuyau peut faire passer plusieurs balles, mais une seule à la fois, et elles ne peuvent sortir qu'à un seul endroit, au bout du tuyau. Le port série est bidirectionnel est souvent appelé port bidirectionnel ou port de communication. </p>
+<p></p>
+<p>La communication parallèle est différente, car dans ce cas les bits sont transférés simultanément sur plusieurs câbles. Comme illustré à la Figure 2, la connexion parallèle peut en théorie transférer les données huit fois plus vite qu'une connexion série. Ainsi, la connexion parallèle envoie un octet (8 bits) dans le même temps que la connexion série envoie un seul bit. Cependant, la communication parallèle rencontre des problèmes d'interférences entre les câbles, et ces problèmes augmentent en même temps que la longueur des câbles. La variation d'horloge est également un problème sur les communications parallèles. Cette variation se produit lorsque des données sur les différents câbles n'arrivent pas en même temps, ce qui crée des problèmes de synchronisation. Enfin, la plupart des communications parallèles ne prennent en charge qu'une seule direction, la communication vers l'extérieur depuis le disque dur.</p>
+<p></p>
+<p>À une époque, la plupart des PC étaient équipés de ports série et parallèle. Les ports parallèles servaient à connecter les imprimantes, les ordinateurs et les autres périphériques qui avaient besoin d'une bande passante relativement élevée. Les ports parallèles étaient également utilisés entre les composants internes. Pour les communications externes, un bus série était principalement utilisé pour convertir le signal. Comme elles sont bidirectionnelles, les communications série sont beaucoup moins chères à mettre en œuvre. Les communications série utilisent moins de câbles, et des câbles moins chers, et ont besoin de moins de broches sur les connecteurs.</p>
+<p></p>
+<p>Sur la plupart des PC, les ports parallèles et les ports série RS-232 ont été remplacés par les interfaces série à haute vitesse USB (Universal Serial Bus). Cependant, pour les communications longue distance, de nombreux WAN utilisent toujours la transmission en série. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

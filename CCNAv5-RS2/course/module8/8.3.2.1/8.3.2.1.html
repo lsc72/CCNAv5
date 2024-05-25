@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.2.1 Topologie de réseau OSPFv3</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole OSPFv3 à zone unique</h1>
+        <h2>Configuration du OSPFv3</h2>
+      </div>
+      <div id="content">
+<p>La Figure 1 illustre la topologie de réseau qui est utilisée pour configurer OSPFv3. </p>
+<p></p>
+<p>La Figure 2 illustre le routage de monodiffusion IPv6 et la configuration des adresses de monodiffusion globale de R1, comme indiqué dans la topologie de référence. Supposons que les interfaces de R2 et R3 ont aussi été configurées avec leur adresse de monodiffusion globale, comme indiqué dans la topologie de référence.</p>
+<p></p>
+<p>Dans cette topologie, aucune adresse IPv4 n'est configurée pour les routeurs. Un réseau dont les interfaces de routeur sont configurées avec des adresses IPv4 et IPv6 est appelé « à double pile » (dual-stack). Sur un réseau à double pile, les protocoles OSPFv2 et OSPFv3 peuvent être activés simultanément. </p>
+<p></p>
+<p>La Figure 3 présente les étapes de configuration du protocole OSPFv3 de base dans une zone unique.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

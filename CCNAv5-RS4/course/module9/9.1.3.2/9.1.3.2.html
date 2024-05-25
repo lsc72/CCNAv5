@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.3.2 Méthodes de dépannage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage avec une approche systématique</h1>
+        <h2>Isolation du problème à l&#x0027;aide des modèles en couches</h2>
+      </div>
+      <div id="content">
+<p>Ces modèles en couches possèdent trois méthodes principales en matière de dépannage des réseaux :</p>
+<p>
+<ul>
+<li>méthode ascendante</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>méthode descendante</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>diviser et conquérir</li>
+</ul>
+</p>
+<p></p>
+<p>Chacune de ces approches présente ses avantages et ses inconvénients. La présente rubrique décrit ces trois méthodes et fournit des instructions relatives au choix de la meilleure méthode dans une situation donnée.</p>
+<p></p>
+<p>
+<b>Méthode de dépannage ascendante</b>
+</p>
+<p>Dans le cas du dépannage ascendant, vous commencez par examiner les composants physiques du réseau, puis vous remontez une à une les différentes couches du modèle OSI jusqu'à ce que la cause du problème ait été identifiée, comme le montre la Figure 1. Cette approche est conseillée lorsque vous pensez que le problème est physique. La plupart des problèmes réseau se situent au niveau des couches inférieures, ce qui signifie que la mise en œuvre de l'approche ascendante est souvent efficace. </p>
+<p></p>
+<p>L'inconvénient de l'approche de dépannage ascendante est qu'elle nécessite la vérification de chacun des périphériques et de chacune des interfaces du réseau jusqu'à ce que la cause possible du problème ait été trouvée. N’oubliez pas que chaque conclusion et possibilité doit être documentée ; cela peut donc représenter un travail administratif important. Un autre défi consiste à déterminer quels périphériques examiner en premier lieu.</p>
+<p></p>
+<p>
+<b>Méthode de dépannage descendante</b>
+</p>
+<p>Dans la Figure 2, le dépannage descendant commence par les applications destinées aux utilisateurs finaux, puis parcourt vers le bas une à une les différentes couches du modèle OSI jusqu'à ce que la cause du problème ait été identifiée. Les applications de l’utilisateur final d’un système d’extrémité sont testées avant de s’attaquer à des éléments plus précis du réseau. Utilisez cette approche pour les problèmes simples ou lorsque vous pensez que le problème concerne un élément logiciel.</p>
+<p></p>
+<p>L'inconvénient de l'approche descendante est qu'elle nécessite la vérification de chaque application réseau jusqu'à ce que la cause possible du problème ait été trouvée. Chaque conclusion et chaque possibilité doivent être documentées. Le défi consiste à déterminer quelle application examiner en premier lieu.</p>
+<p></p>
+<p>
+<b>Méthode de dépannage « diviser et conquérir »</b>
+</p>
+<p>La Figure 3 illustre l'approche de dépannage « diviser et conquérir » d'un problème réseau. L'administrateur réseau sélectionne une couche et effectue des tests dans les deux sens à partir de cette couche.</p>
+<p></p>
+<p>Dans la méthode de dépannage « diviser et conquérir », vous commencez par collecter les expériences utilisateur du problème, vous documentez les symptômes, puis, à l'aide de ces informations, vous essayez de deviner par quelle couche OSI entreprendre vos recherches. Lorsqu'il a été vérifié qu'une couche donnée fonctionne correctement, on peut supposer que les couches inférieures fonctionnent également de manière appropriée. L'administrateur peut alors examiner les couches OSI supérieures. Si une couche OSI ne fonctionne pas correctement, l'administrateur peut commencer à examiner les couches inférieures du modèle OSI.</p>
+<p></p>
+<p>Par exemple, si des utilisateurs ne peuvent pas accéder au serveur Web, mais qu'ils peuvent envoyer des requêtes ping à ce serveur, cela signifie que le problème se situe au-dessus de la couche 3. Si une requête ping envoyée au serveur échoue, cela signifie que le problème se situe vraisemblablement au niveau d'une couche OSI inférieure.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

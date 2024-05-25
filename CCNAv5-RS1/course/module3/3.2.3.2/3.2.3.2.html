@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.3.2 ISOC, IAB et IETF</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Normes et protocoles réseau</h1>
+        <h2>Organismes de normalisation</h2>
+      </div>
+      <div id="content">
+<p>L'ISOC (Internet Society) est chargée de promouvoir le développement, l'évolution et l'utilisation ouverts d'Internet dans le monde entier. L'ISOC favorise le développement ouvert de normes et de protocoles relatifs à l'infrastructure technique d'Internet, y compris la supervision de l'IAB (Internet Architecture Board).</p>
+<p></p>
+<p>L'IAB (Internet Architecture Board) s'occupe de la gestion et du développement généraux des normes Internet. Il assure la surveillance des protocoles et des procédures d'architecture utilisés par Internet. L'organisme se compose de 13 membres, dont le président de l'IETF (Internet Engineering Task Force). Les membres de l'IAB agissent en qualité de personne privée et ne représentent aucune entreprise, aucune institution ni aucune autre organisation.</p>
+<p></p>
+<p>La mission de l'IETF est de développer, de mettre à jour et d'assurer la maintenance d'Internet et les technologies TCP/IP. L'une des principales responsabilités de l'IETF est de produire des documents RFC (Request for Comments), c'est-à-dire des notes décrivant les protocoles, les processus et les technologies d'Internet. L'IETF se compose de groupes de travail (WG pour « working groups » en anglais) qui constituent les principales entités de développement des spécifications et des recommandations de l'organisme. Les groupes de travail sont constitués à des fins précises et dès que leurs objectifs sont remplis, ils sont dissous. L'IESG (Internet Engineering Steering Group) est chargé de la gestion technique de l'IETF et du processus des normes Internet.</p>
+<p></p>
+<p>L'IRTF (Internet Research Task Force) se concentre sur la recherche à long terme liée à Internet et aux protocoles TCP/IP, aux applications, à l'architecture et aux technologies. Si l'IETF s'intéresse surtout aux besoins à court terme en matière de normes, l'IRTF se compose de groupes de recherche centrés sur le développement à long terme. Les groupes de recherche actuels sont notamment l'ASRG (Anti-Spam Research Group), le CFRG (Crypto Forum Research Group), le P2PRG (Peer-to-Peer Research Group) et le RRG (Router Research Group).</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		<slide>
+			<element type="IMAGE" src="7_1_2_3_A.jpg" width="470" height="400" x="0" y="0"/>
+			<element type="TEXT" id="ID_static_1" text="2001:DB8:CAFE:2::/64" x="159.95" y="75.4" width="120.15" align="left" bold="1" />
+			<element type="TEXT" id="ID_static_2" text="G0/0" x="189.35" y="123.85" width="28" align="left" />
+			<element type="TEXT" id="ID_static_3" text=":1" x="221.15" y="123.85" width="13.35" align="left" />
+			<element type="TEXT" id="ID_static_4" text="2001:DB8:FEED:1::/64" x="242.15" y="123.85" width="119.55" align="left" bold="1" />
+			<element type="TEXT" id="ID_static_5" text="2001:DB8:CAFE:A002::/64" x="291.15" y="188.7" width="140.3" align="left" bold="1" />
+			<element type="TEXT" id="ID_static_6" text="2001:DB8:CAFE:A001::/64" x="32.6" y="182.95" width="140.3" align="left" bold="1" />
+			<element type="TEXT" id="ID_static_7" text="2001:DB8:CAFE:1::/64" x="32.6" y="337.95" width="120.15" align="left" bold="1" />
+			<element type="TEXT" id="ID_static_8" text="S0/0/0" x="192.35" y="171.35" width="35.95" align="left" />
+			<element type="TEXT" id="ID_static_9" text="S0/0/0" x="108.55" y="238.3" width="35.95" align="left" />
+			<element type="TEXT" id="ID_static_10" text="S0/0/1" x="325" y="235.3" width="35.95" align="left" />
+			<element type="TEXT" id="ID_static_11" text="G0/0" x="307.1" y="280.95" width="28" align="left" />
+			<element type="TEXT" id="ID_static_12" text="2001:DB8:CAFE:3::/64" x="279.95" y="337.95" width="120.15" align="left" bold="1" />
+			<element type="TEXT" id="ID_static_13" text="G0/0" x="59.6" y="280.95" width="28" align="left" />
+			<element type="TEXT" id="ID_static_14" text=":1" x="340.75" y="280.95" width="13.35" align="left" />
+			<element type="TEXT" id="ID_static_15" text=":2" x="169.55" y="171.35" width="13.35" align="left" />
+			<element type="TEXT" id="ID_static_16" text=":1" x="244.15" y="154.15" width="13.35" align="left" />
+			<element type="TEXT" id="ID_static_17" text=":1" x="87.2" y="235.3" width="13.35" align="left" />
+			<element type="TEXT" id="ID_static_18" text="Lo0" x="242.15" y="138.65" width="22.5" align="left" />
+			<element type="TEXT" id="ID_static_19" text=":1" x="234.95" y="171.35" width="13.35" align="left" />
+			<element type="TEXT" id="ID_static_20" text=":1" x="91.2" y="280.95" width="13.35" align="left" />
+			<element type="TEXT" id="ID_static_21" text=":2" x="332.95" y="148.15" width="13.35" align="left" />
+			<element type="TEXT" id="ID_static_22" text=":2" x="302.7" y="237.3" width="13.35" align="left" />
+			<element type="TEXT" id="ID_static_23" text="S0/0/1" x="259.35" y="171.35" width="35.95" align="left" />
+			<element type="TEXT" id="ID_static_24" text="FE80::1" x="18" y="259.4" width="43.85" align="right" color="#f68026" bold="1" />
+			<element type="TEXT" id="ID_static_25" text="FE80::3" x="362.95" y="258.5" width="43.85" align="left" color="#f68026" bold="1" />
+			<element type="TEXT" id="ID_static_26" text="FE80::2" x="148.3" y="149.35" width="43.85" align="right" color="#f68026" bold="1" />
+			<element type="TEXT" compId="ID_s1_txt02" x="351.3" y="147.35" width="78.7" expand="up+down" align="center" />
+			<element type="TEXT" compId="ID_s1_txt01" x="18" y="52" width="104.5" expand="down" align="left" />
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+ 
+		</slide>
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+			<element type="ROUTER" textId="ID_s2_staticText" width="428.05" height="246" x="6.55" y="47" />
+			 <element type="TEXT" compId="ID_s2_txt01" width="104" x="16.35" y="64.85" align="left" expand="right" />
+		</slide>
+		<slide>
+		<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+		<element type="ROUTER" textId="ID_s3_staticText" width="428.05" height="143" x="6.55" y="44.75" />
+		</slide>
+		 
+		 
+	</slide>
+	 <text id="ID_s2_staticText"><![CDATA[<pre>R1# <b>show ipv6 route ospf</b>
+IPv6 Routing Table - default - 8 entries
+Codes: 
+  C - Connected, L - Local, S - Static, U - Per-user Static route
+  B - BGP, R - RIP, H - NHRP, I1 - ISIS L1
+  I2 - ISIS L2, IA - ISIS interarea, IS - ISIS summary, D - EIGRP
+  EX - EIGRP external, ND - ND Default, NDp - ND Prefix, DCE - 
+   Destination
+  NDr - Redirect, O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF ext 1
+  OE2 - OSPF ext 2, ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2
+O   2001:DB8:CAFE:2::/64 [110/648]
+     via FE80::2, Serial0/0/0
+O   2001:DB8:CAFE:3::/64 [110/648]
+     via FE80::2, Serial0/0/0
+O   2001:DB8:CAFE:A002::/64 [110/1294]
+     via FE80::2, Serial0/0/0
+R1# 
+</pre>]]>
+  </text> 
+
+  <text id="ID_s3_staticText"><![CDATA[<pre>R2(config)# <b>ipv6 route ::/0 2001:DB8:FEED:1::2</b>
+R2(config)# 
+R2(config)# <b>ipv6 router ospf 10</b>
+R2(config-rtr)# <b>default-information originate </b>
+R2(config-rtr)# <b>end</b>
+R2# 
+*Apr 10 11:36:21.995: %SYS-5-CONFIG_I: Configured from console by console
+R2# </pre>]]>
+  </text> 
+  
+</data>

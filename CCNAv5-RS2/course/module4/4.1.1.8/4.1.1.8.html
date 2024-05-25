@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.1.8 Packet Tracer : utilisation de Traceroute pour détecter le réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.1.8_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration initiale d&#x0027;un routeur</h1>
+        <h2>Fonctions d&#x0027;un routeur</h2>
+      </div>
+      <div id="content">
+<p>L'entreprise pour laquelle vous travaillez vient d'acquérir une nouvelle filiale. Vous avez demandé une carte topologique du nouvel emplacement, mais il n'en existe visiblement pas. Vous disposez cependant d'un nom d'utilisateur et d'un mot de passe pour les périphériques réseau de cette nouvelle filiale et connaissez l'adresse Web de son serveur. Vous vérifierez ainsi la connectivité et utiliserez la commande <span class="cmd"><b>tracert</b></span> pour déterminer le chemin de l'emplacement. Vous vous connecterez au routeur de périphérie du nouvel emplacement pour déterminer les périphériques et les réseaux reliés. Dans le cadre de ce processus, vous utiliserez plusieurs commandes <span class="cmd"><b>show</b></span> pour collecter les informations nécessaires et terminer ainsi la documentation du schéma d'adressage IP et créer un schéma de la topologie.</p>
+<p></p>
+<p>
+<a href="../../files/4.1.1.8%20Packet%20Tracer%20-%20Using%20Traceroute%20to%20Discover%20the%20Network%20instructions.pdf" target="_blank">Packet Tracer - Instructions pour l'utilisation de Traceroute pour détecter le réseau</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/4.1.1.8%20Packet%20Tracer%20-%20Using%20Traceroute%20to%20Discover%20the%20Network.pka" target="_blank">Packet Tracer - Instructions pour l'utilisation de Traceroute pour détecter le réseau - PKA</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

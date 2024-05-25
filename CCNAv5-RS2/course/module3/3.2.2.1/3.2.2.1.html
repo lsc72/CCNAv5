@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.2.1 Configuration des liaisons trunk IEEE 802.1Q</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentations de VLAN</h1>
+        <h2>Trunks de VLAN</h2>
+      </div>
+      <div id="content">
+<p>Une trunk de VLAN est une liaison OSI de couche 2 entre deux commutateurs qui acheminent le trafic pour tous les VLAN (sauf si la liste des VLAN autorisés est limitée manuellement ou de façon dynamique). Pour activer les liaisons trunk, configurez les ports sur chaque extrémité de la liaison physique avec des ensembles parallèles de commandes. </p>
+<p></p>
+<p>Pour configurer un port de commutateur sur l'extrémité d'une liaison trunk, utilisez la commande <span class="cmd"><b>switchport mode trunk</b></span>. Avec cette commande, l'interface passe en mode trunking permanent. Le port entame une négociation DTP (Dynamic Trunking Protocol) pour convertir le lien en liaison trunk, même si l'interface connectée n'accepte pas ce changement. Le protocole DTP est décrit dans la rubrique suivante. Dans ce cours, la commande <span class="cmd"><b>switchport mode trunk</b></span> est la seule méthode appliquée pour la configuration de trunk. </p>
+<p></p>
+<p>La syntaxe de commande de Cisco IOS pour spécifier un autre VLAN natif que le VLAN 1 est indiquée dans la Figure 1. </p>
+<p></p>
+<p>Utilisez la commande <span class="cmd"><b>switchport trunk allowed vlan </b></span><span class="cmd"><i>vlan-list</i></span> de CISCO IOS pour préciser la liste des VLAN à autoriser sur la liaison trunk. </p>
+<p></p>
+<p>Sur la Figure 2, les VLAN 10, 20 et 30 prennent en charge les ordinateurs Personnel, Étudiant et Invité (PC1, PC2 et PC3). Le VLAN natif doit également être changé, et ne plus être le VLAN 1, mais n'importe quel autre VLAN tel que le VLAN 99. Par défaut, tous les VLAN sont autorisés sur une liaison trunk. La commande <span class="cmd"><b> switchport trunk allowed vlan </b></span>peut être utilisée pour limiter les VLAN autorisés. </p>
+<p></p>
+<p>Dans la Figure 3, le port F0/1 du commutateur S1 est configuré en tant que port trunk, le VLAN natif est le VLAN 99 et le trunk est configuré pour transmettre uniquement le trafic pour les VLAN 10, 20, 30 et 99.</p>
+<p></p>
+<p>
+<b>Remarque </b>: cette configuration suppose l'utilisation de commutateurs Cisco Catalyst 2960 exploitant automatiquement l'encapsulation 802.1Q sur les liaisons trunk. D'autres commutateurs peuvent nécessiter la configuration manuelle de l'encapsulation. Configurez toujours les deux extrémités d'une liaison trunk avec le même VLAN natif. Si la configuration du trunk 802.1Q n'est pas identique à chaque extrémité, le logiciel Cisco IOS signale des erreurs. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

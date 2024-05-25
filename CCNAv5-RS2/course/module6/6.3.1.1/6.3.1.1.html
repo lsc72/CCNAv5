@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.1.1 Adressage du réseau par classe</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Examen de CIDR et VLSM</h1>
+        <h2>Adressage par classe</h2>
+      </div>
+      <div id="content">
+<p>Publiés en 1981, les documents RFC 790 et RFC 791 décrivent la façon dont les adresses réseau IPv4 ont été initialement attribuées sur base d'un système de classification. Dans la spécification d'origine d'IPv4, les auteurs ont défini des classes afin de proposer trois tailles différentes de réseaux adaptées aux petites, moyennes et grandes entreprises. De ce fait, les adresses de classe A, B et C ont été définies avec un format spécifique pour les bits d'ordre haut. Les bits d'ordre haut sont les bits situés le plus à gauche dans une adresse 32 bits. </p>
+<p></p>
+<p>Comme indiqué dans la figure :</p>
+<p>
+<ul>
+<li>
+<b>Les adresses de classe A commencent par 0</b> - destinées aux grandes organisations ; inclut toutes les adresses comprises entre 0.0.0.0 (<b>0</b> 0000000) et 127.255.255.255 (<b>0</b>1111111). L'adresse 0.0.0.0 est réservée au routage par défaut et l'adresse 127.0.0.0 est réservée au test de boucle.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Les adresses de classe B commencent par 10</b> - destinées aux entreprises moyennes à grandes ; inclut toutes les adresses comprises entre 128.0.0.0 (<b>10</b>000000) et 191.255.255.255 (<b>10</b>111111). </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Les adresses de classe C commencent par 110</b> - destinées aux petites et moyennes entreprises ; inclut toutes les adresses comprises entre 192.0.0.0 (<b>110</b>00000) et 223.255.255.255 (<b>110</b>11111). </li>
+</ul>
+</p>
+<p></p>
+<p>Les adresses restantes sont réservées à la multidiffusion et aux utilisations futures. </p>
+<p>
+<ul>
+<li>
+<b>Les adresses de multidiffusion de classe D commencent par 1110</b> - les adresses de multidiffusion sont utilisées pour identifier un groupe d'hôtes faisant partie d'un groupe de multidiffusion. Cela permet de réduire la quantité de paquets traités par les hôtes, particulièrement sur les réseaux de diffusion (par exemple, les réseaux locaux Ethernet). Les protocoles de routage, tels que RIPv2, EIGRP et OSPF utilisent des adresses de multidiffusion désignées (RIP = 224.0.0.9, EIGRP = 224.0.0.10, OSPF 224.0.0.5 et 224.0.0.6). </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Les adresses IP réservées de classe E commencent par 1111</b> - ces adresses sont réservées à des fins expérimentales et à une utilisation future.</li>
+</ul>
+</p>
+<p></p>
+<p>Liens :</p>
+<p></p>
+<p>« Protocole Internet » (<a href="http://www.ietf.org/rfc/rfc791.txt" target="_blank">http://www.ietf.org/rfc/rfc791.txt</a>)</p>
+<p></p>
+<p>« Adresses de multidiffusion Internet » (<a href="http://www.iana.org/assignments/multicast-addresses" target="_blank">http://www.iana.org/assignments/multicast-addresses</a>)</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

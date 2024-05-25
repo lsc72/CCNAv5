@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.4.5 L&#x0027;attribution des adresses IP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.4.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Les types d&#x0027;adresses IPv4</h2>
+      </div>
+      <div id="content">
+<p>Pour que les hôtes réseau (par exemple les serveurs Web) des entreprises ou des organisations soient accessibles depuis Internet, les organisations et entreprises en question doivent disposer d'un bloc d'adresses publiques. N'oubliez pas que les adresses publiques doivent être uniques et que l'utilisation des adresses publiques est régulée et dépend de chaque organisation. Cela vaut pour les adresses IPv4 et IPv6. </p>
+<p></p>
+<p>
+<b>IANA et RIR</b>
+</p>
+<p>L'IANA (Internet Assigned Numbers Authority, <a href="http://www.iana.org/" target="_blank">http://www.iana.org</a>) gère l'attribution des adresses IPv4 et IPv6. Jusque dans le milieu des années 1990, l'ensemble de l'espace d'adressage IPv4 était géré directement par l'IANA. À cette époque, la gestion de l'espace d'adressage IPv4 restant était répartie entre différents autres registres, selon le type d'utilisation ou la zone géographique. Ces sociétés d'enregistrement s'appellent des registres Internet régionaux, comme présenté dans la figure.</p>
+<p></p>
+<p>Voici les principaux registres :</p>
+<p>
+<ul>
+<li>AfriNIC (African Network Information Centre) - Région Afrique <a href="http://www.afrinic.net/" target="_blank">http://www.afrinic.net</a></li>
+</ul>
+</p>
+<p>
+<ul>
+<li>APNIC (Asia Pacific Network Information Centre) - Région Asie/Pacifique <a href="http://www.apnic.net/" target="_blank">http://www.apnic.net</a></li>
+</ul>
+</p>
+<p>
+<ul>
+<li>ARIN (American Registry for Internet Numbers) - Région Amérique du Nord <a href="http://www.arin.net/" target="_blank">http://www.arin.net</a></li>
+</ul>
+</p>
+<p>
+<ul>
+<li>LACNIC (Regional Latin-American and Caribbean IP Address Registry) - Amérique du Sud et certaines îles des Caraïbes <a href="http://www.lacnic.net/" target="_blank">http://www.lacnic.net</a></li>
+</ul>
+</p>
+<p>
+<ul>
+<li>RIPE NCC (Réseaux IP européens) - Europe, Moyen Orient, Asie centrale <a href="http://www.ripe.net/" target="_blank">http://www.ripe.net</a></li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>FAI</b>
+</p>
+<p>Les RIR sont chargés d'attribuer des adresses IP aux FAI. La plupart des entreprises ou organisations obtiennent leur bloc d'adresses IPv4 auprès d'un FAI. Le FAI fournit généralement un petit nombre d'adresses IPv4 utilisables (6 ou 14) à leurs clients, dans le cadre des services d'accès qu'ils offrent. Il est possible d'obtenir, pour un coût supplémentaire, de plus grands blocs d'adresses sur base de justificatifs des besoins. </p>
+<p></p>
+<p>En quelque sorte, le FAI prête ou loue ces adresses. Lorsque nous changeons de FAI, le nouveau FAI nous fournit des adresses à partir des blocs d'adresses qui lui ont été attribués. L'ancien FAI retourne les blocs qu'il nous a prêtés à leur pool d'adresses, pour qu'un autre client puisse les emprunter.</p>
+<p></p>
+<p>Les adresses IPv6 peuvent être obtenues à partir du FAI ou, dans certains cas, directement à partir du RIR. La taille des adresses IPv6 et des blocs d'adresses standard sera abordée plus loin dans ce chapitre.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.1.1 Connexion au réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche physique</h1>
+        <h2>Mise en place de la connexion</h2>
+      </div>
+      <div id="content">
+<p>Que vous vous connectiez à une imprimante locale chez vous ou à un site Web dans un autre pays, avant que toute communication réseau puisse se produire, une connexion physique à un réseau local doit être établie. Une connexion physique peut être une connexion filaire par câble ou une connexion sans fil passant par les ondes radio. </p>
+<p></p>
+<p>Le type de connexion physique utilisé dépend entièrement de la configuration du réseau. Par exemple, dans de nombreuses entreprises, les employés ont des ordinateurs portables ou de bureau qui sont connectés physiquement à un commutateur partagé par l'intermédiaire d'un câble. Ce type de configuration correspond à un réseau filaire, dans lequel les données sont transmises à travers un câble physique.</p>
+<p></p>
+<p>Outre les connexions filaires, certaines entreprises proposent également des connexions sans fil pour les ordinateurs portables, les tablettes et les smartphones. Avec les périphériques sans fil, les données sont transmises par des ondes radio. Les connexions sans fil se développent à mesure que les particuliers comme les entreprises découvrent les avantages des services sans fil. Pour qu'il puisse proposer une connectivité sans fil, un réseau doit intégrer un point d'accès sans fil (WAP) permettant aux équipements de se connecter. </p>
+<p></p>
+<p>Les commutateurs et les points d'accès sans fil sont souvent deux périphériques dédiés distincts dans une configuration de réseau. Cependant, certains équipements proposent à la fois une connectivité filaire et sans fil. Par exemple, la plupart des particuliers utilisent des routeurs à services intégrés (ISR) chez eux, comme illustré à la Figure 1. Les ISR proposent un composant de commutation équipé de plusieurs ports, ce qui permet la connexion de plusieurs périphériques au réseau local (LAN) à l'aide de câbles, comme illustré à la Figure 2. En outre, de nombreux ISR intègrent un WAP qui permet également la connexion des périphériques sans fil. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

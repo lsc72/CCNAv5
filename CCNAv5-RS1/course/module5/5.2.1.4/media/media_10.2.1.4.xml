@@ -1,0 +1,184 @@
+﻿<textcomponents> <!-- topology -->
+	<component id="ID_txt01">
+		<text><![CDATA[<b>Hôte A</b><br>10.10.0.1<br><b><font color="#5FBC21">00-0d-88-c7-9a-24</font></b>]]></text>
+	</component>
+
+	<component id="ID_txt02">
+		<text><![CDATA[<b>Hôte B</b><br>10.10.0.2<br><b><font color="#5FBC21">00-08-a3-b6-ce-04</b></font></b>]]></text>
+	</component>
+
+	<component id="ID_txt03">
+		<text><![CDATA[<b>Hôte C</b><br>10.10.0.3<br><b><font color="#5FBC21">00-0d-56-09-fb-d1</b></font></b>]]></text>
+	</component>
+
+	<component id="ID_txt04">
+		<text><![CDATA[<b>Hôte&nbsp;D</b><br>10.10.0.4<br><b><font color="#5FBC21">00-12-3f-d4-6d-1b</b></font></b>]]></text>
+	</component>
+
+	<component id="ID_txt05">
+		<text><![CDATA[<b>R1 interface G0/0</b><br>10.10.0.254<br><b><font color="#5FBC21">00-10-7b-e7-fa-ef</font></b>]]></text>
+	</component>
+
+	<component id="ID_txt10">
+		<text><![CDATA[Réseau]]></text>
+	</component> <!-- slide 1 -->
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Processus&nbsp;ARP&nbsp;– Communication à distance</b>]]></text>
+	</component>
+	
+	<component id="ID_s1_txt02">
+		<text><![CDATA[L'hôte&nbsp;A veut envoyer des données à l'adresse IP 176.10.10.50, mais ne dispose pas d'une entrée ARP concernant la passerelle par défaut, dont l'adresse&nbsp;IP est 10.10.0.254.]]></text>
+	</component>
+	
+	<component id="ID_s1_txt03">
+		<text><![CDATA[<b>CACHE ARP de A</b>]]></text>
+	</component>
+	
+	<component id='ID_s1_table'>
+	<text><![CDATA[
+					<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4'>
+						<tr class="title">
+							<td bgcolor='#98D3D1' colspan='2' class="title"><font size='12' color='#1C3635'><b>Hôte&nbsp;A&nbsp;– Cache&nbsp;ARP</b></font></td>
+						</tr>
+						<tr class="liner">
+		<td colspan='2' bgcolor='#0E6360' class="mtable_top" class="mtable_top"><font size='1' color='#434321'><span style="color:#DAE17A">.</span></font></td>
+	</tr>
+					<tr>
+						<td bgcolor='#EFF8F7' valign="top"><font size="11" color="#393536">10.10.0.3</font></td>
+						<td bgcolor='#EFF8F7' valign="top"><font size="11" color="#393536">00-0d-56-09-fb-d1</font></td>
+					</tr>
+					<tr>
+						<td bgcolor='#EFF8F7' valign="top"><font size="11" color="#393536">&nbsp;</font></td>
+						<td bgcolor='#EFF8F7' valign="top"><font size="11" color="#393536">&nbsp;</font></td>
+					</tr>
+				</table>]]>
+			</text>
+	</component> <!-- slide 2 -->
+	<component id="ID_s2_title">
+		<text><![CDATA[<b>Diffusion d'une requête&nbsp;ARP</b>]]></text>
+	</component>
+
+	<component id="ID_s2_txt01">
+		<text><![CDATA[<b>CACHE ARP de A</b>]]></text>
+	</component>
+	
+	<component id="ID_s2_txt02">
+		<text><![CDATA[L'hôte&nbsp;A envoie une requête&nbsp;ARP pour obtenir l'adresse MAC associée à l'adresse&nbsp;IP 10.10.0.254.]]></text>
+	</component>
+
+	<component id='ID_s2_table'>
+	<text><![CDATA[
+					<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4'>
+						<tr class="title">
+							<td bgcolor='#98D3D1' colspan='2' class="title"><font size='12' color='#1C3635'><b>Hôte&nbsp;A&nbsp;– Cache&nbsp;ARP</b></font></td>
+						</tr>
+						<tr class="liner">
+		<td colspan='2' bgcolor='#0E6360' class="mtable_top" class="mtable_top"><font size='1' color='#434321'><span style="color:#DAE17A">.</span></font></td>
+	</tr>
+					<tr>
+						<td bgcolor='#EFF8F7' valign="top"><font size="11" color="#393536">10.10.0.3</font></td>
+						<td bgcolor='#EFF8F7' valign="top"><font size="11" color="#393536">00-0d-56-09-fb-d1</font></td>
+					</tr>
+					<tr>
+						<td bgcolor='#EFF8F7' valign="top"><font size="11" color="#393536">&nbsp;</font></td>
+						<td bgcolor='#EFF8F7' valign="top"><font size="11" color="#393536">&nbsp;</font></td>
+					</tr>
+				</table>]]>
+			</text>
+	</component> <!-- slide 3 -->
+<component id="ID_s3_title">
+<text><![CDATA[<b>Réponse&nbsp;ARP avec les informations MAC</b>]]></text>
+</component>
+
+<component id="ID_s3_txt01">
+<text><![CDATA[<b>CACHE ARP de A</b>]]></text>
+</component>
+
+<component id="ID_s3_txt02">
+<text><![CDATA[R1, dont l'adresse&nbsp;IP est 10.10.0.254, envoie une réponse&nbsp;ARP contenant l'adresse MAC de l'interface G0/0.]]></text>
+</component>
+<component id='ID_s3_table'>
+<text><![CDATA[
+				<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4'>
+					<tr class="title">
+						<td bgcolor='#98D3D1' colspan='2' class="title"><font size='12' color='#1C3635'><b>Hôte&nbsp;A&nbsp;– Cache&nbsp;ARP</b></font></td>
+					</tr>
+					<tr class="liner">
+		<td colspan='2' bgcolor='#0E6360' class="mtable_top" class="mtable_top"><font size='1' color='#434321'><span style="color:#DAE17A">.</span></font></td>
+	</tr>
+				<tr>
+					<td bgcolor='#EFF8F7' valign="top"><font size="11" color="#393536">10.10.0.3</font></td>
+					<td bgcolor='#EFF8F7' valign="top"><font size="11" color="#393536">00-0d-56-09-fb-d1</font></td>
+				</tr>
+				<tr>
+					<td bgcolor='#EFF8F7' valign="top"><font size="11" color="#393536">&nbsp;</font></td>
+					<td bgcolor='#EFF8F7' valign="top"><font size="11" color="#393536">&nbsp;</font></td>
+				</tr>
+			</table>]]>
+		</text>
+</component> <!-- slide 4 -->
+<component id="ID_s4_title">
+<text><![CDATA[<b>Ajout du mappage MAC vers IP dans le cache&nbsp;ARP</b>]]></text>
+</component>
+
+<component id="ID_s4_txt01">
+<text><![CDATA[<b>CACHE ARP de A</b>]]></text>
+</component>
+<component id="ID_s4_txt02">
+<text><![CDATA[L'hôte&nbsp;A ajoute le mappage d'adresse MAC vers IP à son cache&nbsp;ARP.]]></text>
+</component>
+<component id='ID_s4_table'>
+<text><![CDATA[
+				<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4'>
+					<tr class="title">
+						<td bgcolor='#98D3D1' colspan='2' class="title"><font size='12' color='#1C3635'><b>Hôte&nbsp;A&nbsp;– Cache&nbsp;ARP</b></font></td>
+					</tr>
+					<tr class="liner">
+		<td colspan='2' bgcolor='#0E6360' class="mtable_top" class="mtable_top"><font size='1' color='#434321'><span style="color:#DAE17A">.</span></font></td>
+	</tr>
+				<tr>
+					<td bgcolor='#EFF8F7' valign="top"><font size="11" color="#393536">10.10.0.3</font></td>
+					<td bgcolor='#EFF8F7' valign="top"><font size="11" color="#393536">00-0d-56-09-fb-d1</font></td>
+				</tr>
+				<tr>
+					<td bgcolor='#FAB37D' valign="top"><font size="11" color="#393536">10.10.0.254</font></td>
+					<td bgcolor='#FAB37D' valign="top"><font size="11" color="#393536">00-10-7b-e7-fa-ef</font></td>
+
+				</tr>
+			</table>]]>
+		</text>
+</component> <!-- slide 5 -->
+<component id="ID_s5_title">
+<text><![CDATA[<b>Transfert de données avec les informations d'adresse&nbsp;MAC</b>]]></text>
+</component>
+
+<component id="ID_s5_txt01">
+<text><![CDATA[<b>CACHE&nbsp;ARP de A<br/>10.10.0.3&nbsp;=&nbsp;00-0d-56-09-fb-d1</b>]]></text>
+</component>
+<component id="ID_s5_txt02">
+<text><![CDATA[L'hôte&nbsp;A transfère les données destinées à l'adresse&nbsp;176.10.10.50 à la passerelle par défaut pour qu'elle poursuive leur traitement.]]></text>
+</component>
+<component id='ID_s5_table'>
+<text><![CDATA[
+				<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4'>
+					<tr class="title">
+						<td bgcolor='#98D3D1' colspan='2' class="title"><font size='12' color='#1C3635'><b>Hôte&nbsp;A&nbsp;– Cache&nbsp;ARP</b></font></td>
+					</tr>
+					<tr class="liner">
+		<td colspan='2' bgcolor='#0E6360' class="mtable_top" class="mtable_top"><font size='1' color='#434321'><span style="color:#DAE17A">.</span></font></td>
+	</tr>
+				<tr>
+					<td bgcolor='#EFF8F7' valign="top"><font size="11" color="#393536">10.10.0.3</font></td>
+					<td bgcolor='#EFF8F7' valign="top"><font size="11" color="#393536">00-0d-56-09-fb-d1</font></td>
+				</tr>
+				<tr>
+					<td bgcolor='#EFF8F7' valign="top"><font size="11" color="#393536">10.10.0.254</font></td>
+					<td bgcolor='#EFF8F7' valign="top"><font size="11" color="#393536">00-10-7b-e7-fa-ef</font></td>
+				</tr>
+			</table>]]>
+		</text>
+</component>
+<component id="ID_s5_bubble01">
+<text><![CDATA[<p class="ID_s2_bubble01">Je vais transmettre le paquet en fonction des informations de ma table de routage.</p>]]></text>
+</component>
+</textcomponents>

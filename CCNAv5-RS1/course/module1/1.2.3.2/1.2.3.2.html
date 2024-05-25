@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.3.2 Intranet et extranet</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>LAN, WAN et Internet</h1>
+        <h2>Internet</h2>
+      </div>
+      <div id="content">
+<p>Il existe deux autres termes similaires au terme Internet :</p>
+<p>
+<ul>
+<li>Intranet</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Extranet</li>
+</ul>
+</p>
+<p></p>
+<p>Le terme intranet est souvent utilisé pour faire référence à un réseau LAN privé qui appartient à une entreprise ou une administration et auquel peuvent accéder uniquement ses membres, ses employés ou des tierces personnes autorisées. Un intranet est un interréseau qui n'est généralement accessible que depuis le site d'une entreprise. </p>
+<p></p>
+<p>Les entreprises peuvent publier sur un intranet des pages Web sur les événements internes, les politiques de santé et de sécurité, des lettres d'information destinées au personnel et un répertoire téléphonique du personnel. Par exemple, une école peut mettre en place un intranet qui inclut des informations sur les programmes de cours, le cursus en ligne et des forums de discussion. Un intranet permet généralement d'éliminer certains documents papier et d'accélérer les workflows. Un intranet peut être utilisé par le personnel travaillant en dehors du site de l'entreprise grâce à des connexions sécurisées au réseau interne.</p>
+<p></p>
+<p>Une entreprise peut utiliser un extranet pour fournir un accès sécurisé aux personnes qui travaillent pour d'autres entreprises, mais qui ont besoin des données de l'entreprise en question. Voici des exemples d'extranets :</p>
+<p>
+<ul>
+<li>Une société fournit un accès à des fournisseurs/sous-traitants externes.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Un hôpital propose un système pour que les médecins puissent planifier les rendez-vous avec leurs patients.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Un bureau local de formation fournit des informations sur le budget et le personnel aux écoles de la région. </li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

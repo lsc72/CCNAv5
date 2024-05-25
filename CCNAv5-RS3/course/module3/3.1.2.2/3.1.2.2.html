@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.2.2 Protocole PAgP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts d&#x0027;agrégation de liaisons</h1>
+        <h2>Fonctionnement des EtherChannel</h2>
+      </div>
+      <div id="content">
+<p>Des EtherChannel peuvent être formés par négociation en utilisant l'un des deux protocoles, PAgP ou LACP. Ces protocoles permettent à des ports ayant des caractéristiques similaires de former un canal grâce à une négociation dynamique avec les commutateurs attenants. </p>
+<p></p>
+<p>
+<b>Remarque </b>: il est également possible de configurer un EtherChannel statique ou inconditionnel sans PAgP ou LACP. </p>
+<p></p>
+<p>
+<b>PAgP</b>
+</p>
+<p>Le protocole PAgP est un protocole propriétaire de Cisco qui facilite la création automatique de liaisons EtherChannel. Quand une liaison EtherChannel est configurée grâce à PAgP, des paquets PAgP sont envoyés entre les ports compatibles EtherChannel pour négocier la formation d'un canal. Quand PAgP identifie des liaisons Ethernet associées, il groupe les liaisons dans un EtherChannel. L'EtherChannel est ensuite ajouté à l'arbre recouvrant comme port unique.</p>
+<p></p>
+<p>S'il est activé, PAgP gère également l'EtherChannel. Les paquets PAgP sont envoyés toutes les 30 secondes. PAgP vérifie la cohérence de la configuration et gère les ajouts de liaison et les défaillances entre deux commutateurs. Il garantit que tous les ports ont le même type de configuration quand un EtherChannel est créé.</p>
+<p></p>
+<p>
+<b>Remarque </b>: dans un EtherChannel, tous les ports doivent obligatoirement avoir une vitesse, un paramètre de bidirectionnalité et des informations VLAN identiques. Toute modification d'un port après la création du canal modifie également tous les autres ports du canal.</p>
+<p></p>
+<p>PAgP permet de créer la liaison EtherChannel en détectant la configuration de chaque côté et en assurant la compatibilité des liaisons, afin que la liaison EtherChannel puisse être activée si besoin. La figure illustre les modes pour PAgP.</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>On </b>: ce mode force l'interface à établir un canal sans PAgP. Les interfaces configurées en mode On (Activé) n'échangent pas de paquets PAgP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>PAgP desirable </b>: ce mode PAgP place une interface dans un état de négociation actif, dans lequel l'interface entame des négociations avec d'autres interfaces en envoyant des paquets PAgP.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>PAgP auto </b>: ce mode PAgP place une interface dans un état de négociation passif, dans lequel l'interface répond aux paquets PAgP qu'elle reçoit mais n'entame pas de négociation PAgP.</li>
+</ul>
+</p>
+<p></p>
+<p>Les modes doivent être compatibles de chaque côté. Si un côté est configuré pour être en mode Auto, il est placé dans un état passif et attend que l'autre côté entame la négociation EtherChannel. Si l'autre côté est également placé en mode Auto, la négociation ne commence jamais et l'EtherChannel ne se forme pas. Si tous les modes sont désactivés en utilisant la commande<span class="cmd"><b> no</b></span>, ou si aucun mode n'est configuré, l'EtherChannel est désactivé.</p>
+<p></p>
+<p>Le mode On (Activé) place manuellement l'interface dans un EtherChannel, sans aucune négociation. Cela fonctionne uniquement si l'autre côté est également placé en mode On (Activé). Si l'autre côté est configuré pour négocier les paramètres via PAgP, aucun EtherChannel ne se forme car le côté placé en mode On (Activé) ne négocie pas.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

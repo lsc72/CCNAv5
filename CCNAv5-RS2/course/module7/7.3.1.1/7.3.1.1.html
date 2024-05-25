@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.1.1 Mode de configuration RIP sur le routeur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage RIP et RIPng</h1>
+        <h2>Configuration du protocole RIP</h2>
+      </div>
+      <div id="content">
+<p>Bien que le protocole RIP soit rarement utilisé dans les réseaux modernes, il est utile en ce sens qu'il permet de comprendre les principes de base du routage de réseau. Pour cette raison, cette section donne un bref aperçu de la configuration des paramètres de base du protocole RIP et de la vérification du protocole RIPv2. </p>
+<p></p>
+<p>Examinez la topologie de référence dans la Figure 1 et la table d'adressage dans la Figure 2. Dans ce scénario, tous les routeurs ont été configurés avec les fonctionnalités de gestion de base et toutes les interfaces identifiées dans la topologie de référence sont configurées et activées. Aucune route statique n'est configurée et aucun protocole de routage n'est activé. Par conséquent, l'accès au réseau distant est actuellement impossible. Le protocole RIPv2 est utilisé comme protocole de routage dynamique. Pour activer le protocole RIP, utilisez la commande<span class="cmd"><b> router rip</b></span>, comme illustré dans la Figure 3. Cette commande ne lance pas automatiquement le processus RIP. À la place, il permet d'accéder au mode de configuration du routeur dans lequel les paramètres de routage RIP sont configurés. </p>
+<p></p>
+<p>Pour désactiver et éliminer le protocole RIP, utilisez la commande de configuration globale <span class="cmd"><b>no router rip</b></span>. Cette commande arrête le processus RIP et efface toutes les configurations RIP existantes. </p>
+<p></p>
+<p>La Figure 4 présente les différentes commandes RIP pouvant être configurées. Les mots-clés mis en évidence sont décrits dans cette section. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.1.5 TCP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole de couche Transport</h1>
+        <h2>Transport des données</h2>
+      </div>
+      <div id="content">
+<p>Comme indiqué précédemment, le protocole TCP est un protocole de transport fiable, ce qui signifie qu'il comprend des processus permettant d'assurer un acheminement fiable des données entre les applications par l'utilisation d'accusés de réception. Le transport TCP revient à envoyer des paquets qui sont suivis de la source à la destination. Si l'expédition de FedEx est divisée en plusieurs colis, un client peut vérifier en ligne l'ordre des livraisons. </p>
+<p></p>
+<p>Avec le protocole TCP, les trois fonctions de fiabilité de base sont :</p>
+<p>
+<ul>
+<li>le suivi des segments de données transmis ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>les accusés de réception des données ;</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>la retransmission des données n'ayant pas fait l'objet d'un accusé de réception. </li>
+</ul>
+</p>
+<p></p>
+<p>TCP découpe un message en petits morceaux appelés segments. Les segments, numérotés en séquence, sont ensuite passés au processus IP pour être assemblés en paquets. TCP conserve une trace du nombre de segments qui ont été envoyés à un hôte donné à partir d'une application spécifique. Si l'expéditeur ne reçoit pas d'accusé de réception au bout d'un certain temps, il suppose que les segments ont été perdus, et il les retransmet. Seule la partie du message qui a été perdue est renvoyée, pas l'intégralité. Sur l'hôte récepteur, TCP est responsable de la reconstitution des segments de message et de leur transmission à l'application. Les protocoles FTP (File Transfer Protocol et HTTP (Hypertext Transfer Protocol) sont des exemples d'applications qui utilisent le protocole TCP pour assurer l'acheminement des données.</p>
+<p></p>
+<p>Cliquez sur le bouton Lecture dans la figure pour voir une animation présentant des segments TCP transmis par l'expéditeur au destinataire.</p>
+<p></p>
+<p>Ces processus assurant la fiabilité augmentent la surcharge des ressources du réseau du fait des opérations d'accusé de réception, de suivi et de retransmission. Pour prendre en charge ces opérations assurant la fiabilité, un nombre plus important de données de contrôle est échangé entre les hôtes qui expédient et ceux qui reçoivent les données. Ces informations de contrôle sont contenues dans un en-tête TCP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

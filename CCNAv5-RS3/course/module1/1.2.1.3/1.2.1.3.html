@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.1.3 Débits de transfert</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sélection des périphériques réseau</h1>
+        <h2>Matériel de commutation</h2>
+      </div>
+      <div id="content">
+<p>Les débits de transfert définissent les capacités de traitement d'un commutateur en mesurant la quantité de données pouvant être traitée par seconde par le commutateur. Les gammes de commutateurs sont classées par débit de transfert, comme illustré par la figure. Le débit de transfert des commutateurs bas de gamme est inférieur à celui des commutateurs d'entreprise. Les débits de transfert constituent des facteurs importants lors de la sélection d'un commutateur. Si le débit de transfert de commutateur est trop faible, il ne peut pas convenir à une communication à la vitesse du câble à travers l'ensemble de ses ports de commutation. La vitesse du câble est le débit de données pouvant être atteint par chaque port Ethernet sur le commutateur. Les débits de données peuvent atteindre 100 Mbit/s, 1 Gbit/s, 10 Gbit/s ou 100 Gbit/s. </p>
+<p></p>
+<p>Par exemple, un commutateur gigabit 48 ports standard fonctionnant à la vitesse du câble produit un trafic de 48 Gbit/s. Si le commutateur prend uniquement en charge un débit de transfert de 32 Gbit/s, il ne peut pas fonctionner à la vitesse du câble simultanément à travers tous les ports. Heureusement, il est généralement inutile que les commutateurs de la couche d'accès fonctionnent à la vitesse du câble, car ils sont physiquement limités par leurs liens ascendants vers la couche de distribution. Cela signifie que des commutateurs moins coûteux et moins performants peuvent être utilisés dans la couche d'accès et que des commutateurs plus coûteux et plus performants peuvent être réservés aux couches de distribution et cœur de réseau, où le débit de transfert a un impact plus important sur les performances réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

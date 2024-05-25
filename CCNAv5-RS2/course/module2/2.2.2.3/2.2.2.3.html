@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.2.3 Attaques de sécurité courantes : utiliser le protocole CDP</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité du commutateur : gestion et implémentation</h1>
+        <h2>Problèmes de sécurité dans les LAN</h2>
+      </div>
+      <div id="content">
+<p>CDP (Cisco Discovery Protocol) est un protocole propriétaire que tous les périphériques Cisco peuvent utiliser. Le protocole CDP détecte tous les autres périphériques Cisco connectés directement, ce qui leur permet de procéder à la configuration automatique de leur connexion. Dans certains cas, la configuration et la connectivité sont ainsi simplifiées. </p>
+<p></p>
+<p>Par défaut, le protocole CDP est activé sur tous les ports de la plupart des routeurs et des commutateurs Cisco. Les informations CDP sont envoyées régulièrement via des diffusions non chiffrées. Ces informations sont mises à jour localement dans la base de données CDP de chaque périphérique. CDP étant un protocole de couche 2, les messages CDP ne sont pas propagés par les routeurs.</p>
+<p></p>
+<p>CDP renferme des informations sur le périphérique, notamment son adresse IP, la version du logiciel IOS, la plate-forme, les fonctions et le VLAN natif. Ces informations peuvent être utilisées par un pirate afin d'attaquer le réseau, généralement par une attaque de déni de service (DoS). </p>
+<p></p>
+<p>La figure montre une partie d'une capture d'écran de Wireshark sur laquelle le contenu d'un paquet CDP est visible. La version du logiciel Cisco IOS découverte par CDP permettrait notamment au pirate d'identifier quelques points vulnérables en matière de sécurité inhérents à cette version spécifique du logiciel IOS. Par ailleurs, comme le CDP n'est pas un protocole authentifié, un pirate est en mesure de créer de faux paquets CDP et de les envoyer à un périphérique Cisco connecté directement. </p>
+<p></p>
+<p>Il est recommandé de désactiver le protocole CDP sur les périphériques ou les ports sur lesquels il n'est pas requis, à l'aide de la commande de mode de configuration globale<span class="cmd"><b> no cdp run</b></span>. Le CDP peut être désactivé port par port.</p>
+<p></p>
+<p>
+<b>Attaques Telnet</b>
+</p>
+<p></p>
+<p>Le protocole Telnet n'est pas sécurisé, un pirate peut ainsi l'utiliser pour accéder à distance à un périphérique réseau Cisco. Il existe des outils à l'aide desquels un pirate informatique peut lancer une attaque de décodage en force des mots de passe des lignes vty sur le commutateur. </p>
+<p></p>
+<p>
+<b>Attaque de mot de passe en force </b>
+</p>
+<p></p>
+<p>La première phase de ce type d'attaque consiste pour le pirate à utiliser une liste de mots de passe courants, ainsi qu'un programme conçu pour tenter d'établir une session Telnet au moyen de chaque mot figurant dans la liste du dictionnaire. Si le mot de passe n'est pas découvert lors de la première phase, une seconde phase débute. Lors de la deuxième phase de l'attaque en force, le pirate fait appel à un programme chargé de créer des combinaisons de caractères séquentielles pour tenter de deviner le mot de passe. Lorsque le pirate dispose de suffisamment de temps, une attaque en force permet de décoder quasiment tous les mots de passe employés.</p>
+<p></p>
+<p>Pour vous prémunir contre les attaques en force, utiliser des mots de passe forts et changez-les régulièrement. Un mot de passe fort doit être constitué de lettres majuscules et minuscules, de chiffres et de symboles (caractères spéciaux). L'accès aux lignes vty peut également être limité à l'aide d'une liste de contrôle d'accès.</p>
+<p></p>
+<p>
+<b>Attaque DoS Telnet</b>
+</p>
+<p></p>
+<p>Telnet peut également être utilisé pour lancer une attaque de déni de service (DoS). Dans une attaque DoS Telnet, le pirate exploite une faille d'un logiciel serveur Telnet exécuté sur le commutateur qui rend le service Telnet indisponible. Ce type d'attaque empêche l'administrateur d'accéder à distance aux fonctions de gestion du commutateur. Ce type d'attaque peut être combiné avec d'autres attaques directes sur le réseau dans le cadre d'une tentative coordonnée pour empêcher l'administrateur réseau d'accéder à des périphériques principaux pendant une faille de sécurité.</p>
+<p></p>
+<p>Les vulnérabilités du service Telnet qui autorisent les attaques DoS sont généralement traitées au moyen de correctifs de sécurité inclus dans les nouvelles versions révisées du logiciel Cisco IOS.</p>
+<p></p>
+<p>
+<b>Remarque </b>: les meilleures pratiques recommandent d'utiliser SSH et non Telnet pour les connexions de gestion à distance.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

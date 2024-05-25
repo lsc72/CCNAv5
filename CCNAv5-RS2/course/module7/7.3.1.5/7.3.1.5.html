@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.1.5 Désactivation de la récapitulation automatique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage RIP et RIPng</h1>
+        <h2>Configuration du protocole RIP</h2>
+      </div>
+      <div id="content">
+<p>Comme l'illustre la Figure 1, le protocole RIPv2 récapitule automatiquement les réseaux au niveau des périphéries du réseau principal par défaut, tout comme le protocole RIPv1. </p>
+<p></p>
+<p>Pour modifier le comportement par défaut de récapitulation automatique du protocole RIPv2, utilisez la commande du mode de configuration de routeur <span class="cmd"><b>no auto-summary </b></span>comme illustré dans la Figure 2. Cette commande n'a aucun effet lors de l'utilisation du protocole RIPv1. Une fois la récapitulation automatique désactivée, le protocole RIPv2 ne récapitule plus les réseaux dans leur adresse par classe au niveau des routeurs de périphérie. RIPv2 inclut maintenant tous les sous-réseaux et leurs masques appropriés dans ses mises à jour de routage. La commande<span class="cmd"><b> show ip protocols </b></span>indique à présent que la récapitulation réseau automatique n'est pas en vigueur (<span class="cmd">automatic network summarization is not in effect</span>). </p>
+<p></p>
+<p>
+<b>Remarque :</b> le protocole RIPv2 doit être activé avant la désactivation de la récapitulation automatique. </p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe dans la Figure 3 pour désactiver la récapitulation automatique sur R2 et R3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

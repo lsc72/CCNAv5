@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.3.1.3 Résumé</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.3.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Lorsqu'un commutateur LAN Cisco est mis sous tension pour la première fois, il exécute la séquence de démarrage suivante :</p>
+<p></p>
+<p>1. D'abord, le commutateur exécute un programme de Power-On Self Test (POST) stocké dans la mémoire ROM. Le POST contrôle le sous-système du processeur. Il teste le processeur, la mémoire vive dynamique et la partie du périphérique flash qui compose le système de fichiers flash.</p>
+<p>2. Le commutateur exécute ensuite le bootloader. Le bootloader est un petit programme stocké dans la mémoire morte et exécuté immédiatement après la réussite du POST.</p>
+<p>3. Il effectue l'initialisation de bas niveau du processeur. Il initialise les registres du processeur qui contrôlent l'emplacement auquel la mémoire physique est mappée, la quantité de mémoire et sa vitesse. </p>
+<p>4. Le bootloader initialise le système de fichiers flash sur la carte système. </p>
+<p>5. Enfin, il localise et charge une image de logiciel du système d'exploitation IOS par défaut dans la mémoire et transfère le contrôle du commutateur à l'IOS. </p>
+<p></p>
+<p>Le fichier Cisco IOS spécifique chargé est spécifié par la variable d'environnement BOOT. Une fois le logiciel Cisco IOS chargé, il utilise les commandes qui se trouvent dans le fichier de configuration initiale pour configurer les interfaces. Si les fichiers du logiciel Cisco IOS sont manquants ou endommagés, le bootloader peut être utilisé pour procéder au redémarrage ou à la récupération suite à un problème.</p>
+<p></p>
+<p>L'état opérationnel du commutateur est affiché par une série de LED sur le panneau avant. Ces LED affichent des informations telles que l'état des ports, la bidirectionnalité et la vitesse.</p>
+<p></p>
+<p>Une adresse IP est configurée sur l'interface SVI du VLAN de gestion afin de permettre la configuration à distance du périphérique. Une passerelle par défaut appartenant au VLAN de gestion doit être configurée sur le commutateur à l'aide de la commande <span class="cmd"><b>ip default-gateway</b></span>. Si la passerelle par défaut n'est pas correctement configurée, la gestion à distance est impossible. Il est recommandé d'utiliser Secure Shell (SSH) pour créer une connexion de gestion sécurisée (chiffrée) vers un périphérique distant, afin d'éviter que les noms d'utilisateur et les mots de passe non chiffrés ne soient interceptés. Certains protocoles, notamment Telnet, ne permettent pas de se prémunir contre ces interceptions. </p>
+<p></p>
+<p>Les commutateurs présentent l'avantage de prendre en charge les communications bidirectionnelles simultanées entre les périphériques, doublant ainsi le débit effectif des communications. Bien qu'il soit possible de spécifier les paramètres de vitesse et de bidirectionnalité d'une interface de commutateur, il est recommandé de laisser le commutateur procéder à ces réglages automatiquement afin d'éviter toute erreur.</p>
+<p></p>
+<p>La sécurité des ports est nécessaire pour éviter les attaques, notamment par inondation d'adresses MAC et par usurpation de DHCP. Les ports de commutateur doivent être configurés de sorte à autoriser uniquement les trames provenant d'adresses MAC sources spécifiques. Les trames provenant d'adresses MAC inconnues doivent être refusées et entraîner la désactivation du port de sorte afin d'éviter toute attaque supplémentaire.</p>
+<p></p>
+<p>La sécurité des ports ne constitue qu'une des méthodes permettant de se prémunir contre les attaques sur le réseau. Pour protéger au mieux un réseau, observez les 10 meilleures pratiques suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>Développez une stratégie de sécurité écrite pour l'organisation.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Arrêtez les services et les ports inutilisés.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Utilisez des mots de passe forts et modifiez-les souvent.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Contrôlez l'accès physique aux périphériques.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Évitez de vous connecter à des sites Web HTTP non sécurisés. Préférez les écrans de connexion qui utilisent le protocole HTTPS.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Effectuez des sauvegardes et testez les fichiers enregistrés de façon régulière.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Éduquez les employés à propos des attaques par manipulation psychologique, et développez des stratégies de validation des identités par téléphone, par e-mail, et en personne.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Chiffrez les données sensibles et protégez-les avec un mot de passe fort.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Implémentez des logiciels et des matériels de sécurité, tels que des pare-feu.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Veillez à mettre le logiciel Cisco IOS à jour en installant les correctifs de sécurité chaque semaine voire chaque jour, si possible.</li>
+</ul>
+</p>
+<p></p>
+<p>Ces méthodes sont uniquement un point de départ pour la gestion de la sécurité. Les entreprises doivent constamment rester vigilantes pour se défendre contre des menaces en constante évolution.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

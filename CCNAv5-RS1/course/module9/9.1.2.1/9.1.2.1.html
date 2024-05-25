@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.2.1 Le plan</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmenter un réseau IPv4 en sous-réseaux</h1>
+        <h2>La segmentation en sous-réseaux IP est fondamentale</h2>
+      </div>
+      <div id="content">
+<p>Comme l'illustre la figure, la planification des sous-réseaux nécessite d'étudier les besoins de l'entreprise en termes d'utilisation du réseau et la structure appropriée des sous-réseaux. L'étude des besoins réseau constitue le point de départ. Cela revient à examiner l'ensemble du réseau et à déterminer les principales divisions du réseau et leur segmentation. Pour dresser le plan d'adressage, il convient de définir les besoins de chaque sous-réseau concernant les critères suivants : taille, nombre d'hôtes par sous-réseau, méthode d'attribution des adresses d'hôte, hôtes nécessitant des adresses IP statiques et hôtes pouvant utiliser le protocole DHCP pour obtenir leurs informations d'adressage.</p>
+<p></p>
+<p>La taille du sous-réseau nécessite de prévoir le nombre d'hôtes qui auront besoin d'adresses d'hôte IP dans chaque sous-réseau du réseau privé subdivisé. Par exemple, dans une conception de réseau de campus, vous pouvez déterminer combien d'hôtes seront nécessaires sur les réseaux locaux de l'administration, de la faculté et des étudiants. Dans un réseau domestique, vous pouvez définir combien d'hôtes existent sur le réseau domestique local et combien appartiennent au réseau local du bureau à domicile.</p>
+<p></p>
+<p>Comme indiqué précédemment, le choix de la plage d'adresses IP privées utilisée sur un réseau local appartient à l'administrateur réseau et doit être établi avec soin pour garantir que suffisamment d'adresses d'hôte seront disponibles à la fois pour les hôtes actuellement connus et pour les extensions futures. Souvenez-vous que les plages d'adresses IP privées sont les suivantes : </p>
+<p></p>
+<p>
+<ul>
+<li>10.0.0.0 avec le masque de sous-réseau 255.0.0.0</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>172.16.0.0 avec le masque de sous-réseau 255.240.0.0</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>192.168.0.0 avec le masque de sous-réseau 255.255.0.0</li>
+</ul>
+</p>
+<p></p>
+<p>Le nombre d'adresses IP requises déterminera la ou les plages d'adresses d'hôte à utiliser. La segmentation en sous-réseaux de l'espace d'adresses IP privées sélectionné vous fournira les adresses d'hôte permettant de répondre aux besoins de votre réseau.</p>
+<p></p>
+<p>Les adresses publiques utilisées pour se connecter à Internet sont généralement attribuées par un fournisseur d'accès. Par conséquent, même si les mêmes principes de segmentation s'appliquent, cette opération n'est généralement pas la responsabilité de l'administrateur réseau de l'entreprise.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

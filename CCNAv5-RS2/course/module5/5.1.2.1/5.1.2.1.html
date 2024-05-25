@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.2.1 Configuration du routage inter-VLAN existant : préparation</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout; 
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du routage inter-VLAN</h1>
+        <h2>Configuration du routage inter-VLAN existant</h2>
+      </div>
+      <div id="content">
+<p>Avec le routage inter-VLAN existant, les routeurs doivent posséder plusieurs interfaces physiques. Le routeur effectue le routage en ayant chacune de ses interfaces physiques connectées à un VLAN unique. Chaque interface est également configurée avec une adresse IP pour le sous-réseau associé au VLAN particulier auquel elle est connectée. En configurant les adresses IP sur les interfaces physiques, les périphériques réseau connectés à chacun des VLAN peuvent communiquer avec le routeur en utilisant l'interface physique connectée au même VLAN. Dans cette configuration, les périphériques réseau peuvent utiliser le routeur comme passerelle pour accéder aux périphériques connectés aux autres VLAN.</p>
+<p></p>
+<p>Le processus de routage a besoin du périphérique source pour déterminer si le périphérique de destination est local ou distant par rapport au sous-réseau local. Le périphérique source accomplit ceci en comparant les adresses IP source et de destination par rapport au masque de sous-réseau. Quand on a déterminé que l'adresse IP de destination se trouve sur un réseau distant, le périphérique source doit identifier où il doit transférer le paquet pour atteindre le périphérique de destination. Le périphérique source examine la table de routage locale pour déterminer où il doit envoyer les données. Les périphériques utilisent leur passerelle par défaut comme destination de couche 2 pour tout le trafic devant quitter le sous-réseau local. La passerelle par défaut est la route utilisée par le périphérique quand il ne dispose d'aucune autre route définie de manière explicite vers le réseau de destination. L'adresse IP de l'interface de routeur sur le sous-réseau local agit comme passerelle par défaut pour le périphérique émetteur.</p>
+<p></p>
+<p>Une fois que le périphérique source a déterminé que le paquet doit passer par l'interface de routeur locale sur le VLAN connecté, il envoie une requête ARP pour déterminer l'adresse MAC de cette interface. Lorsque le routeur renvoie sa réponse ARP au périphérique source, ce dernier peut utiliser l'adresse MAC pour finir le tramage du paquet avant son envoi sur le réseau comme trafic de monodiffusion.</p>
+<p></p>
+<p>Comme la trame Ethernet comporte l'adresse MAC de destination de l'interface de routeur, le commutateur sait exactement par quel port de commutateur transférer le trafic de monodiffusion pour atteindre l'interface de routeur sur ce VLAN. Quand la trame arrive sur le routeur, ce dernier retire les informations d'adresse MAC source et de destination pour examiner l'adresse IP de destination du paquet. Il compare l'adresse de destination aux entrées de sa table de routage pour déterminer où il doit transférer les données pour atteindre sa destination finale. Si le routeur détermine que le réseau de destination est un réseau connecté localement, comme c'est le cas dans le routage inter-VLAN, il envoie une requête ARP de l'interface physiquement connectée au VLAN de destination. Le périphérique de destination répond au routeur avec son adresse MAC, que le routeur utilise alors pour tramer le paquet. Le routeur envoie ensuite le trafic de monodiffusion au commutateur, qui le transmet par le port sur lequel est connecté le périphérique de destination.</p>
+<p></p>
+<p>Cliquez sur le bouton Lecture dans la figure pour visualiser le routage inter-VLAN existant.</p>
+<p></p>
+<p>Bien que le processus de routage inter-VLAN dans lequel deux périphériques de VLAN différents communiquent via un routeur comporte de nombreuses étapes, il se produit intégralement en une fraction de seconde.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

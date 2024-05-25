@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.4.4 Fonction d&#x0027;historique de commande</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.4.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration initiale d&#x0027;un routeur</h1>
+        <h2>Vérification de la connectivité des réseaux connectés directement</h2>
+      </div>
+      <div id="content">
+<p>La fonction d'historique de commande est utile, car elle stocke provisoirement la liste des commandes exécutées pour permettre leur réutilisation. </p>
+<p></p>
+<p>Pour réutiliser des commandes de l'historique, appuyez sur <b>Ctrl</b> + <b>P</b> ou la flèche <b>Haut</b>. Le résultat de la commande commence par la commande la plus récente. Appuyez plusieurs fois sur ces touches pour rappeler des commandes plus anciennes. Pour revenir à une commande plus récente dans l'historique, appuyez sur <b>Ctrl</b> + <b>N</b> ou sur la flèche <b>Bas</b>. Appuyez plusieurs fois sur ces touches pour rappeler des commandes plus récentes.</p>
+<p></p>
+<p>Par défaut, l'historique de commande est activé et le système enregistre les 10 dernières lignes de commande dans sa mémoire tampon. Utilisez la commande d'exécution privilégiée <span class="cmd"><b>show history</b></span> pour afficher le contenu de la mémoire tampon.</p>
+<p></p>
+<p>Cette commande permet également d'augmenter le nombre de lignes de commande que l'historique enregistre uniquement au cours de la session de terminal en cours. Utilisez la commande d'exécution utilisateur <span class="cmd"><b>terminal history size</b></span> pour augmenter ou réduire la taille du tampon.</p>
+<p></p>
+<p>La Figure 1 présente un exemple des commandes <span class="cmd"><b>terminal history size</b></span> et <span class="cmd"><b>show history</b></span>.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 2 pour mettre en pratique les deux commandes d'exécution.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

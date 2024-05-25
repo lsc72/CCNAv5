@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.1.2 Envoi d&#x0027;un paquet</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Décisions de routage</h1>
+        <h2>Commutation des paquets entre les réseaux</h2>
+      </div>
+      <div id="content">
+<p>Dans l'animation de la figure, le PC1 envoie un paquet au PC2. Le PC1 doit déterminer si l'adresse IPv4 de destination se trouve sur le même réseau. Le PC1 détermine son propre sous-réseau par le biais d'une opération <b>AND</b> sur sa propre adresse IPv4 et son propre masque de sous-réseau. Il obtient l'adresse réseau à laquelle le PC1 appartient. Le PC1 renouvelle ensuite cette opération <b>AND</b> en utilisant son masque de sous-réseau et l'adresse IPv4 de destination du paquet. </p>
+<p></p>
+<p>Si l'adresse du réseau de destination correspond au même réseau que celui du PC1, ce dernier n'utilise pas la passerelle par défaut. Le PC1 se réfère alors à son cache ARP pour obtenir l'adresse MAC du périphérique avec cette adresse IPv4 de destination. Si l'adresse MAC ne figure pas dans le cache, le PC1 génère une requête ARP pour obtenir l'adresse afin de compléter le paquet et de l'envoyer vers la destination. Si l'adresse du réseau de destination se trouve sur un autre réseau, le PC1 transmet le paquet à sa passerelle par défaut.</p>
+<p></p>
+<p>Pour déterminer l'adresse MAC de la passerelle par défaut, le PC1 recherche dans sa table ARP l'adresse IPv4 de la passerelle par défaut et son adresse MAC associée.</p>
+<p></p>
+<p>S'il n'existe pas d'entrée ARP dans la table ARP pour la passerelle par défaut, le PC1 envoie une requête ARP. Le routeur R1 renvoie une réponse ARP. Le PC1 peut alors transférer le paquet à l'adresse MAC de la passerelle par défaut, l'interface Fa0/0 du routeur R1.</p>
+<p></p>
+<p>Un processus similaire est utilisé pour les paquets IPv6. À la place du processus ARP, la résolution d'adresses IPv6 utilise des messages d'annonce de voisin et de sollicitation de voisin ICMPv6. Le mappage d'adresses IPv6/MAC est conservé dans une table identique au cache ARP, appelée cache des voisins.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

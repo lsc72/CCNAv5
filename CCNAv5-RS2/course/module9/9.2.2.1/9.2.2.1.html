@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.2.1 Modification des listes de contrôle d&#x0027;accès standard numérotées</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Listes de contrôle d&#x0027;accès IPv4 standard </h1>
+        <h2>Modification des listes de contrôle d&#x0027;accès IPv4</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Édition des listes de contrôle d'accès numérotées</b>
+</p>
+<p></p>
+<p>Lorsque vous configurez une liste de contrôle d'accès standard, les instructions sont ajoutées à la configuration en cours. Cependant, il n'existe aucune fonction d'édition intégrée vous permettant de modifier une liste de contrôle d'accès. </p>
+<p></p>
+<p>Les listes de contrôle d'accès standard numérotées peuvent être modifiées de deux façons. </p>
+<p></p>
+<p>
+<b>Méthode 1 : à l'aide d'un éditeur de texte</b>
+</p>
+<p></p>
+<p>Si vous êtes habitué à créer et à modifier des listes de contrôle d'accès, il peut être plus facile de les rédiger dans un éditeur de texte tel que le Bloc-notes Microsoft. Ainsi, vous pourrez créer ou modifier une liste, puis la coller dans la configuration du routeur. Si vous souhaitez modifier une liste de contrôle d'accès existante, vous pouvez utiliser la commande <span class="cmd"><b>show running-config</b></span> pour afficher la liste de contrôle d'accès, la copier/coller dans un éditeur de texte, effectuer les changements nécessaires, puis la coller à nouveau dans la configuration. </p>
+<p></p>
+<p>
+<b>Configuration</b> : supposons, par exemple, que l'adresse d'hôte IPv4 de la figure a été mal saisie. L'hôte 192.168.10.99 a été entré alors que c'est l'hôte 192.168.10.10 qui aurait du l'être. Voici la procédure à suivre pour modifier et corriger l'ACL 1 :</p>
+<p></p>
+<p>
+<b>Étape 1. </b>Affichez la liste de contrôle d'accès à l'aide de la commande <span class="cmd"><b>show running-config</b></span>. L'exemple de la figure utilise le mot-clé <span class="cmd"><b>include</b></span> (inclure) pour afficher uniquement les ACE.</p>
+<p></p>
+<p>
+<b>Étape 2. </b>Mettez en surbrillance la liste de contrôle d'accès, copiez-la, puis collez-la dans le Bloc-notes Microsoft. Modifiez la liste comme nécessaire. Une fois que la liste de contrôle d'accès est correcte dans le Bloc-notes Microsoft, mettez-la en surbrillance et copiez-la.</p>
+<p></p>
+<p>
+<b>Étape 3. </b>En mode de configuration globale, supprimez la liste d'accès à l'aide de la commande <span class="cmd"><b>no access-list 1</b></span>. Sinon, les nouvelles instructions sont ajoutées à la liste de contrôle d'accès existante. Collez ensuite la nouvelle liste de contrôle d'accès dans la configuration du routeur.</p>
+<p></p>
+<p>
+<b>Étape 4. </b>Vérifiez les modifications à l'aide de la commande <span class="cmd"><b>show running-config</b></span>.</p>
+<p></p>
+<p>Remarque : l'effet de la commande <span class="cmd"><b>no access-list</b></span> est différent selon la version du logiciel IOS. Si la liste de contrôle d'accès qui a été supprimée est toujours appliquée à une interface, certaines versions d'IOS agissent comme si aucune liste de contrôle d'accès ne protégeait votre réseau tandis que d'autres refusent tout le trafic. Il est donc recommandé de supprimer de l'interface la référence à la liste d'accès avant de la modifier. En outre, si la nouvelle liste contient une erreur, désactivez-la et corrigez le problème. Dans ce cas, sachez que le réseau est dépourvu de toute liste de contrôle d'accès lors du processus de correction.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

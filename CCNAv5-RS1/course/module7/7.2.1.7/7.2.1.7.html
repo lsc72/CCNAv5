@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.1.7 Analyse de l&#x0027;interruption d&#x0027;une session TCP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.1.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>TCP et UDP</h1>
+        <h2>Communication TCP</h2>
+      </div>
+      <div id="content">
+<p>Pour mettre fin à une connexion, l'indicateur de contrôle FIN (Finish) doit être défini dans l'en-tête de segment. Pour mettre fin à chaque session TCP unidirectionnelle, on utilise un échange en deux étapes, constitué d'un segment FIN et d'un segment ACK. Par conséquent, pour mettre fin à une seule conversation TCP, quatre échanges sont nécessaires pour mettre fin aux deux sessions (voir la Figure 1).</p>
+<p></p>
+<p>
+<b>Remarque</b> : les termes client et serveur sont utilisés ici pour simplifier l'explication, mais le processus d'interruption peut être initié par n'importe lequel des deux hôtes ayant une session ouverte :</p>
+<p></p>
+<p>
+<b>Étape 1</b> : quand le client n'a plus de données à envoyer dans le flux, il envoie un segment dont l'indicateur FIN est défini.</p>
+<p></p>
+<p>
+<b>Étape 2</b> : le serveur envoie un segment ACK pour informer de la bonne réception du segment FIN, afin de fermer la session du client au serveur.</p>
+<p></p>
+<p>
+<b>Étape 3</b> : le serveur envoie un segment FIN au client pour mettre fin à la session du serveur au client.</p>
+<p></p>
+<p>
+<b>Étape 4</b> : le client répond à l'aide d'un segment ACK pour accuser réception du segment FIN envoyé par le serveur.</p>
+<p></p>
+<p>Quand le client n'a plus aucune donnée à transférer, il définit l'indicateur FIN dans l'en-tête d'un segment. Ensuite, le serveur de la connexion envoie un segment normal contenant des données dont l'indicateur ACK est défini en utilisant le numéro d'accusé de réception, confirmant ainsi que tous les octets de données ont été reçus. Quand la réception de tous les segments a été confirmée, la session est fermée.</p>
+<p></p>
+<p>La session dans l'autre sens est fermée selon le même processus. Le récepteur indique qu'il n'y a plus de données à envoyer en définissant l'indicateur FIN dans l'en-tête d'un segment envoyé à la source. Un accusé de réception confirme que tous les octets de données ont été reçus et que cette session, à son tour, se ferme.</p>
+<p></p>
+<p>Voir les figures 2 et 3 pour voir les indicateurs de contrôle FIN et ACK définis dans l'en-tête de segment, permettant ainsi l'interruption d'une session HTTP.</p>
+<p></p>
+<p>Il est également possible de fermer la connexion à l'aide d'une connexion en trois étapes. Quand le client n'a plus de données à envoyer, il envoie un segment FIN au serveur. Si le serveur n'a plus de données à envoyer, il peut répondre en définissant les indicateurs FIN et ACK simultanément et en combinant ainsi deux étapes en une. Le client répond par un segment ACK.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

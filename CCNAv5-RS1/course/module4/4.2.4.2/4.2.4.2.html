@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.2.4.2 Types de support sans fil</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.2.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Supports réseau</h1>
+        <h2>Supports sans fil</h2>
+      </div>
+      <div id="content">
+<p>L'IEEE et les normes de l'industrie des télécommunications en matière de communication de données sans fil couvrent à la fois les couches liaison de données et physique. </p>
+<p></p>
+<p>Trois normes de communications de données courantes s'appliquent aux supports sans fil :</p>
+<p>
+<ul>
+<li>
+<b>Norme IEEE 802.11</b> : la technologie LAN sans fil (WLAN), plus communément appelée Wi-Fi, utilise un système avec gestion des conflits ou non déterministe et un processus d'accès au support CSMA/CA (Carrier Sense Multiple Access/Collision Avoidance).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Norme IEEE 802.15</b> : la norme relative au réseau personnel sans fil (WPAN), couramment appelée Bluetooth, utilise un processus de jumelage de périphériques pour communiquer sur des distances de 1 à 100 mètres.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Norme IEEE 802.16</b> : la technologie d'accès couramment appelée WiMAX (Worldwide Interoperability for Microwave Access) utilise une topologie point-à-multipoint pour fournir un accès à large bande sans fil.</li>
+</ul>
+</p>
+<p></p>
+<p>La figure présente certaines des différences qui existent entre les supports sans fil.</p>
+<p></p>
+<p>
+<b>Remarque</b> : d'autres technologies sans fil telles que les communications par satellite ou cellulaires peuvent également fournir une connectivité au réseau de données. Cependant, ces technologies sans fil ne sont pas traitées dans ce chapitre.</p>
+<p></p>
+<p>Dans chacun des exemples ci-dessus, des spécifications de couche physique sont appliquées à des domaines : </p>
+<p>
+<ul>
+<li>Codage des données en signal radio</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Fréquence et puissance de transmission</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Besoins relatifs à la réception et au décodage des signaux</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Conception et mise en service des antennes</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque</b> : Wi-Fi est une marque déposée de la de Wi-Fi Alliance. L'appellation Wi-Fi est utilisée sur des produits certifiés appartenant à des périphériques WLAN basés sur les normes IEEE 802.11. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

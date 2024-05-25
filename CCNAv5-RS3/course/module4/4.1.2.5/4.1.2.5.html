@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.2.5 Solutions pour déploiements sans fil de petite taille</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts de la technologie sans fil</h1>
+        <h2>Composants de WLAN</h2>
+      </div>
+      <div id="content">
+<p>Pour les déploiements sans fil à petite échelle, Cisco propose les solutions de points d'accès sans fil autonomes suivantes :</p>
+<p>
+<ul>
+<li>
+<b>Cisco WAP4410N AP</b> : cette solution est idéale pour les petites entreprises nécessitant deux points d'accès et prenant en charge un petit groupe d'utilisateurs.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Cisco WAP121 AP et WAP321 AP</b> : ces solutions de point d'accès sont idéales pour les petites entreprises qui souhaitent simplifier leur déploiement sans fil avec la mise en place de plusieurs points d'accès.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Cisco AP541N AP</b> : cette solution est idéale pour les PME/PMI recherchant un cluster de points d'accès robuste et facile à gérer.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: la plupart des solutions de point d'accès professionnelles prennent en charge PoE. </p>
+<p></p>
+<p>La Figure 1 présente un récapitulatif des solutions de points d'accès Cisco pour petites entreprises.</p>
+<p></p>
+<p>La Figure 2 présente un exemple de topologie de réseau pour petite entreprise, utilisant des points d'accès WAP4410N AP. Chaque point d'accès est configuré et géré individuellement. Cela peut devenir problématique lorsque plusieurs points d'accès sont nécessaires.</p>
+<p></p>
+<p>C'est la raison pour laquelle les points d'accès WAP121, WAP321 et AP541N prennent en charge la mise en cluster des points d'accès sans passer par un contrôleur. Le cluster offre un point d'administration unique et permet à l'administrateur de visualiser le déploiement des points d'accès sous la forme d'un réseau sans fil unique, plutôt que comme un ensemble de périphériques sans fil distincts. Sa fonctionnalité de mise en grappe permet d'installer, de configurer et de gérer facilement un réseau sans fil évolutif. Il est ainsi possible de déployer plusieurs points d'accès et d'appliquer une seule configuration à l'ensemble des périphériques du cluster, en gérant le réseau sans fil en tant que système global sans avoir à se préoccuper des interférences entre les points d'accès, ni à configurer chaque point d'accès en tant que périphérique séparé.</p>
+<p></p>
+<p>Plus particulièrement, les solutions WAP121 et WAP321 prennent en charge la technologie SPS (Single Point Setup), qui facilite et accélère le déploiement des points d'accès, comme illustré dans la Figure 3. La technologie SPS permet d'intégrer jusqu'à quatre périphériques WAP121 et huit WAP321 dans le LAN sans fil, pour une couverture plus large et la prise en charge d'utilisateurs supplémentaires, à mesure que l'organisation évolue et croît. La solution Cisco AP541N AP peut mettre en cluster jusqu'à dix points d'accès et prendre en charge plusieurs clusters. </p>
+<p></p>
+<p>Il est possible de former un cluster entre deux points d'accès lorsque les conditions suivantes sont réunies :</p>
+<p>
+<ul>
+<li>Le mode mise en cluster est activé sur les points d'accès.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les points d'accès qui rejoignent le cluster possèdent le même nom de cluster.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les points d'accès sont connectés au même segment de réseau.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les points d'accès utilisent le même mode radio (p. ex. 802.11n.).</li>
+</ul>
+</p>
+<p></p>
+<p>Accédez à un <a href="https://www.cisco.com/assets/sol/sb/AP541N_GUI/AP541N_1_9_2/Getting_Started.htm" target="_blank">émulateur</a> AP541N en ligne. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

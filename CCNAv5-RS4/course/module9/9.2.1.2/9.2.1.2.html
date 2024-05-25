@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.1.2 Outils logiciels de dépannage (suite)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Outils de dépannage</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Analyseurs de protocole hôte</b>
+</p>
+<p>Un analyseur de protocole décode les différentes couches de protocole dans une trame enregistrée et présente ces informations dans un format relativement facile à utiliser. La figure montre une capture d’écran de l’analyseur de protocole Wireshark. Les informations affichées par un analyseur de protocole incluent les couches physique, liaison de données et protocole, ainsi que la description de chaque trame. La plupart des analyseurs de protocole peuvent filtrer le trafic répondant à certains critères ; par exemple, l’ensemble du trafic depuis et vers un certain périphérique peut être capturé. Des analyseurs de protocoles tels que Wireshark peuvent aider à dépanner des problèmes de performances réseau. Il est important de bien comprendre comment utiliser à la fois l'analyseur de protocole et TCP/IP. Pour acquérir les connaissances et les compétences nécessaires à l'utilisation de Wireshark, consultez l'adresse suivante : <a href="http://www.wiresharkbook.com/" target="_blank">http://www.wiresharkbook.com</a>.</p>
+<p></p>
+<p>
+<b>Capture de paquets intégrés Cisco IOS</b>
+</p>
+<p>La capture de paquets intégrés Cisco IOS est un puissant outil de dépannage et de traçage. Il permet aux administrateurs réseau de capturer des paquets IPv4 et IPv6 traversant un routeur Cisco. La fonction EPC Cisco IOS est principalement utilisée lors des scénarios de dépannage pour lesquels il est utile de voir les données réelles qui traversent le périphérique réseau.</p>
+<p></p>
+<p>Par exemple, le personnel du centre d'assistance doit déterminer pourquoi un périphérique donné ne peut pas accéder au réseau ou à une application spécifique. Il peut s'avérer nécessaire de capturer des paquets de données IP et d'en examiner les données afin de détecter le problème. Un autre exemple est la détermination de la signature d'une attaque en cas de menace réseau ou de faille de sécurité du système serveur. La fonction EPC Cisco IOS peut aider à capturer les paquets qui traversent le réseau à l'origine ou à la périphérie de celui-ci.</p>
+<p></p>
+<p>La fonction EPC Cisco IOS est utile lorsque l'installation d'un analyseur de protocole réseau pour le débogage d'un problème ne serait pas pratique.</p>
+<p></p>
+<p>Pour plus d'informations sur l'utilisation et la configuration de la capture de paquets intégrés Cisco IOS, consultez le <a href="http://www.cisco.com/en/US/docs/ios-xml/ios/epc/configuration/15-mt/nm-packet-capture.html" target="_blank">Guide de configuration de la capture de paquets intégrés Cisco IOS</a>. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

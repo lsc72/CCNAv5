@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.1.6 Les réseaux facilitent notre travail</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Connecté au monde entier</h1>
+        <h2>Les réseaux aujourd&#x0027;hui</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Changer notre façon de travailler</b>
+</p>
+<p>Au début, les entreprises exploitaient les réseaux de données pour enregistrer et gérer en interne des informations financières, des renseignements sur les clients et des systèmes de paie des employés. Ces réseaux d'entreprise ont ensuite évolué pour permettre la transmission de nombreux types de service d'informations, parmi lesquels les e-mails, la vidéo, les messageries et la téléphonie.</p>
+<p></p>
+<p>Le recours aux réseaux en tant que moyen efficace et rentable de former les employés est de plus en plus accepté. Les opportunités de formation en ligne permettent de réduire des déplacements coûteux en termes de temps et d'argent tout en s'assurant que tous les employés sont correctement formés pour accomplir leurs tâches, et ce de façon sûre et productive.</p>
+<p></p>
+<p>Il existe de nombreux exemples de réussite illustrant la façon dont les réseaux sont utilisés de manière novatrice pour nous permettre d'être plus productifs sur notre lieu de travail. Plusieurs de ces scénarios sont présentés sur le site Web de Cisco, à l'adresse <a href="http://www.cisco.com/" target="_blank">http://www.cisco.com</a>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

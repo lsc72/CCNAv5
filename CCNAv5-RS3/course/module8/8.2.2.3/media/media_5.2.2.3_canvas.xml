@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		
+		<slide>	 
+		<element type="IMAGE" src="5_2_2_3.jpg" x="0" y="0" width="470" height="400"/>		
+		<element type="TEXT" id="ID_static_1" text="172.16.1.0/24" bold="1" x="166.95" y="197.55" align="center" width="67" />
+		<element type="TEXT" id="ID_static_2" text="192.168.10.4/30" bold="1" x="281.95" y="151" align="center" width="78.95" />
+		<element type="TEXT" id="ID_static_3" text="172.16.3.0/30" bold="1" x="210.65" y="54.55" align="center" width="66.75" />
+		<element type="TEXT" id="ID_static_4" text="G0/0" x="173.95" y="152.5" align="center" width="23.7" />
+		<element type="TEXT" id="ID_static_5" text=".1" x="187.95" y="164.5" align="center" width="7.15" />
+		<element type="TEXT" id="ID_static_6" text="S0/0/1" x="229.75" y="118.5" align="center" width="30.25" />
+		<element type="TEXT" id="ID_static_7" text=".5" x="229.75" y="134.7" align="center" width="8.75" />
+		<element type="TEXT" id="ID_static_8" text="S0/0/0" x="193.8" y="87.5" align="center" width="31.75" />
+		<element type="TEXT" id="ID_static_9" text=".1" x="216.4" y="100.3" align="center" width="7.15" />
+		<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+		<element type="ROUTER" textId="ID_s1_txt01" x="3.4" y="220.45" width="435" height="161"/>
+		</slide>	
+	
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title" />	
+			<element type="ROUTER" textId="ID_s2_router01" x="1.55" y="47" width="435" height="271"/>
+			<element type="TEXT" compId="ID_s2_txt01" x="9" y="117" width="413.7" align="left" expand="right"/>
+		</slide>
+		
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title" />	
+			<element type="ROUTER" textId="ID_s3_txt01" x="1.55" y="47" width="435" height="118"/>
+		</slide>
+		
+			
+<text id="ID_s1_txt01"><![CDATA[
+<code>R1# <b>show ip eigrp interfaces</b>
+EIGRP-IPv4 Interfaces for AS(1)
+                 Xmit Queue   PeerQ        Mean   Pacing Time   Multicast    Pending
+Interface  Peers Un/Reliable  Un/Reliable  SRTT   Un/Reliable   Flow Timer   Routes
+ <span class="lblHighlight orange">Gi0/1  </span>       0       0/0       0/0          0        0/0            0           0
+ Se0/0/0       1       0/0       0/0       1295        0/23        6459           0
+ Se0/0/1       1       0/0       0/0       1044        0/15        5195           0
+R1# </code>
+]]></text>
+		
+<text id="ID_s2_router01"><![CDATA[<pre>R1# <b>show ip protocols</b>
+*** IP Routing is NSF aware ***
+
+Routing Protocol is "eigrp 1" 
+
+
+<span class="orange">Routing for Networks:
+    172.16.0.0
+    192.168.10.0</span>
+  Passive Interface(s):
+    GigabitEthernet0/0
+  Routing Information Sources:
+    Gateway         Distance      Last Update
+    192.168.10.6          90      00:42:31
+    172.16.3.2            90      00:42:31
+  Distance: internal 90 external 170
+
+R1#</pre>]]></text>
+
+<text id="ID_s3_txt01"><![CDATA[<pre>R1# <b>show running-config | section eigrp 1</b>
+router eigrp 1
+<span class="orange_block"> network 172.16.0.0
+ network 192.168.10.0</span> passive-interface GigabitEthernet0/0
+ eigrp router-id 1.1.1.1
+R1#</pre>]]></text>
+			
+	</slide>
+</data>

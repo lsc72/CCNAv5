@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.2.1 Configuration de PPPoE</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de la connectivité xDSL</h1>
+        <h2>Configuration de PPPoE</h2>
+      </div>
+      <div id="content">
+<p>Grâce à la possibilité d'envoyer et de recevoir des trames PPP entre les routeurs, le FAI peut continuer à utiliser le même modèle d'authentification qu'avec une technologie analogique ou RNIS. Pour que cela fonctionne correctement, les routeurs du client et du FAI ont besoin de configurations supplémentaires, notamment celle du protocole PPP. Tenez compte des éléments suivants pour comprendre la configuration :</p>
+<p></p>
+<p>1. Pour créer un tunnel PPP, la configuration utilise une interface de numérotation. Une interface de numérotation est une interface virtuelle. La configuration du protocole PPP est placée sur l'interface de numérotation et non sur l'interface physique. L'interface de numérotation est créée à l'aide de la commande <span class="cmd"><b>interface dialer </b></span><span class="cmd"><i>numéro</i></span>. Le client peut configurer une adresse IP statique, mais il est plus probable qu'une adresse IP publique lui soit automatiquement attribuée par le FAI.</p>
+<p></p>
+<p>2. La configuration PPP CHAP définit généralement une authentification unidirectionnelle ; par conséquent, c'est le FAI qui authentifie le client. Le nom d'hôte et le mot de passe configurés sur le routeur du client doivent correspondre au nom d'hôte et au mot de passe configurés sur le routeur du FAI. Remarquez dans la figure que le nom d'utilisateur et le mot de passe CHAP correspondent aux paramètres définis sur le routeur ISP. </p>
+<p></p>
+<p>3. L'interface Ethernet physique connectée au modem DSL est ensuite activée à l'aide de la commande <span class="cmd"><b>pppoe enable</b></span> qui active le protocole PPPoE et relie l'interface physique à l'interface de numérotation. L'interface de numérotation est reliée à l'interface Ethernet au moyen des commandes <span class="cmd"><b>dialer pool</b></span> et <span class="cmd"><b>pppoe-client</b></span>, à l'aide du même numéro. Le numéro de l'interface de numérotation ne doit pas être identique à celui du pool de numérotation. </p>
+<p></p>
+<p>4. L'unité de transmission maximale (MTU) doit être diminuée à la valeur 1492, par rapport à la valeur par défaut 1500, et ce, afin de prendre en compte les en-têtes PPPoE.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

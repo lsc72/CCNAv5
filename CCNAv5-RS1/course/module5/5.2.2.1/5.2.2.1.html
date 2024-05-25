@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.2.1 Problèmes potentiels engendrés par ARP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole ARP ( Address Resolution Protocol)</h1>
+        <h2>Problèmes liés au protocole ARP</h2>
+      </div>
+      <div id="content">
+<p>La figure présente deux problèmes potentiels liés au protocole ARP.</p>
+<p></p>
+<p>
+<b>Surcharge des supports</b>
+</p>
+<p>Comme les trames de diffusion, les requêtes ARP sont reçues et traitées par chaque périphérique du réseau local. Sur un réseau d'entreprise classique, ces diffusions auraient probablement une incidence minime sur les performances du réseau. Toutefois, si un grand nombre de périphériques sont mis sous tension et accèdent aux services du réseau au même moment, les performances du réseau peuvent s'en trouver momentanément réduites. Par exemple, si tous les participants d'une salle de travaux pratiques se connectent sur les ordinateurs et tentent d'accéder à Internet en même temps, cela peut engendrer des délais d'attente. En revanche, si les périphériques envoient les messages de diffusion ARP initiaux et disposent des adresses MAC nécessaires, l'impact sur le réseau sera minime.</p>
+<p></p>
+<p>
+<b>Sécurité</b>
+</p>
+<p>Dans certains cas, l'utilisation du protocole ARP peut porter atteinte à la sécurité du réseau L'usurpation ARP, ou empoisonnement ARP, est une technique de piratage qui consiste à injecter un faux mappage d'adresse MAC dans un réseau en émettant de fausses réponses ARP. Si un pirate informatique usurpe l'adresse MAC d'un périphérique, les trames risquent d'être envoyées à la mauvaise destination.</p>
+<p></p>
+<p>La configuration manuelle d'associations ARP statiques est un moyen d'éviter l'usurpation ARP. Les adresses MAC autorisées peuvent être configurées sur certains périphériques du réseau pour limiter l'accès réseau aux seuls périphériques listés.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

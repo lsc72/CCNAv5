@@ -1,0 +1,116 @@
+﻿<textcomponents>
+
+<component id="ID_s1_title">
+<text><![CDATA[<b>Vérification de la contiguïté de voisinage de R1</b>]]></text>
+</component>
+
+
+<component id="ID_s2_title">
+<text><![CDATA[<b>Vérification des informations de configuration OSPF sur R1</b>]]></text>
+</component>
+
+
+<component id="ID_s3_title">
+<text><![CDATA[<b>Vérification des ID et des informations d'algorithme OSPF sur R1</b>]]></text>
+</component>
+
+
+<component id="ID_s3_txt01">
+<text><![CDATA[&lt;résultat omis&gt;]]></text>
+</component>
+
+
+
+
+<component id="ID_s4_title">
+<text><![CDATA[<b>Vérification de l'interface OSPF sur R1</b>]]></text>
+</component>
+
+
+<component id="ID_s4_txt01">
+<text><![CDATA[&lt;résultat omis&gt;]]></text>
+</component>
+
+
+
+
+<component id="ID_s5_title">
+<text><![CDATA[<b>Affichage d'un récapitulatif des interfaces OSPF configurées <br>sur R1</b>]]></text>
+</component>
+
+
+<component id="ID_s6_title">
+<text><![CDATA[<b>Vérification de la configuration du protocole OSPF à zone unique <br>sur R2</b>]]></text>
+</component>
+
+<component id="ID_s6_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_s6_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_s6_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+	
+	<component id="ID_SC6" fontFace='_typewriter' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font size='10' face="_sans" color="#0000FF">***Vous devez entrer la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font></b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font size='10' face="_sans"><b>Affichez la table de voisinage OSPF.</b></font>]]></existingcommands>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ip ospf neighbor]]></correctresponse>
+			<deviceresponse><![CDATA[<font size = '9' face="_typewriter"><br>Neighbor ID  Pri  State      Dead Time  Address        Interface <br>3.3.3.3        0  FULL/  -   00:00:39   192.168.10.10  Serial0/0/1 <br>1.1.1.1        0  FULL/  -   00:00:32   172.16.3.1     Serial0/0/0 <br></font>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="_sans"><b>Affichez les protocoles IP configurés sur R2.</b></font>]]></instruction>
+		</command>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ip protocols]]></correctresponse>
+			<deviceresponse><![CDATA[*** IP Routing is NSF aware *** <br> <br>Routing Protocol is "ospf 10" <br>  Outgoing update filter list for all interfaces is not set <br>  Incoming update filter list for all interfaces is not set <br>  Router ID 2.2.2.2 <br>  Number of areas in this router is 1. 1 normal 0 stub 0 nssa <br>  Maximum path: 4 <br>  Routing for Networks: <br>    172.16.2.1 0.0.0.0 area 0 <br>    172.16.3.2 0.0.0.0 area 0 <br>    192.168.10.9 0.0.0.0 area 0 <br>  Passive Interface(s): <br>    GigabitEthernet0/0 <br>  Routing Information Sources: <br>    Gateway         Distance      Last Update <br>    3.3.3.3              110      00:34:32 <br>    1.1.1.1              110      00:35:05 <br>  Distance: (default is 110) <br>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="_sans"><b>Affichez la liste succincte des interfaces OSPF.</b></font>]]></instruction>
+		</command>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ip ospf interface brief]]></correctresponse>
+			<deviceresponse><![CDATA[Interface  PID   Area  IP Address/Mask    Cost  State Nbrs F/C <br>Gi0/0      10    0     172.16.2.1/24      1     DR    0/0 <br>Se0/0/1    10    0     192.168.10.9/30    647   P2P   1/1 <br>Se0/0/0    10    0     172.16.3.2/30      647   P2P   1/1 <br>R2#<br>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="_sans"><b>Vous avez correctement vérifié la configuration du protocole OSPF à zone unique sur R2.</b></font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+
+<component id="ID_s7_title">
+<text><![CDATA[<b>Vérification de la configuration du protocole OSPF à zone unique <br>sur R3</b>]]></text>
+</component>
+<component id="ID_s7_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_s7_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_s7_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+
+<component id="ID_SC7" fontFace='_typewriter' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font size='10' face="_sans" color="#0000FF">***Vous devez entrer la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font></b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font size='10' face="_sans"><b>Affichez la table de voisinage OSPF.</b></font>]]></existingcommands>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip ospf neighbor]]></correctresponse>
+			<deviceresponse><![CDATA[<font size = '9' face="_typewriter"><br>Neighbor ID  Pri  State      Dead Time  Address       Interface <br>2.2.2.2        0  FULL/  -   00:00:35   192.168.10.9  Serial0/0/1 <br>1.1.1.1        0  FULL/  -   00:00:35   192.168.10.5  Serial0/0/0 <br></font>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="_sans"><b>Affichez les protocoles IP configurés sur R3.</b></font>]]></instruction>
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip protocols]]></correctresponse>
+			<deviceresponse><![CDATA[*** IP Routing is NSF aware *** <br> <br>Routing Protocol is "ospf 10" <br>  Outgoing update filter list for all interfaces is not set <br>  Incoming update filter list for all interfaces is not set <br>  Router ID 3.3.3.3 <br>  Number of areas in this router is 1. 1 normal 0 stub 0 nssa <br>  Maximum path: 4 <br>  Routing for Networks: <br>    192.168.1.1 0.0.0.0 area 0 <br>    192.168.10.6 0.0.0.0 area 0 <br>    192.168.10.10 0.0.0.0 area 0 <br>  Passive Interface(s): <br>    GigabitEthernet0/0 <br>  Routing Information Sources: <br>    Gateway         Distance      Last Update <br>    2.2.2.2              110      00:35:41 <br>    1.1.1.1              110      00:35:41 <br>  Distance: (default is 110) <br>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="_sans"><b>Affichez la liste succincte des interfaces OSPF.</b></font>]]></instruction>
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip ospf interface brief]]></correctresponse>
+			<deviceresponse><![CDATA[Interface  PID   Area  IP Address/Mask    Cost  State Nbrs F/C <br>Gi0/0      10    0     192.168.1.1/24     1     DR    0/0 <br>Se0/0/1    10    0     192.168.10.10/30   647   P2P   1/1 <br>Se0/0/0    10    0     192.168.10.6/30    647   P2P   1/1 <br>R3#<br>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="_sans"><b>Vous avez correctement vérifié la configuration du protocole OSPF à zone unique sur R3.</b></font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+
+</textcomponents>

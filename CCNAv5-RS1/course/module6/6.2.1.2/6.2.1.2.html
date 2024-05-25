@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.2.1.2 Passerelle par défaut</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage</h1>
+        <h2>Méthode de routage des hôtes</h2>
+      </div>
+      <div id="content">
+<p>La passerelle par défaut est le périphérique qui achemine le trafic du réseau local vers des périphériques sur des réseaux distants. Dans un environnement domestique ou de petite entreprise, la passerelle par défaut est souvent utilisée pour connecter le réseau local à Internet. </p>
+<p></p>
+<p>Si l'hôte envoie un paquet à un périphérique sur un réseau IP différent, il doit faire passer le paquet par le périphérique intermédiaire pour atteindre la passerelle par défaut. Cela est dû au fait qu'un périphérique hôte ne contient pas d'informations de routage concernant les communications destinées aux destinations distantes, situées au-delà du réseau local. La passerelle par défaut, quant à elle, contient ces informations. La passerelle par défaut, qui est le plus souvent un routeur, gère une table de routage. Une table de routage est un fichier de données stocké dans la mémoire vive qui contient des informations de route sur le réseau connecté directement, ainsi que les entrées de réseaux distants que le périphérique a découvertes. Un routeur utilise les informations de la table de routage pour déterminer le meilleur chemin pour atteindre ces destinations. </p>
+<p></p>
+<p>Comment un hôte peut-il savoir si les paquets doivent être transmis à la passerelle par défaut ? Les hôtes ont également besoin d'une table de routage locale pour s'assurer que les paquets de couche réseau sont dirigés vers le réseau de destination correct. La table locale de l'hôte contient généralement :</p>
+<p>
+<ul>
+<li>
+<b>Connexion directe</b> – route vers l'interface de bouclage (127.0.0.1).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Route de réseau local</b> – le réseau auquel l'hôte est connecté est automatiquement indiqué dans la table de routage d'hôte. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Route locale par défaut</b> – la route par défaut est la route que les paquets doivent emprunter pour atteindre toutes les adresses sur des réseaux distants. La route par défaut est créée lorsqu'une adresse de passerelle par défaut est présente sur l'hôte. L'adresse de passerelle par défaut est l'adresse IP de l'interface réseau du routeur connecté au réseau local. L'adresse de la passerelle par défaut peut être configurée sur l'hôte manuellement ou de manière dynamique.</li>
+</ul>
+</p>
+<p></p>
+<p>Il est important de noter que la route par défaut et, par conséquent, la passerelle par défaut, sont utilisées uniquement lorsqu'un hôte doit transmettre des paquets à un réseau distant. Elles ne sont pas obligatoires, ni même configurées, si les paquets sont uniquement destinés aux périphériques du réseau local. </p>
+<p></p>
+<p>Prenons l'exemple d'une imprimante multifonction. Si l'imprimante réseau a une adresse IP et un masque de sous-réseau configurés, les hôtes locaux peuvent envoyer des documents à l'imprimante. En outre, l'imprimante peut transférer les documents scannés à tous les hôtes locaux. Tant que l'imprimante n'est utilisée que localement, une adresse de passerelle par défaut n'est pas obligatoire. En fait, si aucune adresse de passerelle par défaut n'est attribuée à l'imprimante, vous bloquez efficacement l'accès à Internet, ce qui peut être un choix judicieux en matière de sécurité. Aucun accès à Internet signifie aucun risque de sécurité. Bien que les périphériques tels que les imprimantes peuvent se mettre à jour automatiquement via Internet, il est généralement plus facile et plus sécurisé d'obtenir les mêmes mises à jour via un téléchargement local (upload) à partir d'un hôte local sécurisé tel qu'un PC.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

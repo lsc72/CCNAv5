@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.5.3 VLSM de base</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.5.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmenter un réseau IPv4 en sous-réseaux</h1>
+        <h2>Les avantages du masquage de sous-réseau de longueur variable</h2>
+      </div>
+      <div id="content">
+<p>Pour mieux comprendre le processus VLSM, revenez à l'exemple précédent.</p>
+<p></p>
+<p>Dans celui-ci (Figure 1), le réseau 192.168.20.0/24 a été divisé en huit sous-réseaux de taille égale et sept de ces sous-réseaux ont été attribués. Quatre sous-réseaux ont été utilisés pour les réseaux locaux et trois pour les connexions de réseau étendu entre les routeurs. Souvenez-vous que l'espace d'adressage inutilisé appartenait aux sous-réseaux des connexions de réseau étendu, car ces sous-réseaux nécessitaient seulement deux adresses utilisables : une pour chaque interface de routeur. La méthode VLSM peut être employée pour éviter cette perte. Elle permet de créer des sous-réseaux plus petits pour les connexions de réseau étendu.</p>
+<p></p>
+<p>Pour créer des sous-réseaux plus petits pour les liaisons de réseau étendu, l'un des sous-réseaux est divisé. Sur la Figure 2, le dernier sous-réseau, 192.168.20.224/27, est encore subdivisé.</p>
+<p></p>
+<p>Souvenez-vous que lorsque le nombre d'adresses d'hôte nécessaires est connu, la formule 2^n - 2 (où n représente le nombre de bits d'hôte restant) peut être appliquée. Pour obtenir deux adresses utilisables, 2 bits d'hôte doivent rester dans la partie hôte.</p>
+<p></p>
+<p>2^2 - 2 = 2 </p>
+<p></p>
+<p>Étant donné que l'espace d'adresses 192.168.20.224/27 comporte 5 bits d'hôte, 3 bits peuvent être empruntés, ce qui laisse 2 bits dans la partie hôte.</p>
+<p></p>
+<p>Jusque-là, les calculs sont exactement les mêmes que pour la méthode classique. Il faut emprunter des bits et déterminer les plages des sous-réseaux.</p>
+<p></p>
+<p>Comme l'illustre la Figure 2, ce schéma de segmentation VLSM réduit le nombre d'adresses par sous-réseau jusqu'à la taille appropriée pour les réseaux étendus. Le fait de segmenter le sous-réseau 7 pour les réseaux étendus permet de conserver les sous-réseaux 4, 5, et 6 pour les futurs réseaux, mais également plusieurs autres sous-réseaux disponibles pour les réseaux étendus.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

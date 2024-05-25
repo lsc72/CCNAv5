@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.3.3 Configuration de type router-on-a-stick : configuration des sous-interfaces du routeur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout; 
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du routage inter-VLAN</h1>
+        <h2>Configuration du routage inter-VLAN avec la méthode router-on-a-stick</h2>
+      </div>
+      <div id="content">
+<p>En mode router-on-a-stick, la configuration du routeur diffère par rapport à celle qu'utilise le routage inter-VLAN existant. La figure montre que plusieurs sous-interfaces sont configurées.</p>
+<p></p>
+<p>Chaque sous-interface est créée à l'aide de la commande de mode de configuration globale<span class="cmd"><b> interface </b></span><span class="cmd"><i>interface_id subinterface_id</i></span>. La syntaxe pour la sous-interface est l'interface physique, dans ce cas <span class="cmd"><b>g0/0</b></span>, suivie d'un point et d'un numéro de sous-interface. Le numéro de sous-interface est configurable, mais il reflète généralement le numéro du VLAN. Dans cet exemple, les sous-interfaces portent les numéros <span class="cmd"><b>1</b></span>0 et <span class="cmd"><b>30</b></span> pour faciliter la mémorisation des numéros des VLAN auxquels elles sont associées. La sous-interface GigabitEthernet 0/0.10 est créée à l'aide de la commande en mode de configuration globale <span class="cmd"><b>interface g0/0.10</b></span>.</p>
+<p></p>
+<p>Avant de recevoir une adresse IP, une sous-interface doit être configurée pour fonctionner sur un VLAN spécifique à l'aide de la commande <span class="cmd"><b>encapsulation dot1q</b></span><span class="cmd"><i> vlan_id</i></span>. Dans cet exemple, la sous-interface G0/0.10 est affectée au VLAN 10. </p>
+<p></p>
+<p>
+<b>Remarque</b> : il existe une option de mot clé <span class="cmd"><b>native</b></span> qui peut être ajoutée à cette commande pour définir le VLAN natif IEEE 802.1Q. Dans cet exemple, l'option de mot clé <span class="cmd"><b>native</b></span> a été exclue pour laisser le VLAN natif par défaut sur le VLAN 1.</p>
+<p></p>
+<p>Affectez ensuite l'adresse IP pour la sous-interface à l'aide de la commande de mode de configuration de sous-interface <span class="cmd"><b>ip address </b></span><span class="cmd"><i>ip_address subnet_mask</i></span>. Dans cet exemple, la sous-interface G0/0.10 reçoit l'adresse IP 172.17.10.1 via la commande <span class="cmd"><b>ip address 172.17.10.1 255.255.255.0</b></span>. </p>
+<p></p>
+<p>Ce processus est répété pour toutes les sous-interfaces de routeur requises pour le routage entre les VLAN configurés sur le réseau. Une adresse IP sur un sous-réseau unique doit être affectée à chaque sous-interface de routeur pour que le routage se produise. Dans cet exemple, l'autre sous-interface de routeur, G0/0.30, est configurée pour utiliser l'adresse IP 172.17.30.1, située sur un sous-réseau différent de la sous-interface G0/0.10.</p>
+<p></p>
+<p>Une fois les sous-interfaces configurées, elles doivent être activées. </p>
+<p></p>
+<p>Contrairement à une interface physique, les sous-interfaces ne sont pas activées avec la commande <span class="cmd"><b>no shutdown</b></span> au niveau du mode de configuration de sous-interface du logiciel Cisco IOS. Au niveau de la sous-interface, la commande <span class="cmd"><b>no shutdown</b></span> n'a aucun effet. Au lieu de cela, lorsque l'interface physique est activée avec la commande <span class="cmd"><b>no shutdown</b></span>, toutes les sous-interfaces configurées sont activées. De la même manière, si l'interface physique est désactivée, toutes les sous-interfaces le sont également. Dans cet exemple, la commande <span class="cmd"><b>no shutdown</b></span> est exécutée en mode de configuration d'interface pour l'interface G0/0 qui, à son tour, active toutes les sous-interfaces configurées.</p>
+<p></p>
+<p>Différentes sous-interfaces peuvent être administrativement désactivées au moyen de la commande <span class="cmd"><b>shutdown</b></span>.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

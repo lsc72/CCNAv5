@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.1.2 Avantages du télétravail pour l&#x0027;employeur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Télétravail</h1>
+        <h2>Avantages du télétravail</h2>
+      </div>
+      <div id="content">
+<p>Le télétravail présente de nombreux avantages pour les entreprises. Les avantages les plus souvent cités sont les suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Amélioration de la productivité des employés</b> : d'une manière générale, le télétravail permet aux employés de travailler plus et de réaliser un travail de meilleure qualité que ceux qui restent confinés exclusivement dans un espace de bureau. D'après une étude effectuée par le groupe Gartner auprès de British Telecom, les télétravailleurs travaillent en moyenne 11 % d'heures en plus que leurs collègues qui travaillent au bureau. La société Bell Atlantic Corporation (maintenant Verizon) indique d'ailleurs que 25 heures passées à la maison sont équivalentes à 40 heures passées au bureau. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Réduction des coûts et des dépenses</b> : le coût de l'immobilier représente une partie importante des frais des entreprises. Le télétravail permet de diminuer l'espace de bureau nécessaire. Les économies réalisées dans le coût de l'immobilier peuvent atteindre 10 à 80 %. Même une économie de 10 % en la matière peut faire passer une entreprise d'une situation de perte à une situation de profit. D'autres économies concernent par exemple le chauffage, la climatisation, les places de parking, l'éclairage, l'équipement et les fournitures de bureau, etc., l'ensemble de ces coûts diminuant avec le télétravail. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Recrutement et maintien en fonction plus aisés</b> : la flexibilité obtenue permet de diminuer le taux de rotation du personnel jusqu'à 20 %. Avec un remplacement du personnel coûtant 75 % ou plus du salaire, cela représente une économie substantielle, même avant de prendre en considération les coûts de formation et de maintien en fonction. Certains observateurs ont calculé que le coût lié à la rotation et au remplacement du personnel s'élevait à 250 % du salaire.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Diminution de l'absentéisme</b> : le télétravail permet de réduire l'absentéisme de 80 %.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Amélioration du moral des employés</b> : des améliorations sont souvent constatées en ce qui concerne le moral des télétravailleurs.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Amélioration de la citoyenneté de l'entreprise</b> : autoriser les employés à travailler à domicile tout en diminuant les émissions de carbone peut constituer une part importante de la politique d'une entreprise en matière d'écologie et de respect de l'environnement. Cela peut avoir de nombreux avantages, comme la création d'opportunités commerciales, l'ajout de valeur aux produits et services, le traitement des problèmes rencontrés par les clients et la satisfaction des exigences de la chaîne d'approvisionnement. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Service clientèle de meilleure qualité</b> : les employés pouvant démarrer leur journée de travail sans devoir se rendre au préalable au bureau, il en résulte un meilleur contact avec les clients ainsi que des temps de réponse plus courts, d'où des améliorations importantes en matière de relation avec la clientèle. Les clients indiquent des réponses plus rapides ainsi qu'un service de meilleure qualité.</li>
+</ul>
+</p>
+<p></p>
+<p>Grâce à des temps de réponse plus courts, à un meilleur service à la clientèle, à des coûts moindres et à une productivité améliorée des employés, les entreprises sont mieux à même de s'adapter à des marchés en évolution rapide. Le télétravail est vraiment une manière intelligente de travailler. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

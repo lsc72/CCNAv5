@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.1.5 Fonctionnement des listes de contrôle d&#x0027;accès</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement des listes de contrôle d&#x0027;accès IP</h1>
+        <h2>Objectif des listes de contrôle d&#x0027;accès</h2>
+      </div>
+      <div id="content">
+<p>Les listes de contrôle d'accès définissent des règles de contrôle pour les paquets arrivant par les interfaces d'entrée, passant par le routeur et atteignant leur destination par les interfaces de sortie. Elles ne gèrent pas les paquets provenant du routeur lui-même. </p>
+<p></p>
+<p>Les listes de contrôle d'accès sont configurées pour s'appliquer au trafic entrant ou sortant, comme le montre la figure.</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Listes de contrôle d'accès entrantes</b> : les paquets entrants sont traités avant d'être routés vers l'interface de sortie. Une liste de contrôle d'accès entrante est efficace car elle réduit la charge des recherches de routage en cas d'abandon du paquet. Si le paquet est autorisé à l'issue des tests, il est soumis au routage. Les listes de contrôle d'accès entrantes sont idéales pour filtrer les paquets lorsque le réseau relié à une interface d'entrée est la seule source des paquets devant être inspectés.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Listes de contrôle d'accès sortantes</b> : les paquets entrants sont acheminés vers l'interface de sortie, puis traités par le biais de la liste de contrôle d'accès sortante. Les listes de contrôle d'accès sortantes sont particulièrement efficaces lorsqu'un même filtre est appliqué aux paquets provenant de plusieurs interfaces d'entrée avant de quitter la même interface de sortie. </li>
+</ul>
+</p>
+<p></p>
+<p>La dernière instruction d'une liste de contrôle d'accès est toujours une instruction implicit deny. Cette instruction est automatiquement ajoutée à la fin de chaque liste de contrôle d'accès, même si elle n'est pas physiquement présente. L'instruction implicit deny bloque l'ensemble du trafic. En raison de ce refus implicite, une liste de contrôle d'accès qui n'a pas au moins une instruction d'autorisation bloquera tout le trafic.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

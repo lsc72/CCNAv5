@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.1.3 Format de message Syslog</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Syslog</h1>
+        <h2>Fonctionnement de Syslog</h2>
+      </div>
+      <div id="content">
+<p>Les périphériques Cisco génèrent des messages Syslog à la suite des événements réseau. Chaque message Syslog contient un niveau de gravité et une capacité. </p>
+<p></p>
+<p>Plus les numéros des niveaux sont petits, plus les alarmes Syslog sont critiques. Il est possible de définir le niveau de gravité des messages de manière à contrôler l'emplacement d'affichage de chaque type de message (par exemple sur la console ou d'autres destinations). La liste complète des niveaux Syslog est illustrée à la Figure 1.</p>
+<p>Chaque niveau Syslog a sa propre signification :</p>
+<p>
+<ul>
+<li>
+<b>Niveau d'avertissement - Niveau d'urgence</b> : ces messages sont des messages d'erreur relatifs aux dysfonctionnements logiciels ou matériels ; ces types de messages signifient que la fonctionnalité du périphérique est affectée. La gravité du problème détermine le niveau Syslog réel appliqué. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Niveau de débogage</b> : ce niveau indique que les messages sont des résultats générés suite à l'exécution de diverses commandes <span class="cmd"><b>debug</b></span>.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Niveau de notification</b> : le niveau de notification existe à titre purement informatif, la fonctionnalité des périphériques n'étant pas affectée. Les transitions d'interface à l'état « up » ou « down » ainsi que les messages de redémarrage du système s'affichent au niveau de notification. </li>
+</ul>
+</p>
+<p></p>
+<p>En plus de spécifier la gravité du problème, les messages Syslog contiennent également des informations de capacité. Les capacités Syslog sont des identificateurs de service permettant de déterminer et de catégoriser les données d'état du système pour les rapports des messages d'événement et d'erreur. Les options de capacité de journalisation disponibles sont spécifiques au périphérique réseau. Par exemple, les commutateurs de la gamme Cisco 2960 exécutant Cisco IOS version 15.0(2) et les routeurs Cisco 1941 exécutant Cisco IOS version 15.2(4) prennent en charge 24 options de capacité classées en 12 types de capacité. </p>
+<p></p>
+<p>Les capacités classiques des messages Syslog signalées sur les routeurs Cisco IOS sont les suivantes :</p>
+<p>
+<ul>
+<li>IP</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Protocole OSPF</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Système d'exploitation SYS</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>IPsec (IP Security)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Adresse IP d'interface (IF)</li>
+</ul>
+</p>
+<p></p>
+<p>Par défaut, le format des messages Syslog du logiciel Cisco IOS est le suivant :</p>
+<p></p>
+<p>
+<span class="cmd">seq no: timestamp: %facility-severity-MNEMONIC: description</span>
+</p>
+<p></p>
+<p>Les champs contenus dans le message Syslog du logiciel Cisco IOS sont expliqués à la Figure 2. </p>
+<p></p>
+<p>Exemple de résultat sur un commutateur Cisco en ce qui concerne la modification d'état à la valeur « up » d'une liaison EtherChannel :</p>
+<p></p>
+<p>
+<span class="cmd">00:00:46: %LINK-3-UPDOWN: Interface Port-channel1, changed state to up</span>
+</p>
+<p></p>
+<p>Dans ce cas, la capacité est LINK et le niveau de gravité est égal à 3, avec une valeur mnémonique UPDOWN. </p>
+<p></p>
+<p>Les messages les plus courants sont les messages indiquant si la liaison est active ou non, ainsi que ceux qu'un périphérique produit lorsqu'il quitte le mode de configuration. Si la journalisation des listes de contrôle d'accès est configurée, le périphérique génère des messages Syslog lorsque des paquets satisfont à la condition d'un paramètre. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

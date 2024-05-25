@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.3.5 Étape 3 : vérification de l&#x0027;adressage des couches 2 et 3 sur le réseau local</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.3.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Dépannage de la connectivité IP</h2>
+      </div>
+      <div id="content">
+<p>Lors d'un dépannage de la connectivité de bout en bout, il est utile de vérifier les mappages entre les adresses IP de destination et les adresses Ethernet de couche 2 sur des segments individuels. Dans IPv4, cette fonctionnalité est fournie par le protocole ARP. Dans IPv6, la fonctionnalité ARP est remplacée par le processus de découverte de voisins et ICMPv6. La table de voisinage met en cache les adresses IPv6 ainsi que leurs adresses physiques Ethernet résolues (MAC).</p>
+<p></p>
+<p>
+<b>Table ARP IPv4</b>
+</p>
+<p>La commande Windows <span class="cmd"><b>arp</b></span> affiche et modifie les entrées du cache ARP qui sont utilisées pour stocker les adresses IPv4 ainsi que leurs adresses physiques Ethernet résolues (MAC). Comme le montre la Figure 1, la commande Windows <span class="cmd"><b>arp</b></span> permet de répertorier l'ensemble des périphériques situés actuellement dans le cache ARP. Les informations affichées pour chaque périphérique incluent l'adresse IPv4, l'adresse physique (MAC) ainsi que le type d'adressage (statique ou dynamique).</p>
+<p></p>
+<p>S'il souhaite mettre à jour les informations stockées dans le cache, l'administrateur réseau peut effacer le contenu de celui-ci à l'aide de la commande Windows <span class="cmd"><b>arp -d</b></span>.</p>
+<p></p>
+<p>
+<b>Remarque</b> : les commandes <span class="cmd"><b>arp</b></span> de Linux et MAC OS X présentent une syntaxe similaire. </p>
+<p></p>
+<p></p>
+<p>
+<b>Table de voisinage IPv6</b>
+</p>
+<p>Comme le montre la Figure 2, la commande Windows <span class="cmd"><b>netsh interface ipv6 show neighbor</b></span> permet de répertorier l'ensemble des périphériques situés actuellement dans la table de voisinage. Les informations affichées pour chaque périphérique incluent l'adresse IPv6, l'adresse physique (MAC) ainsi que le type d'adressage. En examinant la table de voisinage, l'administrateur réseau peut vérifier que les adresses IPv6 de destination correspondent aux adresses Ethernet correctes. Les adresses link-local IPv6 sur l'ensemble des interfaces de R1 ont été configurées manuellement à FE80::1. De même, R2 a été configuré avec l'adresse link-local de FE80::2 sur ses interfaces tandis que R3 a été configuré avec l'adresse link-local de FE80::3 sur ses interfaces. Rappelez-vous que les adresses link-local doivent simplement être uniques sur la liaison ou le réseau.</p>
+<p></p>
+<p>
+<b>Remarque</b> : la table de voisinage de Linux et MAC OS X peut être affichée à l'aide de la commande <span class="cmd"><b>ip neigh show</b></span>.</p>
+<p></p>
+<p>La Figure 3 illustre un exemple de table de voisinage sur le routeur Cisco IOS, à l'aide de la commande <span class="cmd"><b>show ipv6 neighbors</b></span>. </p>
+<p>
+<b>Remarque</b> : les états de voisinage pour IPv6 sont plus complexes que les états de la table ARP dans IPv4. Des informations supplémentaires figurent dans la RFC 4861.</p>
+<p></p>
+<p>
+<b>Table d'adresse MAC du commutateur</b>
+</p>
+<p>Un commutateur transfère une trame uniquement vers le port auquel la destination est connectée. Pour cela, le commutateur consulte sa table d'adresses MAC. La table d'adresses MAC répertorie l'adresse MAC connectée à chaque port. Exécutez la commande <span class="cmd"><b>show mac address-table</b></span> pour afficher la table d'adresses MAC sur le commutateur. Un exemple de commutateur local de PC1 est illustré à la Figure 4. Rappelez-vous que la table d'adresses MAC d'un commutateur ne contient que des informations de couche 2, notamment l'adresse MAC Ethernet et le numéro de port. Les informations d'adresse IP ne sont pas incluses.</p>
+<p></p>
+<p>
+<b>Attribution de VLAN</b>
+</p>
+<p>Un autre problème à prendre en considération lors du dépannage de la connectivité de bout en bout est l'attribution de VLAN. Au sein du réseau commuté, chaque port d'un commutateur appartient à un VLAN. Chaque VLAN est considéré comme un réseau logique distinct et les paquets destinés aux stations n'appartenant pas au VLAN doivent être transférés par un périphérique qui prend en charge le routage. Lorsqu'un hôte situé dans un VLAN envoie une trame Ethernet de diffusion, par exemple une requête ARP, tous les hôtes contenus dans le même VLAN reçoivent cette trame, contrairement aux hôtes situés dans les autres VLAN. Même si deux hôtes se trouvent dans le même réseau IP, ils ne pourront pas communiquer entre eux s'ils sont connectés à des ports attribués à deux VLAN distincts. De plus, si le VLAN auquel appartient le port est supprimé, le port devient inactif. Tous les hôtes reliés aux ports appartenant au VLAN qui a été supprimé ne peuvent plus communiquer avec le reste du réseau. Des commandes telles que <span class="cmd"><b>show vlan</b></span> peuvent être utilisées pour valider des attributions de VLAN sur un commutateur.</p>
+<p></p>
+<p>
+<b>Exemple de dépannage</b>
+</p>
+<p>Reportez-vous à la topologie de la Figure 5. Afin d'améliorer la gestion des câbles dans l'armoire de répartition, les câbles de raccordement à S1 ont été réorganisés. Presque immédiatement après, des utilisateurs ont commencé à appeler le centre d'assistance en indiquant qu'ils ne parvenaient plus à accéder aux périphériques situés en dehors de leur propre réseau. L'examen de la table ARP de PC1 à l'aide de la commande Windows <span class="cmd"><b>arp</b></span> montre que cette table ARP ne contient plus d'entrée pour la passerelle par défaut 10.1.10.1, comme le montre la Figure 6. Aucune modification de configuration n'ayant été effectuée sur le routeur, le dépannage se concentre sur le commutateur S1.</p>
+<p></p>
+<p>La table d'adresses MAC de S1, comme l'indique la Figure 7, montre que l'adresse MAC de R1 se trouve sur un autre VLAN que le reste des périphériques 10.1.10.0/24, y compris PC1. Lors de la réorganisation du câblage, le câble de brassage de R1 a été déplacé de Fa 0/4 sur le VLAN 10 à Fa 0/1 sur le VLAN 1. Lorsqu'un administrateur réseau a configuré le port Fa 0/1 de S1 de telle sorte qu'il se trouve sur le VLAN 10, comme le montre la Figure 8, cela a résolu le problème. Comme l'illustre la Figure 9, la table d'adresses MAC indique dorénavant le VLAN 10 pour l'adresse MAC de R1 sur le port Fa 0/1.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

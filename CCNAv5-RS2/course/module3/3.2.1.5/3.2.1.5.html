@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.1.5 Suppression de VLAN</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.1.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentations de VLAN</h1>
+        <h2>Affectation de VLAN</h2>
+      </div>
+      <div id="content">
+<p>Dans la figure, la commande de mode de configuration globale <span class="cmd"><b>no vlan</b></span><span class="cmd"><i> vlan-id</i></span> est utilisée pour supprimer le VLAN 20 du commutateur. Le commutateur S1 possède une configuration minimale avec tous les ports du VLAN 1 et un VLAN 20 non utilisé dans la base de données VLAN. La commande <span class="cmd"><b>show vlan brief</b></span> vérifie que le VLAN 20 n'est plus présent dans le fichier vlan.dat après utilisation de la commande <span class="cmd"><b>no vlan 20</b></span>.</p>
+<p></p>
+<p>
+<b>Attention </b>: avant de supprimer un VLAN, réattribuez d'abord tous les ports lui appartenant à un autre VLAN. Tous les ports qui ne sont pas déplacés vers un VLAN actif ne pourront plus communiquer avec d'autres hôtes une fois le VLAN supprimé et tant qu'ils ne seront pas attribués à un VLAN actif.</p>
+<p></p>
+<p>Le fichier vlan.dat peut aussi être entièrement supprimé à l'aide de la commande <span class="cmd"><b>delete flash:vlan.dat</b></span> en mode d'exécution privilégié. La version abrégée de la commande (<span class="cmd"><b>delete vlan.dat)</b></span> peut être utilisée si le fichier vlan.dat n'a pas été déplacé de son emplacement par défaut. Après l'exécution de cette commande et le redémarrage du commutateur, les VLAN précédemment configurés ne sont plus présents. Cette commande rétablit les paramètres d'usine par défaut du commutateur en ce qui concerne les configurations de VLAN.</p>
+<p></p>
+<p>
+<b>Remarque </b>: pour un commutateur Catalyst, la commande <span class="cmd"><b>erase startup-config</b></span> doit accompagner la commande <span class="cmd"><b>delete vlan.dat</b></span> avant le redémarrage afin de rétablir les paramètres par défaut du commutateur.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

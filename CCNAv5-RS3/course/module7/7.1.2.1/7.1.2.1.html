@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.2.1 Types de paquets EIGRP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Caractéristiques du protocole EIGRP</h1>
+        <h2>Types de paquets EIGRP</h2>
+      </div>
+      <div id="content">
+<p>EIGRP utilise cinq types de paquets différents, dont certains par paires. Les paquets EIGRP sont envoyés via RTP de façon fiable ou non fiable et peuvent être acheminés via monodiffusion, multidiffusion ou parfois les deux modes. Les types de paquets EIGRP sont également appelés formats de paquets EIGRP ou messages EIGRP.</p>
+<p></p>
+<p>Comme indiqué à la Figure 1, les cinq types de paquets EIGRP sont :</p>
+<p></p>
+<p>
+<b>Paquets Hello : </b>utilisés pour la détection des voisins et la gestion des contiguïtés de voisinage.</p>
+<p>
+<ul>
+<li>Envoyé avec un acheminement non fiable</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Multidiffusion (sur la plupart des types de réseaux)</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Paquets de mise à jour :</b> propagent les informations de routage vers les voisins EIGRP.</p>
+<p>
+<ul>
+<li>Envoyé avec un acheminement fiable</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Monodiffusion ou multidiffusion</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Paquets de reçu :</b> utilisés pour accuser réception d'un message EIGRP envoyé à l'aide du mode d'acheminement fiable.</p>
+<p>
+<ul>
+<li>Envoyé avec un acheminement non fiable</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Monodiffusion</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Paquets de demande :</b> utilisés pour rechercher les routes des voisins.</p>
+<p>
+<ul>
+<li>Envoyé avec un acheminement fiable</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Monodiffusion ou multidiffusion</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Paquets de réponse : </b>envoyés en réponse à une demande EIGRP.</p>
+<p>
+<ul>
+<li>Envoyé avec un acheminement non fiable</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Monodiffusion</li>
+</ul>
+</p>
+<p></p>
+<p>La Figure 2 montre que les messages EIGRP sont généralement encapsulés dans des paquets IPv4 ou IPv6. Les messages EIGRP pour IPv4 utilisent le protocole de couche réseau IPv4. La valeur 88 du champ du protocole IPv4 indique que la partie données du paquet est un message EIGRP pour IPv4. Les messages EIGRP pour IPv6 sont encapsulés dans des paquets IPv6 à l'aide du champ d'en-tête suivant de 88. Tout comme le champ du protocole IPv4, le champ d'en-tête suivant du protocole IPv6 indique le type des données transportées dans le paquet IPv6.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

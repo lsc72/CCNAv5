@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.2.5 Vérification des contiguïtés de DR/BDR</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées du protocole OSPF à zone unique </h1>
+        <h2>OSPF dans les réseaux à accès multiple</h2>
+      </div>
+      <div id="content">
+<p>Pour vérifier les contiguïtés OSPF, utilisez la commande<span class="cmd"><b> show ip ospf neighbor</b></span>, comme illustré à la Figure 1. </p>
+<p></p>
+<p>Contrairement aux liens série qui affichent uniquement l'état<span class="cmd"> FULL/-</span>, les voisins dans des réseaux à accès multiple peuvent afficher les états suivants :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">FULL/DROTHER</span>
+<b></b> : routeur DR ou BDR, en contiguïté complète avec un routeur ni DR, ni BDR. Ces deux voisins peuvent échanger des paquets Hello, des mises à jour, des requêtes, des réponses et des accusés de réception.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">FULL/DR</span>
+<b></b> : routeur en contiguïté complète avec le voisin DR indiqué. Ces deux voisins peuvent échanger des paquets Hello, des mises à jour, des requêtes, des réponses et des accusés de réception. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">FULL/BDR</span>
+<b></b> : routeur en contiguïté complète avec le voisin BDR indiqué. Ces deux voisins peuvent échanger des paquets Hello, des mises à jour, des requêtes, des réponses et des accusés de réception.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">2-WAY/DROTHER</span>
+<b></b> : routeur ni DR, ni BDR, voisin d'un autre routeur ni DR, ni BDR. Ces deux voisins échangent des paquets Hello. </li>
+</ul>
+</p>
+<p></p>
+<p>L'état normal d'un routeur OSPF est généralement <span class="cmd">FULL</span>. Si un routeur reste bloqué dans un autre état, cela indique des problèmes dans l'établissement des contiguïtés. La seule exception est l'état <span class="cmd">2-WAY</span>, qui est l'état normal dans un réseau à accès multiple avec diffusion. </p>
+<p></p>
+<p>Dans les réseaux à accès multiple, seuls les DROthers établissent des contiguïtés complètes avec le DR et le BDR. Cependant, les DROthers établissent des contiguïtés de voisinage 2-WAY avec tout autre DROther rejoignant le réseau. Cela signifie que chaque routeur DROther d'un réseau à accès multiple reçoit les paquets Hello de tous les autres routeurs DROther. Ainsi, ils connaissent les autres routeurs du réseau. Lorsque deux routeurs DROther établissent une contiguïté de voisinage, l'état du voisin est <span class="cmd">2-WAY/DROTHER</span>.</p>
+<p></p>
+<p>Le résultat produit par R1 confirme que R1 a des contiguïtés avec les routeurs suivants :</p>
+<p>
+<ul>
+<li>Le routeur R2 avec l'ID de routeur 2.2.2.2 est dans un état Full et le rôle de R2 est routeur désigné de secours (BDR). (1)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le routeur R3 avec l'ID de routeur 3.3.3.3 est dans un état Full et le rôle de R3 est routeur désigné (DR). (2)</li>
+</ul>
+</p>
+<p></p>
+<p>Le résultat produit par R2 à la Figure 2 confirme que R2 a des contiguïtés avec les routeurs suivants :</p>
+<p>
+<ul>
+<li>Le routeur R1 avec l'ID de routeur 1.1.1.1 est dans un état Full et R1 n'est ni routeur désigné (DR) ni routeur désigné de secours (BDR). (1)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le routeur R3 avec l'ID de routeur 3.3.3.3 est dans un état Full et le rôle de R3 est routeur désigné (DR). (2)</li>
+</ul>
+</p>
+<p></p>
+<p>Le résultat produit par R3 à la Figure 3 confirme que R3 a des contiguïtés avec les routeurs suivants :</p>
+<p>
+<ul>
+<li>Le routeur R1 avec l'ID de routeur 1.1.1.1 est dans un état Full et R1 n'est ni routeur désigné (DR) ni routeur désigné de secours (BDR). (1)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le routeur R2 avec l'ID de routeur 2.2.2.2 est dans un état Full et le rôle de R2 est routeur désigné de secours (BDR). (2)</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.3.2.4 Création de listes de contrôle d&#x0027;accès étendues nommées</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.3.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Listes de contrôle d&#x0027;accès IPv4 étendues</h1>
+        <h2>Configuration de listes de contrôle d&#x0027;accès IPv4 étendues</h2>
+      </div>
+      <div id="content">
+<p>La création des listes de contrôle d'accès étendues nommées est similaire à la création des listes de contrôle d'accès standard nommées. Procédez comme suit pour créer une liste de contrôle d'accès étendue identifiée par un nom :</p>
+<p></p>
+<p>
+<b>Étape 1. </b>En mode de configuration globale, utilisez la commande <span class="cmd"><b>ip access-list extended </b></span><span class="cmd"><i>name</i></span> pour définir le nom de la liste de contrôle d'accès étendue. </p>
+<p></p>
+<p>
+<b>Étape 2. </b>En mode de configuration de la liste de contrôle d'accès nommée, spécifiez les conditions <span class="cmd"><b>permit </b></span>ou<span class="cmd"><b> deny</b></span>.</p>
+<p></p>
+<p>
+<b>Étape 3. </b>Repassez en mode d'exécution privilégié et vérifiez la liste à l'aide de la commande <span class="cmd"><b>show access-lists </b></span><span class="cmd"><i>name</i></span>.</p>
+<p></p>
+<p>
+<b>Étape 4. </b>Enregistrez les entrées dans le fichier de configuration en utilisant la commande <span class="cmd"><b>copy running-config startup-config</b></span>.</p>
+<p></p>
+<p>Pour supprimer une liste de contrôle d'accès étendue nommée, utilisez la commande de configuration globale <span class="cmd"><b>no ip access-list extended </b></span><span class="cmd"><i>name</i></span>.</p>
+<p></p>
+<p>La figure montre les versions nommées des listes de contrôle d'accès créées dans les exemples précédents. La liste de contrôle d'accès nommée SURFING permet aux utilisateurs du réseau local 192.168.10.0/24 d'accéder aux sites Web. La liste de contrôle d'accès nommée BROWSING autorise le trafic de retour provenant des connexions établies. Les règles sont appliquées au trafic entrant et sortant de l'interface G0/0 à l'aide des noms des listes de contrôle d'accès.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

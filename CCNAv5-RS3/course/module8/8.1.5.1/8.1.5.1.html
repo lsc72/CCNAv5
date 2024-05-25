@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.5.1 Présentation de l’authentification des protocoles de routage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.5.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations EIGRP avancées</h1>
+        <h2>EIGRP sécurisé</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Authentification des protocoles de routage</b>
+</p>
+<p></p>
+<p>Les administrateurs réseau doivent savoir que les routeurs sont autant confrontés aux attaques que les périphériques des utilisateurs finaux. Quiconque équipé d'un analyseur de paquets, tel que Wireshark, peut lire les informations propagées entre des routeurs. En général, les systèmes de routage peuvent être attaqués par le biais d'une interruption entre périphériques homologues ou la falsification des informations de routage.</p>
+<p></p>
+<p>L’interruption entre homologues est l’attaque la moins critique des deux, étant donné que les protocoles de routage se rétablissent automatiquement. La durée de l’interruption est donc à peine plus longue que l’attaque elle-même.</p>
+<p></p>
+<p>La falsification des informations de routage est un type d'attaque plus subtil qui cible les informations transportées via le protocole de routage. Les conséquences de la falsification des informations de routage sont les suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>redirection du trafic pour créer des boucles de routage</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>redirection du trafic pour surveiller une ligne non sécurisée</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>redirection du trafic pour le mettre à l'écart</li>
+</ul>
+</p>
+<p></p>
+<p>Une méthode de protection des informations de routage sur le réseau consiste à authentifier les paquets du protocole de routage à l'aide de l'algorithme Message Digest 5 (MD5). MD5 permet aux routeurs de comparer les signatures qui doivent toutes être identiques, confirmant ainsi la crédibilité de la source.</p>
+<p></p>
+<p>Les trois composants d'un tel système sont :</p>
+<p></p>
+<p>
+<ul>
+<li>L'algorithme de chiffrement, qui est généralement de notoriété publique.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La clé utilisée dans l'algorithme de chiffrement, qui est un secret partagé par les routeurs qui authentifient leurs paquets.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le contenu du paquet proprement dit.</li>
+</ul>
+</p>
+<p></p>
+<p>Dans la figure, cliquez sur le bouton Lecture pour visualiser une animation de la façon dont chaque routeur authentifie les informations de routage. En général, l’expéditeur des informations de routage génère une signature à partir de la clé et des données de routage à expédier, en tant qu’entrées de l’algorithme de chiffrement. Le routeur qui reçoit les données de routage peut ensuite répéter le processus à l'aide de la clé et des données de routage reçues. Si la signature calculée par le récepteur est identique à celle calculée par l'expéditeur, la mise à jour est authentifiée et considérée comme fiable.</p>
+<p></p>
+<p>Les protocoles de routage tels que RIPv2, EIGRP, OSPF, IS-IS et BGP prennent tous en charge plusieurs formes d'authentification MD5.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

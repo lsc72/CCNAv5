@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.1.1 Couche réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche réseau</h1>
+        <h2>Couche réseau de la communication</h2>
+      </div>
+      <div id="content">
+<p>La couche réseau, ou couche 3 du modèle OSI, fournit des services permettant aux périphériques finaux d'échanger des données sur le réseau. Pour effectuer ce transport de bout en bout, la couche réseau utilise quatre processus de base :</p>
+<p>
+<ul>
+<li>
+<b>Adressage des périphériques finaux</b> – de la même manière qu'un téléphone a un numéro unique, les périphériques finaux doivent être configurés avec une adresse IP unique pour être identifiés sur le réseau. Un périphérique final disposant d'une adresse IP est qualifié d'hôte.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Encapsulation</b> – la couche réseau reçoit une unité de données de protocole (PDU) de la couche transport. Dans le cadre d'un processus appelé l'encapsulation, la couche réseau ajoute des informations d'en-tête IP, telles que l'adresse IP des hôtes source (expéditeur) et de destination (destinataire). Une fois les informations d'en-tête ajoutées à la PDU, celle-ci est appelée paquet. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Routage</b> – la couche réseau fournit des services permettant de diriger les paquets vers un hôte de destination sur un autre réseau. Pour voyager vers d'autres réseaux, le paquet doit être traité par un routeur. Le rôle du routeur est de sélectionner les chemins afin de diriger les paquets vers l'hôte de destination. Ce processus est appelé le routage. Un paquet peut passer par de nombreux périphériques intermédiaires avant d'atteindre l'hôte de destination. Chaque route que le paquet emprunte pour atteindre l'hôte de destination est appelée un saut. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Désencapsulation</b> – lorsque le paquet arrive au niveau de la couche réseau de l'hôte de destination, l'hôte vérifie l'en-tête du paquet IP. Si l'adresse IP de destination dans l'en-tête correspond à l'adresse IP de l'hôte qui effectue la vérification, l'en-tête IP est supprimé du paquet. Ce processus de suppression des en-têtes des couches inférieures est appelé la désencapsulation. Une fois la désencapsulation effectuée par la couche réseau, la PDU de couche 4 est transmise au service approprié au niveau de la couche transport.</li>
+</ul>
+</p>
+<p></p>
+<p>Contrairement à la couche transport (couche 4 OSI), qui gère le transport des données entre les processus s'exécutant sur chaque hôte, les protocoles de couche réseau spécifient la structure et le traitement des paquets utilisés pour transporter les données d'un hôte à un autre. Un fonctionnement indépendant des données transportées dans chaque paquet permet à la couche réseau d'acheminer des paquets pour plusieurs types de communication entre plusieurs hôtes.</p>
+<p></p>
+<p>L'animation de la figure illustre l'échange des données.</p>
+<p></p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

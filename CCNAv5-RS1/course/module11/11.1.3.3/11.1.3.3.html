@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.1.3.3 Évolution des exigences liées aux protocoles</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.1.3.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Création et développement</h1>
+        <h2>Croissance en de plus grands réseaux</h2>
+      </div>
+      <div id="content">
+<p>L'administrateur réseau doit non seulement connaître l'évolution des tendances du trafic, mais également l'évolution de l'utilisation du réseau. Comme le montre la figure, l'administrateur réseau d'un petit réseau a la possibilité d'obtenir des « instantanées » informatiques en personne de l'utilisation des applications par la plupart des employés au fil du temps. Ces instantanées comportent généralement les informations suivantes :</p>
+<p></p>
+<p>
+<ul>
+<li>Système d'exploitation + version du système d'exploitation</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Applications non réseau</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Applications réseau</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Utilisation de l'UC</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Utilisation du disque dur</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Utilisation de la RAM</li>
+</ul>
+</p>
+<p></p>
+<p>Dans un petit réseau, la documentation des instantanés des employés au fil du temps contribuera largement à informer l'administrateur réseau sur l'évolution des besoins de protocole et sur les flux de trafic associés. Par exemple, il se peut que certains employés utilisent des ressources hors site tels que des réseaux sociaux pour mieux faire la promotion de l'entreprise. Lorsqu'ils ont commencé à travailler dans l'entreprise, ces employés étaient peut-être moins orientés sur la publicité sur Internet. Cette évolution dans l'utilisation des ressources peut obliger l'administrateur réseau à adapter l'allocation des ressources. </p>
+<p></p>
+<p>L'administrateur réseau est responsable de suivre les besoins d'utilisation du réseau et de flux de trafic, et d'apporter des modifications au réseau afin d'optimiser la productivité des employés lorsque le réseau et l'entreprise se développent.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

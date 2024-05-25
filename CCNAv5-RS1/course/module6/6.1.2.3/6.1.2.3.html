@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.1.2.3 IP – Acheminement au mieux</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche réseau</h1>
+        <h2>Caractéristiques du protocole IP</h2>
+      </div>
+      <div id="content">
+<p>Le protocole IP est souvent qualifié de protocole non fiable ou de protocole d'acheminement au mieux. Cela ne signifie pas que le protocole IP ne fonctionne que par intermittence, ni que ce protocole de communication de données n'est pas efficace. Le terme « non fiable » signifie simplement que le protocole IP n'a pas la capacité de gérer (ni de récupérer) les paquets endommagés ou non remis. En effet, alors que les paquets IP sont envoyés avec des informations sur l'emplacement de la destination, ils ne contiennent aucune information pouvant être traitée pour informer l'expéditeur que les paquets ont bien été reçus. Aucune donnée de synchronisation n'est comprise dans l'en-tête du paquet pour suivre l'ordre de livraison de paquets. De plus, aucun accusé de réception de la transmission de paquets n'existe dans le protocole IP et aucune donnée de contrôle des erreurs ne permet de savoir si les paquets ont été acheminés sans être modifiés. Les paquets peuvent arriver à destination endommagés, dans le désordre, ou même ne pas arriver du tout. Avec les informations de l'en-tête IP, il est impossible de retransmettre des paquets en cas d'erreur. </p>
+<p></p>
+<p>Si des paquets dans le désordre ou manquants génèrent des problèmes pour l'application utilisant les données, des services de couche supérieure (par exemple, TCP) devront résoudre ces incidents. Cela permet au protocole IP d'être très efficace. Si des données supplémentaires relatives à la fiabilité étaient incluses au protocole IP, les communications n'exigeant pas de connexions ou de fiabilité augmenteraient pour rien la consommation de bande passante et les délais. Dans la suite de protocoles TCP/IP, la couche transport peut utiliser le protocole TCP ou UDP en fonction du besoin de fiabilité de la transmission. Laisser la décision de fiabilité à la couche transport permet au protocole IP d'être plus adaptable et approprié à différents types de communication.</p>
+<p></p>
+<p>La figure montre un exemple de communications IP. Les protocoles orientés connexion, tels que TCP, exigent que des données de contrôle soient échangées pour établir la connexion. Pour mettre à jour des informations sur la connexion, le protocole TCP nécessite également des champs supplémentaires dans l'en-tête PDU.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.2.2 Clients et serveurs</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Connecté au monde entier</h1>
+        <h2>Fourniture de ressources dans un réseau</h2>
+      </div>
+      <div id="content">
+<p>Tous les ordinateurs connectés à un réseau et qui participent directement aux communications réseau sont des hôtes ou des périphériques finaux. Les hôtes peuvent envoyer et recevoir des messages sur le réseau. Dans les réseaux actuels, les périphériques finaux peuvent jouer le rôle de client, de serveur, ou les deux. Les logiciels installés sur l'ordinateur déterminent le rôle qu'il tient au sein du réseau.</p>
+<p></p>
+<p>Les serveurs sont des hôtes équipés des logiciels leur permettant de fournir des informations, comme des messages électroniques ou des pages Web, à d'autres hôtes sur le réseau. Chaque service nécessite un logiciel serveur distinct. Par exemple, un hôte nécessite un logiciel de serveur Web pour pouvoir offrir des services Web au réseau.</p>
+<p></p>
+<p>Les clients sont des ordinateurs hôtes équipés d'un logiciel qui leur permet de demander des informations auprès du serveur et de les afficher. Un navigateur Web, tel qu'Internet Explorer, est un exemple de logiciel client.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

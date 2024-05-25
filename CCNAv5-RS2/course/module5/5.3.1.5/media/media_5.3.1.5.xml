@@ -1,0 +1,98 @@
+﻿<textcomponents>
+<component id="ID_s1_title">
+<text><![CDATA[<b>Modèle de gestionnaire de base de données des commutateurs  </b>]]></text>
+</component>
+<component id="ID_s2_title">
+<text><![CDATA[<b>Modèle&nbsp;SDM  </b>]]></text>
+</component>
+<component id="ID_s3_title">
+<text><![CDATA[<b>Prise en charge du routage statique 2960  </b>]]></text>
+</component>
+<component id="ID_s4_title">
+<text><![CDATA[<b>Activation de la fonctionnalité de routage IPv4 sur un<br/>commutateur 2960  </b>]]></text>
+</component>
+<component id="ID_s5_title">
+<text><![CDATA[<b>Routeur participant au routage avec un commutateur  </b>]]></text>
+</component>
+<component id="ID_s6_title">
+<text><![CDATA[<b>Configuration d'une route statique sur un commutateur 2960  </b>]]></text>
+</component>
+<component id="ID_s7_title">
+<text><![CDATA[<b>Table de routage finale sur le routeur   </b>]]></text>
+</component>
+<component id="ID_s8_title">
+<text><![CDATA[<b>Connectivité des hôtes  </b>]]></text>
+</component>
+<component id="ID_s9_title">
+<text><![CDATA[<b>Routage statique sur un commutateur 2960  </b>]]></text>
+</component>
+
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+<component id="ID_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b><font size='10' class="font10px" face="Arial" color="#0000FF">*** Vous devez saisir la commande précisément et en entier. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font>  </b>]]></feedback>
+		<existingcommands><![CDATA[<font size='10' class="font10px" face="Arial"><b>Affichez le modèle actuel de gestionnaire de base de données des commutateurs (SDM, Switch Database Manager).  </b></font>]]></existingcommands>
+		<command prompt="S1#">
+			<correctresponse><![CDATA[show sdm prefer]]></correctresponse>
+				<deviceresponse><![CDATA[<font face='Courier New' size="10" class="font10px">Le modèle actuel est le modèle «&nbsp;par défaut&nbsp;».  <br> Le modèle sélectionné optimise les ressources <br> du commutateur afin de prendre en charge ce niveau de fonctionnalité pour <br> 0&nbsp;interface routée et 255 VLAN.  <br> <br> nombre d'adresses MAC de monodiffusion&nbsp;: 8&nbsp;000 <br>  nombre de groupes IGMP IPv4&nbsp;: 250 <br>  nombre d'entrées de contrôle d'accès QoS IPv4/MAC&nbsp;: 125 <br>  nombre d'entrées de contrôle d'accès de sécurité IPv4/MAC&nbsp;: 375</font>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' class="font10px" face="Arial"><b>Passez en mode de configuration et affichez les options de la commande «&nbsp;sdm prefer&nbsp;».  </b></font>]]></instruction>
+		</command>
+		<command prompt="S1#">
+			<correctresponse><![CDATA[configure terminal]]></correctresponse>
+				<deviceresponse><![CDATA[<font face='Courier New' size="10" class="font10px">Entrez les commandes de configuration, une par ligne. Terminez par CNTL/Z.</font>]]></deviceresponse>
+		</command>	
+		<command prompt="S1(config)#">
+			<correctresponse><![CDATA[sdm prefer ?]]></correctresponse>
+			<deviceresponse><![CDATA[<font face='Courier New' size="10" class="font10px">  default Default bias <br>  dual-ipv4-and-ipv6 prend en charge à la fois IPv4 et IPv6 <br>  lanbase-routing prend en charge le routage statique à la fois IPv4 et IPv6 <br>  qos QoS bias</font>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' class="font10px" face="Arial"><b>Configurez le commutateur de sorte qu'il prenne en charge le routage.  </b></font>]]></instruction>
+		</command>	
+		<command prompt="S1(config)#">
+			<correctresponse><![CDATA[sdm prefer lanbase-routing]]></correctresponse>
+			<deviceresponse><![CDATA[<font face='Courier New' size="10" class="font10px">Les modifications apportées aux préférences du SDM en cours ont été enregistrées, mais elles ne seront prises en compte <br>qu'au prochain redémarrage.  <br>Utilisez l'option «&nbsp;show sdm prefer&nbsp;» pour afficher la préférence SDM actuelle.</font>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' class="font10px" face="Arial"><b>Redémarrez le commutateur au moyen de l'option «&nbsp;do&nbsp;» pour enregistrer la configuration lorsque vous y êtes invité.  </b></font>]]></instruction>
+		</command>	
+		<command prompt="S1(config)#">
+			<correctresponse><![CDATA[do reload]]></correctresponse>
+		</command>	
+		<command prompt="System configuration has been modified. Save? [yes/no]:">
+			<correctresponse><![CDATA[yes]]></correctresponse>
+			<deviceresponse><![CDATA[<font face='Courier New' size="10" class="font10px">Building configuration... <br>[OK]<br>Proceed with reload? [confirm]<br>*Mar 20 00:10:24.557: %SYS-5-RELOAD: Reload requested by console. Reload Reason: Reload<br>.</font>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' class="font10px" face="Arial"><b>Le commutateur est à nouveau en mode d'exécution utilisateur. Passez au mode d'exécution privilégié et affichez le modèle SDM actuel.  </b></font>]]></instruction>
+		</command>	
+		<command prompt="S1&gt;">
+			<correctresponse><![CDATA[enable]]></correctresponse>
+		</command>	
+		<command prompt="S1#">
+			<correctresponse><![CDATA[show sdm prefer]]></correctresponse>
+				<deviceresponse><![CDATA[ <font face='Courier New' size="10" class="font10px">Le modèle actuel est le modèle «&nbsp;lanbase-routing&nbsp;».  <br> Le modèle sélectionné optimise les ressources <br> du commutateur afin de prendre en charge ce niveau de fonctionnalité pour <br> 0&nbsp;interface routée et 255 VLAN.  <br> <br> nombre d'adresses MAC de monodiffusion&nbsp;: 4&nbsp;000 <br>  nombre de groupes IGMP IPv4 + routes de multidiffusion&nbsp;: 250 <br>  nombre de routes de monodiffusion IPv4&nbsp;: 750 <br>    nombre d'hôtes IPv4 connectés directement&nbsp;: 750 <br>    nombre de routes IPv4 indirectes&nbsp;: 16 <br>  nombre de groupes de multidiffusion IPv6&nbsp;: 375 <br>  nombre d'adresses IPv6 connectées directement&nbsp;: 750 <br>    nombre de routes de monodiffusion IPv6 indirectes&nbsp;: 16 <br>  nombre d'entrées de contrôle d'accès de routage reposant sur des stratégies IPv4&nbsp;: 0 <br>  nombre d'entrées de contrôle d'accès QoS IPv4/MAC&nbsp;: 125 <br>  nombre d'entrées de contrôle d'accès de sécurité IPv4/MAC&nbsp;: 375 <br>  nombre d'entrées de contrôle d'accès de routage reposant sur des stratégies IPv6&nbsp;: 0 <br>  nombre d'entrées de contrôle d'accès QoS IPv6&nbsp;: 375 <br>  nombre d'entrées de contrôle d'accès de sécurité IPv6&nbsp;: 127<br>S1#</font>]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' class="font10px" face="Arial"><b>Suivez les étapes suivantes dans l'ordre&nbsp;:<ul><li>Passez en mode configuration.<li>Activation du routage<li>Configurez une route par défaut avec 192.168.1.10 comme adresse de tronçon suivant.<li>Utilisez la commande «&nbsp;do&nbsp;» pour afficher la table de routage active sur le commutateur.</ul>  </b></font>]]></instruction>
+		</command>	
+		<command prompt="S1#">
+			<correctresponse><![CDATA[configure terminal]]></correctresponse>
+				<deviceresponse><![CDATA[<font face='Courier New' size="10" class="font10px">Entrez les commandes de configuration, une par ligne. Terminez par CNTL/Z.</font>]]></deviceresponse>
+		</command>	
+		<command prompt="S1(config)#">
+			<correctresponse><![CDATA[ip routing]]></correctresponse>
+		</command>	
+		<command prompt="S1(config)#">
+			<correctresponse><![CDATA[ip route 0.0.0.0 0.0.0.0 192.168.1.10]]></correctresponse>
+		</command>	
+		<command prompt="S1(config)#">
+			<correctresponse><![CDATA[do show ip route]]></correctresponse>
+				<deviceresponse><![CDATA[<font size='9' class="font9px" face="Courier New">Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP <br>       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area <br>       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2 <br>       E1 - OSPF external type 1, E2 - OSPF external type 2 <br>       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2 <br>       ia - IS-IS inter area, * - candidate default, U - per-user static route <br>       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP <br>       + - replicated route, % - next hop override <br> <br>Gateway of last resort is 192.168.1.10 to network 0.0.0.0 <br> <br>S* 0.0.0.0/0 [1/0] via 192.168.1.10 <br>      192.168.1.0/24 is variably subnetted, 2 subnets, 2 masks <br>C 192.168.1.0/24 is directly connected, Vlan1 <br>L 192.168.1.1/32 is directly connected, Vlan1 <br>      192.168.2.0/24 is variably subnetted, 2 subnets, 2 masks <br>C 192.168.2.0/24 is directly connected, Vlan2 <br>L 192.168.2.1/32 is directly connected, Vlan2]]></deviceresponse>
+			<instruction><![CDATA[<font size='10' face="Arial"  class="syntaxBottomLine"><b>Vous avez correctement configuré des routes statiques sur un commutateur Catalyst 2960.</font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+
+</textcomponents>

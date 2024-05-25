@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+<slide width="500">
+			<element type="ROUTER" textId="ID_s1_txt01" x="75.65" y="40" width="418" height="47.7"/>
+			<element type="ROUTER" textId="ID_s2_txt01" x="75.65" y="94.6" width="418" height="59.95"/>
+			<element type="ROUTER" textId="ID_s3_txt01" x="75.65" y="160.45" width="418" height="59.95"/>
+			<element type="ROUTER" textId="ID_s4_txt01" x="75.65" y="228.3" width="418" height="101.65"/>
+			<element type="ROUTER" textId="ID_s5_txt01" x="75.65" y="336.85" width="418" height="59.95"/>
+			<element type="TEXT" subType="TITLE" compId="ID_title" />
+			<element type="TEXT" compId="ID_txt01" width="72" x="0" y="55.35" align="right" expand="up+down" />
+			<element type="TEXT" compId="ID_txt02" width="72" x="0" y="116.05" align="right" expand="up+down" />
+			<element type="TEXT" compId="ID_txt03" width="72" x="0" y="182.9" align="right" expand="up+down" />
+			<element type="TEXT" compId="ID_txt04" width="72" x="0" y="270.6" align="right" expand="up+down" />
+			<element type="TEXT" compId="ID_txt05" width="72" x="0" y="358.45" align="right" expand="up+down" />
+			<element type="TEXT" compId="ID_txt06" width="72" x="86" y="169.45" align="left" expand="right" />	
+</slide>
+<text id="ID_s1_txt01"><![CDATA[<pre>R1(config)# <b>access-list 1 deny host 192.168.10.99 </b>
+R1(config)# <b>access-list 1 permit 192.168.0.0 0.0.255.255 </b></pre>]]></text>
+<text id="ID_s2_txt01"><![CDATA[<pre>R1# <b>show running-config | include access-list 1 </b>
+<div class="orange" style="width:100%">access-list 1 deny host 192.168.10.99</div>
+access-list 1 permit 192.168.0.0 0.0.255.255</pre>]]></text>
+<text id="ID_s3_txt01"><![CDATA[<pre><div id="texts3">access-list 1 deny host 192.168.10.10
+access-list 1 permit 192.168.0.0 0.0.255.255</div></pre>]]></text>
+<text id="ID_s4_txt01"><![CDATA[<pre>R1# <b>config t </b>
+Enter configuration commands, one per line. End with <br/>CNTL/Z. 
+R1(config)# <b>no access-list 1 </b>
+R1(config)# <b>access-list 1 deny host 192.168.10.10 </b>
+R1(config)# <b>access-list 1 permit 192.168.0.0 0.0.255.255 </b></pre>]]></text>
+<text id="ID_s5_txt01"><![CDATA[<pre>R1# <b>show running-config | include access-list 1 </b>
+<div class="orange" style="width:100%">access-list 1 deny host 192.168.10.10</div>
+access-list 1 permit 192.168.0.0 0.0.255.255</pre>]]></text>
+</data>

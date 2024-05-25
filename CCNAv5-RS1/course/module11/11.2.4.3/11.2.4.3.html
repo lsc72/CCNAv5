@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.2.4.3 Principes de sécurité de base</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.2.4.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Garantie de la sécurité du réseau</h1>
+        <h2>Sécurisation des périphériques</h2>
+      </div>
+      <div id="content">
+<p>Lors de la mise en œuvre des périphériques, il est important de respecter toutes les consignes de sécurité définies par l'entreprise. Cela implique que les noms des périphériques permettent une documentation et un suivi faciles, mais assurent également la sécurité. Il n'est pas judicieux de fournir trop d'informations sur l'utilisation du périphérique dans le nom d'hôte. D'autres mesures de sécurité de base doivent également être prises.</p>
+<p></p>
+<p>
+<b>Sécurité supplémentaire des mots de passe</b>
+</p>
+<p>Les mots de passe forts sont efficaces uniquement s'ils sont secrets. Plusieurs mesures permettent de s'assurer de leur confidentialité. Tout d'abord, la commande de configuration globale <span class="cmd"><b>service password-encryption</b></span> empêche les personnes non autorisées de consulter les mots de passe en clair dans le fichier de configuration, comme le montre la figure. Cette commande génère le chiffrement de tous les mots de passe en clair. </p>
+<p></p>
+<p>En outre, pour garantir la longueur minimale de tous les mots de passe configurés, utilisez la commande <span class="cmd"><b>security passwords min-length</b></span> en mode de configuration globale.</p>
+<p></p>
+<p>Les pirates peuvent également obtenir les mots de passe simplement par une attaque en force, en essayant plusieurs mots de passe jusqu'à ce que l'un d'eux fonctionne. Il est possible d'empêcher ce type d'attaque en bloquant les tentatives de connexion au périphérique si un nombre défini d'échecs survient sur une période donnée. </p>
+<p></p>
+<p>
+<span class="cmd">Router(config)#</span>
+<span class="cmd">
+<b>login block-for 120 attempts 3 within 60</b>
+</span>
+</p>
+<p></p>
+<p>Cette commande bloque les tentatives de connexion pendant 120 secondes après trois échecs de connexion en l'espace de 60 secondes. </p>
+<p></p>
+<p>
+<b>Bannières</b>
+</p>
+<p>Un message de bannière est l'équivalent d'un panneau Entrée interdite. Ces messages sont indispensables pour permettre l'assignation au tribunal de quiconque accède au système de façon inappropriée. Assurez-vous que les messages de bannière sont conformes aux stratégies de sécurité de l'entreprise. </p>
+<p></p>
+<p>
+<span class="cmd">Router(config)#</span>
+<span class="cmd">
+<b>banner motd #message#</b>
+</span>
+</p>
+<p></p>
+<p>
+<b>Exec Timeout</b>
+</p>
+<p>Il est également recommandé de définir des délais d'exécution. Vous indiquez ainsi au périphérique Cisco de déconnecter automatiquement tout utilisateur en ligne en cas d'inactivité pendant le délai défini. Les délais d'exécution peuvent être configurés sur la console, l'interface vty et les ports auxiliaires. </p>
+<p></p>
+<p>
+<span class="cmd">Router(config)#</span>
+<span class="cmd">
+<b>line vty 0 4</b>
+</span>
+<span class="cmd"></span>
+</p>
+<p>
+<span class="cmd">Router(config-vty)#</span>
+<span class="cmd">
+<b>exec-timeout 10 </b>
+</span>
+</p>
+<p></p>
+<p>Cette commande déconnecte les utilisateurs au bout de 10 minutes.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

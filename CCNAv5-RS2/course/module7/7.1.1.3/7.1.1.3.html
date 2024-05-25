@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.1.3 Rôle des protocoles de routage dynamique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de routage dynamique</h1>
+        <h2>Fonctionnement des protocoles de routage dynamique</h2>
+      </div>
+      <div id="content">
+<p>Les protocoles de routage permettent aux routeurs de partager de manière dynamique des informations sur les réseaux distants et d'ajouter automatiquement ces informations à leurs propres tables de routage (voir l'animation dans la figure).</p>
+<p></p>
+<p>Les protocoles de routage déterminent le meilleur chemin, ou la meilleure route, vers chaque réseau. Cette route est alors ajoutée à la table de routage. L'un des principaux avantages des protocoles de routage dynamique est l'échange d'informations de routage entre les routeurs lors de la modification de la topologie. Cet échange permet aux routeurs de découvrir automatiquement de nouveaux réseaux et également de trouver d'autres chemins en cas d'échec d'un lien vers un réseau actif. </p>
+<p></p>
+<p>Par rapport au routage statique, les protocoles de routage dynamique requièrent une charge administrative moindre. Toutefois, l'utilisation de protocoles de routage dynamique implique qu'une partie des ressources d'un routeur est dédiée au fonctionnement du protocole (y compris le temps processeur et la bande passante du lien réseau). Malgré les avantages du routage dynamique, le routage statique a encore toute sa légitimité. Selon la situation, l'un conviendra mieux que l'autre. Le routage statique et le routage dynamique peuvent être configurés sur des réseaux moyennement complexes.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

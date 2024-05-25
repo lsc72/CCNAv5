@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.4.2 Sélection d&#x0027;une connexion WAN, suite</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.4.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Choix d&#x0027;une technologie WAN</h1>
+        <h2>Sélection de services WAN</h2>
+      </div>
+      <div id="content">
+<p>En plus de rassembler des informations sur la portée du WAN, l'administrateur doit aussi déterminer les points suivants : </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Le WAN doit-il utiliser une infrastructure privée ou publique ? </b>- L'infrastructure privée offre le meilleur niveau de sécurité et de confidentialité, alors que l'infrastructure Internet publique offre la meilleure flexibilité et le niveau de coûts le moins élevé. Le choix dépend de l'objectif du WAN, des types de trafic qu'il transporte, ainsi que du budget de fonctionnement. Par exemple, si le but est de fournir à une succursale proche des services sécurisés à haut débit, une connexion dédiée ou commutée privée peut être préférable. Si l'objectif est de connecter plusieurs bureaux distants, un WAN public utilisant Internet peut être la meilleure solution. Pour les opérations distribuées, la solution peut venir d'une combinaison de différentes options. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Le WAN privé doit-il être dédié ou commuté ? </b>- Le transfert de volumes importants en temps réel présente des contraintes spécifiques qui peuvent faire pencher la balance en faveur d'une ligne dédiée, par exemple dans le cas du trafic entre le data center et le siège social de l'entreprise. Si l'entreprise se connecte à une seule filiale locale, une ligne louée dédiée peut être utilisée. Cependant, cette option peut s'avérer très coûteuse pour un réseau étendu connectant plusieurs bureaux. Dans ce cas, une connexion commutée peut s'avérer une meilleure solution.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Quel type d'accès VPN est requis dans le cas d'un WAN public ? </b>- Si l'objectif du WAN est de se connecter à un bureau distant, un VPN site à site peut être le meilleur choix. Pour connecter des télétravailleurs ou des clients, les réseaux privés virtuels d'accès à distance se révèlent être une meilleure option. Si un réseau étendu dessert un mélange de bureaux distants, de télétravailleurs et de clients autorisés, par exemple dans le cadre d'une entreprise multinationale exerçant des activités distribuées, une combinaison des options de réseau privé virtuel peut être requise.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Quelles sont les options de connexion disponibles localement ? </b>- Dans certaines régions, toutes les options de connexion WAN ne sont pas disponibles. Dans ce cas, le processus de sélection plus simple, bien que le WAN obtenu n'offre pas toujours des performances optimales. Par exemple, dans une zone rurale ou une région isolée, la seule option peut être l'accès VSAT ou cellulaire.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Combien coûtent les options de connexion disponibles ? </b>- En fonction de l'option choisie, le WAN peut représenter une dépense récurrente significative. Le coût de chaque option doit être évalué en fonction des autres exigences. Par exemple, la ligne louée dédiée est l'option la plus coûteuse, mais cette dépense peut être justifiée si la sécurisation des transmissions de volumes élevés de données en temps réel est une priorité. Pour les applications moins gourmandes, une option de connexion Internet ou commutée peut être plus adaptée. </li>
+</ul>
+</p>
+<p></p>
+<p>À l'aide des conseils décrits plus haut, ainsi que de ceux de l'architecture d'entreprise Cisco, l'administrateur réseau doit être en mesure de choisir une connexion WAN appropriée répondant aux besoins de différents scénarios.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

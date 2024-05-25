@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.1.2.1 Configuration d&#x0027;un serveur DHCPv4 de base</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 4</h1>
+        <h2>Configuration d&#x0027;un serveur DHCPv4 de base</h2>
+      </div>
+      <div id="content">
+<p>Le logiciel Cisco IOS du routeur Cisco peut être configuré en tant que serveur DHCPv4. Le serveur DHCPv4 Cisco IOS attribue et gère les adresses IPv4 depuis les pools d'adresses spécifiés dans le routeur jusqu'aux clients DHCPv4. La topologie représentée à la Figure 1 illustre cette fonctionnalité.</p>
+<p></p>
+<p>
+<b>Étape 1. Exclusion d'adresses IPv4</b>
+</p>
+<p></p>
+<p>Le routeur agissant en tant que serveur DHCPv4 attribue toutes les adresses IPv4 dans un pool d'adresses DHCPv4 sauf s'il est configuré pour exclure certaines adresses. En général, certaines adresses IPv4 d'un pool sont attribuées aux périphériques réseau nécessitant des adresses statiques. Par conséquent, ces adresses IPv4 ne doivent pas être attribuées à d'autres périphériques. Pour exclure certaines adresses, utilisez la commande <span class="cmd"><b>ip dhcp excluded-address</b></span>, comme illustré à la Figure 2.</p>
+<p></p>
+<p>Vous pouvez exclure une adresse ou une plage d'adresses en indiquant la première et la dernière adresse de la plage. Les adresses exclues doivent inclure les adresses attribuées aux routeurs, aux serveurs, aux imprimantes et aux autres périphériques qui ont été configurés manuellement.</p>
+<p></p>
+<p>
+<b>Étape 2. Configuration d'un pool DHCPv4</b>
+</p>
+<p></p>
+<p>Lorsque vous configurez un serveur DHCPv4, vous devez définir un pool d'adresses à attribuer. Comme le montre la Figure 3, la commande <span class="cmd"><b>ip dhcp pool </b></span><span class="cmd"><i>pool-name</i></span> crée un pool portant le nom spécifié et place le routeur en mode de configuration DHCPv4, ce qu'indique le message <span class="cmd">Router(dhcp-config)#</span>.</p>
+<p></p>
+<p>
+<b>Étape 3. Configuration de tâches spécifiques</b>
+</p>
+<p></p>
+<p>La Figure 4 affiche la liste des tâches à effectuer pour configurer le pool DHCPv4. Certaines de ces tâches sont facultatives. </p>
+<p></p>
+<p>Le pool d'adresses et le routeur servant de passerelle par défaut doivent être configurés. Utilisez l'instruction <span class="cmd"><b>network</b></span> pour définir la plage d'adresses disponibles. </p>
+<p>Utilisez la commande <span class="cmd"><b>défaut-router</b></span> pour définir le routeur servant de passerelle par défaut. Généralement, la passerelle est l'interface de réseau local du routeur le plus proche des périphériques client. Vous devez indiquer au moins une passerelle, mais vous pouvez spécifier jusqu'à huit adresses s'il en existe plusieurs.</p>
+<p></p>
+<p>Les autres commandes relatives au pool DHCPv4 sont facultatives. Par exemple, l'adresse IPv4 du serveur DNS à la disposition d'un client DHCPv4 est configurée à l'aide de la commande <span class="cmd"><b>dns-server</b></span>. La commande <span class="cmd"><b>domain-name </b></span><span class="cmd"><i>domain</i></span> sert à définir le nom de domaine. La durée du bail DHCPv4 peut être modifiée à l'aide de la commande <span class="cmd"><b>lease</b></span>. La durée par défaut du bail s'élève à un jour. La commande <span class="cmd"><b>netbios-name-server</b></span> est utilisée pour définir le serveur WINS NetBIOS.</p>
+<p></p>
+<p>
+<b>Exemple de DHCPv4</b>
+</p>
+<p></p>
+<p>La Figure 5 représente un exemple de configuration avec des paramètres DHCPv4 de base sur le routeur R1, le serveur DHCPv4 du réseau local 192.168.10.0/24. L'exemple repose sur la topologie de la Figure 1.</p>
+<p></p>
+<p>
+<b>Désactivation du protocole DHCPv4</b>
+</p>
+<p></p>
+<p>Le service DHCPv4 est activé par défaut sur les versions du logiciel Cisco IOS qui le prennent en charge. Pour désactiver le service, utilisez la commande <span class="cmd"><b>no service dhcp</b></span> du mode de configuration globale. Utilisez la commande <span class="cmd"><b>service dhcp</b></span> du mode de configuration globale pour réactiver le processus du serveur DHCPv4. L'activation du service n'a aucun effet si les paramètres ne sont pas configurés.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 6 pour configurer des paramètres DHCPv4 similaires sur R1 pour le réseau local 192.168.11.0/24.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

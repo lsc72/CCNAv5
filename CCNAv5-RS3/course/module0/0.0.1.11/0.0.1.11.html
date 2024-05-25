@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>0.0.1.11 Présentation du cours</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_0.0.1.11_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Évolutivité des réseaux</h1>
+        <h2>Message destiné aux participants</h2>
+      </div>
+      <div id="content">
+<p>Ce cours est centré sur l'architecture, les composants et le fonctionnement des routeurs et des commutateurs dans un réseau plus étendu et plus complexe. Vous apprendrez à configurer les routeurs et les commutateurs pour des fonctionnalités avancées. Le cours se déroulera comme suit : </p>
+<p></p>
+<p>
+<ul>
+<li>Configurer les opérations DHCP et DNS dans les réseaux IPv4 et IPv6, et résoudre les problèmes</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Décrire les fonctions et les avantages du protocole STP (Spanning Tree Protocol)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Configurer le protocole STP et résoudre les problèmes</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Décrire les fonctions et les avantages de l'agrégation de liens et du protocole VTP de Cisco</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Configurer et dépanner les protocoles VTP, STP et RSTP</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Configurer les fonctions de base des routeurs dans un réseau routé complexe pour IPv4 et IPv6 et résoudre les problèmes</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Configurer les opérations avancées des routeurs, résoudre les problèmes, et mettre en œuvre les protocoles de routage RIP, OSPF et EIGRP dans les réseaux IPv4 et IPv6</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Gérer les licences logicielles Cisco IOS® et les fichiers de configuration</li>
+</ul>
+</p>
+<p></p>
+<p>À la fin de ce cours, vous saurez configurer et dépanner les routeurs et les commutateurs, et résoudre des problèmes courants pour les protocoles OSPF, EIGRP, STP et VTP dans les réseaux IPv4 et IPv6. Vous acquerrez également les connaissances et les compétences requises pour implémenter les fonctions DHCP et DNS dans un réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

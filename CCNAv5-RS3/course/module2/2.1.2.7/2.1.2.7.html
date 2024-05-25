@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.7 ID système étendu</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts du mode Spanning Tree</h1>
+        <h2>Fonctionnement du protocole STP</h2>
+      </div>
+      <div id="content">
+<p>L'ID de pont permet de déterminer le pont racine d’un réseau. Le champ d'ID de pont d'une trame BPDU contient trois champs distincts : </p>
+<p>
+<ul>
+<li>Priorité du pont</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>ID système étendu</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Adresse MAC</li>
+</ul>
+</p>
+<p></p>
+<p>Chaque champ est utilisé lors du processus de sélection du pont racine.</p>
+<p></p>
+<p>
+<b>Priorité du pont</b>
+</p>
+<p></p>
+<p>La priorité du pont est une valeur personnalisable pouvant être utilisée pour influencer quel commutateur devient le pont racine. Le commutateur présentant la priorité la plus basse, et donc l'ID de pont le plus bas, devient pont racine car la valeur de priorité la plus basse a préséance sur les autres. Par exemple, pour garantir qu'un commutateur donné est toujours défini en tant que pont racine, définissez sa priorité sur une valeur plus basse que celle de tous les autres commutateurs du réseau. La valeur de priorité par défaut de tous les commutateurs Cisco est de 32768. La plage autorisée va de 0 à 61440, par incréments de 4096. Les valeurs de priorité valides sont donc : 0, 4096, 8192, 12288, 16384, 20480, 24576, 28672, 32768, 36864, 40960, 45056, 49152, 53248, 57344 et 61440. Toute autre valeur sera rejetée. Une priorité de pont de 0 a préséance sur toutes les autres priorités de pont.</p>
+<p></p>
+<p>
+<b>ID système étendu</b>
+</p>
+<p></p>
+<p>Les premières versions du protocole IEEE 802.1D avaient été conçues pour des réseaux n'utilisant pas de réseau local virtuel (VLAN). Il existait un seul arbre recouvrant commun sur tous les commutateurs. Pour cette raison, sur les anciens commutateurs Cisco, l'ID système étendu n'était pas obligatoire dans les trames BPDU. Alors que les VLAN étaient de plus en plus répandus pour la segmentation de l'infrastructure réseau, le protocole 802.1D a été modifié afin d'inclure la prise en charge des VLAN, imposant l'intégration d'un ID de VLAN dans la trame BPDU. Les données de VLAN sont incluses dans la trame BPDU par le biais d'un ID système étendu. Tous les commutateurs récents intègrent par défaut l'utilisation de l'ID système étendu.</p>
+<p></p>
+<p>Comme indiqué dans la Figure 1, le champ de priorité du pont est de 2 octets ou de 16 bits de long ; 4 bits sont utilisés pour la priorité du pont et 12 bits pour l'ID système étendu, qui identifie le VLAN participant au processus STP concerné. L'utilisation de ces 12 bits pour l'ID système étendu réduit le champ de priorité du pont à 4 bits seulement. Ce processus réserve les 12 bits les plus à droite à l'ID de VLAN et les 4 bits les plus à gauche à la priorité du pont. Ceci explique pourquoi la valeur de priorité du pont peut uniquement être configurée sur des multiples de 4 096, ou 2^12. Si les bits les plus à gauche sont 0001, la priorité du pont est de 4096 ; s'ils sont 1111, la priorité est de 61440 (= 15 x 4096). Les commutateurs Catalyst 2960 et 3560 ne permettent pas de configurer la priorité du pont sur 65536 (= 16 x 4096), car cela impliquerait l'utilisation d'un 5e bit, qui n'est pas disponible du fait de l'ID système étendu.</p>
+<p></p>
+<p>La valeur d’ID système étendu est ajoutée à la valeur de priorité de pont dans le champ d'ID de pont pour identifier la priorité et le VLAN de la trame BPDU. </p>
+<p>Lorsque deux commutateurs sont configurés avec le même niveau de priorité et présentent le même ID système étendu, le commutateur ayant la valeur hexadécimale d'adresse MAC la plus basse aura l'ID de pont le plus bas. Au départ, tous les commutateurs sont configurés avec la même valeur de priorité par défaut. L'adresse MAC est alors le critère qui détermine le choix du commutateur devant faire office de pont racine. Pour garantir que la décision relative au pont racine répond au mieux aux besoins du réseau, il est recommandé que l'administrateur configure le commutateur pont racine souhaité avec une priorité inférieure. Cela permet également de garantir que l'ajout de nouveaux commutateurs au réseau ne déclenche pas une nouvelle configuration Spanning Tree, qui pourrait perturber la communication sur le réseau avec la détermination d'un nouveau pont racine.</p>
+<p></p>
+<p>Dans la Figure 2, S1 a une priorité inférieure à celle des autres commutateurs ; par conséquent, il sera défini comme pont racine pour l'instance Spanning Tree.</p>
+<p></p>
+<p>Lorsque tous les commutateurs sont configurés avec la même priorité, ce qui est le cas des commutateurs laissés à leur configuration par défaut (priorité de 32768), l'adresse MAC devient le facteur de décision pour le choix du pont racine (Figure 3).</p>
+<p></p>
+<p>
+<b>Remarque </b>: dans cet exemple, la priorité de tous les commutateurs est de 32769. Cette valeur est basée sur la priorité par défaut (32768) et sur l'attribution du VLAN 1 associé à chaque commutateur (32768 + 1).</p>
+<p></p>
+<p>L’adresse MAC dont la valeur hexadécimale est la plus faible sera celle choisie pour la désignation du pont racine. Dans cet exemple, S2 présente la valeur d'adresse MAC la plus basse et devient donc pont racine pour l'instance Spanning Tree.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

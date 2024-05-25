@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.6 Dépannage des problèmes de couche d&#x0027;accès au réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration de base d&#x0027;un commutateur</h1>
+        <h2>Configuration des ports de commutateur</h2>
+      </div>
+      <div id="content">
+<p>La plupart des problèmes d'un réseau commuté surviennent lors de l'implémentation initiale. En théorie, une fois installé, un réseau continue à fonctionner sans problème. Cependant, des câbles sont endommagés, les configurations évoluent, de nouveaux périphériques sont connectés au commutateur dont la configuration doit alors être modifiée. Il est nécessaire de procéder à la maintenance continue et au dépannage de l'infrastructure réseau. </p>
+<p></p>
+<p>Suivez la procédure générale suivante pour dépanner les problèmes de connectivité pouvant affecter un commutateur et les périphériques qui y sont connectés :</p>
+<p></p>
+<p>Utilisez la commande<span class="cmd"><b> show interfaces</b></span> pour vérifier l'état de l'interface.</p>
+<p></p>
+<p>Si l'interface est désactivée : </p>
+<p></p>
+<p>
+<ul>
+<li>Vérifiez que les câbles utilisés sont adéquats. Vérifiez également que les câbles et les connecteurs ne sont pas endommagés. Si vous pensez qu'un câble inapproprié ou endommagé est utilisé, remplacez-le. </li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>Si l'interface est toujours désactivée, le problème peut être dû à un réglage de vitesse incohérent. Généralement, la vitesse d'une interface est déterminée par la négociation automatique. Par conséquent, même si la vitesse est définie manuellement sur une interface, l'interface connectée doit procéder à la négociation automatique correspondante. En cas d'incohérence dans le réglage de la vitesse en raison d'une mauvaise configuration ou d'un problème matériel ou logiciel, l'interface peut se désactiver. Si vous suspectez un problème, définissez une vitesse identique aux deux extrémités de la connexion. </li>
+</ul>
+</p>
+<p></p>
+<p>Si des problèmes de connectivité subsistent alors que l'interface est active : </p>
+<p>
+<ul>
+<li>Avec la commande<span class="cmd"><b> show interfaces</b></span>, vérifiez tout indice de bruit excessif. Ces indices peuvent notamment prendre la forme d'une augmentation du nombre de trames incomplètes, de trames géantes et d'erreurs CRC. En cas de bruit excessif, recherchez et éliminez la source de bruit, si possible. Vérifiez également que le câble n'excède pas la longueur maximale autorisée et vérifiez-en le type. Pour les câbles en cuivre, il est recommandé d'utiliser au moins du câble de catégorie 5.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<ul>
+<li>Si le bruit n'est pas la cause du problème, recherchez des collisions excessives. Si l'interface présente des collisions excessives ou tardives, vérifiez les paramètres bidirectionnels à chaque extrémité de la connexion. Tout comme pour la vitesse, les paramètres bidirectionnels doivent être déterminés par la négociation automatique. En cas d'incohérence dans les paramètres bidirectionnels, définissez-les manuellement à chaque extrémité de la connexion. Si les deux extrémités prennent en charge le mode bidirectionnel simultané, utilisez-le.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

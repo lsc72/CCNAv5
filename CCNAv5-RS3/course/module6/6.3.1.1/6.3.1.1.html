@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.1.1 Exercice en classe : trams numériques</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Trams numériques</b>
+</p>
+<p></p>
+<p>Votre ville possède un système de trams numériques vieillissant, basé sur une conception de zone unique. Toutes les communications effectuées au sein de cette zone unique sont plus longs à réaliser lorsque des trams sont ajoutés aux routes desservant la population de votre ville en développement. Les arrivées et départs des trams prennent également un peu plus de temps, car chaque tram doit gérer de grandes tables de routage afin de déterminer où aller chercher et déposer les habitants en fonction de leurs rues de départ et d'arrivée.</p>
+<p></p>
+<p>Un citoyen concerné a suggéré l'idée de diviser la ville en différentes zones afin de pouvoir traiter de manière plus efficace les différentes informations de routage des trams. Il pense que si les cartes des trams sont plus petites, le système pourra être amélioré grâce à des mises à jour plus rapides et plus simples des tables de routage.</p>
+<p></p>
+<p>Votre conseil municipal approuve et implémente le nouveau système de trams numériques, basé sur des zones. Toutefois, afin de s'assurer que les nouvelles routes de zones sont plus efficaces, le conseil municipal a besoin de données afin d'en montrer les résultats à l'occasion de la prochaine réunion.</p>
+<p></p>
+<p>Observez les instructions fournies dans le PDF pour cet exercice. Partagez vos réponses avec la classe.</p>
+<p></p>
+<p>
+<a href="../../files/6.3.1.1%20Digital%20Trolleys%20Instructions.pdf" target="_blank">Exercice en classe : trams numériques</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

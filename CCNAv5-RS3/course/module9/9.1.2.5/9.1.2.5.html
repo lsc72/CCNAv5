@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.2.5 Packet Tracer : utilisation d&#x0027;un serveur TFTP pour la mise à niveau d&#x0027;une image Cisco IOS</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Gestion des fichiers système IOS</h1>
+        <h2>Gestion des images logicielles Cisco IOS</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Contexte/scénario</b>
+</p>
+<p></p>
+<p>Un serveur TFTP permet de gérer le stockage des images IOS et des révisions de ces images. Quel que soit le réseau, il est recommandé de conserver une copie de sauvegarde de l'image du logiciel Cisco IOS, afin de se prémunir de la dégradation ou de la suppression accidentelle de l'image système du routeur. Un serveur TFTP peut également être utilisé pour stocker de nouvelles mises à niveau vers l'IOS et être ensuite déployé sur l'ensemble du réseau là où cela s'avère nécessaire. Au cours de cet exercice, vous allez mettre à niveau des images IOS sur des périphériques Cisco à l'aide d'un serveur TFTP. Vous allez également sauvegarder une image IOS en utilisant un serveur TFTP.</p>
+<p></p>
+<p>
+<a href="../../files/9.1.2.5%20Packet%20Tracer%20-%20Using%20a%20TFTP%20Server%20to%20Upgrade%20a%20Cisco%20IOS%20Image%20Instructions.pdf" target="_blank">Packet Tracer : instructions d'utilisation d'un serveur TFTP pour la mise à niveau d'une image Cisco IOS</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/9.1.2.5%20Packet%20Tracer%20-%20Using%20a%20TFTP%20Server%20to%20Upgrade%20a%20Cisco%20IOS%20Image.pka" target="_blank">Packet Tracer : utilisation d'un serveur TFTP pour la mise à niveau d'une image Cisco IOS - PKA</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

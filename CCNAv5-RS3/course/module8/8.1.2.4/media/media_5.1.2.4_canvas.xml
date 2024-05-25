@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		<!-- Slide 01-->
+		<slide>
+			<!-- Title -->
+				<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>	
+			<!-- Images -->
+				<element type="IMAGE" src="5_1_2_4.jpg" x="0" y="0" width="470" height="400"/>
+			<!-- static text-->
+				<element type="TEXT" text="2001:DB8:CAFE:2::/64" x="103.25" y="75.4" width="109.7" align="left"  bold="1" size="10"/>
+				<element type="TEXT" text="S0/0/0" x="102.95" y="149.35" width="35.95" align="left"  size="11"/>
+				<element type="TEXT" text=":2" x="124.55" y="162.35" width="13.35" align="left"  size="11"/>
+				<element type="TEXT" text="2001:DB8:CAFE:A001::/64" x="0.6" y="176.95" width="128" align="left" bold="1" size="10"/>
+				<element type="TEXT" text="S0/0/0" x="36.65" y="222.3" width="35.95" align="left"  size="11"/>
+				<element type="TEXT" text="S0/0/0" x="210.6" y="257.75" width="35.95" align="left"  size="11"/>
+				<element type="TEXT" text="S0/0/1" x="242.2" y="217.85" width="35.95" align="left"  size="11"/>
+				<element type="TEXT" text="S0/0/1" x="248.15" y="125.85" width="35.95" align="left"  size="11"/>
+				<element type="TEXT" text="S0/0/1" x="160.85" y="172.5" width="35.95" align="left"  size="11"/>
+				<element type="TEXT" text=":2" x="270.75" y="142.95" width="13.35" align="left"  size="11"/>
+				
+				<element type="TEXT" text=":1" x="183.45" y="184.55" width="13.35" align="left"  size="11"/>
+				<element type="TEXT" text=":2" x="264.8" y="230.85" width="13.35" align="left"  size="11"/>
+				<element type="TEXT" text="S0/1/0" x="195.15" y="134.15" width="35.95" align="left"  size="11"/>
+				<element type="TEXT" text=":1" x="197.15" y="150.65" width="13.35" align="left"  size="11"/>
+								
+				
+				<element type="TEXT" text=":1" x="57.2" y="235.35" width="13.35" align="left"  size="11"/>
+				<element type="TEXT" text="2001:DB8:CAFE:A003::/64" x="93.45" y="277.85" width="128" align="left" bold="1" size="10"/>
+				<element type="TEXT" text="2001:DB8:CAFE:3::/64" x="215.95" y="337.95" width="109.7" align="left" bold="1" size="10"/>
+				<element type="TEXT" text="2001:DB8:CAFE:1::/64" x="5.6" y="337.95" width="109.7" align="left" bold="1" size="10"/>
+				<element type="TEXT" text="2001:DB8:CAFE:A002::/64" x="221.15" y="177.7" width="128" align="left" bold="1" size="10"/>
+				<element type="TEXT" text="2001:DB8:FEED:1::/64" x="206.8" y="108" width="109.15" align="left" bold="1" size="10"/>
+				
+				<element type="TEXT" textId="ID_s1_st1" x="303.7" y="251.5" width="106.9" align="center" size="10"/>
+				
+				
+			<!-- lazy text-->	
+				<element type="TEXT" compId="ID_s1_txt01" x="6" y="57" width="100" align="left" expand="down"/>
+				<element type="TEXT" compId="ID_s1_txt02" x="331.3" y="132.85" width="78.3" align="center" expand="up+down"/>
+				<element type="TEXT" compId="ID_s1_txt03" x="294.3" y="237" width="119" size= "10" align="center" expand="up+down"/>
+		</slide>
+		
+		<!-- Slide 02-->
+		<slide>
+			<!-- Title -->
+				<element type="TEXT" subType="TITLE" compId="ID_s2_title" />
+			<!-- Router text-->		
+				<element type="ROUTER" textId="ID_r2_txt01" x="5" y="60" width="430" height="238.3"/>
+		</slide>
+		
+		<!-- Slide 03-->
+		<slide>
+			<!-- Title -->
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title" />
+			<!-- Router text-->		
+				<element type="ROUTER" textId="ID_r3_txt01" x="5" y="84" width="430" height="210.4"/>
+		    <!--lazy text-->
+				<element type="TEXT" compId="ID_s3_txt01" x="13.35" y="255.85" width="104" align="left" expand="right"/>
+			
+		</slide>
+		
+		<!-- Slide 04-->
+		<slide>
+			<!-- Title -->
+			<element type="TEXT" subType="TITLE" compId="ID_s4_title" />
+			<!-- Router text-->		
+				<element type="ROUTER" textId="ID_r4_txt01" x="5" y="60" width="430" height="60.35"/>
+		</slide>
+		
+			<!-- Router text r2-->
+	
+		<text id="ID_r2_txt01"><![CDATA[<code>R3(config)# <b>interface loopback 11</b>                
+R3(config-if)# <b>ipv6 address 2001:db8:acad:1::1/64</b>
+R3(config-if)# <b>ipv6 eigrp 2</b>
+R3(config-if)# <b>exit</b>
+R3(config)# <b>interface loopback 12</b>       
+R3(config-if)# <b>ipv6 address 2001:db8:acad:2::1/64</b>
+R3(config-if)# <b>ipv6 eigrp 2</b>
+R3(config-if)# <b>exit</b>
+R3(config)# <b>interface loopback 13</b>           
+R3(config-if)# <b>ipv6 address 2001:db8:acad:3::1/64</b>
+R3(config-if)# <b>ipv6 eigrp 2</b>
+R3(config-if)# <b>exit</b>
+R3(config)# <b>interface loopback 14</b>            
+R3(config-if)# <b>ipv6 address 2001:db8:acad:4::1/64</b>
+R3(config-if)# <b>ipv6 eigrp 2</b>
+</code>]]></text>
+
+<!-- Router text r3-->
+
+<text id="ID_r3_txt01"><![CDATA[<code>R3(config)# <b>interface serial 0/0/0</b>
+R3(config-if)# <b>ipv6 summary-address eigrp 2 2001:db8:acad::/48</b> 
+R3(config-if)# <b>exit</b>
+R3(config)# <b>interface serial 0/0/1</b>                       
+R3(config-if)# <b>ipv6 summary-address eigrp 2 2001:db8:acad::/48</b>
+R3(config-if)# <b>end</b>
+
+R3# <b>show ipv6 route</b>                       
+
+D   2001:DB8:ACAD::/48 [5/128256]
+     via Null0, directly connected
+</code>]]></text>
+
+<!-- Router text r4-->
+
+<text id="ID_r4_txt01"><![CDATA[<code>R1#  <b>show ipv6 route | include 2001:DB8:ACAD::</b>
+D   2001:DB8:ACAD::/48 [90/2297856]
+R1# 
+</code>]]></text>
+
+<text id="ID_s1_st1"><![CDATA[2001:DB8:ACAD:1::/64<br>2001:DB8:ACAD:2::/64<br>2001:DB8:ACAD:3::/64<br>2001:DB8:ACAD:4::/64]]></text>
+	</slide>
+	
+</data>

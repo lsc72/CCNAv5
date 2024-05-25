@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.3.1 Éléments de dépannage de la connectivité de bout en bout</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Dépannage de la connectivité IP</h2>
+      </div>
+      <div id="content">
+<p>Le diagnostic et la résolution de problèmes sont des compétences essentielles des administrateurs réseau. Il n'existe malheureusement pas de recette unique en matière de dépannage et un problème donné peut être diagnostiqué de nombreuses manières différentes. Toutefois, grâce à la mise en œuvre d'une approche structurée pour le processus de dépannage, un administrateur peut diminuer le temps nécessaire au diagnostic et à la résolution d'un problème.</p>
+<p></p>
+<p>Le scénario ci-dessous est utilisé tout au long de cette rubrique. L'hôte client PC1 ne peut pas accéder aux applications se trouvant sur les serveurs SRV1 et SRV2. La figure illustre la topologie de ce réseau. PC1 utilise SLAAC avec EUI-64 pour créer son adresse de monodiffusion globale IPv6. EUI-64 crée l'ID d'interface à l'aide de l'adresse MAC Ethernet, insère FFFE au milieu et manipule le septième bit. </p>
+<p></p>
+<p>En l'absence de connectivité de bout en bout, un administrateur ayant opté pour la méthode de dépannage ascendante peut effectuer les étapes de base suivantes :</p>
+<p></p>
+<p>
+<b>Étape 1.</b> Vérifiez la connectivité physique à l'endroit où la communication réseau s'arrête. Cela inclut les câbles et le matériel. Le problème peut concerner un câble défectueux ou une interface défaillante, ou impliquer du matériel mal configuré ou défaillant. </p>
+<p></p>
+<p>
+<b>Étape 2.</b> Recherchez les incohérences dans les paramètres bidirectionnels.</p>
+<p></p>
+<p>
+<b>Étape 3.</b> Vérifiez l'adressage des couches de liaison de données et réseau sur le réseau local. Cela inclut les tables ARP IPv4, les tables de voisinage IPv6, les tables d'adresses MAC et les attributions de VLAN.</p>
+<p></p>
+<p>
+<b>Étape 4.</b> Vérifiez que la passerelle par défaut est correcte.</p>
+<p></p>
+<p>
+<b>Étape 5.</b> Assurez-vous que les périphériques déterminent le chemin correct depuis la source jusqu'à la destination. Si nécessaire, manipulez les informations de routage. </p>
+<p></p>
+<p>
+<b>Étape 6.</b> Assurez-vous que la couche transport fonctionne correctement. Telnet peut également être utilisé pour tester les connexions de la couche transport à partir de la ligne de commande.</p>
+<p></p>
+<p>
+<b>Étapes 7.</b> Vérifiez qu'aucun trafic ne bloque les listes de contrôle d'accès.</p>
+<p></p>
+<p>
+<b>Étape 8.</b> Assurez-vous que les paramètres DNS sont corrects. Un serveur DNS devrait être accessible.</p>
+<p></p>
+<p>Le résultat de ce processus est une connectivité opérationnelle de bout en bout. Si toutes ces étapes ont été réalisées sans que le problème soit résolu, l'administrateur réseau a le choix de recommencer les étapes précédentes ou de transmettre le problème à un administrateur senior.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

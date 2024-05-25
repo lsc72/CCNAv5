@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.4.1 Adresses MAC et IP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole Ethernet</h1>
+        <h2>Adresses MAC et IP</h2>
+      </div>
+      <div id="content">
+<p>Chaque périphérique hôte possède deux adresses principales : </p>
+<p>
+<ul>
+<li>L'adresse physique (adresse MAC)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>L'adresse logique (adresse IP)</li>
+</ul>
+</p>
+<p></p>
+<p>L'adresse MAC et l'adresse IP fonctionnent ensemble pour identifier un périphérique sur le réseau. L'utilisation de l'adresse MAC et de l'adresse IP pour localiser un ordinateur revient à utiliser le nom et l'adresse d'une personne pour lui envoyer une lettre. </p>
+<p></p>
+<p>En règle générale, une personne ne change pas de nom. En revanche, son adresse postale peut changer. </p>
+<p></p>
+<p>Comme le nom d'une personne, l'adresse MAC d'un hôte ne change pas ; elle est physiquement attribuée à la carte réseau de l'hôte et est appelée adresse physique. L'adresse physique reste la même, quel que soit l'emplacement de l'hôte. </p>
+<p></p>
+<p>L'adresse IP est similaire à l'adresse d'une personne. Cette adresse correspond à l'emplacement réel de l'hôte. Elle permet à une trame de déterminer sa destination. L'adresse IP, ou adresse réseau, est appelée adresse logique, car elle est attribuée de manière logique par un administrateur réseau en fonction du réseau local auquel l'hôte est connecté. La figure montre que la localisation d'une personne en fonction de son adresse « logique » suit une hiérarchie. Cliquez sur chaque groupe pour voir le filtrage de l'adresse.</p>
+<p></p>
+<p>L'adresse MAC physique et l'adresse IP logique sont toutes deux requises pour que l'ordinateur communique sur un réseau hiérarchique, tout comme le nom et l'adresse d'une personne le sont pour envoyer une lettre. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.1.2 Densité de ports</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sélection des périphériques réseau</h1>
+        <h2>Matériel de commutation</h2>
+      </div>
+      <div id="content">
+<p>La densité de ports d'un commutateur est le nombre de ports disponibles sur un seul commutateur. La figure illustre la densité de ports de trois commutateurs différents.</p>
+<p></p>
+<p></p>
+<p>En général, les commutateurs à configuration fixe prennent en charge jusqu'à 48 ports sur le même appareil. En option, ils peuvent prendre en charge jusqu'à quatre ports supplémentaires pour des périphériques SFP (small form-factor pluggable). Une densité de ports élevée permet une meilleure utilisation d'un espace et d'une alimentation électrique limités. Deux commutateurs contenant chacun 24 ports peuvent prendre en charge 46 périphériques au maximum, car au moins un port par commutateur est perdu pour la connexion de chaque commutateur au reste du réseau. En outre, deux prises de courant sont nécessaires. En revanche, un commutateur unique à 48 ports nécessite une seule prise de courant et peut prendre en charge 47 périphériques, un seul port étant utilisé pour connecter ce commutateur au reste du réseau.</p>
+<p></p>
+<p>Les commutateurs modulaires peuvent prendre en charge des densités de ports très élevées, par l'ajout de cartes d'interface de port de commutation multiples. Par exemple, certains commutateurs Catalyst 6500 peuvent prendre en charge plus de 1 000 ports de commutation. </p>
+<p></p>
+<p>Les réseaux d'entreprise importants qui prennent en charge plusieurs milliers de périphériques réseau nécessitent une densité élevée pour utiliser au mieux l'espace et l'alimentation électrique. Sans l'utilisation d'un commutateur modulaire à densité élevée, le réseau aurait besoin de nombreux commutateurs de configuration fixe pour répondre au nombre de périphériques nécessitant un accès au réseau. Cette approche peut utiliser de nombreuses prises de courant et un espace important dans le local technique. </p>
+<p></p>
+<p>Un concepteur de réseau doit également réfléchir au problème des goulots d'étranglement de liens ascendants : une série de commutateurs à configuration fixe peut consommer de nombreux ports supplémentaires pour l'agrégation de la bande passante entre commutateurs, en vue d'atteindre des objectifs de performances. L'agrégation de la bande passante est moins problématique avec un commutateur modulaire unique, car le fond de panier du châssis peut apporter la bande passante nécessaire aux périphériques connectés aux cartes d'interface de port de commutation.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

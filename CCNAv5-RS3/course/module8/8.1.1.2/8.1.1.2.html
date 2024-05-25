@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.1.2 Récapitulation automatique EIGRP </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations EIGRP avancées</h1>
+        <h2>Résumé automatique </h2>
+      </div>
+      <div id="content">
+<p>L'une des méthodes les plus courantes pour régler précisément le protocole EIGRP consiste à activer et désactiver la récapitulation de route automatique. La récapitulation de route permet à un routeur de regrouper des réseaux et de les annoncer sous la forme d'un seul grand groupe à l'aide d'une route récapitulée unique. La récapitulation des routes est nécessaire en raison de la croissance rapide des réseaux.</p>
+<p></p>
+<p>Un routeur périphérique est un routeur situé à la périphérie d'un réseau. Ce routeur doit être capable d'annoncer tous les réseaux connus dans sa table de route à un routeur se connectant au réseau ou à un routeur FAI. Cette convergence peut potentiellement entraîner de très grandes tables de route. Imaginez qu'un routeur comporte 10 réseaux différents et qu'il doive annoncer l'ensemble des 10 entrées de route à un routeur en cours de connexion. Et si le routeur qui se connecte comportait également 10 réseaux et devait annoncer les 20 routes à un routeur FAI ? Si chaque routeur d'entreprise suivait ce scénario, la table de routage du routeur FAI serait énorme. </p>
+<p></p>
+<p>Le résumé permet de réduire le nombre d’entrées dans les mises à jour de routage, ainsi que dans les tables de routage locales. Il réduit également la consommation de bande passante par les mises à jour de routage et accélère les recherches dans les tables de routage. </p>
+<p></p>
+<p>Pour limiter le nombre d'annonces de routage et la taille des tables de routage, les protocoles de routage tels que le protocole EIGRP utilisent la récapitulation automatique aux frontières par classe. Autrement dit, le protocole EIGRP identifie les sous-réseaux comme un réseau unique de classe A, B ou C et crée une seule entrée dans la table de routage pour la route récapitulative. Ainsi, tout le trafic destiné aux sous-réseaux circule sur ce chemin unique. </p>
+<p></p>
+<p>La figure illustre le fonctionnement de la récapitulation automatique. Les routeurs R1 et R2 sont configurés à l'aide du protocole EIGRP pour IPv4 avec récapitulation automatique. R1 comprend trois sous-réseaux dans sa table de routage : 172.16.1.0/24, 172.16.2.0/24 et 172.16.3.0/24. Dans l'architecture d'adressage réseau par classe, ces sous-réseaux sont tous considérés comme appartenant à un réseau plus grand de classe B, 172.16.0.0/16. Étant donné que le protocole EIGRP sur le routeur R1 est configuré pour la récapitulation automatique, lorsqu'il envoie sa mise à jour de routage à R2, il récapitule les trois sous-réseaux /24 en un réseau 172.16.0.0/16 unique, ce qui réduit le nombre de mises à jour de routage envoyées et le nombre d'entrées dans la table de routage IPv4 de R2.</p>
+<p></p>
+<p>Tout le trafic destiné aux trois sous-réseaux transite par le chemin unique. R2 ne gère pas les routes vers les différents sous-réseaux et aucune information de sous-réseau n'est apprise. <p>Dans le cas d’un réseau d’entreprise, le chemin choisi pour atteindre le résumé du routage peut ne pas être le meilleur choix pour le trafic qui tente d’atteindre chaque sous-réseau individuel. Le seul moyen par lequel tous les routeurs peuvent trouver les meilleures routes pour chaque sous-réseau individuel est que les voisins envoient des informations de sous-réseaux. Dans ce cas, la récapitulation automatique doit être désactivée. Les mises à jour incluent alors des informations sur les sous-réseaux. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data> 
+		<slide type="MBAR">		
+		   
+		   <element type="IMAGE" src="1.1.4.2A.jpg" x="0" y="0" width="470" height="400"/> <!-- image div  -->		  
+		 
+
+			
+
+			<element type="TEXT"  text="2001:0DB8:ACAD:1::/64"    x="79.95"    y="36.6"   width="143.7"  align="center"  bold="1" />
+			<element type="TEXT"  text="2001:0DB8:ACAD:2::/64"    x="79.95"    y="189.6"   width="143.7"  align="center"  bold="1" />
+			<element type="TEXT"  text="2001:0DB8:ACAD:3::/64"    x="250.25"    y="75.7"   width="143.7"  align="center"  bold="1" />
+
+			<element type="TEXT"  text=":10"    x="57.15"    y="51.45"   width="19.4"  align="center" />
+			<element type="TEXT"  text=":10"    x="57.15"    y="151.45"   width="19.4"  align="center" />
+
+
+			<element type="TEXT"  text="G0/0"    x="192"    y="77.75"   width="28"  align="center" />
+			<element type="TEXT"  text=":1"    x="206.7"    y="92.75"   width="13.3"  align="center" />
+
+			<element type="TEXT"  text="G0/0"    x="192"    y="147.75"   width="28"  align="center" />
+			<element type="TEXT"  text=":1"    x="206.7"    y="132.75"   width="13.3"  align="center" />
+			
+			<element type="TEXT"  text=":1"    x="274.6"    y="101.75"   width="13.3"  align="center" />
+			<element type="TEXT"  text="S0/0/0"    x="274.6"    y="118.75"   width="35.9"  align="center" /> <!-- Slide 1 -->
+		   <slide>
+		  <element type="TEXT" subType="TITLE" compId="ID_s1_txt01"/>
+		  <element type="ROUTER"  textId="router_text1"  x="3.85"    y="222.8"   width="433.25" height="173.4" size="10" />
+		   </slide> <!-- Slide 2 -->
+		  <slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_txt01"/>			
+		   <element type="ROUTER"  textId="router_text2"  x="3.85"    y="222.8"   width="433.25" height="173.4" size="10" />
+     	  </slide> <!-- Slide 3 -->
+		  <slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_txt01"/>			
+		   <element type="ROUTER"  textId="router_text3"  x="3.85"    y="222.8"   width="433.25" height="173.4" size="10" />
+     	  </slide> <!-- Slide 4 -->
+		  <slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s4_txt01"/>			
+		   <element type="ROUTER"  textId="router_text4"  x="3.85"    y="222.8"   width="433.25" height="173.4" size="10" />
+     	  </slide>
+	
+		 
+	</slide>
+
+<text id="router_text1"><![CDATA[<pre>R1#<b> show ipv6 interface brief </b>
+GigabitEthernet0/0     [up/up]
+    FE80::FE99:47FF:FE75:C3E0
+    2001:DB8:ACAD:1::1
+GigabitEthernet0/1     [up/up]
+    FE80::FE99:47FF:FE75:C3E1
+    2001:DB8:ACAD:2::1
+Serial0/0/0            [up/up]
+    FE80::FE99:47FF:FE75:C3E0
+    2001:DB8:ACAD:3::1
+Serial0/0/1            [administratively down/down]
+    unassigned
+R1#</pre>]]></text>
+
+<text id="router_text2"><![CDATA[<pre>R1#<b> show ipv6 interface gigabitEthernet 0/0 </b>
+GigabitEthernet0/0 is up, line protocol is up
+  IPv6 is enabled, link-local address is FE80::32F7:DFF:FEA3:DA0 
+  No Virtual link-local address(es):
+  Global unicast address(es):
+    2001:DB8:ACAD:1::1, subnet is 2001:DB8:ACAD:1::/64 
+  Joined group address(es):
+    FF02::1
+    FF02::1:FF00:1
+    FF02::1:FFA3:DA0
+  MTU is 1500 bytes
+  ICMP error messages limited to one every 100 milliseconds
+  ICMP redirects are enabled
+  ICMP unreachables are sent
+  ND DAD is enabled, number of DAD attempts: 1
+  ND reachable time is 30000 milliseconds (using 30000)
+  ND NS retransmit interval is 1000 milliseconds
+R1#</pre>
+]]></text>
+
+
+<text id="router_text3"><![CDATA[<pre>R1#<b> show ipv6 route </b>
+IPv6 Routing Table - default - 7 entries
+Codes: C - Connected, L - Local, S - Static, U - Per-user Static
+
+&lt;output omitted&gt;
+
+C   2001:DB8:ACAD:1::/64 [0/0]
+     via GigabitEthernet0/0, directly connected
+L   2001:DB8:ACAD:1::1/128 [0/0]
+     via GigabitEthernet0/0, receive
+C   2001:DB8:ACAD:2::/64 [0/0]
+     via GigabitEthernet0/1, directly connected
+L   2001:DB8:ACAD:2::1/128 [0/0]
+     via GigabitEthernet0/1, receive
+C   2001:DB8:ACAD:3::/64 [0/0]
+     via Serial0/0/0, directly connected
+L   2001:DB8:ACAD:3::1/128 [0/0]
+     via Serial0/0/0, receive
+L   FF00::/8 [0/0]
+     via Null0, receive
+R1#</pre>
+]]></text>
+
+<text id="router_text4"><![CDATA[<pre>R1#<b> ping 2001:db8:acad:1::10 </b>
+Type escape sequence to abort. 
+Sending 5, 100-byte ICMP Echos to 2001:DB8:ACAD:1::10, timeout is 2
+seconds:
+!!!!!
+Success rate is 100 percent (5/5)
+R1#
+
+</pre>]]></text>
+</data>

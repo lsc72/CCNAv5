@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.3.1.4 Résumé</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.3.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>Nous avons constaté que les réseaux évoluent actuellement vers la convergence, avec un ensemble unique de fils et d'équipements pour prendre en charge la voix, la vidéo et la transmission des données. En outre, la façon dont les entreprises fonctionnent a significativement changé. Les employés ne sont plus restreints par des bureaux physiques ou des frontières géographiques. Les ressources doivent maintenant être parfaitement disponibles à tout moment et en tout lieu. L'architecture du réseau sans frontières de Cisco permet à différents éléments, des commutateurs d'accès aux points d'accès sans fil, pour fonctionner ensemble et permettre aux utilisateurs d'accéder aux ressources à tout moment et en tout lieu.</p>
+<p></p>
+<p>Le modèle de conception hiérarchique traditionnel répartit le réseau en trois couches : cœur de réseau, distribution et accès. Il permet d'optimiser chaque partie du réseau pour sa fonctionnalité spécifique. Elle offre modularité, résilience et souplesse, ce qui constitue une base qui permet aux concepteurs de réseaux de fournir une sécurité, une mobilité et des fonctionnalités de communications unifiées. Dans certains réseaux, il est inutile de séparer la couche cœur de réseau et la couche de distribution. Dans ces réseaux, la fonctionnalité de la couche cœur de réseau et la couche de distribution sont souvent regroupées.</p>
+<p></p>
+<p>Les commutateurs LAN Cisco utilisent des circuits ASIC pour transférer les trames en fonction de l'adresse MAC de destination. Pour ce faire, un commutateur doit utiliser au préalable l'adresse MAC source des trames entrantes, afin de constituer une table d'adresses MAC dans la mémoire CAM (mémoire adressable par contenu). Si l'adresse MAC de destination est contenue dans cette table, la trame est transmise uniquement au port de destination correspondant. Si tel n'est pas le cas, les trames sont diffusées sur tous les ports, sauf sur celui où la trame a été reçue.</p>
+<p></p>
+<p>Les commutateurs utilisent la commutation « store-and-forward » ou « cut-through ». La commutation par stockage et retransmission enregistre l'intégralité de la trame dans une mémoire tampon et vérifie le CRC avant de transférer la trame. La commutation cut-through lit uniquement la première partie de la trame et commence à transférer cette trame dès que l'adresse de destination est lue. Cette transmission est extrêmement rapide, mais aucun contrôle d'erreur n'est effectué sur la trame avant la transmission.</p>
+<p></p>
+<p>Chaque port d'un commutateur crée un domaine de collision distinct permettant une communication bidirectionnelle simultanée très haut débit. Les ports des commutateurs ne bloquent pas les diffusions. La connexion de commutateurs entre eux peut étendre la taille du domaine de diffusion, ce qui entraîne souvent une dégradation des performances réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

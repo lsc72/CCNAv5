@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide type="MBAR">		
+			<slide>
+				<element type="TEXT" subType="TITLE" compId="ID_s1_title" />	
+				<element type="ROUTER" textId="router_txtOne" x="7" y="50" width="428" height="103.3"/>			
+			</slide>
+			<slide>
+				<element type="TEXT" subType="TITLE" compId="ID_s2_title" />
+				<element type="ROUTER" textId="router_txtTwo" x="7" y="46" width="428" height="221"/>			
+			</slide>	
+			<slide>
+				<element type="TEXT" subType="TITLE" compId="ID_s3_title" />		
+				<element type="ROUTER" textId="router_txtThree" x="7" y="46" width="428" height="221"/>		
+			</slide>	
+			<slide>
+				<element type="TEXT" subType="TITLE" compId="ID_s4_title" />
+				<element type="ROUTER" textId="router_txtFour" x="7" y="46" width="428" height="187.65" size="10"/>			
+			</slide>
+			<slide>
+				<element type="TEXT" subType="TITLE" compId="ID_s5_title" />		
+				<element type="ACTIVITY" subType="SYNTAX" compId="ID_SC" x="2.5" y="28.45" width="437.1" height="367" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>	
+	</slide>	
+	</slide>
+
+
+	<text id="router_txtOne"><![CDATA[<pre>R1# <b>show running-config | section line vty </b>
+line vty 0 4
+ password 7 030752180500
+ login
+ transport input all
+R1#</pre>]]></text> <!-- Slide 2 -->
+	<text id="router_txtTwo"><![CDATA[<pre>R1# <b>show ip interface brief </b>
+Interface                  IP-Address      OK? Method Status                Protocol
+Embedded-Service-Engine0/0 unassigned      YES unset  administratively down down    
+GigabitEthernet0/0         192.168.10.1    YES manual up                    up      
+GigabitEthernet0/1         192.168.11.1    YES manual up                    up      
+Serial0/0/0                209.165.200.225 YES manual up                    up      
+Serial0/0/1                unassigned      YES unset  administratively down down    
+R1#
+R1# <b>show ip interface brief | include up </b>
+GigabitEthernet0/0         192.168.10.1    YES manual up                    up      
+GigabitEthernet0/1         192.168.11.1    YES manual up                    up      
+Serial0/0/0                209.165.200.225 YES manual up                    up      
+R1#</pre>]]>
+	</text> <!-- Slide 3 -->
+	<text id="router_txtThree"><![CDATA[<pre>R1#<b> show ip interface brief </b>
+Interface                  IP-Address      OK? Method Status                Protocol
+Embedded-Service-Engine0/0 unassigned      YES unset  administratively down down    
+GigabitEthernet0/0         192.168.10.1    YES manual up                    up      
+GigabitEthernet0/1         192.168.11.1    YES manual up                    up      
+Serial0/0/0                209.165.200.225 YES manual up                    up      
+Serial0/0/1                unassigned      YES unset  administratively down down    
+
+R1#<b> show ip interface brief | exclude unassigned </b>
+Interface                  IP-Address      OK? Method Status                Protocol
+GigabitEthernet0/0         192.168.10.1    YES manual up                    up      
+GigabitEthernet0/1         192.168.11.1    YES manual up                    up      
+Serial0/0/0                209.165.200.225 YES manual up                    up      
+
+R1#</pre>]]>
+	</text> <!--Slide 4-->
+	<text id="router_txtFour"><![CDATA[<pre>R1#<b> show ip route | begin Gateway </b>
+Gateway of last resort is not set
+
+      192.168.10.0/24 is variably subnetted, 2 subnets, 2 masks
+C        192.168.10.0/24 is directly connected, GigabitEthernet0/0
+L        192.168.10.1/32 is directly connected, GigabitEthernet0/0
+      192.168.11.0/24 is variably subnetted, 2 subnets, 2 masks
+C        192.168.11.0/24 is directly connected, GigabitEthernet0/1
+L        192.168.11.1/32 is directly connected, GigabitEthernet0/1
+      209.165.200.0/24 is variably subnetted, 2 subnets, 2 masks
+C        209.165.200.224/30 is directly connected, Serial0/0/0
+L        209.165.200.225/32 is directly connected, Serial0/0/0
+R1#</pre>]]></text>
+
+
+	
+</data>

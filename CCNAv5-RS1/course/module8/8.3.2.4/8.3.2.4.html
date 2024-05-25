@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.3.2.4 Traceroute - Tester le chemin</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.3.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Vérification de la connectivité</h1>
+        <h2>Test et vérification</h2>
+      </div>
+      <div id="content">
+<p>La commande ping permet de tester la connectivité entre deux hôtes, mais ne fournit pas d'informations sur les détails des périphériques entre les hôtes. Traceroute (tracert) est un utilitaire qui génère une liste de sauts qui ont été traversés sur le chemin. Cette liste peut fournir d'importantes informations pour la vérification et le dépannage. Si les données parviennent à destination, la commande affiche tous les routeurs situés entre les hôtes. Si les données restent bloquées au niveau d'un saut, l'adresse du dernier routeur ayant répondu à la commande peut fournir une indication sur l'endroit où se situe le problème ou sur d'éventuelles restrictions de sécurité.</p>
+<p></p>
+<p>
+<b>Durée de transmission ou RTT (Round Trip Time)</b>
+</p>
+<p>L'exécution de la commande traceroute fournit la durée de transmission sur chacun des sauts rencontrés sur le chemin et indique si un saut n'a pas répondu. La durée de transmission correspond à la durée nécessaire à un paquet pour atteindre l'hôte distant, plus le temps mis par l'hôte pour répondre. Un astérisque (*) indique un paquet perdu ou sans réponse. </p>
+<p></p>
+<p>Cette information permet de localiser un routeur problématique sur le chemin. Si des temps de réponse longs ou des pertes de données caractérisent un saut particulier, cela indique que les ressources du routeur ou que ses connexions sont saturées.</p>
+<p></p>
+<p>
+<b>Champs de durée de vie TTL IPv4 et limite de nombre de sauts IPv6</b>
+</p>
+<p>La commande traceroute utilise une fonction du champ de durée de vie TTL du protocole IPv4 et le champ de limite de nombre de sauts du protocole IPv6 dans les en-têtes de couche 3, ainsi que le message ICMP de dépassement de délai. </p>
+<p></p>
+<p>Lancez l'animation de la figure pour visualiser l'utilisation du paramètre TTL par l'utilitaire traceroute. </p>
+<p></p>
+<p>La première séquence des messages envoyés par traceroute contient un champ TTL de durée de vie égal à 1. Cela entraîne l'expiration du champ TTL de durée de vie du paquet IPv4 au niveau du premier routeur. Ce routeur répond ensuite en envoyant un message ICMPv4. L'utilitaire traceroute dispose à présent de l'adresse du premier saut.</p>
+<p></p>
+<p>Puis, il incrémente progressivement le champ TTL (2, 3, 4, etc.) pour chaque séquence de messages. Cela permet d'obtenir l'adresse de chaque saut, à mesure que les paquets expirent sur le chemin restant. Le champ TTL est incrémenté jusqu'à ce que la destination soit atteinte ou jusqu'à une valeur maximale prédéfinie.</p>
+<p></p>
+<p>Une fois que la destination finale est atteinte, l'hôte répond par un message ICMP Port Unreachable (port inaccessible) ou ICMP Echo Reply (réponse d'écho), à la place du message ICMP Time Exceeded (dépassement de délai).</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

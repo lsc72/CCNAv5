@@ -1,0 +1,60 @@
+
+/*   load the main media CSS file    */
+
+@import url('../../../common/styles/media2.css');
+
+html, body {
+	margin:0;
+	height:100%;
+}
+#flashContent {
+	width:98%;
+	height:98%;
+}
+
+#ID_table table { border: 1px solid #D3D1D2; border-collapse:collapse;}
+#ID_table table tbody tr { border: 1px solid #D3D1D2; padding:0px;}
+#ID_table table tbody tr td { border-color:#D3D1D2; border-collapse:collapse;}
+
+/*div [id^=staticTxt_S1],[id^=staticTxt_S2],[id^=staticTxt_S3] { 
+	text-align: center; 
+	font-size:11px;font-family: Courier, "Courier New", monospace;
+} */
+
+div[id^=staticTxt_S] > div{ 
+	font-size:11px;font-family: Courier, "Courier New", monospace;
+	letter-spacing: 1.4px!important;
+}
+
+#ID_s7_txt01 {
+    font-size: 11px;
+    letter-spacing: -0.3px !important;
+    line-height:11px;
+}
+.orangeBg{
+	background-color: #FACCA8;
+	padding: 5px 1px; 
+	/*letter-spacing: 2.6px;*/ 
+}
+.greenBg { 
+	background-color: #B5D9B3; 
+	padding: 5px 1px; 
+	/*letter-spacing: 2.6px; */
+}
+
+#lbl_S4_1,#lbl_S4_2,#lbl_S4_3,#lbl_S4_4{
+	background-color: #FACCA8;
+	height: 190px !important;
+	padding: 2px 5px !important;
+} 
+
+#staticTxt_4_5{
+	letter-spacing:1px!important;
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+
+	div[id^=staticTxt_S] > div{  
+		letter-spacing: 1.75px!important;
+	} 
+}

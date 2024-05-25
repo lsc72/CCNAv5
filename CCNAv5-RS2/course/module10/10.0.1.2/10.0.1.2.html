@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.0.1.2 Exercice : achat ou bail ?</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Introduction</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Exercice : </b>
+<b>achat ou bail ?</b>
+</p>
+<p></p>
+<p>Ce chapitre présente le concept d'utilisation du processus DHCP dans un réseau de PME. Cet exercice de conception décrit comment les périphériques d'ISR sans fil très basique fonctionnent à l'aide du processus DHCP. </p>
+<p></p>
+<p>Accédez à <a href="http://ui.linksys.com/WRT54GL/4.30.0/Setup.htm" target="_blank">http://</a><a href="http://ui.linksys.com/WRT54GL/4.30.0/Setup.htm" target="_blank">ui.linksys.com</a><a href="http://ui.linksys.com/WRT54GL/4.30.0/Setup.htm" target="_blank">/WRT54GL/4.30.0/</a><a href="http://ui.linksys.com/WRT54GL/4.30.0/Setup.htm" target="_blank">Setup.htm</a>, un simulateur Web qui vous apprend à configurer DHCP à l'aide d'un routeur sans fil Linksys 54GL. À droite du simulateur (dans la colonne de description bleue), vous pouvez cliquer sur <b>More</b> pour lire les informations sur la configuration des paramètres DHCP sur ce simulateur de routeur à services intégrés (ISR).</p>
+<p></p>
+<p>Essayez de configurer l'ISR :</p>
+<p>
+<ul>
+<li>Nom d'hôte</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Adresse IP locale avec masque de sous-réseau</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>DHCP (activer et désactiver)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Adresse IP de départ</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Nombre maximal d'utilisateurs pour recevoir une adresse IP DHCP</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Durée d'utilisation</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Fuseau horaire (utilisez le vôtre ou un favori comme alternative)</li>
+</ul>
+</p>
+<p></p>
+<p>Lorsque vous avez terminé la configuration des paramètres comme indiqué pour cet exercice, prenez une capture d'écran de vos paramètres en appuyant sur la touche <b>Impr. écran</b>. Effectuez une copie d'écran et placez-la dans un document de traitement de texte. Enregistrez-le et préparez-vous à expliquer vos choix de configuration à la classe.</p>
+<p></p>
+<p>
+<a href="../../files/10.0.1.2%20Own%20or%20Lease%20Instructions.pdf" target="_blank">Exercice en classe : achat ou bail ? Instructions</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

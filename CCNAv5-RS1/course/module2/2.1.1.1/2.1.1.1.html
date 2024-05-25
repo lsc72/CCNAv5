@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.1.1 Systèmes d&#x0027;exploitation</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>IOS Bootcamp</h1>
+        <h2>Cisco IOS</h2>
+      </div>
+      <div id="content">
+<p>Tous les périphériques finaux et tous les périphériques réseau connectés à Internet nécessitent un système d'exploitation pour pouvoir remplir leur fonction. </p>
+<p>Lorsqu'un ordinateur est mis sous tension, il charge le système d'exploitation dans la mémoire vive (RAM), en principe à partir d'un disque dur. La partie du code du système d'exploitation directement liée au matériel informatique s'appelle le noyau. La partie liée aux applications et à l'utilisateur s'appelle l'interpréteur de commandes. L'utilisateur accède à l'interpréteur de commandes à l'aide de l'interface de ligne de commande (CLI) ou de l'interface graphique utilisateur. </p>
+<p></p>
+<p>Lorsqu'il utilise l'interface de ligne de commande, l'utilisateur accède directement au système dans un environnement textuel, en entrant des commandes au clavier, dans une invite de commande. En règle générale, le système exécute la commande en fournissant une sortie textuelle. L'interface graphique permet à l'utilisateur d'accéder au système dans un environnement qui offre des images, du contenu multimédia et du texte. Les actions sont exécutées par le traitement des images à l'écran. Pour interagir avec le système, l'interface graphique est plus conviviale que l'interface de ligne de commande et ne requiert pas de connaissances approfondies. C'est pour cette raison que de nombreux utilisateurs préfèrent des environnements basés sur une interface graphique. La plupart des systèmes d'exploitation offrent ces deux types d'interface.</p>
+<p></p>
+<p>Cliquez sur le matériel, le noyau et l'interpréteur de commandes sur la figure pour obtenir plus d'informations.</p>
+<p></p>
+<p>La plupart des systèmes d'exploitation des périphériques finaux sont accessibles via une interface graphique, y compris MS Windows, MAC OS X, Linux, Apple iOS, Android, etc.</p>
+<p></p>
+<p>Le système d'exploitation des routeurs domestiques est généralement appelé « firmware ». La méthode la plus courante pour configurer un routeur domestique est d'utiliser un navigateur Web pour accéder à une interface graphique conviviale. La plupart des routeurs domestiques permettent la mise à jour du firmware à mesure que de nouvelles fonctions sont implémentées ou que des failles de sécurité sont détectées.</p>
+<p></p>
+<p>Les périphériques réseau d'infrastructure utilisent un système d'exploitation réseau. Le système d'exploitation réseau utilisé sur les périphériques Cisco est appelé Cisco Internetwork Operating System (IOS). Cisco IOS est un terme générique utilisé pour désigner l'ensemble des systèmes d'exploitation réseau utilisés sur les périphériques réseau Cisco. Cisco IOS est utilisé par la plupart des périphériques Cisco, quels que soient leur taille et leur type. La méthode la plus courante pour accéder à ces périphériques est d'utiliser la CLI.</p>
+<p></p>
+<p>Ce chapitre fait référence à une topologie de petit réseau d'entreprise. Cette topologie est composée de deux commutateurs et de deux PC, et sera utilisée pour illustrer l'utilisation de Cisco IOS à l'aide de la CLI.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

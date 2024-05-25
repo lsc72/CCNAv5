@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.1.7 Commande network et masque générique</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.1.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du protocole EIGRP pour IPv4</h1>
+        <h2>Configuration du protocole EIGRP avec IPv4</h2>
+      </div>
+      <div id="content">
+<p>Par défaut, lorsque vous utilisez la commande<span class="cmd"><b> network </b></span>et une adresse réseau IPv4, par exemple 172.16.0.0, toutes les interfaces du routeur qui appartiennent à cette adresse réseau par classe sont activées pour le protocole EIGRP. Toutefois, l’administrateur réseau ne veut pas toujours inclure toutes les interfaces d’un réseau lorsqu’il active EIGRP. Par exemple, à la Figure 1, supposons qu'un administrateur souhaite activer le protocole EIGRP sur R2, mais uniquement pour le sous-réseau 192.168.10.8 255.255.255.252, sur l'interface S0/0/1.</p>
+<p></p>
+<p>Pour configurer le protocole EIGRP de façon à annoncer uniquement des sous-réseaux spécifiques, utilisez l'option<span class="cmd"><i> wildcard-mask </i></span>avec la commande network :</p>
+<p></p>
+<p>
+<span class="cmd">Router(config-router)# </span>
+<span class="cmd">
+<b>network</b>
+</span>
+<span class="cmd">
+<i>network-address</i>
+</span>
+<span class="cmd">
+<b></b>
+</span>[<span class="cmd"><i>wildcard-mask</i></span>]</p>
+<p></p>
+<p>Considérez un masque générique (wildcard mask) comme étant l’inverse d’un masque de sous-réseau. L’inverse du masque de sous-réseau 255.255.255.252 est 0.0.0.3. Pour calculer l'inverse du masque de sous-réseau, soustrayez le masque de sous-réseau de 255.255.255.255 comme suit :</p>
+<p></p>
+<p> <span class="cmd">255.255.255.255 </span></p>
+<p>
+<span class="cmd"> - 255.255.255.252 </span>
+</p>
+<p>
+<span class="cmd"> ---------------</span>
+</p>
+<p>
+<span class="cmd"> 0. 0.0.0.3</span> Masque générique</p>
+<p></p>
+<p>La Figure 2 poursuit sur la configuration réseau EIGRP de R2. La commande<span class="cmd"><b> network 192.168.10.8 0.0.0.3 </b></span>active spécifiquement le protocole EIGRP sur l'interface S0/0/1, un membre du sous-réseau 192.168.10.8 255.255.255.252. </p>
+<p></p>
+<p>Certaines versions IOS permettent également de saisir le masque de sous-réseau plutôt qu'un masque générique. La Figure 3 présente un exemple de configuration de la même interface S0/0/1 sur R2, mais cette fois à l'aide d'un masque de sous-réseau dans la commande<span class="cmd"><b> network</b></span>. Toutefois, si le masque de sous-réseau est utilisé, IOS convertit la commande au format<span class="cmd"><i> wildcard-mask </i></span>dans la configuration. Vous pouvez le vérifier dans le résultat<span class="cmd"><b> show running-config </b></span>de la Figure 3.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 4 pour configurer les commandes <span class="cmd"><b>network</b></span> EIGRP pour le routeur R3.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

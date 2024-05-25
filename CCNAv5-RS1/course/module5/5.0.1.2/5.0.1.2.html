@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.0.1.2 Exercice - Rejoignez mon réseau social !</title>
+    <!-- Activity -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Ethernet</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Rejoignez mon réseau social !</b>
+</p>
+<p></p>
+<p>La plupart de nos communications réseau prennent la forme de messages (SMS ou messages instantanés), d'un contact visuel, de publications sur des réseaux sociaux, etc.</p>
+<p></p>
+<p>Pour cet exercice, choisissez l'un des réseaux de communication que vous utilisez le plus :</p>
+<p>
+<ul>
+<li>SMS ou messagerie instantanée</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Conférence audio/vidéo</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Envoi d'e-mails</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Jeux</li>
+</ul>
+</p>
+<p></p>
+<p>Maintenant que vous avez sélectionné un moyen de communication réseau, répondez aux questions suivantes :</p>
+<p>
+<ul>
+<li>Existe-t-il une procédure à suivre pour enregistrer d'autres personnes et vous-même afin de former un groupe de communications ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Comment prenez-vous contact avec la ou les personnes avec lesquelles vous souhaitez communiquer ?</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Comment limitez-vous vos conversations pour vous assurer qu'elles sont reçues uniquement par les utilisateurs avec lesquels vous souhaitez communiquer ?</li>
+</ul>
+</p>
+<p></p>
+<p>Soyez prêt à expliquer en classe les réponses que vous avez notées.</p>
+<p></p>
+<p>
+<a href="../../files/5.0.1.2%20Join%20My%20Social%20Circle%20Instructions.pdf" target="_blank">Instructions de l'activité en classe - Rejoignez mon réseau social !</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

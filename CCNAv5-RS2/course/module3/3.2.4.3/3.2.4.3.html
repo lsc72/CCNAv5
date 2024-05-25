@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.4.3 Introduction au dépannage des trunks</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.4.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentations de VLAN</h1>
+        <h2>Dépannage des VLAN et des trunks</h2>
+      </div>
+      <div id="content">
+<p>L'une des tâches courantes d'un administrateur réseau consiste à dépanner la formation de liaisons trunk ou les liens fonctionnant incorrectement en tant que liaisons trunk. Il arrive parfois qu'un port de commutateur se comporte comme un port trunk même s'il n'est pas configuré comme tel. Par exemple, un port d'accès peut accepter des trames issues de VLAN différents du VLAN auquel il est affecté. Cette fonctionnalité est appelée fuite de VLAN.</p>
+<p></p>
+<p>La Figure 1 présente un diagramme correspondant aux instructions générales de dépannage de trunk.</p>
+<p></p>
+<p>Pour résoudre les problèmes lorsqu'un trunk ne se crée pas ou en cas de fuite de VLAN, procédez comme suit :</p>
+<p></p>
+<p>
+<b>Étape 1. </b>Utilisez la commande <span class="cmd"><b>show interfaces trunk</b></span> pour vérifier si le VLAN local et son homologue natif correspondent. Si le VLAN natif ne correspond pas aux deux extrémités, il y a une fuite de VLAN.</p>
+<p></p>
+<p>
+<b>Étape 2. </b>Utilisez la commande <span class="cmd"><b>show interfaces trunk</b></span> pour vérifier si un trunk est établi entre les commutateurs. Configurez des liaisons trunk de manière statique autant que possible. Les ports du commutateur Cisco Catalyst utilisent le protocole DTP par défaut et essaient de négocier une liaison trunk.</p>
+<p></p>
+<p>Pour afficher l'état du trunk, le VLAN natif utilisé sur cette liaison trunk et contrôler l'établissement du trunk, utilisez la commande <span class="cmd"><b>show interfaces trunk</b></span>. L'exemple de la Figure 2 montre que le VLAN natif à une extrémité de la liaison trunk a été remplacé par le VLAN 2. Si une extrémité du trunk est configurée en tant que VLAN 99 natif et l'autre extrémité en tant que VLAN 2 natif, une trame envoyée par le VLAN 99 à une extrémité est reçue sur le VLAN 2 à l'autre extrémité. Le VLAN 99 « fuit » dans le segment VLAN 2. </p>
+<p></p>
+<p>Le protocole CDP signale une non-concordance de VLAN natif sur une liaison trunk avec le message suivant :</p>
+<p></p>
+<p>
+<span class="cmd">*Mar 1 06:45:26.232: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on FastEthernet0/1 (2), with S2 FastEthernet0/1 (99).</span>
+</p>
+<p></p>
+<p>Des problèmes de connectivité surviennent sur le réseau en cas de non-concordance de VLAN natif. Le trafic de données des VLAN autres que les deux VLAN natifs configurés se propage sur la liaison trunk, mais les données associées à l'un des VLAN natifs ne sont pas correctement transmises. </p>
+<p></p>
+<p>Comme vous le voyez sur la Figure 2, les problèmes de non-concordance de VLAN natif n'empêchent pas le trunk d'effectuer l'assemblage. Pour résoudre ce problème de concordance, choisissez le même VLAN natif aux deux extrémités de la liaison.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

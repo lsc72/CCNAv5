@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.0.1.2 Exercice en classe : un peu d&#x0027;imagination !</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Introduction</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Un peu d'imagination !</b>
+</p>
+<p></p>
+<p>C'est la fin de la journée de travail. Dans votre PME, vous essayez d'expliquer aux ingénieurs réseau le fonctionnement d'un EtherChannel et à quoi il ressemble une fois configuré physiquement. Les ingénieurs réseau ont des difficultés à concevoir comment deux commutateurs pourraient être connectés via plusieurs liaisons qui fonctionnent collectivement comme un seul canal ou une seule connexion. Votre entreprise envisage fortement l'implémentation d'un réseau EtherChannel.</p>
+<p></p>
+<p>Par conséquent, vous mettez fin à la réunion en attribuant une tâche à chaque ingénieur. Afin de préparer la réunion du lendemain, vous leur demandez d'effectuer des recherches et d'apporter à la réunion une représentation graphique d'une connexion réseau EtherChannel. Ils ont pour mission d'expliquer aux autres ingénieurs comment fonctionne un réseau EtherChannel.</p>
+<p></p>
+<p>Lorsque vous effectuez des recherches sur EtherChannel, une bonne question à se poser est : « À quoi ressemble un réseau EtherChannel ? ». Préparez quelques diapositives afin d'illustrer vos recherches qui seront présentées au groupe des ingénieurs réseau. Ces diapositives doivent expliquer clairement la manière selon laquelle les structures EtherChannel sont physiquement créées au sein d'une topologie de réseau. Votre objectif est de vous assurer que chaque personne qui quittera la prochaine réunion aura une bonne idée des raisons pour lesquelles il envisagerait de passer à une topologie de réseau utilisant EtherChannel en guise d'option.</p>
+<p></p>
+<p>
+<a href="../../files/3.0.1.2%20Imagine%20This%20Instructions.pdf" target="_blank">Exercice en classe : un peu d'imagination !</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.4.7 Trame PPP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.4.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Contrôle d&#x0027;accès au support</h1>
+        <h2>Trame liaison de données</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Protocole point à point</b>
+</p>
+<p></p>
+<p>Le protocole PPP (Point-to-Point Protocol) est également un protocole de couche liaison de données. Il est utilisé pour acheminer des trames entre deux nœuds. Contrairement à de nombreux protocoles de couche liaison de données définis par des organismes d'ingénierie électrique, la norme PPP est définie par des RFC. Le protocole PPP a été développé en tant que protocole de réseau étendu et demeure le protocole de choix pour mettre en oeuvre de nombreux réseaux étendus série. Il peut être utilisé sur différents supports physiques, notamment les câbles à paires torsadées, la fibre optique ou la transmission par satellite, ainsi que pour les connexions virtuelles. </p>
+<p></p>
+<p>Le protocole PPP utilise une architecture multicouche. Pour prendre en compte les différents types de supports, le protocole PPP établit des connexions logiques, nommées sessions, entre deux noeuds. La session PPP masque au protocole PPP supérieur les supports physiques sous-jacents. Ces sessions fournissent également au protocole PPP une méthode permettant d'encapsuler plusieurs protocoles sur une liaison point à point. Chaque protocole encapsulé sur la liaison établit sa propre session PPP.</p>
+<p></p>
+<p>Le protocole PPP permet également aux deux noeuds de négocier des options au sein de la session PPP. Cela inclut l'authentification, la compression et les liaisons multiples (l'utilisation de plusieurs connexions physiques). </p>
+<p></p>
+<p>Reportez-vous à la figure pour connaître les champs de base d'une trame PPP.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.2.2 Dépannage de la fonctionnalité EtherChannel</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>La configuration de l&#x0027;agrégation de liaisons</h1>
+        <h2>Vérification et dépannage d&#x0027;un EtherChannel</h2>
+      </div>
+      <div id="content">
+<p>Toutes les interfaces d'un EtherChannel doivent avoir la même configuration en termes de vitesse et utiliser le même mode bidirectionnel, les mêmes VLAN natifs et autorisés sur les trunks, et le même VLAN d'accès sur les ports d'accès :</p>
+<p></p>
+<p>
+<ul>
+<li>Attribuez tous les ports du EtherChannel au même VLAN, ou configurez-les en tant que trunks. Des ports avec des VLAN natifs différents ne peuvent pas former un EtherChannel.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Lorsque vous configurez un EtherChannel à partir de ports trunk, vérifier que le mode trunking est le même sur tous les trunks. Des modes trunk incohérents sur des ports EtherChannel peuvent empêcher le fonctionnement d'EtherChannel et entraîner la désactivation des ports (état de désactivation des erreurs).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Un EtherChannel prend en charge la même plage autorisée de VLAN sur tous les ports. Si la plage autorisée de VLAN n'est pas identique, les ports ne forment pas un EtherChannel, même si PAgP est défini en mode <span class="cmd"><b>auto</b></span> ou <span class="cmd"><b>desirable.</b></span></li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les options de négociation dynamique pour PAgP et LACP doivent être configurées pour être compatibles aux deux extrémités de l'EtherChannel.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque </b>: il est facile de confondre PAgP ou LACP avec DTP, car ce sont des protocoles utilisés pour automatiser le comportement de liaisons trunk. PAgP et LACP sont utilisés pour l'agrégation de liaisons (EtherChannel). DTP est utilisé pour automatiser la création de liaisons trunk. Quand un trunk EtherChannel est configuré, EtherChannel (PAgP ou LACP) est généralement configuré en premier et DTP ensuite.</p>
+<p></p>
+<p>Dans la Figure 1, les interfaces F0/1 et F0/2 des commutateurs S1 et S2 sont connectés avec un EtherChannel. Le résultat indique que l'EtherChannel est désactivé. </p>
+<p></p>
+<p>Dans la Figure 2, le résultat plus détaillé indique que des modes PAgP non compatibles sont configurés sur S1 et S2.</p>
+<p></p>
+<p>Dans la Figure 3, le mode PAgP de l'EtherChannel passe à Desirable (Souhaitable) et l'EtherChannel devient actif.</p>
+<p></p>
+<p>
+<b>Remarque </b>: EtherChannel et l'arbre recouvrant doivent fonctionner ensemble. L'ordre dans lequel les commandes relatives à EtherChannel sont saisies est donc important, et c'est pourquoi (dans la Figure 3) vous pouvez constater que l'interface Port-Channel 1 est retirée, puis ajoutée de nouveau avec la commande<span class="cmd"><b> channel-group, </b></span>et non modifiée directement. Si l'on essaye de modifier la configuration directement, des erreurs d'arbre recouvrant font passer les ports associés à un état de blocage ou de désactivation des erreurs.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

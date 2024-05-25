@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.3.1.3 Étude de cas</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.3.1.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage de la NAT</h1>
+        <h2>Dépannage de la NAT</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Étude de cas</b>
+</p>
+<p>La Figure 1 montre que les hôtes des réseaux locaux 192.168.0.0/16, de PC1 et de PC2 ne peuvent pas envoyer de requête ping aux serveurs sur le réseau externe, Svr1 et Svr2.</p>
+<p></p>
+<p>Pour résoudre ce problème, commencez par exécuter la commande <span class="cmd"><b>show ip nat translations</b></span> pour voir si la table NAT contient des traductions. Le résultat présenté à la Figure 1 montre que la table ne contient aucune traduction.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>show ip nat statistics</b></span> est utilisée pour déterminer si des traductions ont eu lieu. Elle identifie également les interfaces entre lesquelles des traductions doivent être réalisées. Comme le montre le résultat présenté à la Figure 2, les compteurs NAT sont à 0, ce qui confirme qu'aucune traduction n'a eu lieu. Comparez le résultat avec la topologie illustrée à la Figure 1 et notez que les interfaces des routeurs sont correctement définies en tant que NAT interne ou NAT externe. La commande <span class="cmd"><b>show running-config</b></span> permet également de vérifier que la configuration est correcte.</p>
+<p></p>
+<p>La configuration actuelle de l'interface NAT doit être supprimée des interfaces avant l'application de la configuration correcte.</p>
+<p></p>
+<p>Une fois que les interfaces NAT interne et externe sont correctement définies, une autre requête ping de PC1 à Svr1 échoue. À l'aide des commandes <span class="cmd"><b>show ip nat translations</b></span> et <span class="cmd"><b>show ip nat statistics</b></span>, vérifiez à nouveau qu'aucune traduction n'a lieu.</p>
+<p></p>
+<p>Comme le montre la Figure 3, la commande <span class="cmd"><b>show access-lists</b></span> permet de déterminer si la liste de contrôle d'accès à laquelle la commande NAT se rapporte autorise tous les réseaux requis. Lorsqu'on examine le résultat, on remarque qu'un masque générique incorrect a été utilisé dans l'ACL qui définit les adresses devant être traduites. Le masque générique autorise uniquement le sous-réseau 192.168.0.0/24. Il convient de supprimer d'abord la liste d'accès, puis de la reconfigurer à l'aide du masque générique approprié.</p>
+<p></p>
+<p>Une fois que les configurations sont corrigées, une autre requête ping est générée de PC1 à Svr1 et cette fois, elle aboutit. Comme le montre la Figure 4, les commandes <span class="cmd"><b>show ip nat translations</b></span> et <span class="cmd"><b>show ip nat statistics</b></span> permettent de vérifier que la traduction NAT a lieu.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

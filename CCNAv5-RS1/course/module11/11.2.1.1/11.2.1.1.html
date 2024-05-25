@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.2.1.1 Les catégories de menaces à la sécurité du réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.2.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Garantie de la sécurité du réseau</h1>
+        <h2>Évaluation de la sécurité des périphériques réseau</h2>
+      </div>
+      <div id="content">
+<p>Qu'ils soient filaires ou sans fil, les réseaux informatiques jouent un rôle essentiel dans la vie quotidienne. Les particuliers comme les entreprises sont dépendants de leurs ordinateurs et de leurs réseaux. Une intrusion par une personne non autorisée peut causer des pannes de réseau et des pertes de productivité coûteuses. Les attaques sur un réseau peuvent être dévastatrices et résulter en une perte de temps et d'argent, parce que des informations ou des ressources importantes sont endommagées ou volées. </p>
+<p></p>
+<p>Les intrus peuvent accéder à un réseau en exploitant les failles logicielles, en lançant des attaques matérielles ou en devinant l'identifiant et le mot de passe d'un utilisateur. Les intrus qui modifient le logiciel ou tirent profit de vulnérabilités logicielles pour accéder au réseau sont souvent appelés des pirates informatiques. </p>
+<p></p>
+<p>Une fois que le pirate a accédé au réseau, il existe quatre types de menaces :</p>
+<p>
+<ul>
+<li>Vol d'informations</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Usurpation d'identité</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Perte / manipulation de données</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Interruption de service</li>
+</ul>
+</p>
+<p>Cliquez sur les images de la figure pour afficher plus d'informations.</p>
+<p></p>
+<p>Même dans les réseaux de petite taille, il est nécessaire de tenir compte des menaces et des failles de sécurité lors la planification d'une configuration réseau.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

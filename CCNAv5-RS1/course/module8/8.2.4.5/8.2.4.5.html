@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.2.4.5 La génération aléatoire ou à l&#x0027;aide de la méthode EUI-64</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.2.4.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Les adresses réseau IPv6</h1>
+        <h2>Les adresses de monodiffusion globale IPv6</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Processus de EUI-64</b>
+</p>
+<p></p>
+<p>L'IEEE a créé l'EUI (Extended Unique Identifier), ou format EUI-64 modifié. Ce processus utilise l'adresse MAC Ethernet 48 bits d'un client et insère 16 autres bits au milieu de l'adresse MAC 48 bits pour créer un ID d'interface de 64 bits. </p>
+<p></p>
+<p>Les adresses MAC Ethernet sont généralement représentées au format hexadécimal et sont constituées de deux parties : </p>
+<p>
+<ul>
+<li>
+<b>OUI (Organizationally Unique Identifier)</b> – l'OUI est un code de fournisseur de 24 bits (6 caractères hexadécimaux) attribué par l'IEEE.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>ID de périphérique</b> – l'identifiant de périphérique est une valeur unique de 24 bits (6 caractères hexadécimaux) contenue dans un OUI standard. </li>
+</ul>
+</p>
+<p></p>
+<p>Un ID d'interface EUI-64 est représenté au format binaire et comprend trois parties :</p>
+<p>
+<ul>
+<li>Le code OUI sur 24 bits, provenant de l'adresse MAC du client, mais dont le septième bit (universellement/localement, U/L) est inversé. Cela signifie que si le septième bit est un 0, il devient un 1, et vice versa. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La valeur de 16 bits FFFE intégrée (au format hexadécimal).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>L'ID de périphérique de 24 bits de l'adresse MAC du client.</li>
+</ul>
+</p>
+<p></p>
+<p>Le processus EUI-64 est présenté à la Figure 1, avec l'adresse MAC gigabit ethernet FC99:4775:CEE0 du périphérique R1.</p>
+<p></p>
+<p>
+<b>Étape 1 :</b> coupez l'adresse MAC au niveau de la séparation entre l'OUI et l'ID de périphérique.</p>
+<p></p>
+<p>
+<b>Étape 2 :</b> insérez la valeur hexadécimale FFFE, à savoir 1111 1111 1111 1110 en binaire. </p>
+<p></p>
+<p>
+<b>Étape 3 :</b> convertissez les 2 premières valeurs hexadécimales de l'OUI en binaire et inversez le bit U/L (bit 7). Dans cet exemple, le 0 du bit 7 devient un 1.</p>
+<p></p>
+<p>Il en résulte un ID d'interface généré à l'aide de la méthode EUI-64, FE99:47FF:FE75:CEE0. </p>
+<p></p>
+<p>
+<b>Remarque</b> : l'utilisation du bit U/L et les raisons de son inversion sont expliquées dans le RFC 5342.</p>
+<p></p>
+<p>L'avantage de la méthode EUI-64 est que l'adresse MAC Ethernet peut être utilisée pour déterminer l'ID d'interface. Elle permet également aux administrateurs réseau de suivre facilement une adresse IPv6 jusqu'à un périphérique final en utilisant une adresse MAC unique. Toutefois, cela a entraîné des problèmes de confidentialité pour de nombreux utilisateurs. Ces derniers s'inquiètent du fait qu'il soit possible de remonter jusqu'à l'ordinateur physique en analysant les paquets. En raison de ces problèmes, un ID d'interface généré aléatoirement peut également être utilisé.</p>
+<p></p>
+<p>
+<b>ID d'interface générés aléatoirement</b>
+</p>
+<p></p>
+<p>Selon le système d'exploitation, un périphérique peut utiliser un ID d'interface généré aléatoirement plutôt que l'adresse MAC et le processus EUI-64. À partir de la version Windows Vista, Windows utilise un ID d'interface généré aléatoirement au lieu d'un ID créé avec le processus EUI-64. Windows XP et les systèmes d'exploitation précédents utilisaient la méthode EUI-64.</p>
+<p></p>
+<p>Il est simple de savoir si une adresse a été créée via la méthode EUI-64 : il suffit d'analyser la valeur FFFE située dans l'ID d'interface (voir la Figure 2).</p>
+<p></p>
+<p>Une fois l'ID d'interface établi, via le processus EUI-64 ou par génération aléatoire, il peut être combiné avec un préfixe IPv6 pour créer une adresse de monodiffusion globale ou une adresse link-local :</p>
+<p>
+<ul>
+<li>
+<b>Adresse de monodiffusion globale</b> – s'il utilise la SLAAC, le périphérique reçoit son préfixe par l'intermédiaire du message d'annonce de routeur ICMPv6 et l'associe à l'ID d'interface.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresse link-local</b> – un préfixe link-local commence par FE80::/10. Un périphérique utilise généralement FE80::/64 comme préfixe/longueur de préfixe, suivi de l'ID d'interface.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

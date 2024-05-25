@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.1.1.6 Mécanismes de transfert des paquets</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.1.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration initiale d&#x0027;un routeur</h1>
+        <h2>Fonctions d&#x0027;un routeur</h2>
+      </div>
+      <div id="content">
+<p>Les routeurs prennent en charge trois mécanismes de transfert des paquets :</p>
+<p>
+<ul>
+<li>
+<b>Commutation de processus</b> : ancien mécanisme de transfert de paquets toujours disponible pour les routeurs Cisco. Lorsqu'un paquet arrive sur une interface, il est transféré au plan de contrôle où le processeur fait correspondre l'adresse de destination avec une entrée de sa table de routage, puis détermine l'interface de sortie et transmet le paquet. Il est important de comprendre que le routeur effectue cette opération pour chaque paquet, même si la destination est identique pour une série de paquets. Ce mécanisme de commutation de processus est très lent et rarement mis en œuvre dans les réseaux modernes.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Commutation rapide</b> : ce mécanisme de transfert de paquets courant utilise un cache à commutation rapide pour stocker les informations de tronçon suivant. Lorsqu'un paquet arrive sur une interface, il est transféré au plan de contrôle où le processeur recherche une correspondance dans le cache à commutation rapide. S'il ne trouve rien, le paquet est commuté par le processus et transféré à l'interface de sortie. Les informations de flux pour le paquet sont également stockées dans le cache à commutation rapide. Si un autre paquet ayant la même destination arrive sur une interface, les informations de tronçon suivant du cache sont réutilisées sans intervention du processeur. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>CEF (Cisco Express Forwarding)</b> : le protocole CEF est le mécanisme de transfert de paquets Cisco IOS le plus récent et le plus prisé. Comme la commutation rapide, le protocole CEF génère une table FIB et une table de contiguïté. Cependant, à la différence de la commutation rapide, les entrées de table ne sont pas déclenchées par les paquets, mais par les modifications, comme en cas de changement dans la topologie du réseau. Par conséquent, lorsqu'un réseau a convergé, les tables FIB et de contiguïté contiennent toutes les informations qu'un routeur doit prendre en compte lors du transfert d'un paquet. La table FIB contient les recherches inverses pré-informatisées, les informations de tronçon suivant pour les routes incluant l'interface et les informations de couche 2. Le protocole CEF est le mécanisme de transfert le plus rapide et le choix privilégié pour les routeurs Cisco. </li>
+</ul>
+</p>
+<p></p>
+<p>Les Figures 1 et 3 illustrent les différences entre les trois mécanismes de transfert de paquets. Supposons que les cinq paquets d'un flux de trafic se dirigent vers la même destination. Comme illustré en Figure 1, avec la commutation de processus, chaque paquet doit être traité séparément par le processeur. Comparez cette configuration avec celle de la commutation rapide, présentée en Figure 2. Avec la commutation rapide, seul le premier paquet d'un flux est commuté par le processus et ajouté au cache à commutation rapide. Les quatre autres paquets sont traités rapidement en fonction des informations contenues dans le cache à commutation rapide. Enfin, dans la Figure 3, le protocole CEF établit les tables FIB et de contiguïté une fois que le réseau a convergé. Les cinq paquets sont tous rapidement traités dans le plan de données.</p>
+<p></p>
+<p>Voici une analogie courante permettant de décrire les trois mécanismes de transfert des paquets :</p>
+<p>
+<ul>
+<li>La commutation de processus résout un problème en effectuant un calcul à la main, même si un problème identique s'est déjà posé. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>La commutation rapide résout un problème en effectuant un calcul à la main et mémorise la solution pour les problèmes identiques suivants.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le protocole CEF résout à l'avance tous les problèmes possibles dans un tableur.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

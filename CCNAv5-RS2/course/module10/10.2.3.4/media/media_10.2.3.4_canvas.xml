@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide type="MBAR">
+		
+		<slide>
+			<element type="IMAGE" src="10.2.3.4.jpg" x="0" y="0" width="470" height="400"/>
+			<element type="TEXT" compId="ID_s1_title" subType="TITLE"/>	
+			<element type="TEXT" compId="ID_s1_txt01" x="7.35" y="107.85" width="135" expand="up" align="right" size="11" color="#F68026"/>
+			<element type="TEXT" compId="ID_s1_txt02" x="262.35" y="329.85" width="73" expand="up_down" align="left" size="11" color="#F68026"/>
+			<element type="TEXT" text="2001:DB8:CAFE:9::/64" x="80.95" y="56.15" width="120.15" align="center" color="#1c3635" bold="1" />
+			<element type="TEXT" text="2001:DB8:CAFE:A::/64" x="1" y="158.45" width="122" align="center" color="#1c3635" bold="1" />
+			<element type="TEXT" text="2001:DB8:CAFE:1::/64" x="208.8" y="158.45" width="120.15" align="center" color="#1c3635" bold="1" />
+			
+					
+			<element type="TEXT" text="2001:DB8:BEEF:1::/64" x="264.95" y="178.45" width="119.55" align="center" color="#1c3635" bold="1" />
+			<element type="TEXT" text="2001:DB8:CAFE:1::6" x="191.95" y="362.15" width="111" align="center" color="#1c3635" bold="1" />
+			
+			<element type="TEXT" text="S0/0/0" x="209.95" y="56.15" width="35.95" align="center" color="#1c3635" />
+			<element type="TEXT" text="S0/0/1" x="298.95" y="56.15" width="35.95" align="center" color="#1c3635" />
+			<element type="TEXT" text="S0/0/0
+:1" x="170" y="71.15" width="35.95" align="left" color="#1c3635" />
+			<element type="TEXT" text="S0/0/1" x="359.95" y="84.15" width="35.95" align="center" color="#1c3635" />
+			<element type="TEXT" text="G0/0
+:1" x="108" y="125.15" width="28" align="right" color="#1c3635" />
+			<element type="TEXT" text="G0/1
+:1" x="156" y="139.15" width="28" align="left" color="#1c3635" />
+			<element type="TEXT" text="G0/0" x="391.95" y="135.15" width="28" align="center" color="#1c3635" />
+		</slide>
+		
+		<slide>
+			<element type="ROUTER" textId="ID_router_txt2" x="4" y="124.95" width="433" height="135" />
+			<element type="TEXT" compId="ID_s2_title" subType="TITLE"/>
+		</slide>
+				
+		<slide>
+			<element type="TEXT" compId="ID_s3_title" subType="TITLE"/>
+			<element type="ACTIVITY" subType="SYNTAX" compId="ID_s3_SC5" x="2" y="23.45" width="437.1" height="367"  resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+		</slide>	
+</slide>
+	
+	<text id="ID_router_txt2"><![CDATA[<table width="398" border="0" cellspacing="0" cellpadding="0"> <tr> <td colspan="3">R1(config)#<strong> interface g0/0</strong></td> </tr> <tr> <td colspan="3">R1(config-if)# <strong>ipv6 dhcp relay destination 2001:db8:cafe:1::6</strong></td> </tr> <tr> <td colspan="3">R1(config-if)# <strong>end</strong></td> </tr> <tr> <td colspan="3">R1# <strong>show ipv6 dhcp interface g0/0</strong></td> </tr> <tr> <td colspan="3">GigabitEthernet0/0 is in relay mode</td> </tr> <tr> <td width="17">&nbsp;</td> <td colspan="2">Relay destinations:</td> </tr> <tr> <td>&nbsp;</td> <td width="18">&nbsp;</td> <td width="365">2001:DB8:CAFE:1::6</td> </tr> <tr> <td colspan="3">R1#</td> </tr></table>]]></text>
+
+</data>

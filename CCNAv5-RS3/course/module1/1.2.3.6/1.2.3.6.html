@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.3.6 Commandes show de base du commutateur</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.3.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sélection des périphériques réseau</h1>
+        <h2>Gestion des périphériques</h2>
+      </div>
+      <div id="content">
+<p>Les commutateurs utilisent des commandes courantes de la plate-forme logicielle IOS afin d'effectuer des configurations, de vérifier la connectivité et d'afficher leur état actuel. Cliquez sur les boutons 1 à 4 pour afficher des exemples de résultats des commandes et les informations importantes qu'un administrateur peut en retirer. </p>
+<p></p>
+<p>Associées à l'interface ou au port :</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show port-security</b>
+</span>
+<b></b> : affiche tous les ports où la sécurité est activée. Pour examiner une interface donnée, indiquez l'ID de l'interface. Les informations affichées incluent les adresses maximales autorisées, le nombre actuel, le nombre des violations de sécurité et la mesure à prendre. (Figure 1)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show port-security address</b>
+</span>
+<b></b> : affiche toutes les adresses MAC sécurisées configurées sur toutes les interfaces du commutateur. (Figure 2)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show interfaces</b>
+</span>
+<b></b> : affiche une interface ou toutes les interfaces, avec état (du protocole) de ligne, la bande passante, le retard, la fiabilité, l'encapsulation, le mode bidirectionnel et les statistiques d'E/S. (Figure 3)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<span class="cmd">
+<b>show mac-address-table</b>
+</span>
+<b></b> : affiche toutes les adresses MAC apprises par le commutateur, comment elles ont été apprises (dynamiques/statiques), le numéro de port et le réseau local virtuel attribué au port. (Figure 4)</li>
+</ul>
+</p>
+<p></p>
+<p>Comme le routeur, le commutateur prend en charge la commande <span class="cmd"><b>show cdp neighbors</b></span>.</p>
+<p></p>
+<p>Les techniques de gestion intrabande et hors bande qui s'appliquent aux routeurs sont aussi valables pour la configuration des commutateurs.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.4.3 Sécurité des ports : fonctionnement</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.4.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité du commutateur : gestion et implémentation</h1>
+        <h2>Sécurité des ports de commutateur</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Sécurité des ports</b>
+</p>
+<p></p>
+<p>Tous les ports (interfaces) de commutateur doivent être sécurisés avant le déploiement du commutateur en production. L'une des méthodes de sécurisation des ports consiste à implémenter une fonctionnalité appelée sécurité des ports. La sécurité des ports restreint le nombre d'adresses MAC autorisées sur un port. Les adresses MAC des périphériques légitimes sont ainsi autorisées. Toutes les autres adresses MAC sont refusées.</p>
+<p></p>
+<p>La sécurité des ports peut être configurée pour autoriser une ou plusieurs adresses MAC. Si le nombre d'adresses MAC autorisées sur un port est limité à un, seul le périphérique disposant de cette adresse MAC spécifique peut se connecter au port.</p>
+<p></p>
+<p>Si un port est sécurisé et si le nombre maximum d'adresses MAC est atteint pour ce port, toute tentative de connexion supplémentaire réalisée depuis une adresse MAC inconnue générera une violation de sécurité. La Figure 1 résume ces points.</p>
+<p></p>
+<p>
+<b>Types d'adresses MAC sécurisées</b>
+</p>
+<p></p>
+<p>Il existe plusieurs façons de configurer la sécurité des ports. Le type d'adresse sécurisée est basé sur la configuration et peut être l'un des types suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Adresses MAC sécurisées statiques</b> : adresses MAC configurées manuellement sur un port à l'aide de la commande de mode de configuration globale <span class="cmd"><b>switchport port-security mac-address </b></span><span class="cmd"><i>adresse-mac</i></span>. Les adresses MAC configurées de cette manière sont stockées dans la table d'adresses et sont ajoutées à la configuration en cours sur le commutateur. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresses MAC sécurisées dynamiques</b> : adresses MAC apprises de manière dynamique et stockées uniquement dans la table d'adresses. Les adresses MAC configurées ainsi sont supprimées au redémarrage du commutateur. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Adresses MAC sécurisées rémanentes</b> : adresses MAC pouvant être apprises de manière dynamique ou configurées manuellement, puis stockées dans la table d'adresses et ajoutées à la configuration en cours.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Adresses MAC sécurisées rémanentes </b>
+</p>
+<p>Pour configurer une interface dans le but de convertir des adresses MAC apprises de manière dynamiques en adresses MAC sécurisées rémanentes et les ajouter à la configuration en cours, vous devez activer l'apprentissage rémanent. Pour activer l'apprentissage rémanent sur une interface, exécutez la commande de mode de configuration d'interface<span class="cmd"><b> switchport port-security mac-address sticky</b></span>. </p>
+<p></p>
+<p>Lorsque cette commande est exécutée, le commutateur convertit toutes les adresses MAC apprises de manière dynamique, y compris les adresses apprises avant l'activation de l'apprentissage rémanent, en adresses MAC sécurisées rémanentes. Toutes les adresses MAC sécurisées rémanentes sont ajoutées à la table d'adresses et à la configuration en cours. </p>
+<p></p>
+<p>Les adresses MAC sécurisées rémanentes peuvent également être définies manuellement. Lorsque des adresses MAC sécurisées rémanentes sont configurées à l'aide de la commande de mode de configuration d'interface<span class="cmd"><b> switchport port-security mac-address sticky </b></span><span class="cmd"><i>adresse-mac</i></span>, toutes les adresses spécifiées sont ajoutées à la table d'adresses et à la configuration en cours. </p>
+<p></p>
+<p>Si les adresses MAC sécurisées rémanentes sont enregistrées dans le fichier de configuration initiale, alors, lorsque le commutateur est redémarré ou lorsque l'interface est désactivée, l'interface n'a pas à réapprendre les adresses. Si les adresses MAC sécurisées rémanentes ne sont pas enregistrées, elles seront perdues. </p>
+<p></p>
+<p>Si l'apprentissage rémanent est désactivé à l'aide de la commande de configuration d'interface <span class="cmd"><b>no switchport port-security mac-address sticky</b></span>, les adresses MAC sécurisées rémanentes restent intégrées à la table d'adresses mais sont supprimées de la configuration en cours. </p>
+<p></p>
+<p>La Figure 2 présente les caractéristiques des adresses MAC sécurisées rémanentes.</p>
+<p></p>
+<p>Notez que la fonction de sécurité des ports ne fonctionnera pas si la sécurité des ports n'est pas activée sur l'interface avec la commande <span class="cmd"><b> switchport port-security</b></span>. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

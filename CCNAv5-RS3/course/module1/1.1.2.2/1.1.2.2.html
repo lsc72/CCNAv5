@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.1.2.2 Planification pour la redondance</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentation d&#x0027;une conception réseau</h1>
+        <h2>Évolution du réseau</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Implémentation de la redondance </b>
+</p>
+<p></p>
+<p>Pour de nombreuses organisations, la disponibilité du réseau est essentielle à la prise en charge des besoins métier. La redondance constitue un aspect important de la conception d'un réseau, afin d'éviter l'interruption des services en réduisant la possibilité d'un point de défaillance unique. L'une des méthodes d'implémentation de la redondance consiste à installer des équipements en double et à fournir des services de basculement aux périphériques critiques. </p>
+<p></p>
+<p>Les chemins d'accès redondants, illustrés par la figure, constituent un autre moyen d'implémenter la redondance. Les chemins d'accès redondants apportent aux données d'autres chemins physiques pour traverser le réseau. Les chemins d'accès redondants dans un réseau commuté apportent une disponibilité élevée. Cependant, en raison du fonctionnement des commutateurs, les chemins d'accès redondants dans un réseau Ethernet commuté peuvent entraîner des boucles logiques de couche 2. Pour cette raison, le protocole STP (Spanning Tree Protocol) est requis.</p>
+<p></p>
+<p>Le protocole STP autorise la redondance requise par la fiabilité, mais élimine les boucles de commutation. Pour ce faire, il fournit un mécanisme de désactivation des chemins d'accès redondants dans un réseau commuté, jusqu'à ce que le chemin d'accès soit nécessaire, par exemple en cas de défaillances. STP est un protocole standard ouvert, utilisé dans un environnement commuté pour créer une topologie logique sans boucle. </p>
+<p></p>
+<p>La redondance de réseau local et le fonctionnement du protocole STP sont couverts plus en détail dans le chapitre intitulé Redondance LAN.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

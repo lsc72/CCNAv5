@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.3.2 Vérification de la route par défaut propagée</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configurations avancées du protocole OSPF à zone unique </h1>
+        <h2>Propagation de la route par défaut</h2>
+      </div>
+      <div id="content">
+<p>Vérifiez les paramètres de la route par défaut sur R2, au moyen de la commande<span class="cmd"><b> show ip route</b></span>, comme illustré à la Figure 1. </p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe dans la Figure 2 pour vérifier que la route par défaut a été propagée vers R1 et R3. Notez que l'origine de la route est<span class="cmd"><b> O*E2</b></span>, ce qui signifie qu'elle a été apprise en utilisant OSPF. L'astérisque identifie cette route comme une bonne candidate pour la route par défaut. La désignation E2 indique qu'il s'agit d'une route externe. </p>
+<p></p>
+<p>Les routes externes sont soit de type externe 1, soit de type externe 2. La différence entre ces deux types réside dans le calcul du coût (de la métrique) de la route. Le coût d'une route de type 2 est toujours le coût externe, quel que soit le coût interne pour atteindre cette route. Un coût de type 1 ajoute au coût externe le coût interne utilisé pour atteindre cette route. Pour la même destination, une route de type 1 est toujours préférée à une route de type 2.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

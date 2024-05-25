@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.3.1.2 Planification en prévision de l&#x0027;avenir</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Réseau en tant que plateforme</h1>
+        <h2>Réseaux convergents</h2>
+      </div>
+      <div id="content">
+<p>La convergence des différents types de réseaux de communication sur une seule plateforme représente la première phase de l'avènement du réseau d'information intelligent. Nous nous trouvons actuellement dans la phase d'évolution du réseau. La phase suivante sera celle de la consolidation des différents types de message sur un réseau unique, mais également celle des applications générant, transmettant et sécurisant les messages sur des périphériques réseau intégrés. </p>
+<p></p>
+<p>Non seulement il sera possible de transmettre les éléments audio et vidéo sur le même réseau, mais les périphériques effectuant la commutation téléphonique et la diffusion vidéo seront également ceux qui routent les messages sur le réseau. La plateforme de communication ainsi obtenue offrira des fonctionnalités applicatives de haute qualité pour un coût réduit.</p>
+<p></p>
+<p>L'extraordinaire vitesse à laquelle de nouvelles applications de réseau convergent prometteuses apparaissent peut s'expliquer par le rapide développement d'Internet. Avec seulement environ 10 milliards d'appareils connectés sur 1,5 trillion d'appareils au total, il existe un potentiel important pour l'IoE. Le public potentiel est donc aujourd'hui très important, quel que soit le message, le produit, ou le service qui peut être fourni. </p>
+<p></p>
+<p>Les mécanismes et processus sous-jacents qui guident cette croissance exponentielle ont entraîné la création d'une architecture réseau pouvant s'adapter aux évolutions et se développer. Du fait de son rôle de plateforme technologique de prise en charge du mode de vie, d'apprentissage, de travail et de divertissement des hommes, l'architecture réseau d'Internet doit s'adapter à des exigences toujours nouvelles en matière de services et de sécurité.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

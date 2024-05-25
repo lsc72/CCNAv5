@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+<slide>
+<element type="IMAGE" src="5_1_2_2.jpg" width="470" height="400" x="3" y="0" />
+<element type="TEXT" compId="ID_txt01" x="47" y="116" width="102.9" expand="up+down" align="center" class="orangeCallOut" />
+<element type="TEXT" compId="ID_txt02" x="328" y="117" width="106.1" expand="up+down" align="center" class="orangeCallOut" />
+<element type="TEXT" id="ID_static_1" text="G0/0" x="207.9" y="86.6" width="26.95" align="center" />
+<element type="TEXT" id="ID_static_2" text="F0/4" x="209.65" y="116.3" width="25" align="center" />
+<element type="TEXT" id="ID_static_3" text="F0/11" x="201.7" y="174.7" width="31" align="center" />
+<element type="TEXT" id="ID_static_4" text="F0/6" x="242.25" y="174.7" width="25" align="center" />
+<element type="TEXT" id="ID_static_5" text="172.17.10.21" x="113.65" y="255" width="75.95" align="center" bold="1" />
+<element type="TEXT" id="ID_static_6" text="172.17.30.23" x="276.55" y="255" width="75.95" align="center" bold="1" />
+<element type="TEXT" id="ID_static_7" text="G0/1" x="248.9" y="86.6" width="26.95" align="center" />
+<element type="TEXT" id="ID_static_8" text="172.17.10.1/24" x="129.1" y="57.75" width="85.95" align="center" bold="1" />
+<element type="TEXT" id="ID_static_9" text="172.17.30.1/24" x="269.15" y="57.75" width="85.95" align="center" bold="1" />
+<element type="TEXT" id="ID_static_10" text="F0/5" x="249.4" y="115.85" width="25" align="center" />
+<element type="TEXT" subType="TITLE" compId="ID_title"/>
+<element type="ROUTER" textId="router_txt_1" x="6.9" y="274.95" width="454.1" height="119.7" />
+</slide>
+<text id="router_txt_1"><![CDATA[<pre><div class="orange" style="width:100%">S1(config)# <b>vlan 10 </b>
+S1(config-vlan)# <b>vlan 30 </b>
+S1(config-vlan)# <b>interface f0/11 </b>
+S1(config-if)# <b>switchport access vlan 10 </b>
+S1(config-if)# <b>interface f0/4 </b>
+S1(config-if)# <b>switchport access vlan 10 </b>
+S1(config-if)# <b>interface f0/6 </b>
+S1(config-if)# <b>switchport access vlan 30 </b>
+S1(config-if)# <b>interface f0/5 </b>
+S1(config-if)# <b>switchport access vlan 30 </b>
+S1(config-if)# <b>end </b></div>
+*Mar 20 01:22:56.751: %SYS-5-CONFIG_I: Configured 
+from console by console
+S1# <b>copy running-config startup-config </b>
+Destination filename [startup-config]? 
+Building configuration... 
+[OK]</pre>]]></text> 
+</data>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.2.4 Frame Relay</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Choix d&#x0027;une technologie WAN</h1>
+        <h2>Infrastructures WAN privées</h2>
+      </div>
+      <div id="content">
+<p>Frame Relay est une technologie WAN simple de couche 2 d'accès multiple sans diffusion (NBMA) utilisée pour connecter des LAN d'entreprise. Il est possible de n'utiliser qu'une seule interface de routeur pour connecter plusieurs sites par des circuits virtuels permanents. Les circuits virtuels permanents sont utilisés pour transporter à la fois le trafic de voix et de données entre une source une destination. Ils assurent des taux jusqu'à 4 Mbit/s, certains fournisseurs proposant même des débits supérieurs.</p>
+<p></p>
+<p>Le routeur de périphérie n'a besoin que d'une seule interface, même lorsque plusieurs circuits virtuels sont utilisés. La petite ligne louée vers la périphérie de réseau du Frame Relay permet d'assurer des connexions bon marché entre plusieurs LAN éparpillés.</p>
+<p></p>
+<p>Frame Relay crée des circuits virtuels permanents identifiés grâce à un identifiant de connexion de liaison de données (DLCI). Les circuits virtuels permanents et les DLCI assurent la communication bidirectionnelle d'une périphérique ETTD à un autre. </p>
+<p></p>
+<p>Par exemple, dans l'illustration, R1 utilise le DLCI 102 pour atteindre R2, alors que R2 utilise le DLCI 201 pour atteindre R1.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

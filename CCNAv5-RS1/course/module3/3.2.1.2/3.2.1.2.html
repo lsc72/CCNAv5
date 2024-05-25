@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.1.2 Protocoles réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Normes et protocoles réseau</h1>
+        <h2>protocoles</h2>
+      </div>
+      <div id="content">
+<p>Au niveau humain, certaines règles de communication sont formelles et d'autres sont simplement comprises en fonction de la coutume et de la pratique. Afin que des périphériques puissent communiquer correctement, une suite de protocoles réseau doit décrire des exigences et des interactions précises. Les protocoles réseau définissent un format et un ensemble communs de règles d'échange des messages entre les périphériques. Les protocoles IP, HTTP et DHCP sont des exemples de protocoles réseau courants. </p>
+<p></p>
+<p>Les figures illustrent les protocoles réseau qui décrivent les processus suivants :</p>
+<p>
+<ul>
+<li>Format ou structure du message, comme illustré à la Figure 1</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le processus de partage d'informations à propos des chemins entre les périphériques réseau et d'autres réseaux, comme illustré à la Figure 2</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le mode et le moment de transmission de messages d'erreur et de messages systèmes entre les périphériques, comme illustré à la Figure 3</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>L'initialisation et la fin des sessions de transfert de données, comme illustré à la Figure 4</li>
+</ul>
+</p>
+<p></p>
+<p>Par exemple, le protocole IP définit la façon dont un paquet de données est acheminé au sein d'un réseau ou à un réseau distant. Les informations du protocole IPv4 sont transmises dans un format spécifique de sorte que le récepteur puisse les interpréter correctement. Ce protocole n'est pas très différent de celui utiliser pour noter l'adresse sur une enveloppe lorsque vous envoyez une lettre. Les informations doivent respecter un certain format pour que la lettre puisse être livrée à la destination par la poste.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.1.2 Attaque par déni de service (DoS)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Sécurité LAN sans fil</h1>
+        <h2>Menaces WLAN</h2>
+      </div>
+      <div id="content">
+<p>Les attaques DoS sans fil peuvent avoir les conséquences suivantes :</p>
+<p>
+<ul>
+<li>
+<b>Configuration incorrecte des périphériques</b> : des erreurs de configuration peuvent désactiver le WLAN. Par exemple, un administrateur peut modifier accidentellement une configuration et désactiver le réseau, ou encore un intrus disposant de privilèges d'administrateur peut intentionnellement désactiver un WLAN.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Perturbation volontaire des communications sans fil par un utilisateur malveillant</b> : l'objectif de ce type d'attaque est de désactiver le réseau sans fil totalement, ou suffisamment pour qu'aucun périphérique légitime ne puisse accéder au support. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Interférences accidentelles</b> : les WLAN fonctionnent sur des bandes de fréquence libres ; par conséquent, tous les réseaux sans fil, quelles que soient leurs caractéristiques de sécurité, sont sujets aux interférences avec d'autres appareils sans fil. Une interférence accidentelle peut se produire avec des appareils tels que les fours à micro-ondes, les téléphones sans fil, les babyphones, etc. La bande 2,4 GHz est plus sujette aux interférences que la bande 5 GHz.</li>
+</ul>
+</p>
+<p></p>
+<p>Pour minimiser les risques d'attaque DoS due à une configuration incorrecte des périphériques et à des attaques malveillantes, renforcez tous les périphériques, protégez les mots de passe, créez des sauvegardes et assurez-vous que toutes les modifications de configuration sont appliquées en dehors des heures de bureau. </p>
+<p></p>
+<p>Des interférences accidentelles se produisent uniquement avec l'introduction d'un appareil sans fil. La meilleure solution consiste à surveiller le WLAN afin de détecter et de résoudre rapidement tout problème d'interférence. La bande 2,4 GHz étant plus sujette aux interférences, il est préférable d'utiliser la bande 5 GHz dans les zones elles-mêmes sujettes aux interférences. Certaines solutions WLAN permettent aux points d'accès d'ajuster automatiquement les canaux et d'utiliser la bande 5 GHz pour compenser les interférences. Par exemple, certaines solutions 802.11n/ac/ad s'adaptent automatiquement pour contrebalancer les interférences. </p>
+<p></p>
+<p>La figure ci-contre illustre comment un téléphone sans fil, ou même un four à micro-ondes, peut générer des interférences avec la communication WLAN.</p>
+<p></p>
+<p>La technologie Cisco CleanAir permet aux périphériques d'identifier et de localiser les sources d'interférences non 802.11. Elle crée un réseau capable de s'adapter automatiquement aux fluctuations de son environnement.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

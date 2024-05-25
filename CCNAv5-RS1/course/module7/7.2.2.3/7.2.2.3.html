@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.2.2.3 Fiabilité du protocole TCP – Perte de données et retransmission</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>TCP et UDP</h1>
+        <h2>Fiabilité et contrôle de flux</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Traitement des pertes de segments</b>
+</p>
+<p></p>
+<p>Qu'un réseau soit bien conçu ou non, il arrive que des données se perdent. Par conséquent, le protocole TCP fournit des méthodes de gestion des pertes de segments. Parmi elles se trouve un mécanisme de retransmission des segments contenant des données sans accusé de réception.</p>
+<p></p>
+<p>En général, un service sur l'hôte de destination utilisant le protocole TCP ne génère d'accusé de réception que pour les séquences contiguës d'octets. Si un ou plusieurs segments sont manquants, seules les données dans la première séquence contiguë d'octets sont reconnues. Par exemple, si les segments avec des numéros allant de 1500 à 3000 et de 3400 à 3500 sont reçus, le numéro ACK est 3001. Cela est dû au fait qu'il existe des segments avec les numéros SEQ 3001 à 3399 qui n'ont pas été reçus.</p>
+<p></p>
+<p>Lorsque le protocole TCP sur l'hôte source ne reçoit pas d'accusé de réception après un délai prédéterminé, il revient au dernier numéro ACK reçu et retransmet les données à partir de ce point. Le processus de retransmission n'est pas spécifié par le document RFC, mais il incombe à l'implémentation particulière du protocole TCP de le déterminer. </p>
+<p></p>
+<p>Dans une implémentation TCP classique, un hôte peut transmettre un segment, placer une copie du segment dans une file d'attente de retransmission et lancer un minuteur. Quand l'accusé de réception des données est reçu, le segment est supprimé de la file d'attente. Si l'accusé de réception n'est pas reçu avant l'écoulement du délai prévu, le segment est retransmis. </p>
+<p></p>
+<p>Cliquez sur le bouton Lecture de la figure pour voir l'animation expliquant la retransmission des segments perdus.</p>
+<p></p>
+<p>Aujourd'hui, les hôtes peuvent également utiliser une fonction facultative appelée « accusés de réception sélectifs » (SACK). Si les deux hôtes prennent en charge les accusés de réception sélectifs, la destination peut accuser réception des octets de segments ne se suivant pas et l'hôte ne retransmettra que les données manquantes.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

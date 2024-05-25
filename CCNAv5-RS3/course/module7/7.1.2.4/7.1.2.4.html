@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.2.4 Paquets de demande et de réponse EIGRP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Caractéristiques du protocole EIGRP</h1>
+        <h2>Types de paquets EIGRP</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Paquets de demande EIGRP</b>
+</p>
+<p></p>
+<p>DUAL utilise les paquets de demande et de réponse pour la recherche de réseaux et d'autres tâches. Les demandes et les réponses utilisent la livraison fiable. Les demandes peuvent être envoyées en multidiffusion ou monodiffusion, tandis que les réponses sont toujours en monodiffusion. </p>
+<p></p>
+<p>Dans la figure, R2 a perdu sa connectivité avec le réseau local et envoie des demandes à tous les voisins EIGRP à la recherche d’autres routes possibles vers le réseau local. Les demandes utilisant le mode d'acheminement fiable, le routeur destinataire doit renvoyer un reçu EIGRP. Le reçu informe l'expéditeur de la demande de la bonne réception du message de demande. Pour plus de simplicité, les reçus ont été omis dans le graphique.</p>
+<p></p>
+<p>
+<b>Paquets de réponse EIGRP</b>
+</p>
+<p></p>
+<p>Tous les voisins doivent envoyer une réponse, qu'ils disposent ou non d'une route vers le réseau désactivé. Comme les réponses utilisent également le mode d'acheminement fiable, les routeurs tels que R2 doivent envoyer un reçu.</p>
+<p></p>
+<p>Il peut être difficile de comprendre pourquoi R2 devrait envoyer une demande pour un réseau que l'on sait désactivé. En fait, seule l'interface de R2 connectée au réseau est désactivée. Un autre routeur pourrait être connecté au même réseau local et disposer d'un autre chemin vers ce même réseau. Par conséquent, R2 recherche un routeur de ce type avant de retirer complètement le réseau de sa table topologique.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

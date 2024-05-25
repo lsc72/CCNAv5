@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.3 Algorithme Spanning Tree : pont racine</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts du mode Spanning Tree</h1>
+        <h2>Fonctionnement du protocole STP</h2>
+      </div>
+      <div id="content">
+<p>Comme indiqué dans la Figure 1, chaque instance Spanning Tree (réseau local commuté ou domaine de diffusion) possède un commutateur désigné en tant que pont racine. Ce pont racine sert de point de référence pour tous les calculs de l'algorithme STA afin de déterminer les chemins d'accès redondants devant être bloqués.</p>
+<p></p>
+<p>Un processus de sélection détermine le commutateur qui devient le pont racine. </p>
+<p></p>
+<p>La Figure 2 illustre les champs de l'ID de pont. L'ID de pont est composé d'une valeur de priorité, d'un ID système étendu et de l'adresse MAC du commutateur.</p>
+<p></p>
+<p>Tous les commutateurs du domaine de diffusion participent au processus d’élection. Après son amorçage, le commutateur commence à envoyer des trames BPDU toutes les deux secondes. Ces trames BPDU contiennent l'ID de pont du commutateur et l'ID de racine. </p>
+<p></p>
+<p>Lorsque le commutateur réachemine ses trames BPDU, les commutateurs adjacents dans le domaine de diffusion lisent les données d'ID de racine contenues dans ces trames BPDU. Si l'ID de racine d'une trame BPDU reçue est inférieur à l'ID de racine du commutateur qui la reçoit, ce dernier met à jour son propre ID de racine, identifiant le commutateur adjacent en tant que pont racine. Le commutateur n'est d'ailleurs pas nécessairement adjacent ; il peut s'agir de n'importe quel autre commutateur du domaine de diffusion. Le commutateur transmet ensuite les nouvelles trames BPDU dotées de l’ID de racine plus faible aux autres commutateurs adjacents. Au final, le commutateur présentant l'ID de pont le plus bas est identifié comme étant le pont racine pour l'instance Spanning Tree.</p>
+<p></p>
+<p>Un pont racine est déterminé pour chaque instance Spanning Tree. Il est possible d'avoir plusieurs ponts racine distincts. Si tous les ports de tous les commutateurs sont membres de VLAN 1, il n'y aura qu'une seule instance Spanning Tree. L'ID système étendu joue un rôle dans la détermination des instances Spanning Tree.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

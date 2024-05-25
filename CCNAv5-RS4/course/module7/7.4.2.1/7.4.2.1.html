@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.2.1 IPsec Remote Access</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Accès à distance</h1>
+        <h2>VPN d&#x0027;accès à distance IPsec</h2>
+      </div>
+      <div id="content">
+<p>De nombreuses applications requièrent la sécurité d'une connexion VPN d'accès à distance IPsec pour l'authentification et le chiffrement des données. Lors du déploiement de VPN pour des télétravailleurs et de petits bureaux, la simplicité de ce déploiement est un facteur critique si aucune ressource technique n'est disponible pour la configuration VPN sur un routeur de site distant.</p>
+<p></p>
+<p>La solution Cisco Easy VPN offre flexibilité, évolutivité et simplicité d'utilisation à la fois pour les VPN IPsec de site à site et d'accès à distance. La solution Cisco Easy VPN se compose de trois éléments : </p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Serveur Cisco Easy VPN</b> : routeur Cisco IOS ou pare-feu Cisco ASA jouant le rôle de périphérique de tête de réseau VPN dans des VPN de site à site ou d'accès à distance. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Cisco Easy VPN distant</b> : routeur Cisco IOS ou pare-feu Cisco ASA jouant le rôle de client VPN distant. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Client VPN Cisco</b> : application prise en charge sur un PC utilisé pour accéder à un serveur VPN Cisco. </li>
+</ul>
+</p>
+<p></p>
+<p>L'utilisation du serveur Cisco Easy VPN permet aux employés mobiles et distants utilisant un client VPN sur leur PC, ou utilisant Cisco Easy VPN distant sur un routeur de périphérie, de créer des tunnels IPsec sécurisés pour accéder à l'intranet de leur siège social, comme le montre la figure. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

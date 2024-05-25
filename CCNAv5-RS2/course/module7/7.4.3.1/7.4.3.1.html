@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.3.1 Pourquoi utiliser des protocoles à état de liens ?</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage dynamique à état de liens</h1>
+        <h2>Pourquoi utiliser des protocoles de routage à état de liens ?</h2>
+      </div>
+      <div id="content">
+<p>Comme le montre la figure, les protocoles de routage à état de liens offrent plusieurs avantages par rapport aux protocoles de routage à vecteur de distance. </p>
+<p>
+<ul>
+<li>
+<b>Élaboration d'une carte topologique</b> - Les protocoles de routage à état de liens créent une carte topologique ou une arborescence SPF de la topologie du réseau. Les protocoles de routage à état de liens échangeant des états de liens, l'algorithme SPF peut construire une arborescence SPF du réseau. En utilisant l'arborescence SPF, chaque routeur peut déterminer le plus court chemin vers chaque réseau de façon indépendante.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Convergence rapide</b> - À la réception d'un paquet LSP, les protocoles de routage à état de liens diffusent immédiatement le paquet LSP sur toutes les interfaces, à l'exception de celle sur laquelle il a reçu le paquet LSP. En revanche, le protocole RIP doit traiter chaque mise à jour de routage et chaque mise à jour de sa table de routage avant de les envoyer vers d'autres interfaces. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Mises à jour pilotées par événement</b> - Après la diffusion initiale des paquets LSP, les protocoles de routage à état de liens n'envoient un paquet LSP que lorsqu'un changement de topologie intervient. Ce dernier ne contient que les informations relatives au lien concerné. Contrairement à certains protocoles de routage à vecteur de distance, les protocoles de routage à état de liens n'envoient pas des mises à jour périodiques.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Conception hiérarchique</b> - Les protocoles de routage à état de liens utilisent le concept de zones. Plusieurs zones créent une structure de réseau hiérarchique, ce qui permet une meilleure agrégation (récapitulation) des routes et l'isolement des problèmes de routage dans une zone. </li>
+</ul>
+</p>
+<p></p>
+<p>Les protocoles à état de liens présentent également quelques inconvénients en comparaison avec les protocoles de routage à vecteur de distance :</p>
+<p>
+<ul>
+<li>
+<b>Besoins en matière de mémoire</b> - Les protocoles à état de liens nécessitent des capacités mémoire supplémentaires pour créer et mettre à jour la base de données d'états de liens et l'arborescence SPF.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Besoins en matière de traitement</b> - Les protocoles à état de liens peuvent également nécessiter davantage de temps processeur que leurs homologues à vecteur de distance. L'algorithme SPF a besoin de davantage de temps processeur que les algorithmes à vecteur de distance tels que Bellman-Ford, car les protocoles à état de liens construisent une carte topologique complète. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Besoins en matière de bande passante</b> - La diffusion de paquets à état de liens peut affecter la bande passante disponible sur le réseau de plusieurs façons. Il se peut que cela ne se produise que pendant le démarrage initial des routeurs, mais peut s'avérer problématique sur les réseaux instables.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

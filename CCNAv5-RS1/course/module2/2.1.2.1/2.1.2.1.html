@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.1 La méthode d&#x0027;accès par une console</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>IOS Bootcamp</h1>
+        <h2>Accès à un périphérique Cisco IOS</h2>
+      </div>
+      <div id="content">
+<p>Il y a plusieurs moyens d'accéder à l'interface CLI. Voici les méthodes les plus répandues :</p>
+<p>
+<ul>
+<li>Console</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Telnet ou SSH</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Port AUX</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Console</b>
+</p>
+<p>Le port de console est un port de gestion permettant un accès hors réseau à un périphérique Cisco. L'accès hors réseau désigne l'accès via un canal de gestion dédié qui est utilisé uniquement pour la maintenance des périphériques. L'avantage d'utiliser un port de console est que le périphérique est accessible même si aucun service réseau n'a été configuré, par exemple en effectuant la configuration initiale du périphérique réseau. Pour effectuer la configuration initiale, un ordinateur exécutant un logiciel d'émulation de terminal est connecté au port de console du périphérique à l'aide d'un câble spécial. Ainsi, il est possible d'entrer au clavier de l'ordinateur connecté les commandes de configuration du routeur ou du commutateur. </p>
+<p></p>
+<p>Le port de console peut également être utilisé lorsque les services réseau ont échoué et lorsque l'accès à distance au périphérique Cisco IOS est impossible. Dans ce cas, une connexion à la console peut permettre à un ordinateur de déterminer l'état du périphérique. Par défaut, la console transmet les messages de démarrage, de débogage et d'erreur du périphérique. Une fois le technicien réseau connecté au périphérique, il peut exécuter toutes les commandes de configuration nécessaires à l'aide de la session en mode console.</p>
+<p></p>
+<p>Pour de nombreux périphériques IOS, l'accès console ne requiert par défaut aucune forme de sécurité. Il convient toutefois de configurer un mot de passe pour la console afin d'empêcher l'accès non autorisé au périphérique. En cas de perte du mot de passe, des procédures spéciales permettent d'accéder malgré tout au périphérique. Il est recommandé de placer le périphérique dans une pièce ou une armoire fermée à clé pour éviter les accès non autorisés.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

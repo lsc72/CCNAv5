@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.3.2.1 Routage interdomaine sans classe</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.3.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Examen de CIDR et VLSM</h1>
+        <h2>CIDR</h2>
+      </div>
+      <div id="content">
+<p>Le développement exponentiel d'Internet au début des années 90 s'est accompagné d'une augmentation de la taille des tables de routage, dont la maintenance était assurée par des routeurs Internet utilisant l'adressage IP par classe. Pour cette raison, l'IETF a introduit le CIDR dans le document RFC 1517 en 1993. </p>
+<p></p>
+<p>Le CIDR a remplacé les affectations de réseau par classe et les classes d'adresses (A, B et C) sont devenues obsolètes. Avec le CIDR, l'adresse réseau n'est plus déterminée par la valeur du premier octet. En effet, la partie réseau de l'adresse est déterminée par le masque de sous-réseau, également connu sous le nom de « préfixe de réseau » ou de « longueur de préfixe » (c'est-à-dire, /8, /19, etc.). </p>
+<p></p>
+<p>De cette manière, les fournisseurs d'accès Internet ne sont plus limités au masque de sous-réseau /8, /16 ou /24. Ils peuvent désormais allouer plus efficacement l'espace d'adressage en utilisant la longueur de préfixe souhaitée, en commençant par /8, puis de plus en plus grand (/9, /10, etc.). La figure illustre la façon dont des blocs d'adresses IP peuvent être affectés à un réseau sur base des exigences du client, allant de quelques hôtes à plusieurs centaines ou milliers d'hôtes. </p>
+<p></p>
+<p>Le CIDR réduit également la taille des tables de routage et gère l'espace d'adressage IPv4 plus efficacement au moyen des éléments suivants :</p>
+<p>
+<ul>
+<li>
+<b>Récapitulation de route</b> - Également appelée agrégation de préfixes. Les routes sont récapitulées en une seule route afin de réduire la taille des tables de routage. Par exemple, une seule route statique récapitulative peut remplacer plusieurs instructions spécifiques de route statique. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Création d'un super-réseau</b> - Se produit lorsque la valeur du masque de récapitulation de route est inférieure à la valeur du masque par classe traditionnel par défaut.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Remarque</b> : un super-réseau est toujours une récapitulation de route, mais une récapitulation de route n'est pas toujours un super-réseau. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

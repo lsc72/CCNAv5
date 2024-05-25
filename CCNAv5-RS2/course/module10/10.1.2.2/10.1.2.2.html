@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.1.2.2 Vérification de DHCPv4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 4</h1>
+        <h2>Configuration d&#x0027;un serveur DHCPv4 de base</h2>
+      </div>
+      <div id="content">
+<p>La topologie représentée à la Figure 1 est utilisée dans l'exemple de résultat. Dans cet exemple, R1 a été configuré pour fournir les services DHCPv4. PC1 n'a pas été mis sous tension ; il n'a donc pas d'adresse IP. </p>
+<p></p>
+<p>Comme le montre la Figure 2, le résultat de la commande <span class="cmd"><b>show running-config | section dhcp</b></span> indique les commandes DHCPv4 configurées sur R1. Le paramètre <span class="cmd"><b>| section </b></span>affiche uniquement les commandes liées à la configuration de DHCPv4.</p>
+<p></p>
+<p>Comme le montre la Figure 3, le fonctionnement de DHCPv4 peut être vérifié à l'aide de la commande <span class="cmd"><b>show ip dhcp binding</b></span>. Cette commande permet d'afficher la liste de toutes les liaisons entre adresse IPv4 et adresse MAC qui ont été fournies par le service DHCPv4. La deuxième commande de la Figure 3, <span class="cmd"><b>show ip dhcp server statistics</b></span>, sert à vérifier que les messages sont reçus ou envoyés par le routeur. Cette commande permet d'afficher le nombre de messages DHCPv4 envoyés et reçus.</p>
+<p></p>
+<p>Comme le montre le résultat de ces commandes, il n'existe actuellement aucune liaison et les statistiques n'indiquent aucun message envoyé ni reçu. À ce stade, aucun périphérique n'a demandé les services DHCPv4 du routeur R1.</p>
+<p></p>
+<p>Sur la Figure 4, les commandes ont été exécutées après que PC1 et PC2 ont été mis sous tension et ont terminé le processus de démarrage.</p>
+<p></p>
+<p>On constate que les informations de liaison indiquent maintenant que les adresses IPv4 192.168.10.10 et 192.168.11.10 ont été reliées aux adresses MAC. Les statistiques indiquent également la présence de messages DHCPDISCOVER, DHCPREQUEST, DHCPOFFER et DHCPACK.</p>
+<p></p>
+<p>Comme le montre la Figure 5, la commande <span class="cmd"><b>ipconfig /all</b></span>, lorsqu'elle est exécutée sur PC1, affiche les paramètres TCP/IP. Comme PC1 était connecté au segment de réseau 192.168.10.0/24, il a automatiquement reçu un suffixe DNS, une adresse IPv4, un masque de sous-réseau, une passerelle par défaut et une adresse de serveur DNS de ce pool. Aucune configuration d'interface du routeur n'est requise. Si un ordinateur est connecté à un segment de réseau ayant un pool DHCPv4 disponible, il peut obtenir automatiquement une adresse IPv4 du pool approprié.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.0.1.1 Introduction</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.0.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Accès réseau</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>Pour permettre aux utilisateurs de communiquer, le modèle OSI divise les fonctions d'un réseau de données en couches. Chaque couche fonctionne avec les couches supérieures et inférieures afin de transmettre des données. Deux couches du modèle OSI sont si étroitement liées que, selon le modèle TCP/IP, elles ne forment presque qu'une seule couche. Il s'agit de la couche liaison de données et de la couche physique. </p>
+<p></p>
+<p>Sur le périphérique émetteur, il appartient à la couche liaison de données de préparer les données à transmettre et de contrôler l'accès de ces données aux supports physiques. Cependant, la couche physique contrôle la manière dont les données sont transmises sur les supports physiques en codant sous forme de signaux les chiffres binaires qui représentent des données.</p>
+<p></p>
+<p>Au niveau du destinataire, la couche physique reçoit des signaux à travers les supports connectés. Après avoir décodé le signal pour obtenir à nouveau des données, la couche physique transmet les données à la couche liaison de données pour acceptation et traitement. </p>
+<p></p>
+<p>Ce chapitre décrit d'abord les fonctions générales de la couche physique et les normes et protocoles qui gèrent la transmission de données sur le support local. Il présente également les fonctions de la couche liaison de données et des protocoles qui lui sont associés. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

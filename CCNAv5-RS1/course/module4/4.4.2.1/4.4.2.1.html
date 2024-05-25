@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.4.2.1 Topologies physiques de réseau étendu courantes</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.4.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Contrôle d&#x0027;accès au support</h1>
+        <h2>Topologies de réseau étendu</h2>
+      </div>
+      <div id="content">
+<p>Les réseaux étendus sont généralement interconnectés selon les topologies physiques suivantes :</p>
+<p>
+<ul>
+<li>
+<b>Point à point</b> : c'est la topologie la plus simple, composée d'une liaison permanente entre deux terminaux. Elle est donc très répandue.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Hub and Spoke</b> : version WAN de la topologie en étoile, dans laquelle un site central connecte entre eux les sites des filiales à l'aide de liaisons point à point. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Maillée</b> : cette topologie offre une haute disponibilité, mais nécessite que tous les systèmes finaux soient connectés entre eux. Les coûts d'administration et physiques peuvent donc être élevés. En essence, chaque liaison est une liaison point à point avec l'autre nœud. Il existe plusieurs variantes de cette topologie, notamment le maillage partiel qui consiste à relier uniquement certains périphériques finaux entre eux.</li>
+</ul>
+</p>
+<p></p>
+<p>Les trois principales topologies physiques de réseau étendu sont représentées sur la figure.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

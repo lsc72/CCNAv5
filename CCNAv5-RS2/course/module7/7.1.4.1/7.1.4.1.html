@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.1.4.1 Classification des protocoles de routage</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.1.4.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de routage dynamique</h1>
+        <h2>Types de protocoles de routage</h2>
+      </div>
+      <div id="content">
+<p>Les protocoles de routage peuvent être classés dans différents groupes selon leurs caractéristiques. Plus précisément, les protocoles de routage peuvent être classés en fonction de leur :</p>
+<p>
+<ul>
+<li>
+<b>Objectif</b> - Protocole IGP (Interior Gateway Protocol) ou protocole EGP (Exterior Gateway Protocol)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Fonctionnement</b> - Vecteur de distance, protocole d'état de liens ou protocole de vecteur de chemin</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Comportement</b>
+<b></b> - Par classe (ancien) ou protocole sans classe</li>
+</ul>
+</p>
+<p></p>
+<p>Par exemple, les protocoles de routage IPv4 sont classés comme suit : </p>
+<p>
+<ul>
+<li>
+<b>RIPv1 (ancien)</b> - IGP, vecteur de distance, protocole par classe</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>IGRP (ancien)</b> - IGP, vecteur de distance, le protocole par classe développé par Cisco (abandonné depuis l'IOS 12.2 et versions ultérieures)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>RIPv2 </b>- IGP, vecteur de distance, protocole sans classe</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>EIGRP</b> - IGP, vecteur de distance, protocole sans classe développé par Cisco</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>OSPF</b> - IGP, état de liens, protocole sans classe</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>IS-IS</b> - IGP, état de liens, protocole sans classe</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>BGP </b>- EGP, vecteur de distance, protocole sans classe</li>
+</ul>
+</p>
+<p></p>
+<p>Les protocoles de routage par classe, RIPv1 et IGRP, sont des protocoles anciens et sont uniquement utilisés dans les réseaux plus anciens. Ces protocoles de routage ont évolué pour devenir respectivement les protocoles de routage sans classe RIPv2 et EIGRP. Les protocoles de routage à état de liens sont sans classe par nature. </p>
+<p></p>
+<p>La Figure 1 présente une vue hiérarchique de la classification des protocoles de routage dynamique. </p>
+<p></p>
+<p>Les figures 2 à 5 illustrent le rôle, le fonctionnement et le comportement des différents protocoles de routage. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

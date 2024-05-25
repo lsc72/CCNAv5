@@ -1,0 +1,106 @@
+﻿<textcomponents> <!--Slide 1-->
+<component id="ID_s1_title">
+<text><![CDATA[<b>Vérification du serveur DHCPv6 sans état</b>]]></text>
+</component>
+
+<component id="ID_s1_txt01">
+   <text><![CDATA[<b>Serveur DHCPv6 sans état</b>]]></text>
+   </component>
+<component id="ID_s1_txt02">
+   <text><![CDATA[<b>Client DHCPv6</b>]]></text>
+   </component> <!--Slide 2-->
+<component id="ID_s2_title">
+<text><![CDATA[<b>Vérification du client DHCPv6 sans état&nbsp;: commande <font face="_typewriter">show ipv6 interface</font></b>]]></text>
+</component> <!--Slide 3-->
+<component id="ID_s3_title">
+<text><![CDATA[<b>Vérification du client DHCPv6 sans état&nbsp;: commande <font face="_typewriter">debug ipv6 dhcp detail</font></b>]]></text>
+</component>
+
+<component id="ID_s3_txt01">
+   <text><![CDATA[&lt;résultat omis&gt;]]></text>
+   </component> <!--Slide 4-->
+<component id="ID_s4_title">
+<text><![CDATA[<b>Configuration et vérification de DHCPv6 sans état</b>]]></text>
+</component>
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+
+<component id="ID_s4_txt01">
+   <text><![CDATA[<b>Serveur sans état DHCPv6</b>]]></text>
+   </component>
+<component id="ID_s4_txt02">
+   <text><![CDATA[<b>Client DHCPv6</b>]]></text>
+   </component>
+
+<component id="ID_s4_SC1" fontFace='Courier New' fontSize="11" class="font10px">
+		<feedback id="fb"><![CDATA[<b><font  face="_sans" color="#0000FF">***Vous devez saisir la commande exacte et complète. Les commandes qui incluent un nom ou un mot de passe sont sensibles à la casse.***</font>  </b>
+		]]></feedback>
+		<existingcommands><![CDATA[<font  face="_sans"><b>Activez le routage IPv6 et configurez un pool DHCP IPv6 nommé IPV6-STATELESS à l'aide des paramètres suivants&nbsp;:<br>Serveur DNS&nbsp;: 2001:db8:cafe:aaaa::5<br>Domaine&nbsp;: example.com</b></font>]]></existingcommands>
+		<command prompt="R1(config)#">
+			<correctresponse><![CDATA[ipv6 unicast-routing]]></correctresponse>
+		</command>		
+		<command prompt="R1(config)#">
+			<correctresponse><![CDATA[ipv6 dhcp pool IPV6-STATELESS]]></correctresponse>
+		</command>		
+		<command prompt="R1(config-dhcpv6)#">
+			<correctresponse><![CDATA[dns-server 2001:db8:cafe:aaaa::5]]></correctresponse>
+		</command>		
+		<command prompt="R1(config-dhcpv6)#">
+			<correctresponse><![CDATA[domain-name example.com]]></correctresponse>
+			<instruction><![CDATA[<font  face="_sans"><b>Quittez le mode de configuration DHCPv6 et configurez les paramètres suivants sur g0/1&nbsp;:<br>Adresse – 2001:db8:cafe:1::1/64<br>Définissez le serveur DHCP IPv6 pour utiliser le pool créé précédemment.<br>Configurez la détection de voisin de sorte qu'elle utilise l'indicateur O (indicateur de configuration autre).  </b></font>]]></instruction>
+		</command>
+		<command prompt="R1(config-dhcpv6)#">
+			<correctresponse><![CDATA[exit]]></correctresponse>
+		</command>		
+		<command prompt="R1(config)#">
+			<correctresponse><![CDATA[interface g0/1]]></correctresponse>
+		</command>		
+		<command prompt="R1(config-if)#">
+			<correctresponse><![CDATA[ipv6 address 2001:db8:cafe:1::1/64]]></correctresponse>
+		</command>		
+		<command prompt="R1(config-if)#">
+			<correctresponse><![CDATA[ipv6 dhcp server IPV6-STATELESS]]></correctresponse>
+		</command>		
+		<command prompt="R1(config-if)#">
+			<correctresponse><![CDATA[ipv6 nd other-config-flag]]></correctresponse>
+			<instruction><![CDATA[<font  face="_sans"><b>Configurez R3 en tant que client DHCPv6 sans état, quittez complètement le mode de configuration lorsque vous avez terminé.  </b></font>]]></instruction>
+		</command>		
+		<command prompt="R3(config)#">
+			<correctresponse><![CDATA[interface g0/1]]></correctresponse>
+		</command>		
+		<command prompt="R3(config-if)#">
+			<correctresponse><![CDATA[ipv6 enable]]></correctresponse>
+		</command>		
+		<command prompt="R3(config-if)#">
+			<correctresponse><![CDATA[ipv6 address autoconfig]]></correctresponse>
+			<instruction><![CDATA[<font  face="_sans"><b>Vérifiez les paramètres DHCP IPV6 sur R1.  </b></font>]]></instruction>
+		</command>		
+		<command prompt="R1#">
+			<correctresponse><![CDATA[show ipv6 dhcp pool]]></correctresponse>
+				<deviceresponse><![CDATA[DHCPv6 pool: IPV6-STATELESS<br>  DNS server: 2001:DB8:CAFE:AAAA::5<br>  Domain name: example.com<br>  Active clients: 0<br>R1#]]></deviceresponse>			
+			<instruction><![CDATA[<font  face="_sans"><b>Vérifiez les paramètres IPv6 sur l'interface G0/1 de R3.  </b></font>]]></instruction>
+		</command>		
+		<command prompt="R3#">
+			<correctresponse><![CDATA[show ipv6 interface g0/1]]></correctresponse>
+				<deviceresponse><![CDATA[GigabitEthernet0/1 is up, line protocol is up <br>  IPv6 is enabled, link-local address is FE80::32F7:DFF:FE25:2DE1 <br>  No Virtual link-local address(es): <br> Stateless address autoconfig enabled <br>  Global unicast address(es): <br>    2001:DB8:CAFE:1:32F7:DFF:FE25:2DE1, subnet is 2001:DB8:CAFE:1::/64 <br>[EUI/CAL/PRE] <br>      valid lifetime 2591935 preferred lifetime 604735 <br>  Joined group address(es): <br>    FF02::1 <br>    FF02::1:FF25:2DE1 <br>  MTU is 1500 bytes <br>  ICMP error messages limited to one every 100 milliseconds <br>  ICMP redirects are enabled <br>  ICMP unreachables are sent <br>  ND DAD is enabled, number of DAD attempts: 1 <br>  ND reachable time is 30000 milliseconds (using 30000) <br>  ND NS retransmit interval is 1000 milliseconds <br>  Default router is FE80::D68C:B5FF:FECE:A0C1 on GigabitEthernet0/1 <br>R3#]]></deviceresponse>			
+			<instruction><![CDATA[<font  face="_sans"><b>Utilisez la commande debug pour afficher les paquets DHCP IPv6 détaillés.  </b></font>]]></instruction>
+		</command>		
+		<command prompt="R3#">
+			<correctresponse><![CDATA[debug ipv6 dhcp detail]]></correctresponse>
+				<deviceresponse><![CDATA[   IPv6 DHCP debugging is on (detailed) <br>R3# <br>*Feb 3 02:39:10.454: IPv6 DHCP: Sending INFORMATION-REQUEST to FF02::1:2 <br>on GigabitEthernet0/1 <br>*Feb 3 02:39:10.454: IPv6 DHCP: detailed packet contents <br>*Feb 3 02:39:10.454: src FE80::32F7:DFF:FE25:2DE1 <br>*Feb 3 02:39:10.454: dst FF02::1:2 (GigabitEthernet0/1) <br>*Feb 3 02:39:10.454: type INFORMATION-REQUEST(11), xid 12541745 <br><Some output omitted for brevity> <br>*Feb 3 02:39:10.454: IPv6 DHCP: Adding server FE80::D68C:B5FF:FECE:A0C1 <br>*Feb 3 02:39:10.454: IPv6 DHCP: Processing options <br>*Feb 3 02:39:10.454: IPv6 DHCP: Configuring DNS server <br>2001:DB8:CAFE:AAAA::5 <br>*Feb 3 02:39:10.454: IPv6 DHCP: Configuring domain name example.com <br>*Feb 3 02:39:10.454: IPv6 DHCP: DHCPv6 changes state from INFORMATION- <br>REQUEST to IDLE (REPLY_RECEIVED) on GigabitEthernet0/1 <br>R3#]]></deviceresponse>			
+			<instruction><![CDATA[<font  face="_sans"><b>Vous avez correctement configuré DHCPv6 sans état.  </b></font>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+
+
+
+</textcomponents>

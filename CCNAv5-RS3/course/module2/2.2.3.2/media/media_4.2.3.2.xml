@@ -1,0 +1,123 @@
+﻿<textcomponents>
+<component id="ID_title">
+<text><![CDATA[<b>Trames BPDU du protocole RTSP</b>]]></text>
+</component>
+
+<component id="ID_table">
+  <text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4'>
+	<tr>
+		<td colspan='2' bgcolor='#98D3D1' class="mtitle"><font size='12' color='#393536'><b>BPDU version 2 RSTP</b></font></td>
+	</tr>
+	<tr>
+		<td colspan='2' bgcolor='#0E6360' class="mtable_top"><font size='1' color='#0E6360'><span style="color:#98D3D1">.</span></font></td>
+	</tr>
+	<tr>
+		<td bgcolor='#077A77'><font color='#ffffff'><b>Champ</b></font></td>
+		<td bgcolor='#077A77' width="60"><font color='#ffffff'><b>Longueur en octets</b></font></td>
+	</tr>
+	<tr>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>ID de protocole=0x0000</font></td>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>2</font></td>
+	</tr>
+	<tr>
+		<td bgcolor='#ffffff' valign="top"><font color='#393536'>ID de version de protocole=0x02</font></td>
+		<td bgcolor='#ffffff' valign="top"><font color='#393536'>1</font>
+		</td>
+	</tr>
+	<tr>
+	    <td bgcolor='#EFF8F7' valign="top"><font color='#393536'>Type de BPDU=0X02</font></td>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>1</font></td>
+	</tr>
+	
+		<tr>
+	    <td bgcolor='#facca8' valign="top"><font color='#393536'>Indicateurs</font></td>
+		<td bgcolor='#facca8' valign="top"><font color='#393536'>1</font></td>
+	</tr>
+	<tr>
+	    <td bgcolor='#EFF8F7' valign="top"><font color='#393536'>ID de racine</font></td>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>8</font></td>
+	</tr>
+	<tr>
+	    <td bgcolor='#ffffff' valign="top"><font color='#393536'>Coût du chemin racine</font></td>
+		<td bgcolor='#ffffff' valign="top"><font color='#393536'>4</font></td>
+	</tr>
+	<tr>
+	    <td bgcolor='#EFF8F7' valign="top"><font color='#393536'>ID de pont</font></td>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>8</font></td>
+	</tr>
+	<tr>
+	    <td bgcolor='#ffffff' valign="top"><font color='#393536'>ID du port</font></td>
+		<td bgcolor='#ffffff' valign="top"><font color='#393536'>2</font></td>
+	</tr>
+	<tr>
+	    <td bgcolor='#EFF8F7' valign="top"><font color='#393536'>Âge du message</font></td>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>2</font></td>
+	</tr>
+	<tr>
+	    <td bgcolor='#ffffff' valign="top"><font color='#393536'>Âge maximal</font></td>
+		<td bgcolor='#ffffff' valign="top"><font color='#393536'>2</font></td>
+	</tr>
+	<tr>
+	    <td bgcolor='#EFF8F7' valign="top"><font color='#393536'>Temps Hello</font></td>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>2</font></td>
+	</tr>
+	<tr>
+	    <td bgcolor='#ffffff' valign="top"><font color='#393536'>Délai de transmission</font></td>
+		<td bgcolor='#ffffff' valign="top"><font color='#393536'>2</font></td>
+	</tr>
+	</table>]]></text>
+  </component>
+  
+  
+   <component id="ID_table1">
+  <text><![CDATA[<table header='none' bordercolor='#98D3D1' borderwidth='3' shadow='false' shadowcolor='#000000' glow='true' glowcolor='#808080' cellpadding='4'>
+	<tr>
+		<td colspan='2' bgcolor='#98D3D1' class="mtitle"><font size='12' color='#393536'><b>Champ d’indicateurs</b></font></td>
+	</tr>
+	<tr>
+		<td colspan='2' bgcolor='#0E6360' class="mtable_top"><font size='1' color='#0E6360'><span style="color:#98D3D1">.</span></font></td>
+	</tr>
+	<tr>
+		<td bgcolor='#077A77'  valign="top" width="128"><font color='#ffffff'><b>Bit de champ</b></font></td>
+		<td bgcolor='#077A77'  valign="top"><font color='#ffffff'><b>Bit</b></font></td>
+	</tr>
+	<tr>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>Modification de topologie</font></td>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>0</font></td>
+	</tr>
+	<tr>
+		<td bgcolor='#ffffff' valign="top"><font color='#393536'>Proposition</font></td>
+		<td bgcolor='#ffffff' valign="top"><font color='#393536'>1</font>
+		</td>
+	</tr>
+	<tr id="tr">
+	    <td bgcolor='#EFF8F7' valign="top" class="port"><font color='#393536'>Rôle du port  <br/><textformat blockindent="14"><span>Port inconnu</span></textformat>
+		                                                                    <br/><textformat blockindent="14"><span>Port alternatif ou <span style="padding-left:10px;">de secours</span></span></textformat>
+																			<br/><textformat blockindent="14"><span>Port racine</span></textformat>
+																			<br/><textformat blockindent="14"><span>Port désigné</span></textformat></font></td>
+		<td bgcolor='#EFF8F7' valign="top" class="port"><font color='#393536'>2 à 3<br/><span style="margin-top:6.58px;margin-left:0px;">00</span><br/><span style="padding-top:1.58px;margin-left:0px;">01</span><br/><br/><span style="margin-top:0px;margin-left:0px;">10</span><br/><span style="margin-top:1px;margin-left:0px;">11</span><br/></font></td>
+	</tr>
+	
+		<tr>
+	    <td bgcolor='#ffffff' valign="top"><font color='#393536'>Apprentissage</font></td>
+		<td bgcolor='#ffffff' valign="top"><font color='#393536'>4</font></td>
+	</tr>
+	<tr>
+	    <td bgcolor='#EFF8F7' valign="top"><font color='#393536'>Transfert</font></td>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>5</font></td>
+	</tr>
+	<tr>
+	    <td bgcolor='#ffffff' valign="top"><font color='#393536'>Accord</font></td>
+		<td bgcolor='#ffffff' valign="top"><font color='#393536'>6</font></td>
+	</tr>
+	<tr>
+	    <td bgcolor='#EFF8F7' valign="top"><font color='#393536'>Reçu de modification de topologie</font></td>
+		<td bgcolor='#EFF8F7' valign="top"><font color='#393536'>7</font></td>
+	</tr>
+	
+	</table>]]></text>
+  </component>
+  
+  
+
+</textcomponents>

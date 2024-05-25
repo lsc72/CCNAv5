@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.1.2 Catégories principale (M) et technologie (T) de Cisco IOS 12.4 </title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Gestion des fichiers système IOS</h1>
+        <h2>Conventions d&#x0027;attribution de noms</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Catégories 12.4 </b>
+</p>
+<p>La figure présente la migration à partir de la version logicielle 12.3 vers 12.4. Une famille de versions logicielles peut contenir plusieurs catégories actives et étroitement liées. Par exemple, la famille de versions du logiciel Cisco IOS 12.4 comprend deux catégories, la catégorie principale 12.4 et technologie 12.4T. </p>
+<p></p>
+<p>La catégorie du logiciel Cisco IOS 12.4 est considérée comme la catégorie principale. La catégorie principale reçoit principalement les corrections de bogues afin d'améliorer la qualité du logiciel. Les versions de la catégorie principale sont également appelées versions MD (Maintenance Deployment, déploiement de maintenance). </p>
+<p></p>
+<p>Une catégorie principale est toujours associée à une catégorie technologie (catégorie T). Une catégorie T, par exemple 12.4T, reçoit les mêmes corrections de bogues que la catégorie principale. La catégorie T reçoit également les nouvelles fonctionnalités de prise en charge logicielle et matérielle. Les versions de la catégorie du logiciel Cisco IOS 12.4T sont considérées comme des versions de déploiement rapide ED (Early Deployment).</p>
+<p></p>
+<p>Il peut exister d'autres catégories, en fonction de la famille de versions logicielles. Par exemple, une autre catégorie disponible est celle du fournisseur de services (catégorie S). Une catégorie S contient des fonctionnalités spécialement conçues pour répondre aux exigences des fournisseurs de services.</p>
+<p></p>
+<p>Toutes les catégories secondaires de la catégorie principale (T, S, etc.) contiennent généralement une lettre majuscule qui désigne le type de catégorie. </p>
+<p></p>
+<p>Catégorie principale = 12.4</p>
+<p>Catégorie T = 12.4T (12.4 + nouvelles fonctionnalités de prise en charge logicielle et matérielle)</p>
+<p></p>
+<p>Jusqu'à la famille de versions du logiciel Cisco IOS 12.4, celle-ci incluse, les catégories principale et T ont été séparées. En d'autres termes, à partir de la catégorie principale, une catégorie T s'étendait et devenait une base de code qui recevait de nouvelles fonctionnalités et une prise en charge matérielle. Enfin, une nouvelle catégorie principale était créée à partir d'une catégorie T établie et le cycle recommençait. Cette utilisation de plusieurs catégories a été modifiée avec la version logicielle Cisco IOS 15.</p>
+<p></p>
+<p>La figure illustre les relations entre la catégorie principale du logiciel Cisco IOS 12.4 et la catégorie 12.4T. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

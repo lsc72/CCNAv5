@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.5.5 Diagramme VLSM</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.5.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmenter un réseau IPv4 en sous-réseaux</h1>
+        <h2>Les avantages du masquage de sous-réseau de longueur variable</h2>
+      </div>
+      <div id="content">
+<p>Pour planifier des adresses, vous pouvez également faire appel à divers outils. Parmi ces derniers, le diagramme VLSM permet d'identifier les blocs d'adresses qui sont disponibles et ceux qui sont déjà attribués. Ce diagramme permet de ne pas attribuer des adresses déjà attribuées. Le tableau de VLSM peut être utilisé pour planifier l'attribution des adresses de l'exemple précédent. </p>
+<p></p>
+<p>
+<b>Observation des sous-réseaux /27</b>
+</p>
+<p></p>
+<p>Comme le montre la Figure 1, lorsque nous avons utilisé la méthode classique de segmentation, les sept premiers blocs d'adresses étaient attribués aux réseaux locaux et aux réseaux étendus. Souvenez-vous que ce schéma a entraîné la création de 8 sous-réseaux proposant chacun 30 adresses utilisables (/27). Même si ce schéma fonctionnait pour les segments de réseau local, de nombreuses adresses étaient gaspillées dans les segments de réseau étendu. </p>
+<p></p>
+<p>Lors de la conception du schéma d'adressage sur un nouveau réseau, les blocs d'adresses peuvent être attribués à l'aide d'une méthode qui réduit les pertes et maintient la contiguïté des blocs d'adresses inutilisées.</p>
+<p></p>
+<p>
+<b>Attribution des blocs d'adresses VLSM</b>
+</p>
+<p></p>
+<p>Comme l'illustre la Figure 2, afin d'utiliser plus efficacement l'espace d'adressage, des sous-réseaux /30 sont créés pour les liaisons de réseau étendu. Pour conserver ensemble les blocs d'adresses inutilisées, le dernier sous-réseau /27 a à nouveau été subdivisé pour créer des sous-réseaux /30. Les 3 premiers sous-réseaux ont été affectés aux liaisons de réseau étendu.</p>
+<p></p>
+<p>
+<ul>
+<li>Plage d'adresses d'hôte .224 /30 de 225 à 226 : liaison de réseau étendu entre R1 et R2</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Plage d'adresses d'hôte .228 /30 de 229 à 230 : liaison de réseau étendu entre R2 et R3</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Plage d'adresses d'hôte .232 /30 de 233 à 234 : liaison de réseau étendu entre R3 et R4</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Plage d'adresses d'hôte .236 /30 de 237 à 238 : disponible</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Plage d'adresses d'hôte .240 /30 de 241 à 242 : disponible</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Plage d'adresses d'hôte .244 /30 de 245 à 246 : disponible</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Plage d'adresses d'hôte .248 /30 de 249 à 250 : disponible</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Plage d'adresses d'hôte .252 /30 de 253 à 254 : disponible</li>
+</ul>
+</p>
+<p></p>
+<p>Cette conception du schéma d'adressage laisse 3 sous-réseaux /27 et 5 sous-réseaux /30 inutilisés.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

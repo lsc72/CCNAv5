@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.3.1 Routes statiques</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.3.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement d&#x0027;un routeur</h1>
+        <h2>Routes apprises de manière statique</h2>
+      </div>
+      <div id="content">
+<p>Une fois les interfaces connectées directement configurées et ajoutées à la table de routage, le routage statique ou dynamique peut être mis en œuvre. </p>
+<p></p>
+<p>Les routes statiques sont configurées manuellement. Elles définissent un chemin explicite entre deux périphériques réseau. Contrairement à un protocole de routage dynamique, les routes statiques ne sont pas automatiquement mises à jour : elles doivent être manuellement reconfigurées si la topologie du réseau est modifiée. L'utilisation de routes statiques permet notamment d'améliorer la sécurité et l'efficacité des ressources. Les routes statiques utilisent moins de bande passante que les protocoles de routage dynamique. De plus, aucun cycle de processeur n'est utilisé pour calculer et communiquer des routes. Le principal inconvénient des routes statiques est l'absence de reconfiguration automatique en cas de modification de la topologie du réseau.</p>
+<p></p>
+<p>Il existe deux types courants de routes statiques dans la table de routage :</p>
+<p>
+<ul>
+<li>Route statique vers un réseau donné</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Route statique par défaut</li>
+</ul>
+</p>
+<p></p>
+<p>Une route statique est configurée pour atteindre un réseau distant donné. Les routes statiques IPv4 sont configurées à l'aide de la commande de configuration globale <span class="cmd"><b>ip route </b></span><span class="cmd"><i>network mask</i></span><span class="cmd"> {</span><span class="cmd"><i>next-hop-ip</i></span><span class="cmd"> | </span><span class="cmd"><i>exit-intf</i></span><span class="cmd">}</span><span class="cmd"><b></b></span>. Dans la table de routage, une route statique est identifiée par le code « <span class="cmd">S</span> ».</p>
+<p></p>
+<p>Une route statique par défaut est comparable à une passerelle par défaut sur un hôte. La route statique par défaut indique le point de sortie à utiliser lorsque la table de routage ne contient pas de chemin vers le réseau de destination. </p>
+<p></p>
+<p>Une route statique par défaut est utile lorsqu'un routeur ne dispose que d'un seul point de sortie vers un autre routeur, par exemple lorsque le routeur se connecte à un routeur central ou à un fournisseur de services. </p>
+<p></p>
+<p>Pour configurer une route statique par défaut IPv4, utilisez la commande de configuration globale <span class="cmd"><b>ip route 0.0.0.0 0.0.0.0</b></span><span class="cmd"> {</span><span class="cmd"><i>exit-intf</i></span><span class="cmd"> | </span><span class="cmd"><i>next-hop-ip</i></span><span class="cmd">}</span>.</p>
+<p></p>
+<p>La figure présente un scénario simple d'application des routes statiques et par défaut. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.1.6 Vérification des informations VLAN</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.1.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentations de VLAN</h1>
+        <h2>Affectation de VLAN</h2>
+      </div>
+      <div id="content">
+<p>Les configurations VLAN peuvent être validées à l'aide des commandes <span class="cmd"><b>show</b></span> de Cisco IOS. </p>
+<p></p>
+<p>La Figure 1 présente les options des commandes <span class="cmd"><b>show vlan</b></span> et <span class="cmd"><b>show interfaces</b></span>. </p>
+<p></p>
+<p>Dans l'exemple de la Figure 2, la commande <span class="cmd"><b>show vlan name student</b></span> produit un résultat difficile à interpréter. Il est préférable ici d'utiliser la commande <span class="cmd"><b>show vlan brief</b></span>. La commande <span class="cmd"><b>show vlan summary</b></span> affiche tous les VLAN configurés. Le résultat de la Figure 2 indique sept VLAN.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>show interfaces vlan </b></span><span class="cmd"><i>vlan-id</i></span> affiche des détails qui sortent du cadre de ce cours. Des informations importantes figurent sur la deuxième ligne de la Figure 3, indiquant que le VLAN 20 est activé. </p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 4 pour afficher les informations relatives aux ports du commutateur et vérifiez les attributions de VLAN et le mode.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

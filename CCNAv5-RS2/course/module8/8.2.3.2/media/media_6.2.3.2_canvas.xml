@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">		
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title" />
+			<element type="IMAGE" src="media_6.2.3.2.jpg" x="0" y="0" width="470" height="400" />	<!-- image div  -->
+			<element type="TEXT" text="172.16.2.0/24" x="185.95" y="87.4" align="center" width="67" bold="1" />
+			<element type="TEXT" text="G0/0" x="195.35" y="125.85" align="center" width="23.7" />
+			<element type="TEXT" text=".1" x="225.35" y="125.85" align="center" width="7.15" />
+			<element type="TEXT" text="Lo0" x="251.95" y="136.15" align="center" width="18" />
+			<element type="TEXT" text=".225" x="251.95" y="155.15" align="center" width="20.95" />
+			<element type="TEXT" text="209.165.200.224/27" x="262.3" y="109" align="center" width="97.9" bold="1" />
+			<element type="TEXT" text=".226" x="313.95" y="149.65" align="center" width="20.85" />
+			<element type="TEXT" text="192.168.10.8/30" x="307.15" y="203.7" align="center" width="78.95" bold="1" />
+			<element type="TEXT" text="172.16.3.0/30" x="72.55" y="203.7" align="center" width="66.75" bold="1" />
+			<element type="TEXT" text="172.16.1.0/24" x="56.6" y="347.95" align="center" width="67" bold="1" />
+			<element type="TEXT" text="S0/0/0" x="183.95" y="179.35" align="center" width="31.75" />
+			<element type="TEXT" text="1544kbps" x="153.95" y="225.8" align="center" width="47" />
+			<element type="TEXT" text="S0/0/0" x="119.55" y="248.7" align="center" width="31.75" />
+			<element type="TEXT" text="S0/0/1" x="119.55" y="264.7" align="center" width="30.25" />
+			<element type="TEXT" text=".5" x="120.55" y="284.7" align="center" width="8.75" />
+			<element type="TEXT" text="S0/0/1" x="298.2" y="255.85" align="center" width="30.25" />
+			<element type="TEXT" text="192.168.10.4/30" x="179.45" y="296.85" align="center" width="78.95" bold="1" />
+			<element type="TEXT" text="G0/0" x="327.1" y="307.1" align="center" width="23.7" />
+			<element type="TEXT" text="192.168.1.0/24" x="321.95" y="347.95" align="center" width="73.1" bold="1" />
+			<element type="TEXT" text="G0/0" x="64.6" y="308.1" align="center" width="23.7" />
+			<element type="TEXT" text=".1" x="95.4" y="307.1" align="center" width="7.15" />
+			<element type="TEXT" text="1024kbps" x="243.95" y="225.8" align="center" width="47" />
+			<element type="TEXT" text="64kbps" x="200.55" y="262.9" align="center" width="47" />
+			<element type="TEXT" text="S0/0/0" x="289.6" y="278.9" align="center" width="31.75" />
+			<element type="TEXT" text=".10" x="349.15" y="252.85" align="center" width="14.75" />
+			<element type="TEXT" text=".6" x="313.15" y="295.1" align="center" width="8.65" />
+			<element type="TEXT" text=".1" x="359" y="307.1" align="center" width="7.15" />
+			<element type="TEXT" text="S0/0/1" x="224.95" y="179.35" align="center" width="30.25" />
+			<element type="TEXT" text=".2" x="159.15" y="179.35" align="center" width="8.6" />
+			<element type="TEXT" text=".9" x="274.95" y="178.35" align="center" width="8.7" />
+			<element type="TEXT" text=".1" x="88.55" y="252.85" align="center" width="7.15" />
+			<element type="TEXT" compId="ID_s1_txt01" x="29" y="50" width="104.5" expand="right" align="left" />
+			<element type="TEXT" compId="ID_s1_txt02" x="340.3" y="138.35" width="95.75" expand="up+down" align="center" />
+			<element type="TEXT" compId="ID_s1_txt03" x="24" y="219" width="57.3" expand="down" align="center" class="orangeCallOut" />
+			<element type="TEXT" compId="ID_s1_txt04" x="78.75" y="101.5" width="57.3" expand="down" align="center" class="orangeCallOut" />
+		</slide>		
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title" />		
+			<element type="ROUTER"  textId="router_text1"  x="3"    y="105.75"   width="433" height="230"  />
+		</slide>
+	</slide>
+	
+	
+		
+		<text id="router_text1"	><![CDATA[<code style="letter-spacing: -0.35px; white-space: pre;">R1# <b>show ip route | include 172.16.2.0</b>
+O        172.16.2.0/24 [110/<span style="background-color:#FACCA8">65</span>] via 172.16.3.2, 03:39:07,
+         Serial0/0/0
+R1#
+R1# <b>show ip route 172.16.2.0</b>
+Routing entry for 172.16.2.0/24
+  Known via "ospf 10", distance 110, <span style="background-color:#FACCA8">metric 65</span>, type intra  
+  area
+  Last update from 172.16.3.2 on Serial0/0/0, 03:39:15 ago
+  Routing Descriptor Blocks:
+  * 172.16.3.2, from 2.2.2.2, 03:39:15 ago, via Serial0/0/0
+      <span style="background-color:#FACCA8">Route metric is 65</span>, traffic share count is 1
+R1#	</code>	]]></text>
+		
+		
+	
+</data>

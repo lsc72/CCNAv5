@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.3.2.1 Problèmes de configuration du commutateur de couche 3</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout; 
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.3.2.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Commutation de couche 3</h1>
+        <h2>Dépannage de la commutation de couche 3</h2>
+      </div>
+      <div id="content">
+<p>Les problèmes communs au routage inter-VLAN existant et au routage inter-VLAN router-on-a-stick surviennent également dans le cadre de la commutation de couche 3. Pour résoudre des problèmes de commutation de couche 3, il convient de vérifier les éléments suivants :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>VLAN</b> : les VLAN doivent être définis sur tous les commutateurs. Les VLAN doivent être activés sur les ports trunk. Les ports doivent se trouver dans les VLAN appropriés.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>SVI</b> : l'interface SVI doit avoir l'adresse IP ou le masque de sous-réseau correct. L'interface SVI doit être fonctionnelle. L'interface SVI doit correspondre au numéro de VLAN.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Routage</b> : le routage doit être activé. Chaque interface ou réseau doit être ajouté au protocole de routage.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Hôtes</b> : les hôtes doivent avoir l'adresse IP ou le masque de sous-réseau correct. Les hôtes doivent avoir une passerelle par défaut associée à une interface SVI ou un port routé.</li>
+</ul>
+</p>
+<p></p>
+<p>Pour résoudre les problèmes de commutation de couche 3, familiarisez-vous avec la mise en œuvre et la conception de la topologie.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

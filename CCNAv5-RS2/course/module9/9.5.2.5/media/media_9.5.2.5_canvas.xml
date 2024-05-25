@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide type="MBAR"> <!-- Slide 1 -->
+		<slide> <!-- Lazy text-->
+			<element type="TEXT" compId="ID_s1_txt01" x="13" y="181" width="415" height="17"  align="left" expand="right" /> <!-- Router text-->		
+			<element type="ROUTER" textId="ID_r1_txt01" x="4.35" y="94.75" width="433.25" height="217.3" size="10"/>
+			
+			
+		</slide> <!-- Slide 2 -->	
+		<slide> <!-- Router text-->		
+			<element type="ROUTER" textId="ID_r2_txt01" x="4.35" y="94.75" width="433.25" height="217.3" size="10"/>
+			
+		</slide> <!-- Slide 3 -->	
+		<slide> <!-- Lazy text-->
+			<element type="TEXT" compId="ID_s3_txt01" x="13" y="112.85" width="416" height="17"  align="left" expand="right" /> <!-- Router text-->		
+			<element type="ROUTER" textId="ID_r3_txt01" x="4.35" y="94.75" width="433.25" height="217.3" size="10"/>
+			
+		</slide>
+	</slide> <!-- Router text -->
+	
+		<text id="ID_r1_txt01"><![CDATA[ 		R3#<b>show ipv6 interface g0/0  </b><br /> GigabitEthernet0/0 is up, line protocol is up<br /> &nbsp;Global unicast address(es):<br> 		&nbsp;&nbsp;2001:DB8:CAFE:30::1, subnet is 2001:DB8:CAFE:30::/64<br /> <span class="highlight">&nbsp;Input features: Access List<br /> &nbsp;Inbound access list RESTRICTED-ACCESS</span>
+		]]></text>	
+		
+		<text id="ID_r2_txt01"><![CDATA[ 		R3#<b>show access-lists  </b><br /> IPv6 access list RESTRICTED-ACCESS<br /> &nbsp;&nbsp;permit tcp any host 2001:DB8:CAFE:10::10 eq www sequence 20<br /> &nbsp;&nbsp;permit tcp any host 2001:DB8:CAFE:10::10 eq 443 sequence 30<br /> &nbsp;&nbsp;deny ipv6 any 2001:DB8:CAFE:10::/64 sequence 50<br /> &nbsp;&nbsp;permit tcp host 2001:DB8:CAFE:30::12 host 2001:DB8:CAFE:11::11 eq<br /> &nbsp;&nbsp;telnet sequence 70<br /> &nbsp;&nbsp;deny tcp any host 2001:DB8:CAFE:11::11 eq telnet sequence 90<br /> &nbsp;&nbsp;permit ipv6 any any sequence 110<br /> R3#
+		]]></text>	
+		
+		<text id="ID_r3_txt01"><![CDATA[ 		R3#<b>show running-config  </b><br /><br /> ipv6 access-list RESTRICTED-ACCESS<br /> &nbsp;remark Permit access only HTTP and HTTPS to Network 10<br /> &nbsp;permit tcp any host 2001:DB8:CAFE:10::10 eq www<br /> &nbsp;permit tcp any host 2001:DB8:CAFE:10::10 eq 443<br /> &nbsp;remark Deny all other traffic to Network 10<br /> &nbsp;deny ipv6 any 2001:DB8:CAFE:10::/64<br /> &nbsp;remark Permit PC3 telnet access to PC2<br /> &nbsp;permit tcp host 2001:DB8:CAFE:30::12 host 2001:DB8:CAFE:11::11 <br /> &nbsp;eq telnet<br /> &nbsp;remark Deny telnet access to PC2 for all other devices<br /> &nbsp;deny tcp any host 2001:DB8:CAFE:11::11 eq telnet<br /> &nbsp;remark Permit access to everything else<br /> &nbsp;permit ipv6 any any<br />
+		]]></text>	
+</data>

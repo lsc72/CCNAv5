@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.1.2.3 Applications en temps réel pour un petit réseau</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.1.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Création et développement</h1>
+        <h2>Protocoles d&#x0027;un petit réseau</h2>
+      </div>
+      <div id="content">
+<p>En plus des protocoles réseau courants décrits précédemment, les entreprises modernes, même les plus petites, utilisent généralement des applications en temps réel pour la communication avec les clients et les partenaires commerciaux. Une petite entreprise ne peut pas forcément assumer le coût d'une solution Cisco Telepresence d'entreprise, mais d'autres applications en temps réel sont abordables et se justifient dans les PME (cf Figure 1). Les applications en temps réel exigent une plus grande planification et des services dédiés (par rapport à d'autres types de données) pour garantir l'acheminement prioritaire du trafic voix et vidéo. Cela signifie que l'administrateur réseau doit s'assurer que l'équipement approprié est installé dans le réseau et que les périphériques réseau sont configurés pour assurer un acheminement prioritaire. La Figure 2 représente les éléments d'un réseau de petite taille prenant en charge les applications en temps réel. </p>
+<p></p>
+<p>
+<b>Infrastructure</b>
+</p>
+<p></p>
+<p>Pour prendre en charge les applications en temps réel existantes et prévues, l'infrastructure doit être compatible avec les caractéristiques de chaque type de trafic. Le concepteur du réseau doit déterminer si le câblage et les commutateurs existants peuvent prendre en charge le trafic ajouté au réseau. Un câblage pouvant prendre en charge des transmissions gigabit doit pouvoir acheminer le trafic généré, sans nécessiter de changement d'infrastructure. Les commutateurs plus anciens ne prennent pas toujours en charge la technologie Power over Ethernet (PoE). Un câblage obsolète peut ne pas prendre en charge les besoins en matière de bande passante. Les commutateurs et le câblage nécessiteraient une mise à niveau pour la prise en charge de ces applications.</p>
+<p></p>
+<p>
+<b>VoIP</b>
+</p>
+<p></p>
+<p>La voix sur IP (VoIP) est mise en œuvre dans les entreprises qui utilisent encore des téléphones traditionnels. La VoIP fait appel à des routeurs compatibles avec les services de voix. Ces routeurs convertissent la voix analogique provenant des signaux téléphoniques traditionnels en paquets IP. Une fois que les signaux sont convertis en paquets IP, le routeur achemine ces paquets entre les emplacements correspondants. La VoIP est beaucoup moins onéreuse que les solutions intégrées de téléphonie IP, mais la qualité des communications ne répond pas aux mêmes normes. Les solutions de voix et vidéo sur IP pour les petites entreprises peuvent par exemple faire appel à Skype et à des versions non professionnelles de Cisco WebEx.</p>
+<p></p>
+<p>
+<b>Téléphonie IP</b>
+</p>
+<p></p>
+<p>Dans le cas de la téléphonie IP, le téléphone IP effectue lui-même la conversion voix à IP. Dans les réseaux équipés d'une solution intégrée de téléphonie IP, aucun routeur compatible avec les services de voix n'est nécessaire. Les téléphones IP utilisent un serveur dédié pour le contrôle des appels et la signalisation. De nombreux constructeurs proposent désormais des solutions de téléphonie IP dédiées pour les réseaux de petite entreprise. </p>
+<p></p>
+<p>
+<b>Applications en temps réel</b>
+</p>
+<p></p>
+<p>Pour transporter efficacement des flux multimédias en continu, le réseau doit être en mesure de prendre en charge les applications sensibles aux retards d'acheminement. Les protocoles RTP (Real-Time Transport Protocol) et RTCP (Real-Time Transport Control Protocol) répondent tous deux à cette exigence. Les protocoles RTP et RTCP permettent le contrôle et l'extensibilité des ressources réseau en autorisant l'incorporation des mécanismes de qualité de service (QS). Ces mécanismes QS offrent de précieux outils pour la réduction des problèmes de latence des applications RTSP,</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

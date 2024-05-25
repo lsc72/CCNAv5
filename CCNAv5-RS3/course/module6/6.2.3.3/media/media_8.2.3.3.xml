@@ -1,0 +1,35 @@
+﻿<textcomponents> <!--Slide 1-->
+	<component id="ID_s1_title">
+		<text><![CDATA[<b>Vérification des routes OSPF à zones multiples sur R1</b>]]></text>
+	</component> <!-- Slide 2-->
+	<component id="ID_s2_title">
+		<text><![CDATA[<b>Vérification des routes OSPF à zones multiples sur R2 et R3</b>]]></text>		
+	</component>
+	
+
+<component id="ID_sc_reset">
+		<text><![CDATA[Réinitialiser]]></text>
+	</component>
+	<component id="ID_sc_showme">
+		<text><![CDATA[Démonstration]]></text>
+	</component>
+	<component id="ID_sc_showall">
+		<text><![CDATA[Afficher tout]]></text>
+	</component>
+	<component id="ID_s2_SC5" fontFace='Courier New' fontSize="10">
+		<feedback id="fb"><![CDATA[<b>***</b><font face="Arial" color="#0000FF">Vous devez saisir la commande exacte et complète.</font><b>***</b> ]]></feedback>		
+		<existingcommands><![CDATA[<font  face="Arial"><b>Affichez les routes OSPF dans la table de routage sur R2.</font>]]></existingcommands>
+		<command prompt="R2#">
+		    <correctresponse><![CDATA[show ip route ospf]]></correctresponse>
+				<deviceresponse><![CDATA[<font  face="Courier New">Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP <br>       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area <br>       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2 <br>       E1 - OSPF external type 1, E2 - OSPF external type 2 <br>       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2 <br>       ia - IS-IS inter area, * - candidate default, U - per-user static route <br>       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP <br>       + - replicated route, % - next hop override <br> <br>Gateway of last resort is not set <br> <br>      10.0.0.0/8 is variably subnetted, 4 subnets, 2 masks <br>O IA 10.1.1.0/24 [110/648] via 192.168.10.1, 00:07:52, Serial0/0/0 <br>O IA 10.1.2.0/24 [110/648] via 192.168.10.1, 00:07:52, Serial0/0/0 <br>O IA 192.168.1.0/24 [110/648] via 192.168.10.6, 00:07:52, Serial0/0/1 <br>O IA 192.168.2.0/24 [110/648] via 192.168.10.6, 00:07:52, Serial0/0/1 <br></font>R2#]]></deviceresponse> 
+			<instruction><![CDATA[<font face="Arial"><b>Vous êtes maintenant connecté à R3. Affichez les routes OSPF dans la table de routage sur R3.</b>]]></instruction>
+		</command>
+		<command prompt="R3#">
+		    <correctresponse><![CDATA[show ip route ospf]]></correctresponse>
+				<deviceresponse><![CDATA[<font face="Courier New">Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP <br>       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area <br>       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2 <br>       E1 - OSPF external type 1, E2 - OSPF external type 2 <br>       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2 <br>       ia - IS-IS inter area, * - candidate default, U - per-user static route <br>       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP <br>       + - replicated route, % - next hop override <br> <br>Gateway of last resort is not set <br> <br>      10.0.0.0/24 is subnetted, 3 subnets <br>O IA 10.1.1.0 [110/1295] via 192.168.10.5, 00:12:36, Serial0/0/1 <br>O IA 10.1.2.0 [110/1295] via 192.168.10.5, 00:12:36, Serial0/0/1 <br>O 10.2.1.0 [110/648] via 192.168.10.5, 00:12:36, Serial0/0/1 <br>      192.168.10.0/24 is variably subnetted, 3 subnets, 2 masks <br>O 192.168.10.0/30 [110/1294] via 192.168.10.5, 00:12:36, Serial0/0/1 <br></font>R3#]]></deviceresponse> 
+			<instruction><![CDATA[<font  face="Arial" class="syntaxBottomLine"><b>Vous avez correctement vérifié les routes OSPF à zones multiples.</b>]]></instruction>
+		</command>
+		<command prompt=""/>
+	</component>
+	
+</textcomponents>

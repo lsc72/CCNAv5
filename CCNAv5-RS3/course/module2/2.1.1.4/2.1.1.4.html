@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.1.4 Problèmes liés à la redondance de la couche 1 : trames de monodiffusion en double</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts du mode Spanning Tree</h1>
+        <h2>Objectif du mode Spanning Tree</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Transmissions de trames multiples</b>
+</p>
+<p></p>
+<p>Les boucles ne concernent pas uniquement les trames de diffusion : lorsque des trames de monodiffusion (unicast) sont envoyées sur un réseau comportant des boucles, des trames en double peuvent parvenir à la destination finale.</p>
+<p></p>
+<p>Cliquez sur le bouton Lecture de la figure pour visualiser une animation illustrant ce problème. Lorsque l'animation s'interrompt, lisez le texte à droite de la topologie. L'animation continuera après une courte pause.</p>
+<p></p>
+<p>Dans l'animation :</p>
+<p></p>
+<p>1. 1. PC1 envoie une trame de monodiffusion destinée à PC4. </p>
+<p></p>
+<p>2. S2 ne dispose pas d'une entrée pour PC4 dans sa table MAC, il renvoie donc la trame de monodiffusion sur tous les ports de commutation, dans une tentative pour trouver PC4. </p>
+<p></p>
+<p>3. 3. La trame parvient aux commutateurs S1 et S3. </p>
+<p></p>
+<p>4. 4. Le commutateur S1 possède une entrée pour PC4 dans sa table d’adresses MAC. Par conséquent, il achemine la trame vers PC4. </p>
+<p></p>
+<p>5. 5. Le commutateur S3 possède également une entrée dans sa table d’adresses MAC pour PC4. Par conséquent, il achemine la trame de monodiffusion via Agrégation3 vers le commutateur S1. </p>
+<p></p>
+<p>6. S1 reçoit la trame en double et la réachemine vers PC4. </p>
+<p></p>
+<p>7. 7. PC4 a reçu la même trame deux fois.</p>
+<p></p>
+<p>La majorité des protocoles de couche supérieure ne sont pas conçus pour reconnaître ou gérer les transmissions en double. En général, les protocoles qui utilisent un mécanisme de numérotation de séquences considèrent que la transmission a échoué et que le numéro d’ordre a été recyclé pour une autre session de communication. D’autres protocoles tentent de passer la transmission en double au protocole de couche supérieure approprié afin que la transmission soit traitée et éventuellement rejetée. </p>
+<p></p>
+<p>Un mécanisme de reconnaissance et d'élimination des boucles de trames infinies fait défaut aux protocoles LAN de Couche 2, tels que l'Ethernet. Certains protocoles de couche 3 implémentent un mécanisme TTL qui limite le nombre de fois qu'un périphérique réseau de couche 3 est autorisé à retransmettre un paquet. Lorsqu'un tel mécanisme fait défaut, les équipements de Couche 2 continuent à retransmettre des boucles de trafic indéfiniment. Un mécanisme d'évitement de boucle de couche 2, STP (Spanning Tree Protocol), a été mis au point pour faire face à ce type de problèmes.</p>
+<p></p>
+<p>Pour empêcher ces problèmes de survenir dans un réseau redondant, un certain type d'arborescence (Spanning Tree) doit être appliqué aux commutateurs. Spanning Tree est activé par défaut sur les commutateurs Cisco pour empêcher la formation de boucles de couche 2. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

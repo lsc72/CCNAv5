@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>1.2.1.2 Modules d&#x0027;architecture d&#x0027;entreprise</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_1.2.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Architecture d&#x0027;entreprise Cisco</h1>
+        <h2>Conception réseau modulaire</h2>
+      </div>
+      <div id="content">
+<p>L'approche modulaire de la conception décompose encore la hiérarchie à trois couches, en spécifiant des blocs ou des zones de modules. Ces modules sont connectés via le cœur du réseau. </p>
+<p></p>
+<p>Les modules de réseau de base sont :</p>
+<p>
+<ul>
+<li>
+<b>Distribution d'accès</b> : aussi appelé bloc de distribution, c'est l'élément le plus courant et le composant de base d'une conception de campus. (Figure 1).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Services</b> : le module de services permet d'identifier des services tels que les contrôleurs sans fil LWAPP centralisés, les services de communications unifiées, les passerelles de stratégie, etc. (Figure 2).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Data center</b> : aussi appelé batterie de serveurs. Ce bloc est responsable de la gestion et de la mise à jour de nombreux systèmes de données vitaux pour le fonctionnement moderne des entreprises. Employés, partenaires et clients s'appuient sur les données et ressources du data center pour créer, collaborer et interagir efficacement. (Figure 3).</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Périphérie d'entreprise </b>: comprend la périphérie Internet et la périphérie WAN. Ces blocs offrent la connectivité pour les services vocaux, vidéo et de données à l'extérieur de l'entreprise. (Figure 4).</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

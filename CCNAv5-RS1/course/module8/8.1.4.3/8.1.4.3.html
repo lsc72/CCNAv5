@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.4.3 Les adresses IPv4 réservées</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.4.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Les types d&#x0027;adresses IPv4</h2>
+      </div>
+      <div id="content">
+<p>Certaines adresses ne peuvent pas être attribuées à des hôtes. D'autres adresses spéciales le peuvent, mais avec des restrictions concernant la façon dont les hôtes interagissent avec le réseau. </p>
+<p></p>
+<p>
+<b>Adresses réseau et de diffusion</b>
+</p>
+<p>Comme nous l'avons vu, dans chaque réseau, la première et la dernière adresses ne peuvent pas être attribuées à des hôtes. Il s'agit respectivement de l'adresse réseau et de l'adresse de diffusion.</p>
+<p></p>
+<p>
+<b>Bouclage</b>
+</p>
+<p>L'adresse de bouclage IPv4 127.0.0.1 est une autre adresse réservée. Il s'agit d'une adresse spéciale que les hôtes utilisent pour diriger le trafic vers eux-mêmes. L'adresse de bouclage crée un moyen rapide, pour les applications et les services TCP/IP actifs sur le même périphérique, de communiquer entre eux. En utilisant l'adresse de bouclage à la place de l'adresse d'hôte IPv4 attribuée, deux services actifs sur le même hôte peuvent contourner les couches les plus basses de la pile TCP/IP. Vous pouvez également envoyer une requête ping à l'adresse de bouclage afin de tester la configuration TCP/IP de l'hôte local.</p>
+<p></p>
+<p>Bien que seule l'adresse 127.0.0.1 soit utilisée, les adresses de la plage 127.0.0.0-127.255.255.255 sont réservées. Toutes les adresses de ce bloc sont envoyées en boucle sur l'hôte local. Aucune des adresses de cette plage ne devrait jamais apparaître sur un réseau quel qu'il soit.</p>
+<p></p>
+<p>
+<b>Adresses link-local</b>
+</p>
+<p>Les adresses IPv4 du bloc d'adresses 169.254.0.0 à 169.254.255.255 (169.254.0.0/16) sont conçues comme des adresses link-local. Elles peuvent être automatiquement attribuées à l'hôte local par le système d'exploitation, dans les environnements où aucune configuration IP n'est disponible. Elles peuvent être utilisées dans un réseau peer-to-peer restreint ou pour un hôte qui ne parviendrait pas à obtenir automatiquement une adresse auprès d'un serveur DHCP.</p>
+<p></p>
+<p>Les transmissions basées sur des adresses IPv4 link-local ne conviennent que dans le cadre d'une communication avec d'autres périphériques connectés au même réseau, comme indiqué dans la figure. Un hôte ne peut pas envoyer de paquet avec une adresse de destination IPv4 link-local à un autre routeur pour qu'il soit acheminé. De plus, sur l'hôte, le paramètre IPv4 de durée de vie (TTL) doit être défini sur 1 pour ces paquets. </p>
+<p></p>
+<p>Les adresses link-local ne fournissent pas de services en dehors du réseau local. Toutefois, de nombreuses applications client/serveur et peer to peer fonctionneront correctement avec des adresses link-local IPv4.</p>
+<p></p>
+<p>
+<b>Adresses TEST-NET</b>
+</p>
+<p>Le bloc d'adresses 192.0.2.0 à 192.0.2.255 (192.0.2.0/24) est réservé à des fins pédagogiques. Ces adresses peuvent être utilisées dans la documentation et dans des exemples de réseau. Contrairement aux adresses expérimentales, les périphériques réseau accepteront ces adresses dans leur configuration. Ces adresses apparaissent souvent avec des noms de domaine exemple.com ou exemple.net dans les requêtes pour commentaires et la documentation de fournisseur et de protocole. Les adresses de cette plage ne doivent pas être visibles sur Internet. </p>
+<p></p>
+<p>
+<b>Adresses expérimentales</b>
+</p>
+<p>Les adresses du bloc 240.0.0.0 à 255.255.255.254 sont répertoriées comme étant réservées pour une utilisation future (RFC 3330). Actuellement, ces adresses ne peuvent être utilisées qu'à des fins de recherche ou d'expérimentation, mais ne peuvent pas être utilisées dans un réseau IPv4. Cependant, selon le RFC 3330, elles peuvent techniquement être converties en adresses utilisables dans le futur. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

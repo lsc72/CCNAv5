@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.2.4.6 Liste de VLAN incorrecte</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.2.4.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Implémentations de VLAN</h1>
+        <h2>Dépannage des VLAN et des trunks</h2>
+      </div>
+      <div id="content">
+<p>Pour que le trafic d'un VLAN soit transmis via un trunk, il doit être autorisé sur cette trunk. Pour ce faire, utilisez la commande <span class="cmd"><b>switchport trunk allowed vlan </b></span><span class="cmd"><i>vlan-id</i></span>. </p>
+<p></p>
+<p>Dans la figure 1, le VLAN 20 (Étudiant) et le PC5 ont été ajoutés au réseau. La documentation a été mise à jour pour indiquer que les VLAN autorisés sur le trunk sont les VLAN 10, 20 et 99. Dans ce scénario, le PC5 ne parvient pas à se connecter au serveur de messagerie des étudiants. </p>
+<p></p>
+<p>Vérifiez les ports trunk du commutateur S1 à l'aide de la commande <span class="cmd"><b>show interfaces trunk</b></span>, comme indiqué à la Figure 2. Cette commande indique que l'interface F0/3 du commutateur S3 est correctement configurée pour autoriser les VLAN 10, 20 et 99. Un examen de l'interface F0/3 du commutateur S1 révèle que les interfaces F0/1 et F0/3 autorisent uniquement les VLAN 10 et 99. Quelqu'un a mis la documentation à jour, mais a oublié de reconfigurer les ports sur le commutateur S1.</p>
+<p></p>
+<p>Reconfigurez les ports F0/1 et F0/3 du commutateur S1 à l'aide de la commande <span class="cmd"><b>switchport trunk allowed vlan 10,20,99</b></span>, comme indiqué à la Figure 3. Le résultat indique que les VLAN 10, 20 et 99 sont maintenant associés aux ports F0/1 et F0/3 du commutateur S1. La commande <span class="cmd"><b>show interfaces trunk</b></span> est un excellent outil pour déceler les problèmes de trunking courants. Le PC5 peut de nouveau se connecter au serveur de messagerie des étudiants situé à l'adresse IP 172.17.20.10.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

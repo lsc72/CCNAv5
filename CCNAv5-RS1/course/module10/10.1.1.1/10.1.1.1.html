@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.1.1.1 Révision des modèles OSI et TCP/IP</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocoles de couche Application</h1>
+        <h2>Application, session et présentation</h2>
+      </div>
+      <div id="content">
+<p>Comme le montre la figure, les professionnels des réseaux utilisent les modèles OSI et TCP/IP pour communiquer verbalement et dans la documentation technique écrite. Ils leur permettent de décrire le comportement des protocoles et des applications. </p>
+<p></p>
+<p>Dans le modèle OSI, les données sont transmises d'une couche à l'autre, en partant de la couche application sur l'hôte émetteur, puis en descendant dans la hiérarchie jusqu'à la couche physique, pour ensuite transiter sur le canal de communication vers l'hôte de destination, où les données remontent la hiérarchie jusqu'à la couche application.</p>
+<p></p>
+<p>La couche application est la couche supérieure des modèles OSI et TCP/IP. La couche application TCP/IP inclut plusieurs protocoles qui fournissent des fonctionnalités spécifiques à différentes applications d'utilisateur final. Le rôle des protocoles de couche application TCP/IP correspond plus ou moins à la structure des trois couches supérieures du modèle OSI : les couches application, présentation et session. Les couches 5, 6 et 7 du modèle OSI sont utilisées en tant que références pour les développeurs et les éditeurs d'applications, afin de créer des produits tels que des navigateurs Web qui doivent accéder aux réseaux.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

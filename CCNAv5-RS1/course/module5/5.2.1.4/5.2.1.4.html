@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.2.1.4 Rôle d&#x0027;ARP dans les communications à distance</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.2.1.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole ARP ( Address Resolution Protocol)</h1>
+        <h2>ARP</h2>
+      </div>
+      <div id="content">
+<p>Toutes les trames doivent être remises à un noeud sur un segment du réseau local. Si l'hôte IPv4 de destination se trouve sur le réseau local, la trame utilise l'adresse MAC de ce périphérique comme adresse MAC de destination. </p>
+<p></p>
+<p>Si l'hôte IPv4 de destination ne se trouve pas sur le réseau local, le noeud source doit livrer la trame à l'interface du routeur qui sert de passerelle ou de tronçon suivant pour atteindre cette destination. Le noeud source utilise l'adresse MAC de la passerelle comme adresse de destination, pour les trames contenant un paquet IPv4 adressé à des hôtes situés sur d'autres réseaux. </p>
+<p></p>
+<p>L'adresse de passerelle de l'interface du routeur est stockée dans la configuration IPv4 des hôtes. Lorsqu'un hôte crée un paquet pour une destination, il compare l'adresse IP de destination à sa propre adresse IP pour déterminer si celles-ci se situent sur le même réseau de couche 3. Si l'hôte destinataire ne se situe pas sur le même réseau, l'hôte source fait appel au processus ARP pour déterminer l'adresse MAC de l'interface du routeur qui sert de passerelle. </p>
+<p></p>
+<p>Si l'entrée de la passerelle n'est pas dans la table, le processus ARP normal envoie une requête ARP pour retrouver l'adresse MAC associée à l'adresse IP de l'interface du routeur.</p>
+<p></p>
+<p>Reportez-vous aux Figures 1 à 5 pour visualiser le processus utilisé pour obtenir l'adresse MAC de la passerelle.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.2.3.7 Étape 5 : vérification du chemin correct</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.2.3.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Dépannage du réseau</h1>
+        <h2>Dépannage de la connectivité IP</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Dépannage de la couche réseau</b>
+</p>
+<p>Lors d'un dépannage, il est souvent nécessaire de vérifier le chemin vers le réseau de destination. La Figure 1 illustre la topologie de référence indiquant le chemin prévu pour les paquets entre PC1 et SRV1.</p>
+<p></p>
+<p>Dans la Figure 2, la commande <span class="cmd"><b>show ip route</b></span> est utilisée pour examiner la table de routage IPv4.</p>
+<p></p>
+<p>Les méthodes suivantes permettent de compléter les tables de routage IPv4 et IPv6 :</p>
+<p>
+<ul>
+<li>Réseaux connectés directement</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Routes d'hôte local ou routes locales</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Routes statiques</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Routes dynamiques</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Routes par défaut</li>
+</ul>
+</p>
+<p>Le processus de transfert de paquets IPv4 et IPv6 se base sur le bit ou le préfixe correspondant le plus long. Le processus de table de routage tentera de transférer le paquet en utilisant l'entrée de la table de routage dont le nombre de bits correspondants les plus à gauche est le plus élevé. Le nombre de bits correspondants est indiqué par la longueur de préfixe de la route. </p>
+<p></p>
+<p>La Figure 3 illustre un scénario similaire avec IPv6. Pour vérifier que le chemin IPv6 actuel correspond au chemin souhaité pour atteindre les destinations, exécutez la commande <span class="cmd"><b>show ipv6 route</b></span> sur le routeur afin d'examiner la table de routage. Après l'examen de la table de routage IPv6, le routeur R1 possède un chemin vers 2001:DB8:ACAD:4::/64 via R2 au niveau de FE80::2.</p>
+<p></p>
+<p>La liste suivante, avec la Figure 4, décrit ce processus à la fois pour les tables de routage IPv4 et IPv6. Si l'adresse de destination dans un paquet :</p>
+<p></p>
+<p>
+<ul>
+<li>Ne correspond pas à une entrée de la table de routage, la route par défaut est utilisée. Si aucune route par défaut n'est configurée, le paquet est rejeté.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Correspond à une seule entrée de la table de routage, le paquet est transféré par l'interface définie dans cette route.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Correspond à plusieurs entrées de la table de routage et que les entrées de routage possèdent la même longueur de préfixe, les paquets devant rejoindre cette destination peuvent être distribués parmi les routes définies dans la table de routage.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Correspond à plusieurs entrées de la table de routage et que les entrées de routage possèdent des longueurs de préfixe différentes, les paquets devant rejoindre cette destination sont transférés depuis l'interface associée à la route qui présente le préfixe correspondant le plus long.</li>
+</ul>
+</p>
+<p></p>
+<p>
+<b>Exemple de dépannage</b>
+</p>
+<p>Les périphériques ne peuvent pas se connecter au serveur SRV1 à l'adresse 172.16.1.100. À l'aide de la commande <span class="cmd"><b>show ip route</b></span>, l'administrateur doit vérifier s'il existe une entrée de routage vers le réseau 172.16.1.0/24. Si la table de routage ne possède pas de route spécifique vers le réseau de SRV1, l'administrateur réseau doit contrôler l'existence d'une entrée de route par défaut ou de route récapitulative en direction du réseau 172.16.1.0/24. Si aucune de ces entrées n'existe, il peut s'agir d'un problème de routage et l'administrateur doit alors vérifier que le réseau est inclus dans la configuration des protocoles de routage dynamique, ou ajouter une route statique. </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

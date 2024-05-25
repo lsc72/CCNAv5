@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.3.2.5 Authentification IPsec</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.3.2.5_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Présentation d’IPsec</h1>
+        <h2>Cadre IPsec</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Authentification</b>
+</p>
+<p></p>
+<p>Les VPN IPsec prennent en charge l'authentification. En cas de relations professionnelles établies sur de longues distances, il est nécessaire de connaître l'identité de la personne qui est à l'autre extrémité du téléphone, de l'e-mail ou du télécopieur. Il en est de même pour les réseaux privés virtuels. Le périphérique situé à l'autre extrémité du tunnel VPN doit être authentifié avant que le chemin de communication ne puisse être considéré comme étant sécurisé, comme le montre la figure. Il existe deux méthodes d’authentification des homologues :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>PSK</b> : clé secrète devant être partagée entre les deux parties par le biais d'un canal sécurisé avant son utilisation. Les clés prépartagées (PSK) utilisent des algorithmes cryptographiques à clé symétrique. Une clé PSK est entrée manuellement dans tous les homologues et sert à les authentifier. À chaque extrémité, la clé PSK est associée à d’autres informations pour constituer la clé d’authentification.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Signatures RSA</b> : des certificats numériques sont échangés pour l'authentification des homologues. Le périphérique local calcule un hachage et le chiffre avec sa clé privée. Le hachage chiffré, ou signature numérique, est attaché au message et transmis à l'extrémité distante. À l’extrémité distante, le hachage chiffré est déchiffré à l’aide de la clé publique du périphérique local. Si le hachage déchiffré correspond au hachage recalculé, la signature est authentique.</li>
+</ul>
+</p>
+<p></p>
+<p>Le protocole IPsec utilise la technologie RSA (cryptographie à clé publique) pour l'authentification dans le cadre d'IKE. La méthode de signature RSA utilise la configuration d'une signature numérique au cours de laquelle chaque périphérique signe numériquement un ensemble de données, puis envoie celles-ci à l'autre partie. Les signatures RSA utilisent une autorité de certification pour générer un certificat numérique d'identité unique, qui est attribué à chaque homologue à des fins d'authentification. Le certificat numérique d'identité fonctionne de manière similaire à une clé prépartagée (PSK), mais il offre une sécurité bien supérieure. Chaque initiateur et répondeur d'une session IKE utilisant des signatures RSA envoie sa propre valeur d'ID, son certificat numérique d'identité ainsi qu'une valeur de signature RSA composée de plusieurs valeurs IKE, toutes ces données étant chiffrées à l'aide d'une méthode de chiffrement IKE négociée (par exemple AES).</p>
+<p></p>
+<p>La technologie DSA (Digital Signature Algorithm) est une autre option d'authentification.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

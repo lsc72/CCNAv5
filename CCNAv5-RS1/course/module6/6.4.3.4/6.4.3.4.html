@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>6.4.3.4 Packet Tracer : résolution des problèmes de passerelle par défaut</title>
+    <!--  -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_6.4.3.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration d&#x0027;un routeur Cisco</h1>
+        <h2>Configuration de la passerelle par défaut</h2>
+      </div>
+      <div id="content">
+<p>Pour qu'un périphérique puisse communiquer sur plusieurs réseaux, l'adresse IP, le masque de sous-réseau et la passerelle par défaut doivent être configurés. La passerelle par défaut est utilisée lorsque l'hôte veut transmettre un paquet à un périphérique sur un autre réseau. L'adresse de la passerelle par défaut est généralement l'adresse d'interface de routeur reliée au réseau local auquel l'hôte est connecté. Dans cet exercice, vous allez terminer la documentation du réseau. Vous vérifierez ensuite la documentation du réseau en testant la connectivité de bout en bout et en résolvant les différents problèmes. La méthode de dépannage que vous utiliserez comprend les étapes suivantes : </p>
+<p>
+<ul>
+<li>Consulter la documentation du réseau et mettre en place des tests pour repérer les problèmes. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Trouver une solution appropriée pour résoudre un problème donné. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Mettre en œuvre la solution. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Mettre en place des tests pour vérifier que le problème est résolu. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Documenter la solution </li>
+</ul>
+</p>
+<p></p>
+<p>
+<a href="../../files/6.4.3.4%20Packet%20Tracer%20-%20Troubleshooting%20Default%20Gateway%20Issues%20Instructions.pdf" target="_blank">Packet Tracer – Résolution des problèmes de passerelle par défaut : instructions</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/6.4.3.4%20Packet%20Tracer%20-%20Troubleshooting%20Default%20Gateway%20Issues.pka" target="_blank">Packet Tracer – Résolution des problèmes de passerelle par défaut : PKA</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

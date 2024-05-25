@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>11.5.2.3 Configuration d&#x0027;un client sans fil</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_11.5.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Services de routage intégrés</h1>
+        <h2>Configuration du routeur intégré</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Configuration d'un client sans fil</b>
+</p>
+<p>Un hôte sans fil, ou client correspond à tout périphérique contenant une carte réseau sans fil et un logiciel client sans fil. Ce logiciel client permet au périphérique matériel de participer au réseau local sans fil. Les périphériques peuvent être des smartphones, des ordinateurs portables, des ordinateurs de bureau, des imprimantes, des téléviseurs, des consoles de jeu et des tablettes. </p>
+<p></p>
+<p>Pour qu'un client sans fil puisse se connecter au réseau étendu sans fil, les paramètres de configuration du client doivent correspondre à ceux du routeur sans fil, notamment au SSID, aux paramètres de sécurité et aux informations du canal (si celui-ci a été configuré manuellement). Ces paramètres sont spécifiés dans le logiciel client.</p>
+<p></p>
+<p>Le logiciel client sans fil utilisé peut être intégré au système d'exploitation du périphérique, ou il peut s'agir d'un logiciel utilitaire sans fil autonome et téléchargeable, spécifiquement conçu pour l'interaction avec les cartes réseau sans fil.</p>
+<p></p>
+<p>Une fois le logiciel client configuré, vérifiez la liaison entre le client et le point d'accès. </p>
+<p></p>
+<p>Ouvrez la fenêtre contenant les informations sur la liaison sans fil, qui indique notamment le débit de données, l'état de la connexion et le canal sans fil utilisé, comme l'illustre la figure. La fonction d'informations sur la liaison, si disponible, affiche en temps réel la puissance et la qualité du signal sans fil. </p>
+<p></p>
+<p>Outre l'état de la connexion sans fil, vous pouvez également vérifier que les données sont correctement transmises. L'un des principaux tests permettant de vérifier la bonne transmission des données est le test ping. Si le ping réussit, la transmission des données est possible.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

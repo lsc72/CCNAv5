@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>7.4.2.4 Création du LSP (paquet à état de liens)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_7.4.2.4_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Routage dynamique à état de liens</h1>
+        <h2>Mises à jour d&#x0027;état de liens</h2>
+      </div>
+      <div id="content">
+<p>La troisième étape du processus de routage à état de liens consiste à faire en sorte que chaque routeur construise un LSP (Link-State Packet) contenant l'état de chaque lien connecté directement. </p>
+<p></p>
+<p>Une fois qu'un routeur a établi des contiguïtés, il est en mesure de créer des paquets LSP contenant des informations à état de liens par rapport à ses propres liens. Une version simplifiée du paquet LSP de R1 affiché dans la figure contient les éléments suivants :</p>
+<p></p>
+<p>1. R1 ; réseau Ethernet ; 10.1.0.0/16 ; coût 2</p>
+<p>2. R1 -> R2 ; réseau série point à point ; 10.2.0.0/16 ; coût 20</p>
+<p>3. R1 -> R3 ; réseau série point à point ; 10.3.0.0/16 ; coût 5</p>
+<p>4. R1 -> R4 ; réseau série point à point ; 10.4.0.0/16 ; coût 20</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

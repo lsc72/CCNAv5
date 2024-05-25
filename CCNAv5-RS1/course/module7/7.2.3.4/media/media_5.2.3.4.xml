@@ -1,0 +1,162 @@
+﻿<textcomponents>
+
+ <component id="ID_txt01">
+	<text><![CDATA[Serveur]]></text> 
+</component>
+
+<component id="ID_txt02">
+	<text><![CDATA[Client&nbsp;1]]></text> 
+</component>
+
+<component id="ID_txt03">
+	<text><![CDATA[Client&nbsp;2]]></text> 
+</component> <!--SLIDE 1-->
+<component id="ID_s1_title">
+	<text><![CDATA[<b>Clients envoyant des requêtes UDP</b]]></text>
+</component>
+
+<component id="ID_s1_txt04">
+	<text><![CDATA[DNS&nbsp;: Port&nbsp;53<br/>RADIUS&nbsp;: Port&nbsp;1812]]></text> 
+</component>
+
+<component id="ID_s1_txt05">
+	<text><![CDATA[Requête&nbsp;DNS du client&nbsp;1&nbsp;:<br/>Port source&nbsp;49152<br/>Port de destination&nbsp;53]]></text> 
+</component>
+
+<component id="ID_s1_txt06">
+	<text><![CDATA[Requête d'authentification utilisateur RADIUS du client&nbsp;2&nbsp;:<br/>Port source&nbsp;51152<br/>Port de destination&nbsp;1812]]></text> 
+</component> <!--SLIDE 2-->
+<component id="ID_s2_title">
+	<text><![CDATA[<b>Ports de destination des requêtes</b]]></text>
+</component>
+
+<component id="ID_s2_txt04">
+	<text><![CDATA[DNS&nbsp;: Port&nbsp;53<br/>RADIUS&nbsp;: Port&nbsp;1812]]></text> 
+</component>
+
+<component id="ID_s2_txt05">
+	<text><![CDATA[Requête&nbsp;DNS du client&nbsp;1&nbsp;:<br/>Port source&nbsp;49152<br/><font color="#F68026"><b class="fontColor">Port de destination&nbsp;53</b></font>]]></text> 
+</component>
+
+<component id="ID_s2_txt06">
+	<text><![CDATA[Requête d'authentification utilisateur RADIUS du client&nbsp;2&nbsp;:<br/>Port source&nbsp;51152<br/><font color="#F68026"><b class="fontColor">Port de destination&nbsp;1812</b></font>]]></text> 
+</component>
+
+<component id="ID_s2_txt07">
+	<text><![CDATA[Les requêtes adressées aux serveurs UDP par les clients utilisent des numéros de port réservés comme ports de destination.]]></text> 
+</component>
+
+<component id="ID_s2_txt08">
+	<text><![CDATA[<div><img src="s2_arrow1.png" width="86.05" height="67.35"/></div>]]></text> 
+</component>
+
+<component id="ID_s2_txt09">
+	<text><![CDATA[<div><img src="s2_arrow2.png"  width="85.2" height="65.15"/></div>]]></text> 
+</component> <!--SLIDE 3-->
+<component id="ID_s3_title">
+	<text><![CDATA[<b>Ports source des requêtes</b]]></text>
+</component>
+
+<component id="ID_s3_txt04">
+	<text><![CDATA[DNS&nbsp;: Port&nbsp;53<br/>RADIUS&nbsp;: Port&nbsp;1812]]></text> 
+</component>
+
+<component id="ID_s3_txt05">
+	<text><![CDATA[Requête&nbsp;DNS du client&nbsp;1&nbsp;:<br/><font color="#F68026"><b><span class="fontColor">Port source&nbsp;49152</span></b></font><br/>Port de destination&nbsp;53]]></text> 
+</component>
+
+<component id="ID_s3_txt06">
+	<text><![CDATA[Requête d'authentification utilisateur RADIUS du client&nbsp;2&nbsp;:<br/><font color="#F68026"><b><span class="fontColor">Port source&nbsp;51152</span></b></font><br/>Port de destination&nbsp;1812]]></text> 
+</component>
+
+<component id="ID_s3_txt07">
+	<text><![CDATA[Utilisez des numéros de ports aléatoires en tant que ports source.]]></text> 
+</component>
+
+<component id="ID_s3_txt08">
+	<text><![CDATA[<div><img src="s3_arrow1.png" width="77" height="71"/></div>]]></text> 
+</component>
+
+<component id="ID_s3_txt09">
+	<text><![CDATA[<div><img src="s3_arrow2.png"  width="77" height="59"/></div>]]></text> 
+</component> <!--SLIDE 4-->
+<component id="ID_s4_title">
+	<text><![CDATA[<b>Ports de destination des réponses</b]]></text>
+</component>
+
+<component id="ID_s4_txt04">
+	<text><![CDATA[DNS&nbsp;: Port&nbsp;53<br/>RADIUS&nbsp;: Port&nbsp;1812]]></text> 
+</component>
+
+<component id="ID_s4_txt05">
+	<text><![CDATA[Client&nbsp;1 en attente de la réponse&nbsp;DNS du serveur<br/><font color="#F68026"><b>sur le port 49152</b></font> ]]></text> 
+</component>
+
+<component id="ID_s4_txt06">
+	<text><![CDATA[Client&nbsp;2 en attente de la réponse RADIUS du serveur<br/><font color="#F68026"><b>sur le port 51152</b></font> ]]></text> 
+</component>
+
+<component id="ID_s4_txt07"> 
+<text><![CDATA[La réponse du serveur au client UDP utilise le port source du paquet de requête<br/>en tant que port de destination.]]></text> 
+</component>
+
+<component id="ID_s4_txt08">
+<text><![CDATA[Réponse&nbsp;DNS du serveur&nbsp;:<br/>Port source&nbsp;53<br/><font color="#F68026"><b>Port de destination&nbsp;49152</b></font>]]></text> 
+</component>
+
+<component id="ID_s4_txt09">
+<text><![CDATA[Réponse RADIUS du serveur&nbsp;:<br/>Port source&nbsp;1812<br/><font color="#F68026"><b>Port de destination&nbsp;51152</b></font>]]></text> 
+</component>
+
+<component id="ID_s4_txt10">
+<text><![CDATA[<div><img src="s4_arrow1.png" width="9" height="106"/></div>]]></text> 
+</component>
+
+<component id="ID_s4_txt11">
+	<text><![CDATA[<div><img src="s4_arrow1.png"  width="9" height="106"/></div>]]></text> 
+</component>
+
+<component id="ID_s4_txt12">
+	<text><![CDATA[<div><img src="s4_arrow2.png" width="58" height="112"/></div>]]></text> 
+</component>
+
+<component id="ID_s4_txt13">
+	<text><![CDATA[<div><img src="s4_arrow3.png"  width="58" height="112"/></div>]]></text> 
+</component> <!--SLIDE 5-->
+<component id="ID_s5_title">
+	<text><![CDATA[<b>Ports source des réponses</b>]]></text>
+</component>   
+
+<component id="ID_s5_txt04">
+	<text><![CDATA[DNS&nbsp;: Port&nbsp;53<br/>RADIUS&nbsp;: Port&nbsp;1812]]></text> 
+</component>
+
+<component id="ID_s5_txt05">
+	<text><![CDATA[Client&nbsp;1 en attente de la réponse&nbsp;DNS du serveur<br/>sur le port 49152 ]]></text> 
+</component>
+
+<component id="ID_s5_txt06">
+	<text><![CDATA[Client&nbsp;2 en attente de la réponse RADIUS du serveur<br/>sur le port 51152 ]]></text> 
+</component>
+
+<component id="ID_s5_txt07">
+	<text><![CDATA[La réponse du serveur au client UDP utilise des numéros de port<br/> réservés comme ports source.]]></text> 
+</component>
+
+<component id="ID_s5_txt08">
+	<text><![CDATA[Réponse&nbsp;DNS du serveur&nbsp;:<br/><font color="#F68026"><b>Port source&nbsp;53</b></font><br/>Port de destination&nbsp;49152</b></font>]]></text> 
+</component>
+
+<component id="ID_s5_txt09">
+	<text><![CDATA[Réponse RADIUS du serveur&nbsp;:<br/><font color="#F68026"><b>Port source&nbsp;1812</b></font><br/>Port de destination&nbsp;51152]]></text> 
+</component>
+
+<component id="ID_s5_txt10">
+	<text><![CDATA[<div><img src="s5_arrow1.png" width="21" height="153"/></div>]]></text> 
+</component>
+
+<component id="ID_s5_txt11">
+	<text><![CDATA[<div><img src="s5_arrow2.png"  width="20" height="155"/></div>]]></text> 
+</component>
+	
+</textcomponents>

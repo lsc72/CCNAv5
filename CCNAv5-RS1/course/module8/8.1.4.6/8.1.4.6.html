@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>8.1.4.6 L&#x0027;attribution des adresses IP (suite)</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_8.1.4.6_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Adresses réseau IPv4</h1>
+        <h2>Les types d&#x0027;adresses IPv4</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Services des fournisseurs de services Internet</b>
+</p>
+<p>Pour accéder à Internet, nous devons connecter notre réseau de données à Internet par l'intermédiaire d'un FAI (Fournisseur d'accès Internet), également appelé FSI (Fournisseur de services Internet). </p>
+<p></p>
+<p>Les FAI disposent de leur propre ensemble de réseaux de données internes pour gérer la connectivité Internet et fournir les services d'accès associés. Les services DNS, de messagerie et d'hébergement de site Web sont les principaux services offerts par les FAI à leurs clients. 	En fonction du niveau de service requis et disponible, les clients utilisent un FAI de niveau différent.</p>
+<p></p>
+<p>
+<b>Niveaux de FAI</b>
+</p>
+<p>Les FAI sont regroupés au sein d'une hiérarchie, en fonction de leur niveau de connectivité au réseau fédérateur Internet. Les niveaux les plus bas obtiennent une connectivité au réseau fédérateur via une connexion à un FAI de niveau supérieur, comme indiqué dans les figures ci-contre. </p>
+<p></p>
+<p>
+<b>Niveau  1</b>
+</p>
+<p>Comme l'illustre la Figure 1, au sommet de la hiérarchie des FAI se trouvent les FAI de niveau 1. Ces derniers sont de grands fournisseurs au niveau  national ou international, directement connectés au réseau fédérateur Internet. Les clients des FAI de niveau  1 sont, soit des FAI de niveau  inférieur dans la hiérarchie, soit des grandes sociétés ou des administrations. Dans la mesure où ces FAI se trouvent au sommet de la connectivité Internet, ils mettent en œuvre des connexions et des services extrêmement fiables. Des connexions multiples au réseau fédérateur Internet comptent parmi les technologies utilisées pour garantir cette fiabilité.</p>
+<p></p>
+<p>Pour les clients, les principaux avantages d'un FAI de niveau 1 sont la fiabilité et le débit de données. Ces clients étant seulement séparés d'Internet d'une connexion, les risques d'interruption de service ou de goulots d'étranglement du trafic restent très faibles. Pour les clients, l'inconvénient majeur d'un FAI de niveau 1 reste son coût élevé des services d'accès. </p>
+<p></p>
+<p>
+<b>Niveau 2</b>
+</p>
+<p>Comme l'illustre la Figure 2, les FAI de niveau 2 dépendent des FAI de niveau 1 pour les services Internet. Les petites entreprises font le plus souvent appel aux FAI de niveau  2. En règle générale, ils offrent davantage de services que les deux autres niveaux inférieurs de FAI. Les FAI de niveau 2 disposent en principe de leurs propres ressources informatiques pour leurs propres services, par exemple les serveurs DNS, les serveurs de messagerie et les serveurs Web. Parmi les autres services offerts par des FAI de niveau  2, citons le développement et la gestion de site Web, des services de commerce électronique/boutique en ligne et des services VoIP. </p>
+<p></p>
+<p>Par rapport aux FAI de niveau  1, le principal inconvénient des FAI de niveau  2 est un accès Internet plus lent. Dans la mesure où les FAI de niveau 2 sont séparés du réseau fédérateur Internet d'au moins une connexion, l'accès qu'ils offrent est généralement moins fiable que celui des FAI de niveau 1. </p>
+<p></p>
+<p>
+<b>Niveau 3</b>
+</p>
+<p>Comme l'illustre la Figure 3, les FAI de niveau 3 achètent les services Internet auprès des FAI de niveau 2. Les clients de ces FAI sont généralement des particuliers dans une zone géographique précise. En principe, ces clients n'ont pas besoin de la plupart des services que nécessitent des clients de niveau 2. Leur premier besoin est une connectivité et un support technique. </p>
+<p></p>
+<p>Ces clients ont souvent un manque ou une insuffisance de connaissances dans les domaines de l'informatique et des réseaux. Les FAI de niveau  3 offrent souvent à leurs clients une connectivité Internet dans le cadre de contrats de services informatiques et de réseau. Bien qu'ils offrent un accès moins fiable et une bande passante réduite par rapport aux fournisseurs de niveau 1 et 2, ils sont également retenus par les petites et moyennes entreprises.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

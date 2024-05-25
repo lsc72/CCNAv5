@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.2.2.3 RNIS</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.2.2.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Choix d&#x0027;une technologie WAN</h1>
+        <h2>Infrastructures WAN privées</h2>
+      </div>
+      <div id="content">
+<p>Le RNIS (réseau numérique à intégration de services) est une technologie de commutation de circuits qui permet à la boucle locale d'un réseau téléphonique public de transporter des signaux numériques, offrant ainsi une connexion commutée à plus grande capacité. </p>
+<p></p>
+<p>Le RNIS change les connexions internes du RTPC pour qu'elles transportent un signal numérique en multiplexage temporel au lieu d'un signal analogique. Le multiplexage temporel permet à deux ou plusieurs signaux, ou flux, d'être transférés comme sous-canaux dans un canal de communication. Les signaux paraissent être transférés simultanément, mais physiquement, ils sont transférés chacun leur tour sur le canal. </p>
+<p></p>
+<p>La Figure 1 présente un exemple de topologie RNIS. La connexion RNIS peut nécessiter un adaptateur de terminal, périphérique utilisé pour relier les connexions BRI du RNIS à un routeur. </p>
+<p></p>
+<p>Le RNIS transforme la boucle locale en connexion numérique à multiplexage temporel, ce qui permet à la boucle locale de transporter des signaux numériques offrant des connexions commutées de plus haute capacité. La connexion utilise des canaux (B) de transport 64 kbit/s pour transporter la voix ou les données, ainsi qu'un signal sur le canal Delta (D) pour configurer l'appel, ou d'autres éléments. </p>
+<p></p>
+<p>On distingue deux types d'interfaces RNIS :</p>
+<p>
+<ul>
+<li>
+<b>BRI (Basic Rate Interface) </b>: la technologie RNIS BRI est destinée au grand public et aux petites entreprises, et offre deux canaux B de 64 kbit/s et un canal D de 16 kbit/s. Le canal BRI D est conçu pour le contrôle. Il est souvent sous-utilisé, car il n'a que deux canaux B à contrôler (Figure 2). </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>PRI (Primary Rate Interface) </b>: le RNIS est aussi disponible pour les plus grandes installations. En Amérique du Nord, le PRI propose 23 canaux B à 64 kbit/s et un canal D à 64 kbit/s, pour un débit total allant jusqu'à 1,544 Mbit/s. Ceci comprend aussi une partie pour la synchronisation. En Europe, en Australie et dans d'autres parties du monde, le PRI RNIS offre 30 canaux B et un canal D, pour un débit total allant jusqu'à 2,048 Mbit/s, informations de synchronisation comprises (Figure 3). </li>
+</ul>
+</p>
+<p></p>
+<p>Le temps de mise en place de l'appel par le BRI est de moins d'une seconde, et le canal B à 64 kbit/s offre une plus grande capacité que le modem analogique. Pour plus de capacité, un deuxième canal B peut être activé pour offrir un total de 128 kbit/s. Bien que ne convenant pas à la vidéo, ceci permet plusieurs conversations vocales simultanées en plus du trafic de données. </p>
+<p></p>
+<p>Une autre application répandue du RNIS est de fournir une capacité supplémentaire si nécessaire sur une connexion avec ligne louée. La ligne louée est dimensionnée pour transporter des charges de trafic moyennes et le RNIS vient s'y ajouter lors des périodes de pointe. La ligne RNIS est également utilisée comme ligne de secours en cas d'échec de la ligne louée. Les tarifs RNIS sont calculés par canal B et sont similaires à ceux des connexions analogiques vocales. </p>
+<p></p>
+<p>Avec un RNIS PRI, plusieurs canaux B peuvent être connectés entre deux terminaux. Cela rend possibles les vidéoconférences et les connexions de données de bande passante à haut débit sans latence ni gigue. Cependant, les connexions multiples sur de longues distances peuvent être coûteuses.</p>
+<p></p>
+<p>
+<b>Remarque </b>: bien que le RNIS reste une technologie importante pour les opérateurs téléphoniques, son utilisation en tant qu'option de connexion Internet est moins répandue depuis l'arrivée du DSL à haute vitesse et d'autres services haut débit.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

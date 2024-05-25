@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>5.1.1.2 Routage inter-VLAN existant</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout; 
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_5.1.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Configuration du routage inter-VLAN</h1>
+        <h2>Fonctionnement du routage inter-VLAN</h2>
+      </div>
+      <div id="content">
+<p>Traditionnellement, la première solution de routage inter-VLAN reposait sur des routeurs dotés de plusieurs interfaces physiques. Chaque interface devait être connectée à un réseau distinct et configurée pour un sous-réseau différent. </p>
+<p></p>
+<p>Selon cette approche, le routage inter-VLAN s'effectue par la connexion de différentes interfaces de routeur physiques à différents ports de commutateur physiques. Les ports de commutateur connectés au routeur sont placés en mode d'accès et chaque interface physique est affectée à un VLAN distinct. Chaque interface de routeur peut alors accepter le trafic du VLAN associé à l'interface de commutateur à laquelle elle est connectée, et le trafic peut être acheminé vers les autres VLAN connectés aux autres interfaces.</p>
+<p></p>
+<p>
+<b>Remarque</b> : la topologie utilise des liens parallèles pour créer les trunks entre les commutateurs et obtenir l'agrégation et la redondance des liaisons. Cependant, les liaisons redondantes rendent la topologie plus complexe et peuvent entraîner des problèmes de connectivité si elles ne sont pas bien gérées. Il convient de mettre en œuvre des protocoles et des techniques tels que Spanning Tree et EtherChannel pour gérer les liaisons redondantes. Ces techniques sortent du cadre de ce chapitre. </p>
+<p></p>
+<p>Dans la figure, cliquez sur le bouton Lecture pour voir une animation illustrant le routage inter-VLAN existant.</p>
+<p></p>
+<p>Observez l'animation :</p>
+<p></p>
+<p>1. Le PC1 sur le VLAN 10 communique avec le PC3 sur le VLAN 30 via le routeur R1.</p>
+<p></p>
+<p>2. Les PC1 et PC3 se trouvent sur des VLAN différents et possèdent des adresses IP de sous-réseaux différents. </p>
+<p></p>
+<p>3. Le routeur R1 dispose d'une interface distincte configurée pour chacun des VLAN.</p>
+<p></p>
+<p>4. Le PC1 envoie le trafic de monodiffusion destiné au PC3 au commutateur S2 sur le VLAN 10, où il est ensuite transféré de l'interface de trunk au commutateur S1. </p>
+<p></p>
+<p>5. Le commutateur S1 transfère ensuite le trafic de monodiffusion au routeur R1 sur l'interface G0/0. </p>
+<p></p>
+<p>6. Le routeur achemine le trafic de monodiffusion jusqu'à son interface G0/1, connectée au VLAN 30. </p>
+<p></p>
+<p>7. Le routeur transfère le trafic de monodiffusion vers le commutateur S1 sur VLAN30. </p>
+<p></p>
+<p>8. Le commutateur S1 transfère ensuite le trafic de monodiffusion au commutateur S2 via la liaison trunk active, après quoi le commutateur S2 peut le transférer au PC3 sur le VLAN 30.</p>
+<p></p>
+<p>Dans cet exemple, le routeur a été configuré avec deux interfaces physiques distinctes pour interagir avec les différents VLAN et effectuer le routage.</p>
+<p></p>
+<p>
+<b>Remarque</b> : cette méthode de routage inter-VLAN n'est pas efficace et n'est généralement plus implémentée dans les réseaux commutés. Elle est uniquement présentée dans ce cours à des fins explicatives.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

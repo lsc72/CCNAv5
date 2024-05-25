@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<data>
+	<slide type="MBAR">
+		<slide>
+			<element type="TEXT" compId="ID_title_s1" x="5" y="2" width="432.1" expand="down" align="center" size="14" />
+			<element type="ROUTER" textId="ID_router_txt1" x="0" y="50" width="435" height="340" />
+		</slide>
+
+
+		<slide>
+			<element type="TEXT" compId="ID_title_s2" x="5" y="2" width="432.1" expand="down" align="center" size="14" />
+			<element type="ROUTER" textId="ID_router_txt2" x="0" y="50" width="435" height="340" />
+		</slide>
+
+
+		<slide>
+			<element type="TEXT" compId="ID_title_s3" x="5" y="2" width="432.1" expand="down" align="center" size="14" />
+			<element type="ROUTER" textId="ID_router_txt3" x="0" y="50" width="435" height="340" />
+		</slide>
+
+</slide>
+<text id="ID_router_txt1"><![CDATA[<pre>Router#<b>show file systems</b>
+File Systems:
+
+       Size(b)       Free(b)      Type  Flags  Prefixes
+             -             -    opaque     rw   archive:
+             -             -    opaque     rw   system:
+             -             -    opaque     rw   tmpsys:
+             -             -    opaque     rw   null:
+             -             -   network     rw   tftp:
+*    256487424     183234560      disk     rw   flash0: flash:#
+             -             -      disk     rw   flash1:
+        262136        254779     nvram     rw   nvram:
+             -             -    opaque     wo   syslog:
+             -             -    opaque     rw   xmodem:
+             -             -    opaque     rw   ymodem:
+             -             -   network     rw   rcp:
+             -             -   network     rw   http:
+             -             -   network     rw   ftp:
+             -             -   network     rw   scp:
+             -             -    opaque     ro   tar:
+             -             -   network     rw   https:
+             -             -    opaque     ro   cns:</pre>]]></text>
+
+<text id="ID_router_txt2"><![CDATA[<pre>Router#<b>dir</b>
+Directory of flash0:/
+
+ 1 -rw-     2903 Sep 7 2012 06:58:26 +00:00  cpconfig-
+                                             19xx.cfg
+ 2 -rw-  3000320 Sep 7 2012 06:58:40 +00:00  cpexpress.tar
+ 3 -rw-     1038 Sep 7 2012 06:58:52 +00:00  home.shtml
+ 4 -rw-   122880 Sep 7 2012 06:59:02 +00:00  home.tar
+ 5 -rw-  1697952 Sep 7 2012 06:59:20 +00:00  securedesktop-
+                                             ios-3.1.1.45-k9.pkg
+ 6 -rw-   415956 Sep 7 2012 06:59:34 +00:00  sslclient-win-
+                                             1.1.4.176.pkg
+ 7 -rw- 67998028 Sep 26 2012 17:32:14 +00:00 c1900-
+                                             universalk9-
+                                             mz.SPA.152-4.M1.bin
+
+256487424 bytes total (183234560 bytes free)</pre>]]></text>
+
+<text id="ID_router_txt3"><![CDATA[<pre>Router#<b>cd nvram:</b>
+Router#pwd
+nvram:/
+Router#dir
+Directory of nvram:/
+
+  253  -rw-        1156      <no date>  startup-config
+  254  ----           5      <no date>  private-config
+  255  -rw-        1156      <no date>  underlying-config
+    1  -rw-        2945      <no date>  cwmp_inventory
+    4  ----          58      <no date>  persistent-data
+    5  -rw-          17      <no date>  ecfm_ieee_mib
+    6  -rw-         559      <no date>  IOS-Self-Sig#1.cer
+
+262136 bytes total (254779 bytes free)</pre>]]></text>
+</data>

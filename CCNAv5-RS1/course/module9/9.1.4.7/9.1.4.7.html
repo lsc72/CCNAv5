@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>9.1.4.7 Packet Tracer - Scénario 2 de segmentation en sous-réseaux</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_9.1.4.7_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmenter un réseau IPv4 en sous-réseaux</h1>
+        <h2>Déterminer le masque de sous-réseau</h2>
+      </div>
+      <div id="content">
+<p>Dans cet exercice, vous devez segmenter l'adresse réseau 172.31.1.0/24 en sous-réseaux pour servir d'espace d'adressage IP au réseau présenté dans la topologie. Les adresses d'hôte nécessaires pour chaque liaison WAN et LAN sont étiquetées dans la topologie.</p>
+<p></p>
+<p>
+<a href="../../files/9.1.4.7%20Packet%20Tracer%20-%20Subnetting%20Scenario%202%20Instructions.pdf" target="_blank">Instructions de Packet Tracer - Scénario 2 de segmentation en sous-réseaux</a>
+</p>
+<p></p>
+<p>
+<a href="../../files/9.1.4.7%20Packet%20Tracer%20-%20Subnetting%20Scenario%202.pka" target="_blank">PKA de Packet Tracer - Scénario 2 de segmentation en sous-réseaux</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

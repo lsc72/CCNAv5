@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>10.1.4.3 Débogage de DHCPv4</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_10.1.4.3_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Protocole DHCP (Dynamic Host Configuration Protocol) version 4</h1>
+        <h2>Dépannage de DHCPv4</h2>
+      </div>
+      <div id="content">
+<p>Sur les routeurs configurés en tant que serveurs DHCPv4, le processus DHCPv4 échoue si le routeur ne reçoit pas les requêtes du client. Dans le cadre du dépannage, assurez-vous que le routeur reçoit la requête DHCPv4 du client. Cette étape de dépannage nécessite la configuration d'une liste de contrôle d'accès pour le résultat du débogage.</p>
+<p></p>
+<p>La figure montre une liste de contrôle d'accès étendue autorisant uniquement les paquets dont les ports de destination UDP sont 67 ou 68. Ces ports sont généralement utilisés par les clients et les serveurs DHCPv4 pour l'envoi de messages DHCPv4. La liste de contrôle d'accès étendue est utilisée avec la commande <span class="cmd"><b>debug ip packet</b></span> pour afficher uniquement les messages DHCPv4.</p>
+<p></p>
+<p>Le résultat présenté sur la figure indique que le routeur reçoit les requêtes DHCP du client. L'adresse IP source est 0.0.0.0 car le client n'a pas encore d'adresse IP. La destination est 255.255.255.255, car le message de détection DHCP du client est envoyé sous forme de diffusion. Ce résultat ne montre qu'un résumé du paquet et non le message DHCPv4 lui-même. Néanmoins, le routeur a bien reçu un paquet de diffusion dont les adresses IP source et de destination ainsi que les ports UDP sont corrects pour DHCPv4. Le résultat complet du débogage affiche tous les paquets présents dans les communications DHCPv4 entre le serveur et le client DHCPv4.</p>
+<p></p>
+<p>La commande <span class="cmd"><b>debug ip dhcp server events</b></span> est également utile pour résoudre les problèmes de fonctionnement de DHCPv4. Cette commande indique les événements de serveur tels que les attributions d'adresses et les mises à jour des bases de données. Elle permet également de décoder les réceptions et les transmissions DHCPv4.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

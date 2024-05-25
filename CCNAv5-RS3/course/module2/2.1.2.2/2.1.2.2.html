@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.1.2.2 Algorithme Spanning Tree : rôles des ports</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.1.2.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Concepts du mode Spanning Tree</h1>
+        <h2>Fonctionnement du protocole STP</h2>
+      </div>
+      <div id="content">
+<p>Le protocole STP IEEE 802.1D utilise l'algorithme Spanning Tree (STA, Spanning Tree Algorithm) pour déterminer quels sont les ports de commutation d'un réseau à bloquer (état de blocage) pour empêcher la formation de boucles. L’algorithme STA désigne un commutateur unique comme pont racine et il l’utilise comme point de référence pour le calcul de tous les chemins. Dans cette figure, le pont racine (commutateur S1) a été choisi par le biais d'un processus de sélection. Tous les commutateurs associés au protocole STP échangent des trames BPDU pour identifier le commutateur doté de l'ID de pont le plus faible sur le réseau. Le commutateur doté de l'identificateur (ID) le plus faible devient automatiquement le pont racine pour les calculs de l’algorithme STA.</p>
+<p></p>
+<p>
+<b>Remarque </b>: pour plus de simplicité et sauf spécification contraire, partons de l'hypothèse que tous les ports de tous les commutateurs sont affectés au VLAN 1. Chaque commutateur dispose d'une adresse MAC unique, associée au VLAN 1. </p>
+<p></p>
+<p>Une BPDU est une trame de message échangée par les commutateurs pour le protocole STP. Chaque trame BPDU contient un identificateur de pont qui identifie le commutateur ayant envoyé la trame BPDU. L'ID de pont contient une valeur de priorité, l'adresse MAC du commutateur émetteur et un ID système étendu facultatif. La valeur d'ID de pont la plus basse est déterminée par une combinaison de ces trois champs.</p>
+<p></p>
+<p>Une fois le pont racine défini, l'algorithme STA calcule le chemin le plus court pour y parvenir. Chaque commutateur utilise l’algorithme STA pour identifier les ports devant être bloqués. Pendant que l'algorithme STA détermine les meilleurs chemins pour accéder au pont racine, depuis l'ensemble des ports de commutation du domaine de diffusion, le réacheminement du trafic au sein du réseau est interdit. L'algorithme STA prend en compte le coût des chemins comme celui des ports lorsqu'il détermine quels ports bloquer. Le coût de la route est calculé à l’aide des valeurs de coût de port associées à la vitesse de port de chacun des ports des commutateurs sur un chemin donné. La somme des valeurs des coûts de ports détermine le coût du chemin global vers le pont racine. Si plusieurs chemins sont disponibles, l’algorithme STA choisit le chemin doté du coût de chemin le plus faible.</p>
+<p></p>
+<p>Lorsque l'algorithme STA a déterminé quels sont les meilleurs chemins possibles pour chaque commutateur, il attribue un rôle aux ports de commutation participants. Les rôles de port décrivent la relation entre les ports du réseau et le pont racine, et indiquent s'ils sont autorisés à réacheminer du trafic de données :</p>
+<p></p>
+<p>
+<ul>
+<li>
+<b>Ports racine</b> : il s’agit des ports de commutation les plus proches du pont racine. Dans la figure, le port racine de S2 est F0/1, configuré pour la liaison trunk entre S2 et S1. Le port racine de S3 est F0/1, configuré pour la liaison trunk entre S3 et S1. Les ports racine sont sélectionnés individuellement pour chaque commutateur.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Ports désignés</b> : il s’agit de tous les ports non racine qui sont autorisés à acheminer le trafic sur le réseau. Dans la figure, les ports de commutation (F0/1 et F0/2) sur S1 sont des ports désignés. Le port F0/2 de S2 est également configuré comme port désigné. Les ports désignés sont sélectionnés individuellement pour chaque trunk. Si l'une des extrémités d'un trunk est un port racine, l'autre extrémité est alors un port désigné. Tous les ports du pont racine sont des ports désignés. </li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Ports alternatifs et ports de sauvegarde :</b> les ports alternatifs et les ports de sauvegarde sont configurés avec un état de blocage, pour éviter la formation de boucles. Dans la figure, le port F0/2 configuré STA sur S3 a un rôle de port alternatif. Le port F0/2 sur S3 présente un état de blocage. Des ports alternatifs sont sélectionnés uniquement sur les liaisons trunk où aucun port de périphérie n'est un port racine. Notez que, dans la figure, seule l'une des extrémités du trunk est bloquée. Cela permet une transition plus rapide vers l'état de réacheminement, si nécessaire. (Les ports bloqués entrent en jeu uniquement lorsque deux ports du même commutateur sont connectés l'un à l'autre via un concentrateur ou un câble simple.)</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>
+<b>Ports désactivés</b> : un port désactivé est un port de commutation arrêté.</li>
+</ul>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.5.1.1 Exercice en classe - Raccordement</title>
+    <!-- Activity -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.5.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Résumé</h1>
+        <h2>Résumé</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Raccordement</b>
+</p>
+<p>
+<b>Remarque</b> : nous vous conseillons de former des groupes de 2 ou 3 étudiants pour effectuer cet exercice.</p>
+<p></p>
+<p>Votre petite entreprise déménage ! Votre bâtiment est tout neuf et vous avez pour mission de concevoir un modèle physique de sorte que l'installation des ports réseau puisse commencer.</p>
+<p></p>
+<p>Utilisez le modèle fourni pour cette activité (<u>votre formateur vous distribuera une copie provenant du guide de planification du formateur</u>). La zone désignée par le numéro 1 est la zone d'accueil et la zone RR correspond aux toilettes. </p>
+<p></p>
+<p>Toutes les pièces entrent dans la catégorie 6 des spécifications UTP (100 mètres), vous n'avez donc pas à vous inquiéter du câblage du bâtiment. Toutes les pièces sur le schéma doivent comporter au moins une connexion réseau mise à la disposition des utilisateurs/périphériques intermédiaires.</p>
+<p></p>
+<p>Avec vos collègues, indiquez sur le schéma :</p>
+<p>
+<ul>
+<li>L'emplacement du répartiteur principal de votre réseau en tenant compte des critères de sécurité.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le nombre de périphériques intermédiaires que vous utiliserez ainsi que leur emplacement.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Le type de câblage que vous utiliseriez (UTP, STP, sans fil, à fibre optique, etc.) et l'emplacement des ports.</li>
+</ul>
+</p>
+<p>
+<ul>
+<li>Les types de périphériques finaux que vous utiliseriez (filaires, sans fil, ordinateurs portables, ordinateurs de bureau, tablettes, etc.).</li>
+</ul>
+</p>
+<p>Ne compliquez pas votre schéma inutilement, utilisez simplement le contenu du chapitre pour pouvoir justifier vos décisions devant la classe.</p>
+<p></p>
+<p>
+<a href="../../files/4.5.1.1%20Class%20Activity%20-%20Linked%20In!%20Instructions.pdf" target="_blank">Exercice en classe - Raccordement Instructions</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<slide type="MBAR">
+	
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s1_title"/>
+			<element type="IMAGE" src="10_2_2_3.jpg" x="0" y="0" width="470" height="400"/>
+			<element type="TEXT" id="ID_static_1" text="G0/1" x="86" y="74.8" width="28" align="left" />
+			<element type="TEXT" id="ID_static_2" text="G0/1" x="320.95" y="74.8" width="28" align="left" />
+			<element type="TEXT" compId="ID_s1_txt01" x="32" y="98" width="173.8" expand="down" align="left" />
+			<element type="TEXT" compId="ID_s1_txt02" x="248" y="98" width="152.65" expand="down" align="right" />
+			<element type="ROUTER" textId="ID_s1_txt01" x="5" y="158" width="430" height="105" />
+		</slide>
+		
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s2_title"/>
+			<element type="ROUTER" textId="ID_s2_txt01" x="5" y="47" width="430" height="345"/>				
+		</slide>
+		
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s3_title"/>
+			<element type="ROUTER" textId="ID_s3_txt01" x="5" y="47" width="430" height="345"/>	
+			<element type="TEXT" compId="ID_s3_txt01" x="12" y="193" width="104.5" expand="right" align="left" />	
+		</slide>
+		
+		<slide>
+			<element type="TEXT" subType="TITLE" compId="ID_s4_title"/>
+			<element type="IMAGE" src="10_2_2_3.jpg" x="0" y="0" width="470" height="400"/>
+			<element type="TEXT" id="ID_static_1" text="G0/1" x="86" y="74.8" width="28" align="left" />
+			<element type="TEXT" id="ID_static_2" text="G0/1" x="320.95" y="74.8" width="28" align="left" />
+			<element type="TEXT" compId="ID_s4_txt01" x="32" y="98" width="173.8" expand="down" align="left" />
+			<element type="TEXT" compId="ID_s4_txt02" x="248" y="98" width="152.65" expand="down" align="right" />
+			
+			<element type="ACTIVITY" subType="SYNTAX" compId="ID_s4_SC1" x="2.5" y="128" width="420" height="263.25" resetId="ID_sc_reset" showMeId="ID_sc_showme" showAllId="ID_sc_showall"/>
+				
+		</slide>	
+	
+	</slide>
+	
+	
+	
+	
+	
+	<text id="ID_s1_txt01"><![CDATA[<pre>R1# <b>show ipv6 dhcp pool </b>
+DHCPv6 pool: IPV6-STATELESS
+  DNS server: 2001:DB8:CAFE:AAAA::5
+  Domain name: example.com
+  Active clients: 0
+R1# </pre>
+	]]></text>
+	
+	
+<text id="ID_s2_txt01"><![CDATA[<pre>R3# <b class="command">show ipv6 interface g0/1 </b>
+GigabitEthernet0/1 is up, line protocol is up
+  IPv6 is enabled, link-local address is
+FE80::32F7:DFF:FE25:2DE1 
+  No Virtual link-local address(es):
+  <span class="orange orange1">Stateless address autoconfig enabled
+Global unicast address(es):
+    2001:DB8:CAFE:1:32F7:DFF:FE25:2DE1,</span> subnet is
+2001:DB8:CAFE:1::/64 [EUI/CAL/PRE]
+      valid lifetime 2591935 preferred lifetime 604735
+  Joined group address(es):
+    FF02::1
+    FF02::1:FF25:2DE1
+  MTU is 1500 bytes
+  ICMP error messages limited to one every 100 milliseconds
+  ICMP redirects are enabled
+  ICMP unreachables are sent
+  ND DAD is enabled, number of DAD attempts: 1
+  ND reachable time is 30000 milliseconds (using 30000)
+  ND NS retransmit interval is 1000 milliseconds
+  <span class="orange orange1">Default router is FE80::D68C:B5FF:FECE:A0C1 on 
+GigabitEthernet0/1</span>
+R3# </pre>
+]]></text>
+
+<text id="ID_s3_txt01"><![CDATA[<pre>R3# <b class="command">debug ipv6 dhcp detail </b>
+   IPv6 DHCP debugging is on (detailed)
+R3# 
+*Feb  3 02:39:10.454: IPv6 DHCP: <span class="orange">Sending INFORMATION-REQUEST</span>
+<span class="orange">to FF02::1:2</span> on GigabitEthernet0/1
+*Feb  3 02:39:10.454: IPv6 DHCP: detailed packet contents
+*Feb  3 02:39:10.454:   <span class="orange orange2">src FE80::32F7:DFF:FE25:2DE1      </span>
+*Feb  3 02:39:10.454:   dst FF02::1:2 (GigabitEthernet0/1)
+*Feb  3 02:39:10.454:   type INFORMATION-REQUEST(11), xid
+12541745
+
+*Feb  3 02:39:10.454: <span class="orange orange3">IPv6 DHCP: Adding server            </span>  
+                      FE80::D68C:B5FF:FECE:A0C1 
+*Feb  3 02:39:10.454: IPv6 DHCP: Processing options
+*Feb  3 02:39:10.454: IPv6 DHCP: Configuring DNS server  
+                      2001:DB8:CAFE:AAAA::5
+*Feb  3 02:39:10.454: IPv6 DHCP: Configuring domain name 
+                      example.com
+*Feb  3 02:39:10.454: IPv6 DHCP: DHCPv6 changes state from
+INFORMATION-REQUEST to IDLE (REPLY_RECEIVED) on
+GigabitEthernet0/1
+R3# </pre>
+]]></text>
+	
+	
+	
+</data>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>3.1.1.1 Définitions des VLAN</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_3.1.1.1_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Segmentation d&#x0027;un VLAN</h1>
+        <h2>Vue d&#x0027;ensemble des VLAN</h2>
+      </div>
+      <div id="content">
+<p>Dans un interréseau commuté, les VLAN permettent la segmentation et assouplissent l'organisation. Les VLAN offrent un moyen de regrouper des périphériques dans un LAN. Un groupe de périphériques dans un VLAN communiquent comme s'ils étaient reliés au même câble. Les VLAN reposent sur des connexions logiques, et non des connexions physiques. </p>
+<p></p>
+<p>Les VLAN permettent à un administrateur de segmenter les réseaux en fonction de facteurs tels que la fonction, l'équipe de projet ou l'application, quel que soit l'emplacement physique de l'utilisateur ou du périphérique. Les périphériques d'un VLAN se comportent comme s'ils se trouvaient chacun sur leur propre réseau indépendant, même s'ils partagent une infrastructure commune avec d'autres VLAN. N'importe quel port de commutateur peut appartenir à un VLAN. Les paquets monodiffusion, diffusion et multidiffusion sont transférés et diffusés uniquement à des stations finales dans le VLAN dont proviennent les paquets. Chaque VLAN est considéré comme un réseau logique distinct et les paquets destinés aux stations n'appartenant pas au VLAN doivent être transférés par un périphérique qui prend en charge le routage. </p>
+<p></p>
+<p>Un VLAN crée un domaine de diffusion logique qui peut s'étendre sur plusieurs segments de réseau local physique. Les VLAN améliorent les performances réseau en divisant de vastes domaines de diffusion en domaines plus petits. Si un périphérique d'un VLAN envoie une trame Ethernet de diffusion, tous les périphériques du VLAN la reçoivent, mais pas les périphériques d'autres VLAN. </p>
+<p></p>
+<p>Les VLAN permettent la mise en œuvre des stratégies d'accès et de sécurité en fonction de groupes d'utilisateurs précis. Chaque port de commutateur peut être attribué à un seul VLAN (à l'exception des ports connectés à un téléphone IP ou à un autre commutateur). </p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

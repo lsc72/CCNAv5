@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>2.0.1.2 Exercice en classe : augmentation de l&#x0027;activité</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+    <script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_2.0.1.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+        myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        if(isiPad){
+          var paneOptions = myLayout.options["west"]; 
+          paneOptions.spacing_open = 12;
+          myLayout.resizeAll(); 
+        }
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Connexion au WAN</h1>
+        <h2>Introduction</h2>
+      </div>
+      <div id="content">
+<p>
+<b>Augmentation de l'activité</b>
+</p>
+<p></p>
+<p>Votre entreprise de taille moyenne ouvre une nouvelle filiale pour servir un réseau plus large et basé sur les clients. Cette filiale se concentrera sur le fonctionnement journalier et régulier du réseau, mais elle fournira également les services suivants : TelePresence, conférences Web, téléphonie IP, vidéo à la demande et services sans fil.</p>
+<p></p>
+<p>Même si vous savez qu'un FAI peut fournir des routeurs et des commutateurs WAN en vue de faciliter la connectivité réseau de la filiale, vous préférez utiliser votre propre équipement d'abonné. Afin de garantir l'interopérabilité, des périphériques Cisco ont été utilisés dans les WAN de toutes les autres filiales.</p>
+<p></p>
+<p>En tant qu'administrateur réseau de la filiale, il est de votre responsabilité de rechercher quels périphériques réseau vous devez acheter et utiliser sur le WAN.</p>
+<p></p>
+<p>
+<a href="../../files/2.0.1.2%20Branching%20Out%20Instructions.pdf" target="_blank">Exercice en classe : augmentation de l'activité</a>
+</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>

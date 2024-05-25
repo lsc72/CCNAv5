@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>4.3.3.2 Exemples de routes statiques</title>
+    <!-- Content -->
+    <link type="text/css" rel="stylesheet" href="../../common/styles/course.css"/>
+	<script type="text/javascript" src="../../common/scripts/jquery_bundle.min.js"></script>
+	<script type="text/javascript" src="../../common-ext/scripts/page.js"></script>
+    <script>
+      var myLayout;
+      $(document).ready(function () {
+        var frame = document.getElementById('mainFrame');
+        if (isTextOnly(window)) {
+          frame.setAttribute('src', 'media_4.3.3.2_longdesc.txt');
+        } else {
+          frame.setAttribute('src', 'media/index.html');
+        }
+    	myLayout = $('body').layout({
+          west__size: 300,
+          west__minSize: 300,
+          center__minWidth: 100,
+          resizerTip: 'Redimensionner',
+          sliderTip: 'Ouvrir par glissement',
+          togglerTip_open: 'Fermer',
+          togglerTip_closed: 'Ouvrir',
+          stateManagement__enabled: true,
+          maskIframesOnResize: true,
+          livePaneResizing: true,
+          onresize_end: resizeTextDiv,
+          stateManagement__cookie__name: "ui_pane",
+          stateManagement__cookie__expires: 1,
+          stateManagement__cookie__path: "/"
+        });
+      });
+      function resizeTextDiv() {
+        var DivHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("content").style.top = String(DivHeight) + 'px';
+      }
+    </script>
+  </head>
+  <body class="onecolumn" onLoad="resizeTextDiv()">
+    <div class="ui-layout-west">
+      <div id="header">
+        <h1>Fonctionnement d&#x0027;un routeur</h1>
+        <h2>Routes apprises de manière statique</h2>
+      </div>
+      <div id="content">
+<p>La Figure 1 décrit la configuration d'une route statique par défaut IPv4 sur R1 à l'interface Serial 0/0/0. Notez que la configuration de la route a généré une entrée « <span class="cmd">S*</span> » dans la table de routage. Le « <span class="cmd">S</span> » signifie que la source de la route est une route statique et l'astérisque (<b>*</b>) identifie cette route comme candidat éventuel pour être la route par défaut. En réalité, elle a été choisie en tant que route par défaut comme l'atteste la ligne indiquant « Gateway of Last Resort is 0.0.0.0 to network 0.0.0.0. ». </p>
+<p></p>
+<p>La Figure 2 illustre la configuration de deux routes statiques de R2 vers les deux LAN de R1. La route vers 192.168.10.0/24 a été configurée à l'aide de l'interface de sortie tandis que la route vers 192.168.11.0/24 a été configurée avec l'adresse IPv4 de tronçon suivant. Bien que ces deux solutions soient acceptables, leur mode de fonctionnement est différent. Vous remarquerez par exemple qu'elles apparaissent différemment dans la table de routage. Notez également que ces routes statiques étant destinées à des réseaux spécifiques, le résultat indique que la passerelle de dernier recours n'est pas définie.</p>
+<p></p>
+<p>
+<b>Remarque</b> : les routes statiques et les routes statiques par défaut sont décrites plus en détail dans le chapitre suivant.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 3 pour configurer une route statique par défaut sur le routeur R1 allant vers R2.</p>
+<p></p>
+<p>Utilisez le contrôleur de syntaxe de la Figure 4 pour configurer des routes statiques sur le routeur R2 permettant d'atteindre les LAN R1.</p>
+</div>
+    </div>
+    <iframe id="mainFrame" name="mainFrame" frameborder="0" class="ui-layout-center" alt="interactive graphic"></iframe>
+  </body>
+</html>
